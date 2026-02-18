@@ -1,66 +1,72 @@
 import { define } from "@/utils.ts";
 import { Head } from "fresh/runtime";
+import PageLayout from "@/components/PageLayout.tsx";
+
+const SLIDESHOW_URL =
+  "/slideshows/discuss-our-future-slideshow-conversation.html";
 
 export default define.page(function Slideshow() {
   return (
-    <>
+    <PageLayout>
       <Head>
         <title>Meetup Slideshow — Future Together</title>
-        <style>
-          {`
-          body { margin: 0; overflow: hidden; }
-          .slideshow-frame {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            border: none;
-          }
-          .back-link {
-            position: fixed;
-            top: 12px;
-            left: 12px;
-            z-index: 100;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            background: rgba(26, 95, 110, 0.92);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            border-radius: 8px;
-            text-decoration: none;
-            backdrop-filter: blur(4px);
-            transition: opacity 0.15s;
-          }
-          .back-link:hover { opacity: 0.8; }
-        `}
-        </style>
+        <meta
+          name="description"
+          content="The Future Together meetup slideshow — Discuss Our Future."
+        />
       </Head>
 
-      <a href="/meetups" class="back-link">
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
-        Meetups
-      </a>
+      <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="mb-4">
+          <a
+            href="/meetups"
+            class="text-sm font-medium"
+            style="color: #1a5f6e;"
+          >
+            ← Back to Meetups
+          </a>
+          <h1
+            class="text-2xl font-bold mt-2"
+            style="color: #1a5f6e;"
+          >
+            Discuss Our Future — Meetup Slideshow
+          </h1>
+        </div>
 
-      <iframe
-        src="/slideshow-content"
-        class="slideshow-frame"
-        title="Discuss Our Future — Meetup Slideshow"
-      />
-    </>
+        {/* Iframe wrapper with floating presentation-mode link */}
+        <div class="relative rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <a
+            href={SLIDESHOW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="absolute top-3 right-3 z-10 flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg text-white"
+            style="background: rgba(26, 95, 110, 0.85); backdrop-filter: blur(4px);"
+          >
+            Open in presentation mode
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+
+          <iframe
+            src={SLIDESHOW_URL}
+            title="Discuss Our Future — Meetup Slideshow"
+            class="w-full"
+            style="height: 82vh; border: none; display: block;"
+          />
+        </div>
+      </div>
+    </PageLayout>
   );
 });
