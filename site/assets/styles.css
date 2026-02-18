@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+/**
+ * Future Together — Design System
+ * Brand colour tokens and base styles.
+ */
+
+@theme {
+  /* Brand colours */
+  --color-primary:    #1a5f6e;  /* Deep teal — nav, headings, key UI */
+  --color-accent:     #c4853a;  /* Warm amber — CTAs, highlights */
+  --color-warm-white: #f7f4ef;  /* Off-white — page background */
+  --color-near-black: #1c1a18;  /* Warm near-black — body text */
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Base styles */
+body {
+  background-color: var(--color-warm-white);
+  color: var(--color-near-black);
+  font-family: var(--font-sans);
+}
