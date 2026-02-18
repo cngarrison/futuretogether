@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" role="img" aria-label="Future Together">
+  <title>Future Together</title>
+  <!--
+    Option F: Three Connected Nodes (improved Option B)
+    Three larger circular nodes in a vertical fan, each connected by a path
+    to a central amber convergence point. Fewer, larger nodes = much more
+    legible at favicon/small sizes than the 5-node Option B.
+    Reads as: a small but real community, coming together.
+    Font: Plus Jakarta Sans or DM Sans (load via Google Fonts in production).
+  -->
+
+  <!-- Connecting paths from each node to convergence -->
+  <line x1="9" y1="13" x2="54" y2="40" stroke="#1a5f6e" stroke-width="1.6" stroke-linecap="round" opacity="0.55"/>
+  <line x1="9" y1="40" x2="54" y2="40" stroke="#1a5f6e" stroke-width="1.8" stroke-linecap="round" opacity="0.85"/>
+  <line x1="9" y1="67" x2="54" y2="40" stroke="#1a5f6e" stroke-width="1.6" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- Three nodes: larger circles for legibility at small sizes -->
+  <circle cx="9" cy="13" r="6.5" fill="#1a5f6e" opacity="0.6"/>
+  <circle cx="9" cy="40" r="8"   fill="#1a5f6e"/>
+  <circle cx="9" cy="67" r="6.5" fill="#1a5f6e" opacity="0.6"/>
+
+  <!-- Amber convergence / gathering point -->
+  <circle cx="54" cy="40" r="8.5" fill="#c4853a"/>
+
+  <!-- Wordmark -->
+  <text
+    x="72" y="34"
+    font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
+    font-size="21" font-weight="700" fill="#1a5f6e" letter-spacing="-0.5"
+  >Future</text>
+  <text
+    x="72" y="59"
+    font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
+    font-size="21" font-weight="400" fill="#1c1a18" letter-spacing="-0.5"
+  >Together</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 80" role="img" aria-label="Future Together">
+  <title>Future Together</title>
+  <!--
+    Future Together — Primary Logo (wordmark)
+    Mark: converging teal lines → amber gathering point → amber chevron.
+    Teal  = the community / the many paths
+    Amber = the focal point + shared forward direction
+    Font: Plus Jakarta Sans (loaded via Google Fonts in production)
+  -->
+
+  <!-- Teal convergence lines: spread left, meeting at (50, 40) -->
+  <line x1="2" y1="5"  x2="50" y2="40" stroke="#1a5f6e" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+  <line x1="2" y1="21" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+  <line x1="2" y1="40" x2="50" y2="40" stroke="#1a5f6e" stroke-width="3"   stroke-linecap="round"/>
+  <line x1="2" y1="59" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+  <line x1="2" y1="75" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+
+  <!-- Amber gathering point -->
+  <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+
+  <!-- Amber chevron: the unified forward direction -->
+  <polyline
+    points="57,26 70,40 57,54"
+    fill="none" stroke="#c4853a" stroke-width="3.5"
+    stroke-linecap="round" stroke-linejoin="round"
+  />
+
+  <!-- Wordmark -->
+  <text
+    x="84" y="34"
+    font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
+    font-size="21" font-weight="700" fill="#1a5f6e" letter-spacing="-0.5"
+  >Future</text>
+  <text
+    x="84" y="59"
+    font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
+    font-size="21" font-weight="400" fill="#1c1a18" letter-spacing="-0.5"
+  >Together</text>
+</svg>

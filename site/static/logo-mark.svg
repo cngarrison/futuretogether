@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 2 74 76" role="img" aria-label="Future Together">
+  <title>Future Together</title>
+  <!--
+    Future Together — Mark only (no wordmark)
+    Use for: social profile images, app icons, square contexts.
+    Based on Option G: converging lines + amber target + amber chevron.
+  -->
+
+  <!-- Teal convergence lines -->
+  <line x1="2" y1="5"  x2="50" y2="40" stroke="#1a5f6e" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+  <line x1="2" y1="21" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+  <line x1="2" y1="40" x2="50" y2="40" stroke="#1a5f6e" stroke-width="3"   stroke-linecap="round"/>
+  <line x1="2" y1="59" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+  <line x1="2" y1="75" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+
+  <!-- Amber gathering point -->
+  <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+
+  <!-- Amber chevron: forward direction from the gathering point -->
+  <polyline
+    points="57,26 70,40 57,54"
+    fill="none" stroke="#c4853a" stroke-width="3.5"
+    stroke-linecap="round" stroke-linejoin="round"
+  />
+</svg>

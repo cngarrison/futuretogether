@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" role="img" aria-label="Future Together">
+  <title>Future Together</title>
+  <!--
+    Option B: Connected Community
+    Five circular nodes (people) on the left, each connected by a path
+    to an amber convergence point. Explicitly human and community-focused
+    while remaining abstract and non-clipart.
+    Font: Plus Jakarta Sans or DM Sans (load via Google Fonts in production).
+  -->
+
+  <!-- Connecting paths from each person to convergence -->
+  <line x1="9"  y1="8"  x2="56" y2="40" stroke="#1a5f6e" stroke-width="1.4" stroke-linecap="round" opacity="0.35"/>
+  <line x1="9"  y1="24" x2="56" y2="40" stroke="#1a5f6e" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+  <line x1="9"  y1="40" x2="56" y2="40" stroke="#1a5f6e" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/>
+  <line x1="9"  y1="56" x2="56" y2="40" stroke="#1a5f6e" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+  <line x1="9"  y1="72" x2="56" y2="40" stroke="#1a5f6e" stroke-width="1.4" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- People nodes: circles, fading toward extremes -->
+  <circle cx="9" cy="8"  r="4.5" fill="#1a5f6e" opacity="0.4"/>
+  <circle cx="9" cy="24" r="4.5" fill="#1a5f6e" opacity="0.65"/>
+  <circle cx="9" cy="40" r="5.5" fill="#1a5f6e"/>
+  <circle cx="9" cy="56" r="4.5" fill="#1a5f6e" opacity="0.65"/>
+  <circle cx="9" cy="72" r="4.5" fill="#1a5f6e" opacity="0.4"/>
+
+  <!-- Amber convergence / focal point -->
+  <circle cx="56" cy="40" r="7" fill="#c4853a"/>
+
+  <!-- Wordmark -->
+  <text
+    x="72" y="34"
+    font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
+    font-size="21" font-weight="700" fill="#1a5f6e" letter-spacing="-0.5"
+  >Future</text>
+  <text
+    x="72" y="59"
+    font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
+    font-size="21" font-weight="400" fill="#1c1a18" letter-spacing="-0.5"
+  >Together</text>
+</svg>
