@@ -2,8 +2,8 @@ import { Handlers } from "$fresh/server.ts";
 import {
   getRegistrationsNeedingReminder,
   updateReminderSent,
-} from "../../../../utils/events.ts";
-import { sendReminderEmail } from "../../../../utils/eventEmail.ts";
+} from "@/utils/events.ts";
+import { sendReminderEmail } from "@/utils/eventEmail.ts";
 
 /**
  * API endpoint for sending event reminders

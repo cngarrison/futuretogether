@@ -1,6 +1,6 @@
 import { Head } from "fresh/runtime";
-import { define } from "../../utils.ts";
-import { getNextAvailableEvent } from "../../utils/events.ts";
+import { define } from "@/utils.ts";
+import { getNextAvailableEvent } from "@/utils/events.ts";
 
 // The "Discuss Our Future" meetup alternates start times each month
 // to accommodate participants in different time zones:

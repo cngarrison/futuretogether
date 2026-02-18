@@ -3,7 +3,7 @@ import {
   getEventById,
   getEventRegistrations,
   getNextAvailableEvent,
-} from "../../../../../utils/events.ts";
+} from "@/utils/events.ts";
 
 export const handlers = define.handlers({
   async GET(ctx) {

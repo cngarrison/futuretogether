@@ -1,6 +1,6 @@
 import { FreshContext } from "$fresh/server.ts";
 import { getCookies } from "@std/http";
-import { logStaffAccess } from "../../../utils/staff-log.ts";
+import { logStaffAccess } from "@/utils/staff-log.ts";
 
 export async function handler(
   ctx: FreshContext,

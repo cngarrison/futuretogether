@@ -1,10 +1,10 @@
-import { define } from "../../../../../utils.ts";
+import { define } from "@/utils.ts";
 import {
   createRegistration,
   getNextAvailableEvent,
-} from "../../../../../utils/events.ts";
-import { sendConfirmationEmail } from "../../../../../utils/eventEmail.ts";
-import { verifyTurnstileToken } from "../../../../../utils/turnstile.ts";
+} from "@/utils/events.ts";
+import { sendConfirmationEmail } from "@/utils/eventEmail.ts";
+import { verifyTurnstileToken } from "@/utils/turnstile.ts";
 
 export const handlers = define.handlers({
   async POST(ctx) {
