@@ -101,7 +101,6 @@ export default define.page(async function EventPage({ params }) {
       <section style="background-color: #f7f4ef;">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 py-14">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
-
             {/* Left: event details */}
             <div class="md:col-span-7 space-y-6">
               <div
@@ -121,9 +120,7 @@ export default define.page(async function EventPage({ params }) {
                   {event.description.split("\n").map((
                     paragraph: string,
                     i: number,
-                  ) =>
-                    paragraph.trim() && <p key={i}>{paragraph}</p>
-                  )}
+                  ) => paragraph.trim() && <p key={i}>{paragraph}</p>)}
                 </div>
               </div>
 

@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 80" role="img" aria-label="Future Together">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 215 80"
+  role="img"
+  aria-label="Future Together"
+>
   <title>Future Together</title>
   <!--
     Future Together — White/header variant
@@ -7,31 +12,87 @@
   -->
 
   <!-- White convergence lines -->
-  <line x1="2" y1="5"  x2="50" y2="40" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.5"/>
-  <line x1="2" y1="21" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
-  <line x1="2" y1="40" x2="50" y2="40" stroke="white" stroke-width="3"   stroke-linecap="round" opacity="0.9"/>
-  <line x1="2" y1="59" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
-  <line x1="2" y1="75" x2="50" y2="40" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.5"/>
+  <line
+    x1="2"
+    y1="5"
+    x2="50"
+    y2="40"
+    stroke="white"
+    stroke-width="2"
+    stroke-linecap="round"
+    opacity="0.5"
+  />
+  <line
+    x1="2"
+    y1="21"
+    x2="50"
+    y2="40"
+    stroke="white"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    opacity="0.7"
+  />
+  <line
+    x1="2"
+    y1="40"
+    x2="50"
+    y2="40"
+    stroke="white"
+    stroke-width="3"
+    stroke-linecap="round"
+    opacity="0.9"
+  />
+  <line
+    x1="2"
+    y1="59"
+    x2="50"
+    y2="40"
+    stroke="white"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    opacity="0.7"
+  />
+  <line
+    x1="2"
+    y1="75"
+    x2="50"
+    y2="40"
+    stroke="white"
+    stroke-width="2"
+    stroke-linecap="round"
+    opacity="0.5"
+  />
 
   <!-- Amber gathering point (retained for brand recognition) -->
-  <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+  <circle cx="50" cy="40" r="7" fill="#c4853a" />
 
   <!-- Amber chevron -->
   <polyline
     points="57,26 70,40 57,54"
-    fill="none" stroke="#c4853a" stroke-width="3.5"
-    stroke-linecap="round" stroke-linejoin="round"
+    fill="none"
+    stroke="#c4853a"
+    stroke-width="3.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   />
 
   <!-- White wordmark -->
   <text
-    x="84" y="34"
+    x="84"
+    y="34"
     font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
-    font-size="21" font-weight="700" fill="white" letter-spacing="-0.5"
+    font-size="21"
+    font-weight="700"
+    fill="white"
+    letter-spacing="-0.5"
   >Future</text>
   <text
-    x="84" y="59"
+    x="84"
+    y="59"
     font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
-    font-size="21" font-weight="400" fill="rgba(255,255,255,0.9)" letter-spacing="-0.5"
+    font-size="21"
+    font-weight="400"
+    fill="rgba(255,255,255,0.9)"
+    letter-spacing="-0.5"
   >Together</text>
 </svg>

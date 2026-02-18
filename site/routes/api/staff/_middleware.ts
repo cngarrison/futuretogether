@@ -31,7 +31,9 @@ export async function handler(
   // Log successful access
   const ip = ctx.req.headers.get("x-forwarded-for") || "unknown";
   await logStaffAccess(
-    `[${new Date().toISOString()}] Staff API access: ${url.pathname} from ${ip}`,
+    `[${
+      new Date().toISOString()
+    }] Staff API access: ${url.pathname} from ${ip}`,
   );
 
   return await ctx.next();

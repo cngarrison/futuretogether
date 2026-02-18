@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" role="img" aria-label="Future Together">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 200 80"
+  role="img"
+  aria-label="Future Together"
+>
   <title>Future Together</title>
   <!--
     Option C: Stacked Chevrons
@@ -11,35 +16,52 @@
   <!-- Chevron 1: leftmost, most faded, teal -->
   <polyline
     points="4,17 21,40 4,63"
-    fill="none" stroke="#1a5f6e" stroke-width="2.8"
-    stroke-linecap="round" stroke-linejoin="round"
+    fill="none"
+    stroke="#1a5f6e"
+    stroke-width="2.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
     opacity="0.2"
   />
 
   <!-- Chevron 2: middle, teal -->
   <polyline
     points="16,17 33,40 16,63"
-    fill="none" stroke="#1a5f6e" stroke-width="2.8"
-    stroke-linecap="round" stroke-linejoin="round"
+    fill="none"
+    stroke="#1a5f6e"
+    stroke-width="2.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
     opacity="0.55"
   />
 
   <!-- Chevron 3: foremost, amber — the leading edge -->
   <polyline
     points="28,17 45,40 28,63"
-    fill="none" stroke="#c4853a" stroke-width="3.5"
-    stroke-linecap="round" stroke-linejoin="round"
+    fill="none"
+    stroke="#c4853a"
+    stroke-width="3.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   />
 
   <!-- Wordmark -->
   <text
-    x="60" y="34"
+    x="60"
+    y="34"
     font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
-    font-size="21" font-weight="700" fill="#1a5f6e" letter-spacing="-0.5"
+    font-size="21"
+    font-weight="700"
+    fill="#1a5f6e"
+    letter-spacing="-0.5"
   >Future</text>
   <text
-    x="60" y="59"
+    x="60"
+    y="59"
     font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
-    font-size="21" font-weight="400" fill="#1c1a18" letter-spacing="-0.5"
+    font-size="21"
+    font-weight="400"
+    fill="#1c1a18"
+    letter-spacing="-0.5"
   >Together</text>
 </svg>

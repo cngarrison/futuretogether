@@ -50,7 +50,6 @@ export default define.page(function App({ Component }) {
           name="twitter:image"
           content="https://futuretogether.community/og-image.jpg"
         />
-
       </head>
       <body f-client-nav>
         <Partial name="body">

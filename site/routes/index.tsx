@@ -5,7 +5,9 @@ export default define.page(function Home() {
   return (
     <>
       <Head>
-        <title>Future Together — The future is arriving. Let's face it together.</title>
+        <title>
+          Future Together — The future is arriving. Let's face it together.
+        </title>
         <meta
           name="description"
           content="A community for people paying attention to AI and technological change. Monthly online meetups, honest conversation, and collective preparation. Join us."
@@ -52,7 +54,16 @@ export default define.page(function Home() {
 
         {/* Scroll indicator */}
         <div class="flex justify-center pb-10 animate-bounce opacity-50">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
         </div>
@@ -76,7 +87,9 @@ export default define.page(function Home() {
             </p>
             <p>
               This isn’t a prediction about what AI might do someday.{" "}
-              <strong class="text-near-black">This already happened. Last week.</strong>
+              <strong class="text-near-black">
+                This already happened. Last week.
+              </strong>
             </p>
             <p>
               AI reached software engineers first — not because they were the
@@ -103,7 +116,10 @@ export default define.page(function Home() {
       </section>
 
       {/* ===================== FEBRUARY 2020 ===================== */}
-      <section class="border-y py-20 sm:py-28" style="background-color: #eef5f7; border-color: #d0e4e7;">
+      <section
+        class="border-y py-20 sm:py-28"
+        style="background-color: #eef5f7; border-color: #d0e4e7;"
+      >
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
           <h2 class="text-3xl sm:text-4xl font-bold text-near-black mb-8">
             Remember February 2020?
@@ -111,8 +127,8 @@ export default define.page(function Home() {
           <div class="prose prose-lg max-w-none text-near-black/80 space-y-5">
             <p>
               A few people were talking about a virus spreading overseas. The
-              stock market was fine. Kids were in school. We were planning trips,
-              going to restaurants, living normally.
+              stock market was fine. Kids were in school. We were planning
+              trips, going to restaurants, living normally.
             </p>
             <p>
               Then in three weeks, everything changed.
@@ -168,7 +184,9 @@ export default define.page(function Home() {
               <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
                 <span class="text-2xl font-bold text-primary">2</span>
               </div>
-              <h3 class="text-xl font-bold text-near-black mb-3">Conversation</h3>
+              <h3 class="text-xl font-bold text-near-black mb-3">
+                Conversation
+              </h3>
               <p class="text-near-black/70 leading-relaxed">
                 Processing it together. Asking questions. Challenging
                 assumptions. Sharing what you’re seeing in your industry and
@@ -177,7 +195,10 @@ export default define.page(function Home() {
             </div>
 
             {/* Action */}
-            <div class="bg-white rounded-2xl p-8 shadow-sm" style="border: 2px solid #e8d5c0;">
+            <div
+              class="bg-white rounded-2xl p-8 shadow-sm"
+              style="border: 2px solid #e8d5c0;"
+            >
               <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
                 <span class="text-2xl font-bold text-accent">3</span>
               </div>
@@ -204,7 +225,8 @@ export default define.page(function Home() {
             people who are paying attention, figuring this out together.
           </p>
           <p class="text-white/60 mb-10 text-sm">
-            Third Wednesday of each month &middot; Time varies &middot; Free, always
+            Third Wednesday of each month &middot; Time varies &middot; Free,
+            always
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a

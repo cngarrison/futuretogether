@@ -1,125 +1,126 @@
-import ical from 'ical-generator';
-import type { EventConfig, Registration } from './events.ts';
+import ical from "ical-generator";
+import type { EventConfig, Registration } from "./events.ts";
 
-const RESEND_API_KEY = Deno.env.get('FT_RESEND_API_KEY');
-const FROM_EMAIL = Deno.env.get('FT_RESEND_FROM_EMAIL') || 'hello@futuretogether.community';
-const FROM_NAME = Deno.env.get('FT_RESEND_FROM_NAME') || 'Future Together';
+const RESEND_API_KEY = Deno.env.get("FT_RESEND_API_KEY");
+const FROM_EMAIL = Deno.env.get("FT_RESEND_FROM_EMAIL") ||
+  "hello@futuretogether.community";
+const FROM_NAME = Deno.env.get("FT_RESEND_FROM_NAME") || "Future Together";
 
 interface EmailAttachment {
-	filename: string;
-	content: string;
-	type?: string;
+  filename: string;
+  content: string;
+  type?: string;
 }
 
 interface EmailOptions {
-	to: string;
-	subject: string;
-	html: string;
-	text?: string;
-	attachments?: EmailAttachment[];
+  to: string;
+  subject: string;
+  html: string;
+  text?: string;
+  attachments?: EmailAttachment[];
 }
 
 // Generate iCalendar file content with proper timezone support
 export function generateICalendar(
-	event: EventConfig,
-	attendee: { firstName: string; lastName: string; email: string },
+  event: EventConfig,
+  attendee: { firstName: string; lastName: string; email: string },
 ): string {
-	// Simple UTC-based calendar (no timezone complexity)
-	const calendar = ical({
-		name: event.title,
-		production: true,
-	});
+  // Simple UTC-based calendar (no timezone complexity)
+  const calendar = ical({
+    name: event.title,
+    production: true,
+  });
 
-	// Parse UTC dates - simple and reliable
-	const startDate = new Date(event.date);
-	const endDate = new Date(startDate.getTime() + event.duration * 60 * 1000);
+  // Parse UTC dates - simple and reliable
+  const startDate = new Date(event.date);
+  const endDate = new Date(startDate.getTime() + event.duration * 60 * 1000);
 
-	calendar.createEvent({
-		start: startDate,
-		end: endDate,
-		summary: event.title,
-		description: event.description,
-		location: event.meetingLink,
-		url: event.meetingLink,
-		organizer: {
-			name: FROM_NAME,
-			email: FROM_EMAIL,
-		},
-		attendees: [{
-			name: `${attendee.firstName} ${attendee.lastName}`,
-			email: attendee.email,
-			rsvp: true,
-			status: 'ACCEPTED',
-		}],
-	});
+  calendar.createEvent({
+    start: startDate,
+    end: endDate,
+    summary: event.title,
+    description: event.description,
+    location: event.meetingLink,
+    url: event.meetingLink,
+    organizer: {
+      name: FROM_NAME,
+      email: FROM_EMAIL,
+    },
+    attendees: [{
+      name: `${attendee.firstName} ${attendee.lastName}`,
+      email: attendee.email,
+      rsvp: true,
+      status: "ACCEPTED",
+    }],
+  });
 
-	return calendar.toString();
+  return calendar.toString();
 }
 
 // Send email via Resend API
 export async function sendEmail(options: EmailOptions): Promise<boolean> {
-	if (!RESEND_API_KEY) {
-		console.error('RESEND_API_KEY not configured');
-		return false;
-	}
+  if (!RESEND_API_KEY) {
+    console.error("RESEND_API_KEY not configured");
+    return false;
+  }
 
-	try {
-		const response = await fetch('https://api.resend.com/emails', {
-			method: 'POST',
-			headers: {
-				'Authorization': `Bearer ${RESEND_API_KEY}`,
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				from: `${FROM_NAME} <${FROM_EMAIL}>`,
-				to: options.to,
-				subject: options.subject,
-				html: options.html,
-				text: options.text,
-				attachments: options.attachments,
-			}),
-		});
+  try {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: `${FROM_NAME} <${FROM_EMAIL}>`,
+        to: options.to,
+        subject: options.subject,
+        html: options.html,
+        text: options.text,
+        attachments: options.attachments,
+      }),
+    });
 
-		if (!response.ok) {
-			const error = await response.text();
-			console.error('Resend API error:', error);
-			return false;
-		}
+    if (!response.ok) {
+      const error = await response.text();
+      console.error("Resend API error:", error);
+      return false;
+    }
 
-		return true;
-	} catch (error) {
-		console.error('Error sending email:', error);
-		return false;
-	}
+    return true;
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return false;
+  }
 }
 
 // Format event date for display
 function formatEventDate(date: string, timezone: string): string {
-	const eventDate = new Date(date);
-	const formatter = new Intl.DateTimeFormat('en-US', {
-		weekday: 'long',
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-		hour: 'numeric',
-		minute: '2-digit',
-		timeZone: timezone,
-		timeZoneName: 'short',
-	});
-	return formatter.format(eventDate);
+  const eventDate = new Date(date);
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: timezone,
+    timeZoneName: "short",
+  });
+  return formatter.format(eventDate);
 }
 
 // Send confirmation email with iCalendar attachment
 export async function sendConfirmationEmail(
-	event: EventConfig,
-	registration: Registration,
+  event: EventConfig,
+  registration: Registration,
 ): Promise<boolean> {
-	const { attendee } = registration;
-	const icalContent = generateICalendar(event, attendee);
+  const { attendee } = registration;
+  const icalContent = generateICalendar(event, attendee);
 
-	const formattedDate = formatEventDate(event.date, event.timezone);
+  const formattedDate = formatEventDate(event.date, event.timezone);
 
-	const html = `
+  const html = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -219,7 +220,9 @@ export async function sendConfirmationEmail(
 	<div class="content">
 		<p>Hi ${attendee.firstName},</p>
 		
-		<p>Thank you for registering for <strong>${event.title}</strong>${event.presentedBy ? ` with ${event.presentedBy}` : ''}. We're looking forward to having you join the discussion!</p>
+		<p>Thank you for registering for <strong>${event.title}</strong>${
+    event.presentedBy ? ` with ${event.presentedBy}` : ""
+  }. We're looking forward to having you join the discussion!</p>
 		
 		<div class="event-details">
 			<h2>Event Details</h2>
@@ -235,10 +238,14 @@ export async function sendConfirmationEmail(
 				<span class="detail-label">Format:</span>
 				<span>Online via Google Meet</span>
 			</div>
-			${event.presentedBy ? `<div class="detail-row">
+			${
+    event.presentedBy
+      ? `<div class="detail-row">
 				<span class="detail-label">Presented by:</span>
 				<span>${event.presentedBy}</span>
-			</div>` : ''}
+			</div>`
+      : ""
+  }
 		</div>
 		
 		<p style="text-align: center;">
@@ -248,7 +255,9 @@ export async function sendConfirmationEmail(
 		<p><strong>What We'll Discuss:</strong></p>
 		<div class="topics">
 			<ul>
-				${event.topics?.map((topic) => `<li>${topic}</li>`).join('\n\t\t\t\t') || ''}
+				${
+    event.topics?.map((topic) => `<li>${topic}</li>`).join("\n\t\t\t\t") || ""
+  }
 			</ul>
 		</div>
 		
@@ -268,7 +277,7 @@ export async function sendConfirmationEmail(
 </html>
 	`;
 
-	const text = `
+  const text = `
 Hi ${attendee.firstName},
 
 Thank you for registering for ${event.title}. We're looking forward to having you join the discussion!
@@ -280,7 +289,7 @@ Event Details:
 - Meeting Link: ${event.meetingLink}
 
 What We'll Discuss:
-${event.topics?.map((topic) => `- ${topic}`).join('\n') || ''}
+${event.topics?.map((topic) => `- ${topic}`).join("\n") || ""}
 
 An iCalendar (.ics) file is attached to this email. You can open it to add this event to your calendar.
 
@@ -294,35 +303,35 @@ https://futuretogether.community
 If you need to cancel your registration, please reply to this email.
 	`;
 
-	// Encode iCalendar content to base64 using Deno's native APIs
-	const encoder = new TextEncoder();
-	const icalBytes = encoder.encode(icalContent);
-	const base64Content = btoa(String.fromCharCode(...icalBytes));
+  // Encode iCalendar content to base64 using Deno's native APIs
+  const encoder = new TextEncoder();
+  const icalBytes = encoder.encode(icalContent);
+  const base64Content = btoa(String.fromCharCode(...icalBytes));
 
-	return await sendEmail({
-		to: attendee.email,
-		subject: `Confirmed: ${event.title} - ${formattedDate}`,
-		html,
-		text,
-		attachments: [{
-			filename: 'event.ics',
-			content: base64Content,
-			type: 'text/calendar',
-		}],
-	});
+  return await sendEmail({
+    to: attendee.email,
+    subject: `Confirmed: ${event.title} - ${formattedDate}`,
+    html,
+    text,
+    attachments: [{
+      filename: "event.ics",
+      content: base64Content,
+      type: "text/calendar",
+    }],
+  });
 }
 
 // Send reminder email (24 hours before or 1 hour before)
 export async function sendReminderEmail(
-	event: EventConfig,
-	registration: Registration,
-	reminderType: 'day_before' | 'hour_before',
+  event: EventConfig,
+  registration: Registration,
+  reminderType: "day_before" | "hour_before",
 ): Promise<boolean> {
-	const { attendee } = registration;
-	const formattedDate = formatEventDate(event.date, event.timezone);
-	const timeUntil = reminderType === 'day_before' ? '24 hours' : '1 hour';
+  const { attendee } = registration;
+  const formattedDate = formatEventDate(event.date, event.timezone);
+  const timeUntil = reminderType === "day_before" ? "24 hours" : "1 hour";
 
-	const html = `
+  const html = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -403,7 +412,7 @@ export async function sendReminderEmail(
 </html>
 	`;
 
-	const text = `
+  const text = `
 Hi ${attendee.firstName},
 
 This is a friendly reminder that ${event.title} is starting in ${timeUntil}!
@@ -417,10 +426,10 @@ Future Together
 https://futuretogether.community
 	`;
 
-	return await sendEmail({
-		to: attendee.email,
-		subject: `Reminder: ${event.title} in ${timeUntil}`,
-		html,
-		text,
-	});
+  return await sendEmail({
+    to: attendee.email,
+    subject: `Reminder: ${event.title} in ${timeUntil}`,
+    html,
+    text,
+  });
 }

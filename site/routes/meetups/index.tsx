@@ -90,9 +90,7 @@ export default define.page(async function Meetups() {
                     {nextEventDisplay}
                   </p>
                 )
-                : (
-                  <p class="font-semibold">Third Wednesday of the month</p>
-                )}
+                : <p class="font-semibold">Third Wednesday of the month</p>}
               <p
                 class="text-xs mt-1.5"
                 style="color: rgba(255,255,255,0.5);"

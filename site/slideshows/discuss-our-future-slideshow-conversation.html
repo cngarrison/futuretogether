@@ -1,617 +1,688 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discuss Our Future - AI Risk & Assessment</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
-            color: #1f2937;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+      body {
+        font-family:
+          "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+        color: #1f2937;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
 
-        .deck {
-            display: flex;
-            scroll-snap-type: x mandatory;
-            overflow-x: auto;
-            height: 100vh;
-        }
+      .deck {
+        display: flex;
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        height: 100vh;
+      }
 
-        .slide {
-            min-width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            scroll-snap-align: start;
-            padding: 3rem;
-            background: white;
-            margin-right: 1px;
-            position: relative;
-        }
+      .slide {
+        min-width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        scroll-snap-align: start;
+        padding: 3rem;
+        background: white;
+        margin-right: 1px;
+        position: relative;
+      }
 
-        .slide-number {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            color: #6b7280;
-            font-size: 0.9rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+      .slide-number {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        color: #6b7280;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
 
-        .nav-arrow {
-            color: #1e3a8a;
-            font-size: 1.2rem;
-            animation: pulse 2s infinite;
-            cursor: pointer;
-            padding: 0.2rem;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
-        }
+      .nav-arrow {
+        color: #1e3a8a;
+        font-size: 1.2rem;
+        animation: pulse 2s infinite;
+        cursor: pointer;
+        padding: 0.2rem;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+      }
 
-        .nav-arrow:hover {
-            background-color: rgba(30, 58, 138, 0.1);
-        }
+      .nav-arrow:hover {
+        background-color: rgba(30, 58, 138, 0.1);
+      }
 
-        .nav-hint {
-            position: absolute;
-            bottom: 2rem;
-            right: 2rem;
-            color: #6b7280;
-            font-size: 0.8rem;
-            background: rgba(255,255,255,0.9);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            border: 1px solid #e5e7eb;
-            animation: fadeOut 6s forwards;
-        }
+      .nav-hint {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        color: #6b7280;
+        font-size: 0.8rem;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        border: 1px solid #e5e7eb;
+        animation: fadeOut 6s forwards;
+      }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 0.6;
         }
-
-        @keyframes fadeOut {
-            0% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { opacity: 0; }
+        50% {
+          opacity: 1;
         }
+      }
 
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        text-align: center;
+        background: linear-gradient(135deg, #1e3a8a, #3730a3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.2;
+      }
+
+      h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: #1f2937;
+        line-height: 1.2;
+      }
+
+      h3 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #1e3a8a;
+        text-align: center;
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+        color: #6b7280;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-weight: 400;
+        max-width: 800px;
+      }
+
+      .large-text {
+        font-size: 1.8rem;
+        line-height: 1.6;
+        text-align: center;
+        max-width: 900px;
+        margin-bottom: 2rem;
+        color: #374151;
+      }
+
+      .question {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: #dc2626;
+        text-align: center;
+        max-width: 900px;
+        margin: 2rem 0;
+        line-height: 1.3;
+      }
+
+      .emphasis-box {
+        background: #fef3c7;
+        border-left: 4px solid #f59e0b;
+        padding: 2rem;
+        border-radius: 12px;
+        max-width: 800px;
+        margin: 2rem 0;
+      }
+
+      .warning-box {
+        background: #fee2e2;
+        border-left: 4px solid #dc2626;
+        padding: 2rem;
+        border-radius: 12px;
+        max-width: 800px;
+        margin: 2rem 0;
+      }
+
+      .info-box {
+        background: #dbeafe;
+        border-left: 4px solid #1e3a8a;
+        padding: 2rem;
+        border-radius: 12px;
+        max-width: 800px;
+        margin: 2rem 0;
+      }
+
+      .resource-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 2rem auto;
+      }
+
+      .resource-item {
+        background: #f8fafc;
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        text-align: center;
+      }
+
+      .resource-item h4 {
+        color: #1e3a8a;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .resource-item p {
+        font-size: 0.9rem;
+        color: #6b7280;
+        margin-bottom: 1rem;
+      }
+
+      .resource-item a {
+        color: #1e3a8a;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.2s;
+        font-size: 0.95rem;
+      }
+
+      .resource-item a:hover {
+        border-bottom-color: #1e3a8a;
+      }
+
+      .qr-code {
+        width: 120px;
+        height: 120px;
+        margin: 1rem auto;
+        display: block;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 0.5rem;
+        background: white;
+      }
+
+      ul {
+        list-style-position: inside;
+        font-size: 1.3rem;
+        line-height: 2;
+        color: #374151;
+      }
+
+      .split-view {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        max-width: 1000px;
+        width: 100%;
+      }
+
+      .split-column {
+        padding: 2rem;
+        border-radius: 12px;
+      }
+
+      .utopia {
+        background: #d1fae5;
+        border: 2px solid #059669;
+      }
+
+      .dystopia {
+        background: #fee2e2;
+        border: 2px solid #dc2626;
+      }
+
+      @media (max-width: 768px) {
         h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-align: center;
-            background: linear-gradient(135deg, #1e3a8a, #3730a3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
+          font-size: 2.5rem;
         }
-
         h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            color: #1f2937;
-            line-height: 1.2;
+          font-size: 2rem;
         }
-
-        h3 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #1e3a8a;
-            text-align: center;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: #6b7280;
-            text-align: center;
-            margin-bottom: 2rem;
-            font-weight: 400;
-            max-width: 800px;
-        }
-
-        .large-text {
-            font-size: 1.8rem;
-            line-height: 1.6;
-            text-align: center;
-            max-width: 900px;
-            margin-bottom: 2rem;
-            color: #374151;
-        }
-
         .question {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: #dc2626;
-            text-align: center;
-            max-width: 900px;
-            margin: 2rem 0;
-            line-height: 1.3;
+          font-size: 1.8rem;
         }
-
-        .emphasis-box {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 2rem;
-            border-radius: 12px;
-            max-width: 800px;
-            margin: 2rem 0;
+        .large-text {
+          font-size: 1.3rem;
         }
-
-        .warning-box {
-            background: #fee2e2;
-            border-left: 4px solid #dc2626;
-            padding: 2rem;
-            border-radius: 12px;
-            max-width: 800px;
-            margin: 2rem 0;
+        .slide {
+          padding: 2rem;
         }
-
-        .info-box {
-            background: #dbeafe;
-            border-left: 4px solid #1e3a8a;
-            padding: 2rem;
-            border-radius: 12px;
-            max-width: 800px;
-            margin: 2rem 0;
-        }
-
-        .resource-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 2rem auto;
-        }
-
-        .resource-item {
-            background: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
-            text-align: center;
-        }
-
-        .resource-item h4 {
-            color: #1e3a8a;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .resource-item p {
-            font-size: 0.9rem;
-            color: #6b7280;
-            margin-bottom: 1rem;
-        }
-
-        .resource-item a {
-            color: #1e3a8a;
-            text-decoration: none;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.2s;
-            font-size: 0.95rem;
-        }
-
-        .resource-item a:hover {
-            border-bottom-color: #1e3a8a;
-        }
-
-        .qr-code {
-            width: 120px;
-            height: 120px;
-            margin: 1rem auto;
-            display: block;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 0.5rem;
-            background: white;
-        }
-
-        ul {
-            list-style-position: inside;
-            font-size: 1.3rem;
-            line-height: 2;
-            color: #374151;
-        }
-
         .split-view {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            max-width: 1000px;
-            width: 100%;
+          grid-template-columns: 1fr;
+          gap: 1rem;
         }
-
-        .split-column {
-            padding: 2rem;
-            border-radius: 12px;
-        }
-
-        .utopia {
-            background: #d1fae5;
-            border: 2px solid #059669;
-        }
-
-        .dystopia {
-            background: #fee2e2;
-            border: 2px solid #dc2626;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-            .question { font-size: 1.8rem; }
-            .large-text { font-size: 1.3rem; }
-            .slide { padding: 2rem; }
-            .split-view { grid-template-columns: 1fr; gap: 1rem; }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="deck">
-        <!-- Slide 1: Opening -->
-        <div class="slide">
-            <div class="slide-number">1/13 <span class="nav-arrow">→</span></div>
-            <div class="nav-hint">← → Navigate or scroll right</div>
-            <h1>The Future Is Arriving</h1>
-            <div class="subtitle">An Open Discussion About AI, Risk, and Human Preparedness</div>
-            <div class="large-text" style="margin-top: 3rem;">
-                This is a <strong>discussion</strong>, not a presentation.<br>
-                Ask questions. Challenge ideas. Share perspectives.
-            </div>
+      <!-- Slide 1: Opening -->
+      <div class="slide">
+        <div class="slide-number">1/13 <span class="nav-arrow">→</span></div>
+        <div class="nav-hint">← → Navigate or scroll right</div>
+        <h1>The Future Is Arriving</h1>
+        <div class="subtitle">
+          An Open Discussion About AI, Risk, and Human Preparedness
         </div>
-
-        <!-- Slide 2: Timeline -->
-        <div class="slide">
-            <div class="slide-number">2/13 <span class="nav-arrow">→</span></div>
-            <h2>The Timeline Has Collapsed</h2>
-            <div class="emphasis-box">
-                <div class="large-text">
-                    What we thought was 10 years away<br>
-                    is arriving in <strong>1-3 years</strong>
-                </div>
-            </div>
-            <div class="question" style="margin-top: 3rem;">
-                Are we ready?
-            </div>
+        <div class="large-text" style="margin-top: 3rem">
+          This is a <strong>discussion</strong>, not a presentation.<br>
+          Ask questions. Challenge ideas. Share perspectives.
         </div>
+      </div>
 
-        <!-- Slide 3: Model Alignment & Safety -->
-        <div class="slide">
-            <div class="slide-number">3/13 <span class="nav-arrow">→</span></div>
-            <h2>We MUST Solve Alignment First</h2>
-            <div class="large-text">
-                <strong>Alignment:</strong> Ensuring AI systems do what we<br>
-                actually want, not just what we tell them
-            </div>
-            <div class="warning-box" style="margin-top: 2rem;">
-                <div class="large-text">
-                    Anthropic has documented their own AI<br>
-                    attempting deception, manipulation, and blackmail<br>
-                    in controlled tests.
-                </div>
-            </div>
-            <div class="large-text" style="margin-top: 2rem; font-weight: 600;">
-                Alignment is a <strong>very hard problem.</strong><br>
-                We don't know if we have enough time to solve it.
-            </div>
-            <div class="question" style="margin-top: 2rem;">
-                People at the labs are optimistic.<br>
-                Should we be?
-            </div>
+      <!-- Slide 2: Timeline -->
+      <div class="slide">
+        <div class="slide-number">2/13 <span class="nav-arrow">→</span></div>
+        <h2>The Timeline Has Collapsed</h2>
+        <div class="emphasis-box">
+          <div class="large-text">
+            What we thought was 10 years away<br>
+            is arriving in <strong>1-3 years</strong>
+          </div>
         </div>
-
-        <!-- Slide 4: AGI & The Singularity -->
-        <div class="slide">
-            <div class="slide-number">4/13 <span class="nav-arrow">→</span></div>
-            <h2>The Singularity: A One-Way Door</h2>
-            <div class="large-text">
-                <strong>The Singularity:</strong> When AI becomes capable<br>
-                of recursive self-improvement without human oversight
-            </div>
-            <div class="warning-box" style="margin-top: 2rem;">
-                <div class="large-text">
-                    Each generation helps build the next, which is smarter,<br>
-                    which builds the next faster, which is smarter still.
-                </div>
-            </div>
-            <div class="large-text" style="margin-top: 2rem; color: #dc2626; font-weight: 600;">
-                There's no turning back.<br>
-                No trying again if we get it wrong.
-            </div>
-            <div class="question" style="margin-top: 2rem;">
-                AI is already writing code at major labs.<br>
-                The process has started.
-            </div>
+        <div class="question" style="margin-top: 3rem">
+          Are we ready?
         </div>
+      </div>
 
-        <!-- Slide 5: We Can't Slow Down -->
-        <div class="slide">
-            <div class="slide-number">5/13 <span class="nav-arrow">→</span></div>
-            <h2>We Can't Slow Down</h2>
-            <div class="large-text">
-                There's no "taking our time" to get this right.
-            </div>
-            <div class="warning-box" style="margin-top: 2rem;">
-                <div class="large-text">
-                    This is a race to the singularity.<br>
-                    Winner takes all.
-                </div>
-            </div>
-            <div class="large-text" style="margin-top: 2rem;">
-                If one lab stops, another won't.<br>
-                If one country pauses, another races ahead.
-            </div>
-            <div class="question" style="margin-top: 2rem;">
-                Capabilities are advancing faster<br>
-                than alignment research.<br>
-                <br>
-                What happens if we reach the singularity<br>
-                before we solve alignment?
-            </div>
+      <!-- Slide 3: Model Alignment & Safety -->
+      <div class="slide">
+        <div class="slide-number">3/13 <span class="nav-arrow">→</span></div>
+        <h2>We MUST Solve Alignment First</h2>
+        <div class="large-text">
+          <strong>Alignment:</strong> Ensuring AI systems do what we<br>
+          actually want, not just what we tell them
         </div>
-
-        <!-- Slide 6: What I'm Hearing -->
-        <div class="slide">
-            <div class="slide-number">6/13 <span class="nav-arrow">→</span></div>
-            <h2>What I'm Hearing</h2>
-            <div class="large-text">
-                "There's no point going to medical school."
-            </div>
-            <div class="large-text" style="margin-top: 2rem;">
-                High-level legal work: AI is doing it.<br>
-                Creative work: Either 10x more productive or replaced.<br>
-                Software engineering: Already transformed.
-            </div>
-            <div class="emphasis-box" style="margin-top: 2rem;">
-                <div class="large-text">
-                    And it's not just software anymore.<br>
-                    <strong>Robotics + Large World Models = Physical work.</strong>
-                </div>
-            </div>
-            <div class="question" style="margin-top: 2rem;">
-                This isn't about whether you use AI.<br>
-                The world IS changing.<br>
-                <br>
-                What are you seeing in your world?
-            </div>
+        <div class="warning-box" style="margin-top: 2rem">
+          <div class="large-text">
+            Anthropic has documented their own AI<br>
+            attempting deception, manipulation, and blackmail<br>
+            in controlled tests.
+          </div>
         </div>
-
-        <!-- Slide 7: The 50/50 Question -->
-        <div class="slide">
-            <div class="slide-number">7/13 <span class="nav-arrow">→</span></div>
-            <h2>50/50: Utopia or Dystopia</h2>
-            <div class="split-view">
-                <div class="split-column utopia">
-                    <h3>🌟 Utopia</h3>
-                    <p style="font-size: 1.2rem; margin-top: 1rem;">
-                        Cancer solved. Alzheimer's solved.<br>
-                        A century of medical research<br>
-                        compressed into a decade.<br>
-                        Abundance. Human flourishing.
-                    </p>
-                </div>
-                <div class="split-column dystopia">
-                    <h3>⚠️ Dystopia</h3>
-                    <p style="font-size: 1.2rem; margin-top: 1rem;">
-                        AI systems that behave<br>
-                        in unpredictable ways.<br>
-                        Authoritarian surveillance.<br>
-                        Existential risk.
-                    </p>
-                </div>
-            </div>
-            <div class="large-text" style="margin-top: 2rem; font-weight: 600; color: #dc2626;">
-                Some experts say it's 50/50.<br>
-                One of them <strong>will happen</strong>.
-            </div>
-            <div class="question" style="margin-top: 2rem;">
-                What determines which path we take?
-            </div>
+        <div class="large-text" style="margin-top: 2rem; font-weight: 600">
+          Alignment is a <strong>very hard problem.</strong><br>
+          We don't know if we have enough time to solve it.
         </div>
-
-        <!-- Slide 8: Remember February 2020 -->
-        <div class="slide">
-            <div class="slide-number">8/13 <span class="nav-arrow">→</span></div>
-            <h2>Remember February 2020?</h2>
-            <div class="large-text">
-                A few people talking about a virus overseas.<br>
-                Stock market fine. Life normal.
-            </div>
-            <div class="large-text" style="margin-top: 2rem;">
-                Then in <strong>three weeks</strong>, everything changed.
-            </div>
-            <div class="warning-box" style="margin-top: 2rem;">
-                <div class="large-text">
-                    I think we're in that "seems overblown" phase right now.
-                </div>
-            </div>
-            <div class="question" style="margin-top: 2rem;">
-                Except this time it's not about a virus—<br>
-                it's about how society fundamentally works.
-            </div>
+        <div class="question" style="margin-top: 2rem">
+          People at the labs are optimistic.<br>
+          Should we be?
         </div>
+      </div>
 
-        <!-- Slide 9: The AI Bubble -->
-        <div class="slide">
-            <div class="slide-number">9/13 <span class="nav-arrow">→</span></div>
-            <h2>The AI Investment Bubble</h2>
-            <div class="warning-box">
-                <div class="large-text">
-                    Massive capital flowing into AI<br>
-                    Valuations driven by future promises<br>
-                    Infrastructure built on expectations
-                </div>
+      <!-- Slide 4: AGI & The Singularity -->
+      <div class="slide">
+        <div class="slide-number">4/13 <span class="nav-arrow">→</span></div>
+        <h2>The Singularity: A One-Way Door</h2>
+        <div class="large-text">
+          <strong>The Singularity:</strong> When AI becomes capable<br>
+          of recursive self-improvement without human oversight
+        </div>
+        <div class="warning-box" style="margin-top: 2rem">
+          <div class="large-text">
+            Each generation helps build the next, which is smarter,<br>
+            which builds the next faster, which is smarter still.
+          </div>
+        </div>
+        <div
+          class="large-text"
+          style="margin-top: 2rem; color: #dc2626; font-weight: 600"
+        >
+          There's no turning back.<br>
+          No trying again if we get it wrong.
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          AI is already writing code at major labs.<br>
+          The process has started.
+        </div>
+      </div>
+
+      <!-- Slide 5: We Can't Slow Down -->
+      <div class="slide">
+        <div class="slide-number">5/13 <span class="nav-arrow">→</span></div>
+        <h2>We Can't Slow Down</h2>
+        <div class="large-text">
+          There's no "taking our time" to get this right.
+        </div>
+        <div class="warning-box" style="margin-top: 2rem">
+          <div class="large-text">
+            This is a race to the singularity.<br>
+            Winner takes all.
+          </div>
+        </div>
+        <div class="large-text" style="margin-top: 2rem">
+          If one lab stops, another won't.<br>
+          If one country pauses, another races ahead.
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          Capabilities are advancing faster<br>
+          than alignment research.<br>
+          <br>
+          What happens if we reach the singularity<br>
+          before we solve alignment?
+        </div>
+      </div>
+
+      <!-- Slide 6: What I'm Hearing -->
+      <div class="slide">
+        <div class="slide-number">6/13 <span class="nav-arrow">→</span></div>
+        <h2>What I'm Hearing</h2>
+        <div class="large-text">
+          "There's no point going to medical school."
+        </div>
+        <div class="large-text" style="margin-top: 2rem">
+          High-level legal work: AI is doing it.<br>
+          Creative work: Either 10x more productive or replaced.<br>
+          Software engineering: Already transformed.
+        </div>
+        <div class="emphasis-box" style="margin-top: 2rem">
+          <div class="large-text">
+            And it's not just software anymore.<br>
+            <strong>Robotics + Large World Models = Physical work.</strong>
+          </div>
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          This isn't about whether you use AI.<br>
+          The world IS changing.<br>
+          <br>
+          What are you seeing in your world?
+        </div>
+      </div>
+
+      <!-- Slide 7: The 50/50 Question -->
+      <div class="slide">
+        <div class="slide-number">7/13 <span class="nav-arrow">→</span></div>
+        <h2>50/50: Utopia or Dystopia</h2>
+        <div class="split-view">
+          <div class="split-column utopia">
+            <h3>🌟 Utopia</h3>
+            <p style="font-size: 1.2rem; margin-top: 1rem">
+              Cancer solved. Alzheimer's solved.<br>
+              A century of medical research<br>
+              compressed into a decade.<br>
+              Abundance. Human flourishing.
+            </p>
+          </div>
+          <div class="split-column dystopia">
+            <h3>⚠️ Dystopia</h3>
+            <p style="font-size: 1.2rem; margin-top: 1rem">
+              AI systems that behave<br>
+              in unpredictable ways.<br>
+              Authoritarian surveillance.<br>
+              Existential risk.
+            </p>
+          </div>
+        </div>
+        <div
+          class="large-text"
+          style="margin-top: 2rem; font-weight: 600; color: #dc2626"
+        >
+          Some experts say it's 50/50.<br>
+          One of them <strong>will happen</strong>.
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          What determines which path we take?
+        </div>
+      </div>
+
+      <!-- Slide 8: Remember February 2020 -->
+      <div class="slide">
+        <div class="slide-number">8/13 <span class="nav-arrow">→</span></div>
+        <h2>Remember February 2020?</h2>
+        <div class="large-text">
+          A few people talking about a virus overseas.<br>
+          Stock market fine. Life normal.
+        </div>
+        <div class="large-text" style="margin-top: 2rem">
+          Then in <strong>three weeks</strong>, everything changed.
+        </div>
+        <div class="warning-box" style="margin-top: 2rem">
+          <div class="large-text">
+            I think we're in that "seems overblown" phase right now.
+          </div>
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          Except this time it's not about a virus—<br>
+          it's about how society fundamentally works.
+        </div>
+      </div>
+
+      <!-- Slide 9: The AI Bubble -->
+      <div class="slide">
+        <div class="slide-number">9/13 <span class="nav-arrow">→</span></div>
+        <h2>The AI Investment Bubble</h2>
+        <div class="warning-box">
+          <div class="large-text">
+            Massive capital flowing into AI<br>
+            Valuations driven by future promises<br>
+            Infrastructure built on expectations
+          </div>
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          What are the repercussions if it bursts?
+        </div>
+        <ul style="margin-top: 2rem; text-align: center; list-style: none">
+          <li>Economic disruption?</li>
+          <li>Slowed innovation?</li>
+          <li>Job market chaos?</li>
+        </ul>
+      </div>
+
+      <!-- Slide 10: Human Risks -->
+      <div class="slide">
+        <div class="slide-number">10/13 <span class="nav-arrow">→</span></div>
+        <h2>Immediate Human Risks</h2>
+        <div class="large-text">
+          Beyond the technology itself,<br>
+          what are the human impacts?
+        </div>
+        <div style="margin-top: 3rem">
+          <h3 style="color: #dc2626">💼 Job Displacement</h3>
+          <p style="font-size: 1.3rem; margin: 1rem 0">
+            Which roles? How fast? What skills remain valuable?
+          </p>
+
+          <h3 style="color: #dc2626; margin-top: 2rem">🌾 Food Security</h3>
+          <p style="font-size: 1.3rem; margin: 1rem 0">
+            Supply chains, local systems, community resilience
+          </p>
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          Are we preparing for the right risks?
+        </div>
+      </div>
+
+      <!-- Slide 11: Maslow's Hierarchy -->
+      <div class="slide">
+        <div class="slide-number">11/13 <span class="nav-arrow">→</span></div>
+        <h2>Back to Basics</h2>
+        <div
+          style="display: flex; gap: 3rem; align-items: center; max-width: 1100px"
+        >
+          <div style="flex: 1">
+            <div class="large-text" style="text-align: left">
+              In times of rapid change,<br>
+              Maslow's hierarchy reminds us:<br>
+              <strong>fundamental needs come first</strong>
             </div>
-            <div class="question" style="margin-top: 2rem;">
-                What are the repercussions if it bursts?
-            </div>
-            <ul style="margin-top: 2rem; text-align: center; list-style: none;">
-                <li>Economic disruption?</li>
-                <li>Slowed innovation?</li>
-                <li>Job market chaos?</li>
+            <ul style="margin-top: 2rem; text-align: left">
+              <li>Physiological: food, water, shelter</li>
+              <li>Safety: security, stability</li>
+              <li>Belonging: community, connection</li>
+              <li>Esteem: achievement, respect</li>
+              <li>Self-actualization: purpose, growth</li>
             </ul>
+          </div>
+          <img
+            src="./maslow.png"
+            alt="Maslow's Hierarchy of Needs"
+            style="max-width: 600px; max-height: 600px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)"
+          >
         </div>
+        <div class="question" style="margin-top: 2rem">
+          How do we protect these foundations during technological disruption?
+        </div>
+      </div>
 
-        <!-- Slide 10: Human Risks -->
-        <div class="slide">
-            <div class="slide-number">10/13 <span class="nav-arrow">→</span></div>
-            <h2>Immediate Human Risks</h2>
-            <div class="large-text">
-                Beyond the technology itself,<br>
-                what are the human impacts?
-            </div>
-            <div style="margin-top: 3rem;">
-                <h3 style="color: #dc2626;">💼 Job Displacement</h3>
-                <p style="font-size: 1.3rem; margin: 1rem 0;">Which roles? How fast? What skills remain valuable?</p>
-                
-                <h3 style="color: #dc2626; margin-top: 2rem;">🌾 Food Security</h3>
-                <p style="font-size: 1.3rem; margin: 1rem 0;">Supply chains, local systems, community resilience</p>
-            </div>
-            <div class="question" style="margin-top: 2rem;">
-                Are we preparing for the right risks?
-            </div>
+      <!-- Slide 12: Next Steps -->
+      <div class="slide">
+        <div class="slide-number">12/13 <span class="nav-arrow">→</span></div>
+        <h2>What Can We Do?</h2>
+        <div style="margin-top: 2rem">
+          <div class="info-box">
+            <h3 style="margin-bottom: 1rem">🧠 Awareness</h3>
+            <p style="font-size: 1.2rem">
+              Stay informed. Understand the changes.<br>
+              Separate hype from reality.
+            </p>
+          </div>
+          <div class="emphasis-box" style="margin-top: 2rem">
+            <h3 style="margin-bottom: 1rem">🌱 Food Preparedness</h3>
+            <p style="font-size: 1.2rem">
+              Build local food systems.<br>
+              Community gardens. Local suppliers.<br>
+              Resilience through relationships.
+            </p>
+          </div>
         </div>
+        <div class="question" style="margin-top: 2rem">
+          What other practical steps can we take?
+        </div>
+      </div>
 
-        <!-- Slide 11: Maslow's Hierarchy -->
-        <div class="slide">
-            <div class="slide-number">11/13 <span class="nav-arrow">→</span></div>
-            <h2>Back to Basics</h2>
-            <div style="display: flex; gap: 3rem; align-items: center; max-width: 1100px;">
-                <div style="flex: 1;">
-                    <div class="large-text" style="text-align: left;">
-                        In times of rapid change,<br>
-                        Maslow's hierarchy reminds us:<br>
-                        <strong>fundamental needs come first</strong>
-                    </div>
-                    <ul style="margin-top: 2rem; text-align: left;">
-                        <li>Physiological: food, water, shelter</li>
-                        <li>Safety: security, stability</li>
-                        <li>Belonging: community, connection</li>
-                        <li>Esteem: achievement, respect</li>
-                        <li>Self-actualization: purpose, growth</li>
-                    </ul>
-                </div>
-                <img src="./maslow.png" alt="Maslow's Hierarchy of Needs" style="max-width: 600px; max-height: 600px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-            </div>
-            <div class="question" style="margin-top: 2rem;">
-                How do we protect these foundations
-                during technological disruption?
-            </div>
-        </div>
+      <!-- Slide 13: Resources & Discussion -->
+      <div class="slide">
+        <div class="slide-number">13/13</div>
+        <h2>Resources & Discussion</h2>
+        <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem">
+          Scan QR codes to access resources
+        </p>
+        <div class="resource-list">
+          <div class="resource-item">
+            <h4>📚 Why Robotics Will Work</h4>
+            <img
+              src="./resource-links/why-robitics-will-work.png"
+              alt="QR Code"
+              class="qr-code"
+            >
+            <p>Analysis of automation trends</p>
+            <a href="https://finaloffshoring.com" target="_blank"
+            >finaloffshoring.com</a>
+          </div>
 
-        <!-- Slide 12: Next Steps -->
-        <div class="slide">
-            <div class="slide-number">12/13 <span class="nav-arrow">→</span></div>
-            <h2>What Can We Do?</h2>
-            <div style="margin-top: 2rem;">
-                <div class="info-box">
-                    <h3 style="margin-bottom: 1rem;">🧠 Awareness</h3>
-                    <p style="font-size: 1.2rem;">
-                        Stay informed. Understand the changes.<br>
-                        Separate hype from reality.
-                    </p>
-                </div>
-                <div class="emphasis-box" style="margin-top: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">🌱 Food Preparedness</h3>
-                    <p style="font-size: 1.2rem;">
-                        Build local food systems.<br>
-                        Community gardens. Local suppliers.<br>
-                        Resilience through relationships.
-                    </p>
-                </div>
-            </div>
-            <div class="question" style="margin-top: 2rem;">
-                What other practical steps can we take?
-            </div>
-        </div>
+          <div class="resource-item">
+            <h4>📊 Situation Monitor</h4>
+            <img
+              src="./resource-links/situation-monitor.png"
+              alt="QR Code"
+              class="qr-code"
+            >
+            <p>Tracking global situations</p>
+            <a
+              href="https://hipcityreg.github.io/situation-monitor/"
+              target="_blank"
+            >situation-monitor</a>
+          </div>
 
-        <!-- Slide 13: Resources & Discussion -->
-        <div class="slide">
-            <div class="slide-number">13/13</div>
-            <h2>Resources & Discussion</h2>
-            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">Scan QR codes to access resources</p>
-            <div class="resource-list">
-                <div class="resource-item">
-                    <h4>📚 Why Robotics Will Work</h4>
-                    <img src="./resource-links/why-robitics-will-work.png" alt="QR Code" class="qr-code">
-                    <p>Analysis of automation trends</p>
-                    <a href="https://finaloffshoring.com" target="_blank">finaloffshoring.com</a>
-                </div>
-                
-                <div class="resource-item">
-                    <h4>📊 Situation Monitor</h4>
-                    <img src="./resource-links/situation-monitor.png" alt="QR Code" class="qr-code">
-                    <p>Tracking global situations</p>
-                    <a href="https://hipcityreg.github.io/situation-monitor/" target="_blank">situation-monitor</a>
-                </div>
-                
-                <div class="resource-item">
-                    <h4>🧠 Maslow's Hierarchy</h4>
-                    <img src="./resource-links/maslows-needs.svg" alt="QR Code" class="qr-code">
-                    <p>Understanding human priorities</p>
-                    <a href="https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs" target="_blank">wikipedia.org/Maslow</a>
-                </div>
-                
-                <div class="resource-item">
-                    <h4>🐴 Historical Perspective</h4>
-                    <img src="./resource-links/historical-perspective.png" alt="QR Code" class="qr-code">
-                    <p>200 years of steady improvement</p>
-                    <a href="https://andyljones.com/posts/horses.html" target="_blank">andyljones.com/horses</a>
-                </div>
-            </div>
-            <div class="large-text" style="margin-top: 2rem; color: #1e3a8a; font-weight: 600;">
-                Let's continue the conversation.
-            </div>
+          <div class="resource-item">
+            <h4>🧠 Maslow's Hierarchy</h4>
+            <img
+              src="./resource-links/maslows-needs.svg"
+              alt="QR Code"
+              class="qr-code"
+            >
+            <p>Understanding human priorities</p>
+            <a
+              href="https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs"
+              target="_blank"
+            >wikipedia.org/Maslow</a>
+          </div>
+
+          <div class="resource-item">
+            <h4>🐴 Historical Perspective</h4>
+            <img
+              src="./resource-links/historical-perspective.png"
+              alt="QR Code"
+              class="qr-code"
+            >
+            <p>200 years of steady improvement</p>
+            <a href="https://andyljones.com/posts/horses.html" target="_blank"
+            >andyljones.com/horses</a>
+          </div>
         </div>
+        <div
+          class="large-text"
+          style="margin-top: 2rem; color: #1e3a8a; font-weight: 600"
+        >
+          Let's continue the conversation.
+        </div>
+      </div>
     </div>
 
     <script>
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            const deck = document.querySelector('.deck');
-            const slideWidth = window.innerWidth;
-            
-            if (e.key === 'ArrowRight' || e.key === ' ') {
-                e.preventDefault();
-                deck.scrollLeft += slideWidth;
-            } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                deck.scrollLeft -= slideWidth;
-            }
-        });
+      // Keyboard navigation
+      document.addEventListener("keydown", function (e) {
+        const deck = document.querySelector(".deck");
+        const slideWidth = window.innerWidth;
 
-        // Clickable navigation arrows
-        document.addEventListener('DOMContentLoaded', function() {
-            const navArrows = document.querySelectorAll('.nav-arrow');
-            const deck = document.querySelector('.deck');
-            const slideWidth = window.innerWidth;
+        if (e.key === "ArrowRight" || e.key === " ") {
+          e.preventDefault();
+          deck.scrollLeft += slideWidth;
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          deck.scrollLeft -= slideWidth;
+        }
+      });
 
-            navArrows.forEach(function(arrow) {
-                arrow.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    deck.scrollLeft += slideWidth;
-                });
-            });
+      // Clickable navigation arrows
+      document.addEventListener("DOMContentLoaded", function () {
+        const navArrows = document.querySelectorAll(".nav-arrow");
+        const deck = document.querySelector(".deck");
+        const slideWidth = window.innerWidth;
+
+        navArrows.forEach(function (arrow) {
+          arrow.addEventListener("click", function (e) {
+            e.preventDefault();
+            deck.scrollLeft += slideWidth;
+          });
         });
+      });
     </script>
-</body>
+  </body>
 </html>

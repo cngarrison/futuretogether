@@ -44,7 +44,8 @@ export const handler = async (ctx: FreshContext) => {
         "Authorization": `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: Deno.env.get("FROM_EMAIL") ?? "Future Together <hello@futuretogether.community>",
+        from: Deno.env.get("FROM_EMAIL") ??
+          "Future Together <hello@futuretogether.community>",
         to: Deno.env.get("CONTACT_EMAIL") ?? "hello@futuretogether.community",
         subject: `Future Together Contact: ${data.subject}`,
         html: `

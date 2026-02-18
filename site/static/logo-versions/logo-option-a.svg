@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" role="img" aria-label="Future Together">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 200 80"
+  role="img"
+  aria-label="Future Together"
+>
   <title>Future Together</title>
   <!--
     Option A: Converging Lines
@@ -8,24 +13,76 @@
   -->
 
   <!-- Rays: teal, fading in opacity toward the extremes -->
-  <line x1="2"  y1="5"  x2="56" y2="40" stroke="#1a5f6e" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
-  <line x1="2"  y1="21" x2="56" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
-  <line x1="2"  y1="40" x2="56" y2="40" stroke="#1a5f6e" stroke-width="3"   stroke-linecap="round"/>
-  <line x1="2"  y1="59" x2="56" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
-  <line x1="2"  y1="75" x2="56" y2="40" stroke="#1a5f6e" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+  <line
+    x1="2"
+    y1="5"
+    x2="56"
+    y2="40"
+    stroke="#1a5f6e"
+    stroke-width="2"
+    stroke-linecap="round"
+    opacity="0.45"
+  />
+  <line
+    x1="2"
+    y1="21"
+    x2="56"
+    y2="40"
+    stroke="#1a5f6e"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    opacity="0.7"
+  />
+  <line
+    x1="2"
+    y1="40"
+    x2="56"
+    y2="40"
+    stroke="#1a5f6e"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+  <line
+    x1="2"
+    y1="59"
+    x2="56"
+    y2="40"
+    stroke="#1a5f6e"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    opacity="0.7"
+  />
+  <line
+    x1="2"
+    y1="75"
+    x2="56"
+    y2="40"
+    stroke="#1a5f6e"
+    stroke-width="2"
+    stroke-linecap="round"
+    opacity="0.45"
+  />
 
   <!-- Amber focal / convergence point -->
-  <circle cx="56" cy="40" r="5.5" fill="#c4853a"/>
+  <circle cx="56" cy="40" r="5.5" fill="#c4853a" />
 
   <!-- Wordmark -->
   <text
-    x="72" y="34"
+    x="72"
+    y="34"
     font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
-    font-size="21" font-weight="700" fill="#1a5f6e" letter-spacing="-0.5"
+    font-size="21"
+    font-weight="700"
+    fill="#1a5f6e"
+    letter-spacing="-0.5"
   >Future</text>
   <text
-    x="72" y="59"
+    x="72"
+    y="59"
     font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
-    font-size="21" font-weight="400" fill="#1c1a18" letter-spacing="-0.5"
+    font-size="21"
+    font-weight="400"
+    fill="#1c1a18"
+    letter-spacing="-0.5"
   >Together</text>
 </svg>

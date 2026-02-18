@@ -1,8 +1,8 @@
-import { parse as parseYaml } from '@std/yaml';
-import { marked } from 'marked';
-import { mangle } from 'marked-mangle';
-import { gfmHeadingId } from 'marked-gfm-heading-id';
-import { markedSmartypants } from 'marked-smartypants';
+import { parse as parseYaml } from "@std/yaml";
+import { marked } from "marked";
+import { mangle } from "marked-mangle";
+import { gfmHeadingId } from "marked-gfm-heading-id";
+import { markedSmartypants } from "marked-smartypants";
 
 // Configure marked
 marked.use({
@@ -33,7 +33,7 @@ export interface BlogPost extends BlogPostMeta {
   remainingHtml?: string;
 }
 
-const BLOG_DIR = './blog';
+const BLOG_DIR = "./blog";
 
 // Parse frontmatter from markdown content
 function parseFrontmatter(content: string): [BlogPostMeta | null, string] {
@@ -65,14 +65,14 @@ function processMarkdownContent(markdown: string): {
 
   if (!contentMatch) {
     return {
-      firstParagraph: '',
+      firstParagraph: "",
       remaining: markdown,
     };
   }
 
   return {
     firstParagraph: contentMatch[1],
-    remaining: (contentMatch[2] || '').trim(),
+    remaining: (contentMatch[2] || "").trim(),
   };
 }
 
@@ -90,12 +90,12 @@ function transformInternalLinks(html: string): string {
     /<a([^>]*?)href=["']([^"']*?)["']([^>]*?)>/gi,
     (match, beforeHref, href, afterHref) => {
       // Only process internal links (start with / but not //)
-      if (!href.startsWith('/') || href.startsWith('//')) {
+      if (!href.startsWith("/") || href.startsWith("//")) {
         return match;
       }
 
       // Skip if f-client-nav already exists
-      if (match.includes('f-client-nav')) {
+      if (match.includes("f-client-nav")) {
         return match;
       }
 
@@ -114,18 +114,18 @@ function transformImages(html: string): string {
       const srcMatch = match.match(/src=["']([^"']*)["`']/i);
       const titleMatch = match.match(/title=["']([^"']*)["`']/i);
       const altMatch = match.match(/alt=["']([^"']*)["`']/i);
-      
+
       if (!srcMatch) return match;
-      
+
       const src = srcMatch[1];
-      const caption = titleMatch ? titleMatch[1] : '';
-      const altText = altMatch ? altMatch[1] : '';
-      
+      const caption = titleMatch ? titleMatch[1] : "";
+      const altText = altMatch ? altMatch[1] : "";
+
       if (!caption) {
         // No caption, return original img
         return match;
       }
-      
+
       // Wrap in figure with caption (no classes on img, they're in CSS)
       return `<figure class="blog-image-float"><img src="${src}" alt="${altText}" loading="lazy" /><figcaption>${caption}</figcaption></figure>`;
     },
@@ -139,29 +139,38 @@ function transformScreenshots(html: string): string {
     (match, beforeSrc, src, afterSrc) => {
       const altMatch = match.match(/alt=["']([^"']*)["']/i);
       const captionMatch = match.match(/data-caption=["']([^"']*)["']/i);
-      const sizeMatch = match.match(/data-size=["'](small|medium|large|full)["']/i);
+      const sizeMatch = match.match(
+        /data-size=["'](small|medium|large|full)["']/i,
+      );
       const clickableMatch = match.match(/data-clickable=["']false["']/i);
 
-      const altText = altMatch ? altMatch[1] : '';
-      const caption = captionMatch ? captionMatch[1] : '';
-      const size = sizeMatch ? sizeMatch[1] : 'medium';
+      const altText = altMatch ? altMatch[1] : "";
+      const caption = captionMatch ? captionMatch[1] : "";
+      const size = sizeMatch ? sizeMatch[1] : "medium";
       const clickable = !clickableMatch;
 
-      const sizeClass =
-        { 'small': 'max-w-sm', 'medium': 'max-w-2xl', 'large': 'max-w-4xl', 'full': 'w-full' }[size];
+      const sizeClass = {
+        "small": "max-w-sm",
+        "medium": "max-w-2xl",
+        "large": "max-w-4xl",
+        "full": "w-full",
+      }[size];
 
-      const classes = `rounded-lg shadow-sm border border-gray-200 ${sizeClass} h-auto${
-        clickable ? ' hover:shadow-md cursor-pointer transition-shadow' : ''
-      }`;
+      const classes =
+        `rounded-lg shadow-sm border border-gray-200 ${sizeClass} h-auto${
+          clickable ? " hover:shadow-md cursor-pointer transition-shadow" : ""
+        }`;
 
       const id = Math.random().toString(36).substr(2, 6);
 
       return `<figure class="mb-4" data-ss="${id}"><img src="${src}" alt="${altText}" class="${classes}" loading="lazy"${
-        clickable ? ` onclick="openScreenshotOverlay('${id}','${src}','${altText}','${caption}')"` : ''
+        clickable
+          ? ` onclick="openScreenshotOverlay('${id}','${src}','${altText}','${caption}')"`
+          : ""
       }>${
         caption
           ? `<figcaption class="text-sm text-gray-500 mt-2 italic text-center">${caption}</figcaption>`
-          : ''
+          : ""
       }</figure>`;
     },
   );
@@ -175,19 +184,37 @@ export async function loadBlogPost(filename: string): Promise<BlogPost | null> {
 
     if (!meta) return null;
 
-    const slug = filename.replace(/\.md$/, '');
+    const slug = filename.replace(/\.md$/, "");
 
     // Process the markdown content
     const { firstParagraph, remaining } = processMarkdownContent(markdown);
 
     // Convert to HTML and transform
     const firstParagraphHtml = firstParagraph
-      ? transformImages(transformScreenshots(transformInternalLinks(transformCallouts(marked.parse(firstParagraph) as string))))
+      ? transformImages(
+        transformScreenshots(
+          transformInternalLinks(
+            transformCallouts(marked.parse(firstParagraph) as string),
+          ),
+        ),
+      )
       : undefined;
     const remainingHtml = remaining
-      ? transformImages(transformScreenshots(transformInternalLinks(transformCallouts(marked.parse(remaining) as string))))
+      ? transformImages(
+        transformScreenshots(
+          transformInternalLinks(
+            transformCallouts(marked.parse(remaining) as string),
+          ),
+        ),
+      )
       : undefined;
-    const fullHtml = transformImages(transformScreenshots(transformInternalLinks(transformCallouts(marked.parse(markdown) as string))));
+    const fullHtml = transformImages(
+      transformScreenshots(
+        transformInternalLinks(
+          transformCallouts(marked.parse(markdown) as string),
+        ),
+      ),
+    );
 
     return {
       ...meta,
@@ -209,16 +236,18 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
 
   try {
     for await (const entry of Deno.readDir(BLOG_DIR)) {
-      if (!entry.isFile || !entry.name.endsWith('.md')) continue;
+      if (!entry.isFile || !entry.name.endsWith(".md")) continue;
 
       const post = await loadBlogPost(entry.name);
       if (post) posts.push(post);
     }
 
     // Sort by date descending
-    return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return posts.sort((a, b) =>
+      new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
   } catch (error) {
-    console.error('Error loading blog posts:', error);
+    console.error("Error loading blog posts:", error);
     return [];
   }
 }
@@ -229,14 +258,19 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 }
 
 // Get related posts based on tags
-export async function getRelatedPosts(post: BlogPost, limit: number = 3): Promise<BlogPost[]> {
+export async function getRelatedPosts(
+  post: BlogPost,
+  limit: number = 3,
+): Promise<BlogPost[]> {
   if (!post.tags || post.tags.length === 0) return [];
 
   const allPosts = await loadBlogPosts();
   const related = allPosts
     .filter((p) => p.id !== post.id)
     .map((p) => {
-      const commonTags = p.tags?.filter((tag) => post.tags?.includes(tag)).length || 0;
+      const commonTags = p.tags?.filter((tag) =>
+        post.tags?.includes(tag)
+      ).length || 0;
       return { post: p, score: commonTags };
     })
     .filter((item) => item.score > 0)

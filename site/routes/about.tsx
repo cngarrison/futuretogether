@@ -28,9 +28,9 @@ export default define.page(function About() {
             class="text-lg leading-relaxed"
             style="color: rgba(255,255,255,0.8);"
           >
-            This community started with a conversation no-one was having —
-            about what AI is actually doing to the world, right now, and how
-            ordinary people can face it together.
+            This community started with a conversation no-one was having — about
+            what AI is actually doing to the world, right now, and how ordinary
+            people can face it together.
           </p>
         </div>
       </section>
@@ -115,8 +115,8 @@ export default define.page(function About() {
             <h2 style="color: #1c1a18;">The moment everything became real</h2>
             <p>
               I’ve been in and around the technology industry for most of my
-              working life. I’m not an AI researcher. I don’t work at a lab.
-              I’m a software developer who started paying close attention to what
+              working life. I’m not an AI researcher. I don’t work at a lab. I’m
+              a software developer who started paying close attention to what
               was happening — and what I saw changed how I understood the world.
             </p>
             <p>
@@ -138,8 +138,8 @@ export default define.page(function About() {
             </p>
             <p>
               But I knew most people hadn’t been tracking it. Most people were
-              still in the “seems overblown” phase — the same phase we were
-              in with COVID in February 2020, before everything changed in three
+              still in the “seems overblown” phase — the same phase we were in
+              with COVID in February 2020, before everything changed in three
               weeks.
             </p>
 
@@ -154,21 +154,21 @@ export default define.page(function About() {
             <p>
               I couldn’t find a community doing what I thought needed doing:
               meeting regularly, talking honestly, working through the
-              implications together, and figuring out how to prepare — not
-              with panic, not with forced optimism, but with clear eyes.
+              implications together, and figuring out how to prepare — not with
+              panic, not with forced optimism, but with clear eyes.
             </p>
             <p>So I started one.</p>
 
             <h2 style="color: #1c1a18;">What we’re trying to do</h2>
             <p>
-              Future Together isn’t a product. There’s nothing to sell you.
-              It’s not affiliated with any AI company, and it’s not a
-              doomsday-prep community either.
+              Future Together isn’t a product. There’s nothing to sell you. It’s
+              not affiliated with any AI company, and it’s not a doomsday-prep
+              community either.
             </p>
             <p>
-              It’s a community for people who are paying attention — or who
-              want to start. People who feel something significant is happening
-              and want to face it with others rather than alone.
+              It’s a community for people who are paying attention — or who want
+              to start. People who feel something significant is happening and
+              want to face it with others rather than alone.
             </p>
             <p>We meet monthly. We talk honestly. We prepare together.</p>
             <p class="font-semibold" style="color: #1c1a18;">

@@ -5,8 +5,8 @@ import PageLayout from "@/components/PageLayout.tsx";
 export const app = new App<State>();
 
 app.notFound((ctx) => {
-    return new Response("Page not found", { status: 404 });
-  });
+  return new Response("Page not found", { status: 404 });
+});
 
 app.use(staticFiles());
 app.use(trailingSlashes("never"));

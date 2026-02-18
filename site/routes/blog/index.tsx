@@ -20,8 +20,8 @@ export default define.page(async function Blog() {
       </Head>
       <div class="max-w-4xl mx-auto px-4 py-12">
         <p class="text-xl mb-8" style="color: rgba(28,26,24,0.65);">
-          Essays and perspectives on AI, technological change, and preparing
-          for the future together.
+          Essays and perspectives on AI, technological change, and preparing for
+          the future together.
         </p>
 
         {/* Tag cloud */}
@@ -56,12 +56,16 @@ export default define.page(async function Blog() {
               <h2 class="text-2xl font-bold mb-2">
                 <a
                   href={`/blog/${post.slug}`}
-                  class="transition-colors hover:opacity-75" style="color: #1c1a18;"
+                  class="transition-colors hover:opacity-75"
+                  style="color: #1c1a18;"
                 >
                   {post.title}
                 </a>
               </h2>
-              <div class="flex items-center gap-4 text-sm mb-3" style="color: rgba(28,26,24,0.55);">
+              <div
+                class="flex items-center gap-4 text-sm mb-3"
+                style="color: rgba(28,26,24,0.55);"
+              >
                 <time dateTime={post.date}>
                   {new Date(post.date).toLocaleDateString("en-US", {
                     year: "numeric",
@@ -71,7 +75,11 @@ export default define.page(async function Blog() {
                 </time>
                 {post.author && <span>by {post.author}</span>}
               </div>
-              {post.excerpt && <p class="mb-4" style="color: rgba(28,26,24,0.7);">{post.excerpt}</p>}
+              {post.excerpt && (
+                <p class="mb-4" style="color: rgba(28,26,24,0.7);">
+                  {post.excerpt}
+                </p>
+              )}
               {post.tags && post.tags.length > 0 && (
                 <div class="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (

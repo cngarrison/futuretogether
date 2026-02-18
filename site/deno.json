@@ -1,5 +1,5 @@
 {
-  "nodeModulesDir": "manual",
+  "nodeModulesDir": "auto",
   "tasks": {
     "check": "deno fmt --check . && deno lint . && deno check",
     "dev": "FT_STAFF_PASSWORD_HASH=$(cat .staff-pass-hash) FT_TURNSTILE_SITE_KEY='1x00000000000000000000AA' FT_TURNSTILE_SECRET_KEY='1x0000000000000000000000000000000AA' vite",
@@ -15,7 +15,7 @@
       ]
     }
   },
-  "unstable": ["kv"]
+  "unstable": ["kv"],
   "exclude": [
     "**/_fresh/*"
   ],

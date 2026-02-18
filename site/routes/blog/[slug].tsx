@@ -24,12 +24,13 @@ export default define.page(async function BlogPost(ctx) {
   const relatedPosts = await getRelatedPosts(post);
 
   return (
-     <>
-     <Head>
+    <>
+      <Head>
         <title>{post.title} - Future Together</title>
         <meta
           name="description"
-          content={post.excerpt || `Read ${post.title} on Future Together's blog`}
+          content={post.excerpt ||
+            `Read ${post.title} on Future Together's blog`}
         />
       </Head>
       <div id="title"></div>
@@ -42,11 +43,14 @@ export default define.page(async function BlogPost(ctx) {
                   {post.author}
                 </span>
               )}
-              <time dateTime={post.date} class="px-3 py-1.5 bg-gray-100 text-gray-600">
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
+              <time
+                dateTime={post.date}
+                class="px-3 py-1.5 bg-gray-100 text-gray-600"
+              >
+                {new Date(post.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
                 })}
               </time>
             </div>
@@ -89,7 +93,10 @@ export default define.page(async function BlogPost(ctx) {
 
         {/* Related posts */}
         {relatedPosts.length > 0 && (
-          <aside class="mt-16 pt-10 border-t border-gray-200" style={{ clear: 'both' }}>
+          <aside
+            class="mt-16 pt-10 border-t border-gray-200"
+            style={{ clear: "both" }}
+          >
             <h2 class="text-2xl font-bold text-gray-900 mb-6">
               Related Posts
             </h2>
@@ -103,16 +110,16 @@ export default define.page(async function BlogPost(ctx) {
                     <a
                       href={`/blog/${related.slug}`}
                       class="transition-opacity hover:opacity-70"
-                    style="color: #1c1a18;"
+                      style="color: #1c1a18;"
                     >
                       {related.title}
                     </a>
                   </h3>
                   <p class="text-sm text-gray-500 mb-2">
-                    {new Date(related.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
+                    {new Date(related.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
                     })}
                   </p>
                   {related.tags && related.tags.length > 0 && (
@@ -158,7 +165,10 @@ export default define.page(async function BlogPost(ctx) {
         </footer>
 
         {/* Screenshot overlay */}
-        <div id="screenshot-overlay" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 hidden">
+        <div
+          id="screenshot-overlay"
+          class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 hidden"
+        >
           <div class="relative max-w-7xl max-h-full overflow-auto">
             <button
               id="screenshot-close"
@@ -172,7 +182,11 @@ export default define.page(async function BlogPost(ctx) {
               class="max-w-full max-h-full object-contain rounded-lg"
               alt=""
             />
-            <p id="screenshot-caption" class="text-white text-center mt-4 px-4 hidden"></p>
+            <p
+              id="screenshot-caption"
+              class="text-white text-center mt-4 px-4 hidden"
+            >
+            </p>
           </div>
         </div>
 
@@ -219,6 +233,6 @@ export default define.page(async function BlogPost(ctx) {
           `}
         </script>
       </article>
-      </>
+    </>
   );
 });

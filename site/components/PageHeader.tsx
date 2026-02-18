@@ -20,14 +20,17 @@ export default function PageHeader({ currentPath }: HeaderProps) {
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex justify-between items-center h-16">
-
           {/* Logo */}
           <a
             href="/"
             class="flex items-center hover:opacity-80 transition-opacity"
             aria-label="Future Together home"
           >
-            <img src="/logo-white.svg" alt="Future Together" class="h-9 w-auto" />
+            <img
+              src="/logo-white.svg"
+              alt="Future Together"
+              class="h-9 w-auto"
+            />
           </a>
 
           {/* Desktop Navigation */}

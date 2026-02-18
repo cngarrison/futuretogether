@@ -28,12 +28,15 @@ export default define.page(function Contact() {
 
       <section style="background-color: #f7f4ef;" class="py-20">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
-          <div class="bg-white rounded-2xl p-8 sm:p-12" style="border: 1px solid #d0e4e7;">
+          <div
+            class="bg-white rounded-2xl p-8 sm:p-12"
+            style="border: 1px solid #d0e4e7;"
+          >
             <p class="text-lg mb-8" style="color: rgba(28,26,24,0.8);">
-              The best way to connect with Future Together is to join a meetup
-              — that’s where the real conversation happens. But if you have
-              specific questions or want to get in touch directly, reach out
-              via the channels below.
+              The best way to connect with Future Together is to join a meetup —
+              that’s where the real conversation happens. But if you have
+              specific questions or want to get in touch directly, reach out via
+              the channels below.
             </p>
 
             <div class="space-y-5">
@@ -42,13 +45,24 @@ export default define.page(function Contact() {
                   class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
                   style="background-color: #e8f3f5;"
                 >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a5f6e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#1a5f6e"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
                   </svg>
                 </div>
                 <div>
-                  <p class="font-semibold mb-0.5" style="color: #1c1a18;">LinkedIn</p>
+                  <p class="font-semibold mb-0.5" style="color: #1c1a18;">
+                    LinkedIn
+                  </p>
                   <a
                     href="https://www.linkedin.com/company/futuretogether-community"
                     target="_blank"

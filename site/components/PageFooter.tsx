@@ -5,7 +5,6 @@ export default function PageFooter() {
     <footer class="bg-near-black text-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
         <div class="flex flex-col md:flex-row justify-between gap-10">
-
           {/* Brand block */}
           <div class="max-w-xs">
             <img
@@ -26,17 +25,26 @@ export default function PageFooter() {
             </p>
             <ul class="space-y-2 text-sm">
               <li>
-                <a href="/meetups" class="text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="/meetups"
+                  class="text-gray-300 hover:text-white transition-colors"
+                >
                   Meetups
                 </a>
               </li>
               <li>
-                <a href="/about" class="text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="/about"
+                  class="text-gray-300 hover:text-white transition-colors"
+                >
                   About
                 </a>
               </li>
               <li>
-                <a href="/join" class="text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="/join"
+                  class="text-gray-300 hover:text-white transition-colors"
+                >
                   Join
                 </a>
               </li>
@@ -46,7 +54,9 @@ export default function PageFooter() {
 
         {/* Bottom bar */}
         <div class="mt-12 pt-6 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-500">
-          <p>Future Together is a community initiative, not a commercial product.</p>
+          <p>
+            Future Together is a community initiative, not a commercial product.
+          </p>
           <p>
             &copy; {year} Future Together &middot; Website by{" "}
             <a
