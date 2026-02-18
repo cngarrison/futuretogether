@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!--
+    Future Together - OG / Social Share Image
+    Dimensions: 1200x630px (standard Open Graph size)
+    Export as JPG or PNG at 1x scale for use as og:image.
+    Open in browser, screenshot or print-to-image, save as og-image.jpg
+  -->
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#1a5f6e"/>
+
+  <!-- Subtle converging lines decoration (large scale, bottom-left) -->
+  <g opacity="0.08">
+    <line x1="0" y1="100" x2="520" y2="400" stroke="white" stroke-width="3"/>
+    <line x1="0" y1="220" x2="520" y2="400" stroke="white" stroke-width="3"/>
+    <line x1="0" y1="340" x2="520" y2="400" stroke="white" stroke-width="3"/>
+    <line x1="0" y1="460" x2="520" y2="400" stroke="white" stroke-width="3"/>
+    <line x1="0" y1="580" x2="520" y2="400" stroke="white" stroke-width="3"/>
+  </g>
+
+  <!-- Logo mark (upper left, scaled up 2.2x) -->
+  <g transform="translate(80, 70) scale(2.2)">
+    <line x1="2" y1="5"  x2="50" y2="40" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.5"/>
+    <line x1="2" y1="21" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+    <line x1="2" y1="40" x2="50" y2="40" stroke="white" stroke-width="3"   stroke-linecap="round" opacity="0.9"/>
+    <line x1="2" y1="59" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+    <line x1="2" y1="75" x2="50" y2="40" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.5"/>
+    <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+    <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text
+    x="308" y="118"
+    font-family="'Plus Jakarta Sans', 'DM Sans', ui-sans-serif, system-ui, sans-serif"
+    font-size="42" font-weight="700" fill="white" letter-spacing="-1"
+  >Future</text>
+  <text
+    x="308" y="164"
+    font-family="'Plus Jakarta Sans', 'DM Sans', ui-sans-serif, system-ui, sans-serif"
+    font-size="42" font-weight="400" fill="rgba(255,255,255,0.88)" letter-spacing="-1"
+  >Together</text>
+
+  <!-- Main tagline -->
+  <text
+    x="80" y="330"
+    font-family="'Plus Jakarta Sans', 'DM Sans', ui-sans-serif, system-ui, sans-serif"
+    font-size="70" font-weight="700" fill="white" letter-spacing="-2"
+  >The future is arriving.</text>
+  <text
+    x="80" y="420"
+    font-family="'Plus Jakarta Sans', 'DM Sans', ui-sans-serif, system-ui, sans-serif"
+    font-size="70" font-weight="700" fill="white" letter-spacing="-2" opacity="0.92"
+  >Let&#x2019;s face it together.</text>
+
+  <!-- Sub-line (bullet as Unicode &#x2022; - XML-safe) -->
+  <text
+    x="80" y="500"
+    font-family="'Plus Jakarta Sans', 'DM Sans', ui-sans-serif, system-ui, sans-serif"
+    font-size="30" font-weight="400" fill="rgba(255,255,255,0.6)" letter-spacing="0"
+  >Awareness &#x2022; Conversation &#x2022; Action</text>
+
+  <!-- Domain -->
+  <text
+    x="80" y="580"
+    font-family="'Plus Jakarta Sans', 'DM Sans', ui-sans-serif, system-ui, sans-serif"
+    font-size="26" font-weight="600" fill="#c4853a" letter-spacing="0.5"
+  >futuretogether.community</text>
+
+  <!-- Right: amber accent bars -->
+  <rect x="1140" y="0" width="60" height="630" fill="#c4853a" opacity="0.15"/>
+  <rect x="1170" y="0" width="30" height="630" fill="#c4853a" opacity="0.2"/>
+</svg>

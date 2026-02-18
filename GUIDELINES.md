@@ -222,7 +222,7 @@ The `PageHeader` component currently has: Home, Contact, Blog — **this needs u
 - **Provider:** Resend
 - **Patterns:** Refer to BB site code when provided by cng — use as the integration template
 - **Join page:** Email capture for newsletter/updates
-- **Meetups page:** Event registration (replacing the current `beyondbetter.app/discuss-our-future` link)
+- **Meetups page:** Event registration (replacing the current `futuretogether.community/discuss-our-future` link)
 - **Do not hard-code API keys** — use environment variables via `@std/dotenv`
 
 ---
