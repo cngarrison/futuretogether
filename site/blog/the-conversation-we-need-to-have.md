@@ -21,7 +21,7 @@ tags: [
 
 **For months, I couldn't think about anything else.**
 
-![cng profile](/img/cng-profile.jpg "Discuss our Future")
+![cng profile](/img/profile-cng.jpg "Discuss our Future")
 
 When I wasn't working, when I was supposed to be relaxing, when I woke up at 3
 AM - it was always there. The weight of what I was seeing. The gap between what
