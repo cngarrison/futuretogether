@@ -1,14 +1,13 @@
 import { define } from "@/utils.ts";
 import { Head } from "fresh/runtime";
-import PageLayout from "@/components/PageLayout.tsx";
 
 const SLIDESHOW_URL =
   "/slideshows/discuss-our-future-slideshow-conversation.html";
 
 export default define.page(function Slideshow() {
   return (
-    <PageLayout>
-      <Head>
+     <>
+     <Head>
         <title>Meetup Slideshow — Future Together</title>
         <meta
           name="description"
@@ -67,6 +66,6 @@ export default define.page(function Slideshow() {
           />
         </div>
       </div>
-    </PageLayout>
+      </>
   );
 });

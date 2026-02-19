@@ -6,13 +6,13 @@ import { logStaffAccess } from "@/utils/staff-log.ts";
  * Staff area middleware — Fresh v2
  * Protects all /staff/* routes except /staff/login.
  * Reads a session cookie set by the login page and validates it against
- * the hashed password stored in the BB_STAFF_PASSWORD_HASH env var.
+ * the hashed password stored in the FT_STAFF_PASSWORD_HASH env var.
  */
 export const handler = define.middleware(async (ctx) => {
   const url = new URL(ctx.req.url);
   const cookies = getCookies(ctx.req.headers);
   const staffSession = cookies.bb_staff_session;
-  const expectedHash = Deno.env.get("BB_STAFF_PASSWORD_HASH");
+  const expectedHash = Deno.env.get("FT_STAFF_PASSWORD_HASH");
 
   // Allow unauthenticated access to the login page
   if (url.pathname === "/staff/login") {

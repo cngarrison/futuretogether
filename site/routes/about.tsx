@@ -44,7 +44,7 @@ export default define.page(function About() {
           <div class="flex flex-col sm:flex-row items-center sm:items-start gap-8">
             <div class="flex-shrink-0">
               <img
-                src="/profile-cng.jpeg"
+                src="/img/profile-cng.jpg"
                 alt="Charlie Garrison"
                 width={120}
                 height={120}
@@ -66,7 +66,7 @@ export default define.page(function About() {
                 class="text-sm mb-3"
                 style="color: rgba(28,26,24,0.55);"
               >
-                Software developer &middot; Sydney, Australia
+                Software developer &middot; Rural NSW, Australia
               </p>
               <p
                 class="leading-relaxed text-sm mb-4"

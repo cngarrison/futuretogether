@@ -5,7 +5,7 @@ import { logStaffAccess } from "@/utils/staff-log.ts";
 
 /**
  * Staff login page — Fresh v2
- * POST handler validates a password against BB_STAFF_PASSWORD_HASH (SHA-256 hex).
+ * POST handler validates a password against FT_STAFF_PASSWORD_HASH (SHA-256 hex).
  * On success, sets an httpOnly session cookie and redirects to the dashboard.
  */
 
@@ -62,7 +62,7 @@ export const handler = define.handlers<LoginData>({
     }
 
     const hashedPassword = await sha256(password);
-    const expectedHash = Deno.env.get("BB_STAFF_PASSWORD_HASH");
+    const expectedHash = Deno.env.get("FT_STAFF_PASSWORD_HASH");
 
     if (!expectedHash || hashedPassword !== expectedHash) {
       const attempt = attempts.get(ip) || { count: 0, lastAttempt: 0 };

@@ -74,6 +74,7 @@ export default function ContactForm({
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
+    //console.log('ContactForm: handling submit', formData);
 
     if (!formData.name.trim()) {
       setStatus("error");
