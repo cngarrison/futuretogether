@@ -1,16 +1,13 @@
-import { define } from "@/utils.ts";
 import type { PageProps } from "fresh";
 
 /**
  * Staff area layout — Fresh v2
- * Skips the main _app.tsx wrapper so the staff portal has its own
- * minimal shell (no public nav/footer).
+ * Provides a minimal HTML shell for all /staff/* routes.
+ *
+ * _app.tsx detects /staff routes and returns <Component /> directly,
+ * making this layout the outermost wrapper with no duplicate html/head/body.
+ * No `config` export is needed — the bypass is handled in _app.tsx.
  */
-export const config = define.config({
-  skipAppWrapper: true,
-  skipInheritedLayouts: true,
-});
-
 export default function StaffLayout({ Component }: PageProps) {
   return (
     <html lang="en">

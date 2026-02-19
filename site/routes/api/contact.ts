@@ -3,9 +3,11 @@ import { FreshContext } from "fresh";
 interface ContactFormData {
   name: string;
   email: string;
-  phone?: string;
-  subject: string;
+  topic?: string;
+  heard_from?: string;
   message: string;
+  source?: string;
+  turnstile_token?: string;
 }
 
 export const handler = async (ctx: FreshContext) => {
@@ -14,18 +16,10 @@ export const handler = async (ctx: FreshContext) => {
   }
 
   try {
-    const formData = await ctx.req.formData();
-    //console.log('ApiContact: formData', formData);
-    const data: ContactFormData = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      phone: formData.get("phone") as string || undefined,
-      subject: formData.get("subject") as string,
-      message: formData.get("message") as string,
-    };
+    const data: ContactFormData = await ctx.req.json();
 
     // Validate required fields
-    if (!data.name || !data.email || !data.message) {
+    if (!data.name?.trim() || !data.email?.trim() || !data.message?.trim()) {
       return new Response("Missing required fields", { status: 400 });
     }
 
@@ -47,13 +41,14 @@ export const handler = async (ctx: FreshContext) => {
         from: Deno.env.get("FROM_EMAIL") ??
           "Future Together <hello@futuretogether.community>",
         to: Deno.env.get("CONTACT_EMAIL") ?? "hello@futuretogether.community",
-        subject: `Future Together Contact: ${data.subject}`,
+        subject: `Future Together Contact: ${data.topic ?? "General"}`,
         html: `
           <h2>New Contact Form Submission</h2>
           <p><strong>Name:</strong> ${data.name}</p>
           <p><strong>Email:</strong> ${data.email}</p>
-          ${data.phone ? `<p><strong>Phone:</strong> ${data.phone}</p>` : ""}
-          <p><strong>Subject:</strong> ${data.subject}</p>
+          ${data.topic ? `<p><strong>Topic:</strong> ${data.topic}</p>` : ""}
+          ${data.heard_from ? `<p><strong>How they found us:</strong> ${data.heard_from}</p>` : ""}
+          ${data.source ? `<p><strong>Source:</strong> ${data.source}</p>` : ""}
           <p><strong>Message:</strong></p>
           <p>${data.message.replace(/\n/g, "<br>")}</p>
         `,

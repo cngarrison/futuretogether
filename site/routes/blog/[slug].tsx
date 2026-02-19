@@ -106,6 +106,9 @@ export default define.page(async function BlogPost(ctx) {
             />
           )}
 
+          {/* Clear floated images before related posts / footer */}
+          <div style={{ clear: "both" }} />
+
           {/* Related posts */}
           {relatedPosts.length > 0 && (
             <aside

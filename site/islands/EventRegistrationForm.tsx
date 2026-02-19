@@ -1,5 +1,6 @@
 import { JSX } from "preact";
 import { useEffect, useState } from "preact/hooks";
+import SelectField from "@/components/SelectField.tsx";
 import TurnstileWidget from "./TurnstileWidget.tsx";
 
 interface EventRegistrationFormProps {
@@ -286,19 +287,19 @@ export default function EventRegistrationForm({
           <label class="block text-sm font-medium text-gray-700 mb-1">
             How did you hear about this event?
           </label>
-          <select
+          <SelectField
             value={heardFrom}
-            onChange={(e) => setHeardFrom(e.currentTarget.value)}
-            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:outline-none focus:ring-2"
+            options={[
+              { value: "", label: "Select an option" },
+              { value: "facebook", label: "Facebook" },
+              { value: "linkedin", label: "LinkedIn" },
+              { value: "x-twitter", label: "X (Twitter)" },
+              { value: "friend", label: "Friend or colleague" },
+              { value: "other", label: "Other" },
+            ]}
+            onChange={setHeardFrom}
             disabled={status === "loading"}
-          >
-            <option value="">Select an option</option>
-            <option value="facebook">Facebook</option>
-            <option value="linkedin">LinkedIn</option>
-            <option value="x-twitter">X (Twitter)</option>
-            <option value="friend">Friend or colleague</option>
-            <option value="other">Other</option>
-          </select>
+          />
         </div>
 
         {status === "error" && (
