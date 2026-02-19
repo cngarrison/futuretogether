@@ -1,24 +1,7 @@
 import ical from "ical-generator";
 import type { EventConfig, Registration } from "./events.ts";
-
-const RESEND_API_KEY = Deno.env.get("FT_RESEND_API_KEY");
-const FROM_EMAIL = Deno.env.get("FT_RESEND_FROM_EMAIL") ||
-  "hello@futuretogether.community";
-const FROM_NAME = Deno.env.get("FT_RESEND_FROM_NAME") || "Future Together";
-
-interface EmailAttachment {
-  filename: string;
-  content: string;
-  type?: string;
-}
-
-interface EmailOptions {
-  to: string;
-  subject: string;
-  html: string;
-  text?: string;
-  attachments?: EmailAttachment[];
-}
+import { FROM_EMAIL, FROM_NAME, sendEmail } from "./email.ts";
+import type { EmailOptions } from "./email.ts";
 
 // Generate iCalendar file content with proper timezone support
 export function generateICalendar(
@@ -55,43 +38,6 @@ export function generateICalendar(
   });
 
   return calendar.toString();
-}
-
-// Send email via Resend API
-export async function sendEmail(options: EmailOptions): Promise<boolean> {
-  if (!RESEND_API_KEY) {
-    console.error("RESEND_API_KEY not configured");
-    return false;
-  }
-
-  try {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: `${FROM_NAME} <${FROM_EMAIL}>`,
-        to: options.to,
-        subject: options.subject,
-        html: options.html,
-        text: options.text,
-        attachments: options.attachments,
-      }),
-    });
-
-    if (!response.ok) {
-      const error = await response.text();
-      console.error("Resend API error:", error);
-      return false;
-    }
-
-    return true;
-  } catch (error) {
-    console.error("Error sending email:", error);
-    return false;
-  }
 }
 
 // Format event date for display

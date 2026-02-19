@@ -5,12 +5,14 @@ interface HeaderProps {
 export default function PageHeader({ currentPath }: HeaderProps) {
   const navItems = [
     { href: "/meetups", label: "Meetups" },
+    { href: "/resources", label: "Resources" },
+    { href: "/blog", label: "Blog" },
     { href: "/about", label: "About" },
   ];
 
-  const currentRoute = currentPath === "/"
+  const currentRoute = currentPath ? (currentPath === "/"
     ? "/"
-    : "/" + currentPath.split("/")[1];
+    : "/" + currentPath.split("/")[1]) : '/';
 
   return (
     <nav
