@@ -1,7 +1,31 @@
 import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
+import { getNextAvailableEvent } from "@/utils/events.ts";
 
-export default define.page(function Join() {
+export default define.page(async function Join() {
+  // Load the next upcoming event so we can show the real date/time
+  const nextEvent = await getNextAvailableEvent("discuss-our-future");
+
+  let nextEventDisplay: string | null = null;
+  if (nextEvent?.date) {
+    try {
+      const d = new Date(nextEvent.date);
+      nextEventDisplay = d.toLocaleString("en-AU", {
+        timeZone: nextEvent.timezone ?? "Australia/Sydney",
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+        timeZoneName: "short",
+      });
+    } catch {
+      // Fall back gracefully if date parsing fails
+    }
+  }
+
   return (
     <>
       <Head>
@@ -22,8 +46,8 @@ export default define.page(function Join() {
             class="text-lg max-w-xl mx-auto leading-relaxed"
             style="color: rgba(255,255,255,0.8);"
           >
-            You don’t have to figure this out alone. Register for the next
-            meetup and become part of a community that’s paying attention.
+            You don't have to figure this out alone. Register for the next
+            meetup and become part of a community that's paying attention.
           </p>
         </div>
       </section>
@@ -61,19 +85,42 @@ export default define.page(function Join() {
                 Join the next meetup
               </h2>
               <p
-                class="text-sm leading-relaxed mb-6"
+                class="text-sm leading-relaxed mb-1"
                 style="color: rgba(28,26,24,0.7);"
               >
                 The fastest way in. Register for our monthly online discussion —
-                free, no commitment, just a conversation. Third Wednesday of
-                each month, 6:00 PM AEDT.
+                free, no commitment, just a conversation.
+              </p>
+              {/* Dynamic next event date */}
+              {nextEventDisplay
+                ? (
+                  <p
+                    class="text-sm font-semibold mb-0.5"
+                    style="color: #1c1a18;"
+                  >
+                    {nextEventDisplay}
+                  </p>
+                )
+                : (
+                  <p
+                    class="text-sm font-semibold mb-0.5"
+                    style="color: #1c1a18;"
+                  >
+                    Third Wednesday of each month
+                  </p>
+                )}
+              <p
+                class="text-xs mb-6"
+                style="color: rgba(28,26,24,0.45);"
+              >
+                Time alternates monthly for different time zones
               </p>
               <a
                 href="/events/discuss-our-future"
                 class="inline-block w-full text-center px-6 py-3 text-white font-semibold rounded-xl transition-opacity hover:opacity-90"
                 style="background-color: #c4853a;"
               >
-                Register now — it’s free &rarr;
+                Register now — it's free &rarr;
               </a>
             </div>
 
@@ -107,8 +154,8 @@ export default define.page(function Join() {
                 class="text-sm leading-relaxed mb-6"
                 style="color: rgba(28,26,24,0.7);"
               >
-                Read the founding essay — it’s the best explanation of what
-                Future Together is about, why it exists, and what we’re trying
+                Read the founding essay — it's the best explanation of what
+                Future Together is about, why it exists, and what we're trying
                 to do together.
               </p>
               <div class="space-y-3">
@@ -182,13 +229,13 @@ export default define.page(function Join() {
       >
         <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <p class="text-lg font-semibold mb-2" style="color: #1c1a18;">
-            What you’re signing up for
+            What you're signing up for
           </p>
           <p
             style="color: rgba(28,26,24,0.7);"
             class="max-w-xl mx-auto leading-relaxed"
           >
-            A monthly reminder that you’re not alone in thinking about this. No
+            A monthly reminder that you're not alone in thinking about this. No
             spam. No sales. No political agenda. Just honest conversation with
             people who are paying attention.
           </p>

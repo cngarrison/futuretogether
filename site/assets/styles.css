@@ -116,3 +116,77 @@ body {
   color: #1c1a18;
   font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 }
+
+/* =============================================================================
+   Blog: Callout boxes
+   Usage in markdown: <div class="callout info">...</div>
+   Transforms to .callout-info via blog.ts transformCallouts()
+   ============================================================================= */
+
+.callout {
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid currentColor;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.callout-info {
+  background-color: #eef5f7;
+  border-color: #1a5f6e;
+  color: #1a5f6e;
+}
+
+.callout-warning {
+  background-color: #fef9e7;
+  border-color: #c4853a;
+  color: #92540a;
+}
+
+.callout-tip {
+  background-color: #f0fdf4;
+  border-color: #16a34a;
+  color: #15803d;
+}
+
+.callout-success {
+  background-color: #f0fdf4;
+  border-color: #16a34a;
+  color: #15803d;
+}
+
+/* =============================================================================
+   Blog: Floating image figures (images with title= attribute in markdown)
+   ============================================================================= */
+
+.blog-image-float {
+  float: right;
+  margin: 0 0 1.5rem 2rem;
+  max-width: 42%;
+  clear: right;
+}
+
+.blog-image-float img {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  height: auto;
+}
+
+.blog-image-float figcaption {
+  font-size: 0.78rem;
+  color: rgba(28, 26, 24, 0.55);
+  text-align: center;
+  margin-top: 0.5rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .blog-image-float {
+    float: none;
+    max-width: 100%;
+    margin: 1.5rem 0;
+  }
+}

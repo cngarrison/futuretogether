@@ -48,6 +48,22 @@ export default function PageFooter() {
                   Join
                 </a>
               </li>
+              <li>
+                <a
+                  href="/blog"
+                  class="text-gray-300 hover:text-white transition-colors"
+                >
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  class="text-gray-300 hover:text-white transition-colors"
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -60,7 +76,7 @@ export default function PageFooter() {
           <p>
             &copy; {year} Future Together &middot; Website by{" "}
             <a
-              href="https://futuretogether.community"
+              href="https://beyondbetter.app"
               target="_blank"
               rel="noopener noreferrer"
               class="hover:text-gray-300 transition-colors"
