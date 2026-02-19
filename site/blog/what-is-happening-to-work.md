@@ -1,7 +1,7 @@
 ---
 id: 5
 title: "What is happening to work?"
-date: "2026-02-19"
+date: "2026-02-16"
 excerpt: "AI is already displacing knowledge workers — and robotics is coming for physical work next. Here's what's actually happening, and a framework for thinking about your own situation."
 author: "Charles N. Garrison"
 tags: [

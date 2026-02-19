@@ -1,7 +1,7 @@
 ---
 id: 8
 title: "What is the Singularity, and why is it so critically important?"
-date: "2026-02-19"
+date: "2026-02-15"
 excerpt: "The singularity isn't science fiction — it's a mathematical threshold. Here's what it actually means, why the sequence of events leading up to it matters so much, and why understanding it changes your sense of urgency."
 author: "Charles N. Garrison"
 tags: [

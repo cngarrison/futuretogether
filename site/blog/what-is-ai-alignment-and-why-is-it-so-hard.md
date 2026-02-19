@@ -1,7 +1,7 @@
 ---
 id: 7
 title: "What is AI alignment and why is it so hard?"
-date: "2026-02-19"
+date: "2026-02-14"
 excerpt: "The gap between what we say and what we mean has never mattered much — until now. Here's why aligning AI with human intent is one of the hardest problems we've ever faced, and why it has to be solved before it's too late."
 author: "Charles N. Garrison"
 tags: [

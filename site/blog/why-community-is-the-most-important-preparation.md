@@ -1,7 +1,7 @@
 ---
 id: 6
 title: "Why community is the most important preparation"
-date: "2026-02-19"
+date: "2026-02-17"
 excerpt: "The bushfires taught me something about what community actually does in a crisis. The AI disruption ahead requires the same lesson — learned before the fire arrives, not during it."
 author: "Charles N. Garrison"
 tags: [
