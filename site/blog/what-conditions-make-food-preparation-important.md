@@ -1,152 +1,122 @@
 ---
-id: 9
-title: "What conditions make food preparation important?"
-date: "2026-02-19"
-excerpt: "Mentioning food preparation in the context of AI disruption risks sounding like prepper culture. It isn't. Here's a calm, grounded look at the conditions that make it worth thinking about — and why community matters more than stockpiles."
+id: 10
+title: "What conditions make food preparation (and similar) efforts important?"
+date: "2026-02-20"
+excerpt: "This is the post I find hardest to write — not because the scenarios are implausible, but because naming them out loud still feels uncomfortable. Let's do it anyway."
 author: "Charles N. Garrison"
 tags: [
   "AI",
   "Community Resilience",
-  "Economic Change",
-  "Prepare Now",
-  "Food Security",
-  "Practical Preparation",
+  "Preparation",
+  "Future Planning",
+  "AI Impact",
+  "Supply Chain",
 ]
 ---
 
-# What conditions make food preparation important?
+# What conditions make food preparation (and similar) efforts important?
 
-I want to be upfront about why this topic feels awkward to raise.
+I want to be upfront about something: this is the post I find hardest to write.
 
-The moment someone starts talking about food preparation in the context of societal disruption, certain images arrive uninvited: underground bunkers, freeze-dried ration packs, camouflage-wearing people who've spent twenty years waiting for civilisation to collapse. The prepper aesthetic. The survivalist fantasy.
+Not because the scenarios are implausible — some of them are already unfolding in slow motion, and others have been part of strategic risk discussions for decades. The discomfort is different. It's the feeling of naming things out loud that most of us would rather leave unspoken.
 
-That's not what this is. And because that association is so strong — and so genuinely off-putting — I think it's worth spending a few paragraphs being honest about the distinction before we get into anything practical.
+There's a version of this conversation that slides quickly into conspiracy territory — bunkers and tinfoil hats and the particular energy of people who've decided the collapse is definitely coming and are secretly glad about it. I want no part of that conversation. I'm not an expert in geopolitics, infrastructure security, or military strategy. What I am is someone who's been paying close attention to where AI development is heading, and who has come to believe that the question “are you prepared for disruption?” is worth asking seriously — without pretending to know exactly what form that disruption takes.
 
----
-
-## Prepper culture vs. community resilience
-
-Prepper culture, at its core, is an *individualist* response to a perceived collective threat. The implicit logic is: things are going to fall apart, I can't trust anyone else, so I'm going to make sure *I* (and maybe my immediate family) have what I need when it does. It tends to be secretive, self-reliant, and oriented around worst-case scenarios as an almost-desired endpoint — a vindication that the fear was justified.
-
-Community resilience is almost the opposite. It starts from the observation that humans have always navigated hard times best through cooperation, not isolation. It asks: *how do we maintain the basics for everyone in our community if normal systems are under stress?* It's oriented toward specific, realistic scenarios rather than civilisational collapse. And it treats social connection as the resource, not the stockpile.
-
-The distinction matters because the practical actions they lead to are completely different. Prepper culture leads to individual hoarding. Community resilience leads to food networks, local growing capacity, mutual aid arrangements, and the kind of relationships where someone notices if you haven't been seen in a few days.
-
-I'm interested in the second one. And it starts with being honest about the conditions that make it relevant.
+So let's look at the map.
 
 ---
 
-## The conditions, ranked by likelihood
+## These risks aren't new. What's changed is everything else.
 
-If you're using [Maslow's Hierarchy as a planning framework](/blog/how-can-maslows-hierarchy-frame-our-planning) — which I think is genuinely useful for thinking through what AI disruption might mean at a practical level — food sits at the base. It's physiological. Everything above it depends on it being secure.
+Most of the scenarios that make preparation relevant aren't invented by AI. Supply chain fragility, geopolitical instability, biological threats, economic dislocation — these predate AI by decades or centuries. What AI changes is three things:
 
-So: under what conditions does food security become something we need to actively think about rather than assume?
+**Speed.** Disruption that might have unfolded over years can now unfold over weeks. Institutions built to respond at human pace are increasingly unprepared for machine-speed change.
 
-I think there are three categories, and they're not equally likely.
+**Scale.** AI enables a single actor — a state, a corporation, even a small group — to cause disruption at a scale that previously required massive resources. The attack surface grows.
 
-### Near-term economic disruption — most likely
+**Cascading.** AI makes systems more interconnected. More interconnected systems can fail in ways that simpler systems couldn't. A disruption in one area ripples into three others before anyone has time to respond.
 
-This is the one I'd focus on first, because it isn't speculative at all. It's already happening.
-
-The economic displacement from AI is unevenly distributed. Knowledge workers whose roles involve research, analysis, writing, administration, legal support, basic coding, customer service — these are the people most exposed to near-term disruption. Some of that disruption will be gradual (augmentation, efficiency pressure, slower hiring), some of it will be sudden (a company decides to replace a team with a system that does the work for a fraction of the cost).
-
-The pattern we'd expect to see is: pockets of significant unemployment concentrated in specific sectors and demographics, while other parts of the economy continue relatively normally. Not a collapse. A disruption — meaningful, painful, and for the people in its path, financially severe.
-
-For households facing sudden income loss, food security follows employment security. The question of whether you can afford groceries is not a distant hypothetical for people whose income disappears faster than new employment appears.
-
-This isn't about building a bunker. It's about the same logic that sits behind emergency funds, insurance, and leaving some slack in the budget. *Mild precaution against realistic risk.* The realistic risk here is economic shock from a disruption that's already well underway — and the people most exposed are often not in a position to absorb a multi-month income gap.
-
-For communities, this translates into: knowing who in your network is economically exposed, having honest conversations about it, and building the kinds of informal safety nets — food sharing, cost-pooling, local growing — that communities have always used when formal systems let people down.
-
-### Infrastructure disruption — less likely, but not negligible
-
-Modern food supply chains are remarkable systems, and also remarkably fragile. The pandemic gave everyone a glimpse of this: supply chains that seemed permanent and reliable turned out to be just-in-time arrangements with no buffer, dependent on a chain of assumptions that a single disruption could break. Toilet paper was the joke. But for a period, finding basic goods required planning, effort, and sometimes luck.
-
-Infrastructure disruption can come from several directions that don't require civilisational collapse:
-
-**Extreme weather events.** Floods, prolonged drought, fire, major storms — these already interrupt supply chains periodically. Climate change increases the frequency and intensity of these events. Regional disruption for days or weeks is well within the range of things that happen, not hypothetical.
-
-**Cyber attacks on critical infrastructure.** This is taken very seriously by security services in every developed country. Power grids, water systems, logistics networks — these are all digital now, and they're targets. A successful major attack on power infrastructure has knock-on effects for refrigeration, transport, distribution. Again: not a prediction. A risk that serious people with access to classified threat information are actively working to prevent.
-
-**Pandemic disruption.** We've had one. There will be others. The particular features of COVID — disrupted supply chains, workforce absences, panic buying, sudden regional lockdowns — don't require a once-in-a-century event. They can emerge from a sufficiently severe seasonal flu, a new pathogen, anything that combines human illness at scale with the social responses that illness produces.
-
-For each of these, the preparation that makes sense is *a few weeks of resilience*, not years of stockpiles. A household that can function for two to four weeks without accessing the normal supply chain is well-placed for these disruptions. That's a much more modest goal than it sounds — and it's the same logic behind keeping a spare tyre, or a torch and batteries for power outages. Common sense in the face of known risk.
-
-### Catastrophic scenarios — least likely, but worth naming honestly
-
-I'm going to name this category rather than pretend it doesn't exist, because one of the things I believe about this moment is that pretending not to see uncomfortable possibilities is how communities fail to prepare for them.
-
-At the more extreme end of the risk spectrum — the scenarios serious researchers at organisations like [ALLFED (Alliance to Feed the Earth in Disasters)](https://allfed.info) study — are questions like: what happens to global food production if we face a major nuclear exchange (even a limited regional one), a supervolcanic eruption, or a large asteroid impact? Each of these produces the same mechanism: a significant reduction in sunlight reaching crops, extended across a season or multiple seasons.
-
-ALLFED's work focuses on resilient food systems — specifically, what kinds of food production remain viable without sunlight (fungi, certain insects, some algae, leaf protein production), and how communities can rapidly build capacity for them. Their research is sober, scientific, and deliberately non-alarmist. They're not predicting these scenarios. They're asking: if any of them happened, how bad would it be, and what could we do?
-
-The answer, without preparation, is: very bad. With decentralised community-level food production capacity built in advance, the picture is materially different.
-
-I raise this not to alarm but to make a point about *why community food networks matter even at the least-likely end of the spectrum*. If your preparation response is personal stockpiling, you've addressed the near-term disruptions and done nothing for the scenarios where preparation actually determines survival. The only preparation that scales to serious disruption is distributed, community-level food production capacity — gardens, local growing networks, knowledge of what's edible in your region, relationships with people who have land and skills.
-
-That also happens to be the most useful preparation for the scenarios that are actually likely. So it's the same answer regardless of which scenario you're planning for.
+None of this means catastrophe is inevitable. It means the conditions that could make everyday life significantly harder are more plausible — and can arrive faster — than at any previous point in history. That's the context for what follows.
 
 ---
 
-## What sensible preparation actually looks like
+## A map of conditions
 
-Let me be concrete, because the prepper aesthetic tends to crowd out the practical.
+These aren't predictions. They're categories of disruption that range from “already happening in milder forms” to “possible but extreme.” I'm presenting them plainly, not to alarm, but to give the question some shape.
 
-**For households:**
+**Economic dislocation**
 
-- A rolling four-week supply of non-perishables — things you'd actually eat. Pasta, rice, tinned tomatoes, tinned legumes, oats, olive oil, honey. Not special survival food; just slightly more of the things already in your pantry. Rotate them into your regular cooking so nothing expires unused.
-- A way to cook without power. A simple camp stove with a gas canister is enough. This is the same thing you'd want for camping.
-- A water supply. This is arguably more critical than food — humans need water far more urgently. A few large containers you can fill from the tap if supply is threatened, plus knowledge of local water sources, covers most scenarios.
-- Basic medications and first aid. Not an elaborate medical kit. Just enough to not need a pharmacy for minor issues during a few-week disruption.
+Rapid AI-driven job displacement is already happening in white-collar knowledge work. [The effects on employment](/blog/what-is-happening-to-work) are not theoretical. When large numbers of people lose income faster than institutions can respond — welfare systems, retraining programs, new industries — the downstream effects include mortgage stress, reduced purchasing power, and eroded social stability. You don't need economic collapse for this to matter. Significant dislocation is enough.
 
-That's the household layer. It costs perhaps a few hundred dollars to set up, takes an afternoon, and requires almost no ongoing attention beyond rotating the pantry. It's the same kind of mild precaution that sensible people apply to fire extinguishers, emergency funds, and seatbelts.
+**Supply chain fragility**
 
-**For communities:**
+Most cities carry three to seven days of food in their logistics systems at any given moment. Supermarket shelves look abundant; the warehouse behind them is lean by design. Just-in-time supply chains are extraordinarily efficient in normal conditions and extraordinarily fragile under stress. COVID gave everyone a small preview: empty shelves within days of a disruption that, in the grand scheme, was relatively contained. Something more serious — a sustained infrastructure failure, a major geopolitical shock, a series of simultaneous stresses — would expose that fragility quickly.
 
-This is where it gets more interesting — and more aligned with what Future Together is actually about.
+**Cyberattacks on critical infrastructure**
 
-The most useful food resilience isn't individual. It's relational. It looks like:
+Power grids, financial systems, water treatment, logistics networks — all are increasingly managed by software, and all have been demonstrated attack surfaces for state-sponsored cyber operations. AI makes offensive cyber capabilities significantly more powerful and more accessible. A successful sustained attack on a power grid doesn't just turn off lights; it disables refrigeration, water pumping, communications, hospitals, and the logistics systems that keep food moving. The scenario doesn't require open war — just a motivated actor and a vulnerability.
 
-- *Community gardens and growing networks.* Local growing capacity that exists independently of supply chains, operated by people who know how to tend it and know each other.
-- *Skill sharing.* Knowledge of food preservation (fermenting, bottling, drying), basic growing, and what's edible locally doesn't need to live only in a few specialists. It can be distributed through the community through simple, social exchanges.
-- *Food sharing culture.* Communities where surplus is shared rather than wasted, where a neighbour's vegetable garden produces more than they need and that surplus reaches people who need it, have structural food resilience that stockpiles can't replicate.
-- *Local supply chain relationships.* Knowing your local farmers, having a relationship with a regional supplier, understanding the actual food production in your area — these connections are both economically useful normally and critically important if national supply chains are disrupted.
-- *Mutual awareness.* Knowing who in your community is economically exposed, who is elderly and may struggle to access food during a disruption, who has skills and capacity that others don't — this is the social infrastructure of community resilience.
+**AI-enabled conflict**
 
-None of this requires catastrophising. All of it makes communities better in completely normal times, too. That's the defining feature of good preparation: it's useful regardless of whether the disruption you prepared for actually arrives.
+Nations are in an active AI arms race, and the implications for conflict are significant. AI-enabled weapons, autonomous systems, and surveillance change the nature of warfare. AI-enabled disinformation changes the stability of civil society. Neither of these is speculative — both are present in existing conflicts today. The question is one of scale and escalation.
 
----
+**Biological threats**
 
-## The deeper point: individual stockpiles have a ceiling
+COVID demonstrated something important: a biological disruption can reshape daily life globally, within weeks, without warning. The same AI capabilities that accelerate medical research and drug discovery also lower the barrier to developing dangerous pathogens — whether through state programs, non-state actors, or accident. This is a documented concern among biosecurity researchers, not a fringe idea. The lesson from COVID isn't that pandemics are inevitable. It's that they're possible, and that preparation matters.
 
-There's a useful thought experiment here. Imagine two adjacent neighbourhoods facing a three-month supply chain disruption.
+**Societal breakdown and AI misalignment**
 
-Neighbourhood A has several households with significant personal stockpiles — months of supplies, carefully assembled. But they assembled them quietly, privately, because that's what prepper culture encourages. Nobody else knows the stockpiles exist. There are no gardens. There are no community food-sharing arrangements. When the disruption hits, the households with stockpiles are fine. The households without them are not. Eventually the households with stockpiles make difficult decisions about what their obligation is to the neighbours who are struggling.
-
-Neighbourhood B has no major stockpiles. But over the previous few years, a local community group had started a food garden. A few people had learned to preserve food and shared what they knew. There's a WhatsApp group where people regularly offer surplus produce. During the disruption, the community pools what it has, the garden becomes more important, and people who know how to grow and preserve step into a community role. It's hard. But it's manageable — and nobody has to make the terrible calculation about what they owe their neighbour.
-
-The difference isn't resources. It's relationships and distributed knowledge.
-
-This is why [community is the most important preparation](/blog/why-community-is-the-most-important-preparation) — not just philosophically, but practically. The community that knows each other, that has built shared capacity, that has the relationships to mobilise mutual support, outperforms the collection of well-prepared individuals every time.
+This one is harder to make concrete, because it depends on technical outcomes that remain genuinely uncertain. The spectrum runs from — AI being used by powerful actors to concentrate wealth and power in ways that erode democratic institutions — to more serious failure modes where AI systems pursue goals that don't align with human welfare. Even the less dramatic end of that spectrum — AI accelerating the erosion of shared institutions and social trust — is worth taking seriously. For more on what alignment actually means and why it's difficult, see [this post](/blog/what-is-ai-alignment-and-why-is-it-so-hard).
 
 ---
 
-## A note on not getting ahead of yourself
+## The thread connecting all of this
 
-I want to end with something grounding, because there's a risk that this kind of post sends people into a spiral of anxiety about scenarios they can't control.
+What links these scenarios isn't that they're all AI problems. Most of them aren't, at their root.
 
-Start with the boring stuff. Four weeks of pantry goods. A camp stove. A few water containers. That covers you for the scenarios that are actually most likely — the economic shocks, the short supply chain disruptions, the bad storm or flood that cuts off your area for a week.
+What links them is that modern life is built on systems — supply chains, financial networks, energy infrastructure, social institutions — that are more fragile than they appear, and more interconnected than most people realise. They work remarkably well when everything is functioning. They fail in ways that cascade unpredictably when something goes wrong.
 
-Then start building community connections. Join or start a food garden. Get to know your neighbours. Have the conversations. Share skills. These things are intrinsically valuable regardless of disruption. They make life better now.
-
-The catastrophic scenarios? They're the reason to support organisations like ALLFED doing serious research, and to have a society where these questions are taken seriously at a policy level. That requires collective political will, not individual preparation. Which, again, points back to community — and to the importance of having these conversations widely enough that they actually influence how societies respond.
-
-Awareness first. Conversation next. Then action — proportionate, practical, and not paralysing.
+The honest answer to “what conditions make preparation important?” is: any conditions under which those systems face significant stress. That's been true for a long time. What AI has done is expand the range of stresses those systems might face, and compress the time available to respond.
 
 ---
 
-*This post is part of a series exploring the practical implications of AI-driven change. If you're thinking about how to frame the full scope of what's coming, the [Maslow's Hierarchy post](/blog/how-can-maslows-hierarchy-frame-our-planning) is a useful map. And if you want to think through why community matters more than individual preparation, [that post is here](/blog/why-community-is-the-most-important-preparation).*
+## What "sensible preparation" actually means
 
-*These are exactly the conversations we have at our monthly meetups — no expertise required, just curiosity and willingness to think out loud together.*
+Let me be clear about what I'm not saying.
+
+I'm not saying build a bunker. I'm not saying stockpile tinned beans for five years. I'm not saying the collapse is coming and smart people are getting ready while everyone else sleeps.
+
+What I am saying is this: a household with a few weeks of food and water, a community where people know their neighbours, a local food system with some diversity and resilience — these aren't paranoid. They're the equivalent of having insurance. You buy insurance not because you expect disaster, but because you're the kind of person who thinks ahead.
+
+Resilient preparation looks less like individual stockpiling and more like community capacity:
+
+- **Trust** — do the people in your community know and look out for each other?
+- **Care** — when things get hard, does your community have the instinct to help?
+- **Shared planning** — have you had the conversation, as a household or a community, about what you'd do if things were disrupted for a week? A month?
+
+Regionally, this might look like ensuring local farms grow food people can actually eat — not monoculture timber or export crops — and that knowledge of food preservation and local supply stays alive. In cities, the answers will look different, but the underlying question is the same: how connected and self-sufficient is your immediate community when it needs to be?
+
+There's no single right answer. Every household and community starts from a different place, with different resources and vulnerabilities. What matters is that you've started asking.
+
+---
+
+## I'm not the expert. Go find out.
+
+I want to be honest about the limits of this post. I'm not a risk analyst, a food systems expert, or a military strategist. I've done enough reading to believe these questions are worth taking seriously — but the detailed answers are out there, written by people who know far more than I do.
+
+Some places worth your time:
+
+- **Your local agricultural extension services or council** — practical information about local food systems and community resilience often lives closer than you'd think
+- **The [Maslow's Hierarchy post](/blog/how-can-maslows-hierarchy-frame-our-planning)** — for a framework to organise your thinking about what to prioritise
+- **ALLFED** (allfed.info) — research on how catastrophic events impact food systems globally
+- **Your neighbours** — seriously. The most practical knowledge about local resilience is in the people around you
+
+Educate yourself on the scenarios that feel most relevant to your situation. Then have the conversation — with your household first, then your wider community. You don't need to become an expert. You need to be someone who's thought about it, and who helps the people around them think about it too.
+
+That's where preparation actually begins.
+
+---
+
+*These are the questions we discuss at our monthly meetups — no expertise required.*
 
 *[Join the next meetup →](/events/discuss-our-future)*
