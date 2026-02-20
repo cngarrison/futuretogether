@@ -1,7 +1,7 @@
 ---
 id: 9
 title: "How can Maslow's Hierarchy of Needs frame our planning efforts?"
-date: "2026-02-20"
+date: "2026-02-18"
 excerpt: "When the future feels uncertain, a 1940s psychology diagram turns out to be surprisingly useful — not as a prediction, but as a planning map."
 author: "Charles N. Garrison"
 tags: [
@@ -26,7 +26,7 @@ That's the thing about a good framework. You don't need to be told what to do wi
 
 The short version: Abraham Maslow proposed that human needs exist in a rough hierarchy, and that we tend to focus on lower-level needs before we can meaningfully address higher ones.
 
-![Maslow's Hierarchy of Needs](/img/maslow.png)
+![Maslow's Hierarchy of Needs](/img/maslow.png "Maslow's Hierarchy of Needs")
 
 At the bottom: **physiological needs** — food, water, shelter, sleep. These are the baseline. Without them, nothing else really matters.
 

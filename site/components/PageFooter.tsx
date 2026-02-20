@@ -34,6 +34,30 @@ export default function PageFooter() {
               </li>
               <li>
                 <a
+                  href="/blog"
+                  class="text-gray-300 hover:text-white transition-colors"
+                >
+                  Articles
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/resources"
+                  class="text-gray-300 hover:text-white transition-colors"
+                >
+                  Resources
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/start-a-group"
+                  class="text-gray-300 hover:text-white transition-colors"
+                >
+                  Local Group
+                </a>
+              </li>
+              <li>
+                <a
                   href="/about"
                   class="text-gray-300 hover:text-white transition-colors"
                 >
@@ -46,14 +70,6 @@ export default function PageFooter() {
                   class="text-gray-300 hover:text-white transition-colors"
                 >
                   Join
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/blog"
-                  class="text-gray-300 hover:text-white transition-colors"
-                >
-                  Blog
                 </a>
               </li>
               <li>

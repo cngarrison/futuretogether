@@ -11,7 +11,7 @@ export const handler = define.middleware(async (ctx) => {
   const url = new URL(ctx.req.url);
   const cookies = getCookies(ctx.req.headers);
   const staffSession = cookies.bb_staff_session;
-  const expectedHash = Deno.env.get("BB_STAFF_PASSWORD_HASH");
+  const expectedHash = Deno.env.get("FT_STAFF_PASSWORD_HASH");
 
   if (!staffSession || !expectedHash || staffSession !== expectedHash) {
     const ip = ctx.req.headers.get("x-forwarded-for") || "unknown";

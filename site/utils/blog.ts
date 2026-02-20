@@ -242,9 +242,10 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
       if (post) posts.push(post);
     }
 
-    // Sort by date descending
+    // Sort by date ascending - descending is normal, there is a logical progression to the posts
     return posts.sort((a, b) =>
-      new Date(b.date).getTime() - new Date(a.date).getTime()
+      // new Date(a.date).getTime() - new Date(b.date).getTime() // descending
+      new Date(a.date).getTime() - new Date(b.date).getTime() // ascending
     );
   } catch (error) {
     console.error("Error loading blog posts:", error);

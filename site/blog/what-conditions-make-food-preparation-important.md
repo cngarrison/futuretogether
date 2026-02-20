@@ -1,7 +1,7 @@
 ---
 id: 10
 title: "What conditions make food preparation (and similar) efforts important?"
-date: "2026-02-20"
+date: "2026-02-19"
 excerpt: "This is the post I find hardest to write — not because the scenarios are implausible, but because naming them out loud still feels uncomfortable. Let's do it anyway."
 author: "Charles N. Garrison"
 tags: [

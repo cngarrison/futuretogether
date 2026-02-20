@@ -2,7 +2,8 @@
 id: 4
 title: "The Conversation We Need to Have"
 date: "2026-02-12"
-excerpt: "My experience with ChatGPT writing better code than I would have, and why we should be polite to AI systems."
+excerpt: "Why I started weekly coffee meetups. The weight of what I was seeing. The gap between what
+I knew was happening and what the people I care about understood. What are you doing to prepare?"
 author: "Charles N. Garrison"
 tags: [
   "AI",

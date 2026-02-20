@@ -10,19 +10,19 @@ export default define.page(function StartAGroup() {
         "Before you run your first meetup, spend some time with the material. Read through the ",
       link: { href: "/blog", text: "Future Together blog series" },
       body2:
-        " \u2014 it covers the core questions in plain language. The series is designed for exactly the kind of people you'll be inviting. You don't need to read it all before you start, but the more familiar you are with the ideas, the more confident you'll feel facilitating.",
+        " — it covers the core questions in plain language. The series is designed for exactly the kind of people you'll be inviting. You don't need to read it all before you start, but the more familiar you are with the ideas, the more confident you'll feel facilitating.",
     },
     {
       number: "02",
       title: "Choose your format",
       body:
-        "In-person or online \u2014 both work. In-person creates stronger connection; online removes geography as a barrier. Our monthly online meetups run on video call with 15\u201330 people and feel genuinely conversational. A local in-person group could be as small as five people around someone's kitchen table. Start with whatever format you can actually sustain.",
+        "In-person or online — both work. In-person creates stronger connection; online removes geography as a barrier. Our monthly online meetups run on video call with 15–30 people and feel genuinely conversational. A local in-person group could be as small as five people around someone's kitchen table. Start with whatever format you can actually sustain.",
     },
     {
       number: "03",
       title: "Invite a few people",
       body:
-        "You don't need a crowd. Three to five people for a first conversation is plenty. Think about friends, colleagues, or community members who you sense are paying attention \u2014 or who you think should be. The invitation doesn't have to be polished. Something like: \u201cI've been reading about AI and what it could mean for all of us. I'd like to have a conversation about it \u2014 want to join me?\u201d is enough.",
+        "You don't need a crowd. Three to five people for a first conversation is plenty. Think about friends, colleagues, or community members who you sense are paying attention — or who you think should be. The invitation doesn't have to be polished. Something like: “I've been reading about AI and what it could mean for all of us. I'd like to have a conversation about it — want to join me?” is enough.",
     },
     {
       number: "04",
@@ -31,7 +31,7 @@ export default define.page(function StartAGroup() {
         "You don't need to build your own presentation. We've already created one. The ",
       link: { href: "/meetups/slideshow", text: "Future Together slideshow" },
       body2:
-        " walks through the key ideas \u2014 what's happening with AI, why it matters, and what questions we should all be asking. Use it to open the conversation, then step back and let people respond. The goal is discussion, not lecture.",
+        " walks through the key ideas — what's happening with AI, why it matters, and what questions we should all be asking. Use it to open the conversation, then step back and let people respond. The goal is discussion, not lecture.",
     },
     {
       number: "05",
@@ -43,26 +43,26 @@ export default define.page(function StartAGroup() {
       number: "06",
       title: "List your group with Future Together",
       body:
-        "Once you've run your first session \u2014 or even before, if you want some support getting started \u2014 get in touch. We'd love to know your group exists, help you connect with others doing the same thing, and eventually list your group so people in your area can find it. Use the ",
+        "Once you've run your first session — or even before, if you want some support getting started — get in touch. We'd love to know your group exists, help you connect with others doing the same thing, and eventually list your group so people in your area can find it. Use the ",
       link: { href: "/contact", text: "contact form" },
       body2:
-        " and select \u201cStarting or finding a local group\u201d as your topic.",
+        " and select “Starting or finding a local group” as your topic.",
     },
     {
       number: "07",
       title: "Keep going",
       body:
-        "One conversation is a start. A regular meetup is a community. Monthly is sustainable \u2014 enough frequency to build momentum, not so frequent it becomes a burden. The conversations will get richer as people become more familiar with the ideas and with each other. The goal isn't to reach a conclusion. It's to keep the conversation alive.",
+        "One conversation is a start. A regular meetup is a community. Monthly is sustainable — enough frequency to build momentum, not so frequent it becomes a burden. The conversations will get richer as people become more familiar with the ideas and with each other. The goal isn't to reach a conclusion. It's to keep the conversation alive.",
     },
   ];
 
   return (
     <>
       <Head>
-        <title>Start a Group \u2014 Future Together</title>
+        <title>Start a Group — Future Together</title>
         <meta
           name="description"
-          content="How to start a Future Together meetup in your own community. A simple guide to getting the conversation started \u2014 no expertise required."
+          content="How to start a Future Together meetup in your own community. A simple guide to getting the conversation started — no expertise required."
         />
       </Head>
 
@@ -83,8 +83,8 @@ export default define.page(function StartAGroup() {
             style="color: rgba(255,255,255,0.8);"
           >
             The conversation Future Together is trying to start needs to happen
-            everywhere \u2014 not just online, but in living rooms, community halls,
-            and caf\u00e9s around the world. You don't need to be an expert. You
+            everywhere — not just online, but in living rooms, community halls,
+            and cafés around the world. You don't need to be an expert. You
             need a room and a willingness to ask the question.
           </p>
         </div>
@@ -105,7 +105,7 @@ export default define.page(function StartAGroup() {
             </p>
             <p>
               The model works because the conversation itself is the point. No
-              polished answers, no expert panel \u2014 just people who are paying
+              polished answers, no expert panel — just people who are paying
               attention, thinking together about what's coming and how to face
               it.
             </p>
@@ -114,7 +114,7 @@ export default define.page(function StartAGroup() {
               <a href="/blog/what-can-you-actually-do-right-now">
                 what you can actually do right now
               </a>{" "}
-              and felt the pull to start something \u2014 this guide is for you.
+              and felt the pull to start something — this guide is for you.
             </p>
           </div>
         </div>
@@ -126,7 +126,7 @@ export default define.page(function StartAGroup() {
         style="background-color: #eef5f7; border-top: 1px solid #d0e4e7;"
       >
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
-          <h2 class="text-2xl font-bold mb-12" style="color: #1c1a18;">
+          <h2 class="text-2xl font-bold mb-10" style="color: #1c1a18;">
             How to run your first meetup
           </h2>
           <div class="space-y-10">
@@ -188,7 +188,7 @@ export default define.page(function StartAGroup() {
               {
                 title: "The blog series",
                 desc:
-                  "Nine posts covering the core ideas \u2014 AI, work, community, preparation, and hope.",
+                  "Nine posts covering the core ideas — AI, work, community, preparation, and hope.",
                 href: "/blog",
                 label: "Read the series",
               },
@@ -249,7 +249,7 @@ export default define.page(function StartAGroup() {
             Get in touch &rarr;
           </a>
           <p class="mt-6 text-sm" style="color: rgba(255,255,255,0.6);">
-            Select \u201cStarting or finding a local group\u201d in the contact form.
+            Select “Starting or finding a local group” in the contact form.
           </p>
         </div>
       </section>

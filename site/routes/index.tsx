@@ -32,9 +32,9 @@ export default define.page(function Home() {
             <span class="text-accent">Let's face it together.</span>
           </h1>
           <p class="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-            A community for people who are paying attention — and want to do
-            something about it. Monthly online meetups. Honest conversation.
-            Collective preparation.
+            A community for people who are paying attention to AI and technological
+            change — and want to do something about it. <br />
+            Monthly online meetups. Honest conversation. Collective preparation.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a

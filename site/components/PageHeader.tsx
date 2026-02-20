@@ -5,8 +5,9 @@ interface HeaderProps {
 export default function PageHeader({ currentPath }: HeaderProps) {
   const navItems = [
     { href: "/meetups", label: "Meetups" },
+    { href: "/blog", label: "Articles" },
     { href: "/resources", label: "Resources" },
-    { href: "/blog", label: "Blog" },
+    { href: "/start-a-group", label: "Local Group" },
     { href: "/about", label: "About" },
   ];
 

@@ -1,7 +1,7 @@
 ---
 id: 12
 title: "What can you actually do right now?"
-date: "2026-02-20"
+date: "2026-02-21"
 excerpt: "Nine posts in, and now the question that matters most. Not what should someone do in the abstract — what can you actually do, today, with the life you have?"
 author: "Charles N. Garrison"
 tags: [
@@ -56,7 +56,7 @@ The awareness has to spread through exactly that mechanism. One person saying to
 
 Individual preparation has real limits. The communities that navigate disruption best are the ones with existing connections, distributed trust, and a shared sense of mutual obligation. Those things take time to build, which is why starting now matters.
 
-This could look like deepening relationships in a community you're already part of. It could look like joining Future Together's online meetups and contributing your perspective. Or — and this is what I'd most love to see — it could look like starting something in your own town.
+This could look like deepening relationships in a community you're already part of. It could look like joining Future Together's online meetups and contributing your perspective. Or — and this is what I'd most love to see — it could look like [starting something in your own town](/start-a-group).
 
 **Make alignment a priority.**
 
