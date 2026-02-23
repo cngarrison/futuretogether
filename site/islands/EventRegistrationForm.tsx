@@ -23,6 +23,7 @@ export default function EventRegistrationForm({
   const [email, setEmail] = useState("");
   const [interests, setInterests] = useState("");
   const [heardFrom, setHeardFrom] = useState("");
+  const [joinCommunity, setJoinCommunity] = useState(true);
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error" | "full"
   >("idle");
@@ -84,6 +85,7 @@ export default function EventRegistrationForm({
           email,
           interests,
           heardFrom,
+          joinCommunity,
           turnstile_token: turnstileToken,
         }),
         //credentials: 'same-origin',
@@ -307,6 +309,31 @@ export default function EventRegistrationForm({
             <p class="text-red-800">{errorMessage}</p>
           </div>
         )}
+
+        {/* Join community opt-in */}
+        <label
+          class="flex items-start gap-3 cursor-pointer rounded-xl p-4"
+          style={joinCommunity
+            ? "background-color: #eef5f7; border: 1.5px solid #1a5f6e;"
+            : "background-color: #f7f4ef; border: 1.5px solid transparent;"}
+        >
+          <input
+            type="checkbox"
+            checked={joinCommunity}
+            onChange={(e) => setJoinCommunity(e.currentTarget.checked)}
+            disabled={status === "loading"}
+            class="mt-0.5 rounded flex-shrink-0"
+            style="accent-color: #1a5f6e;"
+          />
+          <div>
+            <span class="text-sm font-semibold" style="color: #1c1a18;">
+              Also join the Future Together community
+            </span>
+            <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
+              Stay in the loop beyond this event — meetup invites, new posts, community updates.
+            </p>
+          </div>
+        </label>
 
         {/* Turnstile Captcha */}
         {turnstileSiteKey && (

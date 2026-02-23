@@ -5,6 +5,8 @@ import {
 } from "@/utils/events.ts";
 import { sendConfirmationEmail } from "@/utils/eventEmail.ts";
 import { verifyTurnstileToken } from "@/utils/turnstile.ts";
+import { createMember } from "@/utils/members.ts";
+import { sendMemberAdminNotification, sendMemberWelcomeEmail } from "@/utils/memberEmail.ts";
 
 export const handlers = define.handlers({
   async POST(ctx) {
@@ -18,6 +20,7 @@ export const handlers = define.handlers({
         email,
         interests,
         heardFrom,
+        joinCommunity,
         turnstile_token,
       } = formData;
 
@@ -78,6 +81,27 @@ export const handlers = define.handlers({
         sendConfirmationEmail(event, result.registration).catch((error) => {
           console.error("Error sending confirmation email:", error);
         });
+      }
+
+      // Auto-create member record if opt-in checkbox was ticked
+      if (joinCommunity !== false && result.registration) {
+        const reg = result.registration;
+        createMember({
+          email: reg.attendee.email,
+          firstName: reg.attendee.firstName,
+          lastName: reg.attendee.lastName,
+          source: "event_registration",
+          interests: [],
+          heardFrom: reg.engagement?.heardFrom,
+        }).then((memberResult) => {
+          if (memberResult.success && memberResult.created && memberResult.member) {
+            const member = memberResult.member;
+            Promise.all([
+              sendMemberAdminNotification(member),
+              sendMemberWelcomeEmail(member),
+            ]).catch((err) => console.error("Member email error:", err));
+          }
+        }).catch((err) => console.error("Auto-member error:", err));
       }
 
       return new Response(
