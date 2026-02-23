@@ -2,8 +2,10 @@ import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
 import { getNextAvailableEvent } from "@/utils/events.ts";
 import MemberSignupForm from "@/islands/MemberSignupForm.tsx";
+import { getTurnstileSiteKey } from "@/utils/turnstile.ts";
 
 export default define.page(async function Join() {
+  const turnstileSiteKey = getTurnstileSiteKey();
   const nextEvent = await getNextAvailableEvent("discuss-our-future");
 
   let nextEventDisplay: string | null = null;
@@ -91,7 +93,7 @@ export default define.page(async function Join() {
               >
                 Free. No commitment. Cancel any time.
               </p>
-              <MemberSignupForm />
+              <MemberSignupForm turnstileSiteKey={turnstileSiteKey} />
             </div>
 
             {/* Right: stacked cards */}
@@ -217,8 +219,9 @@ export default define.page(async function Join() {
             class="max-w-xl mx-auto leading-relaxed"
             style="color: rgba(28,26,24,0.65);"
           >
-            No spam. No sales. No political agenda. Membership is free and
-            always will be. Unsubscribe any time.
+            No spam. No sales. No political agenda. <br />
+            Membership is free and always will be. <br />
+            Unsubscribe any time.
           </p>
         </div>
       </section>

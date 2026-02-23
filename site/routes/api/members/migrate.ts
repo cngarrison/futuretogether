@@ -19,7 +19,7 @@ import { createMember } from "@/utils/members.ts";
 export const handlers = define.handlers({
   async POST(ctx) {
     // Auth check
-    const staffSecret = Deno.env.get("FT_STAFF_SECRET");
+    const staffSecret = Deno.env.get("FT_STAFF_PASSWORD_HASH");
     const authHeader = ctx.req.headers.get("Authorization") ?? "";
     const token = authHeader.replace(/^Bearer\s+/i, "");
 

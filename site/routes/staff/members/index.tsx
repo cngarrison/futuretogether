@@ -45,7 +45,14 @@ export default define.page<typeof handler>(function StaffMembersPage(
           {/* Header */}
           <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold text-gray-900">Members</h1>
-            <div class="flex items-center gap-4">
+            <div class="flex flex-col items-end gap-2">
+              <a
+                href="/staff"
+                class="text-sm font-medium hover:underline"
+                style="color: #1a5f6e;"
+              >
+                ← Staff Dashboard
+              </a>
               <a
                 href="/api/staff/members/download"
                 class="inline-flex items-center text-white px-4 py-2 rounded-lg text-sm transition-opacity hover:opacity-90"
@@ -65,13 +72,6 @@ export default define.page<typeof handler>(function StaffMembersPage(
                   />
                 </svg>
                 Download CSV
-              </a>
-              <a
-                href="/staff"
-                class="text-sm font-medium hover:underline"
-                style="color: #1a5f6e;"
-              >
-                ← Staff Dashboard
               </a>
             </div>
           </div>

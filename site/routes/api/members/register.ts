@@ -75,19 +75,30 @@ export const handlers = define.handlers({
         );
       }
 
-      // Send emails asynchronously — don't block the response
-      if (result.member && result.created) {
+      // Send emails asynchronously — don't block the response.
+      // Fire each independently so a failure in one doesn't suppress the other.
+      if (result.member) {
         const member = result.member;
-        Promise.all([
-          sendMemberAdminNotification(member),
-          sendMemberWelcomeEmail(member),
-        ]).catch((err) => console.error("Member email error:", err));
-      } else if (result.member && !result.created) {
-        // Existing member — still notify admin if role was upgraded to organiser
-        if (result.member.role === "organiser") {
-          sendMemberAdminNotification(result.member).catch((err) =>
-            console.error("Member email error:", err)
+
+        if (result.created) {
+          // Brand-new member: admin notification + welcome email
+          sendMemberAdminNotification(member).catch((err) =>
+            console.error("Admin notification error:", err)
           );
+          sendMemberWelcomeEmail(member).catch((err) =>
+            console.error("Welcome email error:", err)
+          );
+        } else {
+          // Existing member — only act if role was upgraded to organiser
+          if (member.role === "organiser") {
+            sendMemberAdminNotification(member).catch((err) =>
+              console.error("Admin notification error:", err)
+            );
+            // Also send welcome so they get the organiser-specific content
+            sendMemberWelcomeEmail(member).catch((err) =>
+              console.error("Welcome email error:", err)
+            );
+          }
         }
       }
 
