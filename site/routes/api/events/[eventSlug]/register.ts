@@ -1,4 +1,6 @@
 import { define } from "@/utils.ts";
+
+const delay = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 import {
   createRegistration,
   getNextAvailableEvent,
@@ -76,32 +78,41 @@ export const handlers = define.handlers({
         );
       }
 
-      // Send confirmation email asynchronously
+      // Send emails staggered to stay within Resend's 2 req/s rate limit.
+      // All run async after the response is returned — no effect on response time.
       if (result.registration) {
-        sendConfirmationEmail(event, result.registration).catch((error) => {
-          console.error("Error sending confirmation email:", error);
-        });
-      }
-
-      // Auto-create member record if opt-in checkbox was ticked
-      if (joinCommunity !== false && result.registration) {
         const reg = result.registration;
-        createMember({
-          email: reg.attendee.email,
-          firstName: reg.attendee.firstName,
-          lastName: reg.attendee.lastName,
-          source: "event_registration",
-          interests: [],
-          heardFrom: reg.engagement?.heardFrom,
-        }).then((memberResult) => {
-          if (memberResult.success && memberResult.created && memberResult.member) {
-            const member = memberResult.member;
-            Promise.all([
-              sendMemberAdminNotification(member),
-              sendMemberWelcomeEmail(member),
-            ]).catch((err) => console.error("Member email error:", err));
-          }
-        }).catch((err) => console.error("Auto-member error:", err));
+
+        // 1. Event confirmation — fires immediately
+        sendConfirmationEmail(event, reg).catch((err) =>
+          console.error("Confirmation email error:", err)
+        );
+
+        // 2 & 3. Member emails — only if opt-in checkbox ticked
+        if (joinCommunity !== false) {
+          createMember({
+            email: reg.attendee.email,
+            firstName: reg.attendee.firstName,
+            lastName: reg.attendee.lastName,
+            source: "event_registration",
+            interests: [],
+            heardFrom: reg.engagement?.heardFrom,
+          }).then(async (memberResult) => {
+            if (memberResult.success && memberResult.created && memberResult.member) {
+              const member = memberResult.member;
+              // 2. Member welcome — 1.1s after confirmation
+              await delay(1100);
+              sendMemberWelcomeEmail(member).catch((err) =>
+                console.error("Member welcome email error:", err)
+              );
+              // 3. Admin notification — 1.1s after welcome (2.2s total)
+              await delay(1100);
+              sendMemberAdminNotification(member).catch((err) =>
+                console.error("Admin notification error:", err)
+              );
+            }
+          }).catch((err) => console.error("Auto-member error:", err));
+        }
       }
 
       return new Response(
