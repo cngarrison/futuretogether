@@ -1,4 +1,5 @@
 import { parse as parseYaml } from "@std/yaml";
+import { getKv } from "./kv.ts";
 
 /**
  * EVENT SYSTEM ARCHITECTURE
@@ -10,21 +11,7 @@ import { parse as parseYaml } from "@std/yaml";
  * - Auto-switch to next available event based on capacity/deadline
  */
 
-// KV store singleton
-let kvInstance: Deno.Kv | null = null;
-
 const EVENTS_DIR = "./events";
-
-// Get or initialize KV store
-async function getKv(): Promise<Deno.Kv> {
-  if (!kvInstance) {
-    const kvPath = Deno.env.get("FT_EVENTS_KV_PATH");
-    // Note: Deno.openKv() path parameter support varies by platform
-    // In production (Deno Deploy), it's typically ignored
-    kvInstance = kvPath ? await Deno.openKv(kvPath) : await Deno.openKv();
-  }
-  return kvInstance;
-}
 
 // Event configuration interface
 export interface EventConfig {
