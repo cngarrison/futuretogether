@@ -1,20 +1,16 @@
 import ical from "ical-generator";
 import type { EventConfig, Registration } from "./events.ts";
-import { FROM_EMAIL, FROM_NAME, sendEmail } from "./email.ts";
-import type { EmailOptions } from "./email.ts";
+import { buildEmailHtml, FROM_EMAIL, FROM_NAME, sendEmail } from "./email.ts";
 
-// Generate iCalendar file content with proper timezone support
+// ---------------------------------------------------------------------------
+// iCalendar
+// ---------------------------------------------------------------------------
+
 export function generateICalendar(
   event: EventConfig,
   attendee: { firstName: string; lastName: string; email: string },
 ): string {
-  // Simple UTC-based calendar (no timezone complexity)
-  const calendar = ical({
-    name: event.title,
-    production: true,
-  });
-
-  // Parse UTC dates - simple and reliable
+  const calendar = ical({ name: event.title, production: true });
   const startDate = new Date(event.date);
   const endDate = new Date(startDate.getTime() + event.duration * 60 * 1000);
 
@@ -25,10 +21,7 @@ export function generateICalendar(
     description: event.description,
     location: event.meetingLink,
     url: event.meetingLink,
-    organizer: {
-      name: FROM_NAME,
-      email: FROM_EMAIL,
-    },
+    organizer: { name: FROM_NAME, email: FROM_EMAIL },
     attendees: [{
       name: `${attendee.firstName} ${attendee.lastName}`,
       email: attendee.email,
@@ -40,10 +33,12 @@ export function generateICalendar(
   return calendar.toString();
 }
 
-// Format event date for display
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
 function formatEventDate(date: string, timezone: string): string {
-  const eventDate = new Date(date);
-  const formatter = new Intl.DateTimeFormat("en-US", {
+  return new Intl.DateTimeFormat("en-AU", {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -52,212 +47,103 @@ function formatEventDate(date: string, timezone: string): string {
     minute: "2-digit",
     timeZone: timezone,
     timeZoneName: "short",
-  });
-  return formatter.format(eventDate);
+  }).format(new Date(date));
 }
 
-// Send confirmation email with iCalendar attachment
+// ---------------------------------------------------------------------------
+// Confirmation email
+// ---------------------------------------------------------------------------
+
 export async function sendConfirmationEmail(
   event: EventConfig,
   registration: Registration,
 ): Promise<boolean> {
   const { attendee } = registration;
+  const formattedDate = formatEventDate(event.date, event.timezone);
   const icalContent = generateICalendar(event, attendee);
 
-  const formattedDate = formatEventDate(event.date, event.timezone);
+  const topicsHtml = event.topics && event.topics.length > 0
+    ? `<p style="margin:24px 0 8px;font-weight:600;color:#1c1a18;">What we'll discuss</p>
+       <ul style="margin:0 0 24px;padding-left:20px;color:#374151;line-height:1.8;">
+         ${event.topics.map((t) => `<li>${t}</li>`).join("")}
+       </ul>`
+    : "";
 
-  const html = `
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		body {
-			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-			line-height: 1.6;
-			color: #333;
-			max-width: 600px;
-			margin: 0 auto;
-			padding: 20px;
-		}
-		.header {
-			background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
-			color: white;
-			padding: 30px 20px;
-			text-align: center;
-			border-radius: 8px 8px 0 0;
-		}
-		.header h1 {
-			margin: 0;
-			font-size: 24px;
-		}
-		.content {
-			background: #ffffff;
-			padding: 30px 20px;
-			border: 1px solid #e5e7eb;
-			border-top: none;
-		}
-		.event-details {
-			background: #f3f4f6;
-			padding: 20px;
-			border-radius: 8px;
-			margin: 20px 0;
-		}
-		.event-details h2 {
-			margin-top: 0;
-			color: #1f2937;
-			font-size: 20px;
-		}
-		.detail-row {
-			margin: 10px 0;
-			padding: 8px 0;
-			border-bottom: 1px solid #e5e7eb;
-		}
-		.detail-row:last-child {
-			border-bottom: none;
-		}
-		.detail-label {
-			font-weight: 600;
-			color: #374151;
-			margin-right: 8px;
-		}
-		.meeting-link {
-			display: inline-block;
-			background: #2563eb;
-			color: white;
-			padding: 12px 24px;
-			text-decoration: none;
-			border-radius: 6px;
-			margin: 20px 0;
-			font-weight: 600;
-		}
-		.topics {
-			margin: 20px 0;
-		}
-		.topics ul {
-			list-style: none;
-			padding: 0;
-		}
-		.topics li {
-			padding: 8px 0;
-			border-bottom: 1px solid #e5e7eb;
-		}
-		.topics li:last-child {
-			border-bottom: none;
-		}
-		.footer {
-			background: #f9fafb;
-			padding: 20px;
-			text-align: center;
-			font-size: 14px;
-			color: #6b7280;
-			border-radius: 0 0 8px 8px;
-			border: 1px solid #e5e7eb;
-			border-top: none;
-		}
-	</style>
-</head>
-<body>
-	<div class="header">
-		<h1>✅ You're Registered!</h1>
-	</div>
-	
-	<div class="content">
-		<p>Hi ${attendee.firstName},</p>
-		
-		<p>Thank you for registering for <strong>${event.title}</strong>${
-    event.presentedBy ? ` with ${event.presentedBy}` : ""
-  }. We're looking forward to having you join the discussion!</p>
-		
-		<div class="event-details">
-			<h2>Event Details</h2>
-			<div class="detail-row">
-				<span class="detail-label">Date & Time:</span>
-				<span>${formattedDate}</span>
-			</div>
-			<div class="detail-row">
-				<span class="detail-label">Duration:</span>
-				<span>${event.duration} minutes</span>
-			</div>
-			<div class="detail-row">
-				<span class="detail-label">Format:</span>
-				<span>Online via Google Meet</span>
-			</div>
-			${
-    event.presentedBy
-      ? `<div class="detail-row">
-				<span class="detail-label">Presented by:</span>
-				<span>${event.presentedBy}</span>
-			</div>`
+  const content = `
+    <p style="margin:0 0 20px;font-size:17px;color:#1c1a18;">Hi ${attendee.firstName},</p>
+    <p style="margin:0 0 24px;color:#374151;">
+      You're registered for <strong>${event.title}</strong>${event.presentedBy ? ` with ${event.presentedBy}` : ""}.
+      We're looking forward to having you join the conversation.
+    </p>
+
+    <div style="background-color:#eef5f7;border-radius:8px;padding:24px;margin:0 0 24px;">
+      <p style="margin:0 0 16px;font-weight:700;font-size:16px;color:#1a5f6e;">Event details</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        <tr class="detail-row">
+          <td style="padding:8px 0;border-bottom:1px solid #d0e4e7;color:#374151;font-weight:600;width:130px;">Date &amp; time</td>
+          <td style="padding:8px 0 8px 16px;border-bottom:1px solid #d0e4e7;color:#374151;">${formattedDate}</td>
+        </tr>
+        <tr class="detail-row">
+          <td style="padding:8px 0;border-bottom:1px solid #d0e4e7;color:#374151;font-weight:600;">Duration</td>
+          <td style="padding:8px 0 8px 16px;border-bottom:1px solid #d0e4e7;color:#374151;">${event.duration} minutes</td>
+        </tr>
+        <tr class="detail-row">
+          <td style="padding:8px 0;${event.presentedBy ? "border-bottom:1px solid #d0e4e7;" : ""}color:#374151;font-weight:600;">Format</td>
+          <td style="padding:8px 0 8px 16px;${event.presentedBy ? "border-bottom:1px solid #d0e4e7;" : ""}color:#374151;">Online via Google Meet</td>
+        </tr>
+        ${event.presentedBy ? `
+        <tr>
+          <td style="padding:8px 0;color:#374151;font-weight:600;">Presented by</td>
+          <td style="padding:8px 0 8px 16px;color:#374151;">${event.presentedBy}</td>
+        </tr>` : ""}
+      </table>
+    </div>
+
+    <p style="text-align:center;margin:0 0 24px;">
+      <a href="${event.meetingLink}" class="btn btn-teal">Join Google Meet</a>
+    </p>
+
+    ${topicsHtml}
+
+    <p style="margin:0 0 16px;color:#374151;">
+      <strong>Calendar invite:</strong> An iCalendar (.ics) file is attached —
+      open it to add this event to Google Calendar, Outlook, or Apple Calendar.
+    </p>
+    <p style="margin:0 0 24px;color:#374151;">
+      We'll send you a reminder 24 hours before the event.
+    </p>
+    <p style="margin:0;font-size:13px;color:#6b7280;">
+      Need to cancel? Simply reply to this email.
+    </p>`;
+
+  const text = `Hi ${attendee.firstName},
+
+You're registered for ${event.title}.
+
+Date & time: ${formattedDate}
+Duration: ${event.duration} minutes
+Meeting link: ${event.meetingLink}
+${
+    event.topics?.length
+      ? `\nWhat we'll discuss:\n${event.topics.map((t) => `- ${t}`).join("\n")}`
       : ""
   }
-		</div>
-		
-		<p style="text-align: center;">
-			<a href="${event.meetingLink}" class="meeting-link">Join Google Meet</a>
-		</p>
-		
-		<p><strong>What We'll Discuss:</strong></p>
-		<div class="topics">
-			<ul>
-				${
-    event.topics?.map((topic) => `<li>${topic}</li>`).join("\n\t\t\t\t") || ""
-  }
-			</ul>
-		</div>
-		
-		<p><strong>Calendar Reminder:</strong> An iCalendar (.ics) file is attached to this email. You can open it to add this event to your calendar application (Google Calendar, Outlook, Apple Calendar, etc.).</p>
-		
-		<p>We'll send you a reminder 24 hours before the event with the meeting link.</p>
-		
-		<p>See you there!</p>
-	</div>
-	
-	<div class="footer">
-		<p>Future Together<br>
-		<a href="https://futuretogether.community" style="color: #2563eb;">futuretogether.community</a></p>
-		<p style="font-size: 12px; margin-top: 16px;">If you need to cancel your registration, please reply to this email.</p>
-	</div>
-</body>
-</html>
-	`;
 
-  const text = `
-Hi ${attendee.firstName},
+An iCalendar file is attached to add this to your calendar.
+We'll send a reminder 24 hours before the event.
 
-Thank you for registering for ${event.title}. We're looking forward to having you join the discussion!
+Need to cancel? Reply to this email.
 
-Event Details:
-- Date & Time: ${formattedDate}
-- Duration: ${event.duration} minutes
-- Format: Online via Google Meet
-- Meeting Link: ${event.meetingLink}
+Future Together — futuretogether.community`;
 
-What We'll Discuss:
-${event.topics?.map((topic) => `- ${topic}`).join("\n") || ""}
-
-An iCalendar (.ics) file is attached to this email. You can open it to add this event to your calendar.
-
-We'll send you a reminder 24 hours before the event.
-
-See you there!
-
-Future Together
-https://futuretogether.community
-
-If you need to cancel your registration, please reply to this email.
-	`;
-
-  // Encode iCalendar content to base64 using Deno's native APIs
   const encoder = new TextEncoder();
   const icalBytes = encoder.encode(icalContent);
   const base64Content = btoa(String.fromCharCode(...icalBytes));
 
   return await sendEmail({
     to: attendee.email,
-    subject: `Confirmed: ${event.title} - ${formattedDate}`,
-    html,
+    subject: `Confirmed: ${event.title} \u2014 ${formattedDate}`,
+    html: buildEmailHtml(content, `You're registered for ${event.title} on ${formattedDate}.`),
     text,
     attachments: [{
       filename: "event.ics",
@@ -267,7 +153,10 @@ If you need to cancel your registration, please reply to this email.
   });
 }
 
-// Send reminder email (24 hours before or 1 hour before)
+// ---------------------------------------------------------------------------
+// Reminder email
+// ---------------------------------------------------------------------------
+
 export async function sendReminderEmail(
   event: EventConfig,
   registration: Registration,
@@ -276,106 +165,41 @@ export async function sendReminderEmail(
   const { attendee } = registration;
   const formattedDate = formatEventDate(event.date, event.timezone);
   const timeUntil = reminderType === "day_before" ? "24 hours" : "1 hour";
+  const subjectPrefix = reminderType === "day_before" ? "Tomorrow:" : "Starting soon:";
 
-  const html = `
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		body {
-			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-			line-height: 1.6;
-			color: #333;
-			max-width: 600px;
-			margin: 0 auto;
-			padding: 20px;
-		}
-		.header {
-			background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-			color: white;
-			padding: 30px 20px;
-			text-align: center;
-			border-radius: 8px 8px 0 0;
-		}
-		.header h1 {
-			margin: 0;
-			font-size: 24px;
-		}
-		.content {
-			background: #ffffff;
-			padding: 30px 20px;
-			border: 1px solid #e5e7eb;
-			border-top: none;
-		}
-		.meeting-link {
-			display: inline-block;
-			background: #2563eb;
-			color: white;
-			padding: 12px 24px;
-			text-decoration: none;
-			border-radius: 6px;
-			margin: 20px 0;
-			font-weight: 600;
-		}
-		.footer {
-			background: #f9fafb;
-			padding: 20px;
-			text-align: center;
-			font-size: 14px;
-			color: #6b7280;
-			border-radius: 0 0 8px 8px;
-			border: 1px solid #e5e7eb;
-			border-top: none;
-		}
-	</style>
-</head>
-<body>
-	<div class="header">
-		<h1>⏰ Reminder: Event Starting Soon!</h1>
-	</div>
-	
-	<div class="content">
-		<p>Hi ${attendee.firstName},</p>
-		
-		<p>This is a friendly reminder that <strong>${event.title}</strong> is starting in ${timeUntil}!</p>
-		
-		<p><strong>When:</strong> ${formattedDate}</p>
-		
-		<p style="text-align: center;">
-			<a href="${event.meetingLink}" class="meeting-link">Join Google Meet</a>
-		</p>
-		
-		<p>We're looking forward to seeing you there!</p>
-	</div>
-	
-	<div class="footer">
-		<p>Future Together<br>
-		<a href="https://futuretogether.community" style="color: #2563eb;">futuretogether.community</a></p>
-	</div>
-</body>
-</html>
-	`;
+  const content = `
+    <p style="margin:0 0 20px;font-size:17px;color:#1c1a18;">Hi ${attendee.firstName},</p>
+    <p style="margin:0 0 24px;color:#374151;">
+      A quick reminder — <strong>${event.title}</strong> is starting in
+      <strong>${timeUntil}</strong>.
+    </p>
 
-  const text = `
-Hi ${attendee.firstName},
+    <div style="background-color:#eef5f7;border-radius:8px;padding:24px;margin:0 0 28px;">
+      <p style="margin:0 0 4px;font-weight:700;color:#1a5f6e;">${formattedDate}</p>
+      <p style="margin:0;font-size:14px;color:#374151;">Online via Google Meet</p>
+    </div>
 
-This is a friendly reminder that ${event.title} is starting in ${timeUntil}!
+    <p style="text-align:center;margin:0 0 24px;">
+      <a href="${event.meetingLink}" class="btn btn-teal">Join Google Meet</a>
+    </p>
 
-When: ${formattedDate}
-Meeting Link: ${event.meetingLink}
+    <p style="margin:0;font-size:13px;color:#6b7280;">See you there!</p>`;
 
-We're looking forward to seeing you there!
+  const text = `Hi ${attendee.firstName},
 
-Future Together
-https://futuretogether.community
-	`;
+Reminder: ${event.title} is starting in ${timeUntil}.
+
+Date & time: ${formattedDate}
+Meeting link: ${event.meetingLink}
+
+See you there!
+
+Future Together — futuretogether.community`;
 
   return await sendEmail({
     to: attendee.email,
-    subject: `Reminder: ${event.title} in ${timeUntil}`,
-    html,
+    subject: `${subjectPrefix} ${event.title}`,
+    html: buildEmailHtml(content, `${event.title} is starting in ${timeUntil}.`),
     text,
   });
 }
