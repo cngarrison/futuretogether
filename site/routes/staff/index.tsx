@@ -38,6 +38,17 @@ export default define.page(function StaffIndex() {
                 and download registration data.
               </p>
             </a>
+            <a
+              href="/staff/members"
+              class="block bg-white p-6 rounded-lg border-2 hover:shadow-md transition-all"
+              style="border-color: #c4853a;"
+            >
+              <h2 class="text-xl font-bold text-gray-900 mb-2">Members</h2>
+              <p class="text-gray-600">
+                View community members and organisers. Download the member list
+                as CSV and manage membership records.
+              </p>
+            </a>
           </div>
         </div>
       </div>

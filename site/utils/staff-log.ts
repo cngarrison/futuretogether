@@ -8,14 +8,9 @@
  * Entries expire after 90 days (Deno KV supports TTL in milliseconds).
  */
 
+import { getKv } from "./kv.ts";
+
 const LOG_TTL_MS = 90 * 24 * 60 * 60 * 1000; // 90 days
-
-let kvInstance: Deno.Kv | null = null;
-
-async function getKv(): Promise<Deno.Kv> {
-  if (!kvInstance) kvInstance = await Deno.openKv();
-  return kvInstance;
-}
 
 export async function logStaffAccess(message: string): Promise<void> {
   // Always log to console — visible in Deno Deploy log viewer

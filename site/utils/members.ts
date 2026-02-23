@@ -29,6 +29,7 @@ export interface Member {
   updatedAt: string;      // ISO timestamp
   role: MemberRole;
   source: MemberSource;   // first point of contact
+  status?: "active" | "removed"; // omitted = active (backward compat)
   interests: string[];    // selected topic labels
   heardFrom?: string;     // how they found Future Together
   location?: string;      // city / region (optional)
@@ -82,9 +83,41 @@ export async function getAllMembers(): Promise<Member[]> {
   return members.sort((a, b) => a.joinedAt.localeCompare(b.joinedAt));
 }
 
+/** All members regardless of status. */
 export async function getMemberCount(): Promise<number> {
   const members = await getAllMembers();
   return members.length;
+}
+
+/** Active (non-removed) members only. */
+export async function getActiveMembers(): Promise<Member[]> {
+  const all = await getAllMembers();
+  return all.filter((m) => m.status !== "removed");
+}
+
+/** Soft-remove a member by email. The record is retained for data integrity. */
+export async function removeMember(
+  email: string,
+): Promise<{ success: boolean; error?: string }> {
+  const kv = await getKv();
+  const emailKey = email.toLowerCase().trim();
+  const existing = await getMemberByEmail(emailKey);
+
+  if (!existing) {
+    return { success: false, error: "Member not found" };
+  }
+  if (existing.status === "removed") {
+    return { success: false, error: "Member already removed" };
+  }
+
+  const updated: Member = {
+    ...existing,
+    status: "removed",
+    updatedAt: new Date().toISOString(),
+  };
+
+  const result = await kv.set(["member", emailKey], updated);
+  return result.ok ? { success: true } : { success: false, error: "KV write failed" };
 }
 
 // ---------------------------------------------------------------------------
