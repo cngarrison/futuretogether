@@ -2,12 +2,11 @@ import { App, staticFiles, trailingSlashes } from "fresh";
 import { define, type State } from "@/utils.ts";
 import PageLayout from "@/components/PageLayout.tsx";
 import StaffLayout from "@/components/StaffLayout.tsx";
+import { handleNotFound } from "@/components/NotFoundPage.tsx";
 
 export const app = new App<State>();
 
-app.notFound((ctx) => {
-  return new Response("Page not found", { status: 404 });
-});
+app.notFound(handleNotFound);
 
 app.use(staticFiles());
 app.use(trailingSlashes("never"));
