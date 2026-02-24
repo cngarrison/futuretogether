@@ -3,10 +3,12 @@ import { define, type State } from "@/utils.ts";
 import PageLayout from "@/components/PageLayout.tsx";
 import StaffLayout from "@/components/StaffLayout.tsx";
 import { handleNotFound } from "@/components/NotFoundPage.tsx";
+import { handleError } from "@/components/ErrorPage.tsx";
 
 export const app = new App<State>();
 
 app.notFound(handleNotFound);
+app.onError("*", handleError);
 
 app.use(staticFiles());
 app.use(trailingSlashes("never"));
