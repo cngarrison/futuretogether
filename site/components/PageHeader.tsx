@@ -100,6 +100,12 @@ export default function PageHeader({ currentPath }: HeaderProps) {
             menu?.classList.toggle('hidden');
           });
 
+          document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+              document.getElementById('mobile-menu')?.classList.add('hidden');
+            });
+          });
+
           // Add shadow on scroll; background is always teal
           const nav = document.getElementById('main-nav');
           function handleScroll() {
