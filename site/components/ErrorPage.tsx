@@ -16,7 +16,7 @@ export default function ErrorPage() {
         style="background-color: #1a5f6e; color: white;"
       >
         <p class="text-7xl font-extrabold mb-4 tracking-tight" style="opacity: 0.25;">
-          500
+          OOPS
         </p>
         <h1 class="text-3xl sm:text-4xl font-bold mb-4 leading-tight">
           Something went wrong on our end.
@@ -30,8 +30,8 @@ export default function ErrorPage() {
       {/* Body */}
       <div class="max-w-2xl mx-auto px-4 py-16 text-center">
         <p class="text-lg mb-10" style="color: #1c1a18;">
-          Try refreshing &mdash; it&rsquo;s usually a blip. If it keeps
-          happening, feel free to{" "}
+          Try refreshing &mdash; it&rsquo;s usually a blip. <br />
+          If it keeps happening, feel free to{" "}
           <a
             href="/contact"
             class="underline hover:no-underline"

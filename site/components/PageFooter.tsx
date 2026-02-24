@@ -28,7 +28,7 @@ export default function PageFooter() {
             </p>
             <a
               href="/join"
-              class="inline-block text-sm font-semibold text-amber border border-amber rounded px-4 py-2 hover:bg-amber hover:text-near-black transition-colors"
+              class="inline-block text-sm font-semibold text-accent border border-accent rounded px-4 py-2 hover:bg-accent hover:text-near-black transition-colors"
             >
               Join the community →
             </a>
@@ -99,7 +99,7 @@ export default function PageFooter() {
             </ul>
             <div class="border-t border-gray-800 pt-4">
               <a
-                href="https://www.linkedin.com/company/futuretogether"
+                href="https://www.linkedin.com/company/future-together"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
