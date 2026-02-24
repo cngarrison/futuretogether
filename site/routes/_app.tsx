@@ -56,6 +56,17 @@ export default define.page(function App({ Component, url }) {
           name="twitter:image"
           content="https://futuretogether.community/og-image.jpg"
         />
+        {/* Plausible analytics */}
+        <script
+          async
+          src="https://plausible.io/js/pa-QuyhlBGFIHqShvHGhAVtU.js"
+        />
+        <script>
+          {`
+		  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+		  plausible.init()
+		`}
+        </script>
       </head>
       <body f-client-nav>
         <Partial name="body">
