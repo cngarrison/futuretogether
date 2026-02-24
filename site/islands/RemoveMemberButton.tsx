@@ -44,28 +44,28 @@ export default function RemoveMemberButton({ memberId, memberEmail }: Props) {
   }
 
   if (state.value === "error") {
-    return (
-      <span class="text-xs text-red-600">{errorMsg.value}</span>
-    );
+    return <span class="text-xs text-red-600">{errorMsg.value}</span>;
   }
 
   if (state.value === "confirming") {
     return (
-      <div class="flex items-center gap-2">
+      <div class="flex flex-col items-left gap-2">
         <span class="text-xs text-gray-600">Remove {memberEmail}?</span>
-        <button
-          onClick={handleRemove}
-          class="text-xs px-2 py-1 rounded text-white"
-          style="background-color: #dc2626;"
-        >
-          Yes, remove
-        </button>
-        <button
-          onClick={() => state.value = "idle"}
-          class="text-xs px-2 py-1 rounded border border-gray-300 text-gray-600"
-        >
-          Cancel
-        </button>
+        <div class="flex items-center gap-2">
+          <button
+            onClick={handleRemove}
+            class="text-xs px-2 py-1 rounded text-white"
+            style="background-color: #dc2626;"
+          >
+            Yes, remove
+          </button>
+          <button
+            onClick={() => state.value = "idle"}
+            class="text-xs px-2 py-1 rounded border border-gray-300 text-gray-600"
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     );
   }
