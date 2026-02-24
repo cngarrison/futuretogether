@@ -2,9 +2,10 @@ import type { FreshContext } from "fresh";
 import type { State } from "@/utils.ts";
 
 export function handleError(ctx: FreshContext<State>) {
-  // ctx.error is set by Fresh before invoking this handler
-  console.error(`[500] ${ctx.req.url}`, ctx.error);
-  return ctx.render(<ErrorPage />, { status: 500 });
+  // ctx.error is set by Fresh before invoking this handler  
+  const status = ctx.error.status || 500;
+  console.error(`[${status}] ${ctx.req.url}`, ctx.error);
+  return ctx.render(<ErrorPage />, { status });
 }
 
 export default function ErrorPage() {
