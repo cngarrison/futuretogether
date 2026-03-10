@@ -4,11 +4,14 @@ import { getKv } from "./kv.ts";
 /**
  * EVENT SYSTEM ARCHITECTURE
  *
- * Similar to blog system:
- * - YAML config files in /events/ directory
- * - Loaded into Deno.KV on startup via middleware
- * - Support multiple date instances per event type
- * - Auto-switch to next available event based on capacity/deadline
+ * Event configs (YAML files) are loaded into an in-memory Map on first use.
+ * This is fast (~1ms, local filesystem reads) and avoids unnecessary KV
+ * round trips for static data that doesn't change between deploys.
+ *
+ * A promise lock ensures concurrent requests during cold start all await
+ * the same single load operation, rather than racing to build the cache.
+ *
+ * Deno KV is used only for runtime-mutable data: registrations.
  */
 
 const EVENTS_DIR = "./events";
@@ -54,93 +57,93 @@ export interface Registration {
   };
 }
 
-// Initialize or reset the event cache
-export async function initializeEventCache() {
-  console.log("events.ts: Starting event cache initialization");
-  const kv = await getKv();
+// ---------------------------------------------------------------------------
+// In-memory event config cache
+// ---------------------------------------------------------------------------
 
-  // Clear all event indexes
-  const eventsToDelete = kv.list({ prefix: ["event"] });
-  for await (const entry of eventsToDelete) {
-    await kv.delete(entry.key);
-  }
+let eventCache: Map<string, EventConfig> | null = null;
+// Promise lock: all concurrent callers await the same load operation.
+// Prevents partial/empty cache being returned during cold-start races.
+let cachePromise: Promise<Map<string, EventConfig>> | null = null;
 
-  const slugsToDelete = kv.list({ prefix: ["event_slug"] });
-  for await (const entry of slugsToDelete) {
-    await kv.delete(entry.key);
-  }
+/**
+ * Returns the in-memory event cache, loading from YAML files if needed.
+ * Safe to call concurrently — all callers share a single load promise and
+ * only read from disk once per isolate lifetime.
+ */
+async function getEventCache(): Promise<Map<string, EventConfig>> {
+  if (eventCache) return eventCache;
+  if (!cachePromise) cachePromise = loadEventCache();
+  return cachePromise;
+}
 
-  // Load all event configs into KV
+async function loadEventCache(): Promise<Map<string, EventConfig>> {
+  const cache = new Map<string, EventConfig>();
+
   try {
     for await (const entry of Deno.readDir(EVENTS_DIR)) {
       if (!entry.isFile || !entry.name.endsWith(".yaml")) continue;
-      await cacheEvent(entry.name);
+      try {
+        const content = await Deno.readTextFile(
+          `${EVENTS_DIR}/${entry.name}`,
+        );
+        const config = parseYaml(content) as EventConfig;
+
+        // Ensure date is a string for consistent handling
+        if (config.date && typeof config.date !== "string") {
+          config.date = (config.date as unknown as Date).toISOString();
+        }
+
+        if (!config.id || !config.slug || !config.date) {
+          console.error(`Invalid event config: ${entry.name}`);
+          continue;
+        }
+
+        cache.set(config.id, config);
+      } catch (err) {
+        console.error(`Error loading event ${entry.name}:`, err);
+      }
     }
   } catch (error) {
     console.error("Error reading events directory:", error);
   }
 
-  console.log("events.ts: Event cache initialization complete");
+  // Only assign to the module-level ref once fully built.
+  // Subsequent calls hit the fast path before reaching the promise check.
+  eventCache = cache;
+  return cache;
 }
 
-// Cache a single event configuration
-async function cacheEvent(filename: string) {
-  try {
-    const content = await Deno.readTextFile(`${EVENTS_DIR}/${filename}`);
-    const config = parseYaml(content) as EventConfig;
-
-    // Ensure date is a string for consistent handling
-    if (config.date && typeof config.date !== "string") {
-      config.date = (config.date as unknown as Date).toISOString();
-    }
-
-    if (!config.id || !config.slug || !config.date) {
-      console.error(`Invalid event config: ${filename}`);
-      return;
-    }
-
-    const kv = await getKv();
-    const atomic = kv.atomic();
-
-    // Store event by ID
-    atomic.set(["event", config.id], config);
-
-    // Store event ID under slug for lookup
-    // Multiple dates can share the same slug
-    atomic.set(["event_slug", config.slug, config.id], config.id);
-
-    await atomic.commit();
-    console.log(`Cached event: ${config.id}`);
-  } catch (error) {
-    console.error(`Error caching event ${filename}:`, error);
-  }
-}
+// ---------------------------------------------------------------------------
+// Public read API (event configs — from memory)
+// ---------------------------------------------------------------------------
 
 // Get event by ID
 export async function getEventById(id: string): Promise<EventConfig | null> {
-  const kv = await getKv();
-  const result = await kv.get<EventConfig>(["event", id]);
-  return result.value;
+  const cache = await getEventCache();
+  return cache.get(id) ?? null;
 }
 
-// Get all events for a given slug, sorted by date
+// Get all events for a given slug, sorted by date (earliest first)
 export async function getEventsBySlug(slug: string): Promise<EventConfig[]> {
-  const kv = await getKv();
+  const cache = await getEventCache();
   const events: EventConfig[] = [];
 
-  // List all event IDs for this slug
-  const iter = kv.list<string>({ prefix: ["event_slug", slug] });
-
-  for await (const { value: eventId } of iter) {
-    const event = await getEventById(eventId);
-    if (event) {
-      events.push(event);
-    }
+  for (const event of cache.values()) {
+    if (event.slug === slug) events.push(event);
   }
 
-  // Sort by date (earliest first)
-  return events.sort((a, b) =>
-    new Date(a.date).getTime() - new Date(b.date).getTime()
+  return events.sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+  );
+}
+
+// Get all events (for admin dashboard), sorted by date (most recent first)
+export async function getAllEvents(): Promise<EventConfig[]> {
+  const cache = await getEventCache();
+  const events = [...cache.values()];
+  return events.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 }
 
@@ -173,24 +176,9 @@ export async function getNextAvailableEvent(
   return null;
 }
 
-// Get all events (for admin dashboard)
-export async function getAllEvents(): Promise<EventConfig[]> {
-  const kv = await getKv();
-  const events: EventConfig[] = [];
-
-  const iter = kv.list<EventConfig>({ prefix: ["event"] });
-
-  for await (const { value: event } of iter) {
-    events.push(event);
-  }
-
-  // Sort by date (most recent first for admin view)
-  return events.sort((a, b) =>
-    new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
-}
-
-// Registration Management
+// ---------------------------------------------------------------------------
+// Registration Management (KV — runtime-mutable data)
+// ---------------------------------------------------------------------------
 
 // Create a new registration
 export async function createRegistration(
@@ -311,7 +299,8 @@ export async function getEventRegistrations(
 
   // Sort by timestamp (most recent first)
   return registrations.sort(
-    (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
+    (a, b) =>
+      new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
   );
 }
 
@@ -384,7 +373,6 @@ export async function updateReminderSent(
 export async function getRegistrationsNeedingReminder(
   reminderType: "day_before" | "hour_before",
 ): Promise<Array<{ event: EventConfig; registration: Registration }>> {
-  const kv = await getKv();
   const results: Array<{ event: EventConfig; registration: Registration }> = [];
 
   // Get all active events
@@ -395,8 +383,8 @@ export async function getRegistrationsNeedingReminder(
     if (!event.isActive) continue;
 
     const eventDate = new Date(event.date);
-    const hoursBefore = (eventDate.getTime() - now.getTime()) /
-      (1000 * 60 * 60);
+    const hoursBefore =
+      (eventDate.getTime() - now.getTime()) / (1000 * 60 * 60);
 
     // Check if it's time for this reminder type
     let shouldSend = false;
