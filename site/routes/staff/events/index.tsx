@@ -2,6 +2,7 @@ import { define } from "@/utils.ts";
 import { page } from "fresh";
 import { getActiveRegistrationCount, getAllEvents } from "@/utils/events.ts";
 import type { EventConfig } from "@/utils/events.ts";
+import ReminderTrigger from "@/islands/ReminderTrigger.tsx";
 
 /**
  * Staff events list — Fresh v2
@@ -94,6 +95,11 @@ export default define.page<typeof handler>(function StaffEventsPage({ data }) {
               </div>
               <div class="text-gray-600">Active Registrations</div>
             </div>
+          </div>
+
+          {/* Reminder tools */}
+          <div class="mb-8">
+            <ReminderTrigger />
           </div>
 
           {/* Upcoming events */}
