@@ -6,17 +6,21 @@ import { handleNotFound } from "@/components/NotFoundPage.tsx";
 import { handleError } from "@/components/ErrorPage.tsx";
 import { sendReminders } from "@/utils/cron.ts";
 
-// Event reminder cron jobs (Deno Deploy native scheduling)
-Deno.cron(
-  "day-before reminders",
-  "0 * * * *",
-  () => sendReminders("day_before"),
-);
-Deno.cron(
-  "hour-before reminders",
-  "0 * * * *",
-  () => sendReminders("hour_before"),
-);
+try {
+  // Event reminder cron jobs (Deno Deploy native scheduling)
+  Deno.cron(
+    "day-before reminders",
+    "0 * * * *",
+    () => sendReminders("day_before"),
+  );
+  Deno.cron(
+    "hour-before reminders",
+    "0 * * * *",
+    () => sendReminders("hour_before"),
+  );
+} catch (error) {
+  console.error("Couldn't set cron jobs: ", error.message);
+}
 
 export const app = new App<State>();
 
