@@ -54,7 +54,9 @@ export default define.page(function StaffIndex() {
               class="block bg-white p-6 rounded-lg border-2 hover:shadow-md transition-all"
               style="border-color: #1a5f6e;"
             >
-              <h2 class="text-xl font-bold text-gray-900 mb-2">Email Members</h2>
+              <h2 class="text-xl font-bold text-gray-900 mb-2">
+                Email Members
+              </h2>
               <p class="text-gray-600">
                 Compose and send a Markdown email to all active community
                 members via Resend.

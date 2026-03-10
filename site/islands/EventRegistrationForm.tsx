@@ -330,7 +330,8 @@ export default function EventRegistrationForm({
               Also join the Future Together community
             </span>
             <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
-              Stay in the loop beyond this event — meetup invites, new posts, community updates.
+              Stay in the loop beyond this event — meetup invites, new posts,
+              community updates.
             </p>
           </div>
         </label>

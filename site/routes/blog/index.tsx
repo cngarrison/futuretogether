@@ -103,7 +103,16 @@ export default define.page(async function Blog() {
                   style="color: #1a5f6e;"
                 >
                   Read more
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </a>

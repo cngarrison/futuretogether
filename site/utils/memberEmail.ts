@@ -46,30 +46,46 @@ export async function sendMemberAdminNotification(
       </tr>
       <tr>
         <td style="padding:10px 0;border-bottom:1px solid #e8e3db;"><strong>Role</strong></td>
-        <td style="padding:10px 0 10px 16px;border-bottom:1px solid #e8e3db;">${isOrganiser ? "⭐ Organiser" : "Member"}</td>
+        <td style="padding:10px 0 10px 16px;border-bottom:1px solid #e8e3db;">${
+    isOrganiser ? "⭐ Organiser" : "Member"
+  }</td>
       </tr>
       <tr>
         <td style="padding:10px 0;border-bottom:1px solid #e8e3db;"><strong>Source</strong></td>
-        <td style="padding:10px 0 10px 16px;border-bottom:1px solid #e8e3db;">${member.source === "join_form" ? "Join page" : "Event registration"}</td>
+        <td style="padding:10px 0 10px 16px;border-bottom:1px solid #e8e3db;">${
+    member.source === "join_form" ? "Join page" : "Event registration"
+  }</td>
       </tr>
-      ${member.location ? `
+      ${
+    member.location
+      ? `
       <tr>
         <td style="padding:10px 0;border-bottom:1px solid #e8e3db;"><strong>Location</strong></td>
         <td style="padding:10px 0 10px 16px;border-bottom:1px solid #e8e3db;">${member.location}</td>
-      </tr>` : ""}
-      ${member.heardFrom ? `
+      </tr>`
+      : ""
+  }
+      ${
+    member.heardFrom
+      ? `
       <tr>
         <td style="padding:10px 0;border-bottom:1px solid #e8e3db;"><strong>Found us via</strong></td>
         <td style="padding:10px 0 10px 16px;border-bottom:1px solid #e8e3db;">${member.heardFrom}</td>
-      </tr>` : ""}
+      </tr>`
+      : ""
+  }
     </table>
     <h3 style="margin:24px 0 8px;color:#1c1a18;">Interests</h3>
     <ul style="margin:0;padding-left:20px;color:#374151;line-height:1.8;">${interestsList}</ul>
-    ${isOrganiser ? `
+    ${
+    isOrganiser
+      ? `
     <div style="margin-top:24px;padding:16px;background:#fef9ec;border-left:4px solid #c4853a;border-radius:4px;">
       <strong style="color:#c4853a;">Action needed:</strong> This person wants to run a local group.
       Consider reaching out to welcome them and share organiser resources.
-    </div>` : ""}`;
+    </div>`
+      : ""
+  }`;
 
   await sendEmail({
     to: contactEmail,
@@ -98,7 +114,9 @@ export async function sendMemberWelcomeEmail(member: Member): Promise<void> {
       this community exists.
     </p>
 
-    ${isOrganiser ? `
+    ${
+    isOrganiser
+      ? `
     <div style="margin:24px 0;padding:20px;background:#f0f8fa;border-left:4px solid #1a5f6e;border-radius:4px;">
       <p style="margin:0 0 8px;font-weight:600;color:#1a5f6e;">You mentioned wanting to run a local group — brilliant.</p>
       <p style="margin:0;color:#374151;">
@@ -106,7 +124,9 @@ export async function sendMemberWelcomeEmail(member: Member): Promise<void> {
         our <a href="${SITE_URL}/start-a-group" style="color:#1a5f6e;">Start a Group guide</a>
         covers everything from finding your first attendees to running your first session.
       </p>
-    </div>` : ""}
+    </div>`
+      : ""
+  }
 
     <h3 style="margin:28px 0 12px;color:#1c1a18;font-size:16px;">What happens next</h3>
     <ul style="margin:0 0 24px;padding-left:20px;color:#374151;line-height:1.8;">

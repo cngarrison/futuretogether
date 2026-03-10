@@ -1,5 +1,10 @@
 import { FreshContext } from "fresh";
-import { buildEmailHtml, FROM_EMAIL, FROM_NAME, sendEmail } from "@/utils/email.ts";
+import {
+  buildEmailHtml,
+  FROM_EMAIL,
+  FROM_NAME,
+  sendEmail,
+} from "@/utils/email.ts";
 
 interface ContactFormData {
   name: string;
@@ -35,14 +40,29 @@ export const handler = async (ctx: FreshContext) => {
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
         <tr><td style="padding:10px 0;border-bottom:1px solid #e8e3db;"><strong>Name</strong></td><td style="padding:10px 0 10px 16px;border-bottom:1px solid #e8e3db;">${data.name}</td></tr>
         <tr><td style="padding:10px 0;border-bottom:1px solid #e8e3db;"><strong>Email</strong></td><td style="padding:10px 0 10px 16px;border-bottom:1px solid #e8e3db;"><a href="mailto:${data.email}">${data.email}</a></td></tr>
-        ${data.topic ? `<tr><td style="padding:10px 0;border-bottom:1px solid #e8e3db;"><strong>Topic</strong></td><td style="padding:10px 0 10px 16px;border-bottom:1px solid #e8e3db;">${data.topic}</td></tr>` : ""}
-        ${data.heard_from ? `<tr><td style="padding:10px 0;border-bottom:1px solid #e8e3db;"><strong>Found us via</strong></td><td style="padding:10px 0 10px 16px;border-bottom:1px solid #e8e3db;">${data.heard_from}</td></tr>` : ""}
-        ${data.source ? `<tr><td style="padding:10px 0;"><strong>Source</strong></td><td style="padding:10px 0 10px 16px;">${data.source}</td></tr>` : ""}
+        ${
+      data.topic
+        ? `<tr><td style="padding:10px 0;border-bottom:1px solid #e8e3db;"><strong>Topic</strong></td><td style="padding:10px 0 10px 16px;border-bottom:1px solid #e8e3db;">${data.topic}</td></tr>`
+        : ""
+    }
+        ${
+      data.heard_from
+        ? `<tr><td style="padding:10px 0;border-bottom:1px solid #e8e3db;"><strong>Found us via</strong></td><td style="padding:10px 0 10px 16px;border-bottom:1px solid #e8e3db;">${data.heard_from}</td></tr>`
+        : ""
+    }
+        ${
+      data.source
+        ? `<tr><td style="padding:10px 0;"><strong>Source</strong></td><td style="padding:10px 0 10px 16px;">${data.source}</td></tr>`
+        : ""
+    }
       </table>
       <h3 style="margin:24px 0 8px;color:#1c1a18;">Message</h3>
       <p style="margin:0;white-space:pre-wrap;color:#374151;line-height:1.6;">${
-        data.message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-      }</p>`;
+      data.message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(
+        />/g,
+        "&gt;",
+      )
+    }</p>`;
 
     const adminOk = await sendEmail({
       to: contactEmail,
@@ -79,7 +99,10 @@ export const handler = async (ctx: FreshContext) => {
     sendEmail({
       to: data.email,
       subject: `We got your message — ${FROM_NAME}`,
-      html: buildEmailHtml(confirmHtml, `Thanks for reaching out to ${FROM_NAME}.`),
+      html: buildEmailHtml(
+        confirmHtml,
+        `Thanks for reaching out to ${FROM_NAME}.`,
+      ),
     }).catch((err) => console.error("Contact confirmation email error:", err));
 
     return new Response(JSON.stringify({ success: true }), {

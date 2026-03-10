@@ -349,8 +349,7 @@ export async function getEventRegistrations(
 
   // Sort by timestamp (most recent first)
   return registrations.sort(
-    (a, b) =>
-      new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
+    (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
   );
 }
 
@@ -437,8 +436,8 @@ export async function getRegistrationsNeedingReminder(
     if (!event.isActive) continue;
 
     const eventDate = new Date(event.date);
-    const hoursBefore =
-      (eventDate.getTime() - now.getTime()) / (1000 * 60 * 60);
+    const hoursBefore = (eventDate.getTime() - now.getTime()) /
+      (1000 * 60 * 60);
 
     // Check if it's time for this reminder type
     let shouldSend = false;

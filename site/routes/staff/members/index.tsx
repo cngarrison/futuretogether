@@ -160,8 +160,10 @@ export default define.page<typeof handler>(function StaffMembersPage(
                               </span>
                             )
                             : (
-                              <span class="px-2 py-1 text-xs font-semibold rounded-full bg-teal-100"
-                                style="color: #1a5f6e;">
+                              <span
+                                class="px-2 py-1 text-xs font-semibold rounded-full bg-teal-100"
+                                style="color: #1a5f6e;"
+                              >
                                 Member
                               </span>
                             )}
@@ -259,7 +261,9 @@ export default define.page<typeof handler>(function StaffMembersPage(
                           {formatDate(member.joinedAt)}
                         </td>
                         <td class="px-4 py-3 text-sm text-gray-400">
-                          {member.source === "join_form" ? "Join form" : "Event"}
+                          {member.source === "join_form"
+                            ? "Join form"
+                            : "Event"}
                         </td>
                       </tr>
                     ))}

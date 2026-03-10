@@ -192,7 +192,9 @@ export const handler = define.handlers({
     if (testOnly) {
       const testConfig = getTestConfig();
       const interpolated = interpolate(markdownTrimmed, testConfig.vars);
-      const contentHtml = marked.parse(interpolated, { async: false }) as string;
+      const contentHtml = marked.parse(interpolated, {
+        async: false,
+      }) as string;
       const emailHtml = buildEmailHtml(contentHtml, `[TEST] ${subjectTrimmed}`);
 
       const { sent, failed } = await sendResendBatch([{
@@ -203,7 +205,9 @@ export const handler = define.handlers({
       }]);
 
       await logStaffAccess(
-        `[${new Date().toISOString()}] Test email: "${subjectTrimmed}" → ${testConfig.to}`,
+        `[${
+          new Date().toISOString()
+        }] Test email: "${subjectTrimmed}" → ${testConfig.to}`,
       );
 
       return new Response(
@@ -258,7 +262,9 @@ export const handler = define.handlers({
     });
 
     await logStaffAccess(
-      `[${new Date().toISOString()}] Bulk email: "${subjectTrimmed}" — ${sent}/${total} sent, ${failed} failed`,
+      `[${
+        new Date().toISOString()
+      }] Bulk email: "${subjectTrimmed}" — ${sent}/${total} sent, ${failed} failed`,
     );
 
     return new Response(

@@ -72,7 +72,9 @@ export async function sendConfirmationEmail(
   const content = `
     <p style="margin:0 0 20px;font-size:17px;color:#1c1a18;">Hi ${attendee.firstName},</p>
     <p style="margin:0 0 24px;color:#374151;">
-      You're registered for <strong>${event.title}</strong>${event.presentedBy ? ` with ${event.presentedBy}` : ""}.
+      You're registered for <strong>${event.title}</strong>${
+    event.presentedBy ? ` with ${event.presentedBy}` : ""
+  }.
       We're looking forward to having you join the conversation.
     </p>
 
@@ -88,14 +90,22 @@ export async function sendConfirmationEmail(
           <td style="padding:8px 0 8px 16px;border-bottom:1px solid #d0e4e7;color:#374151;">${event.duration} minutes</td>
         </tr>
         <tr class="detail-row">
-          <td style="padding:8px 0;${event.presentedBy ? "border-bottom:1px solid #d0e4e7;" : ""}color:#374151;font-weight:600;">Format</td>
-          <td style="padding:8px 0 8px 16px;${event.presentedBy ? "border-bottom:1px solid #d0e4e7;" : ""}color:#374151;">Online via Google Meet</td>
+          <td style="padding:8px 0;${
+    event.presentedBy ? "border-bottom:1px solid #d0e4e7;" : ""
+  }color:#374151;font-weight:600;">Format</td>
+          <td style="padding:8px 0 8px 16px;${
+    event.presentedBy ? "border-bottom:1px solid #d0e4e7;" : ""
+  }color:#374151;">Online via Google Meet</td>
         </tr>
-        ${event.presentedBy ? `
+        ${
+    event.presentedBy
+      ? `
         <tr>
           <td style="padding:8px 0;color:#374151;font-weight:600;">Presented by</td>
           <td style="padding:8px 0 8px 16px;color:#374151;">${event.presentedBy}</td>
-        </tr>` : ""}
+        </tr>`
+      : ""
+  }
       </table>
     </div>
 
@@ -143,7 +153,10 @@ Future Together — futuretogether.community`;
   return await sendEmail({
     to: attendee.email,
     subject: `Confirmed: ${event.title} \u2014 ${formattedDate}`,
-    html: buildEmailHtml(content, `You're registered for ${event.title} on ${formattedDate}.`),
+    html: buildEmailHtml(
+      content,
+      `You're registered for ${event.title} on ${formattedDate}.`,
+    ),
     text,
     attachments: [{
       filename: "event.ics",
@@ -165,7 +178,9 @@ export async function sendReminderEmail(
   const { attendee } = registration;
   const formattedDate = formatEventDate(event.date, event.timezone);
   const timeUntil = reminderType === "day_before" ? "24 hours" : "1 hour";
-  const subjectPrefix = reminderType === "day_before" ? "Tomorrow:" : "Starting soon:";
+  const subjectPrefix = reminderType === "day_before"
+    ? "Tomorrow:"
+    : "Starting soon:";
 
   const content = `
     <p style="margin:0 0 20px;font-size:17px;color:#1c1a18;">Hi ${attendee.firstName},</p>
@@ -199,7 +214,10 @@ Future Together — futuretogether.community`;
   return await sendEmail({
     to: attendee.email,
     subject: `${subjectPrefix} ${event.title}`,
-    html: buildEmailHtml(content, `${event.title} is starting in ${timeUntil}.`),
+    html: buildEmailHtml(
+      content,
+      `${event.title} is starting in ${timeUntil}.`,
+    ),
     text,
   });
 }

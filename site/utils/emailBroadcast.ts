@@ -11,10 +11,10 @@ import { getKv } from "./kv.ts";
 export interface EmailBroadcast {
   id: string;
   subject: string;
-  markdown: string;         // source content; HTML is derived on demand
-  sentAt: string;           // ISO timestamp
-  total: number;            // members in list at time of send
-  sent: number;             // confirmed delivered by Resend
+  markdown: string; // source content; HTML is derived on demand
+  sentAt: string; // ISO timestamp
+  total: number; // members in list at time of send
+  sent: number; // confirmed delivered by Resend
   failed: number;
   recipientEmails: string[]; // snapshot of who received it
 }

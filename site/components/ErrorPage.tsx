@@ -2,7 +2,7 @@ import type { FreshContext } from "fresh";
 import type { State } from "@/utils.ts";
 
 export function handleError(ctx: FreshContext<State>) {
-  // ctx.error is set by Fresh before invoking this handler  
+  // ctx.error is set by Fresh before invoking this handler
   const status = ctx.error.status || 500;
   console.error(`[${status}] ${ctx.req.url}`, ctx.error);
   return ctx.render(<ErrorPage />, { status });
@@ -16,15 +16,18 @@ export default function ErrorPage() {
         class="pt-32 pb-20 px-4 text-center"
         style="background-color: #1a5f6e; color: white;"
       >
-        <p class="text-7xl font-extrabold mb-4 tracking-tight" style="opacity: 0.25;">
+        <p
+          class="text-7xl font-extrabold mb-4 tracking-tight"
+          style="opacity: 0.25;"
+        >
           OOPS
         </p>
         <h1 class="text-3xl sm:text-4xl font-bold mb-4 leading-tight">
           Something went wrong on our end.
         </h1>
         <p class="text-lg sm:text-xl max-w-xl mx-auto" style="opacity: 0.85;">
-          The server had an unexpected moment. Unlike the disruptions
-          we prepare for, this one isn&rsquo;t your fault.
+          The server had an unexpected moment. Unlike the disruptions we prepare
+          for, this one isn&rsquo;t your fault.
         </p>
       </div>
 

@@ -37,7 +37,6 @@ export default define.page<typeof handler>(function BroadcastDetail({ data }) {
     <div class="min-h-screen bg-gray-100">
       <div class="max-w-3xl mx-auto px-4 py-12">
         <div class="bg-white rounded-lg shadow-lg p-8">
-
           {/* Header */}
           <div class="flex justify-between items-start mb-6">
             <div class="flex-1 min-w-0 pr-4">
@@ -48,8 +47,12 @@ export default define.page<typeof handler>(function BroadcastDetail({ data }) {
               >
                 ← All emails
               </a>
-              <h1 class="text-xl font-bold text-gray-900 truncate">{broadcast.subject}</h1>
-              <p class="text-sm text-gray-500 mt-1">{formatDate(broadcast.sentAt)}</p>
+              <h1 class="text-xl font-bold text-gray-900 truncate">
+                {broadcast.subject}
+              </h1>
+              <p class="text-sm text-gray-500 mt-1">
+                {formatDate(broadcast.sentAt)}
+              </p>
             </div>
             <a
               href={`/staff/emails/compose?from=${broadcast.id}`}
@@ -61,7 +64,10 @@ export default define.page<typeof handler>(function BroadcastDetail({ data }) {
           </div>
 
           {/* Delivery stats */}
-          <div class="flex gap-6 p-4 rounded-md mb-8 text-sm" style="background-color: #f7f4ef;">
+          <div
+            class="flex gap-6 p-4 rounded-md mb-8 text-sm"
+            style="background-color: #f7f4ef;"
+          >
             <div>
               <span class="font-semibold text-gray-800">{broadcast.total}</span>
               <span class="text-gray-500 ml-1">recipients</span>
@@ -72,7 +78,9 @@ export default define.page<typeof handler>(function BroadcastDetail({ data }) {
             </div>
             {broadcast.failed > 0 && (
               <div>
-                <span class="font-semibold text-red-600">{broadcast.failed}</span>
+                <span class="font-semibold text-red-600">
+                  {broadcast.failed}
+                </span>
                 <span class="text-gray-500 ml-1">failed</span>
               </div>
             )}
@@ -104,7 +112,6 @@ export default define.page<typeof handler>(function BroadcastDetail({ data }) {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </div>

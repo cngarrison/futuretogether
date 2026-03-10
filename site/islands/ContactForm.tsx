@@ -113,7 +113,13 @@ export default function ContactForm({
       if (!response.ok) throw new Error(await response.text());
 
       setStatus("success");
-      setFormData({ name: "", email: "", topic: "", heard_from: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        topic: "",
+        heard_from: "",
+        message: "",
+      });
       onSuccess?.();
     } catch (error) {
       setStatus("error");
@@ -228,8 +234,7 @@ export default function ContactForm({
           </label>
           <textarea
             value={formData.message}
-            onChange={(e) =>
-              handleChange("message", e.currentTarget.value)}
+            onChange={(e) => handleChange("message", e.currentTarget.value)}
             placeholder="What's on your mind? A question, an idea, or just a hello — all welcome."
             rows={4}
             class={`${inputClass} resize-none`}
@@ -276,7 +281,9 @@ export default function ContactForm({
           type="submit"
           disabled={status === "loading"}
           class={`w-full text-white font-semibold py-3 px-6 rounded-xl transition-opacity ${
-            status === "loading" ? "opacity-60 cursor-not-allowed" : "hover:opacity-90"
+            status === "loading"
+              ? "opacity-60 cursor-not-allowed"
+              : "hover:opacity-90"
           }`}
           style="background-color: #1a5f6e;"
         >

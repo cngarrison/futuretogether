@@ -50,7 +50,9 @@ export const handler = define.handlers<LoginData>({
     const timestamp = new Date().toISOString();
 
     if (isRateLimited(ip)) {
-      await logStaffAccess(`[${timestamp}] Login blocked (rate limited) from ${ip}`);
+      await logStaffAccess(
+        `[${timestamp}] Login blocked (rate limited) from ${ip}`,
+      );
       return page({ error: "Too many attempts. Please try again later." });
     }
 

@@ -30,7 +30,10 @@ export default function ResourceSuggestionForm() {
     const why = (data.get("why") as string ?? "").trim();
 
     if (!url || !title || !why) {
-      state.value = { status: "error", errorMessage: "Please fill in all required fields." };
+      state.value = {
+        status: "error",
+        errorMessage: "Please fill in all required fields.",
+      };
       return;
     }
 
@@ -55,10 +58,17 @@ export default function ResourceSuggestionForm() {
         form.reset();
       } else {
         const text = await res.text();
-        state.value = { status: "error", errorMessage: text || "Something went wrong. Please try again." };
+        state.value = {
+          status: "error",
+          errorMessage: text || "Something went wrong. Please try again.",
+        };
       }
     } catch {
-      state.value = { status: "error", errorMessage: "Network error. Please check your connection and try again." };
+      state.value = {
+        status: "error",
+        errorMessage:
+          "Network error. Please check your connection and try again.",
+      };
     }
   };
 
@@ -76,7 +86,9 @@ export default function ResourceSuggestionForm() {
         >
           ✓
         </div>
-        <h3 class="text-lg font-bold mb-2" style="color: #1c1a18;">Thanks for the suggestion!</h3>
+        <h3 class="text-lg font-bold mb-2" style="color: #1c1a18;">
+          Thanks for the suggestion!
+        </h3>
         <p class="text-sm leading-relaxed" style="color: rgba(28,26,24,0.7);">
           We'll take a look and add it to the list if it's a good fit.
         </p>
@@ -87,8 +99,12 @@ export default function ResourceSuggestionForm() {
   const isSubmitting = status === "submitting";
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} class="flex flex-col gap-5" noValidate>
-
+    <form
+      ref={formRef}
+      onSubmit={handleSubmit}
+      class="flex flex-col gap-5"
+      noValidate
+    >
       {/* URL */}
       <div>
         <label
@@ -162,7 +178,10 @@ export default function ResourceSuggestionForm() {
           class="block text-sm font-semibold mb-1.5"
           style="color: #1c1a18;"
         >
-          Suggested category <span class="font-normal" style="color: rgba(28,26,24,0.45);">— optional</span>
+          Suggested category{" "}
+          <span class="font-normal" style="color: rgba(28,26,24,0.45);">
+            — optional
+          </span>
         </label>
         <div class="relative">
           <select
@@ -179,7 +198,17 @@ export default function ResourceSuggestionForm() {
             class="pointer-events-none absolute inset-y-0 right-3 flex items-center"
             style="color: rgba(28,26,24,0.4);"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
               <polyline points="6 9 12 15 18 9" />
             </svg>
           </span>
@@ -194,7 +223,10 @@ export default function ResourceSuggestionForm() {
             class="block text-sm font-semibold mb-1.5"
             style="color: #1c1a18;"
           >
-            Your name <span class="font-normal" style="color: rgba(28,26,24,0.45);">— optional</span>
+            Your name{" "}
+            <span class="font-normal" style="color: rgba(28,26,24,0.45);">
+              — optional
+            </span>
           </label>
           <input
             id="suggest-name"
@@ -212,7 +244,10 @@ export default function ResourceSuggestionForm() {
             class="block text-sm font-semibold mb-1.5"
             style="color: #1c1a18;"
           >
-            Your email <span class="font-normal" style="color: rgba(28,26,24,0.45);">— optional</span>
+            Your email{" "}
+            <span class="font-normal" style="color: rgba(28,26,24,0.45);">
+              — optional
+            </span>
           </label>
           <input
             id="suggest-email"
@@ -228,7 +263,10 @@ export default function ResourceSuggestionForm() {
 
       {/* Error */}
       {status === "error" && errorMessage && (
-        <p class="text-sm rounded-lg px-4 py-3" style="background-color: #fef2f2; color: #991b1b; border: 1px solid #fecaca;">
+        <p
+          class="text-sm rounded-lg px-4 py-3"
+          style="background-color: #fef2f2; color: #991b1b; border: 1px solid #fecaca;"
+        >
           {errorMessage}
         </p>
       )}
@@ -240,18 +278,28 @@ export default function ResourceSuggestionForm() {
         class="inline-flex items-center justify-center gap-2 w-full px-6 py-3 text-white font-semibold rounded-xl transition-opacity hover:opacity-90 disabled:opacity-60"
         style="background-color: #c4853a;"
       >
-        {isSubmitting ? (
-          <>
-            <svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-            </svg>
-            Sending…
-          </>
-        ) : (
-          "Submit suggestion →"
-        )}
+        {isSubmitting
+          ? (
+            <>
+              <svg
+                class="animate-spin"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                aria-hidden="true"
+              >
+                <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+              </svg>
+              Sending…
+            </>
+          )
+          : (
+            "Submit suggestion →"
+          )}
       </button>
-
     </form>
   );
 }

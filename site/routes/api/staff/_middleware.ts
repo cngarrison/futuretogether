@@ -16,7 +16,9 @@ export const handler = define.middleware(async (ctx) => {
   if (!staffSession || !expectedHash || staffSession !== expectedHash) {
     const ip = ctx.req.headers.get("x-forwarded-for") || "unknown";
     await logStaffAccess(
-      `[${new Date().toISOString()}] Unauthorized API attempt: ${url.pathname} from ${ip}`,
+      `[${
+        new Date().toISOString()
+      }] Unauthorized API attempt: ${url.pathname} from ${ip}`,
     );
     return new Response(JSON.stringify({ error: "Unauthorized" }), {
       status: 401,

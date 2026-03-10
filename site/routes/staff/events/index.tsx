@@ -1,9 +1,6 @@
 import { define } from "@/utils.ts";
 import { page } from "fresh";
-import {
-  getAllEvents,
-  getActiveRegistrationCount,
-} from "@/utils/events.ts";
+import { getActiveRegistrationCount, getAllEvents } from "@/utils/events.ts";
 import type { EventConfig } from "@/utils/events.ts";
 
 /**

@@ -6,8 +6,8 @@ const SLIDESHOW_URL =
 
 export default define.page(function Slideshow() {
   return (
-     <>
-     <Head>
+    <>
+      <Head>
         <title>Meetup Slideshow — Future Together</title>
         <meta
           name="description"
@@ -66,6 +66,6 @@ export default define.page(function Slideshow() {
           />
         </div>
       </div>
-      </>
+    </>
   );
 });

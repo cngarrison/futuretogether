@@ -23,7 +23,6 @@ export default define.page(async function EmailList() {
     <div class="min-h-screen bg-gray-100">
       <div class="max-w-4xl mx-auto px-4 py-12">
         <div class="bg-white rounded-lg shadow-lg p-8">
-
           {/* Header */}
           <div class="flex justify-between items-start mb-8">
             <div>
@@ -31,7 +30,9 @@ export default define.page(async function EmailList() {
               <p class="text-sm text-gray-500 mt-1">
                 {broadcasts.length === 0
                   ? "No emails sent yet"
-                  : `${broadcasts.length} email${broadcasts.length !== 1 ? "s" : ""} sent`}
+                  : `${broadcasts.length} email${
+                    broadcasts.length !== 1 ? "s" : ""
+                  } sent`}
               </p>
             </div>
             <div class="flex items-center gap-4">
@@ -56,7 +57,9 @@ export default define.page(async function EmailList() {
           {broadcasts.length === 0
             ? (
               <div class="text-center py-16 text-gray-400">
-                <p class="text-lg font-medium text-gray-500">No emails sent yet.</p>
+                <p class="text-lg font-medium text-gray-500">
+                  No emails sent yet.
+                </p>
                 <p class="text-sm mt-2">
                   <a
                     href="/staff/emails/compose"
@@ -72,12 +75,18 @@ export default define.page(async function EmailList() {
               <table class="w-full text-sm">
                 <thead>
                   <tr class="border-b-2 border-gray-200">
-                    <th class="text-left py-2 pr-4 font-semibold text-gray-600">Subject</th>
+                    <th class="text-left py-2 pr-4 font-semibold text-gray-600">
+                      Subject
+                    </th>
                     <th class="text-left py-2 pr-4 font-semibold text-gray-600 whitespace-nowrap">
                       Sent
                     </th>
-                    <th class="text-left py-2 pr-4 font-semibold text-gray-600">Delivered</th>
-                    <th class="text-right py-2 font-semibold text-gray-600">Actions</th>
+                    <th class="text-left py-2 pr-4 font-semibold text-gray-600">
+                      Delivered
+                    </th>
+                    <th class="text-right py-2 font-semibold text-gray-600">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -100,7 +109,9 @@ export default define.page(async function EmailList() {
                       </td>
                       <td class="py-3 pr-4">
                         <span
-                          class={b.failed > 0 ? "font-medium text-amber-600" : "text-green-700"}
+                          class={b.failed > 0
+                            ? "font-medium text-amber-600"
+                            : "text-green-700"}
                         >
                           {b.sent}/{b.total}
                         </span>
@@ -124,7 +135,6 @@ export default define.page(async function EmailList() {
                 </tbody>
               </table>
             )}
-
         </div>
       </div>
     </div>

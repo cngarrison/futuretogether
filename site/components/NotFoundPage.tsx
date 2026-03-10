@@ -13,12 +13,15 @@ export default function NotFoundPage() {
         class="pt-32 pb-20 px-4 text-center"
         style="background-color: #1a5f6e; color: white;"
       >
-        <p class="text-7xl font-extrabold mb-4 tracking-tight" style="opacity: 0.25;">
+        <p
+          class="text-7xl font-extrabold mb-4 tracking-tight"
+          style="opacity: 0.25;"
+        >
           404
         </p>
         <h1 class="text-3xl sm:text-4xl font-bold mb-4 leading-tight">
-          This page has gone off to face<br class="hidden sm:block" />
-          {" "}the future alone.
+          This page has gone off to face<br class="hidden sm:block" />{" "}
+          the future alone.
         </h1>
         <p class="text-lg sm:text-xl max-w-xl mx-auto" style="opacity: 0.85;">
           We've been saying that's not the best strategy.

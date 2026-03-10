@@ -11,9 +11,9 @@ export default function PageHeader({ currentPath }: HeaderProps) {
     { href: "/about", label: "About" },
   ];
 
-  const currentRoute = currentPath ? (currentPath === "/"
-    ? "/"
-    : "/" + currentPath.split("/")[1]) : '/';
+  const currentRoute = currentPath
+    ? (currentPath === "/" ? "/" : "/" + currentPath.split("/")[1])
+    : "/";
 
   return (
     <nav

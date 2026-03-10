@@ -1,6 +1,10 @@
 import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
-import { CATEGORIES, externalResources, internalResources } from "@/data/resources.ts";
+import {
+  CATEGORIES,
+  externalResources,
+  internalResources,
+} from "@/data/resources.ts";
 
 const ExternalLinkIcon = () => (
   <svg
@@ -48,8 +52,8 @@ export default define.page(function Resources() {
             style="color: rgba(255,255,255,0.8);"
           >
             A small, carefully chosen collection of writing, video, and tools
-            for people trying to understand what’s actually happening — and
-            what it means for how we live and work.
+            for people trying to understand what’s actually happening — and what
+            it means for how we live and work.
           </p>
         </div>
       </section>

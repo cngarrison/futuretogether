@@ -39,7 +39,6 @@ export default define.page<typeof handler>(function EmailCompose({ data }) {
     <div class="min-h-screen bg-gray-100">
       <div class="max-w-3xl mx-auto px-4 py-12">
         <div class="bg-white rounded-lg shadow-lg p-8">
-
           {/* Page header */}
           <div class="flex justify-between items-start mb-8">
             <div>
@@ -59,7 +58,10 @@ export default define.page<typeof handler>(function EmailCompose({ data }) {
 
           {memberCount === 0
             ? (
-              <div class="p-4 rounded-md text-sm" style="background-color: #fef9ec; border: 1px solid #c4853a; color: #92400e;">
+              <div
+                class="p-4 rounded-md text-sm"
+                style="background-color: #fef9ec; border: 1px solid #c4853a; color: #92400e;"
+              >
                 No active members found. Emails can be sent once members have
                 joined.
               </div>
@@ -71,7 +73,6 @@ export default define.page<typeof handler>(function EmailCompose({ data }) {
                 initialMarkdown={initialMarkdown}
               />
             )}
-
         </div>
       </div>
     </div>

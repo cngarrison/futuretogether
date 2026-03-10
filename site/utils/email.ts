@@ -5,9 +5,10 @@
  */
 
 export const RESEND_API_KEY = Deno.env.get("FT_RESEND_API_KEY");
-export const FROM_EMAIL =
-  Deno.env.get("FT_RESEND_FROM_EMAIL") ?? "hello@futuretogether.community";
-export const FROM_NAME = Deno.env.get("FT_RESEND_FROM_NAME") ?? "Future Together";
+export const FROM_EMAIL = Deno.env.get("FT_RESEND_FROM_EMAIL") ??
+  "hello@futuretogether.community";
+export const FROM_NAME = Deno.env.get("FT_RESEND_FROM_NAME") ??
+  "Future Together";
 export const SITE_URL = "https://futuretogether.community";
 export const LOGO_URL = `${SITE_URL}/logo-white.svg`;
 
@@ -104,7 +105,11 @@ export function buildEmailHtml(content: string, preheader = ""): string {
   </style>
 </head>
 <body>
-  ${preheader ? `<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">${preheader}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>` : ""}
+  ${
+    preheader
+      ? `<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">${preheader}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>`
+      : ""
+  }
 
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f7f4ef;padding:32px 16px;">
     <tr>

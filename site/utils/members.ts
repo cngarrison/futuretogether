@@ -22,17 +22,17 @@ export type MemberSource = "join_form" | "event_registration";
 
 export interface Member {
   id: string;
-  email: string;          // always lowercase
+  email: string; // always lowercase
   firstName: string;
   lastName: string;
-  joinedAt: string;       // ISO timestamp
-  updatedAt: string;      // ISO timestamp
+  joinedAt: string; // ISO timestamp
+  updatedAt: string; // ISO timestamp
   role: MemberRole;
-  source: MemberSource;   // first point of contact
+  source: MemberSource; // first point of contact
   status?: "active" | "removed"; // omitted = active (backward compat)
-  interests: string[];    // selected topic labels
-  heardFrom?: string;     // how they found Future Together
-  location?: string;      // city / region (optional)
+  interests: string[]; // selected topic labels
+  heardFrom?: string; // how they found Future Together
+  location?: string; // city / region (optional)
 }
 
 export interface MemberInput {
@@ -117,7 +117,9 @@ export async function removeMember(
   };
 
   const result = await kv.set(["member", emailKey], updated);
-  return result.ok ? { success: true } : { success: false, error: "KV write failed" };
+  return result.ok
+    ? { success: true }
+    : { success: false, error: "KV write failed" };
 }
 
 // ---------------------------------------------------------------------------

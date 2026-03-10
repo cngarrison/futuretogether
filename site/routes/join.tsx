@@ -58,7 +58,6 @@ export default define.page(async function Join() {
       <section class="py-16 sm:py-20" style="background-color: #f7f4ef;">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
           <div class="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 items-start">
-
             {/* Left: membership form card */}
             <div
               class="bg-white rounded-2xl p-8"
@@ -98,7 +97,6 @@ export default define.page(async function Join() {
 
             {/* Right: stacked cards */}
             <div class="flex flex-col gap-6">
-
               {/* Attend the next meetup */}
               <div
                 class="bg-white rounded-2xl p-7"
@@ -131,8 +129,8 @@ export default define.page(async function Join() {
                   class="text-sm leading-relaxed mb-1"
                   style="color: rgba(28,26,24,0.65);"
                 >
-                  Monthly online conversation — free, no agenda, just
-                  honest discussion.
+                  Monthly online conversation — free, no agenda, just honest
+                  discussion.
                 </p>
                 {nextEventDisplay
                   ? (
@@ -176,10 +174,22 @@ export default define.page(async function Join() {
                 </h2>
                 <ul class="space-y-3">
                   {([
-                    ["Monthly meetup invitations", "Every month, a free online conversation with people thinking seriously about this."],
-                    ["New content first", "Blog posts, resources, and guides as they're published."],
-                    ["Community updates", "Occasional news when there's something worth sharing. No noise."],
-                    ["Local group support", "Want to run a group in your city? We'll help you get started."],
+                    [
+                      "Monthly meetup invitations",
+                      "Every month, a free online conversation with people thinking seriously about this.",
+                    ],
+                    [
+                      "New content first",
+                      "Blog posts, resources, and guides as they're published.",
+                    ],
+                    [
+                      "Community updates",
+                      "Occasional news when there's something worth sharing. No noise.",
+                    ],
+                    [
+                      "Local group support",
+                      "Want to run a group in your city? We'll help you get started.",
+                    ],
                   ] as [string, string][]).map(([title, desc]) => (
                     <li key={title} class="flex items-start gap-3">
                       <span
@@ -189,10 +199,16 @@ export default define.page(async function Join() {
                         ✓
                       </span>
                       <div>
-                        <p class="text-sm font-semibold" style="color: #1c1a18;">
+                        <p
+                          class="text-sm font-semibold"
+                          style="color: #1c1a18;"
+                        >
                           {title}
                         </p>
-                        <p class="text-xs leading-relaxed" style="color: rgba(28,26,24,0.6);">
+                        <p
+                          class="text-xs leading-relaxed"
+                          style="color: rgba(28,26,24,0.6);"
+                        >
                           {desc}
                         </p>
                       </div>
@@ -200,8 +216,8 @@ export default define.page(async function Join() {
                   ))}
                 </ul>
               </div>
-
-            </div>{/* end right column */}
+            </div>
+            {/* end right column */}
           </div>
         </div>
       </section>

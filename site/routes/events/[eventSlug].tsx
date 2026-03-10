@@ -1,9 +1,6 @@
 import { Head } from "fresh/runtime";
 import { define } from "../../utils.ts";
-import {
-  getNextAvailableEvent,
-  getRegistrationCount,
-} from "@/utils/events.ts";
+import { getNextAvailableEvent, getRegistrationCount } from "@/utils/events.ts";
 import EventRegistrationForm from "@/islands/EventRegistrationForm.tsx";
 import EventDateTime from "@/islands/EventDateTime.tsx";
 import { getTurnstileSiteKey } from "@/utils/turnstile.ts";

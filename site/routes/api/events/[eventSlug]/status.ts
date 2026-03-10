@@ -1,8 +1,5 @@
 import { define } from "@/utils.ts";
-import {
-  getNextAvailableEvent,
-  getRegistrationCount,
-} from "@/utils/events.ts";
+import { getNextAvailableEvent, getRegistrationCount } from "@/utils/events.ts";
 
 export const handlers = define.handlers({
   async GET(ctx) {

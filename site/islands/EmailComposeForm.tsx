@@ -8,7 +8,8 @@ interface Props {
   initialMarkdown?: string;
 }
 
-const VARIABLE_HINT = "Available variables: {{firstName}}, {{lastName}}, {{fullName}}, {{email}}";
+const VARIABLE_HINT =
+  "Available variables: {{firstName}}, {{lastName}}, {{fullName}}, {{email}}";
 
 export default function EmailComposeForm(
   { memberCount, initialSubject = "", initialMarkdown = "" }: Props,
@@ -26,7 +27,13 @@ export default function EmailComposeForm(
   const tab = useSignal<"write" | "preview">("write");
   const sending = useSignal(false);
   const result = useSignal<
-    { sent: number; failed: number; total: number; testOnly?: boolean; to?: string } | null
+    {
+      sent: number;
+      failed: number;
+      total: number;
+      testOnly?: boolean;
+      to?: string;
+    } | null
   >(null);
   const error = useSignal<string | null>(null);
 
@@ -104,8 +111,7 @@ export default function EmailComposeForm(
           id="email-subject"
           type="text"
           value={subject.value}
-          onInput={(e) =>
-            subject.value = (e.target as HTMLInputElement).value}
+          onInput={(e) => subject.value = (e.target as HTMLInputElement).value}
           class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:border-[#1a5f6e]"
           placeholder="e.g. New resource: Suggested reading this week"
           disabled={sending.value}
@@ -198,13 +204,14 @@ export default function EmailComposeForm(
               <p class="text-sm font-semibold text-green-800">
                 ✓ Test email sent to{" "}
                 <span class="font-mono font-normal">{result.value.to}</span>
-                {" "}— check your inbox.
+                {" "}
+                — check your inbox.
               </p>
             )
             : (
               <p class="text-sm font-semibold text-green-800">
-                ✓ Sent — {result.value.sent} of {result.value.total} delivered
-                successfully.
+                ✓ Sent — {result.value.sent} of {result.value.total}{" "}
+                delivered successfully.
               </p>
             )}
           {result.value.failed > 0 && (

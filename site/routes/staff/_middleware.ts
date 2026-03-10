@@ -23,7 +23,9 @@ export const handler = define.middleware(async (ctx) => {
   if (!staffSession || !expectedHash || staffSession !== expectedHash) {
     const ip = ctx.req.headers.get("x-forwarded-for") || "unknown";
     await logStaffAccess(
-      `[${new Date().toISOString()}] Unauthorized access attempt: ${url.pathname} from ${ip}`,
+      `[${
+        new Date().toISOString()
+      }] Unauthorized access attempt: ${url.pathname} from ${ip}`,
     );
     const originalUrl = url.pathname + url.search;
     return new Response(null, {

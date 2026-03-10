@@ -1,4 +1,4 @@
-import { Handlers } from "$fresh/server.ts";
+import { define } from "@/utils.ts";
 import {
   getRegistrationsNeedingReminder,
   updateReminderSent,
@@ -20,8 +20,10 @@ import { sendReminderEmail } from "@/utils/eventEmail.ts";
  * # Send hour-before reminders every hour
  * 0 * * * * curl -X POST https://futuretogether.community/api/events/reminders/send?type=hour_before
  */
-export const handler: Handlers = {
-  async POST(req) {
+export const handlers = define.handlers({
+  async POST(ctx) {
+    const req = ctx.req;
+
     try {
       const url = new URL(req.url);
       const type = url.searchParams.get("type") as "day_before" | "hour_before";
@@ -83,4 +85,4 @@ export const handler: Handlers = {
       );
     }
   },
-};
+});

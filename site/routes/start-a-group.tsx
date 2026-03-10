@@ -45,8 +45,7 @@ export default define.page(function StartAGroup() {
       body:
         "Once you've run your first session — or even before, if you want some support getting started — get in touch. We'd love to know your group exists, help you connect with others doing the same thing, and eventually list your group so people in your area can find it. Use the ",
       link: { href: "/contact", text: "contact form" },
-      body2:
-        " and select “Starting or finding a local group” as your topic.",
+      body2: " and select “Starting or finding a local group” as your topic.",
     },
     {
       number: "07",
@@ -84,8 +83,8 @@ export default define.page(function StartAGroup() {
           >
             The conversation Future Together is trying to start needs to happen
             everywhere — not just online, but in living rooms, community halls,
-            and cafés around the world. You don't need to be an expert. You
-            need a room and a willingness to ask the question.
+            and cafés around the world. You don't need to be an expert. You need
+            a room and a willingness to ask the question.
           </p>
         </div>
       </section>

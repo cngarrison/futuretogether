@@ -21,7 +21,17 @@ export default define.page(function SuggestResource() {
             class="inline-flex items-center gap-1.5 text-sm font-semibold mb-6"
             style="color: rgba(255,255,255,0.65);"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
               <polyline points="15 18 9 12 15 6" />
             </svg>
             Back to Resources
@@ -42,23 +52,25 @@ export default define.page(function SuggestResource() {
       {/* Form */}
       <section class="py-20 sm:py-28" style="background-color: #f7f4ef;">
         <div class="max-w-2xl mx-auto px-4 sm:px-6">
-
           {/* What we're looking for */}
           <div
             class="rounded-xl p-6 mb-10"
             style="background-color: #eef5f7; border: 1px solid #d0e4e7;"
           >
-            <h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: #c4853a;">
+            <h2
+              class="text-sm font-semibold uppercase tracking-widest mb-3"
+              style="color: #c4853a;"
+            >
               What we’re looking for
             </h2>
             <ul class="space-y-2 text-sm" style="color: rgba(28,26,24,0.75);">
-              {([
+              {[
                 "Honest perspectives on AI, automation, and societal change — not hype, not panic",
                 "Frameworks for thinking about the future (not predictions)",
                 "Practical guides to community resilience, local preparedness, or organising",
                 "Newsletters or ongoing sources worth following",
                 "Videos or talks that explain complex ideas clearly",
-              ]).map((item) => (
+              ].map((item) => (
                 <li key={item} class="flex items-start gap-2.5">
                   <span
                     class="mt-0.5 w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center text-white"
@@ -71,7 +83,8 @@ export default define.page(function SuggestResource() {
               ))}
             </ul>
             <p class="mt-4 text-xs" style="color: rgba(28,26,24,0.5);">
-              We review every suggestion personally. Not everything will make the cut, but everything will be read.
+              We review every suggestion personally. Not everything will make
+              the cut, but everything will be read.
             </p>
           </div>
 
@@ -94,7 +107,10 @@ export default define.page(function SuggestResource() {
           <p class="font-semibold mb-2" style="color: #1c1a18;">
             The list is curated, not crowdsourced.
           </p>
-          <p class="text-sm leading-relaxed" style="color: rgba(28,26,24,0.65);">
+          <p
+            class="text-sm leading-relaxed"
+            style="color: rgba(28,26,24,0.65);"
+          >
             We keep the resources page short and useful on purpose. Every link
             earns its place. Your suggestion genuinely helps — even if not
             everything makes it onto the page.

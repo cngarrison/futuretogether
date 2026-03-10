@@ -1,13 +1,13 @@
 import { define } from "@/utils.ts";
 
-import {
-  createRegistration,
-  getNextAvailableEvent,
-} from "@/utils/events.ts";
+import { createRegistration, getNextAvailableEvent } from "@/utils/events.ts";
 import { sendConfirmationEmail } from "@/utils/eventEmail.ts";
 import { verifyTurnstileToken } from "@/utils/turnstile.ts";
 import { createMember } from "@/utils/members.ts";
-import { sendMemberAdminNotification, sendMemberWelcomeEmail } from "@/utils/memberEmail.ts";
+import {
+  sendMemberAdminNotification,
+  sendMemberWelcomeEmail,
+} from "@/utils/memberEmail.ts";
 //const delay = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
 export const handlers = define.handlers({
@@ -98,7 +98,10 @@ export const handlers = define.handlers({
             interests: [],
             heardFrom: reg.engagement?.heardFrom,
           }).then(async (memberResult) => {
-            if (memberResult.success && memberResult.created && memberResult.member) {
+            if (
+              memberResult.success && memberResult.created &&
+              memberResult.member
+            ) {
               const member = memberResult.member;
               // 2. Member welcome — 1.1s after confirmation
               //await delay(1100);
