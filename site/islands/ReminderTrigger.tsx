@@ -17,7 +17,13 @@ async function triggerReminder(type: ReminderType): Promise<Result> {
   );
   const json = await res.json();
   if (!res.ok) {
-    return { type, message: json.error ?? "Unknown error", sent: 0, failed: 0, error: json.error };
+    return {
+      type,
+      message: json.error ?? "Unknown error",
+      sent: 0,
+      failed: 0,
+      error: json.error,
+    };
   }
   return { type, ...json };
 }

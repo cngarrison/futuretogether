@@ -1,4 +1,7 @@
-import { getRegistrationsNeedingReminder, updateReminderSent } from "@/utils/events.ts";
+import {
+  getRegistrationsNeedingReminder,
+  updateReminderSent,
+} from "@/utils/events.ts";
 import { sendReminderEmail } from "@/utils/eventEmail.ts";
 
 /**
