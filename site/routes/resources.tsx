@@ -177,7 +177,7 @@ export default define.page(function Resources() {
             Know something that should be on this list?{" "}
             <a
               href="/resources/suggest"
-              class="font-semibold underline underline-offset-2 transition-opacity hover:opacity-70"
+              class="ml-2 font-semibold underline underline-offset-2 transition-opacity hover:opacity-70"
               style="color: #1a5f6e;"
             >
               Suggest a resource &rarr;
