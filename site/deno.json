@@ -16,7 +16,7 @@
       ]
     }
   },
-  "unstable": ["kv"],
+  "unstable": ["kv", "cron"],
   "exclude": [
     "**/_fresh/*"
   ],
