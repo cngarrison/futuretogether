@@ -11,10 +11,19 @@ import { getKv } from "./kv.ts";
  * A promise lock ensures concurrent requests during cold start all await
  * the same single load operation, rather than racing to build the cache.
  *
- * Deno KV is used only for runtime-mutable data: registrations.
+ * The "next available event" per slug is stored in KV as a single pointer
+ * (the event ID). This means page renders cost 1 KV read instead of N.
+ * The pointer is refreshed after every registration and cancellation.
+ *
+ * Deno KV is used for:
+ *   - Registrations (mutable runtime data)
+ *   - next_event_id pointer per slug (updated on registration/cancellation)
  */
 
 const EVENTS_DIR = "./events";
+
+// KV key prefix for the cached next-available event ID per slug.
+const NEXT_EVENT_KEY = "next_event_id";
 
 // Event configuration interface
 export interface EventConfig {
@@ -147,11 +156,17 @@ export async function getAllEvents(): Promise<EventConfig[]> {
   );
 }
 
-// Get the next available event for a slug
-// Considers: active status, date (future), deadline, capacity
-export async function getNextAvailableEvent(
-  slug: string,
-): Promise<EventConfig | null> {
+// ---------------------------------------------------------------------------
+// Next available event — KV pointer approach
+// ---------------------------------------------------------------------------
+
+/**
+ * Recomputes and stores the next available event ID for a slug in KV.
+ * Runs a full capacity scan (N KV reads) but is only called after a
+ * registration or cancellation — never on a page render.
+ */
+async function refreshNextEventId(slug: string): Promise<void> {
+  const kv = await getKv();
   const events = await getEventsBySlug(slug);
   const now = new Date();
 
@@ -162,19 +177,50 @@ export async function getNextAvailableEvent(
     const deadlineDate = new Date(
       eventDate.getTime() - event.registrationDeadline * 60 * 60 * 1000,
     );
+    if (now >= deadlineDate) continue;
 
-    // Check if event is in the future and before deadline
-    if (now < deadlineDate) {
-      // Check capacity
-      const registrationCount = await getRegistrationCount(event.id);
-      if (registrationCount < event.capacity) {
-        return event;
-      }
+    const count = await getActiveRegistrationCount(event.id);
+    if (count < event.capacity) {
+      await kv.set([NEXT_EVENT_KEY, slug], event.id);
+      return;
     }
   }
 
-  return null;
+  // No available event found — clear the pointer
+  await kv.delete([NEXT_EVENT_KEY, slug]);
 }
+
+/**
+ * Returns the next available (active, future, under-capacity) event for a slug.
+ *
+ * Uses a KV pointer for O(1) page render cost: 1 KV read + 1 memory lookup.
+ * On first call (pointer not yet set), falls back to a full scan to seed the
+ * pointer — this only happens once per slug per fresh deploy.
+ *
+ * Use this everywhere you need to display or check the next available event.
+ */
+export async function getNextAvailableEvent(
+  slug: string,
+): Promise<EventConfig | null> {
+  const kv = await getKv();
+  const result = await kv.get<string>([NEXT_EVENT_KEY, slug]);
+
+  if (result.value) {
+    return getEventById(result.value);
+  }
+
+  // Pointer not set (fresh deploy or first request) — compute and cache it.
+  // This does a full capacity scan; subsequent calls will hit the pointer.
+  await refreshNextEventId(slug);
+  const refreshed = await kv.get<string>([NEXT_EVENT_KEY, slug]);
+  return refreshed.value ? getEventById(refreshed.value) : null;
+}
+
+/**
+ * @deprecated Use getNextAvailableEvent — it now uses a KV pointer
+ * and is equally fast. This alias is retained for any remaining callers.
+ */
+export const getNextEvent = getNextAvailableEvent;
 
 // ---------------------------------------------------------------------------
 // Registration Management (KV — runtime-mutable data)
@@ -267,6 +313,10 @@ export async function createRegistration(
     return { success: false, error: "Registration failed - event may be full" };
   }
 
+  // Refresh the next-available pointer in the background.
+  // Don't await — this runs after the response is returned.
+  void refreshNextEventId(event.slug);
+
   return { success: true, registration };
 }
 
@@ -345,6 +395,10 @@ export async function cancelRegistration(
   if (!result.ok) {
     return { success: false, error: "Failed to cancel registration" };
   }
+
+  // A cancellation may free up capacity — refresh the pointer in the background.
+  const event = await getEventById(eventId);
+  if (event) void refreshNextEventId(event.slug);
 
   return { success: true };
 }
