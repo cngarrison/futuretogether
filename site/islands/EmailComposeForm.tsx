@@ -1,4 +1,5 @@
 import { useSignal } from "@preact/signals";
+import { useEffect } from "preact/hooks";
 import { marked } from "marked";
 
 interface Props {
@@ -14,6 +15,14 @@ export default function EmailComposeForm(
 ) {
   const subject = useSignal(initialSubject);
   const body = useSignal(initialMarkdown);
+
+  // Sync props into signals after hydration. useSignal only captures the
+  // value at first render; if Fresh hydrates the island before the serialised
+  // props are available, the signal stays at the default empty string.
+  useEffect(() => {
+    if (initialSubject) subject.value = initialSubject;
+    if (initialMarkdown) body.value = initialMarkdown;
+  }, [initialSubject, initialMarkdown]);
   const tab = useSignal<"write" | "preview">("write");
   const sending = useSignal(false);
   const result = useSignal<
