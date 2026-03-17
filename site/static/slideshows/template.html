@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  FUTURE TOGETHER — SLIDESHOW TEMPLATE                        ║
+  ║  Copy this file to create a new slideshow.                   ║
+  ║                                                              ║
+  ║  HOW TO USE                                                  ║
+  ║  1. Copy this file and rename it for your topic.             ║
+  ║  2. Update <title> in <head>.                                ║
+  ║  3. Edit Slide 1: update the subtitle.                       ║
+  ║  4. Replace the middle slides with your content.             ║
+  ║  5. Update slide numbers: change X/N on each slide to        ║
+  ║     match the actual position and total (e.g. 3/8).          ║
+  ║  6. Leave Slide 1 and the closing slide structure intact —   ║
+  ║     they carry the branding.                                 ║
+  ║                                                              ║
+  ║  AVAILABLE SLIDE TYPES (copy a block from below)             ║
+  ║  · Opening      — logo + tagline (Slide 1, keep as-is)       ║
+  ║  · Statement    — h2 + body text                             ║
+  ║  · Callout      — h2 + coloured box (emphasis/warning/info)  ║
+  ║  · Question     — h2 + large text + discussion prompt        ║
+  ║  · Split        — h2 + two-column comparison                 ║
+  ║  · Image+Text   — h2 + side-by-side image and list           ║
+  ║  · Closing      — tagline + URL (last slide, keep as-is)     ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Together — [Your Topic]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(135deg, #1a5f6e 0%, #0f4a57 100%);
+        color: #1f2937;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      .deck {
+        display: flex;
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        height: 100vh;
+      }
+
+      .slide {
+        min-width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        scroll-snap-align: start;
+        padding: 3rem;
+        padding-bottom: 4rem;
+        background: white;
+        margin-right: 1px;
+        position: relative;
+      }
+
+      .slide-number {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        color: #6b7280;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .nav-arrow {
+        color: #1a5f6e;
+        font-size: 1.2rem;
+        animation: pulse 2s infinite;
+        cursor: pointer;
+        padding: 0.2rem;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+      }
+
+      .nav-arrow:hover {
+        background-color: rgba(26, 95, 110, 0.1);
+      }
+
+      .nav-hint {
+        position: absolute;
+        bottom: 2.5rem;
+        right: 2rem;
+        color: #6b7280;
+        font-size: 0.8rem;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        border: 1px solid #e5e7eb;
+        animation: fadeOut 6s forwards;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+
+      @keyframes fadeOut {
+        0% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+
+      h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        text-align: center;
+        background: linear-gradient(135deg, #1a5f6e, #0f4a57);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.2;
+      }
+
+      h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: #1f2937;
+        line-height: 1.2;
+      }
+
+      h3 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #1a5f6e;
+        text-align: center;
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+        color: #6b7280;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-weight: 400;
+        max-width: 800px;
+      }
+
+      .large-text {
+        font-size: 1.8rem;
+        line-height: 1.6;
+        text-align: center;
+        max-width: 900px;
+        margin-bottom: 2rem;
+        color: #374151;
+      }
+
+      .question {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: #dc2626;
+        text-align: center;
+        max-width: 900px;
+        margin: 2rem 0;
+        line-height: 1.3;
+      }
+
+      /* Callout boxes */
+      .emphasis-box {
+        background: #fef3c7;
+        border-left: 4px solid #c4853a;
+        padding: 2rem;
+        border-radius: 12px;
+        max-width: 800px;
+        margin: 2rem 0;
+      }
+
+      .warning-box {
+        background: #fee2e2;
+        border-left: 4px solid #dc2626;
+        padding: 2rem;
+        border-radius: 12px;
+        max-width: 800px;
+        margin: 2rem 0;
+      }
+
+      .info-box {
+        background: #d4eef1;
+        border-left: 4px solid #1a5f6e;
+        padding: 2rem;
+        border-radius: 12px;
+        max-width: 800px;
+        margin: 2rem 0;
+      }
+
+      /* Split view */
+      .split-view {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        max-width: 1000px;
+        width: 100%;
+      }
+
+      .split-column {
+        padding: 2rem;
+        border-radius: 12px;
+      }
+
+      .split-teal  { background: #d4eef1; border: 2px solid #1a5f6e; }
+      .split-amber { background: #fef3c7; border: 2px solid #c4853a; }
+      .split-green { background: #d1fae5; border: 2px solid #059669; }
+      .split-red   { background: #fee2e2; border: 2px solid #dc2626; }
+
+      /* Resources grid */
+      .resource-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 2rem auto;
+      }
+
+      .resource-item {
+        background: #f8fafc;
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        text-align: center;
+      }
+
+      .resource-item h4 {
+        color: #1a5f6e;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .resource-item p {
+        font-size: 0.9rem;
+        color: #6b7280;
+        margin-bottom: 1rem;
+      }
+
+      .resource-item a {
+        color: #1a5f6e;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.2s;
+        font-size: 0.95rem;
+      }
+
+      .resource-item a:hover { border-bottom-color: #1a5f6e; }
+
+      .qr-code {
+        width: 120px;
+        height: 120px;
+        margin: 1rem auto;
+        display: block;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 0.5rem;
+        background: white;
+      }
+
+      ul {
+        list-style-position: inside;
+        font-size: 1.3rem;
+        line-height: 2;
+        color: #374151;
+      }
+
+      /* ===== Future Together Branding ===== */
+      .slide-logo {
+        margin-bottom: 1.5rem;
+      }
+
+      .slide-logo svg {
+        height: 52px;
+        width: auto;
+      }
+
+      .brand-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 36px;
+        background-color: #1a5f6e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        z-index: 100;
+        pointer-events: none;
+      }
+
+      .brand-bar-name {
+        color: white;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+
+      .brand-bar-sep {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.75rem;
+      }
+
+      .brand-bar-url {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+      }
+
+      @media (max-width: 768px) {
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        .question { font-size: 1.8rem; }
+        .large-text { font-size: 1.3rem; }
+        .slide { padding: 2rem; padding-bottom: 4rem; }
+        .split-view { grid-template-columns: 1fr; gap: 1rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="deck">
+
+      <!-- ═══════════════════════════════════════════════════════
+           SLIDE 1 — OPENING  (keep this slide, update subtitle)
+           ═══════════════════════════════════════════════════════ -->
+      <div class="slide">
+        <div class="slide-number">1/N <span class="nav-arrow">→</span></div>
+        <div class="nav-hint">← → Navigate or scroll right</div>
+        <div class="slide-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 80" role="img" aria-label="Future Together">
+            <title>Future Together</title>
+            <line x1="2" y1="5" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+            <line x1="2" y1="21" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+            <line x1="2" y1="40" x2="50" y2="40" stroke="#1a5f6e" stroke-width="3" stroke-linecap="round"/>
+            <line x1="2" y1="59" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+            <line x1="2" y1="75" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+            <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+            <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="84" y="34" font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif" font-size="21" font-weight="700" fill="#1a5f6e" letter-spacing="-0.5">Future</text>
+            <text x="84" y="59" font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif" font-size="21" font-weight="400" fill="#1c1a18" letter-spacing="-0.5">Together</text>
+          </svg>
+        </div>
+        <h1>The future is arriving.<br>Let’s face it together.</h1>
+        <div class="subtitle">
+          A Future Together discussion — [Your Topic]
+        </div>
+        <div class="large-text" style="margin-top: 3rem">
+          This is a <strong>discussion</strong>, not a presentation.<br>
+          Ask questions. Challenge ideas. Share perspectives.
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SLIDE TYPE: STATEMENT — h2 + body text
+           ═══════════════════════════════════════════════════════ -->
+      <div class="slide">
+        <div class="slide-number">2/N <span class="nav-arrow">→</span></div>
+        <h2>Your Slide Heading Here</h2>
+        <div class="large-text">
+          A clear, direct statement that sets the frame.<br>
+          Keep it to two or three lines.
+        </div>
+        <div class="large-text" style="margin-top: 2rem">
+          A second beat if needed —<br>
+          the punchline or the pivot.
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SLIDE TYPE: CALLOUT — h2 + coloured box
+           Use .emphasis-box (amber), .warning-box (red), .info-box (teal)
+           ═══════════════════════════════════════════════════════ -->
+      <div class="slide">
+        <div class="slide-number">3/N <span class="nav-arrow">→</span></div>
+        <h2>Your Slide Heading Here</h2>
+        <div class="large-text">
+          Context that sets up the callout below.
+        </div>
+        <div class="emphasis-box" style="margin-top: 2rem">
+          <div class="large-text">
+            The key idea, fact, or quote<br>
+            you want to highlight.
+          </div>
+        </div>
+        <div class="large-text" style="margin-top: 2rem">
+          A follow-on thought or implication.
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SLIDE TYPE: QUESTION — h2 + large text + discussion prompt
+           ═══════════════════════════════════════════════════════ -->
+      <div class="slide">
+        <div class="slide-number">4/N <span class="nav-arrow">→</span></div>
+        <h2>Your Slide Heading Here</h2>
+        <div class="large-text">
+          The context or situation you’re describing.<br>
+          Ground it in something concrete.
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          The discussion question that opens it up.<br>
+          <br>
+          What do you think?
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SLIDE TYPE: SPLIT — h2 + two-column comparison
+           Column classes: split-teal, split-amber, split-green, split-red
+           ═══════════════════════════════════════════════════════ -->
+      <div class="slide">
+        <div class="slide-number">5/N <span class="nav-arrow">→</span></div>
+        <h2>Your Slide Heading Here</h2>
+        <div class="split-view">
+          <div class="split-column split-teal">
+            <h3>Option A</h3>
+            <p style="font-size: 1.2rem; margin-top: 1rem">
+              Describe the first option,<br>
+              scenario, or perspective.<br>
+              Keep it balanced.
+            </p>
+          </div>
+          <div class="split-column split-amber">
+            <h3>Option B</h3>
+            <p style="font-size: 1.2rem; margin-top: 1rem">
+              Describe the second option,<br>
+              scenario, or perspective.<br>
+              Keep it balanced.
+            </p>
+          </div>
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          What determines which path we take?
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SLIDE TYPE: IMAGE + TEXT — h2 + side-by-side
+           ═══════════════════════════════════════════════════════ -->
+      <div class="slide">
+        <div class="slide-number">6/N <span class="nav-arrow">→</span></div>
+        <h2>Your Slide Heading Here</h2>
+        <div style="display: flex; gap: 3rem; align-items: center; max-width: 1100px">
+          <div style="flex: 1">
+            <div class="large-text" style="text-align: left">
+              Your key point or framing<br>
+              for the image on the right.
+            </div>
+            <ul style="margin-top: 2rem; text-align: left">
+              <li>First supporting point</li>
+              <li>Second supporting point</li>
+              <li>Third supporting point</li>
+              <li>Fourth supporting point</li>
+            </ul>
+          </div>
+          <img
+            src="./your-image.png"
+            alt="Description of image"
+            style="max-width: 500px; max-height: 500px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1)"
+          >
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SLIDE N — CLOSING  (keep this slide, always last)
+           ═══════════════════════════════════════════════════════ -->
+      <div class="slide">
+        <div class="slide-number">N/N</div>
+        <h2>Resources &amp; Discussion</h2>
+        <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem">
+          Scan QR codes to access resources
+        </p>
+        <!-- Add or remove .resource-item blocks as needed -->
+        <div class="resource-list">
+          <div class="resource-item">
+            <h4>📚 Resource Title</h4>
+            <img src="./resource-links/your-qr.png" alt="QR Code" class="qr-code">
+            <p>Brief description of this resource</p>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">example.com</a>
+          </div>
+          <div class="resource-item">
+            <h4>📚 Resource Title</h4>
+            <img src="./resource-links/your-qr.png" alt="QR Code" class="qr-code">
+            <p>Brief description of this resource</p>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">example.com</a>
+          </div>
+        </div>
+        <div style="margin-top: 1.5rem; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 1.5rem; max-width: 800px; width: 100%">
+          <div style="font-size: 1.4rem; color: #1a5f6e; font-weight: 700; font-style: italic; margin-bottom: 0.5rem">
+            “The future is arriving. Let’s face it together.”
+          </div>
+          <div style="color: #6b7280; font-size: 1rem; margin-bottom: 0.75rem">
+            Let’s continue the conversation.
+          </div>
+          <a href="https://futuretogether.community" target="_blank" rel="noopener noreferrer" style="color: #c4853a; font-weight: 600; font-size: 0.95rem; text-decoration: none; border-bottom: 1px solid rgba(196,133,58,0.5); padding-bottom: 2px;">
+            futuretogether.community
+          </a>
+        </div>
+      </div>
+
+    </div><!-- end .deck -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         BRAND BAR — do not remove or modify
+         ═══════════════════════════════════════════════════════ -->
+    <div class="brand-bar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 80" role="presentation" aria-hidden="true" style="height:22px;width:auto">
+        <line x1="2" y1="5" x2="50" y2="40" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+        <line x1="2" y1="21" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+        <line x1="2" y1="40" x2="50" y2="40" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+        <line x1="2" y1="59" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+        <line x1="2" y1="75" x2="50" y2="40" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+        <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+        <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-bar-name">Future Together</span>
+      <span class="brand-bar-sep">·</span>
+      <span class="brand-bar-url">futuretogether.community</span>
+    </div>
+
+    <script>
+      // Keyboard navigation (arrow keys + spacebar)
+      document.addEventListener("keydown", function(e) {
+        const deck = document.querySelector(".deck");
+        const slideWidth = window.innerWidth;
+        if (e.key === "ArrowRight" || e.key === " ") {
+          e.preventDefault();
+          deck.scrollLeft += slideWidth;
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          deck.scrollLeft -= slideWidth;
+        }
+      });
+
+      // Clickable → arrows
+      document.addEventListener("DOMContentLoaded", function() {
+        const deck = document.querySelector(".deck");
+        const slideWidth = window.innerWidth;
+        document.querySelectorAll(".nav-arrow").forEach(function(arrow) {
+          arrow.addEventListener("click", function(e) {
+            e.preventDefault();
+            deck.scrollLeft += slideWidth;
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
