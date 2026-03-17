@@ -80,7 +80,7 @@
 
       .nav-hint {
         position: absolute;
-        bottom: 2rem;
+        bottom: 56px;
         right: 2rem;
         color: #6b7280;
         font-size: 0.8rem;
@@ -198,9 +198,9 @@
 
       .resource-list {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 2rem;
-        max-width: 1000px;
+        max-width: 1400px;
         margin: 2rem auto;
       }
 
@@ -277,6 +277,12 @@
         border: 2px solid #dc2626;
       }
 
+      .bb-logo {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
+
       @media (max-width: 768px) {
         h1 {
           font-size: 2.5rem;
@@ -307,7 +313,7 @@
         margin-bottom: 1.5rem;
       }
       .slide-logo svg {
-        height: 52px;
+        height: 92px;
         width: auto;
       }
       .brand-bar {
@@ -315,7 +321,7 @@
         bottom: 0;
         left: 0;
         right: 0;
-        height: 36px;
+        height: 48px;
         background-color: #1a5f6e;
         display: flex;
         align-items: center;
@@ -326,7 +332,7 @@
       }
       .brand-bar-name {
         color: white;
-        font-size: 0.85rem;
+        font-size: 0.95rem;
         font-weight: 600;
         letter-spacing: 0.01em;
       }
@@ -336,7 +342,7 @@
       }
       .brand-bar-url {
         color: rgba(255, 255, 255, 0.55);
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         letter-spacing: 0.04em;
       }
     </style>
@@ -397,8 +403,8 @@
         <div class="warning-box" style="margin-top: 2rem">
           <div class="large-text">
             Anthropic has documented their own AI<br>
-            attempting deception, manipulation, and blackmail<br>
-            in controlled tests.
+            attempting deception, manipulation,<br> 
+            and blackmail in controlled tests.
           </div>
         </div>
         <div class="large-text" style="margin-top: 2rem; font-weight: 600">
@@ -539,7 +545,8 @@
         </div>
         <div class="warning-box" style="margin-top: 2rem">
           <div class="large-text">
-            I think we're in that "seems overblown" phase right now.
+            I think we're in that <br>
+            "seems overblown" phase right now.
           </div>
         </div>
         <div class="question" style="margin-top: 2rem">
@@ -548,57 +555,107 @@
         </div>
       </div>
 
-      <!-- Slide 9: The AI Bubble -->
+      <!-- Slide 9: Human Risks -->
       <div class="slide">
         <div class="slide-number">9/13 <span class="nav-arrow">→</span></div>
-        <h2>The AI Investment Bubble</h2>
-        <div class="warning-box">
-          <div class="large-text">
-            Massive capital flowing into AI<br>
-            Valuations driven by future promises<br>
-            Infrastructure built on expectations
-          </div>
-        </div>
-        <div class="question" style="margin-top: 2rem">
-          What are the repercussions if it bursts?
-        </div>
-        <ul style="margin-top: 2rem; text-align: center; list-style: none">
-          <li>Economic disruption?</li>
-          <li>Slowed innovation?</li>
-          <li>Job market chaos?</li>
-        </ul>
-      </div>
-
-      <!-- Slide 10: Human Risks -->
-      <div class="slide">
-        <div class="slide-number">10/13 <span class="nav-arrow">→</span></div>
         <h2>Immediate Human Risks</h2>
         <div class="large-text">
           Beyond the technology itself,<br>
           what are the human impacts?
         </div>
-        <div style="margin-top: 3rem">
-          <h3 style="color: #dc2626">💼 Job Displacement</h3>
-          <p style="font-size: 1.3rem; margin: 1rem 0">
-            Which roles? How fast? What skills remain valuable?
-          </p>
-
-          <h3 style="color: #dc2626; margin-top: 2rem">🌾 Food Security</h3>
-          <p style="font-size: 1.3rem; margin: 1rem 0">
-            Supply chains, local systems, community resilience
-          </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2.5rem; max-width: 1000px; width: 100%; margin-top: 1.5rem">
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">💼 Job Displacement</h3>
+            <p style="font-size: 1.1rem; color: #374151">Which roles? How fast? What skills remain valuable? White collar, creative, and technical work is already transforming — faster than most people realise.</p>
+          </div>
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">🌾 Food Security</h3>
+            <p style="font-size: 1.1rem; color: #374151">Supply chains optimised for efficiency, not resilience. Economic shock or infrastructure disruption could expose how fragile our food systems really are.</p>
+          </div>
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">🧭 Purpose &amp; Identity</h3>
+            <p style="font-size: 1.1rem; color: #374151">When work defines who you are, what happens when the work disappears? Loss of structure, daily meaning, and self-worth.</p>
+          </div>
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">🏛️ The Welfare Gap</h3>
+            <p style="font-size: 1.1rem; color: #374151">Safety nets were built for temporary job loss, not structural displacement at scale. No ready infrastructure exists for what's coming.</p>
+          </div>
+        </div>
+        <div style="margin-top: 1.75rem; border-top: 1px solid #e5e7eb; padding-top: 0.875rem; max-width: 1000px; width: 100%">
+          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem">For deeper conversation</p>
+          <p style="font-size: 1rem; color: #6b7280">🧠 Mental Health at Scale &nbsp;·&nbsp; 🗳️ Democratic Fragility</p>
         </div>
         <div class="question" style="margin-top: 2rem">
           Are we preparing for the right risks?
         </div>
       </div>
 
-      <!-- Slide 11: Maslow's Hierarchy -->
+      <!-- Slide: What Does a Good Future Look Like? -->
       <div class="slide">
-        <div class="slide-number">11/13 <span class="nav-arrow">→</span></div>
+        <div class="slide-number"></div>
+        <h2>What Does a Good Future Look Like?</h2>
+        <div class="large-text">
+          Fear is a motivator. But it’s not a destination.
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem; max-width: 1000px; width: 100%; margin-top: 1.5rem">
+          <div class="info-box" style="margin: 0">
+            <h3 style="margin-bottom: 0.75rem; font-size: 1.35rem">🌱 The personal picture</h3>
+            <p style="font-size: 1.05rem; color: #374151">Outside. Building something. Helping someone. Creating. Contributing — not because you have to, but because it’s meaningful. Physical, relational, chosen.</p>
+          </div>
+          <div class="info-box" style="margin: 0">
+            <h3 style="margin-bottom: 0.75rem; font-size: 1.35rem">🔬 The societal picture</h3>
+            <p style="font-size: 1.05rem; color: #374151">Compressed decades of medical progress. Mental health care for everyone. Expertise available globally, not just in wealthy places. Human energy freed for what matters.</p>
+          </div>
+        </div>
+        <div class="info-box" style="max-width: 1000px; width: 100%; margin-top: 1.25rem">
+          <p style="font-size: 1.1rem; text-align: center; color: #374151">“The utopia outcome is genuinely desirable. Not as a fantasy — as a real possibility that is worth working toward.”</p>
+        </div>
+        <div class="question" style="margin-top: 1.5rem">
+          What does your good future look like?
+        </div>
+      </div>
+
+      <!-- Slide: Why Community? -->
+      <div class="slide">
+        <div class="slide-number"></div>
+        <h2>Why Community Is the Answer</h2>
+        <div class="large-text">
+          Individual worry is exhausting and unproductive.<br>
+          Collective sense-making is how we actually prepare.
+        </div>
+        <div style="display: flex; gap: 2rem; align-items: stretch; max-width: 1000px; width: 100%; margin-top: 1.5rem">
+          <div class="info-box" style="flex: 1; margin: 0; text-align: center">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem">💡</div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">Awareness</h3>
+            <p style="font-size: 1rem; color: #374151">Understand what’s actually happening. Separate hype from reality.</p>
+          </div>
+          <div style="display: flex; align-items: center; color: #1a5f6e; font-size: 1.5rem; font-weight: 300">→</div>
+          <div class="info-box" style="flex: 1; margin: 0; text-align: center">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem">💬</div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">Conversation</h3>
+            <p style="font-size: 1rem; color: #374151">Talk to people. Challenge ideas. Share perspectives. Build collective understanding.</p>
+          </div>
+          <div style="display: flex; align-items: center; color: #1a5f6e; font-size: 1.5rem; font-weight: 300">→</div>
+          <div class="info-box" style="flex: 1; margin: 0; text-align: center">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem">🚀</div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">Action</h3>
+            <p style="font-size: 1rem; color: #374151">Not panic. Not paralysis. Informed, grounded, community-supported action.</p>
+          </div>
+        </div>
+        <div class="large-text" style="margin-top: 1.5rem; font-size: 1.4rem">
+          You don’t have to figure this out alone.
+        </div>
+        <div class="question" style="margin-top: 1rem">
+          Who in your life needs to be part of this conversation?
+        </div>
+      </div>
+
+      <!-- Slide: Maslow's Hierarchy -->
+      <div class="slide">
+        <div class="slide-number"></div>
         <h2>Back to Basics</h2>
         <div
-          style="display: flex; gap: 3rem; align-items: center; max-width: 1100px"
+          style="display: flex; gap: 3rem; align-items: center; max-width: 1300px"
         >
           <div style="flex: 1">
             <div class="large-text" style="text-align: left">
@@ -617,37 +674,88 @@
           <img
             src="./maslow.png"
             alt="Maslow's Hierarchy of Needs"
-            style="max-width: 600px; max-height: 600px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)"
+            style="max-width: 800px; max-height: 800px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)"
           >
         </div>
         <div class="question" style="margin-top: 2rem">
-          How do we protect these foundations during technological disruption?
+          How do we protect these foundations <br>during technological disruption?
         </div>
       </div>
 
-      <!-- Slide 12: Next Steps -->
+      <!-- Slide: What Can We Do? -->
       <div class="slide">
-        <div class="slide-number">12/13 <span class="nav-arrow">→</span></div>
+        <div class="slide-number"></div>
         <h2>What Can We Do?</h2>
-        <div style="margin-top: 2rem">
-          <div class="info-box">
-            <h3 style="margin-bottom: 1rem">🧠 Awareness</h3>
-            <p style="font-size: 1.2rem">
-              Stay informed. Understand the changes.<br>
-              Separate hype from reality.
-            </p>
+        <div class="large-text" style="margin-bottom: 0.5rem">
+          Not panic. Not paralysis. Action.
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem 2rem; max-width: 1100px; width: 100%; margin-top: 1rem">
+          <div>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">🧠 Awareness</h3>
+            <p style="font-size: 1rem; color: #374151">Stay informed. Understand what’s actually happening versus the hype. Conversations like this one are where it starts.</p>
           </div>
-          <div class="emphasis-box" style="margin-top: 2rem">
-            <h3 style="margin-bottom: 1rem">🌱 Food Preparedness</h3>
-            <p style="font-size: 1.2rem">
-              Build local food systems.<br>
-              Community gardens. Local suppliers.<br>
-              Resilience through relationships.
-            </p>
+          <div>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">💬 Find Your Community</h3>
+            <p style="font-size: 1rem; color: #374151">You don’t have to figure this out alone. Find or <a href="https://futuretogether.community/start-a-group" target="_blank" rel="noopener noreferrer" style="color: #c4853a; text-decoration: none; border-bottom: 1px solid rgba(196,133,58,0.5)">start a local group</a>. Collective sense-making is more powerful than individual worry.</p>
+          </div>
+          <div>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">🛠️ Know Your Skills</h3>
+            <p style="font-size: 1rem; color: #374151">Which of your skills are AI-resistant? Which are AI-complementary? Understanding your own value helps you adapt rather than react.</p>
+          </div>
+          <div>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">🌱 Food Preparedness</h3>
+            <p style="font-size: 1rem; color: #374151">Community gardens, local suppliers, growing your own. Works in cities and towns too. Resilience through local relationships — not stockpiling.</p>
+          </div>
+          <div>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">💰 Financial Resilience</h3>
+            <p style="font-size: 1rem; color: #374151">Reduce debt. Build a buffer. Economic disruption amplifies existing vulnerability — and it arrives faster than most people expect.</p>
+          </div>
+          <div>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">📢 Civic Engagement</h3>
+            <p style="font-size: 1rem; color: #374151">Talk to your representatives. Attend local meetings. Governments need to hear from people who are paying attention — not just lobbyists.</p>
           </div>
         </div>
-        <div class="question" style="margin-top: 2rem">
-          What other practical steps can we take?
+        <div style="margin-top: 1.75rem; border-top: 1px solid #e5e7eb; padding-top: 0.75rem; max-width: 1100px; width: 100%">
+          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.2rem">Start a local group</p>
+          <p style="font-size: 0.95rem; color: #c4853a; font-weight: 600">futuretogether.community/start-a-group</p>
+        </div>
+        <div class="question" style="margin-top: 1.25rem">
+          What’s one step you could take this week?
+        </div>
+      </div>
+
+      <!-- Slide: The Bigger Picture -->
+      <div class="slide">
+        <div class="slide-number"></div>
+        <h2>The Bigger Picture</h2>
+        <div class="large-text">
+          AI doesn’t exist in isolation.<br>
+          Other forces are shaping our future at the same time.
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2.5rem; max-width: 1000px; width: 100%; margin-top: 1.5rem">
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">💸 The AI Investment Bubble</h3>
+            <p style="font-size: 1.1rem; color: #374151">Massive capital flowing into AI on the promise of future returns. A hard correction could slow innovation and destabilise job markets simultaneously.</p>
+          </div>
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">🌍 Geopolitical Instability</h3>
+            <p style="font-size: 1.1rem; color: #374151">The US-Israel war on Iran — now on week three — has put the Strait of Hormuz at risk. 20% of global oil supply. Local conflicts now have instant global consequences.</p>
+          </div>
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">🌡️ Climate Change</h3>
+            <p style="font-size: 1.1rem; color: #374151">Still unfolding in parallel. AI may accelerate solutions — or accelerate energy consumption. Two major disruption timelines are converging.</p>
+          </div>
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">🦠 Pandemic Preparedness</h3>
+            <p style="font-size: 1.1rem; color: #374151">COVID exposed how fragile our systems are. AI-accelerated biology cuts both ways: faster vaccines and faster bioweapons. The next pandemic may arrive in a more disrupted world.</p>
+          </div>
+        </div>
+        <div style="margin-top: 1.75rem; border-top: 1px solid #e5e7eb; padding-top: 0.875rem; max-width: 1000px; width: 100%">
+          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem">For deeper conversation</p>
+          <p style="font-size: 1rem; color: #6b7280">☢️ Nuclear Proliferation &nbsp;·&nbsp; 📱 AI-Enabled Disinformation &nbsp;·&nbsp; ⚖️ Economic Inequality &nbsp;·&nbsp; ⚡ Energy Security</p>
+        </div>
+        <div class="question" style="margin-top: 1.5rem">
+          Which of these keeps you up at night?
         </div>
       </div>
 
@@ -711,7 +819,11 @@
             >andyljones.com/horses</a>
           </div>
         </div>
-        <div style="margin-top: 1.5rem; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 1.5rem; max-width: 800px; width: 100%">
+        <div style="margin-top: 0.75rem; text-align: center; max-width: 1200px; width: 100%">
+          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.2rem">Full resource list</p>
+          <p style="font-size: 0.95rem; color: #c4853a; font-weight: 600">futuretogether.community/resources</p>
+        </div>
+        <div style="margin-top: 1.75rem; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 1.5rem; max-width: 1200px; width: 100%">
           <div style="font-size: 1.4rem; color: #1a5f6e; font-weight: 700; font-style: italic; margin-bottom: 0.5rem">
             “The future is arriving. Let’s face it together.”
           </div>
@@ -721,11 +833,32 @@
           <a href="https://futuretogether.community" target="_blank" rel="noopener noreferrer" style="color: #c4853a; font-weight: 600; font-size: 0.95rem; text-decoration: none; border-bottom: 1px solid rgba(196,133,58,0.5); padding-bottom: 2px;">
             futuretogether.community
           </a>
+          <p style="font-size: 0.7rem; color: #d1d5db; margin-top: 1.25rem; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; gap: 0.4rem;">
+            <img
+              src="https://www.beyondbetter.app/logo-a.png"
+              alt="BB Logo"
+              class="bb-logo"
+            > Created with <a href="https://beyondbetter.app" target="_blank" rel="noopener noreferrer" style="color: #d1d5db; text-decoration: none; border-bottom: 1px solid rgba(209,213,219,0.4)">Beyond Better</a>
+          </p>
         </div>
       </div>
     </div>
 
     <script>
+      // Auto-number slides (updates X/N automatically when slides are added or removed)
+      (function() {
+        var slides = document.querySelectorAll(".slide");
+        var total = slides.length;
+        slides.forEach(function(slide, i) {
+          var numEl = slide.querySelector(".slide-number");
+          if (!numEl) return;
+          var isLast = i === total - 1;
+          numEl.innerHTML = isLast
+            ? (i + 1) + "/" + total + " <span class=\"nav-arrow\" style=\"visibility:hidden\">&rarr;</span>"
+            : (i + 1) + "/" + total + " <span class=\"nav-arrow\">&rarr;</span>";
+        });
+      })();
+
       // Keyboard navigation
       document.addEventListener("keydown", function (e) {
         const deck = document.querySelector(".deck");
@@ -733,10 +866,10 @@
 
         if (e.key === "ArrowRight" || e.key === " ") {
           e.preventDefault();
-          deck.scrollLeft += slideWidth;
+          deck.scrollTo({ left: deck.scrollLeft + slideWidth, behavior: "smooth" });
         } else if (e.key === "ArrowLeft") {
           e.preventDefault();
-          deck.scrollLeft -= slideWidth;
+          deck.scrollTo({ left: deck.scrollLeft - slideWidth, behavior: "smooth" });
         }
       });
 
@@ -749,14 +882,14 @@
         navArrows.forEach(function (arrow) {
           arrow.addEventListener("click", function (e) {
             e.preventDefault();
-            deck.scrollLeft += slideWidth;
+            deck.scrollTo({ left: deck.scrollLeft + slideWidth, behavior: "smooth" });
           });
         });
       });
     </script>
 
     <div class="brand-bar">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 80" role="presentation" aria-hidden="true" style="height:22px;width:auto">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 80" role="presentation" aria-hidden="true" style="height:34px;width:auto">
         <line x1="2" y1="5" x2="50" y2="40" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
         <line x1="2" y1="21" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
         <line x1="2" y1="40" x2="50" y2="40" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
