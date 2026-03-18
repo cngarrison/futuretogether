@@ -24,6 +24,7 @@ export default function EventRegistrationForm({
   const [interests, setInterests] = useState("");
   const [heardFrom, setHeardFrom] = useState("");
   const [joinCommunity, setJoinCommunity] = useState(true);
+  const [joinSlack, setJoinSlack] = useState(true);
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error" | "full"
   >("idle");
@@ -86,6 +87,7 @@ export default function EventRegistrationForm({
           interests,
           heardFrom,
           joinCommunity,
+          joinSlack,
           turnstile_token: turnstileToken,
         }),
         //credentials: 'same-origin',
@@ -177,9 +179,23 @@ export default function EventRegistrationForm({
               {eventTitle}. Check your email for confirmation and calendar
               invite.
             </p>
-            <p class="text-sm text-green-600">
+            <p class="text-sm text-green-600 mb-3">
               We'll send you a reminder 24 hours before the event.
             </p>
+            {joinSlack && (
+              <p class="text-sm" style="color: #1a5f6e;">
+                Your confirmation email includes a link to join our Slack —
+                or{" "}
+                <a
+                  href="https://join.slack.com/t/future-together-group/shared_invite/zt-3ssaug5th-1JI5b86jGesX8B77RojgBQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="font-weight: 600; text-decoration: underline; margin-left: 4px;"
+                >
+                  join right now &rarr;
+                </a>
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -332,6 +348,31 @@ export default function EventRegistrationForm({
             <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
               Stay in the loop beyond this event — meetup invites, new posts,
               community updates.
+            </p>
+          </div>
+        </label>
+
+        {/* Join Slack opt-in */}
+        <label
+          class="flex items-start gap-3 cursor-pointer rounded-xl p-4"
+          style={joinSlack
+            ? "background-color: #f0f9fa; border: 1.5px solid #1a5f6e;"
+            : "background-color: #f7f4ef; border: 1.5px solid transparent;"}
+        >
+          <input
+            type="checkbox"
+            checked={joinSlack}
+            onChange={(e) => setJoinSlack(e.currentTarget.checked)}
+            disabled={status === "loading"}
+            class="mt-0.5 rounded flex-shrink-0"
+            style="accent-color: #1a5f6e;"
+          />
+          <div>
+            <span class="text-sm font-semibold" style="color: #1c1a18;">
+              Email me the link to join our Slack
+            </span>
+            <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
+              Our Slack workspace is where the conversation continues between meetups.
             </p>
           </div>
         </label>

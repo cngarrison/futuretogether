@@ -2,6 +2,9 @@ import ical from "ical-generator";
 import type { EventConfig, Registration } from "./events.ts";
 import { buildEmailHtml, FROM_EMAIL, FROM_NAME, sendEmail } from "./email.ts";
 
+const SLACK_INVITE_URL =
+  "https://join.slack.com/t/future-together-group/shared_invite/zt-3ssaug5th-1JI5b86jGesX8B77RojgBQ";
+
 // ---------------------------------------------------------------------------
 // iCalendar
 // ---------------------------------------------------------------------------
@@ -57,6 +60,7 @@ function formatEventDate(date: string, timezone: string): string {
 export async function sendConfirmationEmail(
   event: EventConfig,
   registration: Registration,
+  slackInvite = false,
 ): Promise<boolean> {
   const { attendee } = registration;
   const formattedDate = formatEventDate(event.date, event.timezone);
@@ -122,6 +126,25 @@ export async function sendConfirmationEmail(
     <p style="margin:0 0 24px;color:#374151;">
       We'll send you a reminder 24 hours before the event.
     </p>
+    ${slackInvite ? `
+    <div style="margin:0 0 24px;padding:20px 24px;background:#f0f9fa;border-left:4px solid #1a5f6e;border-radius:4px;">
+      <p style="margin:0 0 8px;font-weight:700;color:#1a5f6e;font-size:15px;">&#x1F4AC; Keep the conversation going</p>
+      <p style="margin:0 0 14px;color:#374151;font-size:14px;">
+        Between meetups, the Future Together Slack is where our community
+        talks — share what you're reading, ask questions, or just know others
+        are thinking about the same things you are.
+      </p>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0;">
+        <tr>
+          <td style="border-radius:8px;background:#1a5f6e;">
+            <a href="${SLACK_INVITE_URL}" target="_blank" rel="noopener noreferrer"
+              style="display:inline-block;padding:10px 20px;color:#ffffff;font-weight:700;font-size:14px;text-decoration:none;border-radius:8px;">
+              Join the Future Together Slack &rarr;
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>` : ''}
     <p style="margin:0;font-size:13px;color:#6b7280;">
       Need to cancel? Simply reply to this email.
     </p>`;

@@ -179,6 +179,10 @@ export default define.page(async function Join() {
                       "Every month, a free online conversation with people thinking seriously about this.",
                     ],
                     [
+                      "Slack community access",
+                      "Where the conversation continues between meetups. Questions, reads, discussion — ongoing.",
+                    ],
+                    [
                       "New content first",
                       "Blog posts, resources, and guides as they're published.",
                     ],
@@ -218,6 +222,43 @@ export default define.page(async function Join() {
               </div>
             </div>
             {/* end right column */}
+          </div>
+        </div>
+      </section>
+
+      {/* Slack invite section */}
+      <section class="py-14" style="background-color: #1a5f6e;">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+          <div class="flex flex-col sm:flex-row items-center gap-8">
+            {/* Left: copy */}
+            <div class="flex-1 text-white text-center sm:text-left">
+              <div class="flex items-center justify-center sm:justify-start gap-2 mb-3">
+                <span class="text-2xl">&#x1F4AC;</span>
+                <h2 class="text-xl font-bold">Join us on Slack</h2>
+              </div>
+              <p class="leading-relaxed mb-1" style="color: rgba(255,255,255,0.8);">
+                Our Slack workspace is where the conversation continues between
+                meetups. Ask questions, share what you're reading, find others
+                thinking about the same things you are.
+              </p>
+              <p class="text-sm" style="color: rgba(255,255,255,0.55);">
+                #discuss-our-future &nbsp;&middot;&nbsp; #risks-and-mitigation
+                &nbsp;&middot;&nbsp; #introductions &nbsp;&middot;&nbsp;
+                #what-are-you-reading
+              </p>
+            </div>
+            {/* Right: CTA button */}
+            <div class="flex-shrink-0">
+              <a
+                href="https://join.slack.com/t/future-together-group/shared_invite/zt-3ssaug5th-1JI5b86jGesX8B77RojgBQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block px-8 py-3.5 font-bold rounded-xl text-sm transition-opacity hover:opacity-90"
+                style="background-color: #c4853a; color: #ffffff;"
+              >
+                Join the Slack workspace &rarr;
+              </a>
+            </div>
           </div>
         </div>
       </section>

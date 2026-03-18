@@ -10,6 +10,8 @@ import { buildEmailHtml, FROM_NAME, sendEmail } from "./email.ts";
 import type { Member } from "./members.ts";
 
 const SITE_URL = "https://futuretogether.community";
+const SLACK_INVITE_URL =
+  "https://join.slack.com/t/future-together-group/shared_invite/zt-3ssaug5th-1JI5b86jGesX8B77RojgBQ";
 
 // ---------------------------------------------------------------------------
 // Admin notification
@@ -99,7 +101,10 @@ export async function sendMemberAdminNotification(
 // Welcome email to the new member
 // ---------------------------------------------------------------------------
 
-export async function sendMemberWelcomeEmail(member: Member): Promise<void> {
+export async function sendMemberWelcomeEmail(
+  member: Member,
+  slackInvite = false,
+): Promise<void> {
   const isOrganiser = member.role === "organiser";
 
   const body = `
@@ -138,6 +143,25 @@ export async function sendMemberWelcomeEmail(member: Member): Promise<void> {
       No spam. No sales pitches. No political agenda. Just honest conversation
       with people who are paying attention.
     </p>
+    ${slackInvite ? `
+    <div style="margin:0 0 28px;padding:20px 24px;background:#f0f9fa;border-left:4px solid #1a5f6e;border-radius:4px;">
+      <p style="margin:0 0 8px;font-weight:700;color:#1a5f6e;font-size:15px;">&#x1F4AC; Join us on Slack</p>
+      <p style="margin:0 0 14px;color:#374151;font-size:14px;">
+        Our Slack workspace is where the conversation continues between meetups.
+        Ask questions, share what you're reading, and connect with others
+        thinking seriously about the same things you are.
+      </p>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0;">
+        <tr>
+          <td style="border-radius:8px;background:#1a5f6e;">
+            <a href="${SLACK_INVITE_URL}" target="_blank" rel="noopener noreferrer"
+              style="display:inline-block;padding:10px 20px;color:#ffffff;font-weight:700;font-size:14px;text-decoration:none;border-radius:8px;">
+              Join the Future Together Slack &rarr;
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>` : ''}
     <p style="text-align:center;margin:0 0 32px;">
       <a href="${SITE_URL}/meetups" class="btn">See upcoming meetups</a>
     </p>

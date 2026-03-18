@@ -46,6 +46,7 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
   const heardFrom = useSignal("");
   const selectedInterests = useSignal<string[]>([]);
   const wantsToOrganise = useSignal(false);
+  const joinSlack = useSignal(true);
   const status = useSignal<Status>("idle");
   const errorMessage = useSignal("");
   const turnstileToken = useSignal("");
@@ -86,6 +87,7 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
           heardFrom: heardFrom.value || undefined,
           interests: selectedInterests.value,
           wantsToOrganise: wantsToOrganise.value,
+          joinSlack: joinSlack.value,
           turnstile_token: turnstileToken.value || undefined,
         }),
       });
@@ -131,10 +133,23 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
             Welcome to Future Together
           </h3>
           <p class="text-sm leading-relaxed" style="color: rgba(28,26,24,0.7);">
-            You're in. Check your inbox for a welcome email.
+            You're in. Check your inbox for a welcome email — it includes a link to join our Slack workspace.
             {wantsToOrganise.value &&
-              " We'll be in touch about running a local group."}
+              " We'll also be in touch about running a local group."}
           </p>
+          {joinSlack.value && (
+            <p class="text-sm mt-3" style="color: rgba(28,26,24,0.65);">
+              Or{" "}
+              <a
+                href="https://join.slack.com/t/future-together-group/shared_invite/zt-3ssaug5th-1JI5b86jGesX8B77RojgBQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="color: #1a5f6e; font-weight: 600; text-decoration: underline; margin-left: 4px;"
+              >
+                join Slack right now &rarr;
+              </a>
+            </p>
+          )}
         </div>
       </div>
     );
@@ -357,6 +372,32 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
             <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
               We'll follow up with resources and support to help you get
               started.
+            </p>
+          </div>
+        </label>
+
+        {/* Join Slack */}
+        <label
+          class="flex items-start gap-3 cursor-pointer rounded-xl p-4"
+          style={joinSlack.value
+            ? "background-color: #f0f9fa; border: 1.5px solid #1a5f6e;"
+            : "background-color: #f7f4ef; border: 1.5px solid transparent;"}
+        >
+          <input
+            type="checkbox"
+            checked={joinSlack.value}
+            onChange={(e) =>
+              joinSlack.value = (e.target as HTMLInputElement).checked}
+            disabled={isSubmitting}
+            class="mt-0.5 rounded flex-shrink-0"
+            style="accent-color: #1a5f6e;"
+          />
+          <div>
+            <span class="text-sm font-semibold" style="color: #1c1a18;">
+              Email me the link to join our Slack
+            </span>
+            <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
+              Our Slack workspace is where the conversation continues between meetups.
             </p>
           </div>
         </label>
