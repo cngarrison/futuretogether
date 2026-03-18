@@ -206,11 +206,25 @@ export async function getNextAvailableEvent(
   const result = await kv.get<string>([NEXT_EVENT_KEY, slug]);
 
   if (result.value) {
-    return getEventById(result.value);
+    const event = await getEventById(result.value);
+    if (event) {
+      // Validate the cached pointer is still usable — the deadline may have
+      // passed since the pointer was last written (e.g. no registrations
+      // occurred near the end of the window to trigger a refresh).
+      const now = new Date();
+      const eventDate = new Date(event.date);
+      const deadlineDate = new Date(
+        eventDate.getTime() - event.registrationDeadline * 60 * 60 * 1000,
+      );
+      if (event.isActive && now < deadlineDate) {
+        return event;
+      }
+      // Cached event is stale — fall through to refresh the pointer.
+    }
   }
 
-  // Pointer not set (fresh deploy or first request) — compute and cache it.
-  // This does a full capacity scan; subsequent calls will hit the pointer.
+  // Pointer not set (fresh deploy or first request) OR stale (deadline passed
+  // without a registration to trigger a refresh) — recompute and cache it.
   await refreshNextEventId(slug);
   const refreshed = await kv.get<string>([NEXT_EVENT_KEY, slug]);
   return refreshed.value ? getEventById(refreshed.value) : null;
