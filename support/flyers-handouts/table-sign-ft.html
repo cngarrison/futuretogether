@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Together — Table Sign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #1a5f6e;
+      --amber:      #c4853a;
+      --near-black: #1c1a18;
+      --mid-grey:   #555250;
+      --tuck:       24mm;   /* depth of tuck strip — adjust to taste */
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: #e8e8e8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+      gap: 16px;
+    }
+
+    /* ─── A4 page ─────────────────────────────────────────── */
+    .page {
+      width: 210mm;
+      height: 297mm;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    }
+
+    /* ─── Tuck strips (top & bottom) — blank, fold inward ────── */
+    .tuck-strip {
+      height: var(--tuck);
+      flex-shrink: 0;
+    }
+
+    /* ─── Content panels — fill remaining space equally ─────── */
+    .panel {
+      flex: 1;
+      display: flex;
+      align-items: stretch;   /* card fills the panel height */
+      padding: 5mm 12mm;
+    }
+    .panel.flipped {
+      transform: rotate(180deg);
+    }
+
+    /* ─── Guide lines (screen + print hairlines) ──────────── */
+    .guide {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      border-top: 1px dashed #bbb;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .guide-label {
+      position: absolute;
+      right: 5mm;
+      transform: translateY(-50%);
+      background: white;
+      color: #bbb;
+      font-size: 6.5pt;
+      letter-spacing: 0.04em;
+      padding: 1px 3px;
+      z-index: 11;
+      pointer-events: none;
+    }
+    .guide-tuck-top    { top: var(--tuck); }
+    .guide-fold        { top: 50%; }
+    .guide-tuck-bottom { top: calc(100% - var(--tuck)); }
+    .lbl-tuck-top      { top: var(--tuck); }
+    .lbl-fold          { top: 50%; }
+    .lbl-tuck-bottom   { top: calc(100% - var(--tuck)); }
+
+    /* ─── Card (visible design, fills panel) ──────────────── */
+    .card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 2.5pt solid var(--teal);
+      padding: 5mm 9mm;
+      position: relative;
+    }
+    /* Amber corner accents */
+    .card::before, .card::after {
+      content: '';
+      position: absolute;
+      width: 16mm;
+      height: 16mm;
+    }
+    .card::before {
+      top: 3mm; left: 3mm;
+      border-top: 2pt solid var(--amber);
+      border-left: 2pt solid var(--amber);
+    }
+    .card::after {
+      bottom: 3mm; right: 3mm;
+      border-bottom: 2pt solid var(--amber);
+      border-right: 2pt solid var(--amber);
+    }
+
+    /* ─── Logo ───────────────────────────────────────── */
+    .logo-wrap {
+      text-align: center;
+      line-height: 1;
+    }
+    .logo-wrap img {
+      height: 36pt;
+      width: auto;
+      display: inline-block;
+    }
+
+    /* ─── Amber rule ───────────────────────────────────── */
+    .rule {
+      display: flex;
+      align-items: center;
+      gap: 7pt;
+    }
+    .rule-line {
+      flex: 1;
+      height: 1.5pt;
+      background: var(--amber);
+    }
+    .rule-diamond {
+      width: 6pt;
+      height: 6pt;
+      background: var(--amber);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ─── Messaging ───────────────────────────────────── */
+    .messaging {
+      text-align: center;
+    }
+    .headline {
+      font-size: 24pt;
+      font-weight: 800;
+      color: var(--near-black);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .subhead {
+      margin-top: 3mm;
+      font-size: 10pt;
+      font-weight: 400;
+      color: var(--mid-grey);
+      line-height: 1.5;
+    }
+
+    /* ─── Journey pills ────────────────────────────────── */
+    .journey {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5pt;
+      margin-top: 4mm;
+    }
+    .pill {
+      border: 1.5pt solid var(--teal);
+      color: var(--teal);
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2.5pt 7pt;
+      border-radius: 20pt;
+    }
+    .pill.accent {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+    .pill-arrow {
+      color: #aaa;
+      font-size: 9pt;
+      line-height: 1;
+    }
+
+    /* ─── Group / location ──────────────────────────────── */
+    .group-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6pt;
+    }
+    .group-label {
+      font-size: 7pt;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid-grey);
+    }
+    .group-name {
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--teal);
+    }
+    .group-sep {
+      width: 4pt;
+      height: 4pt;
+      background: var(--amber);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ─── URL ────────────────────────────────────────── */
+    .web-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5pt;
+    }
+    .web-url {
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: 0.02em;
+    }
+    .web-icon { font-size: 9pt; }
+
+    /* ─── Print ────────────────────────────────────────── */
+    @media print {
+      body { background: white; padding: 0; gap: 0; }
+      .page { box-shadow: none; }
+      .instructions { display: none; }
+    }
+
+    /* ─── On-screen instructions ───────────────────────── */
+    .instructions {
+      width: 210mm;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-family: system-ui, sans-serif;
+      font-size: 12px;
+      color: #444;
+      line-height: 1.7;
+    }
+    .instructions h3 { font-size: 13px; font-weight: 700; color: #1a5f6e; margin-bottom: 6px; }
+    .instructions ol { padding-left: 18px; }
+    .instructions li { margin-bottom: 2px; }
+    .instructions .note { margin-top: 8px; font-size: 11px; color: #888; }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ─── Guide lines ─────────────────────────────────── -->
+  <div class="guide guide-tuck-top"></div>
+  <div class="guide-label lbl-tuck-top">← tuck</div>
+
+  <div class="guide guide-fold"></div>
+  <div class="guide-label lbl-fold">← fold</div>
+
+  <div class="guide guide-tuck-bottom"></div>
+  <div class="guide-label lbl-tuck-bottom">← tuck</div>
+
+  <!-- ─── TOP TUCK STRIP (folds inward to form base) ──────── -->
+  <div class="tuck-strip"></div>
+
+  <!-- ─── TOP PANEL (upside-down, reads from the far side of tent) -->
+  <div class="panel flipped">
+    <div class="card">
+
+      <div class="logo-wrap">
+        <img src="../../site/static/logo.svg" alt="Future Together">
+      </div>
+
+      <div class="rule">
+        <div class="rule-line"></div>
+        <div class="rule-diamond"></div>
+        <div class="rule-line"></div>
+      </div>
+
+      <div class="messaging">
+        <div class="headline">The future is arriving.<br>Let’s face it together.</div>
+        <div class="subhead">
+          The world is changing faster than most people realise.<br>
+          You don’t have to figure it out alone.
+        </div>
+        <div class="journey">
+          <div class="pill">Awareness</div>
+          <div class="pill-arrow">›</div>
+          <div class="pill">Conversation</div>
+          <div class="pill-arrow">›</div>
+          <div class="pill accent">Action</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-line"></div>
+        <div class="rule-diamond"></div>
+        <div class="rule-line"></div>
+      </div>
+
+      <div class="group-row">
+        <span class="group-name">The Nest</span>
+        <div class="group-sep"></div>
+        <span class="group-label">Tuesdays at 8am — Tumbarumba</span>
+      </div>
+
+      <div class="web-row">
+        <span class="web-icon">🌐</span>
+        <span class="web-url">futuretogether.community</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── BOTTOM PANEL (right-way-up) ────────────────────── -->
+  <div class="panel">
+    <div class="card">
+
+      <div class="logo-wrap">
+        <img src="../../site/static/logo.svg" alt="Future Together">
+      </div>
+
+      <div class="rule">
+        <div class="rule-line"></div>
+        <div class="rule-diamond"></div>
+        <div class="rule-line"></div>
+      </div>
+
+      <div class="messaging">
+        <div class="headline">The future is arriving.<br>Let’s face it together.</div>
+        <div class="subhead">
+          The world is changing faster than most people realise.<br>
+          You don’t have to figure it out alone.
+        </div>
+        <div class="journey">
+          <div class="pill">Awareness</div>
+          <div class="pill-arrow">›</div>
+          <div class="pill">Conversation</div>
+          <div class="pill-arrow">›</div>
+          <div class="pill accent">Action</div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-line"></div>
+        <div class="rule-diamond"></div>
+        <div class="rule-line"></div>
+      </div>
+
+      <div class="group-row">
+        <span class="group-name">The Nest</span>
+        <div class="group-sep"></div>
+        <span class="group-label">Tuesdays at 8am — Tumbarumba</span>
+      </div>
+
+      <div class="web-row">
+        <span class="web-icon">🌐</span>
+        <span class="web-url">futuretogether.community</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── BOTTOM TUCK STRIP (folds inward to form base) ───── -->
+  <div class="tuck-strip"></div>
+
+</div><!-- /page -->
+
+<div class="instructions">
+  <h3>📐 Folding instructions (triangle tent)</h3>
+  <ol>
+    <li>Print on A4 paper — portrait, actual size (do not scale to fit).</li>
+    <li>Score and fold inward along the <strong>top tuck</strong> line.</li>
+    <li>Score and fold in half along the <strong>centre fold</strong> line, printed side out.</li>
+    <li>Score and fold inward along the <strong>bottom tuck</strong> line.</li>
+    <li>Tuck the two folded strips together inside to lock the triangular shape.</li>
+    <li>Stand upright — each face points a different direction.</li>
+  </ol>
+  <p class="note">Guide lines print as faint hairlines and will be hidden inside the folds. Adjust <code>--tuck: 24mm</code> in the CSS to match your preferred fold depth.</p>
+</div>
+
+</body>
+</html>
