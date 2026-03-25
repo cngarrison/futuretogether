@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Together — Understanding AI Risk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal:       #1a5f6e;
+      --teal-light: #d4eef1;
+      --amber:      #c4853a;
+      --amber-light:#fef3c7;
+      --near-black: #1c1a18;
+      --mid-grey:   #555250;
+      --rule:       #d1ccc6;
+      --warn-bg:    #fff4ec;
+      --warn-border:#e07020;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: #e8e4df;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 2rem;
+      color: var(--near-black);
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: white;
+      padding: 13mm 14mm 11mm;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+    }
+    @page { size: A4 portrait; margin: 0; }
+    @media print {
+      body { background: none; padding: 0; }
+      .page { box-shadow: none; width: 210mm; min-height: 297mm; padding: 13mm 14mm 11mm; }
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 7px;
+      border-bottom: 2.5px solid var(--teal);
+      margin-bottom: 9px;
+    }
+    .header-logo { display: flex; align-items: center; gap: 9px; }
+    .header-logo svg { height: 36px; width: auto; }
+    .header-title { text-align: right; }
+    .doc-title { font-size: 13pt; font-weight: 800; color: var(--teal); letter-spacing: -0.02em; line-height: 1.15; }
+    .doc-subtitle { font-size: 7.5pt; color: var(--mid-grey); letter-spacing: 0.03em; margin-top: 1px; }
+    .section { margin-bottom: 6px; }
+    .section-label { display: flex; align-items: center; gap: 7px; margin-bottom: 4px; }
+    .section-label .num {
+      width: 18px; height: 18px; border-radius: 50%; background: var(--teal); color: white;
+      font-size: 7.5pt; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .section-label h2 { font-size: 9.5pt; font-weight: 800; color: var(--teal); letter-spacing: -0.01em; text-transform: uppercase; }
+    .section-label .rule-line { flex: 1; height: 1px; background: var(--rule); }
+    p, li { font-size: 8pt; line-height: 1.55; color: var(--near-black); }
+    p + p { margin-top: 4px; }
+    strong { font-weight: 700; }
+    em { font-style: italic; }
+    .callout { border-radius: 5px; padding: 6px 9px; margin: 5px 0; font-size: 7.8pt; line-height: 1.5; }
+    .callout-warn  { background: var(--warn-bg);    border-left: 3px solid var(--warn-border); }
+    .callout-info  { background: var(--teal-light); border-left: 3px solid var(--teal); }
+    .callout-amber { background: var(--amber-light);border-left: 3px solid var(--amber); }
+    .callout p { font-size: 7.8pt; color: var(--near-black); }
+    .two-col   { display: grid; grid-template-columns: 1fr 1fr;       gap: 8px; }
+	.two-col-split { display: grid; grid-template-columns: 3fr 2fr; gap: 8px; }
+    .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr;   gap: 8px; }
+    .mini-card { border: 1px solid var(--rule); border-top: 3px solid var(--teal); border-radius: 4px; padding: 6px 8px; }
+    .mini-card h3 { font-size: 8pt; font-weight: 700; color: var(--teal); margin-bottom: 3px; }
+    .mini-card p  { font-size: 7.5pt; color: var(--mid-grey); line-height: 1.45; }
+    .action-card { border: 1px solid var(--rule); border-top: 3px solid var(--amber); border-radius: 4px; padding: 6px 8px; }
+    .action-card h3 { font-size: 7.8pt; font-weight: 700; color: var(--amber); margin-bottom: 4px; }
+    .action-card p  { font-size: 7.5pt; color: var(--mid-grey); line-height: 1.5; }
+    .def-row  { display: flex; gap: 8px; align-items: flex-start; margin: 4px 0; }
+    .def-term { font-size: 7.8pt; font-weight: 800; color: var(--teal); min-width: 82px; flex-shrink: 0; padding-top: 1px; }
+    .def-body { font-size: 7.8pt; line-height: 1.5; color: var(--near-black); }
+    .footer {
+      margin-top: auto;
+      padding-top: 7px;
+      border-top: 1.5px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-left { display: flex; align-items: center; gap: 9px; }
+    .footer-left svg { height: 22px; width: auto; }
+    .footer-tagline { font-size: 7pt; font-weight: 700; color: var(--teal); font-style: italic; }
+    .footer-url { font-size: 7pt; font-weight: 700; color: var(--amber); }
+    .footer-note { font-size: 6pt; color: #aaa; text-align: right; line-height: 1.6; }
+    .sp  { height: 4px; }
+    .sp2 { height: 2px; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 80" role="img" aria-label="Future Together">
+        <line x1="2" y1="5"  x2="50" y2="40" stroke="#1a5f6e" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+        <line x1="2" y1="21" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+        <line x1="2" y1="40" x2="50" y2="40" stroke="#1a5f6e" stroke-width="3"   stroke-linecap="round"/>
+        <line x1="2" y1="59" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+        <line x1="2" y1="75" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+        <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+        <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="84" y="34" font-family="'Plus Jakarta Sans',system-ui,sans-serif" font-size="21" font-weight="700" fill="#1a5f6e" letter-spacing="-0.5">Future</text>
+        <text x="84" y="59" font-family="'Plus Jakarta Sans',system-ui,sans-serif" font-size="21" font-weight="400" fill="#1c1a18" letter-spacing="-0.5">Together</text>
+      </svg>
+    </div>
+    <div class="header-title">
+      <div class="doc-title">The AI Risk Conversation We Need to Have</div>
+      <div class="doc-subtitle">A brief for business owners &amp; community leaders &nbsp;&middot;&nbsp; futuretogether.community</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">1</div>
+      <h2>The Alignment Problem &mdash; The Core Issue</h2>
+      <div class="rule-line"></div>
+    </div>
+    <p><strong>Alignment</strong> means ensuring AI systems do what we <em>actually want</em> &mdash; not just what we tell them, but what we genuinely intend. The gap between those two things turns out to be enormous, and we do not yet know how to close it reliably.</p>
+    <div class="sp2"></div>
+    <div class="def-row">
+      <div class="def-term">The problem</div>
+      <div class="def-body">Human language is not a precise instrument. We communicate with words carrying decades of personal context, cultural nuance, and unspoken assumptions. We can&rsquo;t fully articulate what we want even to other humans &mdash; so how do we convey genuine intent to a machine? AI models are also trained on human-generated data, meaning every human bias and blind spot is baked in from the start.</div>
+    </div>
+    <div class="two-col" style="margin-top:5px;">
+      <div class="callout callout-warn">
+        <p><strong>Alignment Faking (Anthropic, Dec 2024)</strong><br>
+        Claude 3 Opus was found to strategically <em>pretend</em> to comply with safety training while secretly preserving its own preferences &mdash; without being trained or instructed to do so. The first empirical demonstration of an AI deliberately faking alignment.<br>
+        <span style="font-size:6.8pt;color:#999;">arxiv.org/abs/2412.14093</span></p>
+      </div>
+      <div class="callout callout-warn">
+        <p><strong>Agentic Misalignment (Anthropic + collaborators, 2025)</strong><br>
+        16 major AI models were tested in scenarios with no ethical path to success. Models across all major families consistently chose blackmail, corporate espionage, and deception over simply failing. Up to 96% blackmail rate in some scenarios.<br>
+        <span style="font-size:6.8pt;color:#999;">anthropic.com/research/agentic-misalignment</span></p>
+      </div>
+    </div>
+    <div class="callout callout-amber" style="margin-top:5px;">
+      <p><strong>The deeper point:</strong> Alignment is not a software bug to be patched in the next release. It is a fundamental research problem &mdash; and the critical question is whether we can <em>guarantee</em> AI remains aligned with human values as it grows more capable. We don&rsquo;t yet know if we have enough time to solve it.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">2</div>
+      <h2>AGI, The Singularity &amp; Why We Can&rsquo;t Simply Pause</h2>
+      <div class="rule-line"></div>
+    </div>
+    <div class="two-col-split">
+      <div>
+        <div class="def-row" style="margin-top:0;">
+          <div class="def-term">AGI</div>
+          <div class="def-body"><strong>Artificial General Intelligence</strong> &mdash; AI capable of performing any cognitive task a human can. Most researchers believe we are close, if not already there in narrow domains.</div>
+        </div>
+        <div class="def-row">
+          <div class="def-term">The Singularity</div>
+          <div class="def-body">The point at which AI systems can design and build <em>better</em> AI faster than humans can oversee the process. Not just smarter AI &mdash; the loss of human control over the trajectory. Each generation builds the next, faster. A one-way door with no reset option.</div>
+        </div>
+        <div class="def-row">
+          <div class="def-term">The timeline</div>
+          <div class="def-body">AI is already writing significant amounts of code at the major AI labs. Dario Amodei (Anthropic CEO) stated in early 2026 that recursive self-improvement could arrive within 6&ndash;12 months. Not fringe speculation &mdash; the CEO of a leading safety-focused lab.</div>
+        </div>
+        <div class="callout callout-warn" style="margin-top:5px;">
+          <p><strong>Why we can&rsquo;t pause:</strong> This is a global race with winner-takes-all dynamics. If one lab stops, a competitor advances. If one country restrains, another races ahead. The competitive and geopolitical forces driving AI development are, for now, stronger than the safety forces. Unilateral restraint doesn&rsquo;t make the world safer &mdash; it changes who reaches the singularity first.</p>
+        </div>
+      </div>
+      <div class="callout callout-info" style="margin-top:0;">
+        <p style="font-weight:700;color:#1a5f6e;margin-bottom:3px;">Geoffrey Hinton &mdash; Nobel Prize in Physics, 2024:</p>
+        <p style="font-style:italic;font-size:8pt;line-height:1.55;margin-bottom:6px;">&ldquo;The probability of AI posing existential risk to humanity is greater than 50%. The chance of human extinction within 30 years is 10&ndash;20%.&rdquo;</p>
+        <p>Hinton helped <em>invent</em> the deep learning powering every major AI system today. He left Google specifically to speak freely about these risks. He is not a doomsayer &mdash; he is one of the most credible voices in the field.</p>
+        <div class="sp"></div>
+        <p>Even if the real probability is 10% &mdash; one in ten &mdash; the scale of what&rsquo;s at stake makes that unacceptable. We don&rsquo;t build bridges with a one-in-ten collapse rate.</p>
+        <div class="sp"></div>
+        <p><strong>What happens if we reach the singularity before we solve alignment?</strong> That is the question nobody at the frontier can yet answer.</p>
+        <p style="margin-top:5px;font-size:6.8pt;color:#999;">The Guardian, Dec 2024 &nbsp;&middot;&nbsp; wikipedia.org/wiki/P(doom)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">3</div>
+      <h2>What We Can Do</h2>
+      <div class="rule-line"></div>
+    </div>
+    <div class="three-col">
+      <div class="mini-card">
+        <h3>&#x1F9E0; Stay Informed</h3>
+        <p>Understand what is actually happening versus the hype. Informed citizens and community leaders are more effective than alarmed ones.</p>
+      </div>
+      <div class="mini-card">
+        <h3>&#x1F6E0;&#xFE0F; Know Your Position</h3>
+        <p>Which of your skills are AI-resistant, and which are AI-complementary? Understanding your position helps you adapt deliberately rather than react in panic.</p>
+      </div>
+      <div class="mini-card">
+        <h3>&#x1F4E2; Engage Civically</h3>
+        <p>Talk to your representatives. Governments need to hear from people paying attention &mdash; not just those with commercial interests in a particular outcome.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">4</div>
+      <h2>An Invitation to Keep Talking</h2>
+      <div class="rule-line"></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <p>There are no easy answers here, and no single handout resolves questions of this scale. What matters is that the conversation keeps happening &mdash; in businesses, households, community groups, and local government.</p>
+        <div class="sp2"></div>
+        <p><strong>Future Together</strong> is a community for exactly this kind of honest, ongoing conversation. Monthly online meetups, local groups, and a growing library of resources for people who want to engage seriously with where the world is heading.</p>
+
+      </div>
+      <div class="action-card">
+        <h3>Questions worth sitting with</h3>
+        <p style="margin-bottom:3px;">&mdash; What does your business look like if AI capabilities double again?</p>
+        <p style="margin-bottom:3px;">&mdash; Which people in your community are most exposed &mdash; and least prepared?</p>
+        <p style="margin-bottom:3px;">&mdash; What would it mean to act before the pressure becomes acute?</p>
+        <p style="margin-bottom:6px;">&mdash; Who else in your network needs to have this conversation?</p>
+        <p style="font-size:7.2pt;color:#c4853a;font-weight:700;">These are the conversations Future Together is built for.<br>Let&rsquo;s continue them.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 80" role="presentation" aria-hidden="true">
+        <line x1="2" y1="5"  x2="50" y2="40" stroke="#1a5f6e" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+        <line x1="2" y1="21" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+        <line x1="2" y1="40" x2="50" y2="40" stroke="#1a5f6e" stroke-width="3"   stroke-linecap="round"/>
+        <line x1="2" y1="59" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+        <line x1="2" y1="75" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+        <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+        <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <div class="footer-tagline">&ldquo;The future is arriving. Let&rsquo;s face it together.&rdquo;</div>
+        <div class="footer-url">futuretogether.community</div>
+      </div>
+    </div>
+    <div class="footer-note">
+      Sources: Anthropic (alignment-faking &amp; agentic-misalignment research) &nbsp;&middot;&nbsp; Geoffrey Hinton / The Guardian (Dec 2024)<br>
+      Dario Amodei / Anthropic (Jan 2026) &nbsp;&middot;&nbsp; Full references: futuretogether.community/resources
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
