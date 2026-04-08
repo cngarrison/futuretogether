@@ -52,6 +52,13 @@ export const externalResources: ExternalResource[] = [
   },
   {
     category: "Perspectives",
+    title: "Industrial Policy for the Intelligence Age — OpenAI",
+    url: "https://cdn.openai.com/pdf/561e7512-253e-424b-9734-ef4098440601/Industrial%20Policy%20for%20the%20Intelligence%20Age.pdf",
+    description:
+      "A policy paper from OpenAI arguing the transition to superintelligence will require an ambitious response — new safety nets, democratic input into AI alignment, and mechanisms to share the economic gains broadly. Significant not just for the ideas, but for who is saying them: the company building superintelligence is asking governments and communities to act now.",
+  },
+  {
+    category: "Perspectives",
     title: "What if AI bullishness is right — and bearish? — Citrini Research",
     url: "https://www.citriniresearch.com/p/2028gic",
     description:
