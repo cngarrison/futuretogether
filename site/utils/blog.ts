@@ -23,6 +23,8 @@ export interface BlogPostMeta {
   excerpt?: string;
   author?: string;
   tags?: string[];
+  series?: string;
+  series_part?: number;
 }
 
 export interface BlogPost extends BlogPostMeta {
@@ -242,15 +244,22 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
       if (post) posts.push(post);
     }
 
-    // Sort by date ascending - descending is normal, there is a logical progression to the posts
+    // Sort newest-first (descending)
     return posts.sort((a, b) =>
-      // new Date(a.date).getTime() - new Date(b.date).getTime() // descending
-      new Date(a.date).getTime() - new Date(b.date).getTime() // ascending
+      new Date(b.date).getTime() - new Date(a.date).getTime()
     );
   } catch (error) {
     console.error("Error loading blog posts:", error);
     return [];
   }
+}
+
+// Load posts belonging to a series, sorted ascending by series_part
+export async function loadSeriesPosts(seriesSlug: string): Promise<BlogPost[]> {
+  const allPosts = await loadBlogPosts();
+  return allPosts
+    .filter((p) => p.series === seriesSlug)
+    .sort((a, b) => (a.series_part ?? 0) - (b.series_part ?? 0));
 }
 
 // Get post by slug
