@@ -8,12 +8,12 @@ description: |
   This isn't science fiction, and it isn't just about whether you personally use AI tools. It's about the broader societal ripples that affect us all.
 
   We need to move beyond the hype and have an honest conversation about adaptation and resilience.
-date: 2026-06-17T07:00:00Z # 06:00 PM AEDT (Sydney time)
+date: 2026-06-17T08:00:00Z # 06:00 PM AEST (Sydney time) — note: AEST not AEDT, daylight saving has ended
 timezone: Australia/Sydney # For display formatting
 duration: 45
 capacity: 30
 registrationDeadline: 1
-meetingLink: https://meet.google.com/itp-ssvt-mzk
+meetingLink: https://meet.jit.si/moderated/78e2e6dbc0155d5af7d9b1e3a68b88a501c4b4311eebdb92c6f608ebd53448c3
 posterImage: /events/discuss-our-future/poster.png
 isActive: true
 presentedBy: Charlie Garrison

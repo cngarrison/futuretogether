@@ -15,7 +15,7 @@
 | **Platform** | Jitsi Meet recommended — see note below |
 | **Ideal group size** | 4–12 people |
 
-**Platform note:** Google Meet's free tier imposes a 60-minute hard stop on group calls, which cuts discussions off mid-flow. Switch to **Jitsi Meet** ([meet.jit.si](https://meet.jit.si)) — completely free, no account needed for participants, no time limit, browser-based. Just create a room and share the link exactly as you would with Google Meet.
+**Platform note:** Use **Jitsi Meet** ([meet.jit.si](https://meet.jit.si)) — completely free, no account needed for participants, no time limit, browser-based. Just create a room and share the link exactly.
 
 ---
 

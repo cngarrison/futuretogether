@@ -79,7 +79,7 @@ export default define.page(async function EventPage({ params }) {
               textClass=""
             />
             <span>
-              &middot; {event.duration} min &middot; Google Meet &middot; Free
+              &middot; {event.duration} min &middot; Online &middot; Free
             </span>
           </div>
           {spotsRemaining > 0 && spotsRemaining <= 10 && (

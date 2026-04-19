@@ -99,7 +99,7 @@ export async function sendConfirmationEmail(
   }color:#374151;font-weight:600;">Format</td>
           <td style="padding:8px 0 8px 16px;${
     event.presentedBy ? "border-bottom:1px solid #d0e4e7;" : ""
-  }color:#374151;">Online via Google Meet</td>
+  }color:#374151;">Online via Jitsi</td>
         </tr>
         ${
     event.presentedBy
@@ -114,7 +114,7 @@ export async function sendConfirmationEmail(
     </div>
 
     <p style="text-align:center;margin:0 0 24px;">
-      <a href="${event.meetingLink}" class="btn btn-teal">Join Google Meet</a>
+      <a href="${event.meetingLink}" class="btn btn-teal">Join Meetup</a>
     </p>
 
     ${topicsHtml}
@@ -214,11 +214,11 @@ export async function sendReminderEmail(
 
     <div style="background-color:#eef5f7;border-radius:8px;padding:24px;margin:0 0 28px;">
       <p style="margin:0 0 4px;font-weight:700;color:#1a5f6e;">${formattedDate}</p>
-      <p style="margin:0;font-size:14px;color:#374151;">Online via Google Meet</p>
+      <p style="margin:0;font-size:14px;color:#374151;">Online via Jitsi</p>
     </div>
 
     <p style="text-align:center;margin:0 0 24px;">
-      <a href="${event.meetingLink}" class="btn btn-teal">Join Google Meet</a>
+      <a href="${event.meetingLink}" class="btn btn-teal">Join Meetup</a>
     </p>
 
     <p style="margin:0;font-size:13px;color:#6b7280;">See you there!</p>`;

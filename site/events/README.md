@@ -24,7 +24,7 @@ timezone: Australia/Sydney # For display formatting (shows local time to users)
 duration: 45 # Duration in minutes
 capacity: 30 # Maximum attendees
 registrationDeadline: 1 # Hours before event to close registration
-meetingLink: https://meet.google.com/xxx # Google Meet URL
+meetingLink: https://meet.jit.si/moderated/xxx # Jitsi URL
 posterImage: /static/events/slug/poster.png # Event poster image path
 isActive: true # Enable/disable registration
 presentedBy: Charlie Garrison # Optional: Person presenting

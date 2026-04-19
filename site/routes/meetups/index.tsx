@@ -106,7 +106,7 @@ export default define.page(async function Meetups() {
               >
                 Where
               </p>
-              <p class="font-semibold">Online via Google Meet</p>
+              <p class="font-semibold">Online via Jitsi</p>
               <p
                 class="text-sm mt-0.5"
                 style="color: rgba(255,255,255,0.6);"
