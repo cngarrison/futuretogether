@@ -1,6 +1,7 @@
 import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
-import { getPostBySlug, getRelatedPosts } from "@/utils/blog.ts";
+import { getPostBySlug, getRelatedPosts, loadSeriesPosts } from "@/utils/blog.ts";
+import { getSeriesBySlug } from "@/data/series.ts";
 
 export default define.page(async function BlogPost(ctx) {
   const post = await getPostBySlug(ctx.params.slug);
@@ -12,7 +13,7 @@ export default define.page(async function BlogPost(ctx) {
         style="padding-top: calc(4rem + 2rem);"
       >
         <h1 class="text-4xl font-bold mb-6">Post Not Found</h1>
-        <p>The blog post you're looking for doesn't exist.</p>
+        <p>The blog post you’re looking for doesn’t exist.</p>
         <a
           href="/blog"
           class="font-semibold transition-opacity hover:opacity-70"
@@ -24,6 +25,14 @@ export default define.page(async function BlogPost(ctx) {
     );
   }
 
+  // Series context
+  const seriesMeta = post.series ? getSeriesBySlug(post.series) : undefined;
+  const seriesPosts = seriesMeta ? await loadSeriesPosts(post.series!) : [];
+  const total = seriesPosts.length;
+  const seriesIdx = seriesPosts.findIndex((p) => p.slug === post.slug);
+  const prevPost = seriesIdx > 0 ? seriesPosts[seriesIdx - 1] : null;
+  const nextPost = seriesIdx >= 0 && seriesIdx < total - 1 ? seriesPosts[seriesIdx + 1] : null;
+
   const relatedPosts = await getRelatedPosts(post);
 
   return (
@@ -33,13 +42,42 @@ export default define.page(async function BlogPost(ctx) {
         <meta
           name="description"
           content={post.excerpt ||
-            `Read ${post.title} on Future Together's blog`}
+            `Read ${post.title} on Future Together’s blog`}
         />
       </Head>
 
       {/* Hero — teal band with title */}
       <section style="background-color: #1a5f6e; color: white;" class="pt-16">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-14">
+
+          {/* Series badge — shown only for series articles */}
+          {seriesMeta && post.series_part && (
+            <div class="mb-5">
+              <a
+                href={`/blog/series/${seriesMeta.slug}`}
+                class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-opacity hover:opacity-80"
+                style="background-color: #c4853a; color: white;"
+              >
+                {/* Book icon */}
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="shrink-0"
+                >
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                </svg>
+                Part {post.series_part} of {total} · {seriesMeta.name}
+              </a>
+            </div>
+          )}
+
           {/* Author + date pill */}
           <div class="mb-5 inline-flex rounded-full overflow-hidden text-sm">
             {post.author && (
@@ -106,8 +144,83 @@ export default define.page(async function BlogPost(ctx) {
             />
           )}
 
-          {/* Clear floated images before related posts / footer */}
+          {/* Clear floated images */}
           <div style={{ clear: "both" }} />
+
+          {/* Series prev/next navigation */}
+          {seriesMeta && (prevPost || nextPost) && (
+            <nav
+              class="mt-14 pt-10 border-t border-gray-200"
+              aria-label="Series navigation"
+            >
+              <div class="mb-4 flex items-center gap-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  style="color: #1a5f6e;"
+                  class="shrink-0"
+                >
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                </svg>
+                <a
+                  href={`/blog/series/${seriesMeta.slug}`}
+                  class="text-sm font-semibold transition-opacity hover:opacity-70"
+                  style="color: #1a5f6e;"
+                >
+                  {seriesMeta.name} series
+                </a>
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                {/* Previous */}
+                {prevPost
+                  ? (
+                    <a
+                      href={`/blog/${prevPost.slug}`}
+                      class="flex flex-col gap-1.5 bg-white rounded-xl p-5 transition-shadow hover:shadow-md"
+                      style="border: 1px solid #d0e4e7; text-decoration: none;"
+                    >
+                      <span
+                        class="text-xs font-semibold uppercase tracking-widest"
+                        style="color: rgba(28,26,24,0.4);"
+                      >
+                        ← Part {prevPost.series_part}
+                      </span>
+                      <span class="font-semibold text-sm" style="color: #1c1a18;">
+                        {prevPost.title}
+                      </span>
+                    </a>
+                  )
+                  : <div />}
+
+                {/* Next */}
+                {nextPost && (
+                  <a
+                    href={`/blog/${nextPost.slug}`}
+                    class="flex flex-col gap-1.5 bg-white rounded-xl p-5 transition-shadow hover:shadow-md sm:text-right"
+                    style="border: 1px solid #d0e4e7; text-decoration: none;"
+                  >
+                    <span
+                      class="text-xs font-semibold uppercase tracking-widest"
+                      style="color: rgba(28,26,24,0.4);"
+                    >
+                      Part {nextPost.series_part} →
+                    </span>
+                    <span class="font-semibold text-sm" style="color: #1c1a18;">
+                      {nextPost.title}
+                    </span>
+                  </a>
+                )}
+              </div>
+            </nav>
+          )}
 
           {/* Related posts */}
           {relatedPosts.length > 0 && (
