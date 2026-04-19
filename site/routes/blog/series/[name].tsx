@@ -48,7 +48,7 @@ export default define.page(async function SeriesPage(ctx) {
               class="text-sm font-medium transition-opacity hover:opacity-75"
               style="color: rgba(255,255,255,0.65);"
             >
-              ← Blog
+              ← Articles
             </a>
           </div>
 

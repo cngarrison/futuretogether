@@ -45,7 +45,7 @@ export default define.page(async function Blog() {
   return (
     <>
       <Head>
-        <title>Blog — Future Together</title>
+        <title>Articles — Future Together</title>
         <meta
           name="description"
           content="Essays and perspectives on AI, technological change, and what it means for society."
@@ -55,7 +55,7 @@ export default define.page(async function Blog() {
       {/* Hero */}
       <section style="background-color: #1a5f6e; color: white;" class="pt-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
-          <h1 class="text-4xl font-bold mb-3">Blog</h1>
+          <h1 class="text-4xl font-bold mb-3">Articles</h1>
           <p class="text-lg" style="color: rgba(255,255,255,0.8);">
             Essays and perspectives on AI, technological change, and what it
             means for all of us.

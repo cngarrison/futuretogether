@@ -184,7 +184,7 @@ export default define.page(async function Join() {
                     ],
                     [
                       "New content first",
-                      "Blog posts, resources, and guides as they're published.",
+                      "Articles, resources, and guides as they're published.",
                     ],
                     [
                       "Community updates",

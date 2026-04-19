@@ -1,5 +1,5 @@
 /**
- * Blog series data — Future Together
+ * Article series data — Future Together
  *
  * To add a new series:
  *   - Add an entry to the `series` array below.

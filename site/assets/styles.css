@@ -118,7 +118,7 @@ body {
 }
 
 /* =============================================================================
-   Blog: Callout boxes
+   Article: Callout boxes
    Usage in markdown: <div class="callout info">...</div>
    Transforms to .callout-info via blog.ts transformCallouts()
    ============================================================================= */
@@ -157,7 +157,7 @@ body {
 }
 
 /* =============================================================================
-   Blog: Floating image figures (images with title= attribute in markdown)
+   Article: Floating image figures (images with title= attribute in markdown)
    ============================================================================= */
 
 .blog-image-float {
