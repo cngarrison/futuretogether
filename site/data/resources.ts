@@ -65,6 +65,13 @@ export const externalResources: ExternalResource[] = [
       "A scenario piece from a macro research firm, not a prediction. What happens if AI adoption accelerates exactly as the optimists expect — but the speed of disruption outpaces the economy's ability to adapt? A careful look at left-tail economic risks that most AI commentary ignores. Thought-provoking whether or not you buy the scenario.",
   },
   {
+    category: "Perspectives",
+    title: "Canaries in the Coal Mine — Stanford Digital Economy Lab",
+    url: "https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/",
+    description:
+      "The most rigorous employment data on AI's impact to date. Using ADP payroll records covering 25 million US workers through September 2025, researchers found that workers aged 22–25 in high AI-exposure roles — coding, writing, legal, customer service — have seen employment drop by around 20% since late 2022. Workers in the same roles aged 35+ grew over the same period. The headline unemployment number hasn't moved. This paper explains why that doesn't tell the full story, and what the early signal actually looks like.",
+  },
+  {
     category: "Context & Frameworks",
     title: "Maslow's Hierarchy of Needs",
     url: "https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs",
