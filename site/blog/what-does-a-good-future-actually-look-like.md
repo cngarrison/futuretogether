@@ -12,6 +12,8 @@ tags: [
   "Community",
   "Human Flourishing",
 ]
+series: "facing-the-future"
+series_part: 8
 ---
 
 # What does a good future actually look like?

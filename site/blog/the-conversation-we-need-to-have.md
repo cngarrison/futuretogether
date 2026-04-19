@@ -14,6 +14,8 @@ tags: [
   "Prepare Now",
   "Wake Up Call",
 ]
+series: "facing-the-future"
+series_part: 1
 ---
 
 # The Conversation We Need to Have

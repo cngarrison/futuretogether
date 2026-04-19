@@ -12,6 +12,8 @@ tags: [
   "Future Planning",
   "AI Impact",
 ]
+series: "facing-the-future"
+series_part: 6
 ---
 
 # How can Maslow's Hierarchy of Needs frame our planning efforts?

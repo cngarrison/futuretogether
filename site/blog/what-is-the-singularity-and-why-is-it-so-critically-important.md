@@ -13,6 +13,8 @@ tags: [
   "AI Impact",
   "Prepare Now",
 ]
+series: "facing-the-future"
+series_part: 3
 ---
 
 # What is the Singularity, and why is it so critically important?

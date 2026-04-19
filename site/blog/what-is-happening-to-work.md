@@ -13,6 +13,8 @@ tags: [
   "Knowledge Work",
   "Robotics",
 ]
+series: "facing-the-future"
+series_part: 4
 ---
 
 # What is happening to work?

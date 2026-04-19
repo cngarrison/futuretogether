@@ -12,6 +12,8 @@ tags: [
   "AI Impact",
   "Supply Chain",
 ]
+series: "facing-the-future"
+series_part: 7
 ---
 
 # What conditions make food preparation (and similar) efforts important?

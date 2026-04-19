@@ -12,6 +12,8 @@ tags: [
   "Future Together",
   "Getting Started",
 ]
+series: "facing-the-future"
+series_part: 9
 ---
 
 # What can you actually do right now?

@@ -12,6 +12,8 @@ tags: [
   "Singularity",
   "Prepare Now",
 ]
+series: "facing-the-future"
+series_part: 2
 ---
 
 # What is AI alignment and why is it so hard?

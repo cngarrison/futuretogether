@@ -12,6 +12,8 @@ tags: [
   "Future Of Work",
   "Economic Change",
 ]
+series: "facing-the-future"
+series_part: 5
 ---
 
 # Why community is the most important preparation
