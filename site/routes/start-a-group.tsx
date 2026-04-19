@@ -29,7 +29,7 @@ export default define.page(function StartAGroup() {
       title: "Use the slideshow as your starting point",
       body:
         "You don't need to build your own presentation. We've already created one. The ",
-      link: { href: "/meetups/slideshow", text: "Future Together slideshow" },
+      link: { href: "/meetups/discuss-our-future", text: "Future Together slideshow" },
       body2:
         " walks through the key ideas — what's happening with AI, why it matters, and what questions we should all be asking. Use it to open the conversation, then step back and let people respond. The goal is discussion, not lecture.",
     },
@@ -181,7 +181,7 @@ export default define.page(function StartAGroup() {
                 title: "The slideshow",
                 desc:
                   "Our ready-to-use presentation. Open it on your laptop, walk through it with your group.",
-                href: "/meetups/slideshow",
+                href: "/meetups/discuss-our-future",
                 label: "Open slideshow",
               },
               {

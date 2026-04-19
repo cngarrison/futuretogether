@@ -2,32 +2,23 @@ id: ai-work-and-capitalism-2026-05-06
 slug: ai-work-and-capitalism
 title: "When the Rules Change: AI, Work, and Who Captures the Benefit"
 description: |
-  Unemployment is stable. Entry-level jobs are quietly disappearing. And beneath
-  both of those facts sits a question our economic system has never had to answer
-  before.
+  Unemployment is stable. Entry-level jobs are quietly disappearing. And beneath both of those facts sits a question our economic system has never had to answer before.
 
-  A Stanford research team recently published a study tracking 25 million US workers.
-  What they found doesn’t match the headline numbers. Young workers in AI-exposed
-  roles — coding, writing, legal, customer service — have seen employment drop by
-  around 20% since late 2022. Workers in the same roles aged 35+ are growing.
+  A Stanford research team recently published a study tracking 25 million US workers. What they found doesn’t match the headline numbers. Young workers in AI-exposed roles — coding, writing, legal, customer service — have seen employment drop by around 20% since late 2022. Workers in the same roles aged 35+ are growing.
 
   This isn’t a forecast. It’s already happening.
 
-  At this special once-off Future Together meetup, we’re exploring what this means
-  for work, for careers, and for the economic system built on the assumption that
-  human labour is always a necessary input. Who gets the benefit when AI does the
-  work? And what do we want to do about it?
+  At this special once-off Future Together meetup, we’re exploring what this means for work, for careers, and for the economic system built on the assumption that human labour is always a necessary input. Who gets the benefit when AI does the work? And what do we want to do about it?
 
-  No economics degree required. Just curiosity and a willingness to face what’s
-  actually happening.
+  No economics degree required. Just curiosity and a willingness to face what’s actually happening.
 date: 2026-05-06T00:00:00Z # 10:00 AM AEST (Sydney time) — note: AEST not AEDT, daylight saving has ended
 timezone: Australia/Sydney # For display formatting
 duration: 75
 capacity: 30
 registrationDeadline: 1
-meetingLink: https://whereby.com/futuretogether # Confirm this room name is available — change if needed
+meetingLink: https://meet.jit.si/moderated/78e2e6dbc0155d5af7d9b1e3a68b88a501c4b4311eebdb92c6f608ebd53448c3
 posterImage: /events/ai-work-and-capitalism/poster.png
-isActive: false # Set to true when ready to publish
+isActive: true
 presentedBy: Charlie Garrison
 sponsoredBy: Beyond Better
 topics:

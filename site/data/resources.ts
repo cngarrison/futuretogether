@@ -119,15 +119,22 @@ export const internalResources: InternalResource[] = [
   {
     label: "Community",
     title: "Meetup Slideshow",
-    href: "/meetups/slideshow",
+    href: "/meetups/discuss-our-future",
     description:
       "The slideshow used in our monthly online meetups — a visual walkthrough of the key ideas, questions, and frameworks we discuss together. A good starting point if you're new.",
   },
   {
     label: "Community",
-    title: "Blog",
+    title: "Articles",
     href: "/blog",
     description:
       "Writing from the Future Together community. Experiences, observations, and analysis from people navigating AI-driven change in their own lives and work.",
+  },
+  {
+    label: "Community",
+    title: "AI Work and Capitalism Slideshow",
+    href: "/meetups/ai-work-and-capitalism",
+    description:
+      "The slideshow from the AI Work and Capitalism online meetups — a visual walkthrough of the key ideas, questions, and frameworks we discuss together.",
   },
 ];
