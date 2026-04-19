@@ -14,3 +14,8 @@ node_modules/
 vendor/
 .vite/
 
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key

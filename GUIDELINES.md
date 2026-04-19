@@ -9,6 +9,8 @@ domain: futuretogether.community
 
 # Future Together — BB Project Guidelines
 
+Refer to `BEADS.md` as needed for guidance on using the inbuilt issue tracker. Use the `memory` tool for context and decisions from past collaborations, and use the `bd` (beads) CLI for knowing which issues are outstanding and recording progress of tasks. 
+
 ## Project Purpose and Scope
 
 This project builds and maintains the website for **Future Together** — a
@@ -256,7 +258,7 @@ Always read `jump-start/brand-and-voice.md` before writing copy. Key principles:
 [Logo: Future Together]     Meetups | About | Join →
 ```
 
-The `PageHeader` component currently has: Home, Contact, Blog — **this needs
+The `PageHeader` component currently has: Home, Contact, Articles — **this needs
 updating** to the Phase 1 nav.
 
 ---
