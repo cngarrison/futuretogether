@@ -340,7 +340,7 @@ ready for it.
 
 ---
 
-![monthly meetup](/img/discuss-our-future.png "Monthly Meetup - Third Wednesday")
+![monthly meetup](/img/discuss-our-future-flyer.png "Monthly Meetup - Third Wednesday")
 
 **Next Online Meetup: Third Wednesday of each month**
 
