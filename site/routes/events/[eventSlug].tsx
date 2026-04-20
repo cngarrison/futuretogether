@@ -100,6 +100,19 @@ export default define.page(async function EventPage({ params }) {
           <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
             {/* Left: event details */}
             <div class="md:col-span-7 space-y-6">
+              {event.posterImage && (
+                <div
+                  class="rounded-2xl overflow-hidden"
+                  style="border: 1px solid #d0e4e7;"
+                >
+                  <img
+                    src={event.posterImage}
+                    alt={`Visual summary: ${event.title}`}
+                    class="w-full h-auto"
+                  />
+                </div>
+              )}
+
               <div
                 class="bg-white rounded-2xl p-8"
                 style="border: 1px solid #d0e4e7;"
@@ -156,20 +169,20 @@ export default define.page(async function EventPage({ params }) {
                   </ul>
                 </div>
               )}
-            </div>
 
-              {event.posterImage && (
+              {event.supportingImages && event.supportingImages.map((imgSrc: string, i: number) => (
                 <div
+                  key={i}
                   class="rounded-2xl overflow-hidden"
                   style="border: 1px solid #d0e4e7;"
                 >
                   <img
-                    src={event.posterImage}
-                    alt={`Visual summary: ${event.title}`}
+                    src={imgSrc}
+                    alt={`Supporting graphic: ${event.title}`}
                     class="w-full h-auto"
                   />
                 </div>
-              )}
+              ))}
             </div>
 
             {/* Right: registration form */}

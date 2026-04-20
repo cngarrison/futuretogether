@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" role="img" aria-labelledby="codetitle codedesc">
+  <title id="codetitle">AI coding capability: one year of progress on SWE-Bench</title>
+  <desc id="codedesc">AI performance on SWE-Bench (real-world software engineering tasks) leapt from 4.4% in late 2023 to 71.7% in late 2024 — a 16-fold improvement in approximately 12 months.</desc>
+
+  <!-- Background -->
+  <rect width="640" height="320" fill="#f7f4ef" rx="10"/>
+
+  <!-- Header band -->
+  <rect width="640" height="68" fill="#1a5f6e" rx="10"/>
+  <rect y="58" width="640" height="10" fill="#1a5f6e"/>
+  <text x="320" y="28" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="white" text-anchor="middle">How fast AI is actually improving</text>
+  <text x="320" y="50" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.72)" text-anchor="middle">SWE-Bench: % of real-world software engineering tasks solved correctly</text>
+
+  <!-- Row 1: Late 2023 -->
+  <!-- Track background -->
+  <rect x="120" y="96" width="460" height="34" rx="6" fill="#e8e3db"/>
+  <!-- Bar (4.4% × 460 = 20px) -->
+  <rect x="120" y="96" width="20" height="34" rx="6" fill="#c4853a"/>
+  <!-- Year label -->
+  <text x="112" y="118" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6e6a65" text-anchor="end">Late 2023</text>
+  <!-- Value label (outside bar, amber) -->
+  <text x="148" y="118" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="#c4853a">4.4%</text>
+
+  <!-- Annotation badge between rows -->
+  <rect x="362" y="133" width="198" height="24" rx="12" fill="#c4853a"/>
+  <text x="461" y="149" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">×16 improvement in ~12 months</text>
+
+  <!-- Row 2: Late 2024 -->
+  <!-- Track background -->
+  <rect x="120" y="160" width="460" height="34" rx="6" fill="#e8e3db"/>
+  <!-- Bar (71.7% × 460 = 330px) -->
+  <rect x="120" y="160" width="330" height="34" rx="6" fill="#1a5f6e"/>
+  <!-- Year label -->
+  <text x="112" y="182" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6e6a65" text-anchor="end">Late 2024</text>
+  <!-- Value label (inside bar, white) -->
+  <text x="300" y="182" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="white">71.7%</text>
+
+  <!-- Scale tick marks -->
+  <line x1="120" y1="198" x2="120" y2="204" stroke="#b0aaa3" stroke-width="1"/>
+  <text x="120" y="215" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#b0aaa3" text-anchor="middle">0%</text>
+  <line x1="350" y1="198" x2="350" y2="204" stroke="#b0aaa3" stroke-width="1"/>
+  <text x="350" y="215" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#b0aaa3" text-anchor="middle">50%</text>
+  <line x1="580" y1="198" x2="580" y2="204" stroke="#b0aaa3" stroke-width="1"/>
+  <text x="580" y="215" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#b0aaa3" text-anchor="middle">100%</text>
+
+  <!-- Context note -->
+  <rect x="60" y="228" width="520" height="46" rx="8" fill="white" stroke="#d0e4e7" stroke-width="1"/>
+  <text x="320" y="248" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#1a5f6e" text-anchor="middle">Not toy examples. Real GitHub issues, solved end-to-end.</text>
+  <text x="320" y="264" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6e6a65" text-anchor="middle">By mid-2025: 46% of workers reported using AI tools in their jobs</text>
+
+  <!-- Source -->
+  <text x="320" y="304" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#a09a93" text-anchor="middle">Source: SWE-Bench benchmark · Brynjolfsson, Chandar &amp; Chen — Stanford/NBER (Nov 2025)</text>
+</svg>

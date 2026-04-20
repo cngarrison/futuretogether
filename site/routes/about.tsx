@@ -178,6 +178,23 @@ export default define.page(function About() {
         </div>
       </section>
 
+      {/* Journey SVG */}
+      <section class="py-12" style="background-color: #f7f4ef;">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+          <p
+            class="text-xs font-semibold uppercase tracking-widest mb-5 text-center"
+            style="color: rgba(28,26,24,0.4);"
+          >
+            The three-stage journey
+          </p>
+          <img
+            src="/charts/awareness-journey.svg"
+            alt="Three-stage journey: Awareness — understand what's happening; Conversation — talk it through with others; Action — prepare, connect, build something better"
+            class="w-full h-auto rounded-xl"
+          />
+        </div>
+      </section>
+
       {/* Values */}
       <section
         class="py-16 sm:py-20"

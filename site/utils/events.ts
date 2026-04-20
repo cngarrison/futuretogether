@@ -38,6 +38,7 @@ export interface EventConfig {
   registrationDeadline: number; // hours before event
   meetingLink: string;
   posterImage?: string; // Optional event poster or infographic
+  supportingImages?: string[]; // Optional additional charts or graphics shown in the body
   slideshowUrl?: string; // Optional link to post-event slideshow/resources
   isActive: boolean;
   topics?: string[];
