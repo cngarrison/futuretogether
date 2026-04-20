@@ -37,7 +37,7 @@ export interface EventConfig {
   capacity: number;
   registrationDeadline: number; // hours before event
   meetingLink: string;
-  posterImage: string;
+  posterImage?: string; // Optional event poster or infographic
   slideshowUrl?: string; // Optional link to post-event slideshow/resources
   isActive: boolean;
   topics?: string[];

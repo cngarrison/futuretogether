@@ -185,6 +185,20 @@ export default define.page(async function EventResources(ctx) {
           ))}
         </div>
 
+        {/* Poster image / infographic */}
+        {event.posterImage && (
+          <div
+            class="rounded-xl overflow-hidden mb-10"
+            style="border: 1px solid #d0e4e7;"
+          >
+            <img
+              src={event.posterImage}
+              alt={`Visual summary: ${event.title}`}
+              class="w-full h-auto"
+            />
+          </div>
+        )}
+
         {/* Topics */}
         {event.topics && event.topics.length > 0 && (
           <div

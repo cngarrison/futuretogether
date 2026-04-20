@@ -158,6 +158,20 @@ export default define.page(async function EventPage({ params }) {
               )}
             </div>
 
+              {event.posterImage && (
+                <div
+                  class="rounded-2xl overflow-hidden"
+                  style="border: 1px solid #d0e4e7;"
+                >
+                  <img
+                    src={event.posterImage}
+                    alt={`Visual summary: ${event.title}`}
+                    class="w-full h-auto"
+                  />
+                </div>
+              )}
+            </div>
+
             {/* Right: registration form */}
             <div class="md:col-span-5">
               <div class="sticky top-20">
