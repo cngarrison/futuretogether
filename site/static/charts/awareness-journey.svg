@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 220" role="img" aria-labelledby="journeytitle journeydesc">
+  <title id="journeytitle">The Future Together journey: Awareness, Conversation, Action</title>
+  <desc id="journeydesc">Three-stage journey: Awareness — understand what's actually happening. Conversation — talk it through with others navigating the same reality. Action — prepare, connect, build something better.</desc>
+
+  <!-- Background -->
+  <rect width="700" height="220" fill="#f7f4ef" rx="10"/>
+
+  <!-- === Card 1: Awareness (teal) === -->
+  <rect x="28" y="20" width="185" height="130" rx="10" fill="#1a5f6e"/>
+  <!-- Step number -->
+  <text x="44" y="46" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.55)" letter-spacing="1">01</text>
+  <!-- Main label -->
+  <text x="44" y="78" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="700" fill="white">Awareness</text>
+  <!-- Description lines -->
+  <text x="44" y="102" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">Understand what's</text>
+  <text x="44" y="118" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">actually happening</text>
+  <!-- Accent bar -->
+  <rect x="28" y="140" width="60" height="4" rx="2" fill="#c4853a" opacity="0.8"/>
+
+  <!-- Arrow 1 -->
+  <polygon points="228,76 248,85 228,94" fill="#c4853a"/>
+  <line x1="213" y1="85" x2="227" y2="85" stroke="#c4853a" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- === Card 2: Conversation (amber) === -->
+  <rect x="258" y="20" width="185" height="130" rx="10" fill="#c4853a"/>
+  <!-- Step number -->
+  <text x="274" y="46" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.55)" letter-spacing="1">02</text>
+  <!-- Main label -->
+  <text x="274" y="78" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="700" fill="white">Conversation</text>
+  <!-- Description lines -->
+  <text x="274" y="102" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">Talk it through with</text>
+  <text x="274" y="118" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">others facing the same</text>
+  <!-- Accent bar -->
+  <rect x="258" y="140" width="60" height="4" rx="2" fill="white" opacity="0.5"/>
+
+  <!-- Arrow 2 -->
+  <polygon points="458,76 478,85 458,94" fill="#c4853a"/>
+  <line x1="443" y1="85" x2="457" y2="85" stroke="#c4853a" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- === Card 3: Action (near-black) === -->
+  <rect x="488" y="20" width="185" height="130" rx="10" fill="#1c1a18"/>
+  <!-- Step number -->
+  <text x="504" y="46" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.4)" letter-spacing="1">03</text>
+  <!-- Main label -->
+  <text x="504" y="78" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="700" fill="white">Action</text>
+  <!-- Description lines -->
+  <text x="504" y="102" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.75)">Prepare, connect,</text>
+  <text x="504" y="118" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.75)">build something better</text>
+  <!-- Accent bar -->
+  <rect x="488" y="140" width="60" height="4" rx="2" fill="#c4853a" opacity="0.8"/>
+
+  <!-- Tagline -->
+  <text x="350" y="178" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6e6a65" text-anchor="middle">Not panic. Not paralysis.</text>
+  <text x="350" y="196" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e" text-anchor="middle">Action.</text>
+  <text x="350" y="212" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#a09a93" text-anchor="middle">Future Together · futuretogether.community</text>
+</svg>
