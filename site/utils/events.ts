@@ -38,6 +38,7 @@ export interface EventConfig {
   registrationDeadline: number; // hours before event
   meetingLink: string;
   posterImage: string;
+  slideshowUrl?: string; // Optional link to post-event slideshow/resources
   isActive: boolean;
   topics?: string[];
   presentedBy?: string; // Person/people presenting (e.g., "Charlie Garrison")
@@ -154,6 +155,71 @@ export async function getAllEvents(): Promise<EventConfig[]> {
   return events.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
+}
+
+// Get all upcoming events for slugs OTHER than the recurring one (special/one-off events),
+// sorted by date ascending (soonest first).
+export async function getUpcomingSpecialEvents(
+  excludeSlug = "discuss-our-future",
+): Promise<EventConfig[]> {
+  const cache = await getEventCache();
+  const now = new Date();
+  const events: EventConfig[] = [];
+
+  for (const event of cache.values()) {
+    if (event.slug === excludeSlug) continue;
+    const eventDate = new Date(event.date);
+    if (eventDate > now) events.push(event);
+  }
+
+  return events.sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+  );
+}
+
+// Get all past special (non-recurring) events, sorted newest first.
+export async function getPastSpecialEvents(
+  excludeSlug = "discuss-our-future",
+): Promise<EventConfig[]> {
+  const cache = await getEventCache();
+  const now = new Date();
+  const events: EventConfig[] = [];
+
+  for (const event of cache.values()) {
+    if (event.slug === excludeSlug) continue;
+    const eventDate = new Date(event.date);
+    if (eventDate <= now) events.push(event);
+  }
+
+  return events.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+}
+
+// Get past recurring events for a given slug, limited to the most recent N.
+// Also returns the total count and earliest date for a "...plus N more since" note.
+export async function getPastRecurringEvents(
+  slug: string,
+  limit = 3,
+): Promise<{ events: EventConfig[]; total: number; earliestDate: string | null }> {
+  const cache = await getEventCache();
+  const now = new Date();
+  const all: EventConfig[] = [];
+
+  for (const event of cache.values()) {
+    if (event.slug !== slug) continue;
+    const eventDate = new Date(event.date);
+    if (eventDate <= now) all.push(event);
+  }
+
+  // Sort newest first so slice(0, limit) gives the most recent N
+  all.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  return {
+    events: all.slice(0, limit),
+    total: all.length,
+    earliestDate: all.length > 0 ? all[all.length - 1].date : null,
+  };
 }
 
 // ---------------------------------------------------------------------------
