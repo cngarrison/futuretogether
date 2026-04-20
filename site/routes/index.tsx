@@ -112,6 +112,15 @@ export default define.page(function Home() {
               prevents preparation.
             </p>
           </div>
+
+          <div class="mt-10">
+            <img
+              src="/charts/the-gap.svg"
+              alt="The gap between AI's rapid development and what most people perceive, visualised over time from 2022 to 2025"
+              class="w-full h-auto rounded-xl"
+              style="border: 1px solid #d0e4e7;"
+            />
+          </div>
         </div>
       </section>
 
@@ -163,6 +172,14 @@ export default define.page(function Home() {
               understanding what’s happening, to processing it together, to
               doing something about it.
             </p>
+          </div>
+
+          <div class="mb-10">
+            <img
+              src="/charts/awareness-journey.svg"
+              alt="Three-stage journey: Awareness — understand what's happening; Conversation — talk it through with others; Action — prepare, connect, build something better"
+              class="w-full h-auto rounded-xl"
+            />
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
