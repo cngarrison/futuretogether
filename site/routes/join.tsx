@@ -102,6 +102,14 @@ export default define.page(async function Join() {
                 class="bg-white rounded-2xl p-7"
                 style="border: 2px solid #c4853a;"
               >
+                <div class="-mx-7 -mt-7 mb-5 overflow-hidden rounded-t-2xl">
+                  <img
+                    src="/img/discuss-our-future.png"
+                    alt="Discuss Our Future — monthly online community meetup"
+                    class="w-full"
+                    style="height: 160px; object-fit: cover; object-position: center;"
+                  />
+                </div>
                 <div
                   class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 text-white"
                   style="background-color: #c4853a;"
