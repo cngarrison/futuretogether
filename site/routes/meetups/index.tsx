@@ -69,26 +69,6 @@ function formatMonthYear(dateStr: string, timezone: string): string {
   }
 }
 
-// Slideshow icon (reused in Past Events cards)
-function SlideshowIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-    >
-      <rect x="2" y="3" width="20" height="14" rx="2" />
-      <path d="M8 21h8M12 17v4" />
-    </svg>
-  );
-}
-
 export default define.page(async function Meetups() {
   // Load all data sources in parallel for fast page renders
   const [nextEvent, upcomingSpecial, pastSpecial, pastRecurring] =
@@ -441,12 +421,11 @@ export default define.page(async function Meetups() {
                     </div>
                     {event.slideshowUrl && (
                       <a
-                        href={event.slideshowUrl}
+                        href={`/meetups/${event.slug}?id=${event.id}`}
                         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 flex-shrink-0"
                         style="background-color: #1a5f6e;"
                       >
-                        <SlideshowIcon />
-                        View slideshow
+                        What we covered &rarr;
                       </a>
                     )}
                   </div>
@@ -486,12 +465,11 @@ export default define.page(async function Meetups() {
                       </div>
                       {event.slideshowUrl && (
                         <a
-                          href={event.slideshowUrl}
+                          href={`/meetups/${event.slug}?id=${event.id}`}
                           class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 flex-shrink-0"
                           style="background-color: #1a5f6e;"
                         >
-                          <SlideshowIcon />
-                          View slideshow
+                          What we covered &rarr;
                         </a>
                       )}
                     </div>
