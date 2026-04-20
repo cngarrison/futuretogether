@@ -42,6 +42,8 @@ The pattern begins almost exactly when ChatGPT launched in November 2022. It hol
 
 The adjustment isn’t showing up in the headline number. It’s showing up in who isn’t getting hired.
 
+![Employment divergence in AI-exposed roles, 2022–2025: workers aged 22–25 saw up to −20% employment decline while workers aged 35–49 in the same roles grew by 8%, even as headline unemployment stayed stable](/charts/employment-divergence.svg)
+
 ---
 
 ## Why the headline numbers are misleading
@@ -67,6 +69,8 @@ The Stanford paper offers a useful explanation for why experience protects worke
 AI substitutes *codified knowledge* — documented processes, established workflows, things that can be written down and handed off to a system. It complements *tacit knowledge*: the judgment that comes from years of practice, the client relationships built over time, the ability to know what to do in a situation that doesn’t quite fit any of the established patterns.
 
 Entry-level workers supply mostly codified knowledge. That’s what you’re hired for when you don’t yet have experience: the ability to follow documented processes reliably. AI is now competitive with that.
+
+![AI coding capability: SWE-Bench benchmark improved from 4.4% in late 2023 to 71.7% in late 2024 — a 16x improvement in roughly 12 months](/charts/ai-coding-capability.svg)
 
 Experienced workers have accumulated tacit knowledge. That’s harder to substitute — and AI may actually make experienced workers *more* productive, not less, by handling the codified work while freeing them to apply judgment.
 

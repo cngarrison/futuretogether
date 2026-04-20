@@ -21,7 +21,10 @@ export default define.page(function Home() {
       </Head>
 
       {/* ===================== HERO ===================== */}
-      <section class="bg-primary text-white min-h-screen flex flex-col justify-center pt-16">
+      <section
+        class="text-white min-h-screen flex flex-col justify-center pt-16"
+        style="background-color: #1a5f6e; background-image: linear-gradient(rgba(26,95,110,0.82), rgba(26,95,110,0.82)), url('/img/lone-figure-sunrise.png'); background-size: cover; background-position: center;"
+      >
         <div class="max-w-4xl mx-auto px-4 sm:px-6 py-24 text-center">
           <p class="text-sm font-semibold uppercase tracking-widest text-white/60 mb-6">
             Awareness &middot; Conversation &middot; Action

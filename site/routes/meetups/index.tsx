@@ -129,8 +129,8 @@ export default define.page(async function Meetups() {
         </div>
         <div class="max-w-5xl mx-auto px-4 sm:px-6 mt-10">
           <img
-            src="/img/discuss-our-future.png"
-            alt="Discuss Our Future — our monthly online community meetup"
+            src="/img/meetup-group.png"
+            alt="Future Together — monthly online meetup: people connecting across screens — our monthly online community meetup"
             class="w-full rounded-t-2xl"
             style="max-height: 300px; object-fit: cover; object-position: center;"
           />
