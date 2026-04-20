@@ -36,7 +36,10 @@ export default define.page(function Resources() {
       </Head>
 
       {/* Hero */}
-      <section class="text-white pt-16" style="background-color: #1a5f6e;">
+      <section
+        class="text-white pt-16"
+        style="background-color: #1a5f6e; background-image: linear-gradient(rgba(26,95,110,0.82), rgba(26,95,110,0.82)), url('/img/resources-library.png'); background-size: cover; background-position: center;"
+      >
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
           <p
             class="text-sm font-semibold uppercase tracking-widest mb-4"
