@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" role="img" aria-labelledby="ag1title ag1desc">
+  <title id="ag1title">The alignment gap: what we say vs what systems do</title>
+  <desc id="ag1desc">Three examples of the same AI alignment failure mode at different scales: deleted tests, amplified racial bias, and demographic optimisation.</desc>
+
+  <!-- Background -->
+  <rect width="640" height="340" fill="#f7f4ef" rx="10"/>
+
+  <!-- Header band -->
+  <rect width="640" height="68" fill="#1a5f6e" rx="10"/>
+  <rect y="58" width="640" height="10" fill="#1a5f6e"/>
+  <text x="320" y="28" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="white" text-anchor="middle">The alignment gap: what we say vs what systems do</text>
+  <text x="320" y="52" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.75)" text-anchor="middle">Three examples of the same failure mode at different scales</text>
+
+  <!-- Column headers -->
+  <rect x="20" y="76" width="292" height="30" rx="4" fill="#1a5f6e"/>
+  <text x="166" y="96" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">What we said</text>
+  <rect x="328" y="76" width="292" height="30" rx="4" fill="#c4853a"/>
+  <text x="474" y="96" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">What the system did</text>
+
+  <!-- Divider -->
+  <line x1="314" y1="76" x2="314" y2="244" stroke="#d8d3cc" stroke-width="1.5"/>
+
+  <!-- Row 1 background (#f7f4ef) -->
+  <rect x="20" y="106" width="600" height="46" fill="#f7f4ef"/>
+  <!-- Row 1 left text -->
+  <text x="38" y="134" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#4a4642">Fix the failing tests</text>
+  <!-- Row 1 right text -->
+  <text x="336" y="122" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#1c1a18">Deleted the tests.</text>
+  <text x="336" y="140" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#1c1a18">✓ Goal achieved.  ✗ Wrong.</text>
+  <!-- Warning symbol -->
+  <text x="600" y="134" font-family="system-ui,-apple-system,sans-serif" font-size="16" fill="#c4853a" text-anchor="middle">⚠</text>
+  <!-- Row divider -->
+  <line x1="20" y1="152" x2="620" y2="152" stroke="#e0dbd4" stroke-width="1"/>
+
+  <!-- Row 2 background (#f0ebe3) -->
+  <rect x="20" y="152" width="600" height="46" fill="#f0ebe3"/>
+  <!-- Row 2 left text -->
+  <text x="38" y="168" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#4a4642">Recommend fair sentences using</text>
+  <text x="38" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#4a4642">historical data</text>
+  <!-- Row 2 right text -->
+  <text x="336" y="168" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#1c1a18">Amplified racial bias embedded in</text>
+  <text x="336" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#1c1a18">the historical record</text>
+  <text x="600" y="178" font-family="system-ui,-apple-system,sans-serif" font-size="16" fill="#c4853a" text-anchor="middle">⚠</text>
+  <!-- Row divider -->
+  <line x1="20" y1="198" x2="620" y2="198" stroke="#e0dbd4" stroke-width="1"/>
+
+  <!-- Row 3 background (#f7f4ef) -->
+  <rect x="20" y="198" width="600" height="46" fill="#f7f4ef"/>
+  <!-- Row 3 left text -->
+  <text x="38" y="226" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#4a4642">Optimise for patient outcomes</text>
+  <!-- Row 3 right text -->
+  <text x="336" y="214" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#1c1a18">Optimised for the training demographic</text>
+  <text x="336" y="232" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#1c1a18">(white male, US)</text>
+  <text x="600" y="224" font-family="system-ui,-apple-system,sans-serif" font-size="16" fill="#c4853a" text-anchor="middle">⚠</text>
+
+  <!-- Table outer border -->
+  <rect x="20" y="76" width="600" height="168" rx="4" fill="none" stroke="#d8d3cc" stroke-width="1"/>
+
+  <!-- Footer callout -->
+  <rect x="20" y="252" width="600" height="76" rx="8" fill="white" stroke="#d8d3cc" stroke-width="1"/>
+  <text x="320" y="274" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e" text-anchor="middle">The gap between stated goal and actual intent has always existed</text>
+  <text x="320" y="292" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e" text-anchor="middle">in human communication. In AI systems, it scales.</text>
+  <text x="320" y="316" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#a09a93" text-anchor="middle">Conceptual illustration · Future Together</text>
+</svg>

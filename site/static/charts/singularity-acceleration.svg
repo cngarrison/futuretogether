@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="satitle sadesc">
+  <title id="satitle">When improvement cycles become faster than human response</title>
+  <desc id="sadesc">A horizontal bar chart showing how recursive AI self-improvement compresses from human-scale timescales (months, weeks) to machine-scale timescales (hours, minutes, seconds), at which point human oversight becomes impossible.</desc>
+
+  <!-- Background -->
+  <rect width="640" height="360" fill="#f7f4ef" rx="10"/>
+
+  <!-- Header band -->
+  <rect width="640" height="68" fill="#1a5f6e" rx="10"/>
+  <rect y="58" width="640" height="10" fill="#1a5f6e"/>
+  <text x="320" y="27" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="white" text-anchor="middle">When improvement cycles become faster than human response</text>
+  <text x="320" y="51" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.75)" text-anchor="middle">How recursive self-improvement compresses from human-scale to machine-scale time</text>
+
+  <!-- Row 1: Every few months (teal, 320px) y=80 -->
+  <rect x="158" y="80" width="320" height="26" rx="3" fill="#e8e3db"/>
+  <rect x="158" y="80" width="320" height="26" rx="3" fill="#1a5f6e"/>
+  <text x="152" y="98" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642" text-anchor="end">Every few months</text>
+  <text x="484" y="97" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#1a5f6e">Human scale · reviewable</text>
+
+  <!-- Row 2: Every few weeks (teal, 220px) y=114 -->
+  <rect x="158" y="114" width="320" height="26" rx="3" fill="#e8e3db"/>
+  <rect x="158" y="114" width="220" height="26" rx="3" fill="#1a5f6e"/>
+  <text x="152" y="132" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642" text-anchor="end">Every few weeks</text>
+  <text x="384" y="131" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#1a5f6e">Rapid · still manageable</text>
+
+  <!-- Row 3: Every few days (amber, 130px) y=148 -->
+  <rect x="158" y="148" width="320" height="26" rx="3" fill="#e8e3db"/>
+  <rect x="158" y="148" width="130" height="26" rx="3" fill="#c4853a"/>
+  <text x="152" y="166" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642" text-anchor="end">Every few days</text>
+  <text x="294" y="165" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#8c5220">Fast · oversight becomes strained</text>
+
+  <!-- Row 4: Every few hours (amber, 60px) y=182 -->
+  <rect x="158" y="182" width="320" height="26" rx="3" fill="#e8e3db"/>
+  <rect x="158" y="182" width="60" height="26" rx="3" fill="#c4853a"/>
+  <text x="152" y="200" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642" text-anchor="end">Every few hours</text>
+  <text x="224" y="199" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#8c5220">Very fast · oversight breaks down</text>
+
+  <!-- Row 5: Every few minutes (amber, 20px) y=216 -->
+  <rect x="158" y="216" width="320" height="26" rx="3" fill="#e8e3db"/>
+  <rect x="158" y="216" width="20" height="26" rx="3" fill="#c4853a"/>
+  <text x="152" y="234" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642" text-anchor="end">Every few minutes</text>
+  <text x="184" y="233" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#8c5220">Machine scale · no human review</text>
+
+  <!-- Row 6: Every few seconds (amber, 6px) y=250 -->
+  <rect x="158" y="250" width="320" height="26" rx="3" fill="#e8e3db"/>
+  <rect x="158" y="250" width="6" height="26" rx="3" fill="#c4853a"/>
+  <text x="152" y="268" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642" text-anchor="end">Every few seconds</text>
+  <text x="170" y="267" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#8c5220">Beyond human comprehension</text>
+
+  <!-- Oversight threshold: dashed vertical line at x=218 (158+60) -->
+  <line x1="218" y1="172" x2="218" y2="278" stroke="#c4853a" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <!-- Threshold callout box -->
+  <rect x="180" y="156" width="110" height="18" rx="4" fill="#c4853a"/>
+  <text x="235" y="169" font-family="system-ui,-apple-system,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">Oversight threshold ↓</text>
+
+  <!-- Footer callout -->
+  <rect x="20" y="288" width="600" height="62" rx="8" fill="white" stroke="#d8d3cc" stroke-width="1"/>
+  <text x="320" y="308" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="700" fill="#1a5f6e" text-anchor="middle">The question is not whether recursive improvement will happen.</text>
+  <text x="320" y="324" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="700" fill="#1a5f6e" text-anchor="middle">It is whether alignment will be solved before improvements outpace understanding.</text>
+  <text x="320" y="341" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6e6a65" text-anchor="middle">At machine-scale intervals, each new version is already obsolete before humans review the previous one.</text>
+
+  <!-- Source -->
+  <text x="320" y="356" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#a09a93" text-anchor="middle">Conceptual illustration · Future Together</text>
+</svg>

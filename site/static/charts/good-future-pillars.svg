@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 360" role="img" aria-labelledby="gfptitle gfpdesc">
+  <title id="gfptitle">What AI alignment could make possible</title>
+  <desc id="gfpdesc">Four domains of potential flourishing if AI alignment is achieved, based on Dario Amodei's Machines of Loving Grace: biology and health, mental health, poverty and global development, and human flourishing.</desc>
+
+  <!-- Background -->
+  <rect width="700" height="360" fill="#f7f4ef" rx="10"/>
+
+  <!-- Header band -->
+  <rect width="700" height="68" fill="#1a5f6e" rx="10"/>
+  <rect y="58" width="700" height="10" fill="#1a5f6e"/>
+  <text x="350" y="28" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="white" text-anchor="middle">What AI alignment could make possible</text>
+  <text x="350" y="51" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.75)" text-anchor="middle">From Dario Amodei’s ‘Machines of Loving Grace’ — four domains of potential flourishing</text>
+
+  <!-- ===== ROW 1 ===== -->
+
+  <!-- Card 1: Biology & Health (teal #1a5f6e, x=18, y=82) -->
+  <rect x="18" y="82" width="322" height="112" rx="8" fill="#1a5f6e"/>
+  <rect x="18" y="190" width="322" height="4" rx="2" fill="#c4853a"/>
+  <text x="34" y="106" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="white">Biology &amp; Health</text>
+  <text x="34" y="126" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">Cancer, Alzheimer’s, heart disease — problems</text>
+  <text x="34" y="142" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">that resisted human research for generations,</text>
+  <text x="34" y="158" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">solved in years not decades.</text>
+
+  <!-- Card 2: Mental Health (amber #c4853a, x=360, y=82) -->
+  <rect x="360" y="82" width="322" height="112" rx="8" fill="#c4853a"/>
+  <rect x="360" y="190" width="322" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
+  <text x="376" y="106" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="white">Mental Health</text>
+  <text x="376" y="126" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.9)">Depression, anxiety, addiction, loneliness —</text>
+  <text x="376" y="142" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.9)">poorly understood and inadequately treated.</text>
+  <text x="376" y="158" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.9)">AI at scale could begin to close the gap.</text>
+
+  <!-- ===== ROW 2 ===== -->
+
+  <!-- Card 3: Poverty & Development (near-black #1c1a18, x=18, y=206) -->
+  <rect x="18" y="206" width="322" height="112" rx="8" fill="#1c1a18"/>
+  <rect x="18" y="314" width="322" height="4" rx="2" fill="#c4853a"/>
+  <text x="34" y="230" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="white">Poverty &amp; Global Development</text>
+  <text x="34" y="250" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.75)">Expertise currently concentrated in a few</text>
+  <text x="34" y="266" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.75)">wealthy places — available everywhere as</text>
+  <text x="34" y="282" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.75)">capability, not charity.</text>
+
+  <!-- Card 4: Human Flourishing (lighter teal #2a7a8a, x=360, y=206) -->
+  <rect x="360" y="206" width="322" height="112" rx="8" fill="#2a7a8a"/>
+  <rect x="360" y="314" width="322" height="4" rx="2" fill="#c4853a"/>
+  <text x="376" y="230" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="white">Human Flourishing</text>
+  <text x="376" y="250" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">If drudgery is handled and the lower pyramid</text>
+  <text x="376" y="266" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">is met — what do humans do with lives freed</text>
+  <text x="376" y="282" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">to pursue meaning?</text>
+
+  <!-- Footer callout -->
+  <rect x="20" y="328" width="660" height="24" rx="8" fill="white" stroke="#d8d3cc" stroke-width="1"/>
+  <text x="350" y="340" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="700" fill="#1a5f6e" text-anchor="middle">These outcomes are contingent on alignment being achieved. Not guaranteed. Real possibilities.</text>
+
+  <!-- Source -->
+  <text x="350" y="356" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#a09a93" text-anchor="middle">Based on Dario Amodei, ‘Machines of Loving Grace’ · Future Together</text>
+</svg>

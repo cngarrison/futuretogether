@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420" role="img" aria-labelledby="fatitle fadesc">
+  <title id="fatitle">What you can do — right now</title>
+  <desc id="fadesc">Five starting points for action on AI alignment and societal resilience: educate yourself, have the conversation, build community, make alignment a priority, and think about new structures.</desc>
+
+  <!-- Background -->
+  <rect width="700" height="420" fill="#f7f4ef" rx="10"/>
+
+  <!-- Text title (no header band) -->
+  <text x="350" y="34" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="700" fill="#1a5f6e" text-anchor="middle">What you can do — right now</text>
+  <text x="350" y="56" font-family="system-ui,-apple-system,sans-serif" font-size="13" fill="#6e6a65" text-anchor="middle">Five starting points, in order of importance:</text>
+
+  <!-- ===== ROW 1: Cards 1, 2, 3 ===== -->
+
+  <!-- Card 1: Educate yourself (teal #1a5f6e, x=10, y=68) -->
+  <rect x="10" y="68" width="210" height="135" rx="8" fill="#1a5f6e"/>
+  <rect x="10" y="199" width="210" height="4" rx="2" fill="#c4853a"/>
+  <text x="24" y="104" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="700" fill="rgba(255,255,255,0.9)">01</text>
+  <text x="24" y="128" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="700" fill="white">Educate yourself</text>
+  <text x="24" y="148" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">This series is a starting point.</text>
+  <text x="24" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">Go further. Stay curious.</text>
+
+  <!-- Card 2: Have the conversation (amber #c4853a, x=245, y=68) -->
+  <rect x="245" y="68" width="210" height="135" rx="8" fill="#c4853a"/>
+  <rect x="245" y="199" width="210" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
+  <text x="259" y="104" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="700" fill="rgba(255,255,255,0.9)">02</text>
+  <text x="259" y="128" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="700" fill="white">Have the conversation</text>
+  <text x="259" y="148" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">With your partner. Family. A colleague.</text>
+  <text x="259" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.9)">You don’t need answers — just ask.</text>
+
+  <!-- Card 3: Build community (near-black #1c1a18, x=480, y=68) -->
+  <rect x="480" y="68" width="210" height="135" rx="8" fill="#1c1a18"/>
+  <rect x="480" y="199" width="210" height="4" rx="2" fill="#c4853a"/>
+  <text x="494" y="104" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="700" fill="rgba(255,255,255,0.9)">03</text>
+  <text x="494" y="128" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="700" fill="white">Build community</text>
+  <text x="494" y="148" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.75)">The communities that navigate</text>
+  <text x="494" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.75)">disruption best already know each</text>
+  <text x="494" y="180" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.75)">other. Start now.</text>
+
+  <!-- ===== ROW 2: Cards 4, 5 (centred) ===== -->
+
+  <!-- Card 4: Make alignment a priority (teal #1a5f6e, x=127, y=213) -->
+  <rect x="127" y="213" width="210" height="135" rx="8" fill="#1a5f6e"/>
+  <rect x="127" y="344" width="210" height="4" rx="2" fill="#c4853a"/>
+  <text x="141" y="249" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="700" fill="rgba(255,255,255,0.9)">04</text>
+  <text x="141" y="273" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="700" fill="white">Make alignment a priority</text>
+  <text x="141" y="293" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">Write to your representatives.</text>
+  <text x="141" y="309" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">Say: this is the most important</text>
+  <text x="141" y="325" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">issue of our time.</text>
+
+  <!-- Card 5: Think about new structures (dark amber #8c5220, x=362, y=213) -->
+  <rect x="362" y="213" width="210" height="135" rx="8" fill="#8c5220"/>
+  <rect x="362" y="344" width="210" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
+  <text x="376" y="249" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="700" fill="rgba(255,255,255,0.9)">05</text>
+  <text x="376" y="273" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="700" fill="white">Think about new structures</text>
+  <text x="376" y="293" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">Why do we need massive insurance</text>
+  <text x="376" y="309" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">companies when communities can</text>
+  <text x="376" y="325" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">be resilient? Start asking.</text>
+
+  <!-- Footer callout -->
+  <rect x="20" y="358" width="660" height="48" rx="8" fill="white" stroke="#d8d3cc" stroke-width="1"/>
+  <text x="350" y="381" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="#1a5f6e" text-anchor="middle">You’re already doing the first one.</text>
+  <text x="350" y="399" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#a09a93" text-anchor="middle">Future Together · futuretogether.community</text>
+</svg>

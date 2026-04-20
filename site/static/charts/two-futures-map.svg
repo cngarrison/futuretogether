@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" role="img" aria-labelledby="tfmtitle tfmdesc">
+  <title id="tfmtitle">Two futures — one map</title>
+  <desc id="tfmdesc">The Maslow pyramid as a planning framework for two AI scenarios: if alignment fails, start at the bottom (food, safety, community); if alignment succeeds, how do we help everyone reach the top?</desc>
+
+  <!-- Background -->
+  <rect width="700" height="300" fill="#f7f4ef" rx="10"/>
+
+  <!-- Text title (no header band) -->
+  <text x="350" y="32" font-family="system-ui,-apple-system,sans-serif" font-size="20" font-weight="700" fill="#1a5f6e" text-anchor="middle">Two futures — one map</text>
+  <text x="350" y="54" font-family="system-ui,-apple-system,sans-serif" font-size="13" fill="#6e6a65" text-anchor="middle">The Maslow pyramid as a planning framework for both scenarios</text>
+
+  <!-- Amber vertical divider line -->
+  <line x1="350" y1="68" x2="350" y2="246" stroke="#c4853a" stroke-width="2"/>
+
+  <!-- ============ LEFT CARD: alignment fails (teal) ============ -->
+  <rect x="20" y="68" width="312" height="178" rx="8" fill="#1a5f6e"/>
+  <!-- Amber accent bar at bottom of left card -->
+  <rect x="20" y="242" width="312" height="4" rx="0" fill="#c4853a"/>
+  <!-- Round bottom corners for accent bar -->
+  <rect x="20" y="242" width="312" height="8" rx="0" fill="#c4853a"/>
+  <rect x="20" y="242" width="312" height="4" rx="4" fill="#c4853a"/>
+
+  <!-- Left card title -->
+  <text x="36" y="92" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="white">If alignment is not achieved</text>
+  <text x="36" y="110" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.7)">Start at the bottom of the pyramid</text>
+
+  <!-- Left card bullets (amber dot + text) -->
+  <circle cx="42" cy="130" r="3" fill="#c4853a"/>
+  <text x="52" y="134" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">Food &amp; water systems</text>
+
+  <circle cx="42" cy="152" r="3" fill="#c4853a"/>
+  <text x="52" y="156" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">Safety &amp; local community</text>
+
+  <circle cx="42" cy="174" r="3" fill="#c4853a"/>
+  <text x="52" y="178" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">Belonging &amp; mutual support</text>
+
+  <circle cx="42" cy="196" r="3" fill="#c4853a"/>
+  <text x="52" y="200" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">Purpose &amp; dignity in disruption</text>
+
+  <circle cx="42" cy="218" r="3" fill="#c4853a"/>
+  <text x="52" y="222" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">Meaning in a changed world</text>
+
+  <!-- ============ RIGHT CARD: alignment succeeds (near-black) ============ -->
+  <rect x="368" y="68" width="312" height="178" rx="8" fill="#1c1a18"/>
+  <!-- Teal accent bar at bottom of right card -->
+  <rect x="368" y="242" width="312" height="4" rx="4" fill="#1a5f6e"/>
+
+  <!-- Right card title -->
+  <text x="384" y="92" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="white">If alignment succeeds</text>
+  <text x="384" y="110" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">How do we help everyone reach the top?</text>
+
+  <!-- Right card bullets (teal dot + text) -->
+  <circle cx="390" cy="130" r="3" fill="#1a5f6e"/>
+  <text x="400" y="134" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">Physical needs solved by abundance</text>
+
+  <circle cx="390" cy="152" r="3" fill="#1a5f6e"/>
+  <text x="400" y="156" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">Safety and stability as baseline</text>
+
+  <circle cx="390" cy="174" r="3" fill="#1a5f6e"/>
+  <text x="400" y="178" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">Connection in a less atomised world</text>
+
+  <circle cx="390" cy="196" r="3" fill="#1a5f6e"/>
+  <text x="400" y="200" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">Esteem rebuilt around contribution</text>
+
+  <circle cx="390" cy="218" r="3" fill="#1a5f6e"/>
+  <text x="400" y="222" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">Self-actualisation available to all</text>
+
+  <!-- OR label centred on divider -->
+  <circle cx="350" cy="157" r="16" fill="#f7f4ef"/>
+  <text x="350" y="163" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="700" fill="#c4853a" text-anchor="middle">OR</text>
+
+  <!-- Footer callout -->
+  <rect x="20" y="254" width="660" height="36" rx="8" fill="white" stroke="#d8d3cc" stroke-width="1"/>
+  <text x="350" y="272" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e" text-anchor="middle">The pyramid is a planning map for both scenarios.</text>
+  <text x="350" y="285" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#a09a93" text-anchor="middle">Framework based on Maslow’s Hierarchy of Needs (1943) · Future Together</text>
+</svg>

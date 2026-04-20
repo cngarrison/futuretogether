@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380" role="img" aria-labelledby="ststitle stsdesc">
+  <title id="ststitle">Progress was steady. Equivalence was sudden.</title>
+  <desc id="stsdesc">Two examples separated by a century: US working horses grew steadily then collapsed 90% in 30 years after motor vehicles; human chess grandmaster win rate stayed high until 2000 then dropped from 85% to 10% in one decade.</desc>
+
+  <!-- Background -->
+  <rect width="700" height="380" fill="#f7f4ef" rx="10"/>
+
+  <!-- Header band -->
+  <rect width="700" height="68" fill="#1a5f6e" rx="10"/>
+  <rect y="58" width="700" height="10" fill="#1a5f6e"/>
+  <text x="350" y="28" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="700" fill="white" text-anchor="middle">Progress was steady. Equivalence was sudden.</text>
+  <text x="350" y="52" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="rgba(255,255,255,0.75)" text-anchor="middle">The same pattern, two examples separated by a century</text>
+
+  <!-- Panel divider -->
+  <line x1="350" y1="76" x2="350" y2="302" stroke="#d8d3cc" stroke-width="1.5"/>
+
+  <!-- ============ LEFT PANEL: Working horses ============ -->
+  <text x="178" y="88" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e" text-anchor="middle">Working horses — United States</text>
+
+  <!-- Y-axis label (implied direction) -->
+  <text x="22" y="112" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#b0aaa3">High</text>
+  <text x="22" y="272" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#b0aaa3">Low</text>
+
+  <!-- X-axis line -->
+  <line x1="35" y1="278" x2="330" y2="278" stroke="#c4bfb8" stroke-width="1"/>
+  <!-- X tick: 1800 -->
+  <line x1="45" y1="274" x2="45" y2="282" stroke="#a09a93" stroke-width="1"/>
+  <text x="45" y="293" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6e6a65" text-anchor="middle">1800</text>
+  <!-- X tick: 1910 -->
+  <line x1="218" y1="274" x2="218" y2="282" stroke="#a09a93" stroke-width="1"/>
+  <text x="218" y="293" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6e6a65" text-anchor="middle">1910</text>
+  <!-- X tick: 1960 -->
+  <line x1="316" y1="274" x2="316" y2="282" stroke="#a09a93" stroke-width="1"/>
+  <text x="316" y="293" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6e6a65" text-anchor="middle">1960</text>
+
+  <!-- Teal rise line: 1800 low to 1910 peak -->
+  <path d="M 45,262 C 110,260 175,195 218,118" fill="none" stroke="#1a5f6e" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Amber fall line: 1910 peak to 1950 low -->
+  <path d="M 218,118 C 248,132 282,205 298,258" fill="none" stroke="#c4853a" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Continued flat low to 1960 -->
+  <path d="M 298,258 C 308,260 314,262 316,263" fill="none" stroke="#c4853a" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Peak dot -->
+  <circle cx="218" cy="118" r="5" fill="#1c1a18" stroke="#f7f4ef" stroke-width="1.5"/>
+
+  <!-- Peak label -->
+  <text x="220" y="110" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6e6a65">Motor vehicles · ~1910</text>
+
+  <!-- Amber decline badge -->
+  <rect x="232" y="257" width="90" height="18" rx="4" fill="#c4853a"/>
+  <text x="277" y="270" font-family="system-ui,-apple-system,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">−90% · 1920–1950</text>
+
+  <!-- ============ RIGHT PANEL: Chess ============ -->
+  <text x="525" y="82" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e" text-anchor="middle">Chess: human grandmaster win rate</text>
+  <text x="525" y="97" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642" text-anchor="middle">vs. top computer program</text>
+
+  <!-- Y-axis labels -->
+  <text x="364" y="120" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#b0aaa3">~85%</text>
+  <text x="364" y="256" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#b0aaa3">~10%</text>
+
+  <!-- X-axis line -->
+  <line x1="390" y1="278" x2="680" y2="278" stroke="#c4bfb8" stroke-width="1"/>
+  <!-- X tick: 1990 -->
+  <line x1="400" y1="274" x2="400" y2="282" stroke="#a09a93" stroke-width="1"/>
+  <text x="400" y="293" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6e6a65" text-anchor="middle">1990</text>
+  <!-- X tick: 2000 -->
+  <line x1="520" y1="274" x2="520" y2="282" stroke="#a09a93" stroke-width="1"/>
+  <text x="520" y="293" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6e6a65" text-anchor="middle">2000</text>
+  <!-- X tick: 2010 -->
+  <line x1="640" y1="274" x2="640" y2="282" stroke="#a09a93" stroke-width="1"/>
+  <text x="640" y="293" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6e6a65" text-anchor="middle">2010</text>
+
+  <!-- Teal plateau: 1990-2000, human win rate high -->
+  <path d="M 400,118 C 440,116 478,120 520,124" fill="none" stroke="#1a5f6e" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Amber fall: 2000-2010, rapid decline -->
+  <path d="M 520,124 C 555,145 600,218 640,250" fill="none" stroke="#c4853a" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Continued low 2010-2015 -->
+  <path d="M 640,250 C 655,253 668,255 675,256" fill="none" stroke="#c4853a" stroke-width="2" opacity="0.5"/>
+
+  <!-- Reversal dot -->
+  <circle cx="520" cy="124" r="5" fill="#1c1a18" stroke="#f7f4ef" stroke-width="1.5"/>
+  <text x="523" y="116" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6e6a65">The reversal</text>
+
+  <!-- Amber decline badge -->
+  <rect x="555" y="257" width="116" height="18" rx="4" fill="#c4853a"/>
+  <text x="613" y="270" font-family="system-ui,-apple-system,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">~85% → ~10% · one decade</text>
+
+  <!-- Legend -->
+  <line x1="36" y1="305" x2="56" y2="305" stroke="#1a5f6e" stroke-width="2.5"/>
+  <text x="60" y="309" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#4a4642">Growth phase</text>
+  <line x1="130" y1="305" x2="150" y2="305" stroke="#c4853a" stroke-width="2.5"/>
+  <text x="154" y="309" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#4a4642">Collapse phase</text>
+
+  <!-- Footer callout -->
+  <rect x="20" y="318" width="660" height="46" rx="8" fill="white" stroke="#d8d3cc" stroke-width="1"/>
+  <text x="350" y="338" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e" text-anchor="middle">The question is not whether the technology is perfect today.</text>
+  <text x="350" y="355" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e" text-anchor="middle">It is what happens when it crosses the threshold.</text>
+
+  <!-- Source -->
+  <text x="350" y="374" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#a09a93" text-anchor="middle">Conceptual illustration based on US horse population data and competitive chess records · Future Together</text>
+</svg>

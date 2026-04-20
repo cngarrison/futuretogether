@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 440" role="img" aria-labelledby="drmtitle drmdesc">
+  <title id="drmtitle">A map of conditions — what could make resilience matter more</title>
+  <desc id="drmdesc">Six categories of potential disruption, from already-unfolding economic dislocation to long-range societal breakdown. Not predictions — categories of risk linked by the fragility of cascading systems.</desc>
+
+  <!-- Background -->
+  <rect width="700" height="440" fill="#f7f4ef" rx="10"/>
+
+  <!-- Header band -->
+  <rect width="700" height="68" fill="#1a5f6e" rx="10"/>
+  <rect y="58" width="700" height="10" fill="#1a5f6e"/>
+  <text x="350" y="27" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="white" text-anchor="middle">A map of conditions — what could make resilience matter more</text>
+  <text x="350" y="51" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="rgba(255,255,255,0.75)" text-anchor="middle">Not predictions. Categories of disruption from already-unfolding to possible-but-extreme.</text>
+
+  <!-- ===== ROW 1 ===== -->
+
+  <!-- Card 1: Economic Dislocation (x=10) -->
+  <rect x="10" y="82" width="217" height="130" rx="6" fill="#f7f4ef" stroke="#e0dbd4" stroke-width="1"/>
+  <rect x="10" y="82" width="4" height="130" fill="#1a5f6e"/>
+  <text x="24" y="103" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e">Economic Dislocation</text>
+  <text x="24" y="120" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">Rapid job displacement faster than</text>
+  <text x="24" y="135" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">institutions can respond. Already</text>
+  <text x="24" y="150" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">unfolding in knowledge work.</text>
+  <!-- Badge -->
+  <rect x="64" y="194" width="117" height="16" rx="3" fill="#c4853a"/>
+  <text x="122" y="206" font-family="system-ui,-apple-system,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">Already unfolding</text>
+
+  <!-- Card 2: Supply Chain Fragility (x=241) -->
+  <rect x="241" y="82" width="217" height="130" rx="6" fill="#f7f4ef" stroke="#e0dbd4" stroke-width="1"/>
+  <rect x="241" y="82" width="4" height="130" fill="#1a5f6e"/>
+  <text x="255" y="103" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e">Supply Chain Fragility</text>
+  <text x="255" y="120" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">Cities carry 3–7 days of food.</text>
+  <text x="255" y="135" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">Lean systems are efficient in calm —</text>
+  <text x="255" y="150" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">fragile under stress.</text>
+  <rect x="295" y="194" width="117" height="16" rx="3" fill="#c4853a"/>
+  <text x="353" y="206" font-family="system-ui,-apple-system,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">Demonstrated risk</text>
+
+  <!-- Card 3: Cyberattacks (x=472) -->
+  <rect x="472" y="82" width="217" height="130" rx="6" fill="#f7f4ef" stroke="#e0dbd4" stroke-width="1"/>
+  <rect x="472" y="82" width="4" height="130" fill="#1a5f6e"/>
+  <text x="486" y="103" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e">Cyberattacks on Infrastructure</text>
+  <text x="486" y="120" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">Power grids, water, financial systems.</text>
+  <text x="486" y="135" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">AI makes offensive capabilities</text>
+  <text x="486" y="150" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">more accessible.</text>
+  <rect x="526" y="194" width="105" height="16" rx="3" fill="#c4853a"/>
+  <text x="578" y="206" font-family="system-ui,-apple-system,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">Documented risk</text>
+
+  <!-- ===== ROW 2 ===== -->
+
+  <!-- Card 4: AI-Enabled Conflict (x=10) -->
+  <rect x="10" y="226" width="217" height="130" rx="6" fill="#f7f4ef" stroke="#e0dbd4" stroke-width="1"/>
+  <rect x="10" y="226" width="4" height="130" fill="#1a5f6e"/>
+  <text x="24" y="247" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e">AI-Enabled Conflict</text>
+  <text x="24" y="264" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">Autonomous weapons. AI disinformation.</text>
+  <text x="24" y="279" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">Both are present in current</text>
+  <text x="24" y="294" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">conflicts.</text>
+  <rect x="130" y="338" width="70" height="16" rx="3" fill="#1a5f6e"/>
+  <text x="165" y="350" font-family="system-ui,-apple-system,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">Emerging</text>
+
+  <!-- Card 5: Biological Threats (x=241) -->
+  <rect x="241" y="226" width="217" height="130" rx="6" fill="#f7f4ef" stroke="#e0dbd4" stroke-width="1"/>
+  <rect x="241" y="226" width="4" height="130" fill="#1a5f6e"/>
+  <text x="255" y="247" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e">Biological Threats</text>
+  <text x="255" y="264" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">COVID showed what disruption looks</text>
+  <text x="255" y="279" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">like. AI lowers the barrier to</text>
+  <text x="255" y="294" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">dangerous pathogens.</text>
+  <rect x="333" y="338" width="87" height="16" rx="3" fill="#1a5f6e"/>
+  <text x="376" y="350" font-family="system-ui,-apple-system,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">Precedented</text>
+
+  <!-- Card 6: Societal Breakdown (x=472) -->
+  <rect x="472" y="226" width="217" height="130" rx="6" fill="#f7f4ef" stroke="#e0dbd4" stroke-width="1"/>
+  <rect x="472" y="226" width="4" height="130" fill="#1a5f6e"/>
+  <text x="486" y="247" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e">Societal Breakdown</text>
+  <text x="486" y="264" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">AI concentrating power. Erosion of</text>
+  <text x="486" y="279" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">shared institutions. Misalignment</text>
+  <text x="486" y="294" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#4a4642">at scale.</text>
+  <rect x="562" y="338" width="88" height="16" rx="3" fill="#1a5f6e"/>
+  <text x="606" y="350" font-family="system-ui,-apple-system,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">Long-range</text>
+
+  <!-- Footer callout -->
+  <rect x="20" y="368" width="660" height="60" rx="8" fill="white" stroke="#d8d3cc" stroke-width="1"/>
+  <text x="350" y="389" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e" text-anchor="middle">What links these scenarios: modern life is built on systems</text>
+  <text x="350" y="406" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#1a5f6e" text-anchor="middle">that look robust and fail in cascades.</text>
+  <text x="350" y="422" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#a09a93" text-anchor="middle">Framework · Future Together</text>
+</svg>
