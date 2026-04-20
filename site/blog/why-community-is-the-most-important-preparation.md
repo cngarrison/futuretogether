@@ -28,6 +28,8 @@ And then the fires passed, and we started hearing the stories. People who had lo
 
 ---
 
+![People working together in a warm community space, carrying and sharing food and supplies. Purposeful and warm.](/img/community-in-action.png)
+
 ## Two responses to the same crisis
 
 During those weeks, something clarified itself for me about what community actually means — not as an abstract value, but as something operational.
@@ -75,6 +77,8 @@ Then share what you've learned with the people who matter to you. Not to frighte
 That's how the café owner relationship gets built before the fires come.
 
 ---
+
+![Three-card journey diagram: Awareness leads to Conversation leads to Action](/charts/awareness-journey.svg)
 
 ## The thing community provides that nothing else does
 

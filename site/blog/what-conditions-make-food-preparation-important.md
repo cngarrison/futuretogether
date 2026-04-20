@@ -44,6 +44,8 @@ None of this means catastrophe is inevitable. It means the conditions that could
 
 ## A map of conditions
 
+![Six-card grid mapping categories of disruption: economic dislocation, supply chain fragility, cyberattacks on infrastructure, AI-enabled conflict, biological threats, and societal breakdown](/charts/disruption-risk-map.svg)
+
 These aren't predictions. They're categories of disruption that range from “already happening in milder forms” to “possible but extreme.” I'm presenting them plainly, not to alarm, but to give the question some shape.
 
 **Economic dislocation**
@@ -101,6 +103,8 @@ Regionally, this might look like ensuring local farms grow food people can actua
 There's no single right answer. Every household and community starts from a different place, with different resources and vulnerabilities. What matters is that you've started asking.
 
 ---
+
+![A small group tending a community garden together in warm afternoon light — practical, purposeful, and relaxed](/img/community-garden.png)
 
 ## I'm not the expert. Go find out.
 

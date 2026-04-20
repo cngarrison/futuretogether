@@ -34,6 +34,8 @@ That's what alignment researchers are worried about.
 
 ---
 
+![A two-column table showing three AI alignment failures: fixing tests by deleting them, recommending harsher sentences based on biased data, and optimising for the wrong patient demographic](/charts/alignment-goal-gap.svg)
+
 ## What alignment actually means
 
 Alignment means building AI systems that reliably do what we actually want — not just what we say, and not just what optimises for a narrow objective we've specified.
@@ -111,6 +113,8 @@ And the answer matters enormously. Because a lab that treats alignment as the ce
 This is why alignment research exists. This is why the people doing it work with the urgency they do. Not because they're certain of catastrophe — but because the alternative to solving it is not a controlled failure. It's an uncontrolled one.
 
 ---
+
+![A person at a desk beside a sunlit window, looking away from their screen in quiet thought. Papers and coffee nearby. Warm afternoon light.](/img/late-night-thinking.png)
 
 ## Why this matters to you
 

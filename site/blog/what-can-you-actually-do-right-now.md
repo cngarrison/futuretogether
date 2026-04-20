@@ -38,6 +38,8 @@ I don't have a finished 10-step plan. I don't think anyone does. What I have is 
 
 ---
 
+![Three-card journey: Awareness, Conversation, Action. Not panic. Not paralysis. Action.](/charts/awareness-journey.svg)
+
 ## What you can do
 
 **Educate yourself.**
@@ -74,6 +76,8 @@ These are long-term questions. But they need to start being asked now, so that w
 
 ---
 
+![Five-card summary of immediate actions numbered 01 to 05: educate yourself, have the conversation, build community, make alignment a priority, think about new structures](/charts/five-actions.svg)
+
 ## How I ended up here
 
 I want to tell you something about why Future Together exists, because I think it's relevant to the question of what you can do.
@@ -89,6 +93,8 @@ I'm not the authority on what comes next. I'm someone who looked at what was hap
 If that resonates with you — if you've read through this series and feel some version of that same pull — then I'd encourage you not to wait until you feel ready. You won't feel ready. Do it anyway.
 
 ---
+
+![Two people at an outdoor table in deep conversation. One speaks with evident care; the other listens with full attention. Warm afternoon light.](/img/first-conversation.png)
 
 ## Start something
 

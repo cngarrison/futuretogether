@@ -24,6 +24,8 @@ This is the question AI is forcing us to ask about the real economy. Not “will
 
 ---
 
+![A person stands alone before large windows in an open, sunlit workspace, looking out at the world beyond. The space around them tells a story of change.](/img/work-at-crossroads.png)
+
 ## What the data is actually showing
 
 I’ve written before about [what’s happening to work](/blog/what-is-happening-to-work) at the level of individual roles and careers. This article is about the structural picture underneath that — the economic logic that’s being disrupted.

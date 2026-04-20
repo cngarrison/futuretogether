@@ -50,6 +50,8 @@ Most people have a version of my garden in their imagination. They just haven't 
 
 ---
 
+![A person working contentedly in a garden at sunrise — hands in soil, warm golden light. A chosen morning, unhurried.](/img/future-garden-vision.png)
+
 ## What Dario Amodei sees
 
 Dario Amodei — one of the researchers at the forefront of AI development — wrote an essay called *Machines of Loving Grace* that is one of the more serious attempts to sketch the upside of this technology. It's worth reading in full. Here are the parts that have stayed with me.
@@ -65,6 +67,8 @@ Dario Amodei — one of the researchers at the forefront of AI development — w
 These outcomes are not guaranteed. They're contingent on AI going well — on alignment being achieved, on the technology being developed and deployed in ways that actually serve human flourishing rather than concentrating power. That's the condition. But they're real possibilities, and they're worth holding in mind.
 
 ---
+
+![Four-card grid showing potential flourishing under aligned AI: biology and health, mental health, poverty and global development, and human flourishing](/charts/good-future-pillars.svg)
 
 ## The structures we don't have yet
 

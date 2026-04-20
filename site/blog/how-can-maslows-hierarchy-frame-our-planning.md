@@ -66,6 +66,8 @@ The pyramid, in other words, is a planning map for both scenarios.
 
 ---
 
+![Two-column diagram: if AI alignment fails, plan from the bottom of Maslow pyramid up; if alignment succeeds, the challenge is ensuring everyone reaches the top](/charts/two-futures-map.svg)
+
 ## The uncomfortable bottom
 
 When I introduce this frame — "start with food, water, shelter if things go badly" — I notice something consistent. People want to skip past it.

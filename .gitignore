@@ -5,3 +5,6 @@ social-media/
 jump-start/
 support/flyers-handouts/drafts-legacy
 references/
+
+node_modules
+site/node_modules

@@ -98,6 +98,8 @@ replaced by it entirely. High-level legal professionals are seeing AI handle
 work that used to require decades of experience. The transformation isn't
 coming. It's here.
 
+![A chart showing AI capability rising sharply since late 2022 while public awareness rises only gradually, with the growing gap between them](/charts/the-gap.svg)
+
 ## It's Not Just About Software Anymore
 
 People hear "AI" and think about chatbots or image generators. They're missing
@@ -307,6 +309,8 @@ The people who've been using the latest AI tools daily - really using them, not
 just trying the free version once in 2023 - aren't debating whether this is real
 anymore. We're watching it happen in real-time. The debate is over. Now it's
 about preparing.
+
+![Three-card diagram showing the Future Together journey: Awareness, Conversation, Action](/charts/awareness-journey.svg)
 
 ## What I'm Asking You To Do
 

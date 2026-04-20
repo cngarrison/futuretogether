@@ -41,6 +41,8 @@ Before I explain the difference, I want to note something about language. I deli
 
 ---
 
+![A lone figure at the edge of a vast landscape at dawn, facing a glowing horizon. The path ahead is illuminated but uncertain.](/img/threshold-dawn.png)
+
 ## The acceleration that changes everything
 
 AI systems are already making themselves more capable. This isn't a future prediction — it's happening now. The major labs release meaningfully improved models roughly every three months. Each generation of AI helps build and improve the next.
@@ -50,6 +52,8 @@ Think about that progression for a moment.
 Every three months. Then, as the systems get more capable, every three weeks. Then every three days. Then every three hours. Then every three minutes.
 
 Then microseconds.
+
+![Bar chart showing AI improvement cycles compressing from every few months through weeks, days, hours, minutes, and seconds, with a threshold where improvements outpace human oversight](/charts/singularity-acceleration.svg)
 
 At some point in that acceleration, the interval between improvements becomes shorter than the time it takes a human to understand what's changed, evaluate it, and decide what to do about it. We're no longer reviewing the work. We're watching it happen, too slowly to intervene.
 
