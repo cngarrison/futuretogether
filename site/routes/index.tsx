@@ -233,6 +233,14 @@ export default define.page(function Home() {
       {/* ===================== MEETUP CTA ===================== */}
       <section class="bg-primary text-white py-20 sm:py-28">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <div class="mb-10 rounded-2xl overflow-hidden">
+            <img
+              src="/img/discuss-our-future.png"
+              alt="Discuss Our Future — monthly online community meetup"
+              class="w-full"
+              style="height: 240px; object-fit: cover; object-position: center;"
+            />
+          </div>
           <h2 class="text-3xl sm:text-4xl font-bold mb-5">
             Join the conversation
           </h2>
