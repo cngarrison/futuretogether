@@ -72,6 +72,20 @@ export const externalResources: ExternalResource[] = [
       "The most rigorous employment data on AI's impact to date. Using ADP payroll records covering 25 million US workers through September 2025, researchers found that workers aged 22–25 in high AI-exposure roles — coding, writing, legal, customer service — have seen employment drop by around 20% since late 2022. Workers in the same roles aged 35+ grew over the same period. The headline unemployment number hasn't moved. This paper explains why that doesn't tell the full story, and what the early signal actually looks like.",
   },
   {
+    category: "Perspectives",
+    title: "Tristan Harris — tristanharris.com",
+    url: "https://www.tristanharris.com/#about",
+    description:
+      "Tristan Harris is a former Google design ethicist turned technologist and activist, best known for his work on how technology is engineered to capture and hold human attention. His writing and talks make the case that AI isn't just another tool — it's a shift in the fundamental power relationship between technology and human agency. A useful entry point into the broader conversation about who benefits when AI systems get better at predicting and shaping what we do.",
+  },
+  {
+    category: "Perspectives",
+    title: "Center for Humane Technology — humanetech.com",
+    url: "https://www.humanetech.com/",
+    description:
+      "The organisation co-founded by Tristan Harris. The Center for Humane Technology researches how AI and social media systems are reshaping attention, democracy, and social trust — and what it would look like to build technology that works for people rather than against them. Their resources, podcast, and policy work are among the clearest thinking available on the societal stakes of AI development.",
+  },
+  {
     category: "Context & Frameworks",
     title: "Maslow's Hierarchy of Needs",
     url: "https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs",
