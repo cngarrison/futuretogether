@@ -176,7 +176,7 @@ export default define.page(async function Meetups() {
                 class="text-sm mt-0.5"
                 style="color: rgba(255,255,255,0.6);"
               >
-                Open-source, no account needed, no tracking
+                No account needed, no tracking
               </p>
               <p
                 class="text-xs mt-1"
