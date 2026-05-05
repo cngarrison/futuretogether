@@ -89,7 +89,7 @@ export const handler = define.handlers<LoginData>({
       path: "/",
       secure: !isLocalDev,
       httpOnly: true,
-      maxAge: 60 * 60 * 24, // 24 hours
+      maxAge: 60 * 60 * 24 * 30, // 30 days
     });
 
     const redirectTo = new URL(ctx.req.url).searchParams.get("redirect") ||
