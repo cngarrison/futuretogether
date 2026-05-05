@@ -331,12 +331,57 @@
           Workers in the <em>same roles</em>, aged 35+: <strong>up 8%+</strong><br>
           The pattern begins almost exactly when ChatGPT launched.
         </div>
+        <div class="info-box" style="margin-top: 1rem; padding: 1rem 2rem;">
+          <div class="large-text" style="font-size: 1.3rem; margin-bottom: 0">
+            <strong>Independently confirmed:</strong> Anthropic&rsquo;s March 2026 research &mdash; using their own usage data, not third-party payroll records &mdash; reaches the same conclusion.
+          </div>
+        </div>
         <div class="slide-footnotes">
           <span>¹ Canaries in the Coal Mine: AI’s Early Labour Market Signal (Stanford Digital Economy Lab, Nov 2025) — digitaleconomy.stanford.edu</span>
         </div>
       </div>
 
-      <!-- Slide 4: Why the headline numbers mislead -->
+      <!-- Slide 4: Who's actually most exposed? (Anthropic data) -->
+      <div class="slide">
+        <div class="slide-number"></div>
+        <h2>Who&rsquo;s actually most exposed?</h2>
+        <div class="large-text">
+          The answer from Anthropic&rsquo;s own research isn&rsquo;t what most people expect.
+        </div>
+        <div class="split-view" style="margin-top: 1rem">
+          <div class="split-column split-amber">
+            <h3 style="color: #92400e">Most exposed workers</h3>
+            <p style="font-size: 1.15rem; margin-top: 1rem; color: #374151">
+              Older. More educated. Higher paid.<br>
+              More likely to be women.<br><br>
+              <em>Not</em> the entry-level picture most people assume.
+            </p>
+          </div>
+          <div class="split-column split-red">
+            <h3 style="color: #dc2626">Most exposed occupations</h3>
+            <p style="font-size: 1.15rem; margin-top: 1rem; color: #374151">
+              💻 Computer programmers &mdash; 75% of tasks<br>
+              📞 Customer service reps &mdash; heavy automation<br>
+              💰 Financial analysts &mdash; significant coverage<br>
+              📄 Data entry keyers &mdash; most tasks automated
+            </p>
+          </div>
+        </div>
+        <div class="emphasis-box" style="margin-top: 1.5rem">
+          <div class="large-text" style="margin-bottom: 0">
+            AI is currently at ~33% of its <em>theoretical</em> capability in technical roles.<br>
+            That gap will close.
+          </div>
+        </div>
+        <div class="question">
+          Does this change how you&rsquo;re thinking about your own situation?
+        </div>
+        <div class="slide-footnotes">
+          <span>Anthropic: Labor Market Impacts of AI: A New Measure and Early Evidence (Mar 2026) &mdash; anthropic.com/research/labor-market-impacts</span>
+        </div>
+      </div>
+
+      <!-- Slide 5: Why the headline numbers mislead -->
       <div class="slide">
         <div class="slide-number"></div>
         <h2>Why the headline numbers mislead</h2>
@@ -623,7 +668,7 @@
         <div class="slide-number"></div>
         <h2>Resources &amp; Discussion</h2>
         <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 1rem">Scan QR codes to access resources</p>
-        <div class="resource-list">
+        <div class="resource-list" style="grid-template-columns: repeat(2, 1fr);">
           <div class="resource-item">
             <h4>📊 Canaries in the Coal Mine</h4>
             <div id="qr-canaries" class="qr-code" style="display:block;margin:1rem auto;"></div>
@@ -641,6 +686,12 @@
             <div id="qr-join" class="qr-code" style="display:block;margin:1rem auto;"></div>
             <p>Be part of the ongoing conversation. Monthly meetups. Community.</p>
             <a href="https://futuretogether.community/join" target="_blank" rel="noopener noreferrer">futuretogether.community/join</a>
+          </div>
+          <div class="resource-item">
+            <h4>🔬 Anthropic Labor Market Research</h4>
+            <div id="qr-anthropic" class="qr-code" style="display:block;margin:1rem auto;"></div>
+            <p>A new measure of AI exposure &mdash; using actual usage data, not forecasts</p>
+            <a href="https://www.anthropic.com/research/labor-market-impacts" target="_blank" rel="noopener noreferrer">anthropic.com/research</a>
           </div>
         </div>
         <div style="margin-top: 1.5rem; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 1.5rem; max-width: 1200px; width: 100%">
@@ -718,6 +769,7 @@
       buildQR('https://digitaleconomy.stanford.edu/app/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf', 'qr-canaries');
       buildQR('https://futuretogether.community/blog/when-the-rules-change-ai-work-and-who-captures-the-benefit', 'qr-article');
       buildQR('https://futuretogether.community/join', 'qr-join');
+      buildQR('https://www.anthropic.com/research/labor-market-impacts', 'qr-anthropic');
     </script>
   </body>
 </html>
