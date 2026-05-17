@@ -17,7 +17,7 @@
 | **Talk starts** | 6:30 pm |
 | **Estimated finish** | 7:45–8:00 pm |
 | **Entry** | Free |
-| **Capacity** | ~30 (theatre seating) |
+| **Capacity** | TBD — confirm with Laura (theatre seating) |
 | **Registration** | Encouraged but not required — via futuretogether.community |
 
 ---
@@ -32,7 +32,7 @@ This isn't an abstract concern. Rural and regional communities face particular e
 
 Tumbarumba has something else too. After a decade of campaigning, this community has just won back its local council. That outcome — achieved through sustained, organised civic effort — is a reminder of what's possible when a community decides to act together. A new council starting fresh is also a genuine opportunity: to shape local priorities, ask new questions, and ensure the community's voice is heard in decisions that will define the next decade.
 
-Future Together, the Tumbarumba Chamber of Commerce, and The Nest Café are hosting this event because this community deserves the chance to face what's coming together — informed, connected, and with a sense of agency rather than anxiety. Not panic. Not paralysis. A conversation that leads to action.
+Future Together, the Tumbarumba Chamber of Commerce, and The Nest café are hosting this event because this community deserves the chance to face what's coming together — informed, connected, and with a sense of agency rather than anxiety. Not panic. Not paralysis. A conversation that leads to action.
 
 ---
 
@@ -124,11 +124,10 @@ The source slideshow is designed for an intimate group conversation. The followi
 
 | Requirement | Detail | Status |
 |---|---|---|
-| **Screen / projector** | Presentation is a full-screen browser slideshow. Needs a projector or large TV/monitor visible from all 30 seats. | ⚠️ Confirm available |
-| **Laptop connection** | HDMI is preferred. Wireless presentation option acceptable if reliable. | ⚠️ Confirm connector type |
-| **Microphone** | For 30 people in a theatre, a handheld or lapel mic is strongly recommended. | ⚠️ Confirm available or arrange |
-| **PA / speakers** | Needed if mic is used. Slideshow has no audio. | ⚠️ Confirm |
-| **Internet connection** | Slideshow loads fonts from Google Fonts. WiFi preferred; will test offline fallback. | ⚠️ Confirm availability |
+| **Screen / sound** | The theatre is an existing movie theatre — a screen and sound system are already in place. | ⚠️ Confirm screen size, projection setup, and available laptop connections |
+| **Laptop connection** | HDMI is preferred. | ⚠️ Confirm connector type and whether an adapter is needed |
+| **Microphone** | For a theatre audience, a handheld or lapel mic is strongly recommended. | ⚠️ Confirm available or arrange to borrow one |
+| **Internet connection** | Slideshow loads fonts from Google Fonts. WiFi preferred; phone hotspot available as fallback. | ⚠️ Confirm venue WiFi if available |
 | **Power point** | For presenter's laptop at the front. | ⚠️ Confirm location |
 | **Lighting** | Room should be dim enough to see the screen clearly, bright enough for audience to feel comfortable. | ⚠️ Discuss with Laura |
 | **Presenter's laptop** | Charlie will bring. Mac — will need appropriate adapter if venue uses HDMI only. | Charlie to bring |
@@ -139,7 +138,8 @@ The source slideshow is designed for an intimate group conversation. The followi
 
 | Element | Detail |
 |---|---|
-| **Seating** | Theatre style (rows facing screen) — ~30 seats |
+| **Seating** | Existing theatre seating (rows facing screen). ⚠️ Confirm seating capacity with Laura — room may be large enough but chairs may need supplementing. |
+| **Theatre access** | Via inside the café — large room at the rear. Guests enter through the café. |
 | **Presenter position** | Front of room, to the side of the screen so it remains visible |
 | **Welcome table** | Small table at entry for optional registration sign-in, printed resources, event leaflets |
 | **Signage** | Future Together + Tumbarumba Chamber of Commerce logos at entry and/or on screen before the talk starts |
@@ -163,7 +163,7 @@ The source slideshow is designed for an intimate group conversation. The followi
 |---|---|---|
 | **Local newspaper ad** | Quarter-page or classified — drafted and ready to submit | Charlie / Chamber |
 | **Chamber of Commerce** | Member newsletter, member WhatsApp/email groups | Chamber |
-| **The Nest Café** | In-café signage, social media, word of mouth from Laura | Laura |
+| **The Nest café** | In-café signage, social media, word of mouth from Laura | Laura |
 | **Rotary Club** | Approach once Chamber confirmed — present as civic education event | Charlie |
 | **Other local groups** | Schools (P&C), RSL, sporting clubs, churches — newsletters and noticeboards | Charlie |
 | **futuretogether.community** | Event listed on website with registration link | Charlie |
@@ -175,16 +175,13 @@ The source slideshow is designed for an intimate group conversation. The followi
 
 The following need Laura's input before we can finalise the plan:
 
-1. **Date** — what dates are the theatre available for a Thursday evening event? (Preference: late May or early June)
-2. **AV** — is there a projector/screen and PA system in the theatre? What connections are available for a laptop?
-3. **Microphone** — is there a mic available, or do we need to hire one?
-4. **Café bar** — is it feasible to have the bar open from 6:15 pm and again after the talk?
-5. **Timing** — is 6:15 pm doors / 6:30 pm start / 8:00 pm finish workable for the venue?
-6. **Setup time** — how early can Charlie arrive to set up and test the AV?
-7. **Signage** — any restrictions on signage at the venue entry or inside the theatre?
-8. **Accessibility** — is the theatre accessible for wheelchair users or people with mobility needs?
-9. **Parking** — is there parking nearby we should mention in the event listing?
-10. **Anything else** — what would Laura want to know that we haven't covered?
+1. **Date** — what Thursday evenings is the theatre available in June or early July?
+2. **AV** — what screen and projection setup is in the theatre? What laptop connections are available (HDMI? other)?
+3. **Microphone** — is there a mic available, or can one be borrowed?
+4. **Seating** — what is the current seating capacity? Would additional chairs be possible if needed?
+5. **Café bar** — is it feasible to have the bar open from 6:15 pm (before) and again from around 7:45 pm (after)?
+6. **Timing** — is 6:15 pm doors / 6:30 pm start / 8:00 pm finish workable for the venue?
+7. **Anything else** — what would Laura want to know or flag that we haven't covered?
 
 ---
 
@@ -193,7 +190,7 @@ The following need Laura's input before we can finalise the plan:
 | Step | Owner | When |
 |---|---|---|
 | Laura reviews this plan and provides feedback | Laura | ASAP |
-| Confirm date | Laura + Charlie | After Laura's feedback |
+| Confirm date (June or early July) | Laura + Charlie | After Laura's feedback |
 | Submit newspaper ad | Charlie + Chamber | Early next week (for next issue) |
 | Finalise AV setup plan | Charlie + Laura | Once date confirmed |
 | Approach Rotary | Charlie | Once date confirmed |
