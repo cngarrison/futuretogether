@@ -1,7 +1,5 @@
 import { App, staticFiles, trailingSlashes } from "fresh";
 import { define, type State } from "@/utils.ts";
-import PageLayout from "@/components/PageLayout.tsx";
-import StaffLayout from "@/components/StaffLayout.tsx";
 import { handleNotFound } from "@/components/NotFoundPage.tsx";
 import { handleError } from "@/components/ErrorPage.tsx";
 import { sendReminders } from "@/utils/cron.ts";
@@ -52,12 +50,5 @@ const exampleLoggerMiddleware = define.middleware((ctx) => {
 app.use(exampleLoggerMiddleware);
 
 //app.layout("blog/*", PageLayout, { showHero: false });
-app.layout("*", PageLayout, { showHero: false });
-
-app.layout("/staff/*", StaffLayout, {
-  skipAppWrapper: true,
-  skipInheritedLayouts: true,
-});
-
 // Include file-system based routes here
 app.fsRoutes();

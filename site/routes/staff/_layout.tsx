@@ -1,4 +1,8 @@
-import type { PageProps } from "fresh";
+import type { LayoutConfig, PageProps } from "fresh";
+
+export const config: LayoutConfig = {
+  skipInheritedLayouts: true,
+};
 
 /**
  * Staff area layout — Fresh v2
@@ -6,7 +10,8 @@ import type { PageProps } from "fresh";
  *
  * _app.tsx detects /staff routes and returns <Component /> directly,
  * making this layout the outermost wrapper with no duplicate html/head/body.
- * No `config` export is needed — the bypass is handled in _app.tsx.
+ * `skipInheritedLayouts: true` prevents the root _layout.tsx (PageLayout) from wrapping
+ * staff routes. The _app.tsx bypass prevents a duplicate html/head/body shell.
  */
 export default function StaffLayout({ Component }: PageProps) {
   return (
