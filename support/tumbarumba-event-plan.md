@@ -48,7 +48,7 @@ A cohort of engaged locals who want to keep meeting — the foundation for an on
 Local councillors — incoming and outgoing — are aware that their community is thinking about these issues. Future Together provides a non-partisan, civic-minded space for that conversation to mature into policy interest and local action.
 
 **For the region**
-Nearby communities — Tumut, Batlow, Jingellic, Corryong — hear what Tumbarumba did and want their own conversation. The Snowy Valleys region develops a reputation as a place that takes its future seriously.
+Nearby communities — Tumut, Batlow, Rosewood, Walwa, Corryong, and Khancoban — hear what Tumbarumba did and want their own conversation. The Snowy Valleys region develops a reputation as a place that takes its future seriously.
 
 **For rural Australia**
 The Tumbarumba event becomes a model that any community can follow — proof that a small regional town can engage seriously with one of the defining issues of our time, without waiting for someone else to start the conversation.
