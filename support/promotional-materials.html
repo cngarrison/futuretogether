@@ -446,8 +446,9 @@
       @page { size: A4; margin: 15mm; }
       body { background: white; padding: 0; }
       .doc-header { border-radius: 0; }
-      .ad-wrap { box-shadow: none; border: 1px solid #ddd; }
-      .flyer { box-shadow: none; }
+      .ad-wrap { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }
+      .material-card { page-break-inside: avoid; }
+      .flyer { box-shadow: none; page-break-inside: avoid; }
       .page-break { page-break-before: always; }
     }
   </style>
@@ -484,7 +485,7 @@
     <div class="ad-classified">
       <div class="ad-headline">The Future is Arriving.<br>Is Tumbarumba Ready?</div>
       <div class="ad-body">A free community talk on the technology reshaping work, business and everyday life in our region &mdash; and what we can do about it. No jargon. No doom. Just an honest conversation.</div>
-      <div class="ad-details">📅 <span class="placeholder">[DATE]</span> &nbsp;·&nbsp; <span class="placeholder">[TIME]</span> &nbsp;·&nbsp; The Nest Caf&eacute;, Tumbarumba</div>
+      <div class="ad-details">📅 <span class="placeholder">[DATE]</span> &nbsp;·&nbsp; <span class="placeholder">[TIME]</span> &nbsp;·&nbsp; Caf&eacute; Nest, Tumbarumba</div>
       <div class="ad-credits">
         Presented by Charlie Garrison, Future Together<br>
         Supported by Tumbarumba Chamber of Commerce<br>
@@ -521,7 +522,7 @@
         <div class="event-detail">
           📅 &nbsp;<span class="placeholder">[DATE]</span><br>
           🕕 &nbsp;<span class="placeholder">[TIME]</span><br>
-          📍 &nbsp;The Nest Caf&eacute; Theatre, Tumbarumba
+          📍 &nbsp;Caf&eacute; Nest Cinema, Tumbarumba
         </div>
       </div>
       <div class="ad-credits">
@@ -555,7 +556,7 @@
           </div>
           <div class="flyer-detail-row">
             <span class="flyer-detail-label">Where</span>
-            <span class="flyer-detail-value">The Nest Caf&eacute; Theatre, Tumbarumba</span>
+            <span class="flyer-detail-value">Caf&eacute; Nest Cinema, Tumbarumba</span>
           </div>
           <div class="flyer-detail-row">
             <span class="flyer-detail-label">Entry</span>
