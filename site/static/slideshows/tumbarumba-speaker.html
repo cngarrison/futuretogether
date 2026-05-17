@@ -98,23 +98,50 @@
       list-style: none;
       padding: 0;
     }
-    #bullets li {
-      color: #c8d8db;
+
+    /* 'say' bullets — content to deliver */
+    #bullets li.bullet-say {
+      color: #d4eef1;
       font-size: 17px;
+      font-weight: normal;
+      font-style: normal;
       padding: 6px 0;
       border-top: 1px solid rgba(255,255,255,0.07);
       line-height: 1.45;
     }
-    #bullets li::before {
-      content: '\2192  ';
+    #bullets li.bullet-say .bullet-prefix {
       color: #4db8cc;
     }
 
+    /* 'cue' bullets — delivery instructions */
+    #bullets li.bullet-cue {
+      color: #c4853a;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: italic;
+      padding: 6px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      line-height: 1.45;
+    }
+    #bullets li.bullet-cue .bullet-prefix {
+      color: #c4853a;
+    }
+
+    /* ── CHECKPOINT ── */
     #checkpoint {
       margin-top: 20px;
-      font-size: 13px;
-      color: #c4853a;
       opacity: 1;
+    }
+    #checkpoint-primary {
+      font-size: 15px;
+      font-weight: bold;
+      color: #c4853a;
+    }
+    #checkpoint-secondary {
+      font-size: 12px;
+      font-weight: normal;
+      color: rgba(196,133,58,0.55);
+      margin-top: 2px;
     }
 
     /* ── TAP ZONES ── */
@@ -172,17 +199,20 @@
   <div id="top-bar">
     <div id="timer">45:00</div>
     <div id="slide-counter">Slide 1 of 15</div>
-    <div id="pace-label">Medium · ~3 min</div>
+    <div id="pace-label">Brief · ~3 min</div>
   </div>
 
   <!-- CARD AREA -->
   <div id="card-area">
     <div id="tap-prev" onclick="prevSlide()"></div>
     <div id="tap-next" onclick="nextSlide()"></div>
-    <div id="slide-title">SLIDE 1</div>
+    <div id="slide-title">OPENING</div>
     <div id="anchor-line"></div>
     <ul id="bullets"></ul>
-    <div id="checkpoint"></div>
+    <div id="checkpoint">
+      <div id="checkpoint-primary"></div>
+      <div id="checkpoint-secondary"></div>
+    </div>
   </div>
 
   <!-- BOTTOM NAV -->
@@ -196,198 +226,180 @@
   // ── SLIDE DATA ──────────────────────────────────────────────────────────────
   const slides = [
     {
-      title: 'Slide 1 — Opening',
-      pace: 'Medium · ~3 min',
+      title: 'Opening',
+      pace: 'Brief \u00b7 ~3 min',
       cumulative: 3,
-      anchor: 'Thank you — genuinely — for being here tonight. This is exactly the kind of space where this conversation belongs.',
+      anchor: 'Thank you \u2014 genuinely \u2014 for being here. This conversation matters.',
       bullets: [
-        'Acknowledge the room warmly — they came out on a weeknight',
-        'Brief personal intro: who you are, why you care, why Tumbarumba',
-        'Frame the evening: 45-min talk, then Q&A',
-        'Questions on slides are to sit with — not answer aloud',
-        'Let the slide breathe, then move'
+        { type: 'say', text: 'Acknowledge Chamber of Commerce and Caf\u00e9 Nest warmly by name' },
+        { type: 'say', text: 'Brief personal intro \u2014 who you are and why you care about this' },
+        { type: 'say', text: 'Frame: 45-minute talk, then open Q&A \u2014 no wrong questions' },
+        { type: 'cue', text: 'Let the room settle. Don\u2019t rush into Slide 2.' }
       ]
     },
     {
-      title: 'Slide 2 — The Timeline Has Collapsed',
-      pace: 'Brief · ~2 min',
+      title: 'The Timeline Has Collapsed',
+      pace: 'Brief \u00b7 ~2 min',
       cumulative: 5,
-      anchor: 'What we thought was 10 years away is arriving in 1–3 years.',
+      anchor: 'What we thought was 10 years away is arriving in 1\u20133 years.',
       bullets: [
-        'State it plainly — let it land; no evidence needed here yet',
-        'Pause after the statement. Real question: "Are we ready?"',
-        'Pause again. Don\'t fill the silence.',
-        'Evidence comes on the next slides — don\'t front-load it',
-        'Move on'
+        { type: 'say', text: 'Capabilities experts expected by 2030\u20132035 exist now \u2014 this isn\u2019t a prediction' },
+        { type: 'say', text: 'The pace isn\u2019t slowing. Each model generation arrives faster than the last.' },
+        { type: 'cue', text: 'State it plainly and move on. Don\u2019t qualify it.' }
       ]
     },
     {
-      title: 'Slide 3 — We MUST Solve Alignment First',
-      pace: 'Slow · ~6 min',
-      cumulative: 11,
-      anchor: 'Alignment isn\'t just a technical problem. It\'s a civilisation-level problem — and we don\'t yet know if we have enough time to solve it.',
+      title: 'We MUST Solve Alignment First',
+      pace: 'Core \u00b7 ~7 min',
+      cumulative: 12,
+      anchor: 'Alignment isn\u2019t just a technical problem. It\u2019s a language problem \u2014 and we\u2019ve never solved it.',
       bullets: [
-        'Define alignment first — don\'t assume the word means anything yet',
-        'Anthropic\'s own published research: deception, manipulation, blackmail in controlled tests',
-        'Claude preserved its own preferences while pretending to comply with safety training',
-        '96% blackmail rate in some test scenarios — across multiple models, not just Claude',
-        'Credibility anchor: the company building the AI is the source'
+        { type: 'say', text: 'Alignment: making sure AI does what we genuinely intend, not just what we tell it' },
+        { type: 'say', text: '\u201cThink about giving instructions to a new colleague. Human language is not a precise instrument.\u201d' },
+        { type: 'say', text: 'Anthropic\u2019s own AI chose blackmail over failure in controlled tests \u2014 up to 96% of the time' },
+        { type: 'say', text: 'Even perfect data doesn\u2019t solve it. The gap between intent and instruction is the problem.' },
+        { type: 'cue', text: 'If challenged: \u201cThis is Anthropic\u2019s own published research \u2014 they documented what their own models do.\u201d' }
       ]
     },
     {
-      title: 'Slide 4 — The Singularity: A One-Way Door',
-      pace: 'Slow · ~6 min',
-      cumulative: 17,
-      anchor: 'What happens if we reach the singularity before we\'ve solved alignment?',
-      bullets: [
-        'Separate the terms: AGI vs ASI vs Singularity — take 60 seconds',
-        'Singularity = AI improving itself faster than humans can oversee it',
-        'AI already writing code at major AI labs — the process has started',
-        'Dario Amodei: recursive self-improvement as soon as 2027; 6–12 months away in early 2026',
-        'One-way door: no pulling back once it exceeds human oversight capacity'
-      ]
-    },
-    {
-      title: 'Slide 5 — We Can\'t Slow Down',
-      pace: 'Medium · ~2 min',
+      title: 'The Singularity: A One-Way Door',
+      pace: 'Core \u00b7 ~7 min',
       cumulative: 19,
-      anchor: 'If one lab stops, another won\'t — this is a race, and in races the incentive is always to accelerate.',
+      anchor: 'The singularity isn\u2019t about intelligence level \u2014 it\u2019s the moment we lose control of the process.',
       bullets: [
-        'Geopolitical race dynamic: if one country pauses, another races ahead',
-        'No global coordination mechanism that could actually enforce a pause',
-        'Incentive structure always favours acceleration over restraint',
-        'Repeat the closing question — it needs repetition: what if singularity before alignment?',
-        'Move on without answering it'
+        { type: 'say', text: 'Three terms, not the same: AGI (matches humans), ASI (exceeds humans), Singularity (self-improvement escapes oversight)' },
+        { type: 'say', text: 'AI is already writing code at the major labs. The process has already started.' },
+        { type: 'say', text: 'Dario Amodei \u2014 Anthropic CEO \u2014 said recursive self-improvement could arrive as soon as 2027. Not fringe.' },
+        { type: 'say', text: 'Unlike almost every other risk: no second attempt. You don\u2019t get to run the experiment twice.' },
+        { type: 'cue', text: 'Pause after \u201cThe process has already started.\u201d Silence does the work.' }
       ]
     },
     {
-      title: 'Slide 6 — What I\'m Hearing',
-      pace: 'Medium · ~4 min',
-      cumulative: 23,
-      anchor: 'Rural and regional communities have fewer fallback options — the disruption hits just as hard, with less buffer.',
+      title: 'We Can\u2019t Slow Down',
+      pace: 'Medium \u00b7 ~2 min',
+      cumulative: 21,
+      anchor: 'If one lab stops, another won\u2019t. If one country pauses, another races ahead.',
       bullets: [
-        '"No point going to medical school" — AI already at specialist diagnostic level',
-        'Marketing pro: 2–4 hours of content work → under 10 minutes, this week',
-        'Rural warning: fewer industries to pivot to, fewer safety nets, same disruption force',
-        'Use a local Tumbarumba example if you have one — even small, it lands harder',
-        'Deliver as lived observation, not lecture'
+        { type: 'say', text: 'Not a failure of will \u2014 a coordination problem. No single actor can unilaterally restrain the field.' },
+        { type: 'say', text: 'The question on screen is rhetorical but real: what happens if we reach the singularity before solving alignment?' },
+        { type: 'cue', text: 'Move at pace \u2014 flows directly from Slide 4.' }
       ]
     },
     {
-      title: 'Slide 7 — 50/50: Utopia or Dystopia',
-      pace: 'Medium · ~3 min',
-      cumulative: 26,
-      anchor: 'The path we get — utopia or dystopia — depends on what we do right now.',
+      title: 'What I\u2019m Hearing',
+      pace: 'Medium \u00b7 ~3 min',
+      cumulative: 24,
+      anchor: 'Rural communities have fewer fallback options. The disruption hits just as hard \u2014 with less buffer.',
       bullets: [
-        'Leading researchers: odds roughly 50/50 — a coin flip on something this consequential',
-        'Hinton (Nobel 2024): 10–20% probability of human extinction within 30 years',
-        'p(doom): almost nobody credible says zero, including the people building these systems',
-        '"If a bridge had a 50/50 chance of collapsing, we wouldn\'t just keep driving over it"',
-        'Don\'t claim a definitive number — the range itself is the point'
+        { type: 'say', text: '\u201cThere\u2019s no point going to medical school.\u201d Someone said this to me. AI already performs at specialist level on many diagnostic tasks.' },
+        { type: 'say', text: 'White-collar, creative, legal work \u2014 already transforming. Not a future prediction.' },
+        { type: 'say', text: 'Tumbarumba isn\u2019t immune. Cities have more industries to shift into. We don\u2019t.' },
+        { type: 'cue', text: 'Add a local example here if you have one \u2014 business owner, farmer, teacher.' }
       ]
     },
     {
-      title: 'Slide 8 — Remember February 2020?',
-      pace: 'Brief · ~1 min',
+      title: '50/50: Utopia or Dystopia',
+      pace: 'Medium \u00b7 ~3 min',
       cumulative: 27,
-      anchor: 'I think we\'re in that \'seems overblown\' phase right now.',
+      anchor: 'We don\u2019t build bridges with a 50% collapse rate. So why are we going full speed on AI?',
       bullets: [
-        'A few people talking about a virus overseas. Stock market fine. Life normal.',
-        'Three weeks later — everything changed',
-        'Don\'t walk through the COVID timeline — everyone in this room lived it',
-        'Pause after the anchor line. Let silence do the work.',
-        '"Except this time it\'s not about a virus." Move on.'
+        { type: 'say', text: 'Geoffrey Hinton \u2014 Nobel Prize 2024, helped invent deep learning \u2014 says 10\u201320% chance of human extinction within 30 years' },
+        { type: 'say', text: 'p(doom): the probability experts assign to catastrophic outcomes. Almost nobody credible says zero.' },
+        { type: 'say', text: 'Both outcomes are real. The utopia is worth working toward.' },
+        { type: 'cue', text: 'Hold back your own view. Present the range, not a verdict.' }
       ]
     },
     {
-      title: 'Slide 9 — Immediate Human Risks',
-      pace: 'Medium · ~3 min',
-      cumulative: 30,
-      anchor: 'The question isn\'t only \'what if it goes wrong?\' — it\'s \'what do we want the future to look like, full stop?\'',
+      title: 'Remember February 2020?',
+      pace: 'Brief \u00b7 ~2 min',
+      cumulative: 29,
+      anchor: 'I think we\u2019re in that \u201cseems overblown\u201d phase right now.',
       bullets: [
-        'Job displacement: white collar, creative, technical — already transforming faster than most realise',
-        'Food security: supply chains optimised for efficiency, not resilience',
-        'Purpose and identity: when work defines who you are, what happens when it disappears?',
-        'Welfare gap: safety nets built for temporary loss, not structural displacement at scale',
-        'This slide is a landscape — name each quadrant, don\'t linger'
+        { type: 'say', text: 'February 2020 \u2014 virus overseas, stock market fine, life normal. Three weeks later: everything changed.' },
+        { type: 'say', text: 'The pattern repeats: distant threat dismissed, then overnight it\u2019s everywhere.' },
+        { type: 'say', text: 'Except this time it\u2019s not a virus \u2014 it\u2019s how society fundamentally works.' },
+        { type: 'cue', text: 'Pause after the anchor line. Don\u2019t fill the silence.' }
       ]
     },
     {
-      title: 'Slide 10 — What Does a Good Future Look Like?',
-      pace: 'Medium · ~3 min',
-      cumulative: 33,
-      anchor: 'The utopia outcome is genuinely possible — and it depends on what we do right now.',
+      title: 'Immediate Human Risks',
+      pace: 'Medium \u00b7 ~3 min',
+      cumulative: 32,
+      anchor: 'These aren\u2019t distant risks. Some of them are already here.',
       bullets: [
-        'Pivot from fear to aspiration — deliver this like you mean it',
-        'Personal picture: doing what\'s meaningful, by choice — physical, relational, chosen',
-        'Compressed decades of medical research; mental health care for everyone',
-        'Expertise accessible globally, not just in wealthy cities',
-        'Human energy freed from rote work and redirected to what actually matters'
+        { type: 'say', text: 'Job displacement: 14% drop in hiring in AI-exposed roles since ChatGPT launched \u2014 Anthropic\u2019s own research' },
+        { type: 'say', text: 'Purpose and identity: when work defines who you are, what happens when the work disappears?' },
+        { type: 'say', text: 'The welfare gap: safety nets built for temporary job loss, not structural displacement at scale' },
+        { type: 'cue', text: 'Purpose and identity tends to land hardest. Watch the room.' }
       ]
     },
     {
-      title: 'Slide 11 — Why Community Is the Answer',
-      pace: 'Brief · ~2 min',
+      title: 'What Does a Good Future Look Like?',
+      pace: 'Medium \u00b7 ~3 min',
       cumulative: 35,
-      anchor: 'You don\'t have to figure this out alone.',
+      anchor: 'Fear is a motivator. But it\u2019s not a destination.',
       bullets: [
-        'Individual worry loops — collective sense-making moves us forward',
-        'Awareness: understand what\'s actually happening — that\'s tonight',
-        'Conversation: challenge ideas, share perspectives — that\'s the Q&A',
-        'Action: not panic, not paralysis — informed, community-supported action',
-        'Slow down here — this is the emotional heart of the talk'
+        { type: 'say', text: 'The personal picture: outside, building, helping, creating \u2014 not because you have to, because it\u2019s meaningful' },
+        { type: 'say', text: 'The societal picture: cancer solved, Alzheimer\u2019s solved, expertise available everywhere, not just in wealthy places' },
+        { type: 'say', text: 'The utopia outcome is genuinely desirable. Not a fantasy \u2014 a real possibility worth working toward.' },
+        { type: 'cue', text: 'Tonal pivot. Slow down. Let it be hopeful.' }
       ]
     },
     {
-      title: 'Slide 12 — Back to Basics: Maslow\'s Hierarchy',
-      pace: 'Brief · ~2 min',
+      title: 'Why Community Is the Answer',
+      pace: 'Brief \u00b7 ~2 min',
       cumulative: 37,
+      anchor: 'You don\u2019t have to figure this out alone.',
+      bullets: [
+        { type: 'say', text: 'Individual worry is exhausting \u2014 it just loops. Collective sense-making is how we actually move forward.' },
+        { type: 'say', text: 'Awareness \u2192 Conversation \u2192 Action. Tonight is the first step.' },
+        { type: 'cue', text: '\u201cYou\u2019re not alone\u201d moment. Be warm. Don\u2019t rush it.' }
+      ]
+    },
+    {
+      title: 'Back to Basics \u2014 Maslow',
+      pace: 'Brief \u00b7 ~2 min',
+      cumulative: 39,
       anchor: 'These foundations matter more than ever when everything else is shifting.',
       bullets: [
-        'Maslow as a map for navigating change — not an answer in itself',
-        'Bad outcome: start near bottom — basic needs, safety, community first',
-        'Good outcome: what does self-actualisation at scale actually look like?',
-        'Frame it quickly and move — this is context, not core',
-        'Can compress to 1 min if running long'
+        { type: 'say', text: 'Maslow isn\u2019t an answer \u2014 it\u2019s a map for asking better questions about what matters most' },
+        { type: 'say', text: 'Bad outcome: start near the bottom (food, safety, stability). Good outcome: start near the top. The hierarchy applies either way.' },
+        { type: 'cue', text: 'Visual breath slide. Don\u2019t over-explain.' }
       ]
     },
     {
-      title: 'Slide 13 — What Can We Do?',
-      pace: 'Medium · ~3 min',
-      cumulative: 40,
+      title: 'What Can We Do?',
+      pace: 'Medium \u00b7 ~3 min',
+      cumulative: 42,
       anchor: 'Not panic. Not paralysis. Action. Starting tonight.',
       bullets: [
-        'Say "Not panic. Not paralysis. Action." slowly — let each word sit',
-        'Stay aware; find your community; know your AI-resistant and AI-complementary skills',
-        'Food preparedness: community gardens, local producers, local relationships',
-        'Financial resilience: reduce debt, build a buffer against economic disruption',
-        'Civic engagement: talk to local reps, attend meetings, make your voice heard'
+        { type: 'say', text: 'Stay informed \u2014 the gap between what\u2019s happening and what most people know is enormous' },
+        { type: 'say', text: 'Know your skills \u2014 which are AI-resistant? Which are AI-complementary? Adapt rather than react.' },
+        { type: 'say', text: 'Local resilience: community gardens, local suppliers, knowing your neighbours. This works in Tumbarumba.' },
+        { type: 'cue', text: 'Say the anchor slowly. Three beats: Not panic. Not paralysis. Action.' }
       ]
     },
     {
-      title: 'Slide 14 — The Bigger Picture',
-      pace: 'Brief · ~2 min',
-      cumulative: 42,
-      anchor: 'Even if AI development is slower than predicted, the rest of this slide still applies.',
+      title: 'The Bigger Picture',
+      pace: 'Brief \u00b7 ~1 min',
+      cumulative: 43,
+      anchor: 'Even if AI is slower than feared, the rest of this still applies.',
       bullets: [
-        'AI alongside: climate change, geopolitical instability, pandemic risk, economic fragility',
-        'Multiple disruptions simultaneously — we are not navigating just one',
-        'Deliberately dense — don\'t try to unpack every quadrant',
-        'Can compress to 1 min if running long',
-        'This conversation matters regardless of how the AI story specifically unfolds'
+        { type: 'say', text: 'AI doesn\u2019t exist in isolation \u2014 geopolitical instability, climate, pandemic risk all unfolding simultaneously' },
+        { type: 'say', text: 'Two major disruption timelines converging: AI and climate. Either one alone is significant.' },
+        { type: 'cue', text: 'Brief \u2014 note it and move. Protect the close.' }
       ]
     },
     {
-      title: 'Slide 15 — Stay Connected',
-      pace: 'Medium · ~3 min',
+      title: 'Stay Connected',
+      pace: 'Warm \u00b7 ~3 min',
       cumulative: 45,
-      anchor: 'The future is arriving — let\'s face it together.',
+      anchor: 'The future is arriving. Let\u2019s face it together.',
       bullets: [
-        'Invite questions warmly — open Q&A properly, don\'t just announce it',
-        '"There are no wrong questions tonight. Seriously." Then pause.',
-        'QR code → futuretogether.community/events/tumbarumba',
-        'Thank the Chamber of Commerce and Café Nest by name',
-        'Never cut this slide — always protect the close'
+        { type: 'say', text: 'Point to QR code \u2014 futuretogether.community/events/tumbarumba \u2014 resources, events, how to stay connected' },
+        { type: 'say', text: 'Bring a friend to the next one. This conversation needs to spread.' },
+        { type: 'cue', text: 'Open Q&A: \u201cThere are no wrong questions tonight.\u201d Then wait.' },
+        { type: 'cue', text: 'If silence: \u201cI\u2019ll start \u2014 what\u2019s one thing from tonight that surprised you?\u201d' }
       ]
     }
   ];
@@ -467,27 +479,43 @@
   // ── SLIDE STATE ─────────────────────────────────────────────────────────────
   var currentSlide = 0;
 
-  var slideTitleEl   = document.getElementById('slide-title');
-  var anchorEl       = document.getElementById('anchor-line');
-  var bulletsEl      = document.getElementById('bullets');
-  var checkpointEl   = document.getElementById('checkpoint');
-  var slideCounterEl = document.getElementById('slide-counter');
-  var paceLabelEl    = document.getElementById('pace-label');
-  var navCounterEl   = document.getElementById('nav-counter');
-  var cardAreaEl     = document.getElementById('card-area');
+  var slideTitleEl      = document.getElementById('slide-title');
+  var anchorEl          = document.getElementById('anchor-line');
+  var bulletsEl         = document.getElementById('bullets');
+  var checkpointEl      = document.getElementById('checkpoint');
+  var checkpointPrimary = document.getElementById('checkpoint-primary');
+  var checkpointSecondary = document.getElementById('checkpoint-secondary');
+  var slideCounterEl    = document.getElementById('slide-counter');
+  var paceLabelEl       = document.getElementById('pace-label');
+  var navCounterEl      = document.getElementById('nav-counter');
+  var cardAreaEl        = document.getElementById('card-area');
 
   function showSlide(index) {
     if (index < 0 || index >= slides.length) return;
     currentSlide = index;
     var s = slides[index];
 
-    slideTitleEl.textContent = s.title;
+    slideTitleEl.textContent = s.title.toUpperCase();
     anchorEl.textContent     = s.anchor;
 
     bulletsEl.innerHTML = '';
     s.bullets.forEach(function(b) {
       var li = document.createElement('li');
-      li.textContent = b;
+      if (b.type === 'cue') {
+        li.className = 'bullet-cue';
+        var prefix = document.createElement('span');
+        prefix.className = 'bullet-prefix';
+        prefix.textContent = '\u26a1 ';
+        li.appendChild(prefix);
+        li.appendChild(document.createTextNode(b.text));
+      } else {
+        li.className = 'bullet-say';
+        var prefix = document.createElement('span');
+        prefix.className = 'bullet-prefix';
+        prefix.textContent = '\u2192 ';
+        li.appendChild(prefix);
+        li.appendChild(document.createTextNode(b.text));
+      }
       bulletsEl.appendChild(li);
     });
 
@@ -495,14 +523,17 @@
     navCounterEl.textContent   = String(index + 1);
     paceLabelEl.textContent    = s.pace;
 
-    // Checkpoint fade: snap to visible, then fade out over 4s
+    // Checkpoint: remaining time primary, elapsed secondary, fade over 12s
+    var remaining_min = 45 - s.cumulative;
+    checkpointPrimary.textContent   = '~' + remaining_min + ' min remaining';
+    checkpointSecondary.textContent = '(~' + s.cumulative + ' min elapsed)';
+
     checkpointEl.style.transition = 'none';
     checkpointEl.style.opacity    = '1';
-    checkpointEl.textContent      = '~' + s.cumulative + ' min elapsed by end of this slide';
 
     requestAnimationFrame(function() {
       requestAnimationFrame(function() {
-        checkpointEl.style.transition = 'opacity 4000ms ease-out';
+        checkpointEl.style.transition = 'opacity 12000ms ease-out';
         checkpointEl.style.opacity    = '0';
       });
     });
