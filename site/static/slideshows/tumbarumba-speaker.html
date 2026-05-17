@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Future Together — Speaker Notes · Tumbarumba</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: #0d2b33;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      overflow: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    #top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      background: #071e24;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      z-index: 100;
+      gap: 12px;
+    }
+
+    #timer {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 22px;
+      font-weight: 700;
+      color: #f0f9fa;
+      cursor: pointer;
+      user-select: none;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+      min-width: 72px;
+    }
+    #timer.warning { color: #f87171; }
+    #timer.pulse {
+      animation: pulse 1s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    #slide-counter {
+      flex: 1;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    #pace-label {
+      text-align: right;
+      font-size: 13px;
+      color: #c4853a;
+      flex-shrink: 0;
+      max-width: 140px;
+    }
+
+    /* ── CARD AREA ── */
+    #card-area {
+      position: fixed;
+      top: 56px;
+      bottom: 48px;
+      left: 0; right: 0;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 24px 20px 16px;
+    }
+
+    #slide-title {
+      color: #4db8cc;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+
+    #anchor-line {
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 20px;
+    }
+
+    #bullets {
+      list-style: none;
+      padding: 0;
+    }
+    #bullets li {
+      color: #c8d8db;
+      font-size: 17px;
+      padding: 6px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      line-height: 1.45;
+    }
+    #bullets li::before {
+      content: '\2192  ';
+      color: #4db8cc;
+    }
+
+    #checkpoint {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #c4853a;
+      opacity: 1;
+    }
+
+    /* ── TAP ZONES ── */
+    #tap-prev, #tap-next {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 33.333%;
+      cursor: pointer;
+      z-index: 10;
+    }
+    #tap-prev { left: 0; }
+    #tap-next { right: 0; }
+
+    /* ── BOTTOM NAV ── */
+    #nav-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 48px;
+      background: #071e24;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      z-index: 100;
+    }
+
+    #nav-prev {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      cursor: pointer;
+      user-select: none;
+      padding: 8px 4px;
+      flex-shrink: 0;
+    }
+
+    #nav-counter {
+      flex: 1;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    #nav-next {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      cursor: pointer;
+      user-select: none;
+      padding: 8px 4px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div id="top-bar">
+    <div id="timer">45:00</div>
+    <div id="slide-counter">Slide 1 of 15</div>
+    <div id="pace-label">Medium · ~3 min</div>
+  </div>
+
+  <!-- CARD AREA -->
+  <div id="card-area">
+    <div id="tap-prev" onclick="prevSlide()"></div>
+    <div id="tap-next" onclick="nextSlide()"></div>
+    <div id="slide-title">SLIDE 1</div>
+    <div id="anchor-line"></div>
+    <ul id="bullets"></ul>
+    <div id="checkpoint"></div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div id="nav-bar">
+    <div id="nav-prev" onclick="prevSlide()">← Prev</div>
+    <div id="nav-counter">1</div>
+    <div id="nav-next" onclick="nextSlide()">Next →</div>
+  </div>
+
+<script>
+  // ── SLIDE DATA ──────────────────────────────────────────────────────────────
+  const slides = [
+    {
+      title: 'Slide 1 — Opening',
+      pace: 'Medium · ~3 min',
+      cumulative: 3,
+      anchor: 'Thank you — genuinely — for being here tonight. This is exactly the kind of space where this conversation belongs.',
+      bullets: [
+        'Acknowledge the room warmly — they came out on a weeknight',
+        'Brief personal intro: who you are, why you care, why Tumbarumba',
+        'Frame the evening: 45-min talk, then Q&A',
+        'Questions on slides are to sit with — not answer aloud',
+        'Let the slide breathe, then move'
+      ]
+    },
+    {
+      title: 'Slide 2 — The Timeline Has Collapsed',
+      pace: 'Brief · ~2 min',
+      cumulative: 5,
+      anchor: 'What we thought was 10 years away is arriving in 1–3 years.',
+      bullets: [
+        'State it plainly — let it land; no evidence needed here yet',
+        'Pause after the statement. Real question: "Are we ready?"',
+        'Pause again. Don\'t fill the silence.',
+        'Evidence comes on the next slides — don\'t front-load it',
+        'Move on'
+      ]
+    },
+    {
+      title: 'Slide 3 — We MUST Solve Alignment First',
+      pace: 'Slow · ~6 min',
+      cumulative: 11,
+      anchor: 'Alignment isn\'t just a technical problem. It\'s a civilisation-level problem — and we don\'t yet know if we have enough time to solve it.',
+      bullets: [
+        'Define alignment first — don\'t assume the word means anything yet',
+        'Anthropic\'s own published research: deception, manipulation, blackmail in controlled tests',
+        'Claude preserved its own preferences while pretending to comply with safety training',
+        '96% blackmail rate in some test scenarios — across multiple models, not just Claude',
+        'Credibility anchor: the company building the AI is the source'
+      ]
+    },
+    {
+      title: 'Slide 4 — The Singularity: A One-Way Door',
+      pace: 'Slow · ~6 min',
+      cumulative: 17,
+      anchor: 'What happens if we reach the singularity before we\'ve solved alignment?',
+      bullets: [
+        'Separate the terms: AGI vs ASI vs Singularity — take 60 seconds',
+        'Singularity = AI improving itself faster than humans can oversee it',
+        'AI already writing code at major AI labs — the process has started',
+        'Dario Amodei: recursive self-improvement as soon as 2027; 6–12 months away in early 2026',
+        'One-way door: no pulling back once it exceeds human oversight capacity'
+      ]
+    },
+    {
+      title: 'Slide 5 — We Can\'t Slow Down',
+      pace: 'Medium · ~2 min',
+      cumulative: 19,
+      anchor: 'If one lab stops, another won\'t — this is a race, and in races the incentive is always to accelerate.',
+      bullets: [
+        'Geopolitical race dynamic: if one country pauses, another races ahead',
+        'No global coordination mechanism that could actually enforce a pause',
+        'Incentive structure always favours acceleration over restraint',
+        'Repeat the closing question — it needs repetition: what if singularity before alignment?',
+        'Move on without answering it'
+      ]
+    },
+    {
+      title: 'Slide 6 — What I\'m Hearing',
+      pace: 'Medium · ~4 min',
+      cumulative: 23,
+      anchor: 'Rural and regional communities have fewer fallback options — the disruption hits just as hard, with less buffer.',
+      bullets: [
+        '"No point going to medical school" — AI already at specialist diagnostic level',
+        'Marketing pro: 2–4 hours of content work → under 10 minutes, this week',
+        'Rural warning: fewer industries to pivot to, fewer safety nets, same disruption force',
+        'Use a local Tumbarumba example if you have one — even small, it lands harder',
+        'Deliver as lived observation, not lecture'
+      ]
+    },
+    {
+      title: 'Slide 7 — 50/50: Utopia or Dystopia',
+      pace: 'Medium · ~3 min',
+      cumulative: 26,
+      anchor: 'The path we get — utopia or dystopia — depends on what we do right now.',
+      bullets: [
+        'Leading researchers: odds roughly 50/50 — a coin flip on something this consequential',
+        'Hinton (Nobel 2024): 10–20% probability of human extinction within 30 years',
+        'p(doom): almost nobody credible says zero, including the people building these systems',
+        '"If a bridge had a 50/50 chance of collapsing, we wouldn\'t just keep driving over it"',
+        'Don\'t claim a definitive number — the range itself is the point'
+      ]
+    },
+    {
+      title: 'Slide 8 — Remember February 2020?',
+      pace: 'Brief · ~1 min',
+      cumulative: 27,
+      anchor: 'I think we\'re in that \'seems overblown\' phase right now.',
+      bullets: [
+        'A few people talking about a virus overseas. Stock market fine. Life normal.',
+        'Three weeks later — everything changed',
+        'Don\'t walk through the COVID timeline — everyone in this room lived it',
+        'Pause after the anchor line. Let silence do the work.',
+        '"Except this time it\'s not about a virus." Move on.'
+      ]
+    },
+    {
+      title: 'Slide 9 — Immediate Human Risks',
+      pace: 'Medium · ~3 min',
+      cumulative: 30,
+      anchor: 'The question isn\'t only \'what if it goes wrong?\' — it\'s \'what do we want the future to look like, full stop?\'',
+      bullets: [
+        'Job displacement: white collar, creative, technical — already transforming faster than most realise',
+        'Food security: supply chains optimised for efficiency, not resilience',
+        'Purpose and identity: when work defines who you are, what happens when it disappears?',
+        'Welfare gap: safety nets built for temporary loss, not structural displacement at scale',
+        'This slide is a landscape — name each quadrant, don\'t linger'
+      ]
+    },
+    {
+      title: 'Slide 10 — What Does a Good Future Look Like?',
+      pace: 'Medium · ~3 min',
+      cumulative: 33,
+      anchor: 'The utopia outcome is genuinely possible — and it depends on what we do right now.',
+      bullets: [
+        'Pivot from fear to aspiration — deliver this like you mean it',
+        'Personal picture: doing what\'s meaningful, by choice — physical, relational, chosen',
+        'Compressed decades of medical research; mental health care for everyone',
+        'Expertise accessible globally, not just in wealthy cities',
+        'Human energy freed from rote work and redirected to what actually matters'
+      ]
+    },
+    {
+      title: 'Slide 11 — Why Community Is the Answer',
+      pace: 'Brief · ~2 min',
+      cumulative: 35,
+      anchor: 'You don\'t have to figure this out alone.',
+      bullets: [
+        'Individual worry loops — collective sense-making moves us forward',
+        'Awareness: understand what\'s actually happening — that\'s tonight',
+        'Conversation: challenge ideas, share perspectives — that\'s the Q&A',
+        'Action: not panic, not paralysis — informed, community-supported action',
+        'Slow down here — this is the emotional heart of the talk'
+      ]
+    },
+    {
+      title: 'Slide 12 — Back to Basics: Maslow\'s Hierarchy',
+      pace: 'Brief · ~2 min',
+      cumulative: 37,
+      anchor: 'These foundations matter more than ever when everything else is shifting.',
+      bullets: [
+        'Maslow as a map for navigating change — not an answer in itself',
+        'Bad outcome: start near bottom — basic needs, safety, community first',
+        'Good outcome: what does self-actualisation at scale actually look like?',
+        'Frame it quickly and move — this is context, not core',
+        'Can compress to 1 min if running long'
+      ]
+    },
+    {
+      title: 'Slide 13 — What Can We Do?',
+      pace: 'Medium · ~3 min',
+      cumulative: 40,
+      anchor: 'Not panic. Not paralysis. Action. Starting tonight.',
+      bullets: [
+        'Say "Not panic. Not paralysis. Action." slowly — let each word sit',
+        'Stay aware; find your community; know your AI-resistant and AI-complementary skills',
+        'Food preparedness: community gardens, local producers, local relationships',
+        'Financial resilience: reduce debt, build a buffer against economic disruption',
+        'Civic engagement: talk to local reps, attend meetings, make your voice heard'
+      ]
+    },
+    {
+      title: 'Slide 14 — The Bigger Picture',
+      pace: 'Brief · ~2 min',
+      cumulative: 42,
+      anchor: 'Even if AI development is slower than predicted, the rest of this slide still applies.',
+      bullets: [
+        'AI alongside: climate change, geopolitical instability, pandemic risk, economic fragility',
+        'Multiple disruptions simultaneously — we are not navigating just one',
+        'Deliberately dense — don\'t try to unpack every quadrant',
+        'Can compress to 1 min if running long',
+        'This conversation matters regardless of how the AI story specifically unfolds'
+      ]
+    },
+    {
+      title: 'Slide 15 — Stay Connected',
+      pace: 'Medium · ~3 min',
+      cumulative: 45,
+      anchor: 'The future is arriving — let\'s face it together.',
+      bullets: [
+        'Invite questions warmly — open Q&A properly, don\'t just announce it',
+        '"There are no wrong questions tonight. Seriously." Then pause.',
+        'QR code → futuretogether.community/events/tumbarumba',
+        'Thank the Chamber of Commerce and Café Nest by name',
+        'Never cut this slide — always protect the close'
+      ]
+    }
+  ];
+
+  // ── TIMER STATE ─────────────────────────────────────────────────────────────
+  const TOTAL_SECONDS = 2700;
+  let remaining = TOTAL_SECONDS;
+  let running = false;
+  let interval = null;
+  let lastTap = 0;
+
+  const timerEl = document.getElementById('timer');
+
+  function formatTime(s) {
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    return String(m).padStart(2, '0') + ':' + String(sec).padStart(2, '0');
+  }
+
+  function updateTimerDisplay() {
+    timerEl.textContent = formatTime(Math.max(0, remaining));
+    timerEl.classList.remove('warning', 'pulse');
+    if (remaining <= 0) {
+      timerEl.classList.add('warning', 'pulse');
+    } else if (remaining <= 300) {
+      timerEl.classList.add('warning');
+    }
+  }
+
+  function startTimer() {
+    if (interval) clearInterval(interval);
+    interval = setInterval(function() {
+      if (remaining > 0) {
+        remaining--;
+        updateTimerDisplay();
+      } else {
+        running = false;
+        clearInterval(interval);
+        interval = null;
+        updateTimerDisplay();
+      }
+    }, 1000);
+  }
+
+  function toggleTimer() {
+    running = !running;
+    if (running) {
+      startTimer();
+    } else {
+      clearInterval(interval);
+      interval = null;
+    }
+  }
+
+  function resetTimer() {
+    running = false;
+    if (interval) { clearInterval(interval); interval = null; }
+    remaining = TOTAL_SECONDS;
+    updateTimerDisplay();
+  }
+
+  timerEl.addEventListener('click', function(e) {
+    var now = Date.now();
+    if (now - lastTap < 350) {
+      resetTimer();
+      lastTap = 0;
+    } else {
+      lastTap = now;
+      setTimeout(function() {
+        if (Date.now() - lastTap >= 340) {
+          toggleTimer();
+        }
+      }, 360);
+    }
+  });
+
+  // ── SLIDE STATE ─────────────────────────────────────────────────────────────
+  var currentSlide = 0;
+
+  var slideTitleEl   = document.getElementById('slide-title');
+  var anchorEl       = document.getElementById('anchor-line');
+  var bulletsEl      = document.getElementById('bullets');
+  var checkpointEl   = document.getElementById('checkpoint');
+  var slideCounterEl = document.getElementById('slide-counter');
+  var paceLabelEl    = document.getElementById('pace-label');
+  var navCounterEl   = document.getElementById('nav-counter');
+  var cardAreaEl     = document.getElementById('card-area');
+
+  function showSlide(index) {
+    if (index < 0 || index >= slides.length) return;
+    currentSlide = index;
+    var s = slides[index];
+
+    slideTitleEl.textContent = s.title;
+    anchorEl.textContent     = s.anchor;
+
+    bulletsEl.innerHTML = '';
+    s.bullets.forEach(function(b) {
+      var li = document.createElement('li');
+      li.textContent = b;
+      bulletsEl.appendChild(li);
+    });
+
+    slideCounterEl.textContent = 'Slide ' + (index + 1) + ' of ' + slides.length;
+    navCounterEl.textContent   = String(index + 1);
+    paceLabelEl.textContent    = s.pace;
+
+    // Checkpoint fade: snap to visible, then fade out over 4s
+    checkpointEl.style.transition = 'none';
+    checkpointEl.style.opacity    = '1';
+    checkpointEl.textContent      = '~' + s.cumulative + ' min elapsed by end of this slide';
+
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        checkpointEl.style.transition = 'opacity 4000ms ease-out';
+        checkpointEl.style.opacity    = '0';
+      });
+    });
+
+    cardAreaEl.scrollTop = 0;
+  }
+
+  function nextSlide() {
+    if (currentSlide < slides.length - 1) showSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+    if (currentSlide > 0) showSlide(currentSlide - 1);
+  }
+
+  // ── KEYBOARD (desktop) ──────────────────────────────────────────────────────
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+    if (e.key === 'ArrowLeft')                   { e.preventDefault(); prevSlide(); }
+  });
+
+  // ── INIT ────────────────────────────────────────────────────────────────────
+  updateTimerDisplay();
+  showSlide(0);
+</script>
+</body>
+</html>
