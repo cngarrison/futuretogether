@@ -165,6 +165,28 @@
 }
 
 /* Slide number — inside brand-bar */
+.slide-counter {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.65);
+  font-variant-numeric: tabular-nums;
+  min-width: 4rem;
+  white-space: nowrap;
+}
+
+.brand-bar-centre {
+  flex: 1;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  letter-spacing: 0.01em;
+}
+
+/* Legacy top-right counter (static HTML) */
 .slide-number {
   position: absolute;
   bottom: 14px;

@@ -1,14 +1,14 @@
 import { signal } from '@preact/signals';
 import { useEffect } from 'preact/hooks';
 import { currentSlide, navigate } from './SlideshowSync.tsx';
-import type { SlideData } from '@/types/slideshows.ts';
+import type { SlideControllerInfo } from '@/types/slideshows.ts';
 
 // Timer signals — seconds elapsed
 const elapsed = signal(0);
 const timerRunning = signal(false);
 
 interface Props {
-  slides: SlideData[];
+  slides: SlideControllerInfo[];
   totalDurationMinutes?: number;
 }
 

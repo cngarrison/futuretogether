@@ -22,6 +22,16 @@ export interface SlideData {
   notes?: SlideNotes;
 }
 
+/**
+ * Serializable subset of SlideData — safe to pass as island props.
+ * Strips the JSX `content` field which cannot be serialized.
+ */
+export interface SlideControllerInfo {
+  id: number;
+  title: string;
+  notes?: SlideNotes;
+}
+
 export interface SlideshowMeta {
   slug: string;           // e.g. 'tumbarumba-june-2026'
   title: string;
