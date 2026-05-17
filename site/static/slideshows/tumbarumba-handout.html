@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Together — Tumbarumba Event Handout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── Brand tokens ───────────────────────────────────────── */
+    :root {
+      --teal:       #1a5f6e;
+      --amber:      #c4853a;
+      --warm-white: #f7f4ef;
+      --near-black: #1c1a18;
+      --teal-light: #e8f2f4;
+      --teal-mid:   #2a7a8c;
+    }
+
+    /* ── Reset / base ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+      background: #d1d5db;
+      color: var(--near-black);
+      font-size: 10pt;
+      line-height: 1.5;
+    }
+
+    /* ── Screen wrapper — A4 card centred on grey ───────────── */
+    .page {
+      max-width: 210mm;
+      min-height: 297mm;
+      margin: 2rem auto;
+      background: #ffffff;
+      padding: 1.5cm 1.5cm 1.2cm;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────────── */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.45rem;
+      padding-bottom: 0.6rem;
+      margin-bottom: 0.7rem;
+      border-bottom: 2px solid var(--teal);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      width: 100%;
+    }
+
+    .logo-wrap svg {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    .header-text {
+      flex: 1;
+    }
+
+    .header-headline {
+      font-size: 16pt;
+      font-weight: 800;
+      color: var(--teal);
+      line-height: 1.15;
+      letter-spacing: -0.3px;
+    }
+
+    .header-subline {
+      font-size: 8.5pt;
+      color: #555;
+      font-style: italic;
+      margin-top: 0.18rem;
+    }
+
+    /* ── MAIN BODY — two-column then full-width bottom ─────── */
+    .body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.9rem 1.1rem;
+      flex: 1;
+    }
+
+    /* Section 1 spans left column */
+    .section-1 {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    /* Section 2 spans right column */
+    .section-2 {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    /* Section 3 spans full width */
+    .section-3 {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+
+    /* ── Section headings ───────────────────────────────────── */
+    .section-heading {
+      font-size: 10pt;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1.5px solid var(--teal);
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subheading {
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: var(--near-black);
+      font-style: italic;
+      margin-bottom: 0.35rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ── Bullet lists ───────────────────────────────────────── */
+    ul.bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.28rem;
+    }
+
+    ul.bullets li {
+      font-size: 8.5pt;
+      line-height: 1.4;
+      padding-left: 1em;
+      position: relative;
+      color: var(--near-black);
+    }
+
+    ul.bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--amber);
+      font-weight: 700;
+    }
+
+    /* ── Conversation starters ──────────────────────────────── */
+    .convo-group {
+      margin-bottom: 0.55rem;
+    }
+
+    .convo-label {
+      font-size: 7.5pt;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.2rem;
+    }
+
+    ul.quotes {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.22rem;
+    }
+
+    ul.quotes li {
+      font-size: 8pt;
+      line-height: 1.38;
+      padding-left: 0.8em;
+      position: relative;
+      color: #333;
+      font-style: italic;
+    }
+
+    ul.quotes li::before {
+      content: '\"';
+      position: absolute;
+      left: 0;
+      color: var(--amber);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 9pt;
+      line-height: 1.2;
+    }
+
+    /* ── Section 3 — action grid ────────────────────────────── */
+    .action-box {
+      background: var(--teal-light);
+      border-left: 3px solid var(--teal);
+      border-radius: 4px;
+      padding: 0.6rem 0.75rem;
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.55rem 0.8rem;
+      margin-top: 0.45rem;
+    }
+
+    .action-item {
+      font-size: 8pt;
+      line-height: 1.38;
+      color: var(--near-black);
+    }
+
+    .action-item .action-icon {
+      font-size: 9pt;
+      margin-right: 0.2em;
+    }
+
+    .action-item strong {
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .section-3-heading {
+      font-size: 10pt;
+      font-weight: 800;
+      color: var(--teal);
+      margin-bottom: 0;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    .footer {
+      background: var(--teal);
+      color: #ffffff;
+      border-radius: 4px;
+      padding: 0.5rem 0.85rem;
+      margin-top: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.08rem;
+    }
+
+    .footer-url {
+      font-size: 8.5pt;
+      font-weight: 400;
+    }
+
+    .footer-url strong {
+      font-weight: 700;
+      color: #fcd46a;
+    }
+
+    .footer-tagline {
+      font-size: 9pt;
+      font-weight: 700;
+      font-style: italic;
+      color: #e0f0f4;
+    }
+
+    .footer-attr {
+      font-size: 7pt;
+      color: rgba(255,255,255,0.55);
+      text-align: right;
+    }
+
+    /* ── PRINT styles ───────────────────────────────────────── */
+    @page {
+      size: A4 portrait;
+      margin: 1.5cm;
+    }
+
+    @media print {
+      .no-print { display: none !important; }
+
+      body {
+        background: white;
+        font-size: 9pt;
+      }
+
+      .page {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        max-width: 100%;
+        min-height: auto;
+      }
+
+      .header-headline { font-size: 14pt; }
+      .section-heading  { font-size: 9pt; }
+      ul.bullets li,
+      ul.quotes li,
+      .action-item      { font-size: 8pt; }
+      .footer           { padding: 0.45rem 0.75rem; }
+      .footer-tagline   { font-size: 8.5pt; }
+      .footer-url,
+      .footer-attr      { font-size: 7.5pt; }
+
+      /* Greyscale fallback: borders/decoration carry meaning, not colour alone */
+      .action-box {
+        background: #f0f0f0;
+        border-left-color: #333;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══ HEADER ══════════════════════════════════════════════ -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <!-- Future Together wordmark SVG — copied from tumbarumba-event-slideshow.html -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 80" role="img" aria-label="Future Together">
+          <title>Future Together</title>
+          <line x1="2" y1="5"  x2="50" y2="40" stroke="#1a5f6e" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+          <line x1="2" y1="21" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+          <line x1="2" y1="40" x2="50" y2="40" stroke="#1a5f6e" stroke-width="3"   stroke-linecap="round"/>
+          <line x1="2" y1="59" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+          <line x1="2" y1="75" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+          <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+          <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="84" y="34" font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif" font-size="21" font-weight="700" fill="#1a5f6e" letter-spacing="-0.5">Future</text>
+          <text x="84" y="59" font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif" font-size="21" font-weight="400" fill="#1c1a18" letter-spacing="-0.5">Together</text>
+        </svg>
+      </div>
+      <div class="header-text">
+        <div class="header-headline">The Future Is Arriving. Is Tumbarumba Ready?</div>
+        <div class="header-subline">A Future Together public talk &middot; Caf&eacute; Nest Cinema, Tumbarumba</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ BODY GRID ════════════════════════════════════════════ -->
+  <div class="body-grid">
+
+    <!-- ── SECTION 1 — What we covered ──────────────────────── -->
+    <section class="section-1">
+      <h2 class="section-heading">What we covered tonight</h2>
+      <ul class="bullets">
+        <li>AI capabilities are advancing far faster than most people realise — what seemed 10 years away is arriving in 1–3 years</li>
+        <li>The people building AI admit they haven't solved how to make it reliably safe</li>
+        <li>White-collar and creative jobs are already being displaced — not just in cities</li>
+        <li>Rural communities have fewer fallback options when industries shift</li>
+        <li>Experts put the risk of a very bad outcome at somewhere between 10–50%. Nobody credible says zero.</li>
+        <li>There's an equally real possibility of an extraordinary positive future — cancer solved, expertise available everywhere</li>
+        <li>The path we get depends on what we do now</li>
+      </ul>
+    </section>
+
+    <!-- ── SECTION 2 — Conversation starters ────────────────── -->
+    <section class="section-2">
+      <h2 class="section-heading">Take this home</h2>
+      <p class="section-subheading">Questions to start a conversation</p>
+
+      <div class="convo-group">
+        <div class="convo-label">Partners &amp; friends</div>
+        <ul class="quotes">
+          <li>Did you know AI is already doing high-level legal and medical work? How do you think that affects us?</li>
+          <li>What would you do if your job looked completely different in three years?</li>
+          <li>If there's even a 20% chance of major disruption — what would we do differently?</li>
+        </ul>
+      </div>
+
+      <div class="convo-group">
+        <div class="convo-label">Kids &amp; teenagers</div>
+        <ul class="quotes">
+          <li>What do you think jobs will look like when you grow up?</li>
+          <li>Have you used AI for anything lately? What did you think?</li>
+          <li>If a computer could do most jobs, what would people do all day?</li>
+        </ul>
+      </div>
+
+      <div class="convo-group">
+        <div class="convo-label">Local businesses &amp; colleagues</div>
+        <ul class="quotes">
+          <li>Which parts of what we do could AI handle in the next few years?</li>
+          <li>What's one thing about our work that AI couldn't replace?</li>
+          <li>Are we preparing for this — or waiting to react?</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── SECTION 3 — Actions ───────────────────────────────── -->
+    <section class="section-3">
+      <div class="action-box">
+        <h2 class="section-3-heading">Not panic. Not paralysis. Action.</h2>
+        <div class="action-grid">
+          <div class="action-item">
+            <span class="action-icon">&#129504;</span>
+            <strong>Stay informed</strong> — Keep learning. The gap between what's happening and what most people know is enormous.
+          </div>
+          <div class="action-item">
+            <span class="action-icon">&#128172;</span>
+            <strong>Keep talking</strong> — Share this conversation. Bring a friend to the next event.
+          </div>
+          <div class="action-item">
+            <span class="action-icon">&#128736;</span>
+            <strong>Know your skills</strong> — Which of yours are AI-resistant? Which are complementary? Start thinking now.
+          </div>
+          <div class="action-item">
+            <span class="action-icon">&#127807;</span>
+            <strong>Local resilience</strong> — Community gardens, local suppliers, knowing your neighbours. Works in Tumbarumba.
+          </div>
+          <div class="action-item">
+            <span class="action-icon">&#128176;</span>
+            <strong>Financial buffer</strong> — Reduce debt. Build a buffer. Disruption amplifies existing vulnerability.
+          </div>
+          <div class="action-item">
+            <span class="action-icon">&#128226;</span>
+            <strong>Civic voice</strong> — Talk to local councillors and MPs. Governments need to hear from people paying attention.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /body-grid -->
+
+  <!-- ══ FOOTER ════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-left">
+      <div class="footer-url">Stay connected: <strong>futuretogether.community/events/tumbarumba</strong></div>
+      <div class="footer-tagline">The future is arriving. Let's face it together.</div>
+    </div>
+    <div class="footer-attr">Created with Beyond Better &middot; beyondbetter.app</div>
+  </footer>
+
+</div><!-- /page -->
+
+</body>
+</html>
