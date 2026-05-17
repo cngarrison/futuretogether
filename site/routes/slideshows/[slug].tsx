@@ -1,11 +1,12 @@
-import { Head } from 'fresh/runtime';
-import { define } from '@/utils.ts';
-import { getSlideshowMeta } from '@/utils/slideshows/registry.ts';
-import SlideDeck from '@/components/slideshows/SlideDeck.tsx';
-import SlideshowSync from '@/islands/slideshows/SlideshowSync.tsx';
-import SlideDeckSync from '@/islands/slideshows/SlideDeckSync.tsx';
-import ConnectionStatus from '@/islands/slideshows/ConnectionStatus.tsx';
-export default define.page(async function SlideshowPage({ params }) {
+import { Head } from "fresh/runtime";
+import { define } from "@/utils.ts";
+import { getSlideshowMeta } from "@/utils/slideshows/registry.ts";
+import SlideDeck from "@/components/slideshows/SlideDeck.tsx";
+import SlideshowSync from "@/islands/slideshows/SlideshowSync.tsx";
+import SlideDeckSync from "@/islands/slideshows/SlideDeckSync.tsx";
+import ConnectionStatus from "@/islands/slideshows/ConnectionStatus.tsx";
+
+export default define.page(async function SlideshowPage({ params, url }) {
   const { slug } = params;
   const meta = getSlideshowMeta(slug);
 
@@ -20,15 +21,19 @@ export default define.page(async function SlideshowPage({ params }) {
 
   const slides = await meta.loadSlides();
 
+  // ?mode=control makes the slideshow itself the controller — arrow keys drive all receivers.
+  // Default is receiver (audience view).
+  const role = url.searchParams.get("mode") === "control" ? "controller" : "receiver";
+
   return (
     <>
       <Head>
-        <title>{meta.title} \u2014 Future Together</title>
+        <title>{meta.title} — Future Together</title>
         <meta name="robots" content="noindex" />
       </Head>
-      <SlideshowSync room={slug} role="receiver" />
+      <SlideshowSync room={slug} role={role} />
       <SlideDeck slides={slides} />
-      <SlideDeckSync role="receiver" slideCount={slides.length} />
+      <SlideDeckSync role={role} slideCount={slides.length} />
       <ConnectionStatus />
     </>
   );
