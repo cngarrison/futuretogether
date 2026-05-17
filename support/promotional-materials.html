@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promotional Materials — Future Together: Tumbarumba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #1a5f6e;
+      --amber: #c4853a;
+      --warm-white: #f7f4ef;
+      --near-black: #1c1a18;
+      --mid-grey: #6b7280;
+      --light-border: #e5e7eb;
+      --teal-light: #d4eef1;
+      --amber-light: #fef3c7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: #e8e4de;
+      color: var(--near-black);
+      padding: 2rem;
+    }
+
+    /* ===== PAGE WRAPPER ===== */
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* ===== DOC HEADER ===== */
+    .doc-header {
+      background: var(--teal);
+      color: white;
+      padding: 1.5rem 2rem;
+      border-radius: 10px;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .doc-header h1 { font-size: 15pt; font-weight: 700; margin-bottom: 0.25rem; }
+    .doc-header p { font-size: 10pt; opacity: 0.75; }
+
+    /* ===== SECTION LABELS ===== */
+    .section-label {
+      font-size: 9pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--mid-grey);
+      margin: 2.5rem 0 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--light-border);
+    }
+
+    .section-note {
+      font-size: 9.5pt;
+      color: var(--mid-grey);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    /* ===== AD CONTAINERS ===== */
+    .ad-wrap {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .ad-label {
+      font-size: 8.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--light-border);
+    }
+    .ad-size-note {
+      font-size: 8pt;
+      color: var(--mid-grey);
+      margin-left: 0.5rem;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /* ===== CLASSIFIED AD ===== */
+    .ad-classified {
+      max-width: 280px;
+      border: 1px solid #ccc;
+      padding: 1rem 1.1rem;
+      background: #fdfcfa;
+      font-family: Georgia, serif;
+    }
+    .ad-classified .ad-headline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11.5pt;
+      font-weight: 800;
+      color: var(--teal);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+    }
+    .ad-classified .ad-body {
+      font-size: 9pt;
+      line-height: 1.55;
+      color: #222;
+      margin-bottom: 0.7rem;
+    }
+    .ad-classified .ad-details {
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 0.4rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .ad-classified .ad-credits {
+      font-size: 7.5pt;
+      color: #555;
+      line-height: 1.5;
+      border-top: 1px solid #ddd;
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .ad-classified .ad-url {
+      font-weight: 700;
+      color: var(--teal);
+    }
+    .ad-classified .placeholder {
+      background: #fff3cd;
+      border-radius: 3px;
+      padding: 0 3px;
+      font-style: italic;
+      color: #856404;
+    }
+
+    /* ===== QUARTER-PAGE AD ===== */
+    .ad-quarter {
+      max-width: 500px;
+      border: 2px solid var(--teal);
+      background: var(--warm-white);
+      padding: 1.75rem 2rem;
+      border-radius: 4px;
+    }
+    .ad-quarter .ad-logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(26,95,110,0.2);
+    }
+    .ad-quarter .chamber-placeholder {
+      font-size: 8pt;
+      color: var(--mid-grey);
+      border: 1px dashed #ccc;
+      padding: 0.4rem 0.75rem;
+      border-radius: 4px;
+      font-style: italic;
+    }
+    .ad-quarter .ad-headline {
+      font-size: 21pt;
+      font-weight: 800;
+      color: var(--teal);
+      line-height: 1.15;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+    .ad-quarter .ad-sub {
+      font-size: 10pt;
+      color: var(--mid-grey);
+      font-style: italic;
+      margin-bottom: 1.1rem;
+    }
+    .ad-quarter .ad-divider {
+      height: 2px;
+      background: linear-gradient(to right, var(--amber), transparent);
+      margin-bottom: 1rem;
+    }
+    .ad-quarter .ad-body {
+      font-size: 10pt;
+      line-height: 1.65;
+      color: #374151;
+      margin-bottom: 0.75rem;
+    }
+    .ad-quarter .ad-bridge {
+      font-size: 10pt;
+      font-weight: 600;
+      color: var(--near-black);
+      margin-bottom: 1rem;
+    }
+    .ad-quarter .ad-event-box {
+      background: var(--teal);
+      color: white;
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+    .ad-quarter .ad-event-box .event-tag {
+      font-size: 7.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.7;
+      margin-bottom: 0.4rem;
+    }
+    .ad-quarter .ad-event-box .event-title {
+      font-size: 13pt;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .ad-quarter .ad-event-box .event-detail {
+      font-size: 9.5pt;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+    .ad-quarter .ad-event-box .placeholder {
+      background: rgba(255,200,0,0.25);
+      border-radius: 3px;
+      padding: 0 3px;
+      font-style: italic;
+    }
+    .ad-quarter .ad-credits {
+      font-size: 8pt;
+      color: var(--mid-grey);
+      line-height: 1.7;
+    }
+    .ad-quarter .ad-register {
+      margin-top: 0.75rem;
+      font-size: 9pt;
+      font-weight: 600;
+      color: var(--teal);
+    }
+    .ad-quarter .ad-register span {
+      font-weight: 400;
+      color: var(--mid-grey);
+    }
+
+    /* ===== FLYER ===== */
+    .flyer {
+      background: var(--warm-white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      max-width: 600px;
+    }
+    .flyer-header {
+      background: var(--teal);
+      padding: 2rem 2.5rem 1.5rem;
+      color: white;
+    }
+    .flyer-header .flyer-eyebrow {
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.65;
+      margin-bottom: 1rem;
+    }
+    .flyer-header h2 {
+      font-size: 26pt;
+      font-weight: 800;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .flyer-header .flyer-sub {
+      font-size: 10.5pt;
+      opacity: 0.8;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+    .flyer-amber-bar {
+      height: 3px;
+      background: var(--amber);
+      border-radius: 2px;
+      width: 60px;
+    }
+    .flyer-body {
+      padding: 1.75rem 2.5rem;
+    }
+    .flyer-body .flyer-intro {
+      font-size: 11pt;
+      line-height: 1.7;
+      color: #374151;
+      margin-bottom: 1.25rem;
+    }
+    .flyer-details-box {
+      background: white;
+      border-radius: 8px;
+      border: 1px solid var(--light-border);
+      border-left: 4px solid var(--amber);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .flyer-detail-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 0.35rem 0;
+      font-size: 10.5pt;
+    }
+    .flyer-detail-row:not(:last-child) { border-bottom: 1px solid #f3f4f6; }
+    .flyer-detail-label {
+      font-size: 8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--mid-grey);
+      min-width: 70px;
+    }
+    .flyer-detail-value {
+      font-weight: 600;
+      color: var(--near-black);
+    }
+    .flyer-detail-value .placeholder {
+      background: #fff3cd;
+      border-radius: 3px;
+      padding: 0 4px;
+      font-style: italic;
+      color: #856404;
+      font-weight: 500;
+    }
+    .flyer-tagline {
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--teal);
+      font-style: italic;
+      text-align: center;
+      padding: 0.75rem 0;
+      border-top: 1px solid var(--light-border);
+      border-bottom: 1px solid var(--light-border);
+      margin: 1rem 0;
+    }
+    .flyer-register {
+      font-size: 9.5pt;
+      color: var(--mid-grey);
+      text-align: center;
+    }
+    .flyer-register strong { color: var(--teal); }
+    .flyer-footer {
+      background: var(--near-black);
+      padding: 0.9rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .flyer-footer .footer-logos {
+      font-size: 8pt;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+    .flyer-footer .footer-logos strong { color: white; font-size: 9pt; }
+    .flyer-footer .chamber-logo-placeholder {
+      font-size: 7.5pt;
+      color: rgba(255,255,255,0.3);
+      border: 1px dashed rgba(255,255,255,0.2);
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    /* ===== OTHER MATERIALS ===== */
+    .materials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .material-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.25rem;
+      border: 1px solid var(--light-border);
+      border-top: 3px solid var(--teal);
+    }
+    .material-card.amber { border-top-color: var(--amber); }
+    .material-card h4 {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+    .material-card.amber h4 { color: var(--amber); }
+    .material-card p {
+      font-size: 9.5pt;
+      color: #374151;
+      line-height: 1.55;
+      margin-bottom: 0.5rem;
+    }
+    .material-card ul {
+      margin: 0.4rem 0 0 1.1rem;
+      font-size: 9pt;
+      color: var(--mid-grey);
+      line-height: 1.7;
+    }
+    .status-badge {
+      display: inline-block;
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+    }
+    .status-ready { background: #d1fae5; color: #065f46; }
+    .status-pending { background: #fff3cd; color: #856404; }
+    .status-todo { background: #f3f4f6; color: #6b7280; }
+
+    /* ===== DOC FOOTER ===== */
+    .doc-footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--light-border);
+      font-size: 8.5pt;
+      color: var(--mid-grey);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+      @page { size: A4; margin: 15mm; }
+      body { background: white; padding: 0; }
+      .doc-header { border-radius: 0; }
+      .ad-wrap { box-shadow: none; border: 1px solid #ddd; }
+      .flyer { box-shadow: none; }
+      .page-break { page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- DOC HEADER -->
+  <div class="doc-header">
+    <div>
+      <h1>Promotional Materials — Future Together: Tumbarumba</h1>
+      <p>Working document &nbsp;&middot;&nbsp; Newspaper ads, flyer, and promotional material notes</p>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 80" role="img" aria-label="Future Together" style="height:48px;width:auto;flex-shrink:0;opacity:0.85">
+      <line x1="2" y1="5" x2="50" y2="40" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <line x1="2" y1="21" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.75"/>
+      <line x1="2" y1="40" x2="50" y2="40" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      <line x1="2" y1="59" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.75"/>
+      <line x1="2" y1="75" x2="50" y2="40" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+      <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="84" y="34" font-family="'Plus Jakarta Sans',sans-serif" font-size="21" font-weight="700" fill="white" letter-spacing="-0.5">Future</text>
+      <text x="84" y="59" font-family="'Plus Jakarta Sans',sans-serif" font-size="21" font-weight="400" fill="white" opacity="0.85" letter-spacing="-0.5">Together</text>
+    </svg>
+  </div>
+
+  <!-- ===== NEWSPAPER ADS ===== -->
+  <div class="section-label">Newspaper Ads &mdash; Tumbarumba Times</div>
+  <p class="section-note">Two versions prepared. Submit to the paper as print-ready copy. Request Chamber of Commerce logo be added by the paper&rsquo;s layout team, or supply as a PNG. Highlighted items are placeholders pending date confirmation from Laura.</p>
+
+  <!-- CLASSIFIED -->
+  <div class="ad-wrap">
+    <div class="ad-label">Classified Ad <span class="ad-size-note">&mdash; ~55 words &middot; low cost &middot; suitable for text-only classified section</span></div>
+    <div class="ad-classified">
+      <div class="ad-headline">The Future is Arriving.<br>Is Tumbarumba Ready?</div>
+      <div class="ad-body">A free community talk on the technology reshaping work, business and everyday life in our region &mdash; and what we can do about it. No jargon. No doom. Just an honest conversation.</div>
+      <div class="ad-details">📅 <span class="placeholder">[DATE]</span> &nbsp;·&nbsp; <span class="placeholder">[TIME]</span> &nbsp;·&nbsp; The Nest Caf&eacute;, Tumbarumba</div>
+      <div class="ad-credits">
+        Presented by Charlie Garrison, Future Together<br>
+        Supported by Tumbarumba Chamber of Commerce<br>
+        Register (encouraged, not required): <span class="ad-url">futuretogether.community</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUARTER PAGE -->
+  <div class="ad-wrap">
+    <div class="ad-label">Quarter-Page Ad <span class="ad-size-note">&mdash; larger format &middot; allows logo placement &middot; recommended for maximum impact</span></div>
+    <div class="ad-quarter">
+      <div class="ad-logo-row">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 80" role="img" aria-label="Future Together" style="height:36px;width:auto">
+          <line x1="2" y1="5" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+          <line x1="2" y1="21" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+          <line x1="2" y1="40" x2="50" y2="40" stroke="#1a5f6e" stroke-width="3" stroke-linecap="round"/>
+          <line x1="2" y1="59" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+          <line x1="2" y1="75" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+          <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+          <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="84" y="34" font-family="'Plus Jakarta Sans',sans-serif" font-size="21" font-weight="700" fill="#1a5f6e" letter-spacing="-0.5">Future</text>
+          <text x="84" y="59" font-family="'Plus Jakarta Sans',sans-serif" font-size="21" font-weight="400" fill="#1c1a18" letter-spacing="-0.5">Together</text>
+        </svg>
+        <div class="chamber-placeholder">Tumbarumba Chamber of Commerce logo</div>
+      </div>
+      <div class="ad-headline">The Future<br>is Arriving.<br>Is Tumbarumba<br>Ready?</div>
+      <div class="ad-sub">A free community talk on AI, work, and what&rsquo;s coming next for our region</div>
+      <div class="ad-divider"></div>
+      <div class="ad-body">Something significant is happening right now &mdash; not in some distant future. The technology reshaping how we work, run businesses, and live our lives is moving faster than most people realise.</div>
+      <div class="ad-bridge">No jargon. No doom. An honest community conversation &mdash; with time for your questions.</div>
+      <div class="ad-event-box">
+        <div class="event-tag">Free Community Event</div>
+        <div class="event-detail">
+          📅 &nbsp;<span class="placeholder">[DATE]</span><br>
+          🕕 &nbsp;<span class="placeholder">[TIME]</span><br>
+          📍 &nbsp;The Nest Caf&eacute; Theatre, Tumbarumba
+        </div>
+      </div>
+      <div class="ad-credits">
+        <em>Presented by Charlie Garrison, Future Together</em><br>
+        <em>Supported by Tumbarumba Chamber of Commerce</em>
+      </div>
+      <div class="ad-register">Register free <span>(encouraged, not required)</span> &mdash; <strong>futuretogether.community</strong><br>
+      <span style="font-size:8pt">All welcome &middot; Seats limited</span></div>
+    </div>
+  </div>
+
+  <!-- ===== FLYER ===== -->
+  <div class="section-label page-break">A5 / A4 Flyer &mdash; Print &amp; Share</div>
+  <p class="section-note">Print on A5 (or A4 folded) for noticeboards, café counter, and distribution. PDF version: print this page to PDF, or export from design tool.</p>
+
+  <div class="ad-wrap">
+    <div class="ad-label">Flyer <span class="ad-size-note">&mdash; suitable for A5 print, noticeboard, café counter</span></div>
+    <div class="flyer">
+      <div class="flyer-header">
+        <div class="flyer-eyebrow">Free Community Event &nbsp;&middot;&nbsp; Tumbarumba</div>
+        <h2>The Future<br>Is Arriving.</h2>
+        <div class="flyer-sub">Is Tumbarumba Ready?</div>
+        <div class="flyer-amber-bar"></div>
+      </div>
+      <div class="flyer-body">
+        <p class="flyer-intro">Whether you love technology or distrust it, the changes coming don&rsquo;t wait for anyone&rsquo;s opinion. This free talk is for everyone in the Tumbarumba region &mdash; curious, concerned, or just wanting to understand what&rsquo;s going on.</p>
+        <div class="flyer-details-box">
+          <div class="flyer-detail-row">
+            <span class="flyer-detail-label">When</span>
+            <span class="flyer-detail-value"><span class="placeholder">[DATE]</span> &nbsp;&middot;&nbsp; <span class="placeholder">[TIME]</span></span>
+          </div>
+          <div class="flyer-detail-row">
+            <span class="flyer-detail-label">Where</span>
+            <span class="flyer-detail-value">The Nest Caf&eacute; Theatre, Tumbarumba</span>
+          </div>
+          <div class="flyer-detail-row">
+            <span class="flyer-detail-label">Entry</span>
+            <span class="flyer-detail-value">Free &mdash; all welcome</span>
+          </div>
+          <div class="flyer-detail-row">
+            <span class="flyer-detail-label">Seats</span>
+            <span class="flyer-detail-value">Limited &mdash; register to secure yours</span>
+          </div>
+        </div>
+        <div class="flyer-tagline">&ldquo;The future is arriving. Let&rsquo;s face it together.&rdquo;</div>
+        <div class="flyer-register">
+          Register (encouraged, not required)<br>
+          <strong>futuretogether.community</strong>
+        </div>
+      </div>
+      <div class="flyer-footer">
+        <div class="footer-logos">
+          <strong>Future Together</strong><br>
+          Supported by Tumbarumba Chamber of Commerce
+        </div>
+        <div class="chamber-logo-placeholder">Chamber logo here</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== OTHER MATERIALS ===== -->
+  <div class="section-label page-break">Other Promotional Materials</div>
+  <p class="section-note">Additional materials to prepare and coordinate once the date is confirmed. Status shown for each.</p>
+
+  <div class="materials-grid">
+
+    <div class="material-card">
+      <h4>Newspaper Ad Copy</h4>
+      <p>Both classified and quarter-page versions drafted above. Submit to the paper once date is confirmed. Request Chamber logo placement from the layout team.</p>
+      <ul>
+        <li>Confirm ad size + cost with the paper</li>
+        <li>Supply Chamber logo as PNG if needed</li>
+        <li>Deadline: early next week for next issue</li>
+      </ul>
+      <span class="status-badge status-ready">Draft ready &mdash; awaiting date</span>
+    </div>
+
+    <div class="material-card">
+      <h4>A5 Flyer</h4>
+      <p>Printable flyer for noticeboards, the café counter, Chamber noticeboard, RSL, Rotary, schools. Print a run of 20&ndash;50 once date is confirmed.</p>
+      <ul>
+        <li>Draft above &mdash; print to PDF from browser</li>
+        <li>Distribute to: The Nest, Chamber, Rotary, RSL, schools, library</li>
+      </ul>
+      <span class="status-badge status-ready">Draft ready &mdash; awaiting date</span>
+    </div>
+
+    <div class="material-card amber">
+      <h4>Social Media Posts</h4>
+      <p>Posts for Future Together social channels announcing the event. Short-form for Facebook and LinkedIn. Use the quarter-page ad headline as the hook.</p>
+      <ul>
+        <li>Facebook: local community groups + Future Together page</li>
+        <li>LinkedIn: Charlie&rsquo;s network, Chamber members</li>
+        <li>Draft needed once date confirmed</li>
+      </ul>
+      <span class="status-badge status-todo">To do &mdash; once date confirmed</span>
+    </div>
+
+    <div class="material-card amber">
+      <h4>Chamber Newsletter / Email</h4>
+      <p>Short paragraph for the Chamber member newsletter or email blast. Leverages member trust and reach across Tumbarumba business community.</p>
+      <ul>
+        <li>Brief: 80&ndash;100 words + event details</li>
+        <li>Coordinate with Chamber contact</li>
+        <li>Include registration link</li>
+      </ul>
+      <span class="status-badge status-todo">To do &mdash; once date confirmed</span>
+    </div>
+
+    <div class="material-card">
+      <h4>Rotary &amp; Community Groups</h4>
+      <p>Approach Rotary once date is confirmed &mdash; frame as a civic education event. Also: RSL, P&amp;C committees, sporting clubs, churches. Each has newsletters or WhatsApp groups.</p>
+      <ul>
+        <li>Supply: flyer PDF + 2&ndash;3 sentence blurb they can paste</li>
+        <li>Ask them to include in next newsletter/meeting</li>
+      </ul>
+      <span class="status-badge status-pending">Pending &mdash; awaiting date</span>
+    </div>
+
+    <div class="material-card">
+      <h4>Event Listing &mdash; Website</h4>
+      <p>Create event page on futuretogether.community with registration link, event description, and run sheet summary. This is the registration destination for all promotional materials.</p>
+      <ul>
+        <li>URL: futuretogether.community/events/[slug]</li>
+        <li>Slug to be confirmed once date is set</li>
+        <li>QR code for flyer + closing slide</li>
+      </ul>
+      <span class="status-badge status-pending">Pending &mdash; awaiting date</span>
+    </div>
+
+    <div class="material-card amber">
+      <h4>In-Venue Signage</h4>
+      <p>Simple A4 sign for the caf&eacute; entry directing guests to the theatre. Optional: A3 poster for the window. Can be printed from the flyer above at A4 size.</p>
+      <ul>
+        <li>Print day-of or day-before</li>
+        <li>Include: event name, time, &ldquo;through the caf&eacute; &rarr;&rdquo;</li>
+      </ul>
+      <span class="status-badge status-todo">To do &mdash; week of event</span>
+    </div>
+
+    <div class="material-card amber">
+      <h4>Door Sign-In Sheet</h4>
+      <p>Simple printed sheet at the welcome table. Name + email (optional). Feeds the mailing list for future events. Not a ticket &mdash; walk-ins welcome.</p>
+      <ul>
+        <li>Print 2 copies (front + back if large crowd)</li>
+        <li>Include: event name, date, &ldquo;stay in touch&rdquo; framing</li>
+      </ul>
+      <span class="status-badge status-todo">To do &mdash; week of event</span>
+    </div>
+
+  </div>
+
+  <!-- DOC FOOTER -->
+  <div class="doc-footer">
+    <span>Future Together &nbsp;&middot;&nbsp; futuretogether.community</span>
+    <span>Prepared with Beyond Better &nbsp;&middot;&nbsp; beyondbetter.app</span>
+  </div>
+
+</div>
+</body>
+</html>
