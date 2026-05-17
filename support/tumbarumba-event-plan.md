@@ -22,6 +22,49 @@
 
 ---
 
+## Our Purpose
+
+### Why We're Doing This
+
+Something significant is happening, and most people in Tumbarumba — like most people everywhere — don't yet have a clear picture of it. The technology reshaping how we work, run businesses, and organise our lives is moving faster than public awareness. That gap between what's actually happening and what most people understand is the problem this event exists to close.
+
+This isn't an abstract concern. Rural and regional communities face particular exposure — fewer alternative employers, longer distances to services, tighter margins in business. But they also hold real strengths: existing community bonds, local institutions that still function, and people who know how to look out for each other.
+
+Tumbarumba has something else too. After a decade of campaigning, this community has just won back its local council. That outcome — achieved through sustained, organised civic effort — is a reminder of what's possible when a community decides to act together. A new council starting fresh is also a genuine opportunity: to shape local priorities, ask new questions, and ensure the community's voice is heard in decisions that will define the next decade.
+
+Future Together, the Tumbarumba Chamber of Commerce, and The Nest Café are hosting this event because this community deserves the chance to face what's coming together — informed, connected, and with a sense of agency rather than anxiety. Not panic. Not paralysis. A conversation that leads to action.
+
+---
+
+### What We Want to Achieve
+
+**On the night**
+Thirty people leave better informed and less alone with their concerns. The questions raised during Q&A are ones people have been carrying privately — and the room discovers they're not alone in asking them. The conversation continues at the café bar after the formal close.
+
+**In the weeks that follow**
+A cohort of engaged locals who want to keep meeting — the foundation for an ongoing community group in Tumbarumba. Chamber members and community leaders see the value in continuing to convene these conversations. The event provides a template that other local organisations (Rotary, schools, sporting clubs) can build on.
+
+**For the new council**
+Local councillors — incoming and outgoing — are aware that their community is thinking about these issues. Future Together provides a non-partisan, civic-minded space for that conversation to mature into policy interest and local action.
+
+**For the region**
+Nearby communities — Tumut, Batlow, Jingellic, Corryong — hear what Tumbarumba did and want their own conversation. The Snowy Valleys region develops a reputation as a place that takes its future seriously.
+
+**For rural Australia**
+The Tumbarumba event becomes a model that any community can follow — proof that a small regional town can engage seriously with one of the defining issues of our time, without waiting for someone else to start the conversation.
+
+---
+
+### What Success Looks Like
+
+- The room is full, or close to it
+- At least 10 people sign up to stay connected or attend a future event
+- At least one person says: *"I had no idea — I'm glad someone is talking about this"*
+- Chamber members and community leaders want to co-host the next event
+- A follow-up event is planned within three months — and this time, it fills a bigger room
+
+---
+
 ## Run Sheet
 
 | Time | What's happening |
