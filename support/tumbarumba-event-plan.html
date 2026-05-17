@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Plan — Future Together: Tumbarumba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #1a5f6e;
+      --amber: #c4853a;
+      --warm-white: #f7f4ef;
+      --near-black: #1c1a18;
+      --mid-grey: #6b7280;
+      --light-border: #e5e7eb;
+      --teal-light: #d4eef1;
+      --amber-light: #fef3c7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 11pt;
+      line-height: 1.6;
+      color: var(--near-black);
+      background: var(--warm-white);
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ===== HEADER ===== */
+    .doc-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-bottom: 1.5rem;
+      border-bottom: 3px solid var(--teal);
+      margin-bottom: 2rem;
+      gap: 2rem;
+    }
+    .doc-header-left { flex: 1; }
+    .doc-title {
+      font-size: 18pt;
+      font-weight: 800;
+      color: var(--teal);
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+    }
+    .doc-subtitle {
+      font-size: 11pt;
+      color: var(--mid-grey);
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .doc-meta {
+      font-size: 9pt;
+      color: var(--mid-grey);
+      background: var(--warm-white);
+      border: 1px solid var(--light-border);
+      border-radius: 6px;
+      padding: 0.4rem 0.75rem;
+      display: inline-block;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { margin-bottom: 2.5rem; }
+
+    h2 {
+      font-size: 14pt;
+      font-weight: 700;
+      color: var(--teal);
+      border-bottom: 2px solid var(--teal-light);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+    h2:first-child { margin-top: 0; }
+
+    h3 {
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: var(--near-black);
+      margin-bottom: 0.6rem;
+      margin-top: 1.25rem;
+    }
+
+    p { margin-bottom: 0.85rem; color: #374151; }
+
+    strong { color: var(--near-black); font-weight: 600; }
+
+    em { color: var(--mid-grey); font-style: italic; }
+
+    ul {
+      margin: 0.5rem 0 0.85rem 1.25rem;
+      color: #374151;
+    }
+    ul li { margin-bottom: 0.3rem; }
+
+    /* ===== TABLES ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.25rem;
+      font-size: 10.5pt;
+    }
+    th {
+      background: var(--teal);
+      color: white;
+      font-weight: 600;
+      padding: 0.55rem 0.75rem;
+      text-align: left;
+      font-size: 9.5pt;
+      letter-spacing: 0.02em;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--light-border);
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #fafafa; }
+    tr:last-child td { border-bottom: none; }
+    td:first-child { font-weight: 600; color: var(--teal); white-space: nowrap; }
+
+    /* Overview table: no header row */
+    .table-overview td:first-child {
+      width: 30%;
+      color: var(--mid-grey);
+      font-weight: 500;
+      font-size: 9.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .table-overview td:last-child { font-weight: 500; color: var(--near-black); }
+
+    /* ===== CALLOUT BOXES ===== */
+    .box-amber {
+      background: var(--amber-light);
+      border-left: 4px solid var(--amber);
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+    .box-teal {
+      background: var(--teal-light);
+      border-left: 4px solid var(--teal);
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+    .box-amber p, .box-teal p { margin-bottom: 0.4rem; color: var(--near-black); }
+    .box-amber p:last-child, .box-teal p:last-child { margin-bottom: 0; }
+
+    /* Warning flag for TBD items */
+    .tbd {
+      background: #fffbeb;
+      color: #92400e;
+      border: 1px solid #fcd34d;
+      border-radius: 4px;
+      padding: 0.1rem 0.5rem;
+      font-size: 9pt;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* ===== SUCCESS LIST ===== */
+    .success-list {
+      list-style: none;
+      margin-left: 0;
+    }
+    .success-list li {
+      padding: 0.4rem 0 0.4rem 1.75rem;
+      position: relative;
+      border-bottom: 1px solid var(--light-border);
+    }
+    .success-list li:last-child { border-bottom: none; }
+    .success-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    /* ===== ACHIEVE BLOCKS ===== */
+    .achieve-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 0.75rem 0;
+    }
+    .achieve-block {
+      background: white;
+      border: 1px solid var(--light-border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      border-top: 3px solid var(--teal);
+    }
+    .achieve-block.amber { border-top-color: var(--amber); }
+    .achieve-block h4 {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+    }
+    .achieve-block.amber h4 { color: var(--amber); }
+    .achieve-block p { font-size: 10pt; margin-bottom: 0; color: #374151; }
+
+    /* ===== QUESTIONS ===== */
+    ol.questions {
+      margin-left: 1.25rem;
+      color: #374151;
+    }
+    ol.questions li {
+      margin-bottom: 0.6rem;
+      padding-left: 0.25rem;
+    }
+    ol.questions li strong { color: var(--teal); }
+
+    /* ===== FOOTER ===== */
+    .doc-footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--teal-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9pt;
+      color: var(--mid-grey);
+    }
+    .doc-footer a { color: var(--amber); text-decoration: none; }
+
+    /* ===== PRINT ===== */
+    @media print {
+      @page {
+        size: A4;
+        margin: 18mm 16mm 18mm 16mm;
+      }
+      body {
+        background: white;
+        padding: 0;
+        font-size: 10pt;
+      }
+      h2 { page-break-after: avoid; }
+      h3 { page-break-after: avoid; }
+      table { page-break-inside: avoid; }
+      .achieve-grid { page-break-inside: avoid; }
+      .box-amber, .box-teal { page-break-inside: avoid; }
+      .page-break { page-break-before: always; }
+      a { color: inherit; text-decoration: none; }
+    }
+
+    @media (max-width: 600px) {
+      .achieve-grid { grid-template-columns: 1fr; }
+      .doc-header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="doc-title">Future Together: Tumbarumba Community Event</div>
+      <div class="doc-subtitle">Event Plan &mdash; The Future is Arriving. Is Tumbarumba Ready?</div>
+      <div class="doc-meta">Working document &nbsp;&middot;&nbsp; Prepared for Laura and Tumbarumba Chamber of Commerce</div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 80" role="img" aria-label="Future Together" style="height:60px;width:auto;flex-shrink:0">
+      <title>Future Together</title>
+      <line x1="2" y1="5" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+      <line x1="2" y1="21" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+      <line x1="2" y1="40" x2="50" y2="40" stroke="#1a5f6e" stroke-width="3" stroke-linecap="round"/>
+      <line x1="2" y1="59" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+      <line x1="2" y1="75" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+      <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+      <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="84" y="34" font-family="'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif" font-size="21" font-weight="700" fill="#1a5f6e" letter-spacing="-0.5">Future</text>
+      <text x="84" y="59" font-family="'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif" font-size="21" font-weight="400" fill="#1c1a18" letter-spacing="-0.5">Together</text>
+    </svg>
+  </div>
+
+  <!-- EVENT OVERVIEW -->
+  <section>
+    <h2>Event Overview</h2>
+    <table class="table-overview">
+      <tbody>
+        <tr><td>Title</td><td>The Future is Arriving. Is Tumbarumba Ready?</td></tr>
+        <tr><td>Subtitle</td><td>A free community talk on AI, work, and what&rsquo;s coming next for our region</td></tr>
+        <tr><td>Presenter</td><td>Charlie Garrison, Future Together</td></tr>
+        <tr><td>Supported by</td><td>Tumbarumba Chamber of Commerce</td></tr>
+        <tr><td>Venue</td><td>The Nest Caf&eacute; Theatre, Tumbarumba</td></tr>
+        <tr><td>Date</td><td><span class="tbd">⚠ TO CONFIRM WITH LAURA</span></td></tr>
+        <tr><td>Doors open</td><td>6:15 pm</td></tr>
+        <tr><td>Talk starts</td><td>6:30 pm</td></tr>
+        <tr><td>Estimated finish</td><td>7:45&ndash;8:00 pm</td></tr>
+        <tr><td>Entry</td><td>Free</td></tr>
+        <tr><td>Capacity</td><td><span class="tbd">⚠ TBD &mdash; confirm with Laura</span></td></tr>
+        <tr><td>Registration</td><td>Encouraged but not required &mdash; via futuretogether.community</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- OUR PURPOSE -->
+  <section class="page-break">
+    <h2>Our Purpose</h2>
+
+    <h3>Why We&rsquo;re Doing This</h3>
+    <p>Something significant is happening, and most people in Tumbarumba &mdash; like most people everywhere &mdash; don&rsquo;t yet have a clear picture of it. The technology reshaping how we work, run businesses, and organise our lives is moving faster than public awareness. That gap between what&rsquo;s actually happening and what most people understand is the problem this event exists to close.</p>
+    <p>This isn&rsquo;t an abstract concern. Rural and regional communities face particular exposure &mdash; fewer alternative employers, longer distances to services, tighter margins in business. But they also hold real strengths: existing community bonds, local institutions that still function, and people who know how to look out for each other.</p>
+    <p>Tumbarumba has something else too. After a decade of campaigning, this community has just won back its local council. That outcome &mdash; achieved through sustained, organised civic effort &mdash; is a reminder of what&rsquo;s possible when a community decides to act together. A new council starting fresh is also a genuine opportunity: to shape local priorities, ask new questions, and ensure the community&rsquo;s voice is heard in decisions that will define the next decade.</p>
+    <div class="box-teal">
+      <p>Future Together, the Tumbarumba Chamber of Commerce, and The Nest Caf&eacute; are hosting this event because this community deserves the chance to face what&rsquo;s coming together &mdash; informed, connected, and with a sense of agency rather than anxiety. <strong>Not panic. Not paralysis. A conversation that leads to action.</strong></p>
+    </div>
+
+    <h3>What We Want to Achieve</h3>
+    <div class="achieve-grid">
+      <div class="achieve-block">
+        <h4>On the night</h4>
+        <p>Thirty people leave better informed and less alone with their concerns. The questions raised during Q&amp;A are ones people have been carrying privately &mdash; and the room discovers they&rsquo;re not alone in asking them. The conversation continues at the caf&eacute; bar after the formal close.</p>
+      </div>
+      <div class="achieve-block">
+        <h4>In the weeks that follow</h4>
+        <p>A cohort of engaged locals who want to keep meeting &mdash; the foundation for an ongoing community group. Chamber members and community leaders see the value in continuing to convene these conversations. Other local organisations (Rotary, schools, sporting clubs) adopt the template.</p>
+      </div>
+      <div class="achieve-block">
+        <h4>For the new council</h4>
+        <p>Local councillors are aware that their community is thinking about these issues. Future Together provides a non-partisan, civic-minded space for that conversation to mature into policy interest and local action.</p>
+      </div>
+      <div class="achieve-block">
+        <h4>For the region</h4>
+        <p>Nearby communities &mdash; Tumut, Batlow, Rosewood, Walwa, Corryong, and Khancoban &mdash; hear what Tumbarumba did and want their own conversation. The Snowy Valleys region develops a reputation as a place that takes its future seriously.</p>
+      </div>
+    </div>
+    <div class="achieve-block amber" style="border-radius:8px;padding:0.85rem 1rem;border:1px solid #e5e7eb;border-top:3px solid #c4853a;margin-top:0.75rem">
+      <h4>For rural Australia</h4>
+      <p>The Tumbarumba event becomes a model that any community can follow &mdash; proof that a small regional town can engage seriously with one of the defining issues of our time, without waiting for someone else to start the conversation.</p>
+    </div>
+
+    <h3>What Success Looks Like</h3>
+    <ul class="success-list">
+      <li>The room is full, or close to it</li>
+      <li>At least 10 people sign up to stay connected or attend a future event</li>
+      <li>At least one person says: <em>&ldquo;I had no idea &mdash; I&rsquo;m glad someone is talking about this&rdquo;</em></li>
+      <li>Chamber members and community leaders want to co-host the next event</li>
+      <li>A follow-up event is planned within three months &mdash; and this time, it fills a bigger room</li>
+    </ul>
+  </section>
+
+  <!-- RUN SHEET -->
+  <section class="page-break">
+    <h2>Run Sheet</h2>
+    <table>
+      <thead><tr><th style="width:18%">Time</th><th>What&rsquo;s Happening</th></tr></thead>
+      <tbody>
+        <tr><td>6:15 pm</td><td>Doors open. Caf&eacute; bar available. Guests arriving and settling.</td></tr>
+        <tr><td>6:30 pm</td><td>Welcome by Tumbarumba Chamber of Commerce representative (2&ndash;3 min)</td></tr>
+        <tr><td>6:33 pm</td><td>Introduction of Charlie Garrison by Laura or Chamber rep (1&ndash;2 min)</td></tr>
+        <tr><td>6:35 pm</td><td>Talk begins &mdash; Charlie presents (approx. 45 min)</td></tr>
+        <tr><td>7:20 pm</td><td>Q&amp;A &mdash; moderated by Charlie (approx. 20 min)</td></tr>
+        <tr><td>7:40 pm</td><td>Closing remarks &mdash; Charlie (2&ndash;3 min): what&rsquo;s next, how to stay connected</td></tr>
+        <tr><td>7:43 pm</td><td>Informal conversation continues &mdash; caf&eacute; bar available</td></tr>
+        <tr><td>8:00 pm</td><td>Venue close (or as agreed with Laura)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- TALK STRUCTURE -->
+  <section>
+    <h2>Talk Structure</h2>
+    <p>The presentation uses a slideshow adapted from the existing Future Together meetup format &mdash; estimated 15 slides, 45 minutes. This is <strong>a public talk with Q&amp;A</strong>, not an intimate group discussion.</p>
+    <table>
+      <thead><tr><th style="width:4%">#</th><th style="width:38%">Slide</th><th>Purpose</th><th style="width:12%">Time</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Opening</strong> &mdash; Future Together intro, event framing</td><td>Set tone, welcome audience</td><td>2 min</td></tr>
+        <tr><td>2</td><td><strong>The Timeline Has Collapsed</strong> &mdash; &ldquo;10 years away is arriving in 1&ndash;3 years&rdquo;</td><td>The core urgency hook</td><td>3 min</td></tr>
+        <tr><td>3</td><td><strong>We Must Solve Alignment First</strong> &mdash; AI deception in controlled tests</td><td>The safety problem, grounded in evidence</td><td>3 min</td></tr>
+        <tr><td>4</td><td><strong>The Singularity: A One-Way Door</strong> &mdash; recursive self-improvement</td><td>Why we can&rsquo;t &ldquo;undo&rdquo; this</td><td>3 min</td></tr>
+        <tr><td>5</td><td><strong>We Can&rsquo;t Slow Down</strong> &mdash; race dynamics</td><td>Why pausing isn&rsquo;t an option</td><td>2 min</td></tr>
+        <tr><td>6</td><td><strong>What I&rsquo;m Hearing</strong> &mdash; job impacts across sectors, robotics</td><td>Brings it to human scale; includes rural/regional angle</td><td>3 min</td></tr>
+        <tr><td>7</td><td><strong>50/50: Utopia or Dystopia</strong> &mdash; split view</td><td>Honest framing: two real paths</td><td>3 min</td></tr>
+        <tr><td>8</td><td><strong>Remember February 2020?</strong> &mdash; the analogy</td><td>Lands the &ldquo;we&rsquo;re in that phase now&rdquo; point</td><td>3 min</td></tr>
+        <tr><td>9</td><td><strong>Immediate Human Risks</strong> &mdash; jobs, food, purpose, welfare gap</td><td>What this means for ordinary life</td><td>4 min</td></tr>
+        <tr><td>10</td><td><strong>What Does a Good Future Look Like?</strong> &mdash; personal + societal</td><td>Balances risk framing with genuine hope</td><td>3 min</td></tr>
+        <tr><td>11</td><td><strong>Why Community Is the Answer</strong> &mdash; Awareness &rarr; Conversation &rarr; Action</td><td>Why we&rsquo;re all in this room</td><td>3 min</td></tr>
+        <tr><td>12</td><td><strong>Back to Basics</strong> &mdash; Maslow&rsquo;s hierarchy</td><td>Grounding: what do we need to protect first?</td><td>3 min</td></tr>
+        <tr><td>13</td><td><strong>What Can We Do?</strong> &mdash; 6 practical actions</td><td>Ends on action, not anxiety</td><td>4 min</td></tr>
+        <tr><td>14</td><td><strong>The Bigger Picture</strong> &mdash; AI + climate + geopolitics + pandemic</td><td>Context: AI isn&rsquo;t the only disruption</td><td>2 min</td></tr>
+        <tr><td>15</td><td><strong>Resources &amp; Close</strong> &mdash; QR codes, futuretogether.community, what&rsquo;s next</td><td>CTA: join, register, share</td><td>2 min</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Key Adaptations from the Conversation Format</h3>
+    <ul>
+      <li><strong>Opening slide:</strong> Remove &ldquo;This is a discussion, not a presentation&rdquo; framing. Brief welcome and event overview instead.</li>
+      <li><strong>Discussion questions:</strong> Transformed into rhetorical questions. Audience responds during Q&amp;A, not mid-slide.</li>
+      <li><strong>Slide 6:</strong> Add a regional angle &mdash; what this means for rural communities and small towns like Tumbarumba.</li>
+      <li><strong>Closing slide:</strong> Replace Slack invite with in-person CTA: sign up to stay informed, register for the next event.</li>
+      <li><strong>Maslow image:</strong> Slide 12 references an image file &mdash; to be confirmed available at presentation time.</li>
+    </ul>
+  </section>
+
+  <!-- TECHNICAL -->
+  <section class="page-break">
+    <h2>Technical &amp; AV Requirements</h2>
+    <table>
+      <thead><tr><th style="width:22%">Requirement</th><th>Detail</th><th style="width:32%">Status</th></tr></thead>
+      <tbody>
+        <tr><td>Screen &amp; sound</td><td>The theatre is an existing movie theatre &mdash; a screen and sound system are already in place.</td><td><span class="tbd">⚠ Confirm screen size, projection setup, and laptop connections</span></td></tr>
+        <tr><td>Laptop connection</td><td>HDMI preferred. Charlie will bring Mac + appropriate adapter.</td><td><span class="tbd">⚠ Confirm connector type</span></td></tr>
+        <tr><td>Microphone</td><td>Handheld or lapel mic strongly recommended for a theatre audience.</td><td><span class="tbd">⚠ Confirm available or arrange to borrow one</span></td></tr>
+        <tr><td>Internet</td><td>Slideshow loads fonts from Google Fonts. WiFi preferred; phone hotspot available as fallback.</td><td><span class="tbd">⚠ Confirm venue WiFi if available</span></td></tr>
+        <tr><td>Power point</td><td>For presenter&rsquo;s laptop at the front.</td><td><span class="tbd">⚠ Confirm location</span></td></tr>
+        <tr><td>Lighting</td><td>Dim enough to see the screen; bright enough for audience comfort.</td><td><span class="tbd">⚠ Discuss with Laura</span></td></tr>
+        <tr><td>Presenter laptop</td><td>Charlie will bring.</td><td>Charlie to bring</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Room Setup</h2>
+    <table>
+      <thead><tr><th style="width:22%">Element</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Theatre access</td><td>Via inside the caf&eacute; &mdash; large room at the rear. Guests enter through the caf&eacute;.</td></tr>
+        <tr><td>Seating</td><td>Existing theatre seating (rows facing screen). <span class="tbd">⚠ Confirm capacity &mdash; additional chairs may be needed if numbers are strong</span></td></tr>
+        <tr><td>Presenter position</td><td>Front of room, to the side of the screen so it remains visible to all seats</td></tr>
+        <tr><td>Welcome table</td><td>Small table at entry for optional sign-in, printed resources, and event leaflets</td></tr>
+        <tr><td>Signage</td><td>Future Together + Tumbarumba Chamber of Commerce logos at entry and on screen before talk starts</td></tr>
+        <tr><td>Caf&eacute; bar</td><td>Available from 6:15 pm (before talk) and from 7:43 pm (after) &mdash; guests encouraged to stay and talk</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- REGISTRATION -->
+  <section>
+    <h2>Registration &amp; Door</h2>
+    <ul>
+      <li>Guests encouraged to register in advance at <strong>futuretogether.community</strong> (not required)</li>
+      <li>Registration provides a headcount and mailing list for future events</li>
+      <li>At the door: simple sign-in sheet (name + email, optional) for walk-ins</li>
+      <li>No ticket or ID required &mdash; just show up</li>
+      <li>If capacity is reached: a sign on the door reading &ldquo;Full tonight &mdash; scan for next event&rdquo;</li>
+    </ul>
+  </section>
+
+  <!-- PROMOTION -->
+  <section>
+    <h2>Promotion Plan</h2>
+    <table>
+      <thead><tr><th style="width:28%">Channel</th><th>Detail</th><th style="width:18%">Owner</th></tr></thead>
+      <tbody>
+        <tr><td>Local newspaper ad</td><td>Quarter-page or classified &mdash; drafted and ready to submit once date is confirmed</td><td>Charlie / Chamber</td></tr>
+        <tr><td>Chamber of Commerce</td><td>Member newsletter, member WhatsApp/email groups</td><td>Chamber</td></tr>
+        <tr><td>The Nest Caf&eacute;</td><td>In-caf&eacute; signage, social media, word of mouth</td><td>Laura</td></tr>
+        <tr><td>Rotary Club</td><td>Approach once date confirmed &mdash; framed as civic education event</td><td>Charlie</td></tr>
+        <tr><td>Other local groups</td><td>Schools (P&amp;C), RSL, sporting clubs, churches &mdash; newsletters and noticeboards</td><td>Charlie</td></tr>
+        <tr><td>futuretogether.community</td><td>Event listed on website with registration link</td><td>Charlie</td></tr>
+        <tr><td>Social media</td><td>Future Together social posts</td><td>Charlie</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- QUESTIONS FOR LAURA -->
+  <section>
+    <h2>Questions for Laura</h2>
+    <div class="box-amber">
+      <p>The following need Laura&rsquo;s input before we can finalise the plan. Everything else is ready to go once a date is confirmed.</p>
+    </div>
+    <ol class="questions">
+      <li><strong>Date</strong> &mdash; what Thursday evenings is the theatre available in June or early July?</li>
+      <li><strong>AV</strong> &mdash; what screen and projection setup is in the theatre? What laptop connections are available (HDMI? other)?</li>
+      <li><strong>Microphone</strong> &mdash; is there a mic available, or can one be borrowed?</li>
+      <li><strong>Seating</strong> &mdash; what is the current seating capacity? Would additional chairs be possible if needed?</li>
+      <li><strong>Caf&eacute; bar</strong> &mdash; is it feasible to have the bar open from 6:15 pm (before) and again from around 7:45 pm (after)?</li>
+      <li><strong>Timing</strong> &mdash; is 6:15 pm doors / 6:30 pm start / 8:00 pm finish workable for the venue?</li>
+      <li><strong>Anything else</strong> &mdash; what would Laura want to know or flag that we haven&rsquo;t covered?</li>
+    </ol>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section>
+    <h2>Next Steps</h2>
+    <table>
+      <thead><tr><th>Step</th><th style="width:22%">Owner</th><th style="width:26%">When</th></tr></thead>
+      <tbody>
+        <tr><td>Laura reviews this plan and provides feedback</td><td>Laura</td><td>ASAP</td></tr>
+        <tr><td>Confirm date (June or early July)</td><td>Laura + Charlie</td><td>After Laura&rsquo;s feedback</td></tr>
+        <tr><td>Submit newspaper ad</td><td>Charlie + Chamber</td><td>Once date confirmed</td></tr>
+        <tr><td>Finalise AV setup plan</td><td>Charlie + Laura</td><td>Once date confirmed</td></tr>
+        <tr><td>Approach Rotary</td><td>Charlie</td><td>Once date confirmed</td></tr>
+        <tr><td>Adapt slideshow for public talk format</td><td>Charlie</td><td>Before event</td></tr>
+        <tr><td>Create event listing on futuretogether.community</td><td>Charlie</td><td>Once date confirmed</td></tr>
+        <tr><td>Door sign-in sheet</td><td>Charlie</td><td>Week of event</td></tr>
+        <tr><td>Printed resource list (optional)</td><td>Charlie</td><td>Week of event</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <span>Future Together &nbsp;&middot;&nbsp; <a href="https://futuretogether.community">futuretogether.community</a></span>
+    <span>Prepared with <a href="https://beyondbetter.app">Beyond Better</a></span>
+  </div>
+
+</body>
+</html>
