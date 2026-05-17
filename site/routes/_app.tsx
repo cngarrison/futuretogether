@@ -7,6 +7,9 @@ export default define.page(function App({ Component, url }) {
   if (url.pathname.startsWith("/staff")) {
     return <Component />;
   }
+  if (url.pathname.startsWith("/slideshows")) {
+    return <Component />;
+  }
 
   return (
     <html lang="en">

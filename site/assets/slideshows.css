@@ -1,0 +1,201 @@
+/* =============================================================================
+   Future Together — Slideshow CSS
+   Shared styles for all Fresh-rendered slideshows.
+   Class names match legacy static HTML exactly for copy/paste migration.
+   ============================================================================= */
+
+/* Deck container */
+.deck {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  height: 100vh;
+  scroll-behavior: smooth;
+}
+
+/* Individual slide */
+.slide {
+  scroll-snap-align: start;
+  min-width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 3rem 4rem;
+  position: relative;
+  overflow: hidden;
+  background: white;
+}
+
+/* Slide headings */
+.slide h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #1a5f6e;
+  line-height: 1.15;
+  margin: 0 0 0.6rem;
+}
+
+.slide h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a5f6e;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+}
+
+.slide h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1c1a18;
+  line-height: 1.3;
+  margin: 0 0 0.4rem;
+}
+
+/* Large body text */
+.large-text {
+  font-size: 1.35rem;
+  line-height: 1.65;
+  color: rgba(28, 26, 24, 0.85);
+}
+
+/* Subtitle / deck label */
+.subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(28, 26, 24, 0.6);
+  letter-spacing: 0.02em;
+  margin-bottom: 1.2rem;
+}
+
+/* Callout boxes */
+.emphasis-box {
+  border-left: 5px solid #c4853a;
+  background: rgba(196, 133, 58, 0.09);
+  padding: 0.9rem 1.1rem;
+  margin: 0.8rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.warning-box {
+  border-left: 5px solid #c0392b;
+  background: rgba(192, 57, 43, 0.09);
+  padding: 0.9rem 1.1rem;
+  margin: 0.8rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.info-box {
+  border-left: 5px solid #1a5f6e;
+  background: rgba(26, 95, 110, 0.09);
+  padding: 0.9rem 1.1rem;
+  margin: 0.8rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+/* Question callout */
+.question {
+  color: #c0392b;
+  font-size: 1.55rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.4;
+  margin: 1rem 0;
+}
+
+/* Split layout */
+.split-view {
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+  margin-top: 0.5rem;
+}
+
+.split-column {
+  flex: 1;
+  padding: 1.1rem 1.2rem;
+  border-radius: 8px;
+}
+
+/* Split column colour variants */
+.split-teal {
+  background: rgba(26, 95, 110, 0.08);
+  border: 1px solid rgba(26, 95, 110, 0.2);
+}
+
+.split-amber {
+  background: rgba(196, 133, 58, 0.08);
+  border: 1px solid rgba(196, 133, 58, 0.2);
+}
+
+.split-green {
+  background: rgba(39, 174, 96, 0.08);
+  border: 1px solid rgba(39, 174, 96, 0.25);
+}
+
+.split-red {
+  background: rgba(192, 57, 43, 0.08);
+  border: 1px solid rgba(192, 57, 43, 0.25);
+}
+
+/* Semantic aliases for utopia/dystopia framing */
+.utopia {
+  background: rgba(39, 174, 96, 0.08);
+  border: 1px solid rgba(39, 174, 96, 0.25);
+}
+
+.dystopia {
+  background: rgba(192, 57, 43, 0.08);
+  border: 1px solid rgba(192, 57, 43, 0.25);
+}
+
+/* Footnotes row at bottom of slide */
+.slide-footnotes {
+  font-size: 0.72rem;
+  color: rgba(28, 26, 24, 0.45);
+  margin-top: auto;
+  padding-top: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Logo in slide (optional inline usage) */
+.slide-logo {
+  height: 28px;
+  width: auto;
+  opacity: 0.85;
+}
+
+/* Slide number — inside brand-bar */
+.slide-number {
+  position: absolute;
+  bottom: 14px;
+  right: 1.5rem;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Brand bar — sits at bottom of each slide (position absolute inside .slide) */
+.brand-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: #1a5f6e;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  font-size: 0.75rem;
+}
+
+/* Navigation hint — shown in presentation mode */
+.nav-hint {
+  position: fixed;
+  bottom: 60px;
+  right: 1.5rem;
+  font-size: 0.7rem;
+  color: rgba(28, 26, 24, 0.35);
+  pointer-events: none;
+  user-select: none;
+}
