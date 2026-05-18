@@ -43,6 +43,7 @@ export interface EventConfig {
   isActive: boolean;
   topics?: string[];
   presentedBy?: string; // Person/people presenting (e.g., "Charlie Garrison")
+  organizer?: { name: string; email: string }; // Organiser contact for reminder emails
   sponsoredBy?: string; // Organization hosting (e.g., "Beyond Better")
 }
 
@@ -202,7 +203,9 @@ export async function getPastSpecialEvents(
 export async function getPastRecurringEvents(
   slug: string,
   limit = 3,
-): Promise<{ events: EventConfig[]; total: number; earliestDate: string | null }> {
+): Promise<
+  { events: EventConfig[]; total: number; earliestDate: string | null }
+> {
   const cache = await getEventCache();
   const now = new Date();
   const all: EventConfig[] = [];
@@ -506,8 +509,12 @@ export async function updateReminderSent(
 // Get registrations needing reminders
 export async function getRegistrationsNeedingReminder(
   reminderType: "day_before" | "hour_before",
-): Promise<Array<{ event: EventConfig; registration: Registration }>> {
-  const results: Array<{ event: EventConfig; registration: Registration }> = [];
+): Promise<{
+  events: EventConfig[];
+  registrations: Array<{ event: EventConfig; registration: Registration }>;
+}> {
+  const matchingEvents: EventConfig[] = [];
+  const eventRegistrations: Array<{ event: EventConfig; registration: Registration }> = [];
 
   // Get all active events
   const events = await getAllEvents();
@@ -534,6 +541,9 @@ export async function getRegistrationsNeedingReminder(
 
     if (!shouldSend) continue;
 
+    // Collect every event in the reminder window (for organiser emails)
+    matchingEvents.push(event);
+
     // Get registrations that haven't received this reminder
     const registrations = await getEventRegistrations(event.id);
     for (const registration of registrations) {
@@ -541,10 +551,10 @@ export async function getRegistrationsNeedingReminder(
         registration.status === "registered" &&
         !registration.remindersSent[reminderType]
       ) {
-        results.push({ event, registration });
+        eventRegistrations.push({ event, registration });
       }
     }
   }
 
-  return results;
+  return { events: matchingEvents, registrations: eventRegistrations };
 }

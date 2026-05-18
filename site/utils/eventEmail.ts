@@ -126,7 +126,9 @@ export async function sendConfirmationEmail(
     <p style="margin:0 0 24px;color:#374151;">
       We'll send you a reminder 24 hours before the event.
     </p>
-    ${slackInvite ? `
+    ${
+    slackInvite
+      ? `
     <div style="margin:0 0 24px;padding:20px 24px;background:#f0f9fa;border-left:4px solid #1a5f6e;border-radius:4px;">
       <p style="margin:0 0 8px;font-weight:700;color:#1a5f6e;font-size:15px;">&#x1F4AC; Keep the conversation going</p>
       <p style="margin:0 0 14px;color:#374151;font-size:14px;">
@@ -144,7 +146,9 @@ export async function sendConfirmationEmail(
           </td>
         </tr>
       </table>
-    </div>` : ''}
+    </div>`
+      : ""
+  }
     <p style="margin:0;font-size:13px;color:#6b7280;">
       Need to cancel? Simply reply to this email.
     </p>`;
@@ -242,5 +246,184 @@ Future Together — futuretogether.community`;
       `${event.title} is starting in ${timeUntil}.`,
     ),
     text,
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Organiser reminder email
+// ---------------------------------------------------------------------------
+
+export async function sendOrganizerReminderEmail(
+  event: EventConfig,
+  registrations: Registration[],
+  reminderType: "day_before" | "hour_before",
+): Promise<boolean> {
+  if (!event.organizer?.email) return false;
+
+  const { name: orgName, email: orgEmail } = event.organizer;
+  const formattedDate = formatEventDate(event.date, event.timezone);
+  const timeUntil = reminderType === "day_before" ? "24 hours" : "1 hour";
+  const subjectPrefix = reminderType === "day_before"
+    ? "[Organiser] Tomorrow:"
+    : "[Organiser] Starting soon:";
+  const attendeeSubjectPrefix = reminderType === "day_before"
+    ? "Tomorrow:"
+    : "Starting soon:";
+  const n = registrations.length;
+
+  const hasInterests = registrations.some(
+    (r) => (r.engagement?.interests ?? "").trim() !== "",
+  );
+
+  let registrantSectionHtml: string;
+  let csvAttachment:
+    | { filename: string; content: string; type: string }
+    | undefined;
+
+  if (n === 0) {
+    registrantSectionHtml =
+      `<p style="margin:16px 0 0;color:#374151;">No registrations have been received for this event.</p>`;
+  } else if (n <= 30) {
+    // Build registrant rows for inline table
+    const tableRowsHtml = registrations.map((r) => {
+      const reg = r.attendee;
+      const interests = r.engagement?.interests ?? "";
+      const heardFrom = r.engagement?.heardFrom ?? "";
+      const registered = new Date(r.timestamp).toLocaleDateString("en-AU", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      });
+      return `<tr>
+		<td style="padding:6px 10px;border-bottom:1px solid #d0e4e7;color:#374151;">${reg.firstName}</td>
+		<td style="padding:6px 10px;border-bottom:1px solid #d0e4e7;color:#374151;">${reg.lastName}</td>
+		<td style="padding:6px 10px;border-bottom:1px solid #d0e4e7;color:#374151;">${reg.email}</td>
+		<td style="padding:6px 10px;border-bottom:1px solid #d0e4e7;color:#374151;">${interests}</td>
+		<td style="padding:6px 10px;border-bottom:1px solid #d0e4e7;color:#374151;">${heardFrom}</td>
+		<td style="padding:6px 10px;border-bottom:1px solid #d0e4e7;color:#374151;">${registered}</td>
+	  </tr>`;
+    }).join("");
+
+    const interestsNote = (n > 0 && hasInterests)
+      ? `<p style="margin:16px 0 0;color:#374151;">If you have a separate presenter, please share the interests above with them ahead of the event.</p>`
+      : "";
+    registrantSectionHtml = `
+      <p style="margin:24px 0 8px;font-weight:600;color:#1c1a18;">${n} registered attendee(s)</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+        style="border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="background:#eef5f7;">
+            <th style="padding:6px 10px;text-align:left;color:#1a5f6e;">First Name</th>
+            <th style="padding:6px 10px;text-align:left;color:#1a5f6e;">Last Name</th>
+            <th style="padding:6px 10px;text-align:left;color:#1a5f6e;">Email</th>
+            <th style="padding:6px 10px;text-align:left;color:#1a5f6e;">Interests</th>
+            <th style="padding:6px 10px;text-align:left;color:#1a5f6e;">Heard From</th>
+            <th style="padding:6px 10px;text-align:left;color:#1a5f6e;">Registered</th>
+          </tr>
+        </thead>
+        <tbody>${tableRowsHtml}</tbody>
+      </table>
+      ${interestsNote}`;
+  } else {
+    // Build CSV for attachment
+    const csvHeader =
+      "First Name,Last Name,Email,Interests,Heard From,Registered At\n";
+    const csvRows = registrations.map((r) => {
+      const esc = (v: string) => `"${(v ?? "").replace(/"/g, '""')}"`;
+      return [
+        esc(r.attendee.firstName),
+        esc(r.attendee.lastName),
+        esc(r.attendee.email),
+        esc(r.engagement?.interests ?? ""),
+        esc(r.engagement?.heardFrom ?? ""),
+        esc(r.timestamp),
+      ].join(",");
+    }).join("\n");
+    const csvContent = csvHeader + csvRows;
+    const encoder = new TextEncoder();
+    const csvBytes = encoder.encode(csvContent);
+    const base64Csv = btoa(String.fromCharCode(...csvBytes));
+    csvAttachment = {
+      filename: "registrants.csv",
+      content: base64Csv,
+      type: "text/csv",
+    };
+
+    registrantSectionHtml =
+      `<p style="margin:24px 0 0;color:#374151;">${n} registered attendee(s). See attached CSV for the full list.</p>`;
+  }
+
+  const content = `
+    <p style="margin:0 0 20px;font-size:17px;color:#1c1a18;">Hi ${orgName},</p>
+    <p style="margin:0 0 24px;color:#374151;">
+      <strong>${event.title}</strong> is starting in <strong>${timeUntil}</strong>.
+      Here is your organiser summary.
+    </p>
+    <p style="margin:0 0 24px;color:#6b7280;font-size:13px;">
+      <em>Attendees received: &ldquo;${attendeeSubjectPrefix} ${event.title}&rdquo;</em>
+    </p>
+
+    <div style="background-color:#eef5f7;border-radius:8px;padding:24px;margin:0 0 24px;">
+      <p style="margin:0 0 16px;font-weight:700;font-size:16px;color:#1a5f6e;">Event details</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:8px 0;border-bottom:1px solid #d0e4e7;color:#374151;font-weight:600;width:130px;">Date &amp; time</td>
+          <td style="padding:8px 0 8px 16px;border-bottom:1px solid #d0e4e7;color:#374151;">${formattedDate}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;border-bottom:1px solid #d0e4e7;color:#374151;font-weight:600;">Duration</td>
+          <td style="padding:8px 0 8px 16px;border-bottom:1px solid #d0e4e7;color:#374151;">${event.duration} minutes</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#374151;font-weight:600;">Meeting link</td>
+          <td style="padding:8px 0 8px 16px;color:#374151;">
+            <a href="${event.meetingLink}" style="color:#1a5f6e;">${event.meetingLink}</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    ${registrantSectionHtml}`;
+
+  const text = `Hi ${orgName},
+
+${event.title} is starting in ${timeUntil}. Here is your organiser summary.
+
+Attendees received: "${attendeeSubjectPrefix} ${event.title}"
+
+Date & time: ${formattedDate}
+Duration: ${event.duration} minutes
+Meeting link: ${event.meetingLink}
+
+${
+    n === 0
+      ? "No registrations have been received for this event."
+      : n > 30
+      ? `${n} registered attendee(s). See attached CSV for the full list.`
+      : `${n} registered attendee(s):\n${
+        registrations.map((r) =>
+          `  ${r.attendee.firstName} ${r.attendee.lastName} <${r.attendee.email}>`
+        ).join("\n")
+      }`
+  }${
+    n > 0 && hasInterests
+      ? "\n\nIf you have a separate presenter, please share the interests above with them ahead of the event."
+      : ""
+  }
+
+Future Together — futuretogether.community`;
+
+  const attachments: { filename: string; content: string; type: string }[] = [];
+  if (csvAttachment) attachments.push(csvAttachment);
+
+  return await sendEmail({
+    to: orgEmail,
+    subject: `${subjectPrefix} ${event.title} \u2014 ${n} registrant(s)`,
+    html: buildEmailHtml(
+      content,
+      `${event.title} is starting in ${timeUntil}. Here is your organiser summary.`,
+    ),
+    text,
+    ...(attachments.length > 0 ? { attachments } : {}),
   });
 }
