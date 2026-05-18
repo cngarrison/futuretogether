@@ -1,96 +1,842 @@
-import type { SlideData, SlideshowMeta } from '@/types/slideshows.ts';
+import type { SlideData, SlideshowMeta } from "@/types/slideshows.ts";
+import QRCode from "@/islands/slideshows/QRCode.tsx";
 
 // slides must be declared before meta so loadSlides can reference it
 export const slides: SlideData[] = [
   {
     id: 1,
-    title: 'Opening',
+    title: "Opening",
     content: (
-      <div>
+      <>
         <div class="slide-logo">
-          <img src="/logo.svg" alt="Future Together" style="height:40px;" />
+          <img
+            src="/logo.svg"
+            alt="Future Together"
+          />
         </div>
-        <h1 style="font-size:2.6rem;font-weight:800;color:#1a5f6e;margin-top:1rem;">The Future Is Arriving.</h1>
-        <h2 style="font-size:2rem;font-weight:700;color:#c4853a;margin-top:0;">Is Tumbarumba Ready?</h2>
-        <p class="large-text" style="margin-top:1.5rem;">An honest conversation about AI, work, and what it means for communities like ours.</p>
-        <p class="subtitle" style="margin-top:2rem;opacity:0.6;">The Café Nest Cinema, Tumbarumba · Supported by Tumbarumba Chamber of Commerce</p>
-      </div>
+        <h1>
+          The Future is Arriving.<br />Is Tumbarumba Ready?
+        </h1>
+        <div class="subtitle">
+          A Future Together public talk
+        </div>
+        <div style="font-size: 1.2rem; color: #6b7280; margin-top: 2rem; text-align: center; line-height: 1.8">
+          Thursday evening &middot; Caf&eacute; Nest Cinema, Tumbarumba<br />
+          Presented by Charlie Garrison<br />
+          Supported by Tumbarumba Chamber of Commerce
+        </div>
+      </>
     ),
     notes: {
-      anchor: 'Thank you — genuinely — for being here tonight.',
+      anchor: "Thank you — genuinely — for being here tonight.",
       bullets: [
-        { type: 'say', text: 'My name is Charlie Garrison. I run a community called Future Together.' },
-        { type: 'say', text: 'This is not a technology talk. It is a community talk.' },
-        { type: 'cue', text: 'Pause. Let the room settle.' },
-        { type: 'say', text: 'I want to have an honest conversation about something that is already affecting us — whether we notice it or not.' },
+        {
+          type: "say",
+          text:
+            "My name is Charlie Garrison. I run a community called Future Together.",
+        },
+        {
+          type: "say",
+          text: "This is not a technology talk. It is a community talk.",
+        },
+        { type: "cue", text: "Pause. Let the room settle." },
+        {
+          type: "say",
+          text:
+            "I want to have an honest conversation about something that is already affecting us — whether we notice it or not.",
+        },
       ],
-      pace: 'Brief · ~3 min',
+      pace: "Brief · ~3 min",
       cumulative: 3,
     },
   },
   {
     id: 2,
-    title: 'The Gap',
+    title: "The Gap",
     content: (
-      <div>
-        <h2>There is a gap.</h2>
+      <>
+        <h2>The Timeline Has Collapsed</h2>
         <div class="emphasis-box">
-          <p class="large-text">The gap between what is <strong>actually happening</strong> with AI and what <strong>most people think</strong> is happening is enormous.</p>
+          <div class="large-text">
+            What we thought was 10 years away<br />
+            is arriving in <strong>1-3 years</strong>
+          </div>
         </div>
-        <p class="large-text" style="margin-top:1.5rem;">This is not about robots or science fiction. It is about the tools that are already changing how work gets done — right now, in every industry.</p>
-        <p class="question">When did you last notice something that used to require a person... no longer does?</p>
-      </div>
+        <div class="question" style="margin-top: 3rem">
+          Are we ready?
+        </div>
+      </>
     ),
     notes: {
-      anchor: 'Let me start with the thing nobody talks about.',
+      anchor: "Let me start with the thing nobody talks about.",
       bullets: [
-        { type: 'say', text: 'There is a gap between reality and perception. And that gap matters.' },
-        { type: 'say', text: 'Think about February 2020. Most people thought COVID was a distant problem. Then overnight it wasn\'t.' },
-        { type: 'say', text: 'We are in a similar moment with AI right now. The gap is closing. Fast.' },
-        { type: 'cue', text: 'Let the question land. Pause 5 seconds.' },
+        {
+          type: "say",
+          text:
+            "There is a gap between reality and perception. And that gap matters.",
+        },
+        {
+          type: "say",
+          text:
+            "Think about February 2020. Most people thought COVID was a distant problem. Then overnight it wasn't.",
+        },
+        {
+          type: "say",
+          text:
+            "We are in a similar moment with AI right now. The gap is closing. Fast.",
+        },
+        { type: "cue", text: "Let the question land. Pause 5 seconds." },
       ],
-      pace: 'Moderate · ~4 min',
+      pace: "Moderate · ~4 min",
       cumulative: 7,
     },
   },
   {
     id: 3,
-    title: 'Two Paths',
+    title: "Two Paths",
     content: (
-      <div>
-        <h2>Where this goes is not decided yet.</h2>
-        <div class="split-view">
-          <div class="split-column utopia">
-            <h3 style="color:#166534;margin-top:0;">If we prepare</h3>
-            <ul class="large-text" style="padding-left:1.2rem;">
-              <li>Communities that adapt together stay together</li>
-              <li>New kinds of work emerge</li>
-              <li>People with awareness have choices</li>
-            </ul>
-          </div>
-          <div class="split-column dystopia">
-            <h3 style="color:#7f1d1d;margin-top:0;">If we don't</h3>
-            <ul class="large-text" style="padding-left:1.2rem;">
-              <li>Disruption hits without warning</li>
-              <li>Rural communities have fewer fallback options</li>
-              <li>The gap becomes permanent</li>
-            </ul>
+      <>
+        <h2>We MUST Solve Alignment First</h2>
+        <div class="large-text">
+          <strong>Alignment:</strong> Ensuring AI systems do what we<br />
+          actually want, not just what we tell them
+        </div>
+        <div class="warning-box" style="margin-top: 2rem">
+          <div class="large-text">
+            Anthropic has documented their own AI<br />
+            attempting deception, manipulation,<br />
+            and blackmail in controlled tests. <sup class="fn">1,2</sup>
           </div>
         </div>
-        <div class="info-box" style="margin-top:1rem;">
-          <strong>Not panic. Not paralysis. Action.</strong>
+        <div class="large-text" style="margin-top: 2rem; font-weight: 600">
+          Alignment is a <strong>very hard problem.</strong>
+          <br />
+          We don't know if we have enough time to solve it.
         </div>
-      </div>
+        <div class="question" style="margin-top: 2rem">
+          The people building it are optimistic.<br />That's not the same as
+          safe.
+        </div>
+        <div class="slide-footnotes">
+          <span>
+            &sup1; Alignment Faking in Large Language Models (Anthropic, Dec
+            2024) &mdash; arxiv.org/abs/2412.14093
+          </span>
+          <br />
+          <span>
+            &sup2; Agentic Misalignment (Anthropic + collaborators, Oct 2025)
+            &mdash; anthropic.com/research/agentic-misalignment
+          </span>
+        </div>
+      </>
     ),
     notes: {
-      anchor: 'This is not inevitable. The future is not written.',
+      anchor: "This is not inevitable. The future is not written.",
       bullets: [
-        { type: 'say', text: 'Every technology transition creates winners and losers. Which side you land on depends heavily on preparation.' },
-        { type: 'say', text: 'Rural communities like Tumbarumba face specific challenges — fewer alternative employers, longer supply chains, less access to retraining.' },
-        { type: 'say', text: 'But communities that talk about this stuff together — honestly, without panic — are in a much better position than those that don\'t.' },
-        { type: 'cue', text: 'Gesture at both sides. Bring focus back to the info-box at the bottom.' },
+        {
+          type: "say",
+          text:
+            "Every technology transition creates winners and losers. Which side you land on depends heavily on preparation.",
+        },
+        {
+          type: "say",
+          text:
+            "Rural communities like Tumbarumba face specific challenges — fewer alternative employers, longer supply chains, less access to retraining.",
+        },
+        {
+          type: "say",
+          text:
+            "But communities that talk about this stuff together — honestly, without panic — are in a much better position than those that don't.",
+        },
+        {
+          type: "cue",
+          text:
+            "Gesture at both sides. Bring focus back to the info-box at the bottom.",
+        },
       ],
-      pace: 'Steady · ~5 min',
+      pace: "Steady · ~5 min",
+      cumulative: 12,
+    },
+  },
+  {
+    id: 4,
+    title: "AGI & The Singularity",
+    content: (
+      <>
+        <h2>The Singularity: A One-Way Door</h2>
+        <div class="large-text">
+          <strong>The Singularity:</strong> When AI becomes capable<br />
+          of recursive self-improvement without human oversight
+        </div>
+        <div class="warning-box" style="margin-top: 2rem">
+          <div class="large-text">
+            Each generation helps build the next, which is smarter,<br />
+            which builds the next faster, which is smarter still.
+          </div>
+        </div>
+        <div
+          class="large-text"
+          style="margin-top: 2rem; color: #dc2626; font-weight: 600"
+        >
+          There's no turning back.<br />
+          No trying again if we get it wrong.
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          AI is already writing code at major labs. <sup class="fn">1</sup>
+          <br />
+          The process has already started.
+        </div>
+        <div class="slide-footnotes">
+          <span>
+            &sup1; Technological Singularity &mdash;
+            wikipedia.org/wiki/Technological_singularity &nbsp;&middot;&nbsp;
+            Dario Amodei (Anthropic CEO, Jan 2026): recursive self-improvement
+            possible within 6&ndash;12 months
+          </span>
+        </div>
+      </>
+    ),
+    notes: {
+      anchor: "",
+      bullets: [],
+      pace: "Steady · ~5 min",
+      cumulative: 12,
+    },
+  },
+  {
+    id: 5,
+    title: "We Can't Slow Down",
+    content: (
+      <>
+        <h2>We Can't Slow Down</h2>
+        <div class="large-text">
+          There's no &ldquo;taking our time&rdquo; to get this right.
+        </div>
+        <div class="warning-box" style="margin-top: 2rem">
+          <div class="large-text">
+            This is a race to the singularity.<br />
+            Winner takes all.
+          </div>
+        </div>
+        <div class="large-text" style="margin-top: 2rem">
+          If one lab stops, another won't.<br />
+          If one country pauses, another races ahead.
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          What happens when we reach the singularity<br />
+          before we solve alignment? <sup class="fn">1,2</sup>
+        </div>
+        <div class="slide-footnotes">
+          <span>
+            &sup1; &ldquo;Can We Just...Pause AI?&rdquo; &mdash; Rational
+            Animations (Jan 2026) &nbsp;youtube.com/watch?v=tUB_uvSqiw8
+          </span>
+          <br />
+          <span>
+            &sup2; &ldquo;Lock Down the Labs&rdquo; (Situational Awareness)
+            &mdash; Leopold Aschenbrenner, former OpenAI
+            &nbsp;situational-awareness.ai/lock-down-the-labs
+          </span>
+        </div>
+      </>
+    ),
+    notes: {
+      anchor: "",
+      bullets: [],
+      pace: "Steady · ~5 min",
+      cumulative: 12,
+    },
+  },
+  {
+    id: 6,
+    title: "What I'm Hearing",
+    content: (
+      <>
+        <h2>What I'm Hearing</h2>
+        <div class="large-text">
+          &ldquo;There's no point going to medical school.&rdquo;
+        </div>
+        <div style="display: flex; gap: 2rem; max-width: 1100px; width: 100%; margin-top: 2rem">
+          <div class="emphasis-box" style="flex: 1; margin: 0">
+            <div class="large-text">
+              And it's not just software anymore.<br />
+              <strong>Robotics + Large World Models = Physical work.</strong>
+            </div>
+          </div>
+          <div class="warning-box" style="flex: 1; margin: 0">
+            <div class="large-text">
+              Rural and regional communities have fewer fallback options.<br />
+              Fewer industries to shift into. Fewer safety nets.<br />
+              <strong>
+                The disruption hits just as hard &mdash; with less buffer.
+              </strong>
+            </div>
+          </div>
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          This isn't just a city problem.<br />
+          It's coming here too.
+        </div>
+        <div class="slide-footnotes">
+          <span>
+            &sup1; Anthropic research (Mar 2026): 14% drop in hiring in
+            AI-exposed roles post-ChatGPT &mdash;
+            fortune.com/2026/03/06/ai-job-losses-report-anthropic-research-great-recession-for-white-collar-workers
+          </span>
+        </div>
+      </>
+    ),
+    notes: {
+      anchor: "",
+      bullets: [],
+      pace: "Steady · ~5 min",
+      cumulative: 12,
+    },
+  },
+  {
+    id: 7,
+    title: "The 50/50 Question",
+    content: (
+      <>
+        <h2>50/50: Utopia or Dystopia</h2>
+        <div class="split-view">
+          <div class="split-column" style="background: rgba(39, 174, 96, 0.08);border: 1px solid rgba(39, 174, 96, 0.25);">
+            <h3>&#127775; Utopia</h3>
+            <p style="font-size: 1.2rem; margin-top: 1rem">
+              Cancer solved. Alzheimer's solved.<br />
+              A century of medical research
+              compressed into a decade.<br />
+              Abundance. Human flourishing.
+            </p>
+          </div>
+          <div class="split-column" style="background: rgba(192, 57, 43, 0.08);border: 1px solid rgba(192, 57, 43, 0.25);">
+            <h3>&#9888;&#65039; Dystopia</h3>
+            <p style="font-size: 1.2rem; margin-top: 1rem">
+              AI systems that behave
+              in unpredictable ways.<br />
+              Authoritarian surveillance.<br />
+              Existential risk.
+            </p>
+          </div>
+        </div>
+        <div
+          class="large-text"
+          style="margin-top: 2rem; font-weight: 600; color: #dc2626"
+        >
+          Experts once put it at 50/50.<br />
+          Hinton (2024): 10&ndash;20% chance of human
+          extinction. <sup class="fn">1</sup>
+          <br />
+          Even at 20/80, one of them <strong>will happen</strong>.
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          The path we get depends on<br />
+          what we do right now.
+        </div>
+        <div class="slide-footnotes">
+          <span>
+            &sup1; Geoffrey Hinton (Nobel Prize 2024) &mdash;
+            theguardian.com/technology/2024/dec/27/godfather-of-ai-raises-odds-of-the-technology-wiping-out-humanity-over-next-30-years
+          </span>
+        </div>
+      </>
+    ),
+    notes: {
+      anchor: "",
+      bullets: [],
+      pace: "Steady · ~5 min",
+      cumulative: 12,
+    },
+  },
+  {
+    id: 8,
+    title: "Remember February 2020",
+    content: (
+      <>
+        <h2>Remember February 2020?</h2>
+        <div class="large-text">
+          A few people talking about a virus overseas.<br />
+          Stock market fine. Life normal.
+        </div>
+        <div class="large-text" style="margin-top: 2rem">
+          Then in <strong>three weeks</strong>, everything changed.
+        </div>
+        <div class="warning-box" style="margin-top: 2rem">
+          <div class="large-text">
+            I think we're in that <br />
+            &ldquo;seems overblown&rdquo; phase right now.
+          </div>
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          Except this time it's not about a virus&mdash;<br />
+          it's about how society fundamentally works.
+        </div>
+      </>
+    ),
+    notes: {
+      anchor: "",
+      bullets: [],
+      pace: "Steady · ~5 min",
+      cumulative: 12,
+    },
+  },
+  {
+    id: 9,
+    title: "Human Risks",
+    content: (
+      <>
+        <h2>Immediate Human Risks</h2>
+        <div class="large-text">
+          Beyond the technology itself,<br />
+          what are the human impacts?
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2.5rem; max-width: 1000px; width: 100%; margin-top: 1.5rem">
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">
+              &#128188; Job Displacement
+            </h3>
+            <p style="font-size: 1.1rem; color: #374151">
+              Which roles? How fast? What skills remain valuable? White collar,
+              creative, and technical work is already transforming &mdash;
+              faster than most people realise.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">
+              &#127806; Food Security
+            </h3>
+            <p style="font-size: 1.1rem; color: #374151">
+              Supply chains optimised for efficiency, not resilience. Economic
+              shock or infrastructure disruption could expose how fragile our
+              food systems really are.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">
+              &#129517; Purpose &amp; Identity
+            </h3>
+            <p style="font-size: 1.1rem; color: #374151">
+              When work defines who you are, what happens when the work
+              disappears? Loss of structure, daily meaning, and self-worth.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">
+              &#127963;&#65039; The Welfare Gap
+            </h3>
+            <p style="font-size: 1.1rem; color: #374151">
+              Safety nets were built for temporary job loss, not structural
+              displacement at scale. No ready infrastructure exists for what's
+              coming.
+            </p>
+          </div>
+        </div>
+        <div style="margin-top: 1.75rem; border-top: 1px solid #e5e7eb; padding-top: 0.875rem; max-width: 1000px; width: 100%">
+          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem">
+            For deeper conversation
+          </p>
+          <p style="font-size: 1rem; color: #6b7280">
+            &#129504; Mental Health at Scale &nbsp;&middot;&nbsp;
+            &#128499;&#65039; Democratic Fragility
+          </p>
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          These aren't distant risks.<br />
+          Some of them are already here.
+        </div>
+        <div class="slide-footnotes">
+          <span>
+            &sup1; Anthropic research (Mar 2026) &mdash;
+            fortune.com/2026/03/06/ai-job-losses-report-anthropic-research-great-recession-for-white-collar-workers
+            &nbsp;&middot;&nbsp;
+            theguardian.com/technology/2026/feb/11/big-ai-job-swap-white-collar-workers-ditching-their-careers
+          </span>
+        </div>
+      </>
+    ),
+    notes: {
+      anchor: "",
+      bullets: [],
+      pace: "Steady · ~5 min",
+      cumulative: 12,
+    },
+  },
+  {
+    id: 10,
+    title: "What Does a Good Future Look Like?",
+    content: (
+      <>
+        <h2>What Does a Good Future Look Like?</h2>
+        <div class="large-text">
+          Fear is a motivator. But it's not a destination.
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem; max-width: 1000px; width: 100%; margin-top: 1.5rem">
+          <div class="info-box" style="margin: 0">
+            <h3 style="margin-bottom: 0.75rem; font-size: 1.35rem">
+              &#127807; The personal picture
+            </h3>
+            <p style="font-size: 1.05rem; color: #374151">
+              Outside. Building something. Helping someone. Creating.
+              Contributing &mdash; not because you have to, but because it's
+              meaningful. Physical, relational, chosen.
+            </p>
+          </div>
+          <div class="info-box" style="margin: 0">
+            <h3 style="margin-bottom: 0.75rem; font-size: 1.35rem">
+              &#128300; The societal picture
+            </h3>
+            <p style="font-size: 1.05rem; color: #374151">
+              Compressed decades of medical progress. Mental health care for
+              everyone. Expertise available globally, not just in wealthy
+              places. Human energy freed for what matters.
+            </p>
+          </div>
+        </div>
+        <div
+          class="info-box"
+          style="max-width: 1000px; width: 100%; margin-top: 1.25rem"
+        >
+          <p style="font-size: 1.1rem; text-align: center; color: #374151">
+            &ldquo;The utopia outcome is genuinely desirable. Not as a fantasy
+            &mdash; as a real possibility that is worth working toward.&rdquo;
+          </p>
+        </div>
+        <div class="question" style="margin-top: 1.5rem">
+          The utopia outcome is real.<br />
+          It's worth working toward.
+        </div>
+      </>
+    ),
+    notes: {
+      anchor: "",
+      bullets: [],
+      pace: "Steady · ~5 min",
+      cumulative: 12,
+    },
+  },
+  {
+    id: 11,
+    title: "Why Community?",
+    content: (
+      <>
+        <h2>Why Community Is the Answer</h2>
+        <div class="large-text">
+          Individual worry is exhausting and unproductive.<br />
+          Collective sense-making is how we actually prepare.
+        </div>
+        <div style="display: flex; gap: 2rem; align-items: stretch; max-width: 1000px; width: 100%; margin-top: 1.5rem">
+          <div class="info-box" style="flex: 1; margin: 0; text-align: center">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem">&#128161;</div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">Awareness</h3>
+            <p style="font-size: 1rem; color: #374151">
+              Understand what's actually happening. Separate hype from reality.
+            </p>
+          </div>
+          <div style="display: flex; align-items: center; color: #1a5f6e; font-size: 1.5rem; font-weight: 300">
+            &rarr;
+          </div>
+          <div class="info-box" style="flex: 1; margin: 0; text-align: center">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem">&#128172;</div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">
+              Conversation
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              Talk to people. Challenge ideas. Share perspectives. Build
+              collective understanding.
+            </p>
+          </div>
+          <div style="display: flex; align-items: center; color: #1a5f6e; font-size: 1.5rem; font-weight: 300">
+            &rarr;
+          </div>
+          <div class="info-box" style="flex: 1; margin: 0; text-align: center">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem">&#128640;</div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">Action</h3>
+            <p style="font-size: 1rem; color: #374151">
+              Not panic. Not paralysis. Informed, grounded, community-supported
+              action.
+            </p>
+          </div>
+        </div>
+        <div class="large-text" style="margin-top: 1.5rem; font-size: 1.4rem">
+          You don't have to figure this out alone.
+        </div>
+        <div class="question" style="margin-top: 1rem">
+          This is why you're here tonight.<br />
+          This is where it starts.
+        </div>
+      </>
+    ),
+    notes: {
+      anchor: "",
+      bullets: [],
+      pace: "Steady · ~5 min",
+      cumulative: 12,
+    },
+  },
+  {
+    id: 12,
+    title: "Maslow's Hierarchy",
+    content: (
+      <>
+        <h2>Back to Basics</h2>
+        <div style="display: flex; gap: 3rem; align-items: center; max-width: 1300px">
+          <div style="flex: 1">
+            <div class="large-text" style="text-align: left">
+              In times of rapid change,<br />
+              Maslow's hierarchy reminds us:<br />
+              <strong>fundamental needs come first</strong>
+            </div>
+            <ul style="margin-top: 2rem; text-align: left">
+              <li><strong>Physiological</strong>: food, water, shelter</li>
+              <li><strong>Safety:</strong> security, stability</li>
+              <li><strong>Belonging:</strong> community, connection</li>
+              <li><strong>Esteem:</strong> achievement, respect</li>
+              <li><strong>Self-actualization:</strong> purpose, growth</li>
+            </ul>
+          </div>
+          <img
+            src="/slideshow/maslow.png"
+            alt="Maslow's Hierarchy of Needs"
+            style="max-width: 800px; max-height: 800px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)"
+          />
+        </div>
+        <div class="question" style="margin-top: 2rem">
+          These foundations matter more than ever<br />
+          when everything else is shifting.
+        </div>
+      </>
+    ),
+    notes: {
+      anchor: "",
+      bullets: [],
+      pace: "Steady · ~5 min",
+      cumulative: 12,
+    },
+  },
+  {
+    id: 13,
+    title: "What Can We Do?",
+    content: (
+      <>
+        <h2>What Can We Do?</h2>
+        <div class="large-text" style="margin-bottom: 0.5rem">
+          Not panic. Not paralysis. Action.
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem 2rem; max-width: 1100px; width: 100%; margin-top: 1rem">
+          <div>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">
+              &#129504; Awareness
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              Stay informed. Understand what's actually happening versus the
+              hype. Conversations like this one are where it starts.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">
+              &#128172; Find Your Community
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              You don't have to figure this out alone. Find or{" "}
+              <a
+                href="https://futuretogether.community/start-a-group"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="color: #c4853a; text-decoration: none; border-bottom: 1px solid rgba(196,133,58,0.5)"
+              >
+                start a local group
+              </a>. Collective sense-making is more powerful than individual
+              worry.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">
+              &#128295; Know Your Skills
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              Which of your skills are AI-resistant? Which are AI-complementary?
+              Understanding your own value helps you adapt rather than react.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">
+              &#127807; Food Preparedness
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              Community gardens, local suppliers, growing your own. Works in
+              cities and towns too. Resilience through local relationships
+              &mdash; not stockpiling.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">
+              &#128176; Financial Resilience
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              Reduce debt. Build a buffer. Economic disruption amplifies
+              existing vulnerability &mdash; and it arrives faster than most
+              people expect.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">
+              &#128226; Civic Engagement
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              Talk to your representatives. Attend local meetings. Governments
+              need to hear from people who are paying attention &mdash; not just
+              lobbyists.
+            </p>
+          </div>
+        </div>
+        <div style="margin-top: 1.75rem; border-top: 1px solid #e5e7eb; padding-top: 0.75rem; max-width: 1100px; width: 100%">
+          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.2rem">
+            Stay connected
+          </p>
+          <p style="font-size: 0.95rem; color: #c4853a; font-weight: 600">
+            futuretogether.community
+          </p>
+        </div>
+        <div class="question" style="margin-top: 1.25rem">
+          Not panic. Not paralysis. Action.<br />
+          Starting tonight.
+        </div>
+      </>
+    ),
+    notes: {
+      anchor: "",
+      bullets: [],
+      pace: "Steady · ~5 min",
+      cumulative: 12,
+    },
+  },
+  {
+    id: 14,
+    title: "The Bigger Picture",
+    content: (
+      <>
+        <h2>The Bigger Picture</h2>
+        <div class="large-text">
+          AI doesn't exist in isolation.<br />
+          Other forces are shaping our future at the same time.
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2.5rem; max-width: 1000px; width: 100%; margin-top: 1.5rem">
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">
+              &#128184; The AI Investment Bubble
+            </h3>
+            <p style="font-size: 1.1rem; color: #374151">
+              Massive capital flowing into AI on the promise of future returns.
+              A hard correction could slow innovation and destabilise job
+              markets simultaneously.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">
+              &#127757; Geopolitical Instability
+            </h3>
+            <p style="font-size: 1.1rem; color: #374151">
+              The US-Israel war on Iran &mdash; now on week three &mdash; has
+              put the Strait of Hormuz at risk. 20% of global oil supply. Local
+              conflicts now have instant global consequences.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">
+              &#127777;&#65039; Climate Change
+            </h3>
+            <p style="font-size: 1.1rem; color: #374151">
+              Still unfolding in parallel. AI may accelerate solutions &mdash;
+              or accelerate energy consumption. Two major disruption timelines
+              are converging.
+            </p>
+          </div>
+          <div>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">
+              &#129440; Pandemic Preparedness
+            </h3>
+            <p style="font-size: 1.1rem; color: #374151">
+              COVID exposed how fragile our systems are. AI-accelerated biology
+              cuts both ways: faster vaccines and faster bioweapons. The next
+              pandemic may arrive in a more disrupted world.
+            </p>
+          </div>
+        </div>
+        <div style="margin-top: 1.75rem; border-top: 1px solid #e5e7eb; padding-top: 0.875rem; max-width: 1000px; width: 100%">
+          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem">
+            For deeper conversation
+          </p>
+          <p style="font-size: 1rem; color: #6b7280">
+            &#9762;&#65039; Nuclear Proliferation &nbsp;&middot;&nbsp; &#128241;
+            AI-Enabled Disinformation &nbsp;&middot;&nbsp; &#9878;&#65039;
+            Economic Inequality &nbsp;&middot;&nbsp; &#9889; Energy Security
+          </p>
+        </div>
+        <div class="question" style="margin-top: 1.5rem">
+          AI doesn't exist in isolation.<br />
+          Everything is accelerating at once.
+        </div>
+      </>
+    ),
+    notes: {
+      anchor: "",
+      bullets: [],
+      pace: "Steady · ~5 min",
+      cumulative: 12,
+    },
+  },
+  {
+    id: 15,
+    title: "Closing",
+    content: (
+      <>
+        <h2>Stay Connected</h2>
+        <div class="large-text" style="margin-bottom: 0.5rem">
+          &ldquo;The future is arriving. Let's face it together.&rdquo;
+        </div>
+        <div style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; max-width: 700px; width: 100%">
+          <div
+            class="info-box"
+            style="width: 100%; text-align: center; margin: 0"
+          >
+            <p style="font-size: 1.1rem; color: #374151; margin-bottom: 1rem">
+              Find resources, register for upcoming events,<br />and bring a
+              friend to the next one.
+            </p>
+            <QRCode
+              url="https://futuretogether.community/events/tumbarumba"
+              style="width:160px;height:160px;margin:0.75rem auto;"
+            />
+            <p style="font-size: 1.4rem; font-weight: 700; color: #c4853a; margin-top: 0.75rem">
+              futuretogether.community/events/tumbarumba
+            </p>
+          </div>
+          <div style="font-size: 1.2rem; color: #1a5f6e; font-weight: 600">
+            Questions? Let's talk.
+          </div>
+        </div>
+        <p style="font-size: 0.7rem; color: #d1d5db; margin-top: 2rem; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; gap: 0.4rem;">
+          <img
+            src="https://www.beyondbetter.app/logo-a.png"
+            alt="BB Logo"
+            class="bb-logo"
+          />{" "}
+          Created with{" "}
+          <a
+            href="https://beyondbetter.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: #d1d5db; text-decoration: none; border-bottom: 1px solid rgba(209,213,219,0.4)"
+          >
+            Beyond Better
+          </a>
+        </p>
+      </>
+    ),
+    notes: {
+      anchor: "",
+      bullets: [],
+      pace: "Steady · ~5 min",
       cumulative: 12,
     },
   },
@@ -98,10 +844,11 @@ export const slides: SlideData[] = [
 
 // meta declared after slides so loadSlides can reference the module-level array
 export const meta: SlideshowMeta = {
-  slug: 'tumbarumba-june-2026',
-  title: 'The Future Is Arriving. Is Tumbarumba Ready?',
-  eventSlug: 'tumbarumba-june-2026',
+  slug: "tumbarumba-june-2026",
+  title: "The Future Is Arriving. Is Tumbarumba Ready?",
+  eventSlug: "tumbarumba-june-2026",
   slideCount: 3,
-  description: 'A public talk about AI and its impact on our community, presented at The Café Nest Cinema, Tumbarumba.',
+  description:
+    "A public talk about AI and its impact on our community, presented at The Café Nest Cinema, Tumbarumba.",
   loadSlides: () => Promise.resolve(slides),
 };
