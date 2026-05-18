@@ -247,7 +247,10 @@ export default define.page(async function Join() {
                 <span class="text-2xl">&#x1F4AC;</span>
                 <h2 class="text-xl font-bold">Join us on Slack</h2>
               </div>
-              <p class="leading-relaxed mb-1" style="color: rgba(255,255,255,0.8);">
+              <p
+                class="leading-relaxed mb-1"
+                style="color: rgba(255,255,255,0.8);"
+              >
                 Our Slack workspace is where the conversation continues between
                 meetups. Ask questions, share what you're reading, find others
                 thinking about the same things you are.

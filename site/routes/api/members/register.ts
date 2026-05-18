@@ -86,7 +86,7 @@ export const handlers = define.handlers({
             console.error("Admin notification error:", err)
           );
 
-		  const joinSlack = body.joinSlack === true;
+          const joinSlack = body.joinSlack === true;
           sendMemberWelcomeEmail(member, joinSlack).catch((err) =>
             console.error("Welcome email error:", err)
           );

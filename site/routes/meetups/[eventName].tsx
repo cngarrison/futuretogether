@@ -226,19 +226,20 @@ export default define.page(async function EventResources(ctx) {
         )}
 
         {/* Supporting images / charts */}
-        {event.supportingImages && event.supportingImages.map((imgSrc: string) => (
-          <div
-            key={imgSrc}
-            class="rounded-xl overflow-hidden mb-6"
-            style="border: 1px solid #d0e4e7;"
-          >
-            <img
-              src={imgSrc}
-              alt={`Supporting chart: ${event.title}`}
-              class="w-full h-auto"
-            />
-          </div>
-        ))}
+        {event.supportingImages &&
+          event.supportingImages.map((imgSrc: string) => (
+            <div
+              key={imgSrc}
+              class="rounded-xl overflow-hidden mb-6"
+              style="border: 1px solid #d0e4e7;"
+            >
+              <img
+                src={imgSrc}
+                alt={`Supporting chart: ${event.title}`}
+                class="w-full h-auto"
+              />
+            </div>
+          ))}
       </div>
 
       {/* ------------------------------------------------------------------ */}

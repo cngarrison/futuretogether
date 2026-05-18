@@ -184,8 +184,8 @@ export default function EventRegistrationForm({
             </p>
             {joinSlack && (
               <p class="text-sm" style="color: #1a5f6e;">
-                Your confirmation email includes a link to join our Slack —
-                or{" "}
+                Your confirmation email includes a link to join our Slack — or
+                {" "}
                 <a
                   href="https://join.slack.com/t/future-together-group/shared_invite/zt-3ssaug5th-1JI5b86jGesX8B77RojgBQ"
                   target="_blank"
@@ -372,7 +372,8 @@ export default function EventRegistrationForm({
               Email me the link to join our Slack
             </span>
             <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
-              Our Slack workspace is where the conversation continues between meetups.
+              Our Slack workspace is where the conversation continues between
+              meetups.
             </p>
           </div>
         </label>

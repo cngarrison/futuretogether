@@ -1,10 +1,14 @@
-import { signal } from '@preact/signals';
-import { useEffect } from 'preact/hooks';
-import type { ConnectionStatus, SlideshowRole, WsMessage } from '@/types/slideshows.ts';
+import { signal } from "@preact/signals";
+import { useEffect } from "preact/hooks";
+import type {
+  ConnectionStatus,
+  SlideshowRole,
+  WsMessage,
+} from "@/types/slideshows.ts";
 
 // Exported signals — consumed by display components in this page tree
 export const currentSlide = signal(0);
-export const connectionStatus = signal<ConnectionStatus>('offline');
+export const connectionStatus = signal<ConnectionStatus>("offline");
 
 // Internal WS send function — replaced on each successful connect
 let _sendFn: (slide: number) => void = () => {};
@@ -20,7 +24,9 @@ interface SlideshowSyncProps {
   initialSlide?: number;
 }
 
-export default function SlideshowSync({ room, role, initialSlide = 0 }: SlideshowSyncProps) {
+export default function SlideshowSync(
+  { room, role, initialSlide = 0 }: SlideshowSyncProps,
+) {
   useEffect(() => {
     currentSlide.value = initialSlide;
     let ws: WebSocket | null = null;
@@ -30,25 +36,31 @@ export default function SlideshowSync({ room, role, initialSlide = 0 }: Slidesho
 
     function connect() {
       if (destroyed) return;
-      connectionStatus.value = 'reconnecting';
-      const protocol = globalThis.location.protocol === 'https:' ? 'wss:' : 'ws:';
-      ws = new WebSocket(`${protocol}//${globalThis.location.host}/ws/slideshow-sync?room=${encodeURIComponent(room)}`);
+      connectionStatus.value = "reconnecting";
+      const protocol = globalThis.location.protocol === "https:"
+        ? "wss:"
+        : "ws:";
+      ws = new WebSocket(
+        `${protocol}//${globalThis.location.host}/ws/slideshow-sync?room=${
+          encodeURIComponent(room)
+        }`,
+      );
 
       ws.onopen = () => {
         retryDelay = 50;
-        connectionStatus.value = 'connected';
+        connectionStatus.value = "connected";
         _sendFn = (slide: number) => {
           if (ws?.readyState === WebSocket.OPEN) {
-            ws.send(JSON.stringify({ action: 'goto', slide }));
+            ws.send(JSON.stringify({ action: "goto", slide }));
           }
         };
-        ws.send(JSON.stringify({ action: 'hello', role }));
+        ws.send(JSON.stringify({ action: "hello", role }));
       };
 
       ws.onmessage = (event) => {
         try {
           const msg = JSON.parse(event.data as string) as WsMessage;
-          if (msg.action === 'sync') {
+          if (msg.action === "sync") {
             currentSlide.value = msg.slide;
           }
           // pong is silently acknowledged
@@ -56,7 +68,7 @@ export default function SlideshowSync({ room, role, initialSlide = 0 }: Slidesho
       };
 
       ws.onclose = () => {
-        connectionStatus.value = 'offline';
+        connectionStatus.value = "offline";
         _sendFn = () => {};
         if (!destroyed) {
           retryTimer = setTimeout(connect, retryDelay);
@@ -72,7 +84,7 @@ export default function SlideshowSync({ room, role, initialSlide = 0 }: Slidesho
     // Heartbeat: keep connection alive through idle periods
     const heartbeat = setInterval(() => {
       if (ws?.readyState === WebSocket.OPEN) {
-        ws.send(JSON.stringify({ action: 'ping' }));
+        ws.send(JSON.stringify({ action: "ping" }));
       }
     }, 20_000);
 

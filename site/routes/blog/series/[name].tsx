@@ -88,9 +88,10 @@ export default define.page(async function SeriesPage(ctx) {
       {/* Article list */}
       <div style="background-color: #f7f4ef;" class="min-h-screen py-14">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
-
           {posts.length === 0 && (
-            <p style="color: rgba(28,26,24,0.5);">No articles in this series yet.</p>
+            <p style="color: rgba(28,26,24,0.5);">
+              No articles in this series yet.
+            </p>
           )}
 
           <ol class="space-y-8">
@@ -136,7 +137,10 @@ export default define.page(async function SeriesPage(ctx) {
                       </time>
                     </div>
                     {post.excerpt && (
-                      <p style="color: rgba(28,26,24,0.68);" class="text-sm leading-relaxed">
+                      <p
+                        style="color: rgba(28,26,24,0.68);"
+                        class="text-sm leading-relaxed"
+                      >
                         {post.excerpt}
                       </p>
                     )}

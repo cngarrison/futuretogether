@@ -1,6 +1,10 @@
 import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
-import { getPostBySlug, getRelatedPosts, loadSeriesPosts } from "@/utils/blog.ts";
+import {
+  getPostBySlug,
+  getRelatedPosts,
+  loadSeriesPosts,
+} from "@/utils/blog.ts";
 import { getSeriesBySlug } from "@/data/series.ts";
 
 export default define.page(async function BlogPost(ctx) {
@@ -31,7 +35,9 @@ export default define.page(async function BlogPost(ctx) {
   const total = seriesPosts.length;
   const seriesIdx = seriesPosts.findIndex((p) => p.slug === post.slug);
   const prevPost = seriesIdx > 0 ? seriesPosts[seriesIdx - 1] : null;
-  const nextPost = seriesIdx >= 0 && seriesIdx < total - 1 ? seriesPosts[seriesIdx + 1] : null;
+  const nextPost = seriesIdx >= 0 && seriesIdx < total - 1
+    ? seriesPosts[seriesIdx + 1]
+    : null;
 
   const relatedPosts = await getRelatedPosts(post);
 
@@ -49,7 +55,6 @@ export default define.page(async function BlogPost(ctx) {
       {/* Hero — teal band with title */}
       <section style="background-color: #1a5f6e; color: white;" class="pt-16">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-14">
-
           {/* Series badge — shown only for series articles */}
           {seriesMeta && post.series_part && (
             <div class="mb-5">
@@ -193,7 +198,10 @@ export default define.page(async function BlogPost(ctx) {
                       >
                         ← Part {prevPost.series_part}
                       </span>
-                      <span class="font-semibold text-sm" style="color: #1c1a18;">
+                      <span
+                        class="font-semibold text-sm"
+                        style="color: #1c1a18;"
+                      >
                         {prevPost.title}
                       </span>
                     </a>

@@ -170,19 +170,20 @@ export default define.page(async function EventPage({ params }) {
                 </div>
               )}
 
-              {event.supportingImages && event.supportingImages.map((imgSrc: string, i: number) => (
-                <div
-                  key={i}
-                  class="rounded-2xl overflow-hidden"
-                  style="border: 1px solid #d0e4e7;"
-                >
-                  <img
-                    src={imgSrc}
-                    alt={`Supporting graphic: ${event.title}`}
-                    class="w-full h-auto"
-                  />
-                </div>
-              ))}
+              {event.supportingImages &&
+                event.supportingImages.map((imgSrc: string, i: number) => (
+                  <div
+                    key={i}
+                    class="rounded-2xl overflow-hidden"
+                    style="border: 1px solid #d0e4e7;"
+                  >
+                    <img
+                      src={imgSrc}
+                      alt={`Supporting graphic: ${event.title}`}
+                      class="w-full h-auto"
+                    />
+                  </div>
+                ))}
             </div>
 
             {/* Right: registration form */}

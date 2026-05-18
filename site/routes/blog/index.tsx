@@ -8,12 +8,18 @@ export default define.page(async function Blog() {
 
   // Separate series posts from standalone posts
   const seriesSlugs = new Set(allSeries.map((s) => s.slug));
-  const standalonePosts = posts.filter((p) => !p.series || !seriesSlugs.has(p.series));
+  const standalonePosts = posts.filter((p) =>
+    !p.series || !seriesSlugs.has(p.series)
+  );
 
   // Collect unique series slugs that appear in the post list
-  const presentSeriesSlugs = [...new Set(
-    posts.filter((p) => p.series && seriesSlugs.has(p.series)).map((p) => p.series!)
-  )];
+  const presentSeriesSlugs = [
+    ...new Set(
+      posts.filter((p) => p.series && seriesSlugs.has(p.series)).map((p) =>
+        p.series!
+      ),
+    ),
+  ];
 
   // For each series, build card data keyed by startDate for interleaving
   const seriesCardData = presentSeriesSlugs.map((slug) => {
@@ -35,8 +41,16 @@ export default define.page(async function Blog() {
     | { kind: "series"; date: string; card: typeof seriesCardData[0] };
 
   const feed: FeedItem[] = [
-    ...standalonePosts.map((p) => ({ kind: "post" as const, date: p.date, post: p })),
-    ...seriesCardData.map((c) => ({ kind: "series" as const, date: c.startDate, card: c })),
+    ...standalonePosts.map((p) => ({
+      kind: "post" as const,
+      date: p.date,
+      post: p,
+    })),
+    ...seriesCardData.map((c) => ({
+      kind: "series" as const,
+      date: c.startDate,
+      card: c,
+    })),
   ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   // Get unique tags from all posts for the tag cloud
@@ -65,7 +79,6 @@ export default define.page(async function Blog() {
 
       <div style="background-color: #f7f4ef;" class="min-h-screen py-14">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
-
           {/* Tag cloud — standalone posts only */}
           {tags.length > 0 && (
             <div class="mb-10">
@@ -94,7 +107,6 @@ export default define.page(async function Blog() {
           )}
 
           <div class="space-y-10">
-
             {feed.map((item) =>
               item.kind === "post"
                 ? (
@@ -189,10 +201,13 @@ export default define.page(async function Blog() {
                         class="text-xs"
                         style="color: rgba(255,255,255,0.55);"
                       >
-                        {new Date(item.card.startDate).toLocaleDateString("en-US", {
-                          month: "short",
-                          year: "numeric",
-                        })}
+                        {new Date(item.card.startDate).toLocaleDateString(
+                          "en-US",
+                          {
+                            month: "short",
+                            year: "numeric",
+                          },
+                        )}
                       </span>
                     </div>
 
@@ -204,7 +219,10 @@ export default define.page(async function Blog() {
                       >
                         {item.card.meta.name}
                       </h2>
-                      <p class="text-base mb-5" style="color: rgba(28,26,24,0.65);">
+                      <p
+                        class="text-base mb-5"
+                        style="color: rgba(28,26,24,0.65);"
+                      >
                         {item.card.meta.description}
                       </p>
                       <span
@@ -232,11 +250,12 @@ export default define.page(async function Blog() {
                   </a>
                 )
             )}
-
           </div>
 
           {feed.length === 0 && (
-            <p style="color: rgba(28,26,24,0.5);">No posts yet. Check back soon.</p>
+            <p style="color: rgba(28,26,24,0.5);">
+              No posts yet. Check back soon.
+            </p>
           )}
         </div>
       </div>

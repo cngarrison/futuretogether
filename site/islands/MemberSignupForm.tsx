@@ -133,7 +133,8 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
             Welcome to Future Together
           </h3>
           <p class="text-sm leading-relaxed" style="color: rgba(28,26,24,0.7);">
-            You're in. Check your inbox for a welcome email — it includes a link to join our Slack workspace.
+            You're in. Check your inbox for a welcome email — it includes a link
+            to join our Slack workspace.
             {wantsToOrganise.value &&
               " We'll also be in touch about running a local group."}
           </p>
@@ -397,7 +398,8 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
               Email me the link to join our Slack
             </span>
             <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
-              Our Slack workspace is where the conversation continues between meetups.
+              Our Slack workspace is where the conversation continues between
+              meetups.
             </p>
           </div>
         </label>

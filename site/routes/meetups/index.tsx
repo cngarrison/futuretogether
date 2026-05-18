@@ -3,9 +3,9 @@ import { define } from "@/utils.ts";
 import {
   EventConfig,
   getNextAvailableEvent,
-  getUpcomingSpecialEvents,
-  getPastSpecialEvents,
   getPastRecurringEvents,
+  getPastSpecialEvents,
+  getUpcomingSpecialEvents,
 } from "@/utils/events.ts";
 
 // The "Discuss Our Future" meetup alternates start times each month
@@ -71,8 +71,8 @@ function formatMonthYear(dateStr: string, timezone: string): string {
 
 export default define.page(async function Meetups() {
   // Load all data sources in parallel for fast page renders
-  const [nextEvent, upcomingSpecial, pastSpecial, pastRecurring] =
-    await Promise.all([
+  const [nextEvent, upcomingSpecial, pastSpecial, pastRecurring] = await Promise
+    .all([
       getNextAvailableEvent(RECURRING_SLUG),
       getUpcomingSpecialEvents(RECURRING_SLUG),
       getPastSpecialEvents(RECURRING_SLUG),
@@ -80,11 +80,14 @@ export default define.page(async function Meetups() {
     ]);
 
   const nextEventDisplay = nextEvent?.date
-    ? formatEventDateTime(nextEvent.date, nextEvent.timezone ?? "Australia/Sydney")
+    ? formatEventDateTime(
+      nextEvent.date,
+      nextEvent.timezone ?? "Australia/Sydney",
+    )
     : null;
 
-  const hasPastEvents =
-    pastSpecial.length > 0 || pastRecurring.events.length > 0;
+  const hasPastEvents = pastSpecial.length > 0 ||
+    pastRecurring.events.length > 0;
 
   return (
     <>
@@ -491,11 +494,12 @@ export default define.page(async function Meetups() {
                     class="text-sm mt-4 pl-1"
                     style="color: rgba(28,26,24,0.45);"
                   >
-                    &hellip;plus{" "}
-                    {pastRecurring.total - RECURRING_PAST_LIMIT} earlier
-                    session{pastRecurring.total - RECURRING_PAST_LIMIT === 1 ? "" : "s"}{" "}
-                    running since{" "}
-                    {pastRecurring.earliestDate
+                    &hellip;plus {pastRecurring.total - RECURRING_PAST_LIMIT}
+                    {" "}
+                    earlier
+                    session{pastRecurring.total - RECURRING_PAST_LIMIT === 1
+                      ? ""
+                      : "s"} running since {pastRecurring.earliestDate
                       ? formatMonthYear(
                         pastRecurring.earliestDate,
                         "Australia/Sydney",

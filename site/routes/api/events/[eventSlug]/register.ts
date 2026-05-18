@@ -105,7 +105,7 @@ export const handlers = define.handlers({
               const member = memberResult.member;
               // 2. Member welcome — 1.1s after confirmation
               //await delay(1100);
-			  const joinSlack = body.joinSlack === true;
+              const joinSlack = body.joinSlack === true;
               sendMemberWelcomeEmail(member, joinSlack).catch((err) =>
                 console.error("Member welcome email error:", err)
               );

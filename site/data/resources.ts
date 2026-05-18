@@ -53,7 +53,8 @@ export const externalResources: ExternalResource[] = [
   {
     category: "Perspectives",
     title: "Industrial Policy for the Intelligence Age — OpenAI",
-    url: "https://cdn.openai.com/pdf/561e7512-253e-424b-9734-ef4098440601/Industrial%20Policy%20for%20the%20Intelligence%20Age.pdf",
+    url:
+      "https://cdn.openai.com/pdf/561e7512-253e-424b-9734-ef4098440601/Industrial%20Policy%20for%20the%20Intelligence%20Age.pdf",
     description:
       "A policy paper from OpenAI arguing the transition to superintelligence will require an ambitious response — new safety nets, democratic input into AI alignment, and mechanisms to share the economic gains broadly. Significant not just for the ideas, but for who is saying them: the company building superintelligence is asking governments and communities to act now.",
   },
@@ -67,7 +68,8 @@ export const externalResources: ExternalResource[] = [
   {
     category: "Perspectives",
     title: "Canaries in the Coal Mine — Stanford Digital Economy Lab",
-    url: "https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/",
+    url:
+      "https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/",
     description:
       "The most rigorous employment data on AI's impact to date. Using ADP payroll records covering 25 million US workers through September 2025, researchers found that workers aged 22–25 in high AI-exposure roles — coding, writing, legal, customer service — have seen employment drop by around 20% since late 2022. Workers in the same roles aged 35+ grew over the same period. The headline unemployment number hasn't moved. This paper explains why that doesn't tell the full story, and what the early signal actually looks like.",
   },
