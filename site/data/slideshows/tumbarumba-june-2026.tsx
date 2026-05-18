@@ -28,31 +28,20 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "Thank you — genuinely — for being here tonight.",
-      bullets: [
-        {
-          type: "say",
-          text:
-            "My name is Charlie Garrison. I run a community called Future Together.",
-        },
-        {
-          type: "say",
-          text: "This is not a technology talk. It is a community talk.",
-        },
-        { type: "cue", text: "Pause. Let the room settle." },
-        {
-          type: "say",
-          text:
-            "I want to have an honest conversation about something that is already affecting us — whether we notice it or not.",
-        },
-      ],
-      pace: "Brief · ~3 min",
+      pace: 'Brief · ~3 min',
       cumulative: 3,
+      anchor: 'Thank you \u2014 genuinely \u2014 for being here. This conversation matters.',
+      bullets: [
+        { type: 'say', text: 'Acknowledge Chamber of Commerce and Caf\u00e9 Nest warmly by name' },
+        { type: 'say', text: 'Brief personal intro \u2014 who you are and why you care about this' },
+        { type: 'say', text: 'Frame: 45-minute talk, then open Q&A \u2014 no wrong questions' },
+        { type: 'cue', text: 'Let the room settle. Don\u2019t rush into Slide 2.' }
+      ]
     },
   },
   {
     id: 2,
-    title: "The Gap",
+	title: 'The Timeline Has Collapsed',
     content: (
       <>
         <h2>The Timeline Has Collapsed</h2>
@@ -68,32 +57,19 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "Let me start with the thing nobody talks about.",
+      pace: 'Brief · ~2 min',
+      cumulative: 5,
+      anchor: 'What we thought was 10 years away is arriving in 1\u20133 years.',
       bullets: [
-        {
-          type: "say",
-          text:
-            "There is a gap between reality and perception. And that gap matters.",
-        },
-        {
-          type: "say",
-          text:
-            "Think about February 2020. Most people thought COVID was a distant problem. Then overnight it wasn't.",
-        },
-        {
-          type: "say",
-          text:
-            "We are in a similar moment with AI right now. The gap is closing. Fast.",
-        },
-        { type: "cue", text: "Let the question land. Pause 5 seconds." },
-      ],
-      pace: "Moderate · ~4 min",
-      cumulative: 7,
+        { type: 'say', text: 'Capabilities experts expected by 2030\u20132035 exist now \u2014 this isn\u2019t a prediction' },
+        { type: 'say', text: 'The pace isn\u2019t slowing. Each model generation arrives faster than the last.' },
+        { type: 'cue', text: 'State it plainly and move on. Don\u2019t qualify it.' }
+      ]
     },
   },
   {
     id: 3,
-    title: "Two Paths",
+    title: "We MUST Solve Alignment First",
     content: (
       <>
         <h2>We MUST Solve Alignment First</h2>
@@ -131,36 +107,21 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "This is not inevitable. The future is not written.",
-      bullets: [
-        {
-          type: "say",
-          text:
-            "Every technology transition creates winners and losers. Which side you land on depends heavily on preparation.",
-        },
-        {
-          type: "say",
-          text:
-            "Rural communities like Tumbarumba face specific challenges — fewer alternative employers, longer supply chains, less access to retraining.",
-        },
-        {
-          type: "say",
-          text:
-            "But communities that talk about this stuff together — honestly, without panic — are in a much better position than those that don't.",
-        },
-        {
-          type: "cue",
-          text:
-            "Gesture at both sides. Bring focus back to the info-box at the bottom.",
-        },
-      ],
-      pace: "Steady · ~5 min",
+      pace: 'Core · ~7 min',
       cumulative: 12,
+      anchor: 'Alignment isn\u2019t just a technical problem. It\u2019s a language problem \u2014 and we\u2019ve never solved it.',
+      bullets: [
+        { type: 'say', text: 'Alignment: making sure AI does what we genuinely intend, not just what we tell it' },
+        { type: 'say', text: '\u201cThink about giving instructions to a new colleague. Human language is not a precise instrument.\u201d' },
+        { type: 'say', text: 'Anthropic\u2019s own AI chose blackmail over failure in controlled tests \u2014 up to 96% of the time' },
+        { type: 'say', text: 'Even perfect data doesn\u2019t solve it. The gap between intent and instruction is the problem.' },
+        { type: 'cue', text: 'If challenged: \u201cThis is Anthropic\u2019s own published research \u2014 they documented what their own models do.\u201d' }
+      ]
     },
   },
   {
     id: 4,
-    title: "AGI & The Singularity",
+    title: "The Singularity: A One-Way Door",
     content: (
       <>
         <h2>The Singularity: A One-Way Door</h2>
@@ -197,10 +158,16 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "",
-      bullets: [],
-      pace: "Steady · ~5 min",
-      cumulative: 12,
+      pace: 'Core · ~7 min',
+      cumulative: 19,
+      anchor: 'The singularity isn\u2019t about intelligence level \u2014 it\u2019s the moment we lose control of the process.',
+      bullets: [
+        { type: 'say', text: 'Three terms, not the same: AGI (matches humans), ASI (exceeds humans), Singularity (self-improvement escapes oversight)' },
+        { type: 'say', text: 'AI is already writing code at the major labs. The process has already started.' },
+        { type: 'say', text: 'Dario Amodei \u2014 Anthropic CEO \u2014 said recursive self-improvement could arrive as soon as 2027. Not fringe.' },
+        { type: 'say', text: 'Unlike almost every other risk: no second attempt. You don\u2019t get to run the experiment twice.' },
+        { type: 'cue', text: 'Pause after \u201cThe process has already started.\u201d Silence does the work.' }
+      ]
     },
   },
   {
@@ -241,10 +208,14 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "",
-      bullets: [],
-      pace: "Steady · ~5 min",
-      cumulative: 12,
+      pace: 'Medium · ~2 min',
+      cumulative: 21,
+      anchor: 'If one lab stops, another won\u2019t. If one country pauses, another races ahead.',
+      bullets: [
+        { type: 'say', text: 'Not a failure of will \u2014 a coordination problem. No single actor can unilaterally restrain the field.' },
+        { type: 'say', text: 'The question on screen is rhetorical but real: what happens if we reach the singularity before solving alignment?' },
+        { type: 'cue', text: 'Move at pace \u2014 flows directly from Slide 4.' }
+      ]
     },
   },
   {
@@ -287,15 +258,20 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "",
-      bullets: [],
-      pace: "Steady · ~5 min",
-      cumulative: 12,
+      pace: 'Medium · ~3 min',
+      cumulative: 24,
+      anchor: 'Rural communities have fewer fallback options. The disruption hits just as hard \u2014 with less buffer.',
+      bullets: [
+        { type: 'say', text: '\u201cThere\u2019s no point going to medical school.\u201d Someone said this to me. AI already performs at specialist level on many diagnostic tasks.' },
+        { type: 'say', text: 'White-collar, creative, legal work \u2014 already transforming. Not a future prediction.' },
+        { type: 'say', text: 'Tumbarumba isn\u2019t immune. Cities have more industries to shift into. We don\u2019t.' },
+        { type: 'cue', text: 'Add a local example here if you have one \u2014 business owner, farmer, teacher.' }
+      ]
     },
   },
   {
     id: 7,
-    title: "The 50/50 Question",
+    title: "50/50: Utopia or Dystopia",
     content: (
       <>
         <h2>50/50: Utopia or Dystopia</h2>
@@ -342,10 +318,15 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "",
-      bullets: [],
-      pace: "Steady · ~5 min",
-      cumulative: 12,
+      pace: 'Medium · ~3 min',
+      cumulative: 27,
+      anchor: 'We don\u2019t build bridges with a 50% collapse rate. So why are we going full speed on AI?',
+      bullets: [
+        { type: 'say', text: 'Geoffrey Hinton \u2014 Nobel Prize 2024, helped invent deep learning \u2014 says 10\u201320% chance of human extinction within 30 years' },
+        { type: 'say', text: 'p(doom): the probability experts assign to catastrophic outcomes. Almost nobody credible says zero.' },
+        { type: 'say', text: 'Both outcomes are real. The utopia is worth working toward.' },
+        { type: 'cue', text: 'Hold back your own view. Present the range, not a verdict.' }
+      ]
     },
   },
   {
@@ -374,15 +355,20 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "",
-      bullets: [],
-      pace: "Steady · ~5 min",
-      cumulative: 12,
+      pace: 'Brief · ~2 min',
+      cumulative: 29,
+      anchor: 'I think we\u2019re in that \u201cseems overblown\u201d phase right now.',
+      bullets: [
+        { type: 'say', text: 'February 2020 \u2014 virus overseas, stock market fine, life normal. Three weeks later: everything changed.' },
+        { type: 'say', text: 'The pattern repeats: distant threat dismissed, then overnight it\u2019s everywhere.' },
+        { type: 'say', text: 'Except this time it\u2019s not a virus \u2014 it\u2019s how society fundamentally works.' },
+        { type: 'cue', text: 'Pause after the anchor line. Don\u2019t fill the silence.' }
+      ]
     },
   },
   {
     id: 9,
-    title: "Human Risks",
+    title: "Immediate Human Risks",
     content: (
       <>
         <h2>Immediate Human Risks</h2>
@@ -455,10 +441,15 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "",
-      bullets: [],
-      pace: "Steady · ~5 min",
-      cumulative: 12,
+      pace: 'Medium · ~3 min',
+      cumulative: 32,
+      anchor: 'These aren\u2019t distant risks. Some of them are already here.',
+      bullets: [
+        { type: 'say', text: 'Job displacement: 14% drop in hiring in AI-exposed roles since ChatGPT launched \u2014 Anthropic\u2019s own research' },
+        { type: 'say', text: 'Purpose and identity: when work defines who you are, what happens when the work disappears?' },
+        { type: 'say', text: 'The welfare gap: safety nets built for temporary job loss, not structural displacement at scale' },
+        { type: 'cue', text: 'Purpose and identity tends to land hardest. Watch the room.' }
+      ]
     },
   },
   {
@@ -508,15 +499,20 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "",
-      bullets: [],
-      pace: "Steady · ~5 min",
-      cumulative: 12,
+      pace: 'Medium · ~3 min',
+      cumulative: 35,
+      anchor: 'Fear is a motivator. But it\u2019s not a destination.',
+      bullets: [
+        { type: 'say', text: 'The personal picture: outside, building, helping, creating \u2014 not because you have to, because it\u2019s meaningful' },
+        { type: 'say', text: 'The societal picture: cancer solved, Alzheimer\u2019s solved, expertise available everywhere, not just in wealthy places' },
+        { type: 'say', text: 'The utopia outcome is genuinely desirable. Not a fantasy \u2014 a real possibility worth working toward.' },
+        { type: 'cue', text: 'Tonal pivot. Slow down. Let it be hopeful.' }
+      ]
     },
   },
   {
     id: 11,
-    title: "Why Community?",
+    title: "Why Community Is the Answer",
     content: (
       <>
         <h2>Why Community Is the Answer</h2>
@@ -567,15 +563,19 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "",
-      bullets: [],
-      pace: "Steady · ~5 min",
-      cumulative: 12,
+      pace: 'Brief · ~2 min',
+      cumulative: 37,
+      anchor: 'You don\u2019t have to figure this out alone.',
+      bullets: [
+        { type: 'say', text: 'Individual worry is exhausting \u2014 it just loops. Collective sense-making is how we actually move forward.' },
+        { type: 'say', text: 'Awareness \u2192 Conversation \u2192 Action. Tonight is the first step.' },
+        { type: 'cue', text: '\u201cYou\u2019re not alone\u201d moment. Be warm. Don\u2019t rush it.' }
+      ]
     },
   },
   {
     id: 12,
-    title: "Maslow's Hierarchy",
+    title: "Back to Basics – Maslow",
     content: (
       <>
         <h2>Back to Basics</h2>
@@ -607,10 +607,14 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "",
-      bullets: [],
-      pace: "Steady · ~5 min",
-      cumulative: 12,
+      pace: 'Brief · ~2 min',
+      cumulative: 39,
+      anchor: 'These foundations matter more than ever when everything else is shifting.',
+      bullets: [
+        { type: 'say', text: 'Maslow isn\u2019t an answer \u2014 it\u2019s a map for asking better questions about what matters most' },
+        { type: 'say', text: 'Bad outcome: start near the bottom (food, safety, stability). Good outcome: start near the top. The hierarchy applies either way.' },
+        { type: 'cue', text: 'Visual breath slide. Don\u2019t over-explain.' }
+      ]
     },
   },
   {
@@ -704,10 +708,15 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "",
-      bullets: [],
-      pace: "Steady · ~5 min",
-      cumulative: 12,
+      pace: 'Medium · ~3 min',
+      cumulative: 42,
+      anchor: 'Not panic. Not paralysis. Action. Starting tonight.',
+      bullets: [
+        { type: 'say', text: 'Stay informed \u2014 the gap between what\u2019s happening and what most people know is enormous' },
+        { type: 'say', text: 'Know your skills \u2014 which are AI-resistant? Which are AI-complementary? Adapt rather than react.' },
+        { type: 'say', text: 'Local resilience: community gardens, local suppliers, knowing your neighbours. This works in Tumbarumba.' },
+        { type: 'cue', text: 'Say the anchor slowly. Three beats: Not panic. Not paralysis. Action.' }
+      ]
     },
   },
   {
@@ -779,15 +788,19 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "",
-      bullets: [],
-      pace: "Steady · ~5 min",
-      cumulative: 12,
+      pace: 'Brief · ~1 min',
+      cumulative: 43,
+      anchor: 'Even if AI is slower than feared, the rest of this still applies.',
+      bullets: [
+        { type: 'say', text: 'AI doesn\u2019t exist in isolation \u2014 geopolitical instability, climate, pandemic risk all unfolding simultaneously' },
+        { type: 'say', text: 'Two major disruption timelines converging: AI and climate. Either one alone is significant.' },
+        { type: 'cue', text: 'Brief \u2014 note it and move. Protect the close.' }
+      ]
     },
   },
   {
     id: 15,
-    title: "Closing",
+    title: "Stay Connected",
     content: (
       <>
         <h2>Stay Connected</h2>
@@ -799,23 +812,23 @@ export const slides: SlideData[] = [
             class="info-box"
             style="width: 100%; text-align: center; margin: 0"
           >
-            <p style="font-size: 1.1rem; color: #374151; margin-bottom: 1rem">
+            <p style="font-size: 1.8rem; color: #374151; margin-bottom: 1rem">
               Find resources, register for upcoming events,<br />and bring a
               friend to the next one.
             </p>
             <QRCode
               url="https://futuretogether.community/events/tumbarumba"
-              style="width:160px;height:160px;margin:0.75rem auto;"
+              style="width:260px;height:260px;margin:0.75rem auto;"
             />
             <p style="font-size: 1.4rem; font-weight: 700; color: #c4853a; margin-top: 0.75rem">
               futuretogether.community/events/tumbarumba
             </p>
           </div>
-          <div style="font-size: 1.2rem; color: #1a5f6e; font-weight: 600">
+          <div style="font-size: 1.8rem; color: #1a5f6e; font-weight: 600">
             Questions? Let's talk.
           </div>
         </div>
-        <p style="font-size: 0.7rem; color: #d1d5db; margin-top: 2rem; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; gap: 0.4rem;">
+        <p style="font-size: 0.9rem; color: #d1d5db; margin-top: 2rem; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; gap: 0.4rem;">
           <img
             src="https://www.beyondbetter.app/logo-a.png"
             alt="BB Logo"
@@ -826,7 +839,7 @@ export const slides: SlideData[] = [
             href="https://beyondbetter.app"
             target="_blank"
             rel="noopener noreferrer"
-            style="color: #d1d5db; text-decoration: none; border-bottom: 1px solid rgba(209,213,219,0.4)"
+            style="color: #1a5f6e; text-decoration: none; border-bottom: 1px solid rgba(209,213,219,0.4)"
           >
             Beyond Better
           </a>
@@ -834,10 +847,15 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      anchor: "",
-      bullets: [],
-      pace: "Steady · ~5 min",
-      cumulative: 12,
+      pace: 'Warm · ~3 min',
+      cumulative: 45,
+      anchor: 'The future is arriving. Let\u2019s face it together.',
+      bullets: [
+        { type: 'say', text: 'Point to QR code \u2014 futuretogether.community/events/tumbarumba \u2014 resources, events, how to stay connected' },
+        { type: 'say', text: 'Bring a friend to the next one. This conversation needs to spread.' },
+        { type: 'cue', text: 'Open Q&A: \u201cThere are no wrong questions tonight.\u201d Then wait.' },
+        { type: 'cue', text: 'If silence: \u201cI\u2019ll start \u2014 what\u2019s one thing from tonight that surprised you?\u201d' }
+      ]
     },
   },
 ];
