@@ -1,4 +1,4 @@
-import type { PageProps } from 'fresh';
+import type { PageProps } from "fresh";
 
 export default function SlideshowLayout({ Component }: PageProps) {
   return (
@@ -14,7 +14,7 @@ export default function SlideshowLayout({ Component }: PageProps) {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="stylesheet" href="/styles.css" />
       </head>
-      <body style="margin:0;padding:0;overflow:hidden;background:#000;">
+      <body class="slide-deck" style="margin:0;padding:0;overflow:hidden;background:#000;">
         <Component />
       </body>
     </html>

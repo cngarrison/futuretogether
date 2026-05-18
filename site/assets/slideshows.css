@@ -5,7 +5,7 @@
    ============================================================================= */
 
 /* Deck container */
-.deck {
+.slide-deck .deck {
   display: flex;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
@@ -14,12 +14,14 @@
 }
 
 /* Individual slide */
-.slide {
+.slide-deck .slide {
   scroll-snap-align: start;
   min-width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
+        justify-content: center;
+        align-items: center;
   padding: 2.5rem 3rem 4rem;
   position: relative;
   overflow: hidden;
@@ -27,23 +29,23 @@
 }
 
 /* Slide headings */
-.slide h1 {
-  font-size: 2.4rem;
+.slide-deck .slide h1 {
+  font-size: 4rem;
   font-weight: 800;
   color: #1a5f6e;
   line-height: 1.15;
   margin: 0 0 0.6rem;
 }
 
-.slide h2 {
-  font-size: 1.75rem;
+.slide-deck .slide h2 {
+  font-size: 3rem;
   font-weight: 700;
   color: #1a5f6e;
   line-height: 1.25;
   margin: 0 0 0.5rem;
 }
 
-.slide h3 {
+.slide-deck .slide h3 {
   font-size: 1.25rem;
   font-weight: 600;
   color: #1c1a18;
@@ -52,15 +54,18 @@
 }
 
 /* Large body text */
-.large-text {
-  font-size: 1.35rem;
+.slide-deck .large-text {
+  font-size: 1.8rem;
   line-height: 1.65;
-  color: rgba(28, 26, 24, 0.85);
+  text-align: center;
+  max-width: 900px;
+  /* margin-bottom: 2rem; */
+  color: #374151;
 }
 
 /* Subtitle / deck label */
-.subtitle {
-  font-size: 1rem;
+.slide-deck .subtitle {
+  font-size: 1.5rem;
   font-weight: 500;
   color: rgba(28, 26, 24, 0.6);
   letter-spacing: 0.02em;
@@ -68,104 +73,131 @@
 }
 
 /* Callout boxes */
-.emphasis-box {
+.slide-deck .emphasis-box {
   border-left: 5px solid #c4853a;
   background: rgba(196, 133, 58, 0.09);
   padding: 0.9rem 1.1rem;
   margin: 0.8rem 0;
-  border-radius: 0 6px 6px 0;
+  border-radius: 12px;
+  max-width: 800px;
 }
 
-.warning-box {
+.slide-deck .warning-box {
   border-left: 5px solid #c0392b;
   background: rgba(192, 57, 43, 0.09);
   padding: 0.9rem 1.1rem;
   margin: 0.8rem 0;
-  border-radius: 0 6px 6px 0;
+  border-radius: 12px;
+  max-width: 800px;
 }
 
-.info-box {
+.slide-deck .info-box {
   border-left: 5px solid #1a5f6e;
   background: rgba(26, 95, 110, 0.09);
   padding: 0.9rem 1.1rem;
   margin: 0.8rem 0;
-  border-radius: 0 6px 6px 0;
+  border-radius: 12px;
+  max-width: 800px;
 }
 
 /* Question callout */
-.question {
+.slide-deck .question {
   color: #c0392b;
-  font-size: 1.55rem;
+  font-size: 2.5rem;
   font-weight: 600;
   font-style: italic;
+  text-align: center;
+  max-width: 900px;
   line-height: 1.4;
   margin: 1rem 0;
 }
 
+ul {
+  list-style-position: inside;
+  font-size: 1.3rem;
+  line-height: 2;
+  color: #374151;
+}
+
 /* Split layout */
-.split-view {
+.slide-deck .split-view {
   display: flex;
   gap: 1.5rem;
   flex: 1;
   margin-top: 0.5rem;
 }
 
-.split-column {
+.slide-deck .split-column {
   flex: 1;
   padding: 1.1rem 1.2rem;
   border-radius: 8px;
 }
 
 /* Split column colour variants */
-.split-teal {
+.slide-deck .split-teal {
   background: rgba(26, 95, 110, 0.08);
   border: 1px solid rgba(26, 95, 110, 0.2);
 }
 
-.split-amber {
+.slide-deck .split-amber {
   background: rgba(196, 133, 58, 0.08);
   border: 1px solid rgba(196, 133, 58, 0.2);
 }
 
-.split-green {
+.slide-deck .split-green {
   background: rgba(39, 174, 96, 0.08);
   border: 1px solid rgba(39, 174, 96, 0.25);
 }
 
-.split-red {
+.slide-deck .split-red {
   background: rgba(192, 57, 43, 0.08);
   border: 1px solid rgba(192, 57, 43, 0.25);
 }
 
 /* Semantic aliases for utopia/dystopia framing */
-.utopia {
+.slide-deck .utopia {
   background: rgba(39, 174, 96, 0.08);
   border: 1px solid rgba(39, 174, 96, 0.25);
 }
 
-.dystopia {
+.slide-deck .dystopia {
   background: rgba(192, 57, 43, 0.08);
   border: 1px solid rgba(192, 57, 43, 0.25);
 }
 
 /* Footnotes row at bottom of slide */
-.slide-footnotes {
-  font-size: 0.72rem;
+.slide-deck .slide-footnotes {
+  position: absolute;
+  bottom: 56px;
+  left: 2rem;
+  font-size: 0.58rem;
+  /* font-size: 0.72rem; */
   color: rgba(28, 26, 24, 0.45);
   margin-top: auto;
   padding-top: 0.8rem;
-  line-height: 1.5;
+  max-width: 72%;
+  line-height: 1.7;
+  z-index: 50;
+}
+.slide-deck sup.fn {
+  font-size: 0.65em;
+  color: #9ca3af;
+  font-weight: 600;
 }
 
 /* Logo in slide (optional inline usage) */
-.slide-logo {
-  height: 28px;
+.slide-deck .slide-logo {
+  margin-bottom: 1.5rem;
+}
+
+.slide-deck .slide-logo svg, 
+.slide-deck .slide-logo img {
+  height: 92px;
   width: auto;
-  opacity: 0.85;
 }
 
 /* Slide number — inside brand-bar */
-.slide-counter {
+.slide-deck .slide-counter {
   font-size: 0.7rem;
   color: rgba(255,255,255,0.65);
   font-variant-numeric: tabular-nums;
@@ -173,7 +205,32 @@
   white-space: nowrap;
 }
 
-.brand-bar-centre {
+/* 
+.slide-deck .slide-number {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+ */
+
+.slide-deck .qr-code {
+  width: 120px;
+  height: 120px;
+  margin: 1rem auto;
+  display: block;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.5rem;
+  background: white;
+}
+
+.slide-deck .brand-bar-centre {
   flex: 1;
   text-align: center;
   font-size: 0.75rem;
@@ -187,7 +244,7 @@
 }
 
 /* Legacy top-right counter (static HTML) */
-.slide-number {
+.slide-deck .slide-number {
   position: absolute;
   bottom: 14px;
   right: 1.5rem;
@@ -196,7 +253,7 @@
 }
 
 /* Brand bar — sits at bottom of each slide (position absolute inside .slide) */
-.brand-bar {
+.slide-deck .brand-bar {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -211,13 +268,74 @@
   font-size: 0.75rem;
 }
 
+.slide-deck .brand-bar-name {
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.slide-deck .brand-bar-sep {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.75rem;
+  margin: 0 6px 0 6px;
+}
+.slide-deck .brand-bar-url {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+
+.slide-deck .nav-arrow {
+  color: #1a5f6e;
+  font-size: 1.2rem;
+  animation: pulse 2s infinite;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.slide-deck .nav-arrow:hover {
+  background-color: rgba(26, 95, 110, 0.1);
+}
+
 /* Navigation hint — shown in presentation mode */
-.nav-hint {
+.slide-deck .nav-hint {
   position: fixed;
   bottom: 60px;
   right: 1.5rem;
-  font-size: 0.7rem;
   color: rgba(28, 26, 24, 0.35);
   pointer-events: none;
   user-select: none;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  animation: fadeOut 6s forwards;
 }
+
+/* 
+@media (max-width: 768px) {
+  .slide-deck h1 {
+	font-size: 2.5rem;
+  }
+  .slide-deck h2 {
+	font-size: 2rem;
+  }
+  .slide-deck .question {
+	font-size: 1.8rem;
+  }
+  .slide-deck .large-text {
+	font-size: 1.3rem;
+  }
+  .slide-deck .slide {
+	padding: 2rem;
+  }
+  .slide-deck .split-view {
+	grid-template-columns: 1fr;
+	gap: 1rem;
+  }
+}
+ */
