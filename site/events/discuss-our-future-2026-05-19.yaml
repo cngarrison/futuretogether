@@ -15,10 +15,13 @@ capacity: 30
 registrationDeadline: 1
 meetingLink: https://meet.jit.si/moderated/78e2e6dbc0155d5af7d9b1e3a68b88a501c4b4311eebdb92c6f608ebd53448c3
 posterImage: /img/discuss-our-future.png
-slideshowUrl: /slideshows/discuss-our-future-slideshow-conversation.html
+slideshowUrl: /slideshow/discuss-our-future-slideshow-conversation.html
 isActive: true
 presentedBy: Charlie Garrison
 sponsoredBy: Beyond Better
+organizer:
+  name: Charlie Garrison
+  email: charlie@futuretogether.community
 topics:
   - "🧠 Job Shifts & Skills: What roles are vulnerable and what new skills will actually matter."
   - "🌱 Food Security: Why local resilience is becoming critical."

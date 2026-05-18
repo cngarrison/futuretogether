@@ -1,7 +1,7 @@
 # Future Together — Facilitator Guide
 
 > **Status:** Working draft — based on early meetup experience. Update as new sessions add insight.
-> **Slideshow:** `site/static/slideshows/discuss-our-future-slideshow-conversation.html`
+> **Slideshow:** `site/static/slideshow/discuss-our-future-slideshow-conversation.html`
 > **References:** See `support/slide-references.md` for footnote URLs
 
 ---
