@@ -41,7 +41,7 @@ Before I explain the difference, I want to note something about language. I deli
 
 ---
 
-![A lone figure at the edge of a vast landscape at dawn, facing a glowing horizon. The path ahead is illuminated but uncertain.](/img/threshold-dawn.png)
+![A lone figure at the edge of a vast landscape at dawn, facing a glowing horizon. The path ahead is illuminated but uncertain.](/img/threshold-dawn-blog.webp)
 
 ## The acceleration that changes everything
 

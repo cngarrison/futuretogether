@@ -28,7 +28,7 @@ And then the fires passed, and we started hearing the stories. People who had lo
 
 ---
 
-![People working together in a warm community space, carrying and sharing food and supplies. Purposeful and warm.](/img/community-in-action.png)
+![People working together in a warm community space, carrying and sharing food and supplies. Purposeful and warm.](/img/community-in-action-blog.webp)
 
 ## Two responses to the same crisis
 

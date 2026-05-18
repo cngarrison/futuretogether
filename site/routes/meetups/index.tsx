@@ -97,7 +97,7 @@ export default define.page(async function Meetups() {
           name="description"
           content="Monthly online meetups for people paying attention to AI and technological change. Free, honest, no agenda. Third Wednesday of each month."
         />
-        <meta property="og:image" content="/img/discuss-our-future.png" />
+        <meta property="og:image" content="/img/discuss-our-future-card.webp" />
       </Head>
 
       {/* ------------------------------------------------------------------ */}
@@ -132,7 +132,7 @@ export default define.page(async function Meetups() {
         </div>
         <div class="max-w-5xl mx-auto px-4 sm:px-6 mt-10">
           <img
-            src="/img/meetup-group.png"
+            src="/img/meetup-group-lg.webp"
             alt="Future Together — monthly online meetup: people connecting across screens — our monthly online community meetup"
             class="w-full rounded-t-2xl"
             style="max-height: 300px; object-fit: cover; object-position: center;"

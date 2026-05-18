@@ -14,7 +14,8 @@ duration: 45
 capacity: 30
 registrationDeadline: 1
 meetingLink: https://meet.google.com/itp-ssvt-mzk
-posterImage: /img/discuss-our-future.png
+posterImage: /img/discuss-our-future-card.webp
+posterImageOriginal: /img/discuss-our-future.png
 slideshowUrl: /slideshow/discuss-our-future-slideshow-conversation.html
 isActive: true
 presentedBy: Charlie Garrison

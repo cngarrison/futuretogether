@@ -344,7 +344,7 @@ ready for it.
 
 ---
 
-![monthly meetup](/img/discuss-our-future-flyer.png "Monthly Meetup - Third Wednesday")
+![monthly meetup](/img/discuss-our-future-flyer-blog.webp "Monthly Meetup - Third Wednesday")
 
 **Next Online Meetup: Third Wednesday of each month**
 

@@ -23,7 +23,7 @@ export default define.page(function Home() {
       {/* ===================== HERO ===================== */}
       <section
         class="text-white min-h-screen flex flex-col justify-center pt-16"
-        style="background-color: #1a5f6e; background-image: linear-gradient(rgba(26,95,110,0.82), rgba(26,95,110,0.82)), url('/img/lone-figure-sunrise.png'); background-size: cover; background-position: center;"
+        style="background-color: #1a5f6e; background-image: linear-gradient(rgba(26,95,110,0.82), rgba(26,95,110,0.82)), url('/img/lone-figure-sunrise-hero.webp'); background-size: cover; background-position: center;"
       >
         <div class="max-w-4xl mx-auto px-4 sm:px-6 py-24 text-center">
           <p class="text-sm font-semibold uppercase tracking-widest text-white/60 mb-6">
@@ -238,7 +238,7 @@ export default define.page(function Home() {
         <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <div class="mb-10 rounded-2xl overflow-hidden">
             <img
-              src="/img/discuss-our-future.png"
+              src="/img/discuss-our-future-card.webp"
               alt="Discuss Our Future — monthly online community meetup"
               class="w-full"
               style="height: 240px; object-fit: cover; object-position: center;"

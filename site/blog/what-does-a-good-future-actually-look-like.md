@@ -50,7 +50,7 @@ Most people have a version of my garden in their imagination. They just haven't 
 
 ---
 
-![A person working contentedly in a garden at sunrise — hands in soil, warm golden light. A chosen morning, unhurried.](/img/future-garden-vision.png)
+![A person working contentedly in a garden at sunrise — hands in soil, warm golden light. A chosen morning, unhurried.](/img/future-garden-vision-blog.webp)
 
 ## What Dario Amodei sees
 

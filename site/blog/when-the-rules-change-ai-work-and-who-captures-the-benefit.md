@@ -24,7 +24,7 @@ This is the question AI is forcing us to ask about the real economy. Not “will
 
 ---
 
-![A person stands alone before large windows in an open, sunlit workspace, looking out at the world beyond. The space around them tells a story of change.](/img/work-at-crossroads.png)
+![A person stands alone before large windows in an open, sunlit workspace, looking out at the world beyond. The space around them tells a story of change.](/img/work-at-crossroads-blog.webp)
 
 ## What the data is actually showing
 

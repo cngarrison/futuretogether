@@ -114,7 +114,7 @@ This is why alignment research exists. This is why the people doing it work with
 
 ---
 
-![A person at a desk beside a sunlit window, looking away from their screen in quiet thought. Papers and coffee nearby. Warm afternoon light.](/img/late-night-thinking.png)
+![A person at a desk beside a sunlit window, looking away from their screen in quiet thought. Papers and coffee nearby. Warm afternoon light.](/img/late-night-thinking-blog.webp)
 
 ## Why this matters to you
 

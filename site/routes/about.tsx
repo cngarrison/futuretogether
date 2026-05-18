@@ -182,7 +182,7 @@ export default define.page(function About() {
       <section style="background-color: #f7f4ef;">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 pb-4">
           <img
-            src="/img/sunrise-founders-desk.png"
+            src="/img/sunrise-founders-desk-lg.webp"
             alt="A desk at sunrise — the contemplative moment where Future Together began"
             class="w-full h-auto rounded-2xl"
             style="max-height: 320px; object-fit: cover; object-position: center top;"

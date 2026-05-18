@@ -104,7 +104,7 @@ There's no single right answer. Every household and community starts from a diff
 
 ---
 
-![A small group tending a community garden together in warm afternoon light — practical, purposeful, and relaxed](/img/community-garden.png)
+![A small group tending a community garden together in warm afternoon light — practical, purposeful, and relaxed](/img/community-garden-blog.webp)
 
 ## I'm not the expert. Go find out.
 

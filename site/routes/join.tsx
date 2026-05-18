@@ -41,7 +41,7 @@ export default define.page(async function Join() {
       {/* Hero */}
       <section
         class="text-white pt-16"
-        style="background-color: #1a5f6e; background-image: linear-gradient(rgba(26,95,110,0.80), rgba(26,95,110,0.80)), url('/img/join-portrait.png'); background-size: cover; background-position: center top;"
+        style="background-color: #1a5f6e; background-image: linear-gradient(rgba(26,95,110,0.80), rgba(26,95,110,0.80)), url('/img/join-portrait-hero.webp'); background-size: cover; background-position: center top;"
       >
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20 text-center">
           <h1 class="text-4xl sm:text-5xl font-bold mb-5">
@@ -107,7 +107,7 @@ export default define.page(async function Join() {
               >
                 <div class="-mx-7 -mt-7 mb-5 overflow-hidden rounded-t-2xl">
                   <img
-                    src="/img/discuss-our-future.png"
+                    src="/img/discuss-our-future-card.webp"
                     alt="Discuss Our Future — monthly online community meetup"
                     class="w-full"
                     style="height: 160px; object-fit: cover; object-position: center;"

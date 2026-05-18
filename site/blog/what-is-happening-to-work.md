@@ -31,7 +31,7 @@ She's holding two true things at once. That's probably the most honest response 
 
 ---
 
-![Two people in genuine, attentive conversation in a warm, softly lit professional setting. One listens intently; the other speaks with care.](/img/human-work-connection.png)
+![Two people in genuine, attentive conversation in a warm, softly lit professional setting. One listens intently; the other speaks with care.](/img/human-work-connection-blog.webp)
 
 ## The shape of change
 

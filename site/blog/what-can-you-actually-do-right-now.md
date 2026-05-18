@@ -94,7 +94,7 @@ If that resonates with you — if you've read through this series and feel some 
 
 ---
 
-![Two people at an outdoor table in deep conversation. One speaks with evident care; the other listens with full attention. Warm afternoon light.](/img/first-conversation.png)
+![Two people at an outdoor table in deep conversation. One speaks with evident care; the other listens with full attention. Warm afternoon light.](/img/first-conversation-blog.webp)
 
 ## Start something
 
