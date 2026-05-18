@@ -2,14 +2,14 @@ import { define } from "@/utils.ts";
 import { Partial } from "fresh/runtime";
 
 export default define.page(function App({ Component, url }) {
-  // Staff routes use their own _layout.tsx HTML shell — pass straight through
-  // so the public PageHeader/PageFooter and Google Fonts don't load there.
-  if (url.pathname.startsWith("/staff")) {
-    return <Component />;
-  }
-  if (url.pathname.startsWith("/slideshows")) {
-    return <Component />;
-  }
+//   // Staff routes use their own _layout.tsx HTML shell — pass straight through
+//   // so the public PageHeader/PageFooter and Google Fonts don't load there.
+//   if (url.pathname.startsWith("/staff")) {
+//     return <Component />;
+//   }
+//   if (url.pathname.startsWith("/slideshows")) {
+//     return <Component />;
+//   }
 
   return (
     <html lang="en">
