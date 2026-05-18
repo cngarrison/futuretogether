@@ -12,7 +12,6 @@ export default function SlideshowLayout({ Component }: PageProps) {
         <meta name="robots" content="noindex" />
         <title>Future Together — Slideshow</title>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="stylesheet" href="/styles.css" />
       </head>
       <body class="slide-deck" style="margin:0;padding:0;overflow:hidden;background:#000;">
         <Component />
