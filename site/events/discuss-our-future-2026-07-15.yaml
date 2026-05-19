@@ -1,0 +1,30 @@
+---
+id: discuss-our-future-2026-07-15
+slug: discuss-our-future
+title: "Discuss Our Future: Preparing for AI's Impact"
+description: |
+  We often talk about the "future of work" as something distant. But the reality is, the timeline has accelerated. The shifts we are seeing now are not just about new gadgets; they are structural changes that will reshape how we work, how we access food, and how our communities function over the next 1–3 years.
+
+  This isn't science fiction, and it isn't just about whether you personally use AI tools. It's about the broader societal ripples that affect us all.
+
+  We need to move beyond the hype and have an honest conversation about adaptation and resilience.
+date: 2026-07-16T00:00:00Z # 10:00 AM AEST (Sydney time) — note: AEST not AEDT, daylight saving has ended
+timezone: Australia/Sydney # For display formatting
+duration: 45
+capacity: 30
+registrationDeadline: 1
+meetingLink: https://meet.jit.si/moderated/78e2e6dbc0155d5af7d9b1e3a68b88a501c4b4311eebdb92c6f608ebd53448c3
+posterImage: /img/discuss-our-future-card.webp
+posterImageOriginal: /img/discuss-our-future.png
+slideshowUrl: /slideshow/discuss-our-future-slideshow-conversation.html
+isActive: true
+presentedBy: Charlie Garrison
+sponsoredBy: Beyond Better
+organizer:
+  name: Charlie Garrison
+  email: charlie@futuretogether.community
+topics:
+  - "🧠 Job Shifts & Skills: What roles are vulnerable and what new skills will actually matter."
+  - "🌱 Food Security: Why local resilience is becoming critical."
+  - "⚖️ Risks & Benefits: Navigating the realities of rapid technological change."
+  - "🏡 Practical Prep: Concrete steps for our families and neighborhoods."
