@@ -46,8 +46,17 @@ export default define.page<typeof handler>(function StaffEventsPage({ data }) {
   const { events } = data ?? { events: [] };
 
   const now = new Date();
-  const upcomingEvents = events.filter((e) => new Date(e.date) > now);
-  const pastEvents = events.filter((e) => new Date(e.date) <= now);
+  //Ascending: soonest first (oldest → newest)
+  const upcomingEvents = events.filter((e) => new Date(e.date) > now).sort((
+    a,
+    b,
+  ) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+  // Descending: most recent first (newest → oldest)
+  const pastEvents = events.filter((e) => new Date(e.date) <= now).sort((
+    a,
+    b,
+  ) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const totalRegistrations = events.reduce(
     (sum, e) => sum + e.registrationCount,
     0,
