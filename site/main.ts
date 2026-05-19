@@ -9,11 +9,17 @@ try {
   Deno.cron(
     "day-before reminders",
     "0 * * * *",
+    {
+      backoffSchedule: [1000, 10000, 60000],
+    },
     () => sendReminders("day_before"),
   );
   Deno.cron(
     "hour-before reminders",
     "0 * * * *",
+    {
+      backoffSchedule: [1000, 5000, 10000],
+    },
     () => sendReminders("hour_before"),
   );
 } catch (error) {
