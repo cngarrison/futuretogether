@@ -506,6 +506,31 @@ export async function updateReminderSent(
   return result.ok;
 }
 
+/**
+ * Returns true if an organiser reminder of the given type has already been
+ * sent for this event. Keyed separately from per-registration reminders.
+ */
+export async function hasOrganizerReminderBeenSent(
+  eventId: string,
+  reminderType: "day_before" | "hour_before",
+): Promise<boolean> {
+  const kv = await getKv();
+  const result = await kv.get<boolean>(["organiser_reminder", eventId, reminderType]);
+  return result.value === true;
+}
+
+/**
+ * Marks the organiser reminder of the given type as sent for this event.
+ */
+export async function updateOrganizerReminderSent(
+  eventId: string,
+  reminderType: "day_before" | "hour_before",
+): Promise<boolean> {
+  const kv = await getKv();
+  const result = await kv.set(["organiser_reminder", eventId, reminderType], true);
+  return result.ok;
+}
+
 // Get registrations needing reminders
 export async function getRegistrationsNeedingReminder(
   reminderType: "day_before" | "hour_before",

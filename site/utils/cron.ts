@@ -1,5 +1,7 @@
 import {
   getRegistrationsNeedingReminder,
+  hasOrganizerReminderBeenSent,
+  updateOrganizerReminderSent,
   updateReminderSent,
 } from "@/utils/events.ts";
 import {
@@ -51,17 +53,17 @@ export async function sendReminders(
     events
       .filter((event) => !!event.organizer?.email)
       .map(async (event) => {
+        const alreadySent = await hasOrganizerReminderBeenSent(event.id, type);
+        if (alreadySent) return { sent: false, organizer: event.organizer!.email, skipped: true };
         const regsForEvent = regsByEvent.get(event.id) ?? [];
         const sent = await sendOrganizerReminderEmail(event, regsForEvent, type);
-        return { sent, organizer: event.organizer!.email };
+        if (sent) await updateOrganizerReminderSent(event.id, type);
+        return { sent, organizer: event.organizer!.email, skipped: false };
       }),
   );
 
-  const orgSent = organiserResults.filter(
-    (r) => r.status === "fulfilled" && r.value.sent,
-  ).length;
-  const orgFailed = organiserResults.length - orgSent;
-  console.log(
-    `[cron] ${type}: organiser sent=${orgSent} failed=${orgFailed}`,
-  );
+  const orgSent = organiserResults.filter((r) => r.status === "fulfilled" && r.value.sent).length;
+  const orgSkipped = organiserResults.filter((r) => r.status === "fulfilled" && r.value.skipped).length;
+  const orgFailed = organiserResults.length - orgSent - orgSkipped;
+  console.log(`[cron] ${type}: organiser sent=${orgSent} skipped=${orgSkipped} failed=${orgFailed}`);
 }
