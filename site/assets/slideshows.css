@@ -476,7 +476,30 @@
 /* Tablet — use more of the available width */
 @media (min-width: 768px) {
   .speaker-notes {
-    max-width: 1024px;
+    max-width: 1180px;
+  }
+  .speaker-notes .slideshow-heading {
+    margin-bottom:0.5rem;
+    padding-bottom:0.5rem;
+  }
+  .speaker-notes .speaker-card {
+    padding:0.65rem 1rem;
+    margin-bottom:0.4rem;
+    border-radius:8px;
+  }
+  .speaker-notes .speaker-card-anchor {
+    font-size:0.95rem;
+    margin-bottom:0.35rem;
+  }
+  .speaker-notes .speaker-card-bullet-item {
+    font-size:0.9rem;
+  }
+  /* Large text mode in landscape — still bigger than default but constrained */
+  .large-text-mode .speaker-notes .speaker-card-anchor {
+    font-size:1.7rem;
+  }
+  .large-text-mode .speaker-notes .speaker-card-bullet-item {
+    font-size:1.5rem;
   }
 }
 
