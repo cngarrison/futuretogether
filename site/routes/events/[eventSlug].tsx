@@ -64,7 +64,7 @@ export default define.page(async function EventPage({ params }) {
             class="text-xs font-semibold uppercase tracking-widest mb-3"
             style="color: rgba(255,255,255,0.55);"
           >
-            Monthly Online Meetup
+            Meetup Event
           </p>
           <h1 class="text-3xl sm:text-4xl font-bold mb-4">{event.title}</h1>
           <div
@@ -79,7 +79,7 @@ export default define.page(async function EventPage({ params }) {
               textClass=""
             />
             <span>
-              &middot; {event.duration} min &middot; Online &middot; Free
+              &middot;&ensp; {event.duration} min &ensp;&middot;&ensp; {event.meetingLink ? 'Online' : 'In Person' } &ensp;&middot;&ensp; Free
             </span>
           </div>
           {spotsRemaining > 0 && spotsRemaining <= 10 && (
