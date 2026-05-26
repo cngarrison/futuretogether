@@ -147,10 +147,10 @@
     }
 
     .header-desc {
-      font-size: 11pt;
+      font-size: 16pt;
       color: rgba(255,255,255,0.75);
-      line-height: 1.55;
-      max-width: 180mm;
+      line-height: 1.25;
+      max-width: 240mm;
     }
 
     /* ===== BODY SECTION ===== */
@@ -205,19 +205,19 @@
       margin-bottom: 1.5mm;
     }
     .topic-title {
-      font-size: 12pt;
+      font-size: 14pt;
       font-weight: 700;
       color: var(--teal);
       margin-bottom: 1.5mm;
-      line-height: 1.3;
+      line-height: 1.2;
     }
     .topic-card.highlight .topic-title {
       color: var(--amber);
     }
     .topic-desc {
-      font-size: 11pt;
+      font-size: 13pt;
       color: #4b5563;
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     /* Body Part C — Bottom row */
@@ -243,15 +243,15 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
     @media print {
-      .details-card { box-shadow: none; border: 1px solid #e5e7eb; border-left: 4px solid var(--amber); }
+      .details-card { box-shadow: none !important; }
     }
 
     .detail-row {
+      font-size: 16pt;
       display: flex;
       align-items: baseline;
       gap: 4mm;
       padding: 2.5mm 0;
-      font-size: 14pt;
     }
     .detail-row:not(:last-child) {
       border-bottom: 0.5px solid #e5e7eb;
@@ -281,7 +281,7 @@
       font-weight: 700;
       font-style: italic;
       color: var(--teal);
-      margin-top: 12mm;
+      margin-top: 8mm;
     }
 
     /* Register box */
@@ -365,7 +365,6 @@
     @media print {
       body { background: none; }
       .poster { box-shadow: none; }
-      .details-card { box-shadow: none; background: transparent; }
       .topic-card { box-shadow: none; }
     }
   </style>
@@ -497,7 +496,7 @@
       <!-- Right column: register box -->
       <div class="register-box">
         <div class="register-heading">Reserve your seat</div>
-        <div class="register-url">futuretogether.community/meetups</div>
+        <div class="register-url"><strong>futuretogether.community</strong>/meetups</div>
         <div class="register-small">Free registration &mdash; seats are limited</div>
         <div id="a3-qr" style="width:32mm;height:32mm;background:white;border-radius:4px;padding:3px;margin:4mm auto 0;display:block"></div>
         <div class="qr-label">Scan to register</div>
@@ -509,7 +508,7 @@
   <!-- ===== DARK FOOTER ===== -->
   <div class="footer">
     <div class="footer-left">
-      <img src="./logo-mark.svg" width="64" alt="Future Together logo mark">
+      <img src="./logo-mark-white.svg" width="64" alt="Future Together logo mark">
       <div class="footer-text">
         <div class="footer-brand">Future Together</div>
         <div class="footer-presenter">Presented by Charlie Garrison</div>

@@ -39,7 +39,7 @@
 
     @media print {
       body { background: none; }
-      .details-card { box-shadow: none; background: transparent; }
+      .details-card { box-shadow: none !important; }
     }
 
     /* ===== SCREEN PREVIEW WRAPPER ===== */
@@ -181,7 +181,7 @@
       background: white;
       border-left: 4px solid var(--amber);
       border-radius: 4px;
-      padding: 5mm 7mm;
+      padding: 4mm 7mm;
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
 
@@ -190,7 +190,7 @@
       align-items: baseline;
       gap: 4mm;
       padding: 2.5mm 0;
-      font-size: 14pt;
+      font-size: 16pt;
     }
     .detail-row:not(:last-child) {
       border-bottom: 0.5px solid #e5e7eb;
@@ -222,8 +222,10 @@
       color: var(--teal);
       text-align: center;
       padding: 4mm 0;
+/* 
       border-top: 0.5px solid #d1d5db;
       border-bottom: 0.5px solid #d1d5db;
+ */
     }
 
     .register {
@@ -411,7 +413,7 @@
     <div class="register">
       <div class="register-text">
         <div class="register-heading">Register to reserve your seat</div>
-        <span class="url">futuretogether.community/meetups</span>
+        <span class="url"><strong>futuretogether.community</strong>/meetups</span>
         <div class="urgency">Free registration &mdash; seats are limited</div>
       </div>
       <div class="register-qr-wrap">
@@ -424,7 +426,7 @@
   <!-- ===== DARK FOOTER ===== -->
   <div class="footer">
     <div class="footer-ft">
-    <img src="./logo-mark.svg" width="60px" />
+    <img src="./logo-mark-white.svg" width="60px" />
     <div class="footer-text">
       <div class="footer-brand">Future Together</div>
       <div class="footer-support">Presented by Charlie Garrison<br>Supported by Tumbarumba Chamber of Commerce</div>

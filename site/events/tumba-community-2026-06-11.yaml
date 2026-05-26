@@ -13,7 +13,7 @@ description: |
 date: 2026-06-11T08:30:00Z # 06:30 PM AEST (Sydney time) — note: AEST not AEDT, daylight saving has ended
 timezone: Australia/Sydney # For display formatting
 duration: 45
-capacity: 30
+capacity: 50
 registrationDeadline: 1
 meetingLink: 
 posterImage: /img/discuss-our-future-card.webp
