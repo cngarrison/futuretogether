@@ -1,0 +1,141 @@
+# Tumbarumba Event — Print Materials Brief
+
+## Status: IN PROGRESS
+Use this file to start a new conversation about flyers, posters, and print production.
+
+---
+
+## Event Details (confirmed)
+
+| | |
+|---|---|
+| **Title** | The Future Is Arriving. Is Tumbarumba Ready? |
+| **Date** | Thursday 11 June 2026 |
+| **Time** | 6:30 pm |
+| **Venue** | Café Nest Cinema, Tumbarumba |
+| **Entry** | Free — all welcome |
+| **Presenter** | Charlie Garrison |
+| **Supported by** | Tumbarumba Chamber of Commerce |
+| **Registration** | futuretogether.community/events/tumba-community |
+| **Tagline** | "The future is arriving. Let's face it together." |
+
+---
+
+## Files Created (all in `support/`)
+
+| File | Purpose | Status |
+|---|---|---|
+| `promotional-materials.html` | Full promo pack — newspaper ads (classified + quarter-page), A5 flyer, materials checklist | ✅ Complete |
+| `tumbarumba-poster-bleed.html` | A4 poster with 3mm bleed + trim marks, print-ready | ✅ Complete — needs Chamber logo |
+| `tumbarumba-event-plan.html` | Event plan for Laura / Chamber | ✅ Complete |
+| `email-to-laura.md` | Covering email to venue owner | ✅ Complete |
+
+---
+
+## Print Spec (for printer)
+
+- **Bleed:** 3mm on all sides
+- **Trim size:** A4 (210 × 297mm) for poster; A5 (148 × 210mm) for flyer
+- **Bleed box (PDF size):** 216 × 303mm for A4; 154 × 216mm for A5
+- **Trim marks:** At 3mm from each edge (corner crosses)
+- **Colour:** RGB (browser-generated PDF) — suitable for digital/laser printing; not CMYK
+- Tell printer: *"PDF is [bleed box size] with 3mm bleed on all sides. Trim to [trim size]. Trim marks at 3mm corners."*
+
+---
+
+## HTML → PDF Print Instructions (Chrome)
+
+1. Open the HTML file in **Chrome** (not Safari)
+2. `⌘P` → Save as PDF
+3. Paper size: Custom → enter exact bleed box dimensions (e.g. 216mm × 303mm)
+4. Margins: **None**
+5. Scale: **100%** — do NOT fit to page
+6. Background graphics: **✅ On** (essential — colours won't print without this)
+
+---
+
+## Design System
+
+| Token | Hex | Usage |
+|---|---|---|
+| `--teal` | `#1a5f6e` | Primary — header backgrounds, headings |
+| `--amber` | `#c4853a` | Accent — CTA, highlight bars, focal point |
+| `--warm-white` | `#f7f4ef` | Page/body background |
+| `--near-black` | `#1c1a18` | Footer background, body text |
+
+- **Font:** Plus Jakarta Sans (Google Fonts) — weights 400, 600, 700, 800
+- **Logo SVG:** Inline in all HTML files (converging lines + amber dot + chevron)
+
+---
+
+## A4 Poster — `tumbarumba-poster-bleed.html`
+
+### Design structure
+- **Header (teal, 152mm):** SVG converging lines decoration + amber focal point/chevron. Headline, subtitle, amber bar.
+- **Body (warm white, flex):** Hook paragraph, event details card (amber left border), FT tagline, registration URL.
+- **Footer (near-black, 40mm):** Future Together + Charlie Garrison / Chamber credit. Chamber logo placeholder.
+
+### SVG decoration (header)
+- 9 converging white lines fanning from left edge toward focal point (440, 210) in viewBox 580×420
+- Radial amber glow at focal point
+- Amber circle (r=20) at focal point
+- Amber chevron pointing right from focal point
+- Echoes the Future Together logo concept at poster scale
+
+---
+
+## A5 Flyer — `promotional-materials.html`
+
+The flyer section of `promotional-materials.html` is styled but does NOT have bleed/trim marks.
+**To do:** Create a separate `tumbarumba-flyer-bleed.html` with:
+- Page size: 154mm × 216mm (A5 + 3mm bleed)
+- Trim size: 148mm × 210mm
+- Same design as the flyer in `promotional-materials.html`
+- Trim marks at 3mm corners
+- Print in batches of 20–50 for noticeboard distribution
+
+---
+
+## Newspaper Ads — `promotional-materials.html`
+
+Both versions drafted and rendered visually. See the `promotional-materials.html` for the rendered ads.
+- **Classified:** ~55 words, text-only column style
+- **Quarter-page:** Full brand treatment, FT logo + Chamber logo placeholder
+
+Ads go to the paper with Chamber contact. Deadline confirmed with Chamber.
+
+---
+
+## Other Materials Checklist
+
+| Material | Status |
+|---|---|
+| Newspaper ad (classified) | ✅ Draft ready |
+| Newspaper ad (quarter-page) | ✅ Draft ready |
+| A4 poster with bleed | ✅ Draft ready — needs Chamber logo |
+| A5 flyer with bleed | ⬜ To do — create `tumbarumba-flyer-bleed.html` |
+| Social media posts (Facebook, LinkedIn) | ⬜ To do |
+| Chamber newsletter blurb (80–100 words) | ⬜ To do |
+| Event website listing | ✅ Live — `futuretogether.community/events/tumba-community` |
+| In-venue signage (A4, door sign) | ⬜ To do — week of event |
+| Door sign-in sheet | ⬜ To do — week of event |
+
+---
+
+## Voice Reminders for Copy
+
+- Lead with human consequence, not technology name
+- "AI" in subheadings/body — not in the main headline
+- Never: doom framing without action counterpart
+- Never: "prep", "survivalist", corporate speak
+- Always: "you don't have to figure this out alone"
+- Key phrases: "Not panic. Not paralysis. Action." / "The future is arriving. Let's face it together."
+- Rural angle: fewer fallback options BUT stronger community bonds — frame as agency, not vulnerability
+
+---
+
+## Related Memory Files
+
+- `tumbarumba-event-slideshow.md` — brief for creating the adapted talk slideshow
+- `futuretogether-progress.md` — full project progress log
+- `events.md` — event YAML format and process
