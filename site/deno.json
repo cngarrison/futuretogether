@@ -12,7 +12,7 @@
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "unstable": ["kv", "cron"],
   "exclude": ["**/_fresh/*"],
-  "include": ["events", "blog"],
+  "include": ["data/events", "blog"],
   "imports": {
     "@/": "./",
     "fresh": "jsr:@fresh/core@^2.3.3",

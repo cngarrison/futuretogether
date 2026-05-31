@@ -24,7 +24,7 @@ import { getKv } from "./kv.ts";
  *   - next_event_id pointer per slug (updated on registration/cancellation)
  */
 
-const EVENTS_DIR = "./events";
+const EVENTS_DIR = "./data/events";
 
 // KV key prefix for the cached next-available event ID per slug.
 const NEXT_EVENT_KEY = "next_event_id";
@@ -541,7 +541,7 @@ export async function updateOrganizerReminderSent(
 // More-info markdown loader
 // ---------------------------------------------------------------------------
 
-const MORE_INFO_DIR = "./events/more-info";
+const MORE_INFO_DIR = "./data/events/more-info";
 
 // Local marked instance — configured independently from blog.ts
 const moreInfoMarked = marked.use({
