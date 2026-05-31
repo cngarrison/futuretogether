@@ -1,6 +1,7 @@
 import { Head } from "fresh/runtime";
 import { define } from "../../utils.ts";
-import { getNextAvailableEvent, getRegistrationCount } from "@/utils/events.ts";
+import { getEventMoreInfoHtml, getNextAvailableEvent, getRegistrationCount } from "@/utils/events.ts";
+import EventMoreInfo from "@/islands/EventMoreInfo.tsx";
 import EventRegistrationForm from "@/islands/EventRegistrationForm.tsx";
 import EventDateTime from "@/islands/EventDateTime.tsx";
 import { getTurnstileSiteKey } from "@/utils/turnstile.ts";
@@ -14,6 +15,9 @@ export default define.page(async function EventPage({ params }) {
   const { eventSlug } = params;
   const event = await getNextAvailableEvent(eventSlug);
   const registrationCount = event ? await getRegistrationCount(event.id) : 0;
+  const moreInfoHtml = event?.moreInfoFile
+    ? await getEventMoreInfoHtml(event.moreInfoFile)
+    : null;
   const turnstileSiteKey = getTurnstileSiteKey();
 
   if (!event) {
@@ -184,6 +188,10 @@ export default define.page(async function EventPage({ params }) {
                     />
                   </div>
                 ))}
+
+              {moreInfoHtml && (
+                <EventMoreInfo html={moreInfoHtml} />
+              )}
             </div>
 
             {/* Right: registration form */}

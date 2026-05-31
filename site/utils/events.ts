@@ -1,4 +1,8 @@
 import { parse as parseYaml } from "@std/yaml";
+import { marked } from "marked";
+import { mangle } from "marked-mangle";
+import { gfmHeadingId } from "marked-gfm-heading-id";
+import { markedSmartypants } from "marked-smartypants";
 import { getKv } from "./kv.ts";
 
 /**
@@ -45,6 +49,7 @@ export interface EventConfig {
   presentedBy?: string; // Person/people presenting (e.g., "Charlie Garrison")
   organizer?: { name: string; email: string }; // Organiser contact for reminder emails
   sponsoredBy?: string; // Organization hosting (e.g., "Beyond Better")
+  moreInfoFile?: string; // Filename (without extension) of the more-info markdown file
 }
 
 // Registration data interface
@@ -532,6 +537,40 @@ export async function updateOrganizerReminderSent(
 }
 
 // Get registrations needing reminders
+// ---------------------------------------------------------------------------
+// More-info markdown loader
+// ---------------------------------------------------------------------------
+
+const MORE_INFO_DIR = "./events/more-info";
+
+// Local marked instance — configured independently from blog.ts
+const moreInfoMarked = marked.use({
+  async: false,
+  pedantic: false,
+  gfm: true,
+  breaks: true,
+})
+  .use(mangle())
+  .use(gfmHeadingId({}))
+  .use(markedSmartypants());
+
+/**
+ * Loads and renders the more-info markdown file for an event.
+ * Returns rendered HTML string, or null if the file doesn't exist.
+ */
+export async function getEventMoreInfoHtml(
+  moreInfoFile: string,
+): Promise<string | null> {
+  try {
+    const content = await Deno.readTextFile(
+      `${MORE_INFO_DIR}/${moreInfoFile}.md`,
+    );
+    return moreInfoMarked.parse(content) as string;
+  } catch {
+    return null;
+  }
+}
+
 export async function getRegistrationsNeedingReminder(
   reminderType: "day_before" | "hour_before",
 ): Promise<{
