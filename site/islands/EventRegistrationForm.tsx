@@ -309,10 +309,14 @@ export default function EventRegistrationForm({
             value={heardFrom}
             options={[
               { value: "", label: "Select an option" },
+              { value: "meetup", label: "Attended a meetup" },
               { value: "facebook", label: "Facebook" },
               { value: "linkedin", label: "LinkedIn" },
               { value: "x-twitter", label: "X (Twitter)" },
-              { value: "friend", label: "Friend or colleague" },
+              { value: "word-of-mouth", label: "Friend or colleague" },
+              { value: "poster", label: "Local poster or flyer" },
+              { value: "blog", label: "Blog or article" },
+              { value: "search", label: "Web search" },
               { value: "other", label: "Other" },
             ]}
             onChange={setHeardFrom}

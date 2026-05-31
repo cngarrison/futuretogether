@@ -33,8 +33,11 @@ const TOPIC_OPTIONS = [
 const HEARD_FROM_OPTIONS = [
   { value: "", label: "How did you find us?" },
   { value: "meetup", label: "Attended a meetup" },
+  { value: "facebook", label: "Facebook" },
   { value: "linkedin", label: "LinkedIn" },
+  { value: "x-twitter", label: "X (Twitter)" },
   { value: "word-of-mouth", label: "Friend or colleague" },
+  { value: "poster", label: "Local poster or flyer" },
   { value: "blog", label: "Blog or article" },
   { value: "search", label: "Web search" },
   { value: "other", label: "Other" },
