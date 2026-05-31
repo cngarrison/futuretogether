@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talking Points — Future Together · Tumbarumba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── Variables ─────────────────────────────────────────────── */
+    :root {
+      --teal:       #1a5f6e;
+      --amber:      #c4853a;
+      --warm-white: #f7f4ef;
+      --near-black: #1c1a18;
+    }
+
+    /* ── Reset & base ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 11pt;
+      color: var(--near-black);
+      background: #e5e7eb;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── Screen wrapper ─────────────────────────────────────────── */
+    .page {
+      max-width: 210mm;
+      margin: 0 auto;
+      background: var(--warm-white);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    }
+
+    /* ── Header (teal) ──────────────────────────────────────────── */
+    .header {
+      background: var(--teal);
+      padding: 8mm 10mm;
+    }
+
+    .header-eyebrow {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 3mm;
+    }
+
+    .header-title {
+      font-size: 22pt;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 2.5mm;
+    }
+
+    .header-subtitle {
+      font-size: 11pt;
+      font-weight: 400;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.5;
+      margin-bottom: 5mm;
+    }
+
+    .amber-bar {
+      width: 16mm;
+      height: 2.5px;
+      background: var(--amber);
+    }
+
+    /* ── Intro block ────────────────────────────────────────────── */
+    .intro {
+      background: var(--warm-white);
+      padding: 6mm 10mm;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .intro p {
+      font-size: 11pt;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    /* ── Q&A section ────────────────────────────────────────────── */
+    .qa-section {
+      background: var(--warm-white);
+      padding: 4mm 10mm 6mm;
+    }
+
+    .qa-block + .qa-block {
+      /* spacing between blocks handled by question margin-top */
+    }
+
+    .qa-question {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: var(--teal);
+      margin-top: 3mm;
+      margin-bottom: 1.5mm;
+    }
+
+    .qa-answer {
+      font-size: 10.5pt;
+      color: var(--near-black);
+      line-height: 1.5;
+    }
+
+    /* ── Bullet list (topics) ───────────────────────────────────── */
+    .topic-list {
+      list-style: none;
+      margin-top: 1.5mm;
+    }
+
+    .topic-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 2.5mm;
+      font-size: 10pt;
+      color: var(--near-black);
+      line-height: 1.5;
+      margin-bottom: 0.75mm;
+    }
+
+    .topic-list li .bullet {
+      color: var(--teal);
+      font-size: 11pt;
+      flex-shrink: 0;
+      line-height: 1.6;
+    }
+
+    /* ── Bottom strip ───────────────────────────────────────────── */
+    .bottom-strip {
+      background: #ffffff;
+      border-top: 2px solid rgba(26, 95, 110, 0.20);
+      padding: 5mm 10mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6mm;
+    }
+
+    .bottom-left .event-line {
+      font-size: 10pt;
+      font-weight: 600;
+      color: var(--teal);
+      line-height: 1.4;
+    }
+
+    .bottom-left .event-sub {
+      font-size: 9pt;
+      color: #6b7280;
+      margin-top: 0.5mm;
+    }
+
+    .bottom-right {
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: var(--teal);
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* ── Print styles (MUST come last) ─────────────────────────── */
+    @page {
+      size: A4;
+      margin: 12mm 14mm;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .page {
+        box-shadow: none;
+        max-width: 100%;
+      }
+
+      .header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-eyebrow">About the Poster</div>
+      <h1 class="header-title">Talking Points for Shopkeepers &amp; Staff</h1>
+      <p class="header-subtitle">For anyone who gets asked about the Future Together event poster.</p>
+      <div class="amber-bar"></div>
+    </div>
+
+    <!-- Intro -->
+    <div class="intro">
+      <p>These talking points are for you and your staff. If a customer asks about the poster, this covers the most common questions. Feel free to let them read it — or point them to <strong>futuretogether.community/meetups</strong> for the full details.</p>
+    </div>
+
+    <!-- Q&A -->
+    <div class="qa-section">
+
+      <div class="qa-block">
+        <p class="qa-question">What is it about?</p>
+        <p class="qa-answer">It's a free community talk about how technology changes are affecting jobs, businesses and everyday life — and what our community can do about it. Think of it less like a tech talk and more like a community conversation about our future. The topics are specific to Tumbarumba's situation: farming, the rail trail, small business, forestry, and what it all means for our kids.</p>
+      </div>
+
+      <div class="qa-block">
+        <p class="qa-question">I see 'AI' on the big poster — is this a tech event?</p>
+        <p class="qa-answer">AI is part of it, but the talk isn't about using AI or whether you like it. It's about changes that are already happening — to jobs, to how businesses work, to what skills young people will need — whether people use technology or not. When people hear 'AI', many immediately say 'I don't use AI' and switch off. But you don't need to use or understand technology to be affected by it.</p>
+      </div>
+
+      <div class="qa-block">
+        <p class="qa-question">Is it really free? Do I need to register?</p>
+        <p class="qa-answer">Free. No registration required — just turn up. Doors open at 6pm, talk starts at 6:30pm at Café Nest Cinema. If you'd like to reserve a seat, you can at futuretogether.community/meetups — but the door will be open regardless.</p>
+      </div>
+
+      <div class="qa-block">
+        <p class="qa-question">Who's running it?</p>
+        <p class="qa-answer">Charlie Garrison, with the support of the Tumbarumba Chamber of Commerce. Charlie started Future Together to help communities understand what's changing and how to respond — not with panic or paralysis, but with honest information and practical action. Several Chamber members are planning to attend.</p>
+      </div>
+
+      <div class="qa-block">
+        <p class="qa-question">What will actually be covered?</p>
+        <ul class="topic-list">
+          <li><span class="bullet">&middot;</span><span>How fast things are changing — and why the pace matters</span></li>
+          <li><span class="bullet">&middot;</span><span>Why getting AI to reliably do what humanity wants — not just what we ask — turns out to be unsolved, and why that's not a small thing</span></li>
+          <li><span class="bullet">&middot;</span><span>What changes when AI starts designing smarter AI — and why that threshold, once crossed, affects everyone</span></li>
+          <li><span class="bullet">&middot;</span><span>What it means for work and local business in regional areas</span></li>
+          <li><span class="bullet">&middot;</span><span>Why rural communities like Tumbarumba have real strengths here</span></li>
+          <li><span class="bullet">&middot;</span><span>What a genuinely good future looks like — honest hope, not wishful thinking</span></li>
+          <li><span class="bullet">&middot;</span><span>Six practical things people can do right now</span></li>
+        </ul>
+      </div>
+
+      <div class="qa-block">
+        <p class="qa-question">What about my kids?</p>
+        <p class="qa-answer">Probably the most important question. High school students are the generation most directly affected by what's coming — in terms of jobs, skills, and the world they'll inherit. The talk is as much for parents who want to understand what their kids are heading into as it is for anyone else.</p>
+      </div>
+
+      <div class="qa-block">
+        <p class="qa-question">Will there be another one if I miss it?</p>
+        <p class="qa-answer">If there's enough interest, yes. And there's already a smaller ongoing gathering — the Future Together coffee chat, every Tuesday morning at 8am here at Café Nest. Informal, open to anyone who's curious. No agenda, no jargon — just conversation.</p>
+      </div>
+
+      <div class="qa-block">
+        <p class="qa-question">Even the Pope is talking about this?</p>
+        <p class="qa-answer">He is. Pope Francis recently released <em>'Magnifica Humanitas — On Safeguarding The Human Person In The Time Of Artificial Intelligence'</em>. This conversation is happening at every level of society — from the Vatican to Tumbarumba. It belongs to everyone.</p>
+      </div>
+
+    </div>
+
+    <!-- Bottom strip -->
+    <div class="bottom-strip">
+      <div class="bottom-left">
+        <div class="event-line">Thursday 11 June &middot; 6:30pm &middot; Caf&eacute; Nest Cinema</div>
+        <div class="event-sub">Free entry — all welcome</div>
+      </div>
+      <div class="bottom-right">futuretogether.community/meetups</div>
+    </div>
+
+  </div>
+
+</body>
+</html>
