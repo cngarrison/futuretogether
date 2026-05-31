@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quarter-Page Ad — Future Together: Tumbarumba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #1a5f6e;
+      --amber: #c4853a;
+      --warm-white: #f7f4ef;
+      --near-black: #1c1a18;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ===== PRINT PAGE SETUP =====
+       Exact ad size: 129mm × 186mm — no bleed, no trim marks
+    */
+    @page {
+      size: 129mm 186mm;
+      margin: 0;
+    }
+
+    html {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #6b7280;
+    }
+
+    @media print {
+      body { background: none; }
+    }
+
+    /* ===== SCREEN PREVIEW WRAPPER ===== */
+    .preview-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+      min-height: 100vh;
+    }
+    @media print {
+      .preview-wrap { display: block; padding: 0; min-height: 0; }
+    }
+
+    /* ===== AD CONTAINER =====
+       129mm × 186mm — exact quarter-page, no bleed
+    */
+    .ad {
+      position: relative;
+      width: 129mm;
+      height: 186mm;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4); /* screen preview only */
+    }
+
+    /* ===== HEADER — TEAL ===== */
+    .ad-header {
+      flex: 0 0 68mm;
+      position: relative;
+      background: var(--teal);
+      overflow: hidden;
+      padding: 7mm 8mm 6mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ad-header svg.decoration {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    /* Logo row */
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4mm;
+    }
+
+    .eyebrow {
+      font-size: 6.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .ad-headline {
+      font-size: 30pt;
+      font-weight: 800;
+      color: white;
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+    }
+
+    .ad-sub {
+      font-size: 10pt;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(255,255,255,0.78);
+      margin-top: 2.5mm;
+    }
+
+    .amber-bar {
+      width: 14mm;
+      height: 2.5px;
+      background: var(--amber);
+      border-radius: 2px;
+      margin-top: 3.5mm;
+    }
+
+    /* ===== BODY — WARM WHITE ===== */
+    .ad-body {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      background: var(--warm-white);
+      padding: 5mm 8mm 4mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ad-intro {
+      font-size: 9.5pt;
+      line-height: 1.6;
+      color: #374151;
+    }
+
+    /* Event details box */
+    .event-box {
+      background: var(--teal);
+      color: white;
+      border-radius: 4px;
+      padding: 4mm 5mm;
+    }
+
+    .event-tag {
+      font-size: 6.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2mm;
+    }
+
+    .event-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 2.5mm;
+      line-height: 1.2;
+    }
+
+    .event-detail {
+      font-size: 9pt;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.8;
+    }
+
+    /* Tagline */
+    .tagline {
+      font-size: 8.5pt;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--teal);
+      text-align: center;
+      padding: 2mm 0;
+      border-top: 0.5px solid rgba(26,95,110,0.2);
+      border-bottom: 0.5px solid rgba(26,95,110,0.2);
+    }
+
+    /* Register */
+    .register {
+      text-align: center;
+    }
+    .register .register-label {
+      font-size: 7.5pt;
+      color: #6b7280;
+      margin-bottom: 1mm;
+    }
+    .register .register-url {
+      font-size: 10pt;
+      font-weight: 700;
+      color: var(--teal);
+    }
+    .register .register-note {
+      font-size: 7pt;
+      color: #9ca3af;
+      margin-top: 0.5mm;
+    }
+
+    /* ===== FOOTER — DARK ===== */
+    .ad-footer {
+      flex: 0 0 30mm;
+      background: var(--near-black);
+      padding: 4.5mm 8mm;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4mm;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 4mm;
+    }
+
+    .footer-text .footer-brand {
+      font-size: 9pt;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1.5mm;
+    }
+    .footer-text .footer-credit {
+      font-size: 6.5pt;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.55;
+    }
+
+    @media print {
+      .ad { box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body>
+<!-- Print: Chrome ⌘P → Save as PDF → Custom 129mm × 186mm → Margins: None → Scale: 100% → Background graphics: ON -->
+
+<div class="preview-wrap">
+<div class="ad">
+
+  <!-- ===== TEAL HEADER ===== -->
+  <div class="ad-header">
+
+    <!-- SVG DECORATION -->
+    <svg class="decoration" viewBox="0 0 490 510" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <radialGradient id="ad-glow" cx="370" cy="255" r="160" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#c4853a" stop-opacity="0.13"/>
+          <stop offset="100%" stop-color="#c4853a" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="ad-textGuard" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1a5f6e" stop-opacity="0.78"/>
+          <stop offset="50%" stop-color="#1a5f6e" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect width="490" height="510" fill="url(#ad-glow)"/>
+      <!-- Converging lines -->
+      <line x1="-10" y1="0"   x2="370" y2="255" stroke="white" stroke-width="1"   opacity="0.10"/>
+      <line x1="-10" y1="50"  x2="370" y2="255" stroke="white" stroke-width="1.3" opacity="0.16"/>
+      <line x1="-10" y1="100" x2="370" y2="255" stroke="white" stroke-width="1.8" opacity="0.22"/>
+      <line x1="-10" y1="160" x2="370" y2="255" stroke="white" stroke-width="2.3" opacity="0.30"/>
+      <line x1="-10" y1="255" x2="370" y2="255" stroke="white" stroke-width="3"   opacity="0.42"/>
+      <line x1="-10" y1="350" x2="370" y2="255" stroke="white" stroke-width="2.3" opacity="0.30"/>
+      <line x1="-10" y1="410" x2="370" y2="255" stroke="white" stroke-width="1.8" opacity="0.22"/>
+      <line x1="-10" y1="460" x2="370" y2="255" stroke="white" stroke-width="1.3" opacity="0.16"/>
+      <line x1="-10" y1="510" x2="370" y2="255" stroke="white" stroke-width="1"   opacity="0.10"/>
+      <!-- Text guard -->
+      <rect width="490" height="510" fill="url(#ad-textGuard)"/>
+      <!-- Amber focal circle -->
+      <circle cx="370" cy="255" r="22" fill="#c4853a"/>
+      <!-- Amber chevron -->
+      <polyline points="392,232 438,255 392,278" fill="none" stroke="#c4853a" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <div class="header-content">
+      <!-- Top: logo row -->
+      <div class="logo-row">
+        <!-- Future Together wordmark -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 80" role="img" aria-label="Future Together" style="height:28px;width:auto">
+          <line x1="2" y1="5"  x2="50" y2="40" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+          <line x1="2" y1="21" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+          <line x1="2" y1="40" x2="50" y2="40" stroke="white" stroke-width="3"   stroke-linecap="round"/>
+          <line x1="2" y1="59" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+          <line x1="2" y1="75" x2="50" y2="40" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+          <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+          <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="84" y="34" font-family="'Plus Jakarta Sans',sans-serif" font-size="21" font-weight="700" fill="white" letter-spacing="-0.5">Future</text>
+          <text x="84" y="59" font-family="'Plus Jakarta Sans',sans-serif" font-size="21" font-weight="400" fill="white" opacity="0.85" letter-spacing="-0.5">Together</text>
+        </svg>
+        <!-- Chamber of Commerce logo -->
+        <img src="./tumba-coc-logo-r.png" alt="Tumbarumba Chamber of Commerce" style="height:16px;opacity:0.85">
+      </div>
+
+      <!-- Bottom: eyebrow, headline, sub, bar -->
+      <div>
+        <div class="eyebrow">Free Community Event &nbsp;&middot;&nbsp; Tumbarumba</div>
+        <h1 class="ad-headline">The Future<br>Is Arriving.</h1>
+        <div class="ad-sub">Is Tumbarumba Ready?</div>
+        <div class="amber-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BODY ===== -->
+  <div class="ad-body">
+
+    <p class="ad-intro">Something significant is happening right now &mdash; not in some distant future. The technology reshaping work, business and everyday life is moving faster than most people realise. This free talk is for our whole community &mdash; no jargon, no doom, with time for your questions.</p>
+
+    <!-- Event details box -->
+    <div class="event-box">
+      <div class="event-tag">Free Community Event</div>
+      <div class="event-title">The Future Is Arriving.<br>Is Tumbarumba Ready?</div>
+      <div class="event-detail">
+        &#128197;&nbsp; Thursday 11 June 2026<br>
+        &#128336;&nbsp; 6:30 pm &nbsp;(doors open 6 pm)<br>
+        &#128205;&nbsp; Caf&eacute; Nest Cinema, Tumbarumba<br>
+        &#127981;&nbsp; Free entry &mdash; all welcome
+      </div>
+    </div>
+
+    <!-- Tagline -->
+    <div class="tagline">&ldquo;The future is arriving. Let&rsquo;s face it together.&rdquo;</div>
+
+    <!-- Register -->
+    <div class="register">
+      <div class="register-label">Register to reserve your seat (encouraged, not required)</div>
+      <div class="register-url">futuretogether.community/meetups</div>
+      <div class="register-note">Free &nbsp;&middot;&nbsp; Seats limited</div>
+    </div>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="ad-footer">
+    <div class="footer-left">
+      <!-- FT logo mark -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="Future Together" style="height:22px;width:auto;flex-shrink:0">
+        <line x1="2" y1="5"  x2="50" y2="40" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+        <line x1="2" y1="21" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+        <line x1="2" y1="40" x2="50" y2="40" stroke="white" stroke-width="3"   stroke-linecap="round"/>
+        <line x1="2" y1="59" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+        <line x1="2" y1="75" x2="50" y2="40" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+        <circle cx="50" cy="40" r="9" fill="#c4853a"/>
+        <polyline points="59,27 72,40 59,53" fill="none" stroke="#c4853a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="footer-text">
+        <div class="footer-brand">Future Together</div>
+        <div class="footer-credit">Presented by Charlie Garrison<br>Supported by Tumbarumba Chamber of Commerce</div>
+      </div>
+    </div>
+    <img src="./tumba-coc-logo-r.png" alt="Tumbarumba Chamber of Commerce" style="height:20px;opacity:0.7">
+  </div>
+
+</div><!-- .ad -->
+</div><!-- .preview-wrap -->
+
+</body>
+</html>
