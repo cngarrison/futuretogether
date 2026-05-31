@@ -40,7 +40,8 @@ export interface EventConfig {
   duration: number; // minutes
   capacity: number;
   registrationDeadline: number; // hours before event
-  meetingLink: string;
+  meetingLink?: string; // URL for online events (Jitsi, Zoom, etc.)
+  meetingLocation?: string; // Physical venue for in-person events
   posterImage?: string; // Optional event poster or infographic
   supportingImages?: string[]; // Optional additional charts or graphics shown in the body
   slideshowUrl?: string; // Optional link to post-event slideshow/resources

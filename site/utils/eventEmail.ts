@@ -22,8 +22,8 @@ export function generateICalendar(
     end: endDate,
     summary: event.title,
     description: event.description,
-    location: event.meetingLink,
-    url: event.meetingLink,
+    location: event.meetingLocation || event.meetingLink || undefined,
+    url: event.meetingLink || undefined,
     organizer: { name: FROM_NAME, email: FROM_EMAIL },
     attendees: [{
       name: `${attendee.firstName} ${attendee.lastName}`,
@@ -94,13 +94,20 @@ export async function sendConfirmationEmail(
           <td style="padding:8px 0 8px 16px;border-bottom:1px solid #d0e4e7;color:#374151;">${event.duration} minutes</td>
         </tr>
         <tr class="detail-row">
-          <td style="padding:8px 0;${
-    event.presentedBy ? "border-bottom:1px solid #d0e4e7;" : ""
-  }color:#374151;font-weight:600;">Format</td>
-          <td style="padding:8px 0 8px 16px;${
-    event.presentedBy ? "border-bottom:1px solid #d0e4e7;" : ""
-  }color:#374151;">Online via Jitsi</td>
+          <td style="padding:8px 0;border-bottom:1px solid #d0e4e7;color:#374151;font-weight:600;">Format</td>
+          <td style="padding:8px 0 8px 16px;border-bottom:1px solid #d0e4e7;color:#374151;">${
+            event.meetingLink && event.meetingLocation
+              ? "Online + In Person"
+              : event.meetingLink
+              ? "Online via Jitsi"
+              : "In Person"
+          }</td>
         </tr>
+        ${event.meetingLocation ? `
+        <tr class="detail-row">
+          <td style="padding:8px 0;border-bottom:1px solid #d0e4e7;color:#374151;font-weight:600;">Location</td>
+          <td style="padding:8px 0 8px 16px;border-bottom:1px solid #d0e4e7;color:#374151;">${event.meetingLocation}</td>
+        </tr>` : ""}
         ${
     event.presentedBy
       ? `
@@ -113,9 +120,9 @@ export async function sendConfirmationEmail(
       </table>
     </div>
 
-    <p style="text-align:center;margin:0 0 24px;">
+    ${event.meetingLink ? `<p style="text-align:center;margin:0 0 24px;">
       <a href="${event.meetingLink}" class="btn btn-teal">Join Meetup</a>
-    </p>
+    </p>` : ""}
 
     ${topicsHtml}
 
@@ -159,7 +166,7 @@ You're registered for ${event.title}.
 
 Date & time: ${formattedDate}
 Duration: ${event.duration} minutes
-Meeting link: ${event.meetingLink}
+${event.meetingLocation ? `Location: ${event.meetingLocation}\n` : ""}${event.meetingLink ? `Meeting link: ${event.meetingLink}` : ""}
 ${
     event.topics?.length
       ? `\nWhat we'll discuss:\n${event.topics.map((t) => `- ${t}`).join("\n")}`
@@ -218,12 +225,19 @@ export async function sendReminderEmail(
 
     <div style="background-color:#eef5f7;border-radius:8px;padding:24px;margin:0 0 28px;">
       <p style="margin:0 0 4px;font-weight:700;color:#1a5f6e;">${formattedDate}</p>
-      <p style="margin:0;font-size:14px;color:#374151;">Online via Jitsi</p>
+      <p style="margin:0;font-size:14px;color:#374151;">${
+        event.meetingLink && event.meetingLocation
+          ? "Online + In Person"
+          : event.meetingLink
+          ? "Online via Jitsi"
+          : "In Person"
+      }</p>
+      ${event.meetingLocation ? `<p style="margin:4px 0 0;font-size:14px;color:#374151;">📍 ${event.meetingLocation}</p>` : ""}
     </div>
 
-    <p style="text-align:center;margin:0 0 24px;">
+    ${event.meetingLink ? `<p style="text-align:center;margin:0 0 24px;">
       <a href="${event.meetingLink}" class="btn btn-teal">Join Meetup</a>
-    </p>
+    </p>` : ""}
 
     <p style="margin:0;font-size:13px;color:#6b7280;">See you there!</p>`;
 
@@ -232,7 +246,7 @@ export async function sendReminderEmail(
 Reminder: ${event.title} is starting in ${timeUntil}.
 
 Date & time: ${formattedDate}
-Meeting link: ${event.meetingLink}
+${event.meetingLocation ? `Location: ${event.meetingLocation}\n` : ""}${event.meetingLink ? `Meeting link: ${event.meetingLink}` : ""}
 
 See you there!
 
@@ -374,12 +388,18 @@ export async function sendOrganizerReminderEmail(
           <td style="padding:8px 0;border-bottom:1px solid #d0e4e7;color:#374151;font-weight:600;">Duration</td>
           <td style="padding:8px 0 8px 16px;border-bottom:1px solid #d0e4e7;color:#374151;">${event.duration} minutes</td>
         </tr>
+        ${event.meetingLocation ? `
+        <tr>
+          <td style="padding:8px 0;${event.meetingLink ? "border-bottom:1px solid #d0e4e7;" : ""}color:#374151;font-weight:600;">Location</td>
+          <td style="padding:8px 0 8px 16px;${event.meetingLink ? "border-bottom:1px solid #d0e4e7;" : ""}color:#374151;">${event.meetingLocation}</td>
+        </tr>` : ""}
+        ${event.meetingLink ? `
         <tr>
           <td style="padding:8px 0;color:#374151;font-weight:600;">Meeting link</td>
           <td style="padding:8px 0 8px 16px;color:#374151;">
             <a href="${event.meetingLink}" style="color:#1a5f6e;">${event.meetingLink}</a>
           </td>
-        </tr>
+        </tr>` : ""}
       </table>
     </div>
 
@@ -393,7 +413,7 @@ Attendees received: "${attendeeSubjectPrefix} ${event.title}"
 
 Date & time: ${formattedDate}
 Duration: ${event.duration} minutes
-Meeting link: ${event.meetingLink}
+${event.meetingLocation ? `Location: ${event.meetingLocation}\n` : ""}${event.meetingLink ? `Meeting link: ${event.meetingLink}` : ""}
 
 ${
     n === 0
