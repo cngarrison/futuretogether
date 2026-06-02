@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Facebook Ad — Future Together: Tumbarumba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /*
+      Facebook image post: 1080 × 1350px (4:5 ratio)
+      Screenshot at exactly 1080px wide (use browser zoom or screenshot tool)
+      Inner ad: 938px wide, centred with 71px warm-white side padding
+      The 4:5 canvas matches Facebook’s max portrait crop exactly.
+    */
+    :root {
+      --teal: #1a5f6e;
+      --amber: #c4853a;
+      --warm-white: #f7f4ef;
+      --near-black: #1c1a18;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #555;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 30px;
+    }
+
+    /* ===== OUTER CANVAS: 1080 × 1350px ===== */
+    .canvas {
+      width: 1080px;
+      height: 1350px;
+      background: var(--warm-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ===== INNER AD: 938 × 1350px (1:1.44 ratio) ===== */
+    .ad {
+      width: 938px;
+      height: 1350px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    }
+
+    /* ===== HEADER — TEAL ===== */
+    .ad-header {
+      flex: 0 0 348px;
+      position: relative;
+      background: var(--teal);
+      overflow: hidden;
+      padding: 36px 58px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ad-header svg.decoration {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 10px;
+    }
+
+    .ad-headline {
+      font-size: 64px;
+      font-weight: 800;
+      color: white;
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+    }
+
+    .ad-sub {
+      font-size: 22px;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(255,255,255,0.78);
+      margin-top: 10px;
+    }
+
+    .amber-bar {
+      width: 100px;
+      height: 5px;
+      background: var(--amber);
+      border-radius: 3px;
+      margin-top: 14px;
+    }
+
+    /* ===== BODY — WARM WHITE ===== */
+    .ad-body {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      background: var(--warm-white);
+      padding: 36px 58px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ad-intro {
+      font-size: 21px;
+      line-height: 1.6;
+      color: #374151;
+    }
+
+    /* Event details box */
+    .event-box {
+      background: var(--teal);
+      color: white;
+      border-radius: 8px;
+      padding: 26px 32px;
+      margin: 20px 0;
+    }
+
+    .event-tag {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 14px;
+    }
+
+    .event-detail {
+      font-size: 20px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.85;
+    }
+
+    .tagline {
+      font-size: 18px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--teal);
+      text-align: center;
+      padding: 16px 0;
+      border-top: 1px solid rgba(26,95,110,0.2);
+      border-bottom: 1px solid rgba(26,95,110,0.2);
+    }
+
+    .register {
+      text-align: center;
+    }
+    .register .register-label {
+      font-size: 15px;
+      color: #6b7280;
+      margin-bottom: 6px;
+    }
+    .register .register-url {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--teal);
+    }
+    .register .register-note {
+      font-size: 13px;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+
+    /* ===== FOOTER — DARK ===== */
+    .ad-footer {
+      flex: 0 0 220px;
+      background: var(--near-black);
+      padding: 0 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .footer-text .footer-brand {
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+    .footer-text .footer-credit {
+      font-size: 14px;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+<!--
+  HOW TO EXPORT AS PNG:
+  1. Open in Chrome
+  2. Set browser zoom so the .canvas is exactly 1080px wide on screen
+     (View → Zoom: 100% if your display is 1080px wide, or adjust accordingly)
+  3. Use a full-page screenshot tool (e.g. GoFullPage, or DevTools → Capture screenshot)
+     OR: ⌘+Shift+4 on Mac, click-drag to select exactly the canvas area
+  Tip: In Chrome DevTools (F12), set device width to 1180px (1080 + 2×30px body padding)
+  and use “Capture full size screenshot” for a pixel-perfect export.
+-->
+
+<div class="canvas">
+<div class="ad">
+
+  <!-- ===== TEAL HEADER ===== -->
+  <div class="ad-header">
+
+    <svg class="decoration" viewBox="0 0 490 510" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <radialGradient id="ad-glow" cx="370" cy="255" r="160" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#c4853a" stop-opacity="0.13"/>
+          <stop offset="100%" stop-color="#c4853a" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="ad-textGuard" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1a5f6e" stop-opacity="0.78"/>
+          <stop offset="50%" stop-color="#1a5f6e" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect width="490" height="510" fill="url(#ad-glow)"/>
+      <line x1="-10" y1="0"   x2="370" y2="255" stroke="white" stroke-width="1"   opacity="0.10"/>
+      <line x1="-10" y1="50"  x2="370" y2="255" stroke="white" stroke-width="1.3" opacity="0.16"/>
+      <line x1="-10" y1="100" x2="370" y2="255" stroke="white" stroke-width="1.8" opacity="0.22"/>
+      <line x1="-10" y1="160" x2="370" y2="255" stroke="white" stroke-width="2.3" opacity="0.30"/>
+      <line x1="-10" y1="255" x2="370" y2="255" stroke="white" stroke-width="3"   opacity="0.42"/>
+      <line x1="-10" y1="350" x2="370" y2="255" stroke="white" stroke-width="2.3" opacity="0.30"/>
+      <line x1="-10" y1="410" x2="370" y2="255" stroke="white" stroke-width="1.8" opacity="0.22"/>
+      <line x1="-10" y1="460" x2="370" y2="255" stroke="white" stroke-width="1.3" opacity="0.16"/>
+      <line x1="-10" y1="510" x2="370" y2="255" stroke="white" stroke-width="1"   opacity="0.10"/>
+      <rect width="490" height="510" fill="url(#ad-textGuard)"/>
+      <circle cx="370" cy="255" r="22" fill="#c4853a"/>
+      <polyline points="392,232 438,255 392,278" fill="none" stroke="#c4853a" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <div class="header-content">
+      <div class="logo-row">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 80" role="img" aria-label="Future Together" style="height:52px;width:auto">
+          <line x1="2" y1="5"  x2="50" y2="40" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+          <line x1="2" y1="21" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+          <line x1="2" y1="40" x2="50" y2="40" stroke="white" stroke-width="3"   stroke-linecap="round"/>
+          <line x1="2" y1="59" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+          <line x1="2" y1="75" x2="50" y2="40" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+          <circle cx="50" cy="40" r="7" fill="#c4853a"/>
+          <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="84" y="34" font-family="'Plus Jakarta Sans',sans-serif" font-size="21" font-weight="700" fill="white" letter-spacing="-0.5">Future</text>
+          <text x="84" y="59" font-family="'Plus Jakarta Sans',sans-serif" font-size="21" font-weight="400" fill="white" opacity="0.85" letter-spacing="-0.5">Together</text>
+        </svg>
+        <img src="./tumba-coc-logo-r.png" alt="Tumbarumba Chamber of Commerce" style="height:32px;opacity:0.85">
+      </div>
+
+      <div>
+        <div class="eyebrow">Free Community Event &nbsp;&middot;&nbsp; Tumbarumba</div>
+        <h1 class="ad-headline">The Future<br>Is Arriving.</h1>
+        <div class="ad-sub">Is Tumbarumba Ready?</div>
+        <div class="amber-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BODY ===== -->
+  <div class="ad-body">
+
+    <p class="ad-intro">Something significant is happening right now &mdash; not in some distant future. The technology reshaping work, business and everyday life is moving faster than most people realise. This free talk is for our whole community &mdash; no jargon, no doom, with time for your questions.</p>
+
+    <div class="event-box">
+      <div class="event-tag">Free Community Event</div>
+      <div class="event-detail">
+        &#128197;&nbsp; Thursday 11 June 2026<br>
+        &#128336;&nbsp; 6:30 pm &nbsp;(doors open 6 pm)<br>
+        &#128205;&nbsp; Caf&eacute; Nest Cinema, Tumbarumba<br>
+        &#127981;&nbsp; Free entry &mdash; all welcome
+      </div>
+    </div>
+
+    <div class="tagline">&ldquo;The future is arriving. Let&rsquo;s face it together.&rdquo;</div>
+
+    <div class="register">
+      <div class="register-label">Register to reserve your seat (encouraged, not required)</div>
+      <div class="register-url">futuretogether.community/meetups</div>
+      <div class="register-note">Free &nbsp;&middot;&nbsp; Seats limited</div>
+    </div>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="ad-footer">
+    <div class="footer-left">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="Future Together" style="height:44px;width:auto;flex-shrink:0">
+        <line x1="2" y1="5"  x2="50" y2="40" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+        <line x1="2" y1="21" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+        <line x1="2" y1="40" x2="50" y2="40" stroke="white" stroke-width="3"   stroke-linecap="round"/>
+        <line x1="2" y1="59" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+        <line x1="2" y1="75" x2="50" y2="40" stroke="white" stroke-width="2"   stroke-linecap="round" opacity="0.45"/>
+        <circle cx="50" cy="40" r="9" fill="#c4853a"/>
+        <polyline points="59,27 72,40 59,53" fill="none" stroke="#c4853a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="footer-text">
+        <div class="footer-brand">Future Together</div>
+        <div class="footer-credit">Presented by Charlie Garrison<br>Supported by Tumbarumba Chamber of Commerce</div>
+      </div>
+    </div>
+    <img src="./tumba-coc-logo-r.png" alt="Tumbarumba Chamber of Commerce" style="height:40px;opacity:0.7">
+  </div>
+
+</div><!-- .ad -->
+</div><!-- .canvas -->
+
+</body>
+</html>
