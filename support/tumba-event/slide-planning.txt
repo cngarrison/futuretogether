@@ -1,0 +1,67 @@
+Ensure a consistent theme (story line) - the presentation is about changes that **are** happening, and what we as community can do to be prepared and resilient. The core focus of those changes is due to AI, but include tech more generally as well as various global issues. 
+
+Add content for parents and kids - specifically high school kids - I believe high school kids are ones who most need to understand the changes - they are likely to feel the impact the most - they are entering a very unstable world and work force. 
+
+Move community slide towards beginning to ground presentation in practial framing - if appropriate, can still have a community slide later in presentation to explain how everything learned can now be implemented as part of community action. 
+
+Create example of AI "magic trick" so audience can appreciate the power that AI models represent. Much of the audience have heard of AI but don't really have a grasp of how powerful it is. If they only perceive it as glorified google search; the impact of other topics like the alignment problem will be lost on them. 
+
+Add content for christians (Tumba has a strong religious aspect) as grounding that all levels of all organizations are recognizing the critical importance of the AI topic - reference the MAGNIFICA HUMANITAS from the pope:
+https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html
+
+When AI builds itself.
+https://www.anthropic.com/institute/recursive-self-improvement
+
+---
+
+The Rundown: Pope Leo XIV just released Magnifica Humanitas, his first encyclical, to the Church’s 1.4B members, warning that a moral AI means nothing “if that morality is determined by a few” and calling to “disarm” the tech before it dominates humanity.
+
+The details:
+
+  - Leo warned that AI’s drivers are private, transnational companies that already surpass the capacity of many governments, and that the tech is never neutral.
+
+  - He called for making AI “human-friendly” and freeing it from monopolistic control, warning it risks reducing people to cogs in an efficiency machine.
+
+  - Leo called for “robust legal frameworks, independent oversight, informed users, and a political system that does not abdicate its responsibility.”
+
+  - On warfare, he said lethal decisions must never be delegated to AI and that “no algorithm can make war morally acceptable.”
+
+  - Anthropic’s Christopher Olah also joined the Pope, saying “every frontier AI lab operates inside incentives that can conflict with doing the right thing.”
+
+Why it matters: The Pope issues only a handful of encyclicals, and dedicating one to AI signals how seriously the Catholic Church is taking what’s coming. Leo sees AI as the Industrial Revolution of our time, and he’s chosen a partner that has been the most vocal about AI safety and most willing to say no to unrestricted AI use by the military.
+
+---
+
+The Rundown: FT just revealed that tools capable of removing guardrails from open-source AI are generating thousands of “decensored” models, with modified Meta and Google models found answering questions on bioweapons and child exploitation.
+
+The details:
+
+  - FT removed guardrails from Llama 3.3 in 10 minutes, using a tool called Heretic (available on GitHub), four lines of code, and no specialist hardware.
+
+  - The model provided answers to harmful questions, including those about ricin dosage. A modified Gemma 3 also answered dangerous questions.
+
+  - Heretic’s creator said the tool has produced 3.5K+ decensored models, downloaded 13M times, and he stripped Gemma 4 within 90 minutes of release.
+
+  - Google called it “a known technical challenge facing all open models.” Meta, meanwhile, declined to comment.
+
+Why it matters: While the technique only works on open-source models exposing their code, and proprietary systems remain safe, the bigger question remains: for how long? Open models have been closing the gap with closed systems, and it’s just months before they’re at this level — at which point, a decensored version could be a major risk.
+
+---
+
+The Rundown: CEOs of OpenAI, Anthropic, Google DeepMind, and Microsoft just signed an open letter pressing Congress to make synthetic-DNA sellers vet every buyer/order, warning that AI can now enable bad actors to create bioweapon designs.
+
+https://prod-i.a.dj.com/public/resources/documents/dnaletter.pdf
+
+The details:
+
+  - Signees include Sam Altman, Dario Amodei, Mustafa Suleyman, Alexandr Wang, and Demis Hassabis, alongside DNA-synthesis industry leaders.
+
+  - The letter said, “AI systems now outperform PhD-level virologists… about highly technical lab procedures in their own domains of expertise.”
+
+  - The signers urge Congress to make U.S. synthetic-DNA and RNA sellers screen orders, verify buyers, and log sales to keep dangerous sequences traceable.
+
+  - They also warned that "knowledge barriers which have historically prevented bad actors from obtaining biological weapons will meaningfully erode."
+
+Why it matters: Like RSI, biological weapons concerns have been outlined for years as one of the steps up the ladder of AI improvement — and this one’s concerning enough to even unite Altman and Amodei. It’s clear that laws and regulations are going to have to adapt quickly to a changing AI-accelerated world, but the question is if they can.
+
+---
