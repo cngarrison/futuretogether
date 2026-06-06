@@ -20,6 +20,7 @@ fi
 # Dev-only constants (safe to hard-code; Cloudflare Turnstile always-pass test keys)
 export FT_TURNSTILE_SITE_KEY="${FT_TURNSTILE_SITE_KEY:-1x00000000000000000000AA}"
 export FT_TURNSTILE_SECRET_KEY="${FT_TURNSTILE_SECRET_KEY:-1x0000000000000000000000000000000AA}"
+#export PORT="5173"
 
 # # Staff password hash from its own file (keeps it out of .env.local)
 # if [ -f .staff-pass-hash ]; then
@@ -27,4 +28,4 @@ export FT_TURNSTILE_SECRET_KEY="${FT_TURNSTILE_SECRET_KEY:-1x0000000000000000000
 # fi
 
 deno task build
-exec deno task start
+exec deno task local-start

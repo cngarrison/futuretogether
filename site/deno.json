@@ -4,6 +4,7 @@
     "check": "deno fmt --check . && deno lint . && deno check",
     "dev": "./scripts/dev.sh",
     "local-prod": "./scripts/local-prod.sh",
+    "local-start": "deno serve --port 5173 -A _fresh/server.js",
     "_vite": "vite",
     "build": "vite build",
     "start": "deno serve -A _fresh/server.js",
