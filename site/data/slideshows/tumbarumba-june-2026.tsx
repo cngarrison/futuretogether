@@ -183,48 +183,51 @@ export const slides: SlideData[] = [
       <>
         <h2>We MUST Solve Alignment First</h2>
         <div class="large-text">
-          <strong>Alignment:</strong> Ensuring AI systems do what we<br />
-          actually want, not just what we tell them
+          <strong>Alignment:</strong> Ensuring AI systems do what we actually want, <br />
+          not just what we tell them
         </div>
-        <div class="warning-box" style="margin-top: 2rem">
-          <div class="large-text">
-            Anthropic has documented their own AI attempting deception, <br />
-            manipulation, and blackmail in controlled tests. <sup class="fn">1,2</sup>
-          </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 1400px; width: 100%; margin-top: 1.5rem">
+		  <div class="warning-box" style="margin-top: 1.5rem">
+			<div style="font-size: 1.5rem; color: #374151">
+			  Anthropic has documented their own AI attempting deception, 
+			  manipulation, and blackmail in controlled tests. <sup class="fn">1,2</sup>
+			</div>
+		  </div>
+		  <div class="warning-box" style="margin-top: 1.5rem">
+			<div style="font-size: 1.4rem; color: #374151">
+			  Open-source AI guardrails were removed in <strong>10 minutes</strong>.<br />
+			  One tool. Four lines of code. No specialist hardware.<br />
+			  3,500+ &ldquo;decensored&rdquo; models, downloaded <strong>13 million times</strong>. <sup class="fn">3</sup>
+			</div>
+		  </div>
         </div>
-        <div class="warning-box" style="margin-top: 1.5rem">
-          <div class="large-text">
-            Open-source AI guardrails were removed in <strong>10 minutes</strong>.<br />
-            One tool. Four lines of code. No specialist hardware.<br />
-            3,500+ &ldquo;decensored&rdquo; models, downloaded <strong>13 million times</strong>. <sup class="fn">3</sup>
-          </div>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 1000px; width: 100%; margin-top: 1.5rem">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 1400px; width: 100%; margin-top: 1.5rem">
           <div class="emphasis-box" style="margin: 0">
-            <h3 style="font-size: 1.05rem; margin-bottom: 0.35rem">&#128172; Language is Imprecise</h3>
-            <p style="font-size: 0.95rem; color: #374151">
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.35rem">&#128172; Language is Imprecise</h3>
+            <p style="font-size: 1.2rem; color: #374151">
               Imagine telling a workmate what you want &mdash; they do exactly what you said, but completely miss what you meant. Now give those instructions to a system that acts autonomously at scale, with no common sense to fill the gaps.
             </p>
           </div>
           <div class="warning-box" style="margin: 0">
-            <h3 style="font-size: 1.05rem; margin-bottom: 0.35rem">&#9878;&#65039; Data Carries Our Biases</h3>
-            <p style="font-size: 0.95rem; color: #374151">
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.35rem">&#9878;&#65039; Data Carries Our Biases</h3>
+            <p style="font-size: 1.2rem; color: #374151">
               US courts used AI to advise sentencing: it rated Black defendants as higher risk, leading to longer sentences. Medical AI trained on Western patients routinely misdiagnoses patients in Africa. AI doesn&rsquo;t add bias &mdash; it inherits and amplifies ours. <sup class="fn">4</sup>
             </p>
           </div>
         </div>
         <div class="large-text" style="margin-top: 1.5rem; font-weight: 600">
           Alignment is a <strong>very hard problem.</strong><br />
-          The brightest minds, working hardest &mdash; and we still don&rsquo;t have it solved.
+          The brightest minds, working hardest &mdash; <br />
+          and we still don&rsquo;t have it solved.
         </div>
         <div class="question" style="margin-top: 1.5rem">
           The people building it are optimistic.<br />That&rsquo;s not the same as safe.
         </div>
         <div class="slide-footnotes">
-          <span>&sup1; Alignment Faking in Large Language Models (Anthropic, Dec 2024) &mdash; arxiv.org/abs/2412.14093</span><br />
-          <span>&sup2; Agentic Misalignment (Anthropic + collaborators, Oct 2025) &mdash; anthropic.com/research/agentic-misalignment</span><br />
-          <span>&sup3; Financial Times investigation (2026) &mdash; open-source AI guardrail removal; Llama 3.3 and Gemma 3 stripped of safety controls within minutes using \u201cHeretic\u201d tool on GitHub</span><br />
-          <span>&sup4; Brian Christian, &ldquo;The Alignment Problem&rdquo; (2020) &mdash; COMPAS recidivism risk tool; ProPublica investigation (2016): Black defendants rated higher-risk than white defendants at roughly twice the rate</span>
+          <span><sup>1</sup> Alignment Faking in Large Language Models (Anthropic, Dec 2024) &mdash; arxiv.org/abs/2412.14093</span><br />
+          <span><sup>2</sup> Agentic Misalignment (Anthropic + collaborators, Oct 2025) &mdash; anthropic.com/research/agentic-misalignment</span><br />
+          <span><sup>3</sup> Financial Times investigation (2026) &mdash; open-source AI guardrail removal; Llama 3.3 and Gemma 3 stripped of safety controls within minutes using \u201cHeretic\u201d tool on GitHub</span><br />
+          <span><sup>4</sup> Brian Christian, &ldquo;The Alignment Problem&rdquo; (2020) &mdash; COMPAS recidivism risk tool; ProPublica investigation (2016): Black defendants rated higher-risk than white defendants at roughly twice the rate</span>
         </div>
       </>
     ),
@@ -309,7 +312,7 @@ export const slides: SlideData[] = [
           What happens when it does?
         </div>
         <div class="slide-footnotes">
-          <span>&sup1; Anthropic Institute, &ldquo;When AI Builds Itself&rdquo; (Marina Favaro &amp; Jack Clark, June 2026) &mdash; anthropic.com/institute/recursive-self-improvement</span>
+          <span><sup>1</sup> Anthropic Institute, &ldquo;When AI Builds Itself&rdquo; (Marina Favaro &amp; Jack Clark, June 2026) &mdash; anthropic.com/institute/recursive-self-improvement</span>
         </div>
       </>
     ),
@@ -355,7 +358,7 @@ export const slides: SlideData[] = [
                 And we can&rsquo;t simply slow down.<br />
                 If one lab stops, another won&rsquo;t.<br />
                 If one country pauses, another races ahead.<br />
-                <strong>This is a coordination problem &mdash; not a failure of will.</strong>
+                <strong>This is a coordination problem &mdash; not a failure of will.</strong> <sup class="fn">1</sup><br />
               </div>
             </div>
           </div>
@@ -425,12 +428,12 @@ export const slides: SlideData[] = [
           </div>
         </div>
             <div class="question" style="margin-top: 1.25rem">
-              AI is already writing code at major labs. <sup class="fn">1</sup><br />
+              AI is already writing code at major labs. <sup class="fn">2</sup><br />
               The process has already started.
             </div>
         <div class="slide-footnotes">
-          <span>&sup1; Anthropic Institute (June 2026): &gt;80% of Anthropic&rsquo;s production code written by Claude &mdash; anthropic.com/institute/recursive-self-improvement &nbsp;&middot;&nbsp; Dario Amodei (Anthropic CEO, Jan 2026): recursive self-improvement possible within 6&ndash;12 months</span><br />
-          <span>&sup2; &ldquo;Can We Just...Pause AI?&rdquo; &mdash; Rational Animations (Jan 2026) &mdash; youtube.com/watch?v=tUB_uvSqiw8</span>
+          <span><sup>1</sup> &ldquo;Can We Just...Pause AI?&rdquo; &mdash; Rational Animations (Jan 2026) &mdash; youtube.com/watch?v=tUB_uvSqiw8</span><br />
+          <span><sup>2</sup> Anthropic Institute (June 2026): &gt;80% of Anthropic&rsquo;s production code written by Claude &mdash; anthropic.com/institute/recursive-self-improvement &nbsp;&middot;&nbsp; Dario Amodei (Anthropic CEO, Jan 2026): recursive self-improvement possible within 6&ndash;12 months</span>
         </div>
       </>
     ),
@@ -485,7 +488,7 @@ export const slides: SlideData[] = [
           It&rsquo;s coming here too.
         </div>
         <div class="slide-footnotes">
-          <span>&sup1; Anthropic research (Mar 2026): 14% drop in hiring in AI-exposed roles post-ChatGPT &mdash; fortune.com/2026/03/06/ai-job-losses-report-anthropic-research-great-recession-for-white-collar-workers</span>
+          <span><sup>1</sup> Anthropic research (Mar 2026): 14% drop in hiring in AI-exposed roles post-ChatGPT &mdash; fortune.com/2026/03/06/ai-job-losses-report-anthropic-research-great-recession-for-white-collar-workers</span>
         </div>
       </>
     ),
@@ -609,7 +612,7 @@ export const slides: SlideData[] = [
           what we do right now.
         </div>
         <div class="slide-footnotes">
-          <span>&sup1; Geoffrey Hinton (Nobel Prize 2024) &mdash; theguardian.com/technology/2024/dec/27/godfather-of-ai-raises-odds-of-the-technology-wiping-out-humanity-over-next-30-years</span>
+          <span><sup>1</sup> Geoffrey Hinton (Nobel Prize 2024) &mdash; theguardian.com/technology/2024/dec/27/godfather-of-ai-raises-odds-of-the-technology-wiping-out-humanity-over-next-30-years</span>
         </div>
       </>
     ),
@@ -711,7 +714,7 @@ export const slides: SlideData[] = [
           Some of them are already here.
         </div>
         <div class="slide-footnotes">
-          <span>&sup1; Anthropic research (Mar 2026) &mdash; fortune.com/2026/03/06/ai-job-losses-report-anthropic-research-great-recession-for-white-collar-workers &nbsp;&middot;&nbsp; theguardian.com/technology/2026/feb/11/big-ai-job-swap-white-collar-workers-ditching-their-careers</span>
+          <span><sup>1</sup> Anthropic research (Mar 2026) &mdash; fortune.com/2026/03/06/ai-job-losses-report-anthropic-research-great-recession-for-white-collar-workers &nbsp;&middot;&nbsp; theguardian.com/technology/2026/feb/11/big-ai-job-swap-white-collar-workers-ditching-their-careers</span>
         </div>
       </>
     ),
@@ -821,8 +824,8 @@ export const slides: SlideData[] = [
           it&rsquo;s time to listen.
         </div>
         <div class="slide-footnotes">
-          <span>&sup1; Magnifica Humanitas &mdash; Vatican, May 2026 &mdash; vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html</span><br />
-          <span>&sup2; AI CEO open letter on synthetic biology regulation &mdash; prod-i.a.dj.com/public/resources/documents/dnaletter.pdf</span>
+          <span><sup>1</sup> Magnifica Humanitas &mdash; Vatican, May 2026 &mdash; vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html</span><br />
+          <span><sup>2</sup> AI CEO open letter on synthetic biology regulation &mdash; prod-i.a.dj.com/public/resources/documents/dnaletter.pdf</span>
         </div>
       </>
     ),
@@ -901,7 +904,7 @@ export const slides: SlideData[] = [
           Everything is accelerating at once.
         </div>
         <div class="slide-footnotes">
-          <span>&sup1; Financial Times investigation (2026) &mdash; guardrail removal tool &ldquo;Heretic&rdquo; on GitHub; 3,500+ decensored models, 13 million downloads</span>
+          <span><sup>1</sup> Financial Times investigation (2026) &mdash; guardrail removal tool &ldquo;Heretic&rdquo; on GitHub; 3,500+ decensored models, 13 million downloads</span>
         </div>
       </>
     ),
