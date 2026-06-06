@@ -1115,7 +1115,7 @@ export const slides: SlideData[] = [
       anchor: 'The future is arriving. Let\u2019s face it together.',
       bullets: [
         { type: 'say', text: 'Point to QR code \u2014 futuretogether.community/events/tumbarumba \u2014 resources, events, how to stay connected' },
-        { type: 'say', text: 'Bring a friend to the next one. This conversation needs to spread. I\u2019m here at Café Nest every Tuesday morning 8am - available to chat.' },
+        { type: 'say', text: 'Bring a friend to the next one. This conversation needs to spread. I\u2019m here at Caf\u00e9 Nest every Tuesday morning 8am - available to chat.' },
         { type: 'cue', text: 'Open Q&A: \u201cThere are no wrong questions tonight.\u201d Then wait.' },
         { type: 'cue', text: 'If silence: \u201cI\u2019ll start \u2014 what\u2019s one thing from tonight that surprised you?\u201d' },
       ],
