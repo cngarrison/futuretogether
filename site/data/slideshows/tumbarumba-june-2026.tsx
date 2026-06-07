@@ -118,7 +118,7 @@ export const slides: SlideData[] = [
           </div>
           <div style="flex: 2; display: flex; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.22); min-height: 260px">
             <img
-              src="/img/slideshows/tumbarumba-june-2026/farmer-paddock.png"
+              src="/img/slideshows/tumbarumba-june-2026/farmer-paddock.webp"
               alt="Sheep farmer consulting AI on a tablet in a high-country paddock, Snowy Mountains backdrop at dusk"
               style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;"
             />
@@ -301,7 +301,7 @@ export const slides: SlideData[] = [
           </div>
           <div style="flex: 2; display: flex; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.22); min-height: 260px">
             <img
-              src="/img/slideshows/tumbarumba-june-2026/task-capability-growth.png"
+              src="/img/slideshows/tumbarumba-june-2026/task-capability-growth.webp"
               alt="Exponetial Rise of AI Task Capabilith graph"
               style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;"
             />
@@ -520,7 +520,7 @@ export const slides: SlideData[] = [
         <div style="display: flex; gap: 2rem; align-items: flex-start; max-width: 1300px; width: 100%; margin-top: 1.25rem">
           <div style="flex: 1; display: flex; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.22); min-height: 260px">
             <img
-              src="/img/slideshows/tumbarumba-june-2026/high-school-student.png"
+              src="/img/slideshows/tumbarumba-june-2026/high-school-student.webp"
               alt="A teenager at a desk looking at a laptop, slightly uncertain expression"
               style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;"
             />
@@ -601,7 +601,7 @@ export const slides: SlideData[] = [
 		  </div>
           <div style="flex: 2; display: flex; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.22); min-height: 260px">
             <img
-              src="/img/slideshows/tumbarumba-june-2026/utopia-dystopia.png"
+              src="/img/slideshows/tumbarumba-june-2026/utopia-dystopia.webp"
               alt="50/50 split between utopia and dystopia"
               style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;"
             />
@@ -968,7 +968,7 @@ export const slides: SlideData[] = [
           </div>
           <div style="flex: 2; display: flex; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.22); min-height: 220px">
             <img
-              src="/img/slideshows/tumbarumba-june-2026/community-garden.png"
+              src="/img/slideshows/tumbarumba-june-2026/community-garden.webp"
               alt="Community garden with locals helping each other"
               style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;"
             />
