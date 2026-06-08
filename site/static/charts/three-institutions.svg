@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" role="img" aria-label="Three-card diagram: The Church (Pope Leo XIV, Magnifica Humanitas), The Scientists (Altman, Amodei, Hassabis, Suleyman), The Insiders (Christopher Olah, Anthropic) — all saying the same thing about AI">
+
+  <!-- Background -->
+  <rect width="800" height="240" fill="#f7f4ef" rx="12"/>
+
+  <!-- ═══ Card 1: The Church ═══ -->
+  <rect x="30" y="20" width="220" height="142" rx="8" fill="white" stroke="#e5e0d8" stroke-width="1"/>
+  <!-- Header band: rounded top, square bottom -->
+  <rect x="30" y="20" width="220" height="40" rx="8" fill="#1a5f6e"/>
+  <rect x="30" y="48" width="220" height="12" fill="#1a5f6e"/>
+  <text x="140" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="white" letter-spacing="1.5">THE CHURCH</text>
+  <text x="140" y="83" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600" fill="#1c1a18">Pope Leo XIV</text>
+  <text x="140" y="102" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#1c1a18" font-style="italic">Magnifica Humanitas</text>
+  <text x="140" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="rgba(28,26,24,0.55)">Encyclical &#183; May 2026</text>
+  <text x="140" y="142" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="rgba(28,26,24,0.55)">Addressed to 1.4 billion Catholics</text>
+
+  <!-- ═══ Card 2: The Scientists ═══ -->
+  <rect x="290" y="20" width="220" height="142" rx="8" fill="white" stroke="#e5e0d8" stroke-width="1"/>
+  <rect x="290" y="20" width="220" height="40" rx="8" fill="#1a5f6e"/>
+  <rect x="290" y="48" width="220" height="12" fill="#1a5f6e"/>
+  <text x="400" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="white" letter-spacing="1.5">THE SCIENTISTS</text>
+  <text x="400" y="83" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#1c1a18">Altman &#183; Amodei</text>
+  <text x="400" y="101" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#1c1a18">Hassabis &#183; Suleyman</text>
+  <text x="400" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="rgba(28,26,24,0.55)">AI CEOs &#183; Testimony to</text>
+  <text x="400" y="142" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="rgba(28,26,24,0.55)">US Congress &#183; 2026</text>
+
+  <!-- ═══ Card 3: The Insiders ═══ -->
+  <rect x="550" y="20" width="220" height="142" rx="8" fill="white" stroke="#e5e0d8" stroke-width="1"/>
+  <rect x="550" y="20" width="220" height="40" rx="8" fill="#1a5f6e"/>
+  <rect x="550" y="48" width="220" height="12" fill="#1a5f6e"/>
+  <text x="660" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="white" letter-spacing="1.5">THE INSIDERS</text>
+  <text x="660" y="83" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600" fill="#1c1a18">Christopher Olah</text>
+  <text x="660" y="102" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="rgba(28,26,24,0.55)">Safety researcher, Anthropic</text>
+  <text x="660" y="125" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="rgba(28,26,24,0.55)" font-style="italic">&#x201C;Every frontier AI lab</text>
+  <text x="660" y="143" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="rgba(28,26,24,0.55)" font-style="italic">operates inside incentives...&#x201D;</text>
+
+  <!-- ═══ Amber separator ═══ -->
+  <line x1="40" y1="180" x2="760" y2="180" stroke="#c4853a" stroke-width="1.5"/>
+
+  <!-- ═══ Closing statement ═══ -->
+  <text x="400" y="207" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-style="italic" fill="#1c1a18">When the Pope, the CEOs, and the engineers all say the same thing &#8212;</text>
+  <text x="400" y="230" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="700" fill="#1a5f6e">it&#x2019;s time to listen.</text>
+
+</svg>
