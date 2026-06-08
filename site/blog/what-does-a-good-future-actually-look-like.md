@@ -86,11 +86,11 @@ What we can do is be part of the conversation — about values, about what we wa
 
 ## Why this matters
 
-There's a reason this post exists in a series that's otherwise heavily focused on risks, disruption, and preparation.
+There's a reason this article exists in a series that's otherwise heavily focused on risks, disruption, and preparation.
 
 Fear is real information. The risks covered in this series — to work, to supply chains, to social stability, to alignment itself — are worth taking seriously. But fear alone is not a good guide for action. Fear contracts. It makes people defensive, reactive, and focused on the short term. It's not the right state from which to think clearly about what kind of future we want to help build.
 
-What I want you to take from this post is simple: the utopia outcome is genuinely desirable. Not as a fantasy — as a real possibility that is worth working toward.
+What I want you to take from this article is simple: the utopia outcome is genuinely desirable. Not as a fantasy — as a real possibility that is worth working toward.
 
 That matters because the path to that outcome runs through alignment being achieved before we reach the threshold at which AI becomes self-directing and beyond our influence. The window for getting that right is not infinite. The decisions being made right now — in research labs, in boardrooms, in governments — will shape which direction this goes.
 

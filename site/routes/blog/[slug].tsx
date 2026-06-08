@@ -237,7 +237,7 @@ export default define.page(async function BlogPost(ctx) {
               style={{ clear: "both" }}
             >
               <h2 class="text-2xl font-bold mb-6" style="color: #1c1a18;">
-                Related Posts
+                Related Articles
               </h2>
               <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {relatedPosts.map((related) => (
@@ -303,7 +303,7 @@ export default define.page(async function BlogPost(ctx) {
                   d="M10 19l-7-7m0 0l7-7m-7 7h18"
                 />
               </svg>
-              Back to blog
+              Back to articles
             </a>
           </footer>
         </article>
@@ -316,6 +316,7 @@ export default define.page(async function BlogPost(ctx) {
       >
         <div class="relative max-w-7xl max-h-full overflow-auto">
           <button
+            type="button"
             id="screenshot-close"
             class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-75 transition-all z-10"
             aria-label="Close image overlay"

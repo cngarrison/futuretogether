@@ -22,7 +22,7 @@ export default define.page(async function SeriesPage(ctx) {
           class="font-semibold transition-opacity hover:opacity-70"
           style="color: #1a5f6e;"
         >
-          ← Back to blog
+          ← Back to articles
         </a>
       </div>
     );
@@ -189,7 +189,7 @@ export default define.page(async function SeriesPage(ctx) {
                   d="M10 19l-7-7m0 0l7-7m-7 7h18"
                 />
               </svg>
-              Back to blog
+              Back to articles
             </a>
           </div>
         </div>

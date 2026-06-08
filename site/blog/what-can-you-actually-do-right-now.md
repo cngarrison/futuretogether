@@ -2,7 +2,7 @@
 id: 12
 title: "What can you actually do right now?"
 date: "2026-02-21"
-excerpt: "Nine posts in, and now the question that matters most. Not what should someone do in the abstract — what can you actually do, today, with the life you have?"
+excerpt: "Nine articles in, and now the question that matters most. Not what should someone do in the abstract — what can you actually do, today, with the life you have?"
 author: "Charles N. Garrison"
 tags: [
   "AI",
@@ -34,7 +34,7 @@ The first thing to say is this: we are still in the awareness and conversation s
 
 Most people — including most intelligent, engaged, thoughtful people — are not yet having serious conversations about AI development and what it means for how we live. The gap between what's happening and what people understand is still enormous. Closing that gap is the most important work right now.
 
-I don't have a finished 10-step plan. I don't think anyone does. What I have is a set of observations about where we are, and some honest thoughts about where to start. That's what this post is.
+I don't have a finished 10-step plan. I don't think anyone does. What I have is a set of observations about where we are, and some honest thoughts about where to start. That's what this article is.
 
 ---
 
@@ -44,7 +44,7 @@ I don't have a finished 10-step plan. I don't think anyone does. What I have is 
 
 **Educate yourself.**
 
-This series is a starting point, not a destination. The questions it raises have depth that nine blog posts can't fully explore. Go further. Read [Dario Amodei's essay on what AI could make possible](https://www.darioamodei.com/essay/machines-of-loving-grace). Understand the alignment problem more deeply. Follow people who are working on these questions seriously — researchers, ethicists, policy thinkers. Stay curious without becoming a consumer of doom.
+This series is a starting point, not a destination. The questions it raises have depth that nine articles can't fully explore. Go further. Read [Dario Amodei's essay on what AI could make possible](https://www.darioamodei.com/essay/machines-of-loving-grace). Understand the alignment problem more deeply. Follow people who are working on these questions seriously — researchers, ethicists, policy thinkers. Stay curious without becoming a consumer of doom.
 
 The goal isn't to become an expert. It's to be informed enough to have the conversation.
 

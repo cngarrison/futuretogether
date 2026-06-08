@@ -74,7 +74,7 @@ When I introduce this frame — "start with food, water, shelter if things go ba
 
 It's too confronting. It feels like survivalism, like prepper culture, like something that belongs to a different kind of person in a different kind of conversation. They ask: "But why would we ever be in that situation? What conditions would actually make food preparation necessary?"
 
-That's a fair question. And it deserves a proper answer — which is why there's a whole separate post in this series dedicated to it: [What conditions make food preparation important?](/blog/what-conditions-make-food-preparation-important). I won't try to answer it fully here.
+That's a fair question. And it deserves a proper answer — which is why there's a whole separate article in this series dedicated to it: [What conditions make food preparation important?](/blog/what-conditions-make-food-preparation-important). I won't try to answer it fully here.
 
 What I will say is this: in local meetups, once people get past the initial discomfort, the conversations become surprisingly practical. People talk about farms they have access to, about friends with land. About the resurgence of interest in canning and preserving food. About the kind of knowledge that used to be common and has slowly been outsourced to supermarket supply chains.
 

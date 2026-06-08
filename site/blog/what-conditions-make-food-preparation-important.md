@@ -2,7 +2,7 @@
 id: 10
 title: "What conditions make food preparation (and similar) efforts important?"
 date: "2026-02-19"
-excerpt: "This is the post I find hardest to write — not because the scenarios are implausible, but because naming them out loud still feels uncomfortable. Let's do it anyway."
+excerpt: "This is the article I find hardest to write — not because the scenarios are implausible, but because naming them out loud still feels uncomfortable. Let's do it anyway."
 author: "Charles N. Garrison"
 tags: [
   "AI",
@@ -18,7 +18,7 @@ series_part: 7
 
 # What conditions make food preparation (and similar) efforts important?
 
-I want to be upfront about something: this is the post I find hardest to write.
+I want to be upfront about something: this is the article I find hardest to write.
 
 Not because the scenarios are implausible — some of them are already unfolding in slow motion, and others have been part of strategic risk discussions for decades. The discomfort is different. It's the feeling of naming things out loud that most of us would rather leave unspoken.
 
@@ -70,7 +70,7 @@ COVID demonstrated something important: a biological disruption can reshape dail
 
 **Societal breakdown and AI misalignment**
 
-This one is harder to make concrete, because it depends on technical outcomes that remain genuinely uncertain. The spectrum runs from — AI being used by powerful actors to concentrate wealth and power in ways that erode democratic institutions — to more serious failure modes where AI systems pursue goals that don't align with human welfare. Even the less dramatic end of that spectrum — AI accelerating the erosion of shared institutions and social trust — is worth taking seriously. For more on what alignment actually means and why it's difficult, see [this post](/blog/what-is-ai-alignment-and-why-is-it-so-hard).
+This one is harder to make concrete, because it depends on technical outcomes that remain genuinely uncertain. The spectrum runs from — AI being used by powerful actors to concentrate wealth and power in ways that erode democratic institutions — to more serious failure modes where AI systems pursue goals that don't align with human welfare. Even the less dramatic end of that spectrum — AI accelerating the erosion of shared institutions and social trust — is worth taking seriously. For more on what alignment actually means and why it's difficult, see [this article](/blog/what-is-ai-alignment-and-why-is-it-so-hard).
 
 ---
 
@@ -108,12 +108,12 @@ There's no single right answer. Every household and community starts from a diff
 
 ## I'm not the expert. Go find out.
 
-I want to be honest about the limits of this post. I'm not a risk analyst, a food systems expert, or a military strategist. I've done enough reading to believe these questions are worth taking seriously — but the detailed answers are out there, written by people who know far more than I do.
+I want to be honest about the limits of this article. I'm not a risk analyst, a food systems expert, or a military strategist. I've done enough reading to believe these questions are worth taking seriously — but the detailed answers are out there, written by people who know far more than I do.
 
 Some places worth your time:
 
 - **Your local agricultural extension services or council** — practical information about local food systems and community resilience often lives closer than you'd think
-- **The [Maslow's Hierarchy post](/blog/how-can-maslows-hierarchy-frame-our-planning)** — for a framework to organise your thinking about what to prioritise
+- **The [Maslow's Hierarchy article](/blog/how-can-maslows-hierarchy-frame-our-planning)** — for a framework to organise your thinking about what to prioritise
 - **ALLFED** (allfed.info) — research on how catastrophic events impact food systems globally
 - **Your neighbours** — seriously. The most practical knowledge about local resilience is in the people around you
 

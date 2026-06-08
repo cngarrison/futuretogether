@@ -193,7 +193,7 @@ export default define.page(function StartAGroup() {
               {
                 title: "The blog series",
                 desc:
-                  "Nine posts covering the core ideas — AI, work, community, preparation, and hope.",
+                  "Nine articles covering the core ideas — AI, work, community, preparation, and hope.",
                 href: "/blog",
                 label: "Read the series",
               },

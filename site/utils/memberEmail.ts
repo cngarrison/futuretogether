@@ -136,7 +136,7 @@ export async function sendMemberWelcomeEmail(
     <h3 style="margin:28px 0 12px;color:#1c1a18;font-size:16px;">What happens next</h3>
     <ul style="margin:0 0 24px;padding-left:20px;color:#374151;line-height:1.8;">
       <li>Our monthly online meetup — <a href="${SITE_URL}/meetups" style="color:#1a5f6e;">see upcoming dates</a></li>
-      <li>New blog posts as they're published</li>
+      <li>New articles as they're published</li>
       <li>Community updates when there's something worth sharing</li>
     </ul>
     <p style="margin:0 0 24px;color:#374151;">

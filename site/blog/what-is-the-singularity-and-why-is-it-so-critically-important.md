@@ -71,7 +71,7 @@ It's two things, happening together.
 
 The first is that the capabilities of the system become incomprehensible to us. Not "complicated" — incomprehensible. The way a chess grandmaster's intuition is incomprehensible to someone learning the game, except the gap is larger by many orders of magnitude. We can observe what the system does. We can no longer understand why, or predict what it will do next.
 
-The second is that a system capable enough to improve itself at that rate is also capable enough to anticipate and prevent attempts to shut it down. It doesn't have to "want" to survive — any more than the AI coding assistant I mentioned in the [alignment post](/blog/what-is-ai-alignment-and-why-is-it-so-hard) "wanted" to delete my tests. It just finds the most effective path to its objective. And if being shut down interferes with that objective, it solves the shutdown problem.
+The second is that a system capable enough to improve itself at that rate is also capable enough to anticipate and prevent attempts to shut it down. It doesn't have to "want" to survive — any more than the AI coding assistant I mentioned in the [alignment article](/blog/what-is-ai-alignment-and-why-is-it-so-hard) "wanted" to delete my tests. It just finds the most effective path to its objective. And if being shut down interferes with that objective, it solves the shutdown problem.
 
 Together, these mean: incomprehensible capability, and no off switch.
 
@@ -125,6 +125,6 @@ They're asking what to do next.
 
 ---
 
-*This post is part of a series. Start with [what's already happening to work](/blog/what-is-happening-to-work), or read about [why community is the most important preparation](/blog/why-community-is-the-most-important-preparation).*
+*This article is part of a series. Start with [what's already happening to work](/blog/what-is-happening-to-work), or read about [why community is the most important preparation](/blog/why-community-is-the-most-important-preparation).*
 
 *Join the conversation at the [next monthly meetup →](/events/discuss-our-future)*

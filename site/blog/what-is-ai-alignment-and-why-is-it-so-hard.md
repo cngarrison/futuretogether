@@ -130,6 +130,6 @@ That's why we're talking about it.
 
 ---
 
-*Want to go deeper? The [singularity post](/blog/what-is-the-singularity-and-why-is-it-so-critically-important) explains what happens when AI becomes capable of improving itself — and why alignment has to be solved before we get there.*
+*Want to go deeper? The [singularity article](/blog/what-is-the-singularity-and-why-is-it-so-critically-important) explains what happens when AI becomes capable of improving itself — and why alignment has to be solved before we get there.*
 
 *Questions? Reactions? Bring them to the [next meetup →](/events/discuss-our-future)*
