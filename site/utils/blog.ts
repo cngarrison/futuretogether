@@ -81,7 +81,7 @@ function processMarkdownContent(markdown: string): {
 // Transform HTML to add proper callout classes
 function transformCallouts(html: string): string {
   return html.replace(
-    /<div class="callout (info|warning|tip|success)">/g,
+    /<div class="callout (info|warning|tip|success|quote)">/g,
     (match, type) => `<div class="callout callout-${type}">`,
   );
 }

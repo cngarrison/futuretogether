@@ -156,6 +156,28 @@ body {
   color: #15803d;
 }
 
+.callout-quote {
+  background-color: color-mix(in srgb, #c4853a 7%, #f7f4ef);
+  border-color: #c4853a;
+  color: #1c1a18;
+  font-size: 1.05rem;
+  font-style: italic;
+  padding-left: 2.75rem;
+  position: relative;
+  line-height: 1.7;
+}
+
+.callout-quote::before {
+  content: '\201C';
+  position: absolute;
+  left: 0.75rem;
+  top: 0.5rem;
+  font-size: 3rem;
+  color: #c4853a;
+  line-height: 0.75;
+  font-style: normal;
+}
+
 /* =============================================================================
    Article: Floating image figures (images with title= attribute in markdown)
    ============================================================================= */
