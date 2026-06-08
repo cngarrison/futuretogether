@@ -15,6 +15,8 @@ Then I read Pope Leo XIV's encyclical on artificial intelligence. And something 
 
 Not because the news was good — it isn't. Not because the Pope has solutions — he doesn't, not fully. But because of what his decision to write this document means, and because of the quality of thinking inside it.
 
+<div class="callout quote">"Technology is never neutral — it takes on the characteristics of those who devise, finance and control it." — Pope Leo XIV, <em>Magnifica Humanitas</em></div>
+
 ---
 
 ## An encyclical is not a blog post
@@ -39,11 +41,15 @@ I want to share three ideas from the document I keep returning to, because they 
 
 **Algorithmic systems cannot extend mercy.** Important decisions — employment, credit, access to public services — are increasingly being delegated to automated systems. The encyclical names what those systems lack: "compassion, mercy, forgiveness, and above all, the hope that people are able to change." A person's past becomes permanent in ways no human judge would allow. This is not a bug to be fixed. It is a structural feature of systems that optimise for consistency. Human judgment must remain in the loop wherever context and the possibility of redemption are relevant.
 
+<div class="callout quote">"compassion, mercy, forgiveness, and above all, the hope that people are able to change." — Pope Leo XIV, <em>Magnifica Humanitas</em></div>
+
 **Data is a collective product.** The encyclical argues that "ownership of data cannot be left solely in private hands." Your online behaviour, your health records, your purchasing patterns — these are individually yours, but they gain value and meaning in aggregate. The collective production of data entails collective claims on it. **This is a direct challenge to the foundational business model of every major AI company** — not an abstract philosophical point, but a practical one about governance and rights.
 
 ---
 
 ## The Pope is not alone
+
+![Three-card diagram showing institutional consensus on AI: The Church (Pope Leo XIV, Magnifica Humanitas, addressed to 1.4 billion Catholics), The Scientists (Altman, Amodei, Hassabis, Suleyman — testimony to US Congress 2026), and The Insiders (Christopher Olah, safety researcher, Anthropic)](/charts/three-institutions.svg)
 
 What gives the encyclical its particular weight, in this context, is that the same message is arriving from completely different directions.
 
