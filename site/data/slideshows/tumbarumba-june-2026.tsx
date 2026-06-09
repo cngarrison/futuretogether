@@ -1005,7 +1005,7 @@ export const slides: SlideData[] = [
           <div>
             <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">&#129504; Awareness</h3>
             <p style="font-size: 1rem; color: #374151">
-              Stay informed. Understand what&rsquo;s actually happening versus the hype. Conversations like this one are where it starts.
+              Stay informed. Understand what&rsquo;s actually happening versus the hype. Conversations like this one are where it starts. And be critical of your sources &mdash; AI is already being used to generate and amplify disinformation at scale. Multiple channels, trusted local voices.
             </p>
           </div>
           <div>
@@ -1019,7 +1019,7 @@ export const slides: SlideData[] = [
                 style="color: #c4853a; text-decoration: none; border-bottom: 1px solid rgba(196,133,58,0.5)"
               >
                 start a local group
-              </a>. Collective sense-making is more powerful than individual worry.
+              </a>. Collective sense-making is more powerful than individual worry. Lions, Rotary, RFS, and local sporting clubs already exist &mdash; they just need this conversation added to them.
             </p>
           </div>
           <div>
@@ -1037,7 +1037,7 @@ export const slides: SlideData[] = [
           <div>
             <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">&#128176; Financial Resilience</h3>
             <p style="font-size: 1rem; color: #374151">
-              Reduce debt. Build a buffer. Economic disruption amplifies existing vulnerability &mdash; and it arrives faster than most people expect.
+              Reduce debt. Build a buffer. Economic disruption amplifies existing vulnerability &mdash; and it arrives faster than most people expect. Keep cash on hand &mdash; EFTPOS goes down when infrastructure does. Know how to transact without it.
             </p>
           </div>
           <div>
@@ -1066,6 +1066,7 @@ export const slides: SlideData[] = [
         { type: 'say', text: 'Know your skills \u2014 which are AI-resistant? Which are AI-complementary? Adapt rather than react.' },
         { type: 'say', text: 'Local resilience: community gardens, local suppliers, knowing your neighbours. This works in Tumbarumba.' },
         { type: 'cue', text: 'Say the anchor slowly. Three beats: Not panic. Not paralysis. Action.' },
+        { type: 'cue', text: 'Mention the addendum slide on offline preparedness if there are Q&A questions about practical steps \u2014 and direct people to the handout.' },
       ],
     },
   },
@@ -1164,6 +1165,81 @@ export const slides: SlideData[] = [
         { type: 'say', text: 'Maslow isn\u2019t an answer \u2014 it\u2019s a map for asking better questions about what matters most' },
         { type: 'say', text: 'Bad outcome: start near the bottom (food, safety, stability). Good outcome: start near the top. The hierarchy applies either way.' },
         { type: 'cue', text: 'Visual breath slide. Don\u2019t over-explain.' },
+      ],
+    },
+  },
+
+  // ── SLIDE 20 ── When Systems Go Down: Offline Readiness [ADDENDUM] ────────────
+  {
+    id: 20,
+    title: "When Systems Go Down: Offline Readiness [Addendum]",
+    content: (
+      <>
+        <h2>When Systems Go Down</h2>
+        <div class="large-text">
+          The most practical resilience doesn&rsquo;t require a plan &mdash;<br />
+          it requires a few things already in place before you need them.
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.1rem 2rem; max-width: 1100px; width: 100%; margin-top: 1.5rem">
+          <div class="info-box" style="margin: 0">
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">&#128251; AM/FM Radio</h3>
+            <p style="font-size: 0.95rem; color: #374151">
+              Emergency broadcasts and local news still work when the internet doesn&rsquo;t. A battery-powered or hand-crank radio costs $30 and works in a blackout.
+            </p>
+          </div>
+          <div class="info-box" style="margin: 0">
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">&#128225; UHF Radio</h3>
+            <p style="font-size: 0.95rem; color: #374151">
+              Local communication without any infrastructure. Farmers already use them. In a major disruption, they&rsquo;re how neighbours coordinate when mobile networks are down.
+            </p>
+          </div>
+          <div class="info-box" style="margin: 0">
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">&#128181; Cash &amp; Barter</h3>
+            <p style="font-size: 0.95rem; color: #374151">
+              EFTPOS fails when power or network goes down. Keep enough cash to cover a week of essentials. Know which local businesses will trade on account or goodwill.
+            </p>
+          </div>
+          <div class="info-box" style="margin: 0">
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">&#128196; Hard Copies</h3>
+            <p style="font-size: 0.95rem; color: #374151">
+              Important documents, insurance, medical records, key contacts, and a local community directory &mdash; printed. When cloud services are unavailable, paper still works.
+            </p>
+          </div>
+          <div class="info-box" style="margin: 0">
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">&#128267; Power Banks &amp; Batteries</h3>
+            <p style="font-size: 0.95rem; color: #374151">
+              A charged power bank and spare batteries extend how long your devices work during an outage. In extended disruptions, knowing how to charge offline (solar, car) matters.
+            </p>
+          </div>
+          <div class="info-box" style="margin: 0">
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">&#129309; Know Your Neighbours</h3>
+            <p style="font-size: 0.95rem; color: #374151">
+              During any major disruption, the people closest to you physically are best placed to help. A community directory, a shared WhatsApp group, or simply knowing who lives nearby &mdash; it all counts.
+            </p>
+          </div>
+        </div>
+        <div class="emphasis-box" style="max-width: 1100px; width: 100%; margin-top: 1.25rem">
+          <p style="font-size: 1rem; color: #374151; text-align: center">
+            Based on the <strong>Red Cross All Hazards preparedness framework</strong> &mdash; EmergencyRedi: Get in the Know, Get Connected, Get Organised, Get Packing.
+            Contact <strong>Peter Makryllos</strong> or your local Red Cross for community preparedness workshops.
+          </p>
+        </div>
+        <div class="question" style="margin-top: 1rem">
+          Resilience isn&rsquo;t about being a prepper.<br />
+          It&rsquo;s about not being caught completely flat-footed.
+        </div>
+      </>
+    ),
+    notes: {
+      pace: 'Addendum \u00b7 use during Q&A on practical steps',
+      cumulative: 61,
+      anchor: '[ADDENDUM \u2014 bring up when someone asks \u201cwhat can I actually do this week?\u201d]',
+      bullets: [
+        { type: 'say', text: 'This is the Red Cross All Hazards framework applied to AI/tech disruption \u2014 Peter Makryllos helped shape this' },
+        { type: 'say', text: 'These aren\u2019t prepper ideas. AM/FM radio and cash on hand are things your grandparents did by default.' },
+        { type: 'say', text: 'UHF radios: most rural people already have them. Emphasise existing tools, not new purchases.' },
+        { type: 'say', text: 'Community directory: does Tumbarumba have one? If not, that\u2019s a project the Chamber could run.' },
+        { type: 'cue', text: 'This slide pairs with the handout \u2014 direct people there for the full list.' },
       ],
     },
   },
