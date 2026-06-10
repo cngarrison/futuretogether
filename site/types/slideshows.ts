@@ -37,6 +37,7 @@ export interface SlideshowMeta {
   title: string;
   eventSlug?: string; // links to events system if applicable
   slideCount: number;
+  durationMinutes: number;
   description?: string;
   loadSlides: () => Promise<SlideData[]>;
 }

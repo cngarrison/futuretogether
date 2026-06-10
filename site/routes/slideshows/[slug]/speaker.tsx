@@ -21,6 +21,7 @@ export default define.page(async function SpeakerPage({ params }) {
   }
 
   const slides = await meta.loadSlides();
+  //console.log('SlideShowSpeaker: ', {durationMinutes: meta.durationMinutes});
 
   return (
     <>
@@ -41,7 +42,7 @@ export default define.page(async function SpeakerPage({ params }) {
 		))}
       </div>
       <SpeakerNotesSync role="controller" slideCount={slides.length} />
-      <SpeakerTimer totalDurationMinutes={45} />
+      <SpeakerTimer totalDurationMinutes={meta.durationMinutes} />
       <ConnectionStatus />
     </>
   );
