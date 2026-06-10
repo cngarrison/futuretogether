@@ -594,9 +594,9 @@ export const slides: SlideData[] = [
 			  </div>
 			</div>
 			<div class="large-text" style="margin-top: 2rem; font-weight: 600; color: #dc2626">
-			  Experts once put it at 50/50.<br />
-			  Hinton (2024): 10&ndash;20% chance of human extinction. <sup class="fn">1</sup><br />
-			  Even at 20/80, one of them <strong>will happen</strong>.
+			  AI researchers call this probability <strong>&ldquo;p(doom)&rdquo;</strong> &mdash; the odds they assign to catastrophic outcomes. <sup class="fn">2</sup><br />
+			  Experts once put it at 50/50. Hinton (2024): 10&ndash;20% chance of human extinction. <sup class="fn">1</sup><br />
+			  Almost nobody credible puts it at zero.
 			</div>
 		  </div>
           <div style="flex: 2; display: flex; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.22); min-height: 260px">
@@ -612,7 +612,8 @@ export const slides: SlideData[] = [
           what we do right now.
         </div>
         <div class="slide-footnotes">
-          <span><sup>1</sup> Geoffrey Hinton (Nobel Prize 2024) &mdash; theguardian.com/technology/2024/dec/27/godfather-of-ai-raises-odds-of-the-technology-wiping-out-humanity-over-next-30-years</span>
+          <span><sup>1</sup> Geoffrey Hinton (Nobel Prize 2024) &mdash; theguardian.com/technology/2024/dec/27/godfather-of-ai-raises-odds-of-the-technology-wiping-out-humanity-over-next-30-years</span><br />
+          <span><sup>2</sup> p(doom) tracker &mdash; pdoom100.com &mdash; a live record of probability-of-doom estimates from AI researchers, scientists, and public figures</span>
         </div>
       </>
     ),
@@ -622,7 +623,7 @@ export const slides: SlideData[] = [
       anchor: 'We don\u2019t build bridges with a 50% collapse rate. So why are we going full speed on AI?',
       bullets: [
         { type: 'say', text: 'Geoffrey Hinton \u2014 Nobel Prize 2024, helped invent deep learning \u2014 says 10\u201320% chance of human extinction within 30 years' },
-        { type: 'say', text: 'p(doom): the probability experts assign to catastrophic outcomes. Almost nobody credible says zero.' },
+        { type: 'say', text: 'p(doom): the shorthand AI researchers use for the probability of catastrophic AI outcomes — a genuinely bad outcome, not just disruption. Estimates from credible researchers range from under 10% to over 50%. pdoom100.com tracks these estimates publicly. Almost nobody credible says zero.' },
         { type: 'say', text: 'Both outcomes are real. The utopia is worth working toward.' },
         { type: 'cue', text: 'Hold back your own view. Present the range, not a verdict.' },
       ],

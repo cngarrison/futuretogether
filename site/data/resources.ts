@@ -96,6 +96,13 @@ export const externalResources: ExternalResource[] = [
   },
   {
     category: "Context & Frameworks",
+    title: "p(doom) Tracker — pdoom100.com",
+    url: "https://pdoom100.com",
+    description:
+      "A live tracker of \"p(doom)\" estimates — the probability of catastrophic AI outcomes assigned by researchers, scientists, and public figures. Figures range from near-zero to over 90%. Useful for understanding how seriously the people closest to this technology take the risks — and why there is still no consensus on where we're headed.",
+  },
+  {
+    category: "Context & Frameworks",
     title: "Why Robotics Will Work — Final Offshoring",
     url: "https://finaloffshoring.com",
     description:
