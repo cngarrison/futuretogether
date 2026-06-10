@@ -61,6 +61,7 @@ export default function SlideController(
       </div>
       <div style="display:flex;gap:0.75rem;margin-bottom:2rem;">
         <button
+          type="button"
           onClick={() => {
             timerRunning.value = !timerRunning.value;
           }}
@@ -69,6 +70,7 @@ export default function SlideController(
           {timerRunning.value ? "Pause" : "Start"}
         </button>
         <button
+          type="button"
           onClick={() => {
             elapsed.value = 0;
             timerRunning.value = false;
@@ -104,6 +106,7 @@ export default function SlideController(
       {/* Nav buttons */}
       <div style="display:flex;gap:1.5rem;">
         <button
+          type="button"
           onClick={() => navigate(Math.max(index - 1, 0))}
           disabled={index === 0}
           style={`width:64px;height:64px;border-radius:50%;border:2px solid rgba(255,255,255,0.2);background:transparent;color:white;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:${prevOpacity};`}
@@ -111,6 +114,7 @@ export default function SlideController(
           ←
         </button>
         <button
+          type="button"
           onClick={() => navigate(Math.min(index + 1, slides.length - 1))}
           disabled={index === slides.length - 1}
           style={`width:64px;height:64px;border-radius:50%;border:2px solid rgba(255,255,255,0.2);background:rgba(196,133,58,0.3);color:white;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:${nextOpacity};`}

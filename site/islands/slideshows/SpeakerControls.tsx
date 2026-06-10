@@ -5,18 +5,47 @@ interface SpeakerControlsProps {
   slug: string;
 }
 
-const LARGE_TEXT_KEY = "speaker-large-text";
+type TextSize = "normal" | "large" | "xlarge";
+
+const TEXT_SIZE_KEY = "speaker-text-size";
+const SIZE_CYCLE: TextSize[] = ["normal", "large", "xlarge"];
+
+const SIZE_LABEL: Record<TextSize, string> = {
+  normal: "Aa",
+  large: "AA",
+  xlarge: "AAA",
+};
+
+const SIZE_TITLE: Record<TextSize, string> = {
+  normal: "Normal text — click for large",
+  large: "Large text — click for extra large",
+  xlarge: "Extra large text — click for normal",
+};
+
+const BODY_CLASSES: Record<TextSize, string | null> = {
+  normal: null,
+  large: "large-text-mode",
+  xlarge: "xlarge-text-mode",
+};
+
+function applyBodyClass(size: TextSize) {
+  document.body.classList.remove("large-text-mode", "xlarge-text-mode");
+  const cls = BODY_CLASSES[size];
+  //console.log('SpeakerControls: applyBodyClass', {size, cls}); 
+  if (cls) document.body.classList.add(cls);
+}
 
 export default function SpeakerControls({ title, slug }: SpeakerControlsProps) {
-  const [largeText, setLargeText] = useState(false);
+  const [textSize, setTextSize] = useState<TextSize>("normal");
 
-  // Restore large-text preference
+  // Restore text-size preference
   useEffect(() => {
-    const saved = localStorage.getItem(LARGE_TEXT_KEY);
-    if (saved === "1") {
-      setLargeText(true);
-      document.body.classList.add("large-text-mode");
-    }
+    const saved = localStorage.getItem(TEXT_SIZE_KEY) as TextSize | null;
+    const size: TextSize = SIZE_CYCLE.includes(saved as TextSize)
+      ? (saved as TextSize)
+      : "normal";
+    setTextSize(size);
+    applyBodyClass(size);
   }, []);
 
   // Wake Lock — keep screen on while speaker notes are open
@@ -49,16 +78,13 @@ export default function SpeakerControls({ title, slug }: SpeakerControlsProps) {
     };
   }, []);
 
-  function toggleLargeText() {
-    const next = !largeText;
-    setLargeText(next);
-    if (next) {
-      document.body.classList.add("large-text-mode");
-      localStorage.setItem(LARGE_TEXT_KEY, "1");
-    } else {
-      document.body.classList.remove("large-text-mode");
-      localStorage.setItem(LARGE_TEXT_KEY, "0");
-    }
+  function cycleTextSize() {
+    const idx = SIZE_CYCLE.indexOf(textSize);
+    const next = SIZE_CYCLE[(idx + 1) % SIZE_CYCLE.length];
+	//console.log('SpeakerControls: cycleTextSize', {next}); 
+    setTextSize(next);
+    applyBodyClass(next);
+    localStorage.setItem(TEXT_SIZE_KEY, next);
   }
 
   return (
@@ -68,11 +94,12 @@ export default function SpeakerControls({ title, slug }: SpeakerControlsProps) {
       </span>
       <div style="display:flex;align-items:center;gap:0.75rem;">
         <button
-          onClick={toggleLargeText}
-          title={largeText ? "Switch to normal text" : "Switch to large text"}
-          class={`speaker-text-toggle${largeText ? " active" : ""}`}
+          type="button"
+          onClick={cycleTextSize}
+          title={SIZE_TITLE[textSize]}
+          class={`speaker-text speaker-text--${textSize}`}
         >
-          Aa
+          {SIZE_LABEL[textSize]}
         </button>
         <a
           href={`/slideshows/${slug}`}

@@ -441,8 +441,8 @@
   border-left:2px solid #22c55e;
 }
 
-/* Large text toggle button */
-.speaker-notes .speaker-text-toggle {
+/* Text size cycle button */
+.speaker-notes .speaker-text {
   font-size:0.75rem;
   font-weight:600;
   padding:0.2rem 0.55rem;
@@ -454,10 +454,21 @@
   letter-spacing:0.02em;
   transition:background 0.15s, color 0.15s, border-color 0.15s;
 }
-.speaker-notes .speaker-text-toggle.active {
+.speaker-notes .speaker-text--normal {
+  /* default dim state — inherits base */
+  border:1px solid rgba(255,255,255,0.2);
+  background:transparent;
+  color:rgba(255,255,255,0.4);
+}
+.speaker-notes .speaker-text--large {
   border-color:rgba(125,211,252,0.5);
   background:rgba(125,211,252,0.15);
   color:#7dd3fc;
+}
+.speaker-notes .speaker-text--xlarge {
+  border-color:rgba(196,133,58,0.6);
+  background:rgba(196,133,58,0.18);
+  color:#c4853a;
 }
 
 /* Large text mode overrides */
@@ -471,6 +482,19 @@
 .large-text-mode .speaker-notes .speaker-card-number,
 .large-text-mode .speaker-notes .speaker-card-pace {
   font-size:1.1rem;
+}
+
+/* Large text mode overrides */
+.xlarge-text-mode .speaker-notes .speaker-card-anchor {
+  font-size:1.9rem;
+}
+.xlarge-text-mode .speaker-notes .speaker-card-bullet-item {
+  font-size:1.55rem;
+  line-height:2;
+}
+.xlarge-text-mode .speaker-notes .speaker-card-number,
+.xlarge-text-mode .speaker-notes .speaker-card-pace {
+  font-size:1.25rem;
 }
 
 /* Tablet — use more of the available width */
@@ -500,6 +524,12 @@
   }
   .large-text-mode .speaker-notes .speaker-card-bullet-item {
     font-size:1.5rem;
+  }
+  .xlarge-text-mode .speaker-notes .speaker-card-anchor {
+    font-size:1.9rem;
+  }
+  .xlarge-text-mode .speaker-notes .speaker-card-bullet-item {
+    font-size:1.7rem;
   }
 }
 
@@ -531,6 +561,12 @@
   }
   .large-text-mode .speaker-notes .speaker-card-bullet-item {
     font-size:1.3rem;
+  }
+  .xlarge-text-mode .speaker-notes .speaker-card-anchor {
+    font-size:1.7rem;
+  }
+  .xlarge-text-mode .speaker-notes .speaker-card-bullet-item {
+    font-size:1.5rem;
   }
 }
 /* .speaker-notes li.speaker-card-bullet-item.cue::marker { content: '→' ; }  */
