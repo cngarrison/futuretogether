@@ -1,14 +1,15 @@
-import { useEffect, useState } from "preact/hooks";
+import { useEffect } from "preact/hooks";
+import {
+  SIZE_CYCLE,
+  TEXT_SIZE_KEY,
+  textSize,
+  type TextSize,
+} from "./speakerState.ts";
 
 interface SpeakerControlsProps {
   title: string;
   slug: string;
 }
-
-type TextSize = "normal" | "large" | "xlarge";
-
-const TEXT_SIZE_KEY = "speaker-text-size";
-const SIZE_CYCLE: TextSize[] = ["normal", "large", "xlarge"];
 
 const SIZE_LABEL: Record<TextSize, string> = {
   normal: "Aa",
@@ -31,20 +32,17 @@ const BODY_CLASSES: Record<TextSize, string | null> = {
 function applyBodyClass(size: TextSize) {
   document.body.classList.remove("large-text-mode", "xlarge-text-mode");
   const cls = BODY_CLASSES[size];
-  //console.log('SpeakerControls: applyBodyClass', {size, cls}); 
   if (cls) document.body.classList.add(cls);
 }
 
 export default function SpeakerControls({ title, slug }: SpeakerControlsProps) {
-  const [textSize, setTextSize] = useState<TextSize>("normal");
-
   // Restore text-size preference
   useEffect(() => {
     const saved = localStorage.getItem(TEXT_SIZE_KEY) as TextSize | null;
     const size: TextSize = SIZE_CYCLE.includes(saved as TextSize)
       ? (saved as TextSize)
       : "normal";
-    setTextSize(size);
+    textSize.value = size;
     applyBodyClass(size);
   }, []);
 
@@ -64,7 +62,6 @@ export default function SpeakerControls({ title, slug }: SpeakerControlsProps) {
 
     requestWakeLock();
 
-    // Wake lock is released when the tab is hidden; re-acquire on return
     function handleVisibilityChange() {
       if (document.visibilityState === "visible") {
         requestWakeLock();
@@ -79,10 +76,9 @@ export default function SpeakerControls({ title, slug }: SpeakerControlsProps) {
   }, []);
 
   function cycleTextSize() {
-    const idx = SIZE_CYCLE.indexOf(textSize);
+    const idx = SIZE_CYCLE.indexOf(textSize.value);
     const next = SIZE_CYCLE[(idx + 1) % SIZE_CYCLE.length];
-	//console.log('SpeakerControls: cycleTextSize', {next}); 
-    setTextSize(next);
+    textSize.value = next;
     applyBodyClass(next);
     localStorage.setItem(TEXT_SIZE_KEY, next);
   }
@@ -96,10 +92,10 @@ export default function SpeakerControls({ title, slug }: SpeakerControlsProps) {
         <button
           type="button"
           onClick={cycleTextSize}
-          title={SIZE_TITLE[textSize]}
-          class={`speaker-text speaker-text--${textSize}`}
+          title={SIZE_TITLE[textSize.value]}
+          class={`speaker-text speaker-text--${textSize.value}`}
         >
-          {SIZE_LABEL[textSize]}
+          {SIZE_LABEL[textSize.value]}
         </button>
         <a
           href={`/slideshows/${slug}`}
