@@ -243,6 +243,63 @@ export default define.page(async function EventResources(ctx) {
       </div>
 
       {/* ------------------------------------------------------------------ */}
+      {/* Downloads & reference links                                        */}
+      {/* ------------------------------------------------------------------ */}
+      {event.resources && event.resources.length > 0 && (
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-4">
+          <p
+            class="text-xs font-semibold uppercase tracking-widest mb-4"
+            style="color: rgba(28,26,24,0.4);"
+          >
+            Resources
+          </p>
+          <ul class="space-y-3">
+            {event.resources.map((resource) => (
+              <li key={resource.url}>
+                <a
+                  href={resource.url}
+                  {...(resource.type === "download"
+                    ? { download: true }
+                    : { target: "_blank", rel: "noopener noreferrer" })}
+                  class="flex items-start gap-3 rounded-xl px-4 py-3 transition-colors hover:opacity-90"
+                  style="background-color: #eef5f7; border: 1px solid #d0e4e7;"
+                >
+                  {/* Icon: download vs external link */}
+                  <span class="mt-0.5 shrink-0" style="color: #1a5f6e;">
+                    {resource.type === "download"
+                      ? (
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                          <polyline points="7 10 12 15 17 10" />
+                          <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                      )
+                      : (
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                      )}
+                  </span>
+                  <span>
+                    <span class="text-sm font-semibold block" style="color: #1a5f6e;">
+                      {resource.label}
+                    </span>
+                    {resource.description && (
+                      <span class="text-xs block mt-0.5" style="color: rgba(28,26,24,0.55);">
+                        {resource.description}
+                      </span>
+                    )}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* ------------------------------------------------------------------ */}
       {/* Slideshow iframe (with overlaid presentation-mode button)          */}
       {/* ------------------------------------------------------------------ */}
       {event.slideshowUrl

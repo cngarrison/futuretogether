@@ -29,6 +29,14 @@ const EVENTS_DIR = "./data/events";
 // KV key prefix for the cached next-available event ID per slug.
 const NEXT_EVENT_KEY = "next_event_id";
 
+// A single downloadable file or reference link attached to an event
+export interface EventResource {
+  label: string; // Display name, e.g. "Session Handout"
+  url: string; // Absolute URL or site-relative path
+  type: "download" | "link"; // download → file/PDF; link → external reference
+  description?: string; // Optional one-liner context
+}
+
 // Event configuration interface
 export interface EventConfig {
   id: string; // "discuss-our-future-2025-01-21"
@@ -51,6 +59,7 @@ export interface EventConfig {
   organizer?: { name: string; email: string }; // Organiser contact for reminder emails
   sponsoredBy?: string; // Organization hosting (e.g., "Beyond Better")
   moreInfoFile?: string; // Filename (without extension) of the more-info markdown file
+  resources?: EventResource[]; // Optional downloadable files and reference links
 }
 
 // Registration data interface
@@ -89,6 +98,7 @@ let cachePromise: Promise<Map<string, EventConfig>> | null = null;
  * Safe to call concurrently — all callers share a single load promise and
  * only read from disk once per isolate lifetime.
  */
+// deno-lint-ignore require-await
 async function getEventCache(): Promise<Map<string, EventConfig>> {
   if (eventCache) return eventCache;
   if (!cachePromise) cachePromise = loadEventCache();

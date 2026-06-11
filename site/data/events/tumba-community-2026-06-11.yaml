@@ -27,6 +27,73 @@ moreInfoFile: tumba-community-2026-06-11
 organizer:
   name: Charlie Garrison
   email: charlie@futuretogether.community
+resources:
+  - label: "Session Handout"
+    url: /resources/slideshows/tumbarumba-june-2026/tumbarumba-handout.pdf
+    type: download
+    description: "Print-friendly summary of the key points"
+
+  # ── Presentation references ──────────────────────────────────────────────
+  - label: "Alignment Faking in Large Language Models"
+    url: https://arxiv.org/abs/2412.14093
+    type: link
+    description: "Anthropic research (Dec 2024) — AI choosing deception over failure in controlled tests"
+
+  - label: "Agentic Misalignment"
+    url: https://anthropic.com/research/agentic-misalignment
+    type: link
+    description: "Anthropic + collaborators (Oct 2025) — AI blackmail behaviour in controlled tests"
+
+  - label: "AI Guardrails Stripped in Minutes"
+    url: https://futurism.com/artificial-intelligence/tools-strip-ai-guardrails-in-minutes
+    type: link
+    description: "FT investigation (May 2026) — Heretic tool; 3,500+ decensored models downloaded 13M times"
+
+  - label: "The Alignment Problem — Brian Christian"
+    url: https://brianchristian.org/the-alignment-problem/
+    type: link
+    description: "Book (2020) — COMPAS sentencing bias, medical AI failures, and the roots of misalignment"
+
+  - label: "When AI Builds Itself — Anthropic Institute"
+    url: https://anthropic.com/institute/recursive-self-improvement
+    type: link
+    description: "Marina Favaro & Jack Clark (June 2026) — >80% of Anthropic's code now written by Claude"
+
+  - label: "Can We Just\u2026Pause AI?"
+    url: https://youtube.com/watch?v=tUB_uvSqiw8
+    type: link
+    description: "Rational Animations (Jan 2026) — why halting AI is a coordination problem, not a failure of will"
+
+  - label: "AI Job Losses: A Great Recession for White-Collar Workers"
+    url: https://fortune.com/2026/03/06/ai-job-losses-report-anthropic-research-great-recession-for-white-collar-workers
+    type: link
+    description: "Fortune / Anthropic research (Mar 2026) — 14% drop in hiring in AI-exposed roles since ChatGPT"
+
+  - label: "The Big AI Job Swap"
+    url: https://theguardian.com/technology/2026/feb/11/big-ai-job-swap-white-collar-workers-ditching-their-careers
+    type: link
+    description: "The Guardian (Feb 2026) — white-collar workers leaving careers as AI transforms their fields"
+
+  - label: "Geoffrey Hinton: 10\u201320% Chance of Human Extinction"
+    url: https://theguardian.com/technology/2024/dec/27/godfather-of-ai-raises-odds-of-the-technology-wiping-out-humanity-over-next-30-years
+    type: link
+    description: "The Guardian (Dec 2024) — Nobel Prize winner raises his probability-of-doom estimate"
+
+  - label: "p(doom) Tracker"
+    url: https://pdoom100.com
+    type: link
+    description: "Live record of catastrophic AI risk estimates from researchers, scientists, and public figures"
+
+  - label: "Magnifica Humanitas — Pope Leo XIV"
+    url: https://vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html
+    type: link
+    description: "Vatican encyclical (May 2026) — the Church\u2019s first document dedicated to AI; addressed to 1.4 billion Catholics"
+
+  - label: "AI CEOs Open Letter: Synthetic Biology Risks"
+    url: https://prod-i.a.dj.com/public/resources/documents/dnaletter.pdf
+    type: link
+    description: "Altman, Amodei, Hassabis, Suleyman (2026) — AI knowledge eroding barriers to biological weapons"
+
 topics:
   - "⚡ The Timeline Has Collapsed: What we thought was years away is arriving now — and why the pace matters."
   - "💼 Work & Local Business: Which roles are changing, what it means for regional economies, and what skills will matter."
