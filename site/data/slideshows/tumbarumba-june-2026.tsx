@@ -238,7 +238,7 @@ export const slides: SlideData[] = [
       anchor: 'Alignment isn\u2019t just a technical problem. It\u2019s a language problem \u2014 and we\u2019ve never solved it.',
       bullets: [
         { type: 'say', text: 'Alignment: making sure AI does what we genuinely intend, not just what we tell it. Sounds simple. It isn\u2019t. This and the next couple of slides are crux of why I\u2019m concerned.' },
-        { type: 'say', text: 'Language gap: Everyone has experienced this \u2014 \u201cTell a workmate what you want \u2014 they do exactly what you said, not what you actually meant. Now give those instructions to a system that acts autonomously at scale, with no common sense to fill the gap.\u201d The more capable and independent AI becomes, the more catastrophic that gap can be.' },
+        { type: 'say', text: 'Language gap: Everyone has experienced this \u2014 \u201cTell a workmate what you want \u2014 they do exactly what you said, not what you actually meant.\u201d Now give those instructions to a system that acts autonomously at scale, with no common sense to fill the gap. The more capable and independent AI becomes, the more catastrophic that gap can be.' },
         { type: 'say', text: 'AI has a data bias \u2014 unbiased data doesn’t exist.' },
         { type: 'say', text: 'Example \u2014 court sentencing: US courts used to use an AI called COMPAS to advise judges on sentencing. A ProPublica investigation found it rated Black defendants as higher risk of reoffending at roughly twice the rate of white defendants. Judges used it. People received longer sentences. This isn\u2019t a hypothetical \u2014 it happened.' },
         { type: 'say', text: 'Example \u2014 medicine: AI diagnostic tools trained almost entirely on Western patients. In Africa, where patient physiology, disease presentation, and nutrition profiles differ, those same tools routinely give wrong answers. The AI isn\u2019t broken \u2014 it reflects who was in the room when it was built.' },
@@ -559,7 +559,7 @@ export const slides: SlideData[] = [
       cumulative: 32,
       anchor: 'Students \u2014 The careers we\u2019re preparing them for may not exist by the time they graduate.',
       bullets: [
-        { type: 'say', text: 'High school students entering the workforce in 2\u20134 years are entering a fundamentally different world than the one we planned for them. Personally, this is one the most concerning issues for me \u2014 and it\u2019s not being discussed where it matters.' },
+        { type: 'say', text: 'High school students entering the workforce in 2\u20134 years are entering a fundamentally different world than the one we planned for them. Personally, this is one of the most concerning issues for me \u2014 and it\u2019s not being discussed where it matters.' },
         { type: 'say', text: 'Medicine, law, accounting, software. These are exactly the paths we\u2019ve told kids that lead to security. That\u2019s no longer true.' },
         { type: 'say', text: 'What to tell your kids: be honest about uncertainty. Help them build adaptability, not just credentials.' },
         { type: 'cue', text: 'This lands personally \u2014 especially for parents. Pause after the anchor. Watch the room.' },
@@ -1121,7 +1121,7 @@ export const slides: SlideData[] = [
         { type: 'say', text: 'Scan the QR code for resources, events, and how to stay connected. Details are also on the printed handout.' },
         { type: 'say', text: 'Bring a friend to the next one. This conversation needs to spread. I want your feedback \u2014 when should I make myself available for chats \u2014 what about a regular event at the library?' },
         { type: 'say', text: 'I\u2019ve been here at the Nest every Tuesday morning 8am - available to chat. I want to find something that is suited to community engagement.' },
-        { type: 'cue', text: 'It\u2019s time for your questions. There are no wrong questions tonight.' },
+        { type: 'say', text: 'It\u2019s time for your questions. There are no wrong questions tonight.' },
         { type: 'cue', text: 'If silence: \u201cI\u2019ll start \u2014 what\u2019s one thing from tonight that surprised you?\u201d' },
       ],
     },
