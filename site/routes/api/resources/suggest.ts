@@ -2,7 +2,7 @@ import { define } from "@/utils.ts";
 import {
   buildEmailHtml,
   FROM_EMAIL,
-  FROM_NAME,
+  //FROM_NAME,
   sendEmail,
 } from "@/utils/email.ts";
 
@@ -15,7 +15,7 @@ interface SuggestionData {
   email?: string;
 }
 
-export const handlers = define.handlers({
+export const handler = define.handlers({
   async POST(ctx) {
     try {
       const data: SuggestionData = await ctx.req.json();

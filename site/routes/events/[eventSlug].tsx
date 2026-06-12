@@ -1,6 +1,10 @@
 import { Head } from "fresh/runtime";
 import { define } from "../../utils.ts";
-import { getEventMoreInfoHtml, getNextAvailableEvent, getRegistrationCount } from "@/utils/events.ts";
+import {
+  getEventMoreInfoHtml,
+  getNextAvailableEvent,
+} from "@/utils/db/group-events.ts";
+import { getRegistrationCount } from "@/utils/db/group-registrations.ts";
 import EventMoreInfo from "@/islands/EventMoreInfo.tsx";
 import EventRegistrationForm from "@/islands/EventRegistrationForm.tsx";
 import EventDateTime from "@/islands/EventDateTime.tsx";
@@ -11,14 +15,19 @@ import { getTurnstileSiteKey } from "@/utils/turnstile.ts";
  * Uses an async page component (Fresh v2 pattern) to load server-side data
  * without needing a separate handler and ctx.render().
  */
-export default define.page(async function EventPage({ params }) {
+export default define.page(async function EventPage({ params, state }) {
   const { eventSlug } = params;
-  const event = await getNextAvailableEvent(eventSlug);
-  const registrationCount = event ? await getRegistrationCount(event.id) : 0;
-  const moreInfoHtml = event?.moreInfoFile
-    ? await getEventMoreInfoHtml(event.moreInfoFile)
+  const event = await getNextAvailableEvent(eventSlug, state);
+  const registrationCount = event
+    ? await getRegistrationCount(event.id, state)
+    : 0;
+  const moreInfoHtml = event?.moreInfoPath
+    ? await getEventMoreInfoHtml(event.moreInfoPath)
     : null;
   const turnstileSiteKey = getTurnstileSiteKey();
+
+  // state.user is populated by the root _middleware.ts — no manual token resolution needed
+  const user = state.user;
 
   if (!event) {
     return (
@@ -26,7 +35,7 @@ export default define.page(async function EventPage({ params }) {
         <Head>
           <title>Event Not Available — Future Together</title>
         </Head>
-        <section style="background-color: #1a5f6e; color: white;" class="pt-16">
+        <section class="text-white bg-primary">
           <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20 text-center">
             <h1 class="text-3xl font-bold mb-4">No upcoming events</h1>
             <p class="mb-8" style="color: rgba(255,255,255,0.75);">
@@ -35,8 +44,7 @@ export default define.page(async function EventPage({ params }) {
             </p>
             <a
               href="/meetups"
-              class="inline-block px-6 py-3 text-white font-semibold rounded-xl transition-opacity hover:opacity-90"
-              style="background-color: #c4853a;"
+              class="inline-block px-6 py-3 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
             >
               See all meetups
             </a>
@@ -62,7 +70,7 @@ export default define.page(async function EventPage({ params }) {
       </Head>
 
       {/* Hero */}
-      <section style="background-color: #1a5f6e; color: white;" class="pt-16">
+      <section class="text-white bg-primary">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 py-16">
           <p
             class="text-xs font-semibold uppercase tracking-widest mb-3"
@@ -83,20 +91,38 @@ export default define.page(async function EventPage({ params }) {
               textClass=""
             />
             <span>
-              &middot;&ensp; {event.duration} min &ensp;&middot;&ensp; {event.meetingLink && event.meetingLocation ? 'Online + In Person' : event.meetingLink ? 'Online' : 'In Person'} &ensp;&middot;&ensp; Free
+              &middot;&ensp; {event.duration} min &ensp;&middot;&ensp;{" "}
+              {event.meetingLink && event.meetingLocation
+                ? "Online + In Person"
+                : event.meetingLink
+                ? "Online"
+                : "In Person"} &ensp;&middot;&ensp; Free
             </span>
           </div>
           {event.meetingLocation && (
-            <p class="mt-1 text-sm flex items-center gap-1.5" style="color: rgba(255,255,255,0.75);">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p
+              class="mt-1 text-sm flex items-center gap-1.5"
+              style="color: rgba(255,255,255,0.75);"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="flex-shrink-0"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
               {event.meetingLocation}
             </p>
           )}
           {spotsRemaining > 0 && spotsRemaining <= 10 && (
-            <p
-              class="mt-3 text-sm font-semibold"
-              style="color: #c4853a;"
-            >
+            <p class="mt-3 text-sm font-semibold text-accent">
               Only {spotsRemaining} spot{spotsRemaining === 1 ? "" : "s"}{" "}
               remaining!
             </p>
@@ -105,7 +131,7 @@ export default define.page(async function EventPage({ params }) {
       </section>
 
       {/* Body: details + registration form */}
-      <section style="background-color: #f7f4ef;">
+      <section class="bg-warm-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 py-14">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
             {/* Left: event details */}
@@ -127,10 +153,7 @@ export default define.page(async function EventPage({ params }) {
                 class="bg-white rounded-2xl p-8"
                 style="border: 1px solid #d0e4e7;"
               >
-                <h2
-                  class="text-xl font-bold mb-4"
-                  style="color: #1c1a18;"
-                >
+                <h2 class="text-xl font-bold text-near-black mb-4">
                   About this meetup
                 </h2>
                 <div
@@ -149,10 +172,7 @@ export default define.page(async function EventPage({ params }) {
                   class="bg-white rounded-2xl p-8"
                   style="border: 1px solid #d0e4e7;"
                 >
-                  <h2
-                    class="text-xl font-bold mb-4"
-                    style="color: #1c1a18;"
-                  >
+                  <h2 class="text-xl font-bold text-near-black mb-4">
                     What we’ll discuss
                   </h2>
                   <ul class="space-y-3">
@@ -195,9 +215,7 @@ export default define.page(async function EventPage({ params }) {
                   </div>
                 ))}
 
-              {moreInfoHtml && (
-                <EventMoreInfo html={moreInfoHtml} />
-              )}
+              {moreInfoHtml && <EventMoreInfo html={moreInfoHtml} />}
             </div>
 
             {/* Right: registration form */}
@@ -209,6 +227,11 @@ export default define.page(async function EventPage({ params }) {
                   eventSlug={event.slug}
                   eventTitle={event.title}
                   turnstileSiteKey={turnstileSiteKey}
+                  showSlack={!!Deno.env.get("SLACK_ENABLED")}
+                  isLoggedIn={user !== null}
+                  userFirstName={state.profile?.name_first ?? ""}
+                  userLastName={state.profile?.name_last ?? ""}
+                  userEmail={state.profile?.email ?? user?.email ?? ""}
                 />
               </div>
             </div>
@@ -217,12 +240,11 @@ export default define.page(async function EventPage({ params }) {
       </section>
 
       {/* Back link */}
-      <div style="background-color: #f7f4ef; border-top: 1px solid #d0e4e7;">
+      <div class="bg-warm-white" style="border-top: 1px solid #d0e4e7;">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 py-5">
           <a
             href="/meetups"
-            class="inline-flex items-center gap-2 text-sm font-semibold transition-opacity hover:opacity-70"
-            style="color: #1a5f6e;"
+            class="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-opacity hover:opacity-70"
           >
             <svg
               width="16"

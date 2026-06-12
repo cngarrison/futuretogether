@@ -1,6 +1,6 @@
 import { define } from "@/utils.ts";
 import { Head } from "fresh/runtime";
-import { getEventById, getEventsBySlug } from "@/utils/events.ts";
+import { getEventById, getEventsBySlug } from "@/utils/db/group-events.ts";
 
 // Dynamic route: /meetups/[eventName]
 //
@@ -31,7 +31,7 @@ export default define.page(async function EventResources(ctx) {
 
   // If a specific event ID was requested, look it up directly
   if (requestedId) {
-    const candidate = await getEventById(requestedId);
+    const candidate = await getEventById(requestedId, ctx.state);
     // Only use it if it matches the slug and is in the past
     if (
       candidate &&
@@ -44,7 +44,7 @@ export default define.page(async function EventResources(ctx) {
 
   // Fall back to the most recent past event for this slug
   if (!event) {
-    const events = await getEventsBySlug(eventName);
+    const events = await getEventsBySlug(eventName, ctx.state);
     const pastEvents = events
       .filter((e) => new Date(e.date) <= now)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -59,13 +59,10 @@ export default define.page(async function EventResources(ctx) {
           <title>Event Not Found — Future Together</title>
         </Head>
         <div class="max-w-3xl mx-auto px-4 py-24 text-center">
-          <p
-            class="text-sm font-semibold uppercase tracking-widest mb-4"
-            style="color: #1a5f6e;"
-          >
+          <p class="text-sm font-semibold text-primary uppercase tracking-widest mb-4">
             Not found
           </p>
-          <h1 class="text-3xl font-bold mb-4" style="color: #1c1a18;">
+          <h1 class="text-3xl font-bold text-near-black mb-4">
             No resources yet
           </h1>
           <p class="mb-8" style="color: rgba(28,26,24,0.65);">
@@ -74,8 +71,7 @@ export default define.page(async function EventResources(ctx) {
           </p>
           <a
             href="/meetups"
-            class="inline-block px-6 py-3 text-white font-semibold rounded-xl transition-opacity hover:opacity-90"
-            style="background-color: #1a5f6e;"
+            class="inline-block px-6 py-3 text-white font-semibold bg-primary rounded-xl transition-opacity hover:opacity-90"
           >
             &larr; Back to Meetups
           </a>
@@ -110,12 +106,11 @@ export default define.page(async function EventResources(ctx) {
       {/* ------------------------------------------------------------------ */}
       {/* Page header                                                         */}
       {/* ------------------------------------------------------------------ */}
-      <div style="background-color: #f7f4ef; border-bottom: 1px solid #d0e4e7;">
+      <div class="bg-warm-white" style="border-bottom: 1px solid #d0e4e7;">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
           <a
             href="/meetups"
-            class="text-sm font-medium inline-flex items-center gap-1 mb-5"
-            style="color: #1a5f6e;"
+            class="text-sm font-medium text-primary inline-flex items-center gap-1 mb-5"
           >
             <svg
               width="14"
@@ -135,17 +130,14 @@ export default define.page(async function EventResources(ctx) {
 
           {isSpecial && (
             <span
-              class="inline-block text-xs font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full mb-4"
-              style="background-color: #eef5f7; color: #1a5f6e;"
+              class="inline-block text-xs font-semibold text-primary uppercase tracking-widest px-2.5 py-1 rounded-full mb-4"
+              style="background-color: #eef5f7;"
             >
               Special Event
             </span>
           )}
 
-          <h1
-            class="text-3xl sm:text-4xl font-bold mb-4 leading-tight"
-            style="color: #1c1a18;"
-          >
+          <h1 class="text-3xl sm:text-4xl font-bold text-near-black mb-4 leading-tight">
             {event.title}
           </h1>
 
@@ -265,17 +257,37 @@ export default define.page(async function EventResources(ctx) {
                   style="background-color: #eef5f7; border: 1px solid #d0e4e7;"
                 >
                   {/* Icon: download vs external link */}
-                  <span class="mt-0.5 shrink-0" style="color: #1a5f6e;">
+                  <span class="mt-0.5 shrink-0 text-primary">
                     {resource.type === "download"
                       ? (
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
                           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                           <polyline points="7 10 12 15 17 10" />
                           <line x1="12" y1="15" x2="12" y2="3" />
                         </svg>
                       )
                       : (
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
                           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                           <polyline points="15 3 21 3 21 9" />
                           <line x1="10" y1="14" x2="21" y2="3" />
@@ -283,11 +295,14 @@ export default define.page(async function EventResources(ctx) {
                       )}
                   </span>
                   <span>
-                    <span class="text-sm font-semibold block" style="color: #1a5f6e;">
+                    <span class="text-sm font-semibold text-primary block">
                       {resource.label}
                     </span>
                     {resource.description && (
-                      <span class="text-xs block mt-0.5" style="color: rgba(28,26,24,0.55);">
+                      <span
+                        class="text-xs block mt-0.5"
+                        style="color: rgba(28,26,24,0.55);"
+                      >
                         {resource.description}
                       </span>
                     )}
@@ -354,8 +369,8 @@ export default define.page(async function EventResources(ctx) {
           /* Placeholder when slideshow isn't published yet */
           <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
             <div
-              class="rounded-xl px-6 py-5"
-              style="background-color: #f7f4ef; border: 1px solid #d0e4e7;"
+              class="rounded-xl px-6 py-5 bg-warm-white"
+              style="border: 1px solid #d0e4e7;"
             >
               <p class="text-sm" style="color: rgba(28,26,24,0.45);">
                 The session slideshow will be linked here once it’s available.

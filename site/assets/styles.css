@@ -118,6 +118,21 @@ body {
 }
 
 /* =============================================================================
+   Global select styling — consistent height/appearance with input fields.
+   Uses a CSS background-image chevron so no wrapper div or JS is needed.
+   SelectField component adds focus ring + signal binding on top of this.
+   ============================================================================= */
+
+select {
+  appearance: none;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%231a5f6e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.625rem center;
+  padding-right: 2rem;
+}
+
+/* =============================================================================
    Article: Callout boxes
    Usage in markdown: <div class="callout info">...</div>
    Transforms to .callout-info via blog.ts transformCallouts()
@@ -168,7 +183,7 @@ body {
 }
 
 .callout-quote::before {
-  content: '\201C';
+  content: "\201C";
   position: absolute;
   left: 0.75rem;
   top: 0.5rem;
@@ -213,4 +228,4 @@ body {
   }
 }
 
-@import './slideshows.css';
+@import "./slideshows.css";

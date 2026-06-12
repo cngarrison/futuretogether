@@ -1,10 +1,10 @@
 import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
-import { loadBlogPosts } from "@/utils/blog.ts";
-import { getSeriesBySlug, series as allSeries } from "@/data/series.ts";
+import { getAllBlogArticles, getAllSeries } from "@/utils/db/blog.ts";
 
-export default define.page(async function Blog() {
-  const posts = await loadBlogPosts(); // already newest-first
+export default define.page(async function Blog(ctx) {
+  const posts = await getAllBlogArticles(ctx.state); // already newest-first
+  const allSeries = await getAllSeries(ctx.state);
 
   // Separate series posts from standalone posts
   const seriesSlugs = new Set(allSeries.map((s) => s.slug));
@@ -23,7 +23,7 @@ export default define.page(async function Blog() {
 
   // For each series, build card data keyed by startDate for interleaving
   const seriesCardData = presentSeriesSlugs.map((slug) => {
-    const meta = getSeriesBySlug(slug)!;
+    const meta = allSeries.find((s) => s.slug === slug)!;
     const seriesPosts = posts.filter((p) => p.series === slug)
       .sort((a, b) => (a.series_part ?? 0) - (b.series_part ?? 0));
     return {
@@ -67,7 +67,7 @@ export default define.page(async function Blog() {
       </Head>
 
       {/* Hero */}
-      <section style="background-color: #1a5f6e; color: white;" class="pt-16">
+      <section class="text-white bg-primary">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
           <h1 class="text-4xl font-bold mb-3">Articles</h1>
           <p class="text-lg" style="color: rgba(255,255,255,0.8);">
@@ -77,7 +77,7 @@ export default define.page(async function Blog() {
         </div>
       </section>
 
-      <div style="background-color: #f7f4ef;" class="min-h-screen py-14">
+      <div class="min-h-screen py-14 bg-warm-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
           {/* Tag cloud — standalone posts only */}
           {tags.length > 0 && (
@@ -118,8 +118,7 @@ export default define.page(async function Blog() {
                     <h2 class="text-2xl font-bold mb-2">
                       <a
                         href={`/blog/${item.post.slug}`}
-                        class="transition-colors hover:opacity-75"
-                        style="color: #1c1a18;"
+                        class="text-near-black transition-colors hover:opacity-75"
                       >
                         {item.post.title}
                       </a>
@@ -144,8 +143,7 @@ export default define.page(async function Blog() {
                     )}
                     <a
                       href={`/blog/${item.post.slug}`}
-                      class="inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity hover:opacity-70"
-                      style="color: #1a5f6e;"
+                      class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-opacity hover:opacity-70"
                     >
                       Read more
                       <svg
@@ -171,10 +169,7 @@ export default define.page(async function Blog() {
                     style="border: 2px solid #1a5f6e; text-decoration: none;"
                   >
                     {/* Teal header band */}
-                    <div
-                      class="px-8 py-5 flex items-center justify-between gap-4"
-                      style="background-color: #1a5f6e;"
-                    >
+                    <div class="px-8 py-5 flex items-center justify-between gap-4 bg-primary">
                       <div class="flex items-center gap-3">
                         <svg
                           width="22"
@@ -213,10 +208,7 @@ export default define.page(async function Blog() {
 
                     {/* Card body */}
                     <div class="bg-white px-8 py-7">
-                      <h2
-                        class="text-2xl font-bold mb-2"
-                        style="color: #1c1a18;"
-                      >
+                      <h2 class="text-2xl font-bold text-near-black mb-2">
                         {item.card.meta.name}
                       </h2>
                       <p
@@ -225,10 +217,7 @@ export default define.page(async function Blog() {
                       >
                         {item.card.meta.description}
                       </p>
-                      <span
-                        class="inline-flex items-center gap-1.5 text-sm font-semibold"
-                        style="color: #1a5f6e;"
-                      >
+                      <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                         Read the series
                         <svg
                           width="14"
@@ -246,7 +235,7 @@ export default define.page(async function Blog() {
                     </div>
 
                     {/* Amber bottom accent */}
-                    <div style="height: 4px; background-color: #c4853a;" />
+                    <div class="bg-accent h-1" />
                   </a>
                 )
             )}

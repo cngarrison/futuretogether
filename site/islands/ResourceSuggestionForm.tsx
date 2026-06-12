@@ -80,13 +80,10 @@ export default function ResourceSuggestionForm() {
         class="rounded-xl p-6 text-center"
         style="background-color: #eef5f7; border: 1px solid #d0e4e7;"
       >
-        <div
-          class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl"
-          style="background-color: #1a5f6e;"
-        >
+        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-primary mx-auto mb-4 text-white text-xl">
           ✓
         </div>
-        <h3 class="text-lg font-bold mb-2" style="color: #1c1a18;">
+        <h3 class="text-lg font-bold text-near-black mb-2">
           Thanks for the suggestion!
         </h3>
         <p class="text-sm leading-relaxed" style="color: rgba(28,26,24,0.7);">
@@ -109,10 +106,9 @@ export default function ResourceSuggestionForm() {
       <div>
         <label
           for="suggest-url"
-          class="block text-sm font-semibold mb-1.5"
-          style="color: #1c1a18;"
+          class="block text-sm font-semibold text-near-black mb-1.5"
         >
-          URL <span style="color: #c4853a;">*</span>
+          URL <span class="text-accent">*</span>
         </label>
         <input
           id="suggest-url"
@@ -121,8 +117,8 @@ export default function ResourceSuggestionForm() {
           placeholder="https://"
           required
           disabled={isSubmitting}
-          class="w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-colors"
-          style="border: 1px solid #d0e4e7; background: white; color: #1c1a18;"
+          class="w-full rounded-lg px-4 py-2.5 text-sm text-near-black bg-white outline-none transition-colors"
+          style="border: 1px solid #d0e4e7;"
         />
       </div>
 
@@ -130,10 +126,9 @@ export default function ResourceSuggestionForm() {
       <div>
         <label
           for="suggest-title"
-          class="block text-sm font-semibold mb-1.5"
-          style="color: #1c1a18;"
+          class="block text-sm font-semibold text-near-black mb-1.5"
         >
-          Title <span style="color: #c4853a;">*</span>
+          Title <span class="text-accent">*</span>
         </label>
         <input
           id="suggest-title"
@@ -142,8 +137,8 @@ export default function ResourceSuggestionForm() {
           placeholder="Name of the article, video, or site"
           required
           disabled={isSubmitting}
-          class="w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-colors"
-          style="border: 1px solid #d0e4e7; background: white; color: #1c1a18;"
+          class="w-full rounded-lg px-4 py-2.5 text-sm text-near-black bg-white outline-none transition-colors"
+          style="border: 1px solid #d0e4e7;"
         />
       </div>
 
@@ -151,10 +146,9 @@ export default function ResourceSuggestionForm() {
       <div>
         <label
           for="suggest-why"
-          class="block text-sm font-semibold mb-1.5"
-          style="color: #1c1a18;"
+          class="block text-sm font-semibold text-near-black mb-1.5"
         >
-          Why should we include this? <span style="color: #c4853a;">*</span>
+          Why should we include this? <span class="text-accent">*</span>
         </label>
         <p class="text-xs mb-2" style="color: rgba(28,26,24,0.5);">
           What makes it useful? Who is it for? Why did it matter to you?
@@ -166,8 +160,8 @@ export default function ResourceSuggestionForm() {
           required
           disabled={isSubmitting}
           placeholder="A short explanation of why this is worth reading, watching, or using…"
-          class="w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-colors resize-y"
-          style="border: 1px solid #d0e4e7; background: white; color: #1c1a18;"
+          class="w-full rounded-lg px-4 py-2.5 text-sm text-near-black bg-white outline-none transition-colors resize-y"
+          style="border: 1px solid #d0e4e7;"
         />
       </div>
 
@@ -175,8 +169,7 @@ export default function ResourceSuggestionForm() {
       <div>
         <label
           for="suggest-category"
-          class="block text-sm font-semibold mb-1.5"
-          style="color: #1c1a18;"
+          class="block text-sm font-semibold text-near-black mb-1.5"
         >
           Suggested category{" "}
           <span class="font-normal" style="color: rgba(28,26,24,0.45);">
@@ -188,8 +181,8 @@ export default function ResourceSuggestionForm() {
             id="suggest-category"
             name="category"
             disabled={isSubmitting}
-            class="w-full appearance-none rounded-lg px-4 py-2.5 text-sm outline-none transition-colors pr-10"
-            style="border: 1px solid #d0e4e7; background: white; color: #1c1a18;"
+            class="w-full appearance-none rounded-lg px-4 py-2.5 text-sm text-near-black bg-white outline-none transition-colors pr-10"
+            style="border: 1px solid #d0e4e7;"
           >
             <option value="">— choose one if you like —</option>
             {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
@@ -220,8 +213,7 @@ export default function ResourceSuggestionForm() {
         <div>
           <label
             for="suggest-name"
-            class="block text-sm font-semibold mb-1.5"
-            style="color: #1c1a18;"
+            class="block text-sm font-semibold text-near-black mb-1.5"
           >
             Your name{" "}
             <span class="font-normal" style="color: rgba(28,26,24,0.45);">
@@ -234,15 +226,14 @@ export default function ResourceSuggestionForm() {
             type="text"
             placeholder="First name is fine"
             disabled={isSubmitting}
-            class="w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-colors"
-            style="border: 1px solid #d0e4e7; background: white; color: #1c1a18;"
+            class="w-full rounded-lg px-4 py-2.5 text-sm text-near-black bg-white outline-none transition-colors"
+            style="border: 1px solid #d0e4e7;"
           />
         </div>
         <div>
           <label
             for="suggest-email"
-            class="block text-sm font-semibold mb-1.5"
-            style="color: #1c1a18;"
+            class="block text-sm font-semibold text-near-black mb-1.5"
           >
             Your email{" "}
             <span class="font-normal" style="color: rgba(28,26,24,0.45);">
@@ -255,8 +246,8 @@ export default function ResourceSuggestionForm() {
             type="email"
             placeholder="In case we have questions"
             disabled={isSubmitting}
-            class="w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-colors"
-            style="border: 1px solid #d0e4e7; background: white; color: #1c1a18;"
+            class="w-full rounded-lg px-4 py-2.5 text-sm text-near-black bg-white outline-none transition-colors"
+            style="border: 1px solid #d0e4e7;"
           />
         </div>
       </div>
@@ -275,8 +266,7 @@ export default function ResourceSuggestionForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        class="inline-flex items-center justify-center gap-2 w-full px-6 py-3 text-white font-semibold rounded-xl transition-opacity hover:opacity-90 disabled:opacity-60"
-        style="background-color: #c4853a;"
+        class="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-accent text-white font-semibold rounded-xl transition-opacity hover:opacity-90 disabled:opacity-60"
       >
         {isSubmitting
           ? (

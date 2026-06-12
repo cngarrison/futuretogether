@@ -54,7 +54,7 @@ export default function SlideshowSync(
             ws.send(JSON.stringify({ action: "goto", slide }));
           }
         };
-        ws.send(JSON.stringify({ action: "hello", role }));
+        ws?.send(JSON.stringify({ action: "hello", role }));
       };
 
       ws.onmessage = (event) => {

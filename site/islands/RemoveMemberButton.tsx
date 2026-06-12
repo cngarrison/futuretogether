@@ -53,6 +53,7 @@ export default function RemoveMemberButton({ memberId, memberEmail }: Props) {
         <span class="text-xs text-gray-600">Remove {memberEmail}?</span>
         <div class="flex items-center gap-2">
           <button
+            type="button"
             onClick={handleRemove}
             class="text-xs px-2 py-1 rounded text-white"
             style="background-color: #dc2626;"
@@ -60,6 +61,7 @@ export default function RemoveMemberButton({ memberId, memberEmail }: Props) {
             Yes, remove
           </button>
           <button
+            type="button"
             onClick={() => state.value = "idle"}
             class="text-xs px-2 py-1 rounded border border-gray-300 text-gray-600"
           >
@@ -76,6 +78,7 @@ export default function RemoveMemberButton({ memberId, memberEmail }: Props) {
 
   return (
     <button
+      type="button"
       onClick={() => state.value = "confirming"}
       class="text-xs text-red-600 hover:underline"
     >

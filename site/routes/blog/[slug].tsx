@@ -1,14 +1,14 @@
 import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
 import {
-  getPostBySlug,
-  getRelatedPosts,
-  loadSeriesPosts,
-} from "@/utils/blog.ts";
-import { getSeriesBySlug } from "@/data/series.ts";
+  getBlogArticleBySlug,
+  getRelatedArticles,
+  getSeriesArticles,
+  getSeriesMeta,
+} from "@/utils/db/blog.ts";
 
 export default define.page(async function BlogPost(ctx) {
-  const post = await getPostBySlug(ctx.params.slug);
+  const post = await getBlogArticleBySlug(ctx.params.slug, ctx.state);
 
   if (!post) {
     return (
@@ -20,8 +20,7 @@ export default define.page(async function BlogPost(ctx) {
         <p>The blog post you’re looking for doesn’t exist.</p>
         <a
           href="/blog"
-          class="font-semibold transition-opacity hover:opacity-70"
-          style="color: #1a5f6e;"
+          class="font-semibold text-primary transition-opacity hover:opacity-70"
         >
           Return to blog
         </a>
@@ -30,8 +29,12 @@ export default define.page(async function BlogPost(ctx) {
   }
 
   // Series context
-  const seriesMeta = post.series ? getSeriesBySlug(post.series) : undefined;
-  const seriesPosts = seriesMeta ? await loadSeriesPosts(post.series!) : [];
+  const seriesMeta = post.series
+    ? await getSeriesMeta(post.series, ctx.state)
+    : undefined;
+  const seriesPosts = seriesMeta
+    ? await getSeriesArticles(seriesMeta.id, ctx.state)
+    : [];
   const total = seriesPosts.length;
   const seriesIdx = seriesPosts.findIndex((p) => p.slug === post.slug);
   const prevPost = seriesIdx > 0 ? seriesPosts[seriesIdx - 1] : null;
@@ -39,7 +42,11 @@ export default define.page(async function BlogPost(ctx) {
     ? seriesPosts[seriesIdx + 1]
     : null;
 
-  const relatedPosts = await getRelatedPosts(post);
+  const relatedPosts = await getRelatedArticles(
+    post.id,
+    post.tags ?? [],
+    ctx.state,
+  );
 
   return (
     <>
@@ -53,15 +60,14 @@ export default define.page(async function BlogPost(ctx) {
       </Head>
 
       {/* Hero — teal band with title */}
-      <section style="background-color: #1a5f6e; color: white;" class="pt-16">
+      <section class="text-white bg-primary">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-14">
           {/* Series badge — shown only for series articles */}
           {seriesMeta && post.series_part && (
             <div class="mb-5">
               <a
                 href={`/blog/series/${seriesMeta.slug}`}
-                class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-opacity hover:opacity-80"
-                style="background-color: #c4853a; color: white;"
+                class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white bg-accent transition-opacity hover:opacity-80"
               >
                 {/* Book icon */}
                 <svg
@@ -126,13 +132,14 @@ export default define.page(async function BlogPost(ctx) {
       </section>
 
       {/* Article body */}
-      <div style="background-color: #f7f4ef;" class="py-14">
+      <div class="py-14 bg-warm-white">
         <article class="max-w-3xl mx-auto px-4 sm:px-6">
           {/* Lead paragraph */}
           {post.firstParagraphHtml && (
             <div
               class="prose prose-lg max-w-none text-lg mb-10 leading-relaxed"
               style="color: rgba(28,26,24,0.75);"
+              // deno-lint-ignore react-no-danger
               dangerouslySetInnerHTML={{ __html: post.firstParagraphHtml }}
             />
           )}
@@ -145,6 +152,7 @@ export default define.page(async function BlogPost(ctx) {
             <div
               class="prose prose-lg max-w-none prose-headings:font-bold prose-li:my-1.5 prose-img:rounded-lg prose-img:shadow-md"
               style="color: rgba(28,26,24,0.82);"
+              // deno-lint-ignore react-no-danger
               dangerouslySetInnerHTML={{ __html: post.remainingHtml }}
             />
           )}
@@ -168,16 +176,14 @@ export default define.page(async function BlogPost(ctx) {
                   stroke-width="1.8"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  style="color: #1a5f6e;"
-                  class="shrink-0"
+                  class="shrink-0 text-primary"
                 >
                   <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
                   <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
                 </svg>
                 <a
                   href={`/blog/series/${seriesMeta.slug}`}
-                  class="text-sm font-semibold transition-opacity hover:opacity-70"
-                  style="color: #1a5f6e;"
+                  class="text-sm font-semibold text-primary transition-opacity hover:opacity-70"
                 >
                   {seriesMeta.name} series
                 </a>
@@ -198,10 +204,7 @@ export default define.page(async function BlogPost(ctx) {
                       >
                         ← Part {prevPost.series_part}
                       </span>
-                      <span
-                        class="font-semibold text-sm"
-                        style="color: #1c1a18;"
-                      >
+                      <span class="font-semibold text-sm text-near-black">
                         {prevPost.title}
                       </span>
                     </a>
@@ -221,7 +224,7 @@ export default define.page(async function BlogPost(ctx) {
                     >
                       Part {nextPost.series_part} →
                     </span>
-                    <span class="font-semibold text-sm" style="color: #1c1a18;">
+                    <span class="font-semibold text-sm text-near-black">
                       {nextPost.title}
                     </span>
                   </a>
@@ -236,7 +239,7 @@ export default define.page(async function BlogPost(ctx) {
               class="mt-16 pt-10 border-t border-gray-200"
               style={{ clear: "both" }}
             >
-              <h2 class="text-2xl font-bold mb-6" style="color: #1c1a18;">
+              <h2 class="text-2xl font-bold text-near-black mb-6">
                 Related Articles
               </h2>
               <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -246,7 +249,7 @@ export default define.page(async function BlogPost(ctx) {
                     class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
                     style="border: 1px solid #d0e4e7;"
                   >
-                    <h3 class="font-semibold mb-2" style="color: #1c1a18;">
+                    <h3 class="font-semibold text-near-black mb-2">
                       <a
                         href={`/blog/${related.slug}`}
                         class="transition-opacity hover:opacity-70"
@@ -269,8 +272,8 @@ export default define.page(async function BlogPost(ctx) {
                         {related.tags.map((tag) => (
                           <span
                             key={tag}
-                            class="text-xs px-2 py-1 rounded-full"
-                            style="background-color: #eef5f7; color: #1a5f6e;"
+                            class="text-xs text-primary px-2 py-1 rounded-full"
+                            style="background-color: #eef5f7;"
                           >
                             {tag}
                           </span>
@@ -287,8 +290,7 @@ export default define.page(async function BlogPost(ctx) {
           <footer class="mt-10 pt-6 border-t border-gray-200">
             <a
               href="/blog"
-              class="font-semibold inline-flex items-center gap-2 transition-opacity hover:opacity-70"
-              style="color: #1a5f6e;"
+              class="font-semibold text-primary inline-flex items-center gap-2 transition-opacity hover:opacity-70"
             >
               <svg
                 class="w-4 h-4"

@@ -1,16 +1,13 @@
 import { define } from "@/utils.ts";
 
-import { createRegistration, getNextAvailableEvent } from "@/utils/events.ts";
-import { sendConfirmationEmail } from "@/utils/eventEmail.ts";
+import { getNextAvailableEvent } from "@/utils/db/group-events.ts";
+import { createRegistration } from "@/utils/db/group-registrations.ts";
+import { sendConfirmationEmail } from "@/utils/email/eventEmail.ts";
+import { generateCancelRegistrationToken } from "@/utils/db/group-registrations.ts";
 import { verifyTurnstileToken } from "@/utils/turnstile.ts";
-import { createMember } from "@/utils/members.ts";
-import {
-  sendMemberAdminNotification,
-  sendMemberWelcomeEmail,
-} from "@/utils/memberEmail.ts";
-//const delay = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+import { createSupabaseClient } from "@/utils/supabase.ts";
 
-export const handlers = define.handlers({
+export const handler = define.handlers({
   async POST(ctx) {
     try {
       const { eventSlug } = ctx.params;
@@ -25,11 +22,14 @@ export const handlers = define.handlers({
         joinCommunity,
         turnstile_token,
       } = formData;
+      //console.warn("RouteApiEventsRegister: formData", formData);
 
       // Verify Turnstile token if configured
       const turnstileValid = await verifyTurnstileToken(turnstile_token);
       if (!turnstileValid) {
-        console.warn("Turnstile verification failed for event registration");
+        console.warn(
+          "RouteApiEventsRegister: Turnstile verification failed for event registration",
+        );
         return new Response("Captcha verification failed", { status: 400 });
       }
 
@@ -45,7 +45,7 @@ export const handlers = define.handlers({
       }
 
       // Get the next available event for this slug
-      const event = await getNextAvailableEvent(eventSlug);
+      const event = await getNextAvailableEvent(eventSlug, ctx.state);
       if (!event) {
         return new Response(
           JSON.stringify({
@@ -56,16 +56,57 @@ export const handlers = define.handlers({
         );
       }
 
-      // Create registration
+      // Community opt-in: create/sign-in the Supabase auth user BEFORE creating the
+      // registration so that the profiles trigger has already fired by the time
+      // createRegistration does its admin profile lookup — linking profile_id in one pass.
+      // Skip if already logged in — no magic-link needed, profile already exists.
+      // `!== false` rather than truthy check: treats undefined (field omitted from payload)
+      // as opt-in. Opt-out requires an explicit false.
+      if (joinCommunity !== false && !ctx.state.user) {
+        try {
+          const supabase = createSupabaseClient();
+          const { error: otpError } = await supabase.auth.signInWithOtp({
+            email: email.toLowerCase().trim(),
+            options: {
+              emailRedirectTo: new URL("/auth/callback", ctx.req.url).href,
+              shouldCreateUser: true,
+              data: {
+                name_first: firstName.trim(),
+                name_last: lastName.trim(),
+                heard_from: heardFrom?.trim() ?? null,
+                age_confirmed: true,
+                interests: [],
+                wants_to_organise: false,
+                location: null,
+              },
+            },
+          });
+          if (otpError) {
+            console.error(
+              "[register] Community signup OTP error:",
+              otpError.message,
+            );
+          }
+        } catch (err) {
+          console.error("[register] Community signup error:", err);
+        }
+      }
+
+      // Create registration — admin profile lookup inside will now find the profile
+      // for all cases: logged-in, existing member (not logged in), or just-created user.
       const result = await createRegistration(event.id, {
         firstName: firstName.trim(),
         lastName: lastName.trim(),
         email: email.toLowerCase().trim(),
         interests: interests?.trim(),
         heardFrom: heardFrom?.trim(),
-      });
+      }, ctx.state);
 
-      if (!result.success) {
+      if (result.error) {
+        console.warn(
+          "RouteApiEventsRegister: createRegistration-error",
+          result,
+        );
         let code = "REGISTRATION_FAILED";
         if (result.error?.includes("capacity")) code = "EVENT_FULL";
         else if (result.error?.includes("deadline")) code = "DEADLINE_PASSED";
@@ -83,40 +124,45 @@ export const handlers = define.handlers({
       if (result.registration) {
         const reg = result.registration;
 
-        // 1. Event confirmation — fires immediately
-        sendConfirmationEmail(event, reg).catch((err) =>
-          console.error("Confirmation email error:", err)
-        );
+        // 1. Event confirmation — fires immediately.
+        // Meetup events are standard group events (ft-global / discuss-our-future program).
+        // Look up the group_events UUID + group slug so the cancel link points to the
+        // canonical /groups/[slug]/events/[id]/cancel-registration route.
+        // Falls back to no cancel link gracefully if the lookup fails.
+        void (async () => {
+          try {
+            const origin = new URL(ctx.req.url).origin;
 
-        // 2 & 3. Member emails — only if opt-in checkbox ticked
-        if (joinCommunity !== false) {
-          createMember({
-            email: reg.attendee.email,
-            firstName: reg.attendee.firstName,
-            lastName: reg.attendee.lastName,
-            source: "event_registration",
-            interests: [],
-            heardFrom: reg.engagement?.heardFrom,
-          }).then(async (memberResult) => {
-            if (
-              memberResult.success && memberResult.created &&
-              memberResult.member
-            ) {
-              const member = memberResult.member;
-              // 2. Member welcome — 1.1s after confirmation
-              //await delay(1100);
-              const joinSlack = body.joinSlack === true;
-              sendMemberWelcomeEmail(member, joinSlack).catch((err) =>
-                console.error("Member welcome email error:", err)
+            let cancelUrl: string | undefined;
+            const { data: evRow } = await ctx.state.supabaseClient!
+              .from("group_events")
+              .select("group:groups!group_id(slug)")
+              .eq("id", event.id)
+              .maybeSingle();
+
+            const groupSlug = evRow
+              ? (
+                (evRow as Record<string, unknown>).group as Record<
+                  string,
+                  unknown
+                >
+              )?.slug as string | undefined
+              : undefined;
+
+            if (groupSlug && event.id) {
+              const cancelToken = await generateCancelRegistrationToken(
+                reg.id,
+                event.id,
               );
-              // 3. Admin notification — 1.1s after welcome (2.2s total)
-              //await delay(1100);
-              sendMemberAdminNotification(member).catch((err) =>
-                console.error("Admin notification error:", err)
-              );
+              cancelUrl =
+                `${origin}/groups/${groupSlug}/events/${event.id}/cancel-registration?token=${cancelToken}`;
             }
-          }).catch((err) => console.error("Auto-member error:", err));
-        }
+
+            await sendConfirmationEmail(event, reg, false, cancelUrl);
+          } catch (err) {
+            console.error("Confirmation email error:", err);
+          }
+        })();
       }
 
       return new Response(

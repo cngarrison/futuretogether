@@ -1,19 +1,36 @@
 {
   "nodeModulesDir": "auto",
   "tasks": {
-    "check": "deno fmt --check . && deno lint . && deno check",
+    "check": "deno fmt --check . && deno lint . && deno check main.ts",
+    "check:lint": "deno lint .",
+    "check:types": "deno check main.ts",
+    "format": "deno fmt",
+    "test": "deno test --allow-read --allow-write --allow-run --allow-net --allow-env --allow-import --unstable-kv tests/",
+    "test:ical": "deno run --allow-read --allow-write scripts/test-ical.ts",
     "dev": "./scripts/dev.sh",
     "local-prod": "./scripts/local-prod.sh",
     "local-start": "deno serve --port 5173 -A _fresh/server.js",
     "_vite": "vite",
     "build": "vite build",
     "start": "deno serve -A _fresh/server.js",
-    "update": "deno run -A -r jsr:@fresh/update ."
+    "update": "deno run -A -r jsr:@fresh/update .",
+    "onboard-site-owner": "scripts/onboard-site-owner.ts",
+    "seed": "deno run --allow-read --allow-env --allow-net scripts/migrate-content.ts",
+    "migrate-kv": "deno run --allow-read --allow-env --allow-write --allow-net --unstable-kv scripts/migrate-kv.ts",
+    "import-tumba-members": "deno run --allow-read --allow-env --allow-net scripts/import-tumba-members.ts",
+    "fixtures": "deno task onboard-site-owner && deno task seed && deno task migrate-kv && deno task import-tumba-members --csv /Users/cng/working/website-futuretogether/playground/future-together-signups.csv",
+    "fixtures:prod": "deno task onboard-site-owner --env production && deno task seed --env production && deno task migrate-kv --env production && deno task import-tumba-members --env production --csv /Users/cng/working/website-futuretogether/playground/future-together-signups.csv"
   },
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "unstable": ["kv", "cron"],
-  "exclude": ["**/_fresh/*"],
-  "include": ["data/events", "blog"],
+  "exclude": [
+    "**/_fresh/*",
+    "data/blog",
+    "data/events/more-info",
+    "**/*.svg",
+    "**/qrcode.js"
+  ],
+  "include": ["data/events", "data/blog"],
   "imports": {
     "@/": "./",
     "fresh": "jsr:@fresh/core@^2.3.3",
@@ -25,6 +42,7 @@
     "tailwindcss": "npm:tailwindcss@^4.1.10",
     "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.12",
     "@tailwindcss/typography": "npm:@tailwindcss/typography@^0.5.16",
+    "@supabase/supabase-js": "npm:@supabase/supabase-js@^2.108.1",
     "marked": "npm:marked@17.0.2",
     "marked-mangle": "npm:marked-mangle@1.1.12",
     "marked-gfm-heading-id": "npm:marked-gfm-heading-id@4.1.3",

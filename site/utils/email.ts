@@ -2,7 +2,14 @@
  * Shared email utilities for Future Together.
  * All outbound email goes through sendEmail().
  * buildEmailHtml() wraps content in the branded template.
+ *
+ * Environment gate:
+ * - sendEmail()      → blocked in non-prod unless recipient is on FT_EMAIL_ALLOWLIST
+ * - sendEmailBatch() → blocked entirely in non-prod (broadcast sends only)
+ * Set FT_EMAIL_ALLOWLIST (comma-separated emails) to permit test/notification sends in dev.
  */
+
+import { isProduction } from "@/utils/app.ts";
 
 export const RESEND_API_KEY = Deno.env.get("FT_RESEND_API_KEY");
 export const FROM_EMAIL = Deno.env.get("FT_RESEND_FROM_EMAIL") ??
@@ -11,6 +18,22 @@ export const FROM_NAME = Deno.env.get("FT_RESEND_FROM_NAME") ??
   "Future Together";
 export const SITE_URL = "https://futuretogether.community";
 export const LOGO_URL = `${SITE_URL}/logo-white.svg`;
+
+// ---------------------------------------------------------------------------
+// Environment gate helpers
+// ---------------------------------------------------------------------------
+
+export function getEmailAllowlist(): string[] {
+  return (Deno.env.get("FT_EMAIL_ALLOWLIST") ?? "")
+    .split(",")
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+export function isEmailAllowed(recipientEmail: string): boolean {
+  if (isProduction()) return true;
+  return getEmailAllowlist().includes(recipientEmail.trim().toLowerCase());
+}
 
 // ---------------------------------------------------------------------------
 // Types
@@ -29,14 +52,43 @@ export interface EmailOptions {
   text?: string;
   replyTo?: string;
   attachments?: EmailAttachment[];
+  from?: string;
 }
 
 // ---------------------------------------------------------------------------
 // Core send function
 // ---------------------------------------------------------------------------
 
-/** Send an email via Resend. Returns true on success. */
+export interface BatchEmailItem {
+  from: string;
+  reply_to?: string;
+  to: string;
+  subject: string;
+  html: string;
+  headers?: Record<string, string>;
+}
+
+export interface BatchSendResult {
+  sent: number;
+  failed: number;
+  firstBatchId: string | null;
+  error?: string;
+}
+
+// ---------------------------------------------------------------------------
+// Core send functions
+// ---------------------------------------------------------------------------
+
+/** Send an email via Resend. Returns true on success.
+ * Blocked in non-production unless the recipient is on FT_EMAIL_ALLOWLIST.
+ */
 export async function sendEmail(options: EmailOptions): Promise<boolean> {
+  if (!isEmailAllowed(options.to)) {
+    console.warn(
+      `sendEmail: blocked to "${options.to}" — non-production environment and not on FT_EMAIL_ALLOWLIST`,
+    );
+    return false;
+  }
   if (!RESEND_API_KEY) {
     console.error("FT_RESEND_API_KEY not configured");
     return false;
@@ -44,7 +96,7 @@ export async function sendEmail(options: EmailOptions): Promise<boolean> {
 
   try {
     const body: Record<string, unknown> = {
-      from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      from: options.from ?? `${FROM_NAME} <${FROM_EMAIL}>`,
       to: options.to,
       subject: options.subject,
       html: options.html,
@@ -71,6 +123,74 @@ export async function sendEmail(options: EmailOptions): Promise<boolean> {
     console.error("Error sending email:", err);
     return false;
   }
+}
+
+/**
+ * Send a batch of emails via Resend (chunks of 100).
+ * Blocked entirely in non-production — use sendEmail() for test sends.
+ */
+export async function sendEmailBatch(
+  items: BatchEmailItem[],
+): Promise<BatchSendResult> {
+  if (!isProduction()) {
+    console.warn(
+      `sendEmailBatch: blocked ${items.length} emails — non-production environment`,
+    );
+    return {
+      sent: 0,
+      failed: items.length,
+      firstBatchId: null,
+      error:
+        "Real email sends are disabled outside the production environment.",
+    };
+  }
+  if (!RESEND_API_KEY) {
+    console.error("sendEmailBatch: FT_RESEND_API_KEY not configured");
+    return {
+      sent: 0,
+      failed: items.length,
+      firstBatchId: null,
+      error: "FT_RESEND_API_KEY not configured",
+    };
+  }
+
+  let sent = 0;
+  let failed = 0;
+  let firstBatchId: string | null = null;
+
+  for (let i = 0; i < items.length; i += 100) {
+    const chunk = items.slice(i, i + 100);
+    try {
+      const res = await fetch("https://api.resend.com/emails/batch", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(chunk),
+      });
+      if (res.ok) {
+        const data = await res.json() as { data?: Array<{ id: string }> };
+        const batchItems = data.data ?? [];
+        sent += batchItems.length > 0 ? batchItems.length : chunk.length;
+        if (!firstBatchId && batchItems[0]?.id) firstBatchId = batchItems[0].id;
+      } else {
+        console.error(
+          `sendEmailBatch: Resend error (chunk ${Math.floor(i / 100) + 1}):`,
+          await res.text(),
+        );
+        failed += chunk.length;
+      }
+    } catch (err) {
+      console.error(
+        `sendEmailBatch: exception (chunk ${Math.floor(i / 100) + 1}):`,
+        err,
+      );
+      failed += chunk.length;
+    }
+  }
+
+  return { sent, failed, firstBatchId };
 }
 
 // ---------------------------------------------------------------------------

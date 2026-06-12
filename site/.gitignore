@@ -4,8 +4,11 @@
 .env.test.local
 .env.production.local
 .env.local
+.env.production
 .staff-pass*
 .turnstile-*
+
+scripts/test-ical/
 
 # Fresh build directory
 _fresh/

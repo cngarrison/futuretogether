@@ -2,8 +2,8 @@ import { useEffect } from "preact/hooks";
 import {
   SIZE_CYCLE,
   TEXT_SIZE_KEY,
-  textSize,
   type TextSize,
+  textSize,
 } from "./speakerState.ts";
 
 interface SpeakerControlsProps {

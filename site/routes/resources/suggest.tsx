@@ -14,7 +14,7 @@ export default define.page(function SuggestResource() {
       </Head>
 
       {/* Hero */}
-      <section class="text-white pt-16" style="background-color: #1a5f6e;">
+      <section class="text-white bg-primary">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
           <a
             href="/resources"
@@ -50,17 +50,14 @@ export default define.page(function SuggestResource() {
       </section>
 
       {/* Form */}
-      <section class="py-20 sm:py-28" style="background-color: #f7f4ef;">
+      <section class="py-20 sm:py-28 bg-warm-white">
         <div class="max-w-2xl mx-auto px-4 sm:px-6">
           {/* What we're looking for */}
           <div
             class="rounded-xl p-6 mb-10"
             style="background-color: #eef5f7; border: 1px solid #d0e4e7;"
           >
-            <h2
-              class="text-sm font-semibold uppercase tracking-widest mb-3"
-              style="color: #c4853a;"
-            >
+            <h2 class="text-sm font-semibold text-accent uppercase tracking-widest mb-3">
               What we’re looking for
             </h2>
             <ul class="space-y-2 text-sm" style="color: rgba(28,26,24,0.75);">
@@ -72,10 +69,7 @@ export default define.page(function SuggestResource() {
                 "Videos or talks that explain complex ideas clearly",
               ].map((item) => (
                 <li key={item} class="flex items-start gap-2.5">
-                  <span
-                    class="mt-0.5 w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center text-white"
-                    style="background-color: #1a5f6e; font-size: 10px;"
-                  >
+                  <span class="mt-0.5 w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs bg-primary">
                     ✓
                   </span>
                   {item}
@@ -104,7 +98,7 @@ export default define.page(function SuggestResource() {
         style="background-color: #eef5f7; border-top: 1px solid #d0e4e7;"
       >
         <div class="max-w-xl mx-auto px-4 sm:px-6">
-          <p class="font-semibold mb-2" style="color: #1c1a18;">
+          <p class="font-semibold text-near-black mb-2">
             The list is curated, not crowdsourced.
           </p>
           <p

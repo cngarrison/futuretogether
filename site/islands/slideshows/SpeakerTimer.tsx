@@ -86,16 +86,24 @@ export default function SpeakerTimer({ totalDurationMinutes = 45 }: Props) {
         timerRunning.value = !timerRunning.value;
       }}
       style="position:fixed;bottom:0.65rem;left:0.85rem;z-index:100;display:flex;align-items:center;gap:0.5rem;background:rgba(0,0,0,0.5);border-radius:999px;padding:0.4rem 0.9rem;cursor:pointer;user-select:none;-webkit-user-select:none;"
-      title={timerRunning.value ? "Pause" : hasStarted.value ? "Resume" : "Start"}
+      title={timerRunning.value
+        ? "Pause"
+        : hasStarted.value
+        ? "Resume"
+        : "Start"}
     >
-      <span style={`font-size:${iconSize};color:rgba(255,255,255,0.55);line-height:1;`}>
+      <span
+        style={`font-size:${iconSize};color:rgba(255,255,255,0.55);line-height:1;`}
+      >
         {timerRunning.value ? "⏸" : "▶"}
       </span>
       <span
         style={`font-size:${fontSize};font-weight:600;font-variant-numeric:tabular-nums;color:${timerColour};letter-spacing:0.02em;transition:color 0.3s;`}
       >
         {isOverTime && (
-          <span style="font-size:0.6em;opacity:0.7;margin-right:0.15em;">+</span>
+          <span style="font-size:0.6em;opacity:0.7;margin-right:0.15em;">
+            +
+          </span>
         )}
         {displayTime}
       </span>

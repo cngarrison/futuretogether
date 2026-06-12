@@ -114,14 +114,24 @@
       }
 
       @keyframes pulse {
-        0%, 100% { opacity: 0.6; }
-        50% { opacity: 1; }
+        0%, 100% {
+          opacity: 0.6;
+        }
+        50% {
+          opacity: 1;
+        }
       }
 
       @keyframes fadeOut {
-        0% { opacity: 1; }
-        80% { opacity: 1; }
-        100% { opacity: 0; }
+        0% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
       }
 
       h1 {
@@ -223,10 +233,22 @@
         border-radius: 12px;
       }
 
-      .split-teal  { background: #d4eef1; border: 2px solid #1a5f6e; }
-      .split-amber { background: #fef3c7; border: 2px solid #c4853a; }
-      .split-green { background: #d1fae5; border: 2px solid #059669; }
-      .split-red   { background: #fee2e2; border: 2px solid #dc2626; }
+      .split-teal {
+        background: #d4eef1;
+        border: 2px solid #1a5f6e;
+      }
+      .split-amber {
+        background: #fef3c7;
+        border: 2px solid #c4853a;
+      }
+      .split-green {
+        background: #d1fae5;
+        border: 2px solid #059669;
+      }
+      .split-red {
+        background: #fee2e2;
+        border: 2px solid #dc2626;
+      }
 
       /* Resources grid */
       .resource-list {
@@ -265,7 +287,9 @@
         font-size: 0.95rem;
       }
 
-      .resource-item a:hover { border-bottom-color: #1a5f6e; }
+      .resource-item a:hover {
+        border-bottom-color: #1a5f6e;
+      }
 
       .qr-code {
         width: 120px;
@@ -329,18 +353,31 @@
       }
 
       @media (max-width: 768px) {
-        h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; }
-        .question { font-size: 1.8rem; }
-        .large-text { font-size: 1.3rem; }
-        .slide { padding: 2rem; padding-bottom: 4rem; }
-        .split-view { grid-template-columns: 1fr; gap: 1rem; }
+        h1 {
+          font-size: 2.5rem;
+        }
+        h2 {
+          font-size: 2rem;
+        }
+        .question {
+          font-size: 1.8rem;
+        }
+        .large-text {
+          font-size: 1.3rem;
+        }
+        .slide {
+          padding: 2rem;
+          padding-bottom: 4rem;
+        }
+        .split-view {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
       }
     </style>
   </head>
   <body>
     <div class="deck">
-
       <!-- ═══════════════════════════════════════════════════════
            SLIDE 1 — OPENING  (keep this slide, update subtitle)
            ═══════════════════════════════════════════════════════ -->
@@ -348,17 +385,93 @@
         <div class="slide-number">1/N <span class="nav-arrow">→</span></div>
         <div class="nav-hint">← → Navigate or scroll right</div>
         <div class="slide-logo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 80" role="img" aria-label="Future Together">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 215 80"
+            role="img"
+            aria-label="Future Together"
+          >
             <title>Future Together</title>
-            <line x1="2" y1="5" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
-            <line x1="2" y1="21" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
-            <line x1="2" y1="40" x2="50" y2="40" stroke="#1a5f6e" stroke-width="3" stroke-linecap="round"/>
-            <line x1="2" y1="59" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
-            <line x1="2" y1="75" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
-            <circle cx="50" cy="40" r="7" fill="#c4853a"/>
-            <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="84" y="34" font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif" font-size="21" font-weight="700" fill="#1a5f6e" letter-spacing="-0.5">Future</text>
-            <text x="84" y="59" font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif" font-size="21" font-weight="400" fill="#1c1a18" letter-spacing="-0.5">Together</text>
+            <line
+              x1="2"
+              y1="5"
+              x2="50"
+              y2="40"
+              stroke="#1a5f6e"
+              stroke-width="2"
+              stroke-linecap="round"
+              opacity="0.45"
+            />
+            <line
+              x1="2"
+              y1="21"
+              x2="50"
+              y2="40"
+              stroke="#1a5f6e"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              opacity="0.7"
+            />
+            <line
+              x1="2"
+              y1="40"
+              x2="50"
+              y2="40"
+              stroke="#1a5f6e"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <line
+              x1="2"
+              y1="59"
+              x2="50"
+              y2="40"
+              stroke="#1a5f6e"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              opacity="0.7"
+            />
+            <line
+              x1="2"
+              y1="75"
+              x2="50"
+              y2="40"
+              stroke="#1a5f6e"
+              stroke-width="2"
+              stroke-linecap="round"
+              opacity="0.45"
+            />
+            <circle cx="50" cy="40" r="7" fill="#c4853a" />
+            <polyline
+              points="57,26 70,40 57,54"
+              fill="none"
+              stroke="#c4853a"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <text
+              x="84"
+              y="34"
+              font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
+              font-size="21"
+              font-weight="700"
+              fill="#1a5f6e"
+              letter-spacing="-0.5"
+            >
+              Future
+            </text>
+            <text
+              x="84"
+              y="59"
+              font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
+              font-size="21"
+              font-weight="400"
+              fill="#1c1a18"
+              letter-spacing="-0.5"
+            >
+              Together
+            </text>
           </svg>
         </div>
         <h1>The future is arriving.<br>Let’s face it together.</h1>
@@ -461,7 +574,9 @@
       <div class="slide">
         <div class="slide-number">6/N <span class="nav-arrow">→</span></div>
         <h2>Your Slide Heading Here</h2>
-        <div style="display: flex; gap: 3rem; align-items: center; max-width: 1100px">
+        <div
+          style="display: flex; gap: 3rem; align-items: center; max-width: 1100px"
+        >
           <div style="flex: 1">
             <div class="large-text" style="text-align: left">
               Your key point or framing<br>
@@ -477,7 +592,7 @@
           <img
             src="./your-image.png"
             alt="Description of image"
-            style="max-width: 500px; max-height: 500px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1)"
+            style="max-width: 500px; max-height: 500px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)"
           >
         </div>
       </div>
@@ -495,44 +610,127 @@
         <div class="resource-list">
           <div class="resource-item">
             <h4>📚 Resource Title</h4>
-            <img src="./resource-links/your-qr.png" alt="QR Code" class="qr-code">
+            <img
+              src="./resource-links/your-qr.png"
+              alt="QR Code"
+              class="qr-code"
+            >
             <p>Brief description of this resource</p>
-            <a href="https://example.com" target="_blank" rel="noopener noreferrer">example.com</a>
+            <a
+              href="https://example.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >example.com</a>
           </div>
           <div class="resource-item">
             <h4>📚 Resource Title</h4>
-            <img src="./resource-links/your-qr.png" alt="QR Code" class="qr-code">
+            <img
+              src="./resource-links/your-qr.png"
+              alt="QR Code"
+              class="qr-code"
+            >
             <p>Brief description of this resource</p>
-            <a href="https://example.com" target="_blank" rel="noopener noreferrer">example.com</a>
+            <a
+              href="https://example.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >example.com</a>
           </div>
         </div>
-        <div style="margin-top: 1.5rem; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 1.5rem; max-width: 800px; width: 100%">
-          <div style="font-size: 1.4rem; color: #1a5f6e; font-weight: 700; font-style: italic; margin-bottom: 0.5rem">
+        <div
+          style="margin-top: 1.5rem; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 1.5rem; max-width: 800px; width: 100%"
+        >
+          <div
+            style="font-size: 1.4rem; color: #1a5f6e; font-weight: 700; font-style: italic; margin-bottom: 0.5rem"
+          >
             “The future is arriving. Let’s face it together.”
           </div>
           <div style="color: #6b7280; font-size: 1rem; margin-bottom: 0.75rem">
             Let’s continue the conversation.
           </div>
-          <a href="https://futuretogether.community" target="_blank" rel="noopener noreferrer" style="color: #c4853a; font-weight: 600; font-size: 0.95rem; text-decoration: none; border-bottom: 1px solid rgba(196,133,58,0.5); padding-bottom: 2px;">
+          <a
+            href="https://futuretogether.community"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: #c4853a; font-weight: 600; font-size: 0.95rem; text-decoration: none; border-bottom: 1px solid rgba(196, 133, 58, 0.5); padding-bottom: 2px"
+          >
             futuretogether.community
           </a>
         </div>
       </div>
-
-    </div><!-- end .deck -->
+    </div>
+    <!-- end .deck -->
 
     <!-- ═══════════════════════════════════════════════════════
          BRAND BAR — do not remove or modify
          ═══════════════════════════════════════════════════════ -->
     <div class="brand-bar">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 80" role="presentation" aria-hidden="true" style="height:22px;width:auto">
-        <line x1="2" y1="5" x2="50" y2="40" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-        <line x1="2" y1="21" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
-        <line x1="2" y1="40" x2="50" y2="40" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
-        <line x1="2" y1="59" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
-        <line x1="2" y1="75" x2="50" y2="40" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-        <circle cx="50" cy="40" r="7" fill="#c4853a"/>
-        <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 72 80"
+        role="presentation"
+        aria-hidden="true"
+        style="height: 22px; width: auto"
+      >
+        <line
+          x1="2"
+          y1="5"
+          x2="50"
+          y2="40"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          opacity="0.5"
+        />
+        <line
+          x1="2"
+          y1="21"
+          x2="50"
+          y2="40"
+          stroke="white"
+          stroke-width="2.4"
+          stroke-linecap="round"
+          opacity="0.7"
+        />
+        <line
+          x1="2"
+          y1="40"
+          x2="50"
+          y2="40"
+          stroke="white"
+          stroke-width="3"
+          stroke-linecap="round"
+          opacity="0.9"
+        />
+        <line
+          x1="2"
+          y1="59"
+          x2="50"
+          y2="40"
+          stroke="white"
+          stroke-width="2.4"
+          stroke-linecap="round"
+          opacity="0.7"
+        />
+        <line
+          x1="2"
+          y1="75"
+          x2="50"
+          y2="40"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          opacity="0.5"
+        />
+        <circle cx="50" cy="40" r="7" fill="#c4853a" />
+        <polyline
+          points="57,26 70,40 57,54"
+          fill="none"
+          stroke="#c4853a"
+          stroke-width="3.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
       </svg>
       <span class="brand-bar-name">Future Together</span>
       <span class="brand-bar-sep">·</span>
@@ -541,7 +739,7 @@
 
     <script>
       // Keyboard navigation (arrow keys + spacebar)
-      document.addEventListener("keydown", function(e) {
+      document.addEventListener("keydown", function (e) {
         const deck = document.querySelector(".deck");
         const slideWidth = window.innerWidth;
         if (e.key === "ArrowRight" || e.key === " ") {
@@ -554,11 +752,11 @@
       });
 
       // Clickable → arrows
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded", function () {
         const deck = document.querySelector(".deck");
         const slideWidth = window.innerWidth;
-        document.querySelectorAll(".nav-arrow").forEach(function(arrow) {
-          arrow.addEventListener("click", function(e) {
+        document.querySelectorAll(".nav-arrow").forEach(function (arrow) {
+          arrow.addEventListener("click", function (e) {
             e.preventDefault();
             deck.scrollLeft += slideWidth;
           });

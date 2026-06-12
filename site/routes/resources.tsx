@@ -1,10 +1,37 @@
 import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
-import {
-  CATEGORIES,
-  externalResources,
-  internalResources,
-} from "@/data/resources.ts";
+import { getSiteResources } from "@/utils/db/content.ts";
+
+const internalResources = [
+  {
+    label: "Community",
+    title: "Articles",
+    href: "/blog",
+    description:
+      "Writing from the Future Together community. Experiences, observations, and analysis from people navigating AI-driven change in their own lives and work.",
+  },
+  {
+    label: "Community",
+    title: "Slideshows",
+    href: "/meetups#slideshows",
+    description:
+      "Slideshows used in our programs — a visual walkthrough of the key ideas, questions, and frameworks we discuss together.",
+  },
+  {
+    label: "Community",
+    title: "Meetup Slideshow",
+    href: "/meetups/discuss-our-future",
+    description:
+      "The slideshow used in our monthly online meetups — a visual walkthrough of the key ideas, questions, and frameworks we discuss together. A good starting point if you're new.",
+  },
+];
+
+const CATEGORY_ORDER = [
+  "Perspectives",
+  "Context & Frameworks",
+  "Preparation & Resilience",
+  "Stay Informed",
+] as const;
 
 const ExternalLinkIcon = () => (
   <svg
@@ -24,7 +51,13 @@ const ExternalLinkIcon = () => (
   </svg>
 );
 
-export default define.page(function Resources() {
+export default define.page(async function Resources(ctx) {
+  const dbResources = await getSiteResources(ctx.state);
+  // Fall back to empty list if Supabase not yet seeded
+  const externalResources = dbResources.length > 0 ? dbResources : [];
+  const CATEGORIES = CATEGORY_ORDER.filter((cat) =>
+    externalResources.some((r) => r.category === cat)
+  );
   return (
     <>
       <Head>
@@ -37,8 +70,8 @@ export default define.page(function Resources() {
 
       {/* Hero */}
       <section
-        class="text-white pt-16"
-        style="background-color: #1a5f6e; background-image: linear-gradient(rgba(26,95,110,0.82), rgba(26,95,110,0.82)), url('/img/resources-library-hero.webp'); background-size: cover; background-position: center;"
+        class="text-white bg-primary"
+        style="background-image: linear-gradient(rgba(26,95,110,0.82), rgba(26,95,110,0.82)), url('/img/resources-library-hero.webp'); background-size: cover; background-position: center;"
       >
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
           <p
@@ -62,7 +95,7 @@ export default define.page(function Resources() {
       </section>
 
       {/* External resources */}
-      <section class="py-20 sm:py-28" style="background-color: #f7f4ef;">
+      <section class="py-20 sm:py-28 bg-warm-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
           {CATEGORIES.map((category) => {
             const items = externalResources.filter(
@@ -71,10 +104,7 @@ export default define.page(function Resources() {
             if (items.length === 0) return null;
             return (
               <div key={category} class="mb-16 last:mb-0">
-                <h2
-                  class="text-xs font-semibold uppercase tracking-widest mb-6"
-                  style="color: #c4853a;"
-                >
+                <h2 class="text-xs font-semibold text-accent uppercase tracking-widest mb-6">
                   {category}
                 </h2>
                 <div class="flex flex-col gap-5">
@@ -88,10 +118,7 @@ export default define.page(function Resources() {
                       style="border: 1px solid #d0e4e7;"
                     >
                       <div class="flex items-start justify-between gap-4">
-                        <h3
-                          class="font-semibold text-base leading-snug group-hover:underline"
-                          style="color: #1a5f6e;"
-                        >
+                        <h3 class="font-semibold text-base text-primary leading-snug group-hover:underline">
                           {resource.title}
                         </h3>
                         <span
@@ -122,10 +149,7 @@ export default define.page(function Resources() {
         style="background-color: #eef5f7; border-top: 1px solid #d0e4e7;"
       >
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
-          <h2
-            class="text-xs font-semibold uppercase tracking-widest mb-6"
-            style="color: #c4853a;"
-          >
+          <h2 class="text-xs font-semibold text-accent uppercase tracking-widest mb-6">
             From Future Together
           </h2>
           <div class="flex flex-col gap-5">
@@ -137,10 +161,7 @@ export default define.page(function Resources() {
                 style="border: 1px solid #d0e4e7;"
               >
                 <div class="flex items-start justify-between gap-4">
-                  <h3
-                    class="font-semibold text-base leading-snug group-hover:underline"
-                    style="color: #1a5f6e;"
-                  >
+                  <h3 class="font-semibold text-base text-primary leading-snug group-hover:underline">
                     {resource.title}
                   </h3>
                   <span
@@ -176,16 +197,15 @@ export default define.page(function Resources() {
 
       {/* Suggest a resource */}
       <section
-        class="py-12 text-center"
-        style="background-color: #f7f4ef; border-top: 1px solid #d0e4e7;"
+        class="py-12 text-center bg-warm-white"
+        style="border-top: 1px solid #d0e4e7;"
       >
         <div class="max-w-xl mx-auto px-4 sm:px-6">
           <p class="text-sm" style="color: rgba(28,26,24,0.55);">
             Know something that should be on this list?{" "}
             <a
               href="/resources/suggest"
-              class="ml-2 font-semibold underline underline-offset-2 transition-opacity hover:opacity-70"
-              style="color: #1a5f6e;"
+              class="ml-2 font-semibold text-primary underline underline-offset-2 transition-opacity hover:opacity-70"
             >
               Suggest a resource &rarr;
             </a>
@@ -194,10 +214,7 @@ export default define.page(function Resources() {
       </section>
 
       {/* CTA */}
-      <section
-        class="py-20 text-center"
-        style="background-color: #1a5f6e; color: white;"
-      >
+      <section class="py-20 text-center text-white bg-primary">
         <div class="max-w-xl mx-auto px-4 sm:px-6">
           <h2 class="text-3xl font-bold mb-4">Come to a meetup</h2>
           <p class="mb-8 text-lg" style="color: rgba(255,255,255,0.8);">
@@ -206,8 +223,7 @@ export default define.page(function Resources() {
           </p>
           <a
             href="/events/discuss-our-future"
-            class="inline-block px-8 py-3.5 text-white font-semibold rounded-xl transition-opacity hover:opacity-90"
-            style="background-color: #c4853a;"
+            class="inline-block px-8 py-3.5 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
           >
             Register for the next meetup &rarr;
           </a>

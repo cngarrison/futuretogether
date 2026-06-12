@@ -47,7 +47,7 @@ export default function TurnstileWidget(
     // @ts-ignore - Turnstile global
     if (typeof globalThis.turnstile !== "undefined") {
       try {
-        // @ts-ignore
+        // @ts-ignore turnstile imported via inline script
         const id = globalThis.turnstile.render(containerRef.value, {
           sitekey: siteKey,
           callback: (token: string) => {

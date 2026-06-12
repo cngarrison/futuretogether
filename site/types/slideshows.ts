@@ -39,7 +39,22 @@ export interface SlideshowMeta {
   slideCount: number;
   durationMinutes: number;
   description?: string;
-  loadSlides: () => Promise<SlideData[]>;
+}
+
+/**
+ * Record returned from Supabase event_slideshows table.
+ * Used by routes to load slideshow metadata from the DB.
+ */
+export interface SlideshowRecord {
+  id: string;
+  slug: string;
+  title: string;
+  event_id: string | null;
+  file_path: string;
+  is_published: boolean;
+  slide_count: number | null;
+  duration_minutes: number | null;
+  description: string | null;
 }
 
 export interface SlideshowState {

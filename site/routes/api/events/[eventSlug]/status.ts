@@ -1,12 +1,13 @@
 import { define } from "@/utils.ts";
-import { getNextAvailableEvent, getRegistrationCount } from "@/utils/events.ts";
+import { getNextAvailableEvent } from "@/utils/db/group-events.ts";
+import { getRegistrationCount } from "@/utils/db/group-registrations.ts";
 
-export const handlers = define.handlers({
+export const handler = define.handlers({
   async GET(ctx) {
     try {
       const { eventSlug } = ctx.params;
 
-      const event = await getNextAvailableEvent(eventSlug);
+      const event = await getNextAvailableEvent(eventSlug, ctx.state);
 
       if (!event) {
         return new Response(
@@ -21,7 +22,7 @@ export const handlers = define.handlers({
         );
       }
 
-      const registrationCount = await getRegistrationCount(event.id);
+      const registrationCount = await getRegistrationCount(event.id, ctx.state);
       // Convert BigInt to number for arithmetic operations
       const count = Number(registrationCount);
       const spotsRemaining = event.capacity - count;

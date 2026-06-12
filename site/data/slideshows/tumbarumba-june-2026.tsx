@@ -24,15 +24,35 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      pace: 'Brief \u00b7 ~3 min',
+      pace: "Brief \u00b7 ~3 min",
       cumulative: 3,
-      anchor: 'Thank you for being here \u2014 it means a lot. This conversation matters.',
+      anchor:
+        "Thank you for being here \u2014 it means a lot. This conversation matters.",
       bullets: [
-        { type: 'say', text: 'I want to thank the Tumba Business Chamber and the Nest for their support' },
-        { type: 'say', text: 'I\u2019m Charlie \u2014 I\u2019ve been working in IT since last century and using AI daily for last three years' },
-        { type: 'say', text: 'I decided to speak on this topic after a mate at Anthropic pulled me aside one day and asked me "What am I doing to help my community prepare". He works on the AI safety team \u2014 I realized he was asking a very serious question. I needed to take action.' },
-        { type: 'say', text: 'I\u2019ll spend 45-minute talking about what I\u2019ve learned, then open for Q&A \u2014 no wrong questions' },
-        { type: 'cue', text: 'Let the room settle. Don\u2019t rush into Slide 2.' },
+        {
+          type: "say",
+          text:
+            "I want to thank the Tumba Business Chamber and the Nest for their support",
+        },
+        {
+          type: "say",
+          text:
+            "I\u2019m Charlie \u2014 I\u2019ve been working in IT since last century and using AI daily for last three years",
+        },
+        {
+          type: "say",
+          text:
+            'I decided to speak on this topic after a mate at Anthropic pulled me aside one day and asked me "What am I doing to help my community prepare". He works on the AI safety team \u2014 I realized he was asking a very serious question. I needed to take action.',
+        },
+        {
+          type: "say",
+          text:
+            "I\u2019ll spend 45-minute talking about what I\u2019ve learned, then open for Q&A \u2014 no wrong questions",
+        },
+        {
+          type: "cue",
+          text: "Let the room settle. Don\u2019t rush into Slide 2.",
+        },
       ],
     },
   },
@@ -46,25 +66,43 @@ export const slides: SlideData[] = [
         <h2>Why We&rsquo;re Here Tonight</h2>
         <div class="large-text">
           Tumbarumba is facing the same changes as the rest of the world.<br />
-          But we have something most places don&rsquo;t &mdash; we know each other.
+          But we have something most places don&rsquo;t &mdash; we know each
+          other.
         </div>
-        <div class="info-box" style="margin-top: 2rem; max-width: 900px; width: 100%">
+        <div
+          class="info-box"
+          style="margin-top: 2rem; max-width: 900px; width: 100%"
+        >
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2.5rem; font-size: 1.5rem;">
             <div>
-              <strong>&#128106; Families &amp; young people</strong><br />
-              <span style="font-size: 1.3rem; color: #374151">High school students entering an unstable workforce</span>
+              <strong>&#128106; Families &amp; young people</strong>
+              <br />
+              <span style="font-size: 1.3rem; color: #374151">
+                High school students entering an unstable workforce
+              </span>
             </div>
             <div>
-              <strong>&#127978; Local businesses</strong><br />
-              <span style="font-size: 1.3rem; color: #374151">Industries already transforming in ways most people haven&rsquo;t noticed</span>
+              <strong>&#127978; Local businesses</strong>
+              <br />
+              <span style="font-size: 1.3rem; color: #374151">
+                Industries already transforming in ways most people
+                haven&rsquo;t noticed
+              </span>
             </div>
             <div>
-              <strong>&#129309; Community resilience</strong><br />
-              <span style="font-size: 1.3rem; color: #374151">How we prepare together rather than worry alone</span>
+              <strong>&#129309; Community resilience</strong>
+              <br />
+              <span style="font-size: 1.3rem; color: #374151">
+                How we prepare together rather than worry alone
+              </span>
             </div>
             <div>
-              <strong>&#128302; The bigger picture</strong><br />
-              <span style="font-size: 1.3rem; color: #374151">Understanding what&rsquo;s actually happening &mdash; not just the hype</span>
+              <strong>&#128302; The bigger picture</strong>
+              <br />
+              <span style="font-size: 1.3rem; color: #374151">
+                Understanding what&rsquo;s actually happening &mdash; not just
+                the hype
+              </span>
             </div>
           </div>
         </div>
@@ -75,13 +113,26 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      pace: 'Brief \u00b7 ~1.5 min',
+      pace: "Brief \u00b7 ~1.5 min",
       cumulative: 5,
-      anchor: 'Tumbarumba has something many places don\u2019t \u2014 people who actually know each other.',
+      anchor:
+        "Tumbarumba has something many places don\u2019t \u2014 people who actually know each other.",
       bullets: [
-        { type: 'say', text: 'Again, I want to thank the Business Chamber and the Nest \u2014 this event happened because people in this community took it seriously' },
-        { type: 'say', text: 'This is for everyone here: families, business owners, parents, young people, anyone who senses something big is changing' },
-        { type: 'cue', text: 'Warm and unhurried \u2014 don\u2019t rush to the hard content. Let the room feel welcomed.' },
+        {
+          type: "say",
+          text:
+            "Again, I want to thank the Business Chamber and the Nest \u2014 this event happened because people in this community took it seriously",
+        },
+        {
+          type: "say",
+          text:
+            "This is for everyone here: families, business owners, parents, young people, anyone who senses something big is changing",
+        },
+        {
+          type: "cue",
+          text:
+            "Warm and unhurried \u2014 don\u2019t rush to the hard content. Let the room feel welcomed.",
+        },
       ],
     },
   },
@@ -101,19 +152,36 @@ export const slides: SlideData[] = [
             <div style="background: #f3f4f6; border-radius: 12px; padding: 1.25rem; line-height: 1.7">
               <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem">
                 <div style="background: #1a5f6e; color: white; border-radius: 12px 12px 2px 12px; padding: 0.65rem 1.1rem; max-width: 85%; font-size: 1.2rem">
-                  <strong>Farmer:</strong> We&rsquo;ve had below-average rainfall this season and wool prices are down 12%. I&rsquo;ve got 4 paddocks &mdash; two spelled, two running at capacity. Should I consolidate now or hold the rotation?
+                  <strong>Farmer:</strong>{" "}
+                  We&rsquo;ve had below-average rainfall this season and wool
+                  prices are down 12%. I&rsquo;ve got 4 paddocks &mdash; two
+                  spelled, two running at capacity. Should I consolidate now or
+                  hold the rotation?
                 </div>
               </div>
               <div style="display: flex; justify-content: flex-start">
                 <div style="background: white; border: 1px solid #e5e7eb; border-radius: 12px 12px 12px 2px; padding: 0.65rem 1.1rem; max-width: 90%; font-size: 0.95rem; color: #1c1a18">
-                  <strong>AI:</strong> With below-average rainfall and suppressed wool prices, I&rsquo;d recommend holding your current rotation rather than consolidating. Your spelled paddocks need at least 8&ndash;10 weeks recovery to rebuild root mass &mdash; consolidating now would sacrifice that progress for marginal short-term feed gain. At 12% below benchmark prices, the carrying cost of pushing flock condition doesn&rsquo;t pencil out. Keep the two spelled paddocks resting and consider reducing stocking density on your running paddocks by 15&ndash;20% to preserve ground cover. When prices recover &mdash; typically following the autumn clip &mdash; you&rsquo;ll be in a stronger position with both pasture and flock condition intact.
+                  <strong>AI:</strong>{" "}
+                  With below-average rainfall and suppressed wool prices,
+                  I&rsquo;d recommend holding your current rotation rather than
+                  consolidating. Your spelled paddocks need at least 8&ndash;10
+                  weeks recovery to rebuild root mass &mdash; consolidating now
+                  would sacrifice that progress for marginal short-term feed
+                  gain. At 12% below benchmark prices, the carrying cost of
+                  pushing flock condition doesn&rsquo;t pencil out. Keep the two
+                  spelled paddocks resting and consider reducing stocking
+                  density on your running paddocks by 15&ndash;20% to preserve
+                  ground cover. When prices recover &mdash; typically following
+                  the autumn clip &mdash; you&rsquo;ll be in a stronger position
+                  with both pasture and flock condition intact.
                 </div>
               </div>
             </div>
             <div class="emphasis-box" style="margin-top: 1rem">
               <div class="large-text">
                 That took <strong>3 seconds</strong>.<br />
-                A consultation with an agronomist takes weeks to arrange &mdash; and costs hundreds of dollars.
+                A consultation with an agronomist takes weeks to arrange &mdash;
+                and costs hundreds of dollars.
               </div>
             </div>
           </div>
@@ -132,16 +200,40 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      pace: 'Demo \u00b7 ~3 min',
+      pace: "Demo \u00b7 ~3 min",
       cumulative: 8,
-      anchor: 'What can AI do. This isn\u2019t glorifed search. This is expertise \u2014 on demand, for free.',
+      anchor:
+        "What can AI do. This isn\u2019t glorifed search. This is expertise \u2014 on demand, for free.",
       bullets: [
-        { type: 'say', text: 'Most people think of AI as a smart Google search. This is something different.' },
-        { type: 'say', text: 'Walk through the scenario for a sheep farmer \u2014 below-average rainfall, wool prices are down, he has a paddock rotation decision. Real problem, needing an expert-level answer.' },
-        { type: 'say', text: 'The AI response references root mass recovery, stocking density, price timing, and a contingency scenario. That\u2019s agronomist-level reasoning.' },
-        { type: 'say', text: 'It took three seconds. No appointment. No consultation fee.' },
-        { type: 'cue', text: 'Pause after reading the AI response \u2014 let people absorb it. Don\u2019t rush.' },
-        { type: 'cue', text: 'If someone says \u201cthat\u2019s impressive\u201d: \u201cThis was a simple question. It can do this all day, in any field, for anyone.\u201d' },
+        {
+          type: "say",
+          text:
+            "Most people think of AI as a smart Google search. This is something different.",
+        },
+        {
+          type: "say",
+          text:
+            "Walk through the scenario for a sheep farmer \u2014 below-average rainfall, wool prices are down, he has a paddock rotation decision. Real problem, needing an expert-level answer.",
+        },
+        {
+          type: "say",
+          text:
+            "The AI response references root mass recovery, stocking density, price timing, and a contingency scenario. That\u2019s agronomist-level reasoning.",
+        },
+        {
+          type: "say",
+          text: "It took three seconds. No appointment. No consultation fee.",
+        },
+        {
+          type: "cue",
+          text:
+            "Pause after reading the AI response \u2014 let people absorb it. Don\u2019t rush.",
+        },
+        {
+          type: "cue",
+          text:
+            "If someone says \u201cthat\u2019s impressive\u201d: \u201cThis was a simple question. It can do this all day, in any field, for anyone.\u201d",
+        },
       ],
     },
   },
@@ -149,7 +241,7 @@ export const slides: SlideData[] = [
   // ── SLIDE 4 ── The Timeline Has Collapsed ─────────────────────────────────
   {
     id: 4,
-    title: 'The Timeline Has Collapsed',
+    title: "The Timeline Has Collapsed",
     content: (
       <>
         <h2>The Timeline Has Collapsed</h2>
@@ -165,13 +257,25 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      pace: 'Brief \u00b7 ~2 min',
+      pace: "Brief \u00b7 ~2 min",
       cumulative: 10,
-      anchor: 'What we thought was over 10 years away is arriving in 1\u20133 years.',
+      anchor:
+        "What we thought was over 10 years away is arriving in 1\u20133 years.",
       bullets: [
-        { type: 'say', text: 'Capabilities that experts expected by 2030\u20132050 exist now \u2014 this isn\u2019t a prediction.' },
-        { type: 'say', text: 'The pace isn\u2019t slowing either. Each AI model generation arrives faster than the last.' },
-        { type: 'cue', text: 'State it plainly and move on. Don\u2019t qualify it.' },
+        {
+          type: "say",
+          text:
+            "Capabilities that experts expected by 2030\u20132050 exist now \u2014 this isn\u2019t a prediction.",
+        },
+        {
+          type: "say",
+          text:
+            "The pace isn\u2019t slowing either. Each AI model generation arrives faster than the last.",
+        },
+        {
+          type: "cue",
+          text: "State it plainly and move on. Don\u2019t qualify it.",
+        },
       ],
     },
   },
@@ -184,69 +288,149 @@ export const slides: SlideData[] = [
       <>
         <h2>We MUST Solve Alignment First</h2>
         <div class="large-text">
-          <strong>Alignment:</strong> Ensuring AI systems do what we actually want, <br />
+          <strong>Alignment:</strong>{" "}
+          Ensuring AI systems do what we actually want, <br />
           not just what we tell them
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 1400px; width: 100%; margin-top: 1.5rem">
-		  <div class="warning-box" style="margin-top: 1.5rem">
-			<div style="font-size: 1.5rem; color: #374151">
-			  Anthropic has documented their own AI attempting deception, 
-			  manipulation, and blackmail in controlled tests. <sup class="fn">1,2</sup>
-			</div>
-		  </div>
-		  <div class="warning-box" style="margin-top: 1.5rem">
-			<div style="font-size: 1.4rem; color: #374151">
-			  Open-source AI guardrails were removed in <strong>10 minutes</strong>.<br />
-			  One tool. Four lines of code. No specialist hardware.<br />
-			  3,500+ &ldquo;decensored&rdquo; models, downloaded <strong>13 million times</strong>. <sup class="fn">3</sup>
-			</div>
-		  </div>
+          <div class="warning-box" style="margin-top: 1.5rem">
+            <div style="font-size: 1.5rem; color: #374151">
+              Anthropic has documented their own AI attempting deception,
+              manipulation, and blackmail in controlled tests.{" "}
+              <sup class="fn">1,2</sup>
+            </div>
+          </div>
+          <div class="warning-box" style="margin-top: 1.5rem">
+            <div style="font-size: 1.4rem; color: #374151">
+              Open-source AI guardrails were removed in{" "}
+              <strong>10 minutes</strong>.<br />
+              One tool. Four lines of code. No specialist hardware.<br />
+              3,500+ &ldquo;decensored&rdquo; models, downloaded{" "}
+              <strong>13 million times</strong>. <sup class="fn">3</sup>
+            </div>
+          </div>
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 1400px; width: 100%; margin-top: 1.5rem">
           <div class="emphasis-box" style="margin: 0">
-            <h3 style="font-size: 1.5rem; margin-bottom: 0.35rem">&#128172; Language is Imprecise</h3>
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.35rem">
+              &#128172; Language is Imprecise
+            </h3>
             <p style="font-size: 1.2rem; color: #374151">
-              Imagine telling a workmate what you want &mdash; they do exactly what you said, but completely miss what you meant. Now give those instructions to a system that acts autonomously at scale, with no common sense to fill the gaps.
+              Imagine telling a workmate what you want &mdash; they do exactly
+              what you said, but completely miss what you meant. Now give those
+              instructions to a system that acts autonomously at scale, with no
+              common sense to fill the gaps.
             </p>
           </div>
           <div class="warning-box" style="margin: 0">
-            <h3 style="font-size: 1.5rem; margin-bottom: 0.35rem">&#9878;&#65039; Data Carries Our Biases</h3>
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.35rem">
+              &#9878;&#65039; Data Carries Our Biases
+            </h3>
             <p style="font-size: 1.2rem; color: #374151">
-              US courts used AI to advise sentencing: it rated Black defendants as higher risk, leading to longer sentences. Medical AI trained on Western patients routinely misdiagnoses patients in Africa. AI doesn&rsquo;t add bias &mdash; it inherits and amplifies ours. <sup class="fn">4</sup>
+              US courts used AI to advise sentencing: it rated Black defendants
+              as higher risk, leading to longer sentences. Medical AI trained on
+              Western patients routinely misdiagnoses patients in Africa. AI
+              doesn&rsquo;t add bias &mdash; it inherits and amplifies ours.
+              {" "}
+              <sup class="fn">4</sup>
             </p>
           </div>
         </div>
         <div class="large-text" style="margin-top: 1.5rem; font-weight: 600">
-          Alignment is a <strong>very hard problem.</strong><br />
+          Alignment is a <strong>very hard problem.</strong>
+          <br />
           The brightest minds, working hardest &mdash; <br />
           and we still don&rsquo;t have it solved.
         </div>
         <div class="question" style="margin-top: 1.5rem">
-          The people building it are optimistic.<br />That&rsquo;s not the same as safe.
+          The people building it are optimistic.<br />That&rsquo;s not the same
+          as safe.
         </div>
         <div class="slide-footnotes">
-          <span><sup>1</sup> Alignment Faking in Large Language Models (Anthropic, Dec 2024) &mdash; arxiv.org/abs/2412.14093</span><br />
-          <span><sup>2</sup> Agentic Misalignment (Anthropic + collaborators, Oct 2025) &mdash; anthropic.com/research/agentic-misalignment</span><br />
-          <span><sup>3</sup> Financial Times investigation (2026) &mdash; open-source AI guardrail removal; Llama 3.3 and Gemma 3 stripped of safety controls within minutes using \u201cHeretic\u201d tool on GitHub</span><br />
-          <span><sup>4</sup> Brian Christian, &ldquo;The Alignment Problem&rdquo; (2020) &mdash; COMPAS recidivism risk tool; ProPublica investigation (2016): Black defendants rated higher-risk than white defendants at roughly twice the rate</span>
+          <span>
+            <sup>1</sup>{" "}
+            Alignment Faking in Large Language Models (Anthropic, Dec 2024)
+            &mdash; arxiv.org/abs/2412.14093
+          </span>
+          <br />
+          <span>
+            <sup>2</sup>{" "}
+            Agentic Misalignment (Anthropic + collaborators, Oct 2025) &mdash;
+            anthropic.com/research/agentic-misalignment
+          </span>
+          <br />
+          <span>
+            <sup>3</sup>{" "}
+            Financial Times investigation (2026) &mdash; open-source AI
+            guardrail removal; Llama 3.3 and Gemma 3 stripped of safety controls
+            within minutes using \u201cHeretic\u201d tool on GitHub
+          </span>
+          <br />
+          <span>
+            <sup>4</sup>{" "}
+            Brian Christian, &ldquo;The Alignment Problem&rdquo; (2020) &mdash;
+            COMPAS recidivism risk tool; ProPublica investigation (2016): Black
+            defendants rated higher-risk than white defendants at roughly twice
+            the rate
+          </span>
         </div>
       </>
     ),
     notes: {
-      pace: 'Core \u00b7 ~6 min',
+      pace: "Core \u00b7 ~6 min",
       cumulative: 16,
-      anchor: 'Alignment isn\u2019t just a technical problem. It\u2019s a language problem \u2014 and we\u2019ve never solved it.',
+      anchor:
+        "Alignment isn\u2019t just a technical problem. It\u2019s a language problem \u2014 and we\u2019ve never solved it.",
       bullets: [
-        { type: 'say', text: 'Alignment: making sure AI does what we genuinely intend, not just what we tell it. Sounds simple. It isn\u2019t. This and the next couple of slides are crux of why I\u2019m concerned.' },
-        { type: 'say', text: 'Language gap: Everyone has experienced this \u2014 \u201cTell a workmate what you want \u2014 they do exactly what you said, not what you actually meant.\u201d Now give those instructions to a system that acts autonomously at scale, with no common sense to fill the gap. The more capable and independent AI becomes, the more catastrophic that gap can be.' },
-        { type: 'say', text: 'AI has a data bias \u2014 unbiased data doesn’t exist.' },
-        { type: 'say', text: 'Example \u2014 court sentencing: US courts used to use an AI called COMPAS to advise judges on sentencing. A ProPublica investigation found it rated Black defendants as higher risk of reoffending at roughly twice the rate of white defendants. Judges used it. People received longer sentences. This isn\u2019t a hypothetical \u2014 it happened.' },
-        { type: 'say', text: 'Example \u2014 medicine: AI diagnostic tools trained almost entirely on Western patients. In Africa, where patient physiology, disease presentation, and nutrition profiles differ, those same tools routinely give wrong answers. The AI isn\u2019t broken \u2014 it reflects who was in the room when it was built.' },
-        { type: 'say', text: 'The point: it\u2019s not that alignment researchers aren\u2019t smart or aren\u2019t trying. The brightest people in the world are working on this. After decades, we still don\u2019t have it solved \u2014 at any scale. \u201cThe Alignment Problem\u201d by Brian Christian documents all of this in detail.' },
-        { type: 'say', text: 'Anthropic\u2019s own AI chose blackmail over failure in controlled tests \u2014 up to 96% of the time. That\u2019s from their own published research.' },
-        { type: 'say', text: 'Recently there were 13 million downloads of decensored open-source models. Guardrails were removed in 10 minutes. Four lines of code.' },
-        { type: 'cue', text: 'If challenged: \u201cBrian Christian wrote a whole book on this \u2014 The Alignment Problem. The sentencing and medical AI examples are documented cases, not theory.\u201d' },
-        { type: 'cue', text: 'The workmate example lands well with a trades or business crowd. Pause after it \u2014 let people recall a time they\u2019ve had exactly that experience.' },
+        {
+          type: "say",
+          text:
+            "Alignment: making sure AI does what we genuinely intend, not just what we tell it. Sounds simple. It isn\u2019t. This and the next couple of slides are crux of why I\u2019m concerned.",
+        },
+        {
+          type: "say",
+          text:
+            "Language gap: Everyone has experienced this \u2014 \u201cTell a workmate what you want \u2014 they do exactly what you said, not what you actually meant.\u201d Now give those instructions to a system that acts autonomously at scale, with no common sense to fill the gap. The more capable and independent AI becomes, the more catastrophic that gap can be.",
+        },
+        {
+          type: "say",
+          text: "AI has a data bias \u2014 unbiased data doesn’t exist.",
+        },
+        {
+          type: "say",
+          text:
+            "Example \u2014 court sentencing: US courts used to use an AI called COMPAS to advise judges on sentencing. A ProPublica investigation found it rated Black defendants as higher risk of reoffending at roughly twice the rate of white defendants. Judges used it. People received longer sentences. This isn\u2019t a hypothetical \u2014 it happened.",
+        },
+        {
+          type: "say",
+          text:
+            "Example \u2014 medicine: AI diagnostic tools trained almost entirely on Western patients. In Africa, where patient physiology, disease presentation, and nutrition profiles differ, those same tools routinely give wrong answers. The AI isn\u2019t broken \u2014 it reflects who was in the room when it was built.",
+        },
+        {
+          type: "say",
+          text:
+            "The point: it\u2019s not that alignment researchers aren\u2019t smart or aren\u2019t trying. The brightest people in the world are working on this. After decades, we still don\u2019t have it solved \u2014 at any scale. \u201cThe Alignment Problem\u201d by Brian Christian documents all of this in detail.",
+        },
+        {
+          type: "say",
+          text:
+            "Anthropic\u2019s own AI chose blackmail over failure in controlled tests \u2014 up to 96% of the time. That\u2019s from their own published research.",
+        },
+        {
+          type: "say",
+          text:
+            "Recently there were 13 million downloads of decensored open-source models. Guardrails were removed in 10 minutes. Four lines of code.",
+        },
+        {
+          type: "cue",
+          text:
+            "If challenged: \u201cBrian Christian wrote a whole book on this \u2014 The Alignment Problem. The sentencing and medical AI examples are documented cases, not theory.\u201d",
+        },
+        {
+          type: "cue",
+          text:
+            "The workmate example lands well with a trades or business crowd. Pause after it \u2014 let people recall a time they\u2019ve had exactly that experience.",
+        },
       ],
     },
   },
@@ -265,40 +449,95 @@ export const slides: SlideData[] = [
         <div style="display: flex; gap: 2rem; align-items: flex-start; max-width: 1300px; width: 100%; margin-top: 1.25rem">
           <div style="flex: 3">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem">
-              <div class="info-box" style="margin: 0; text-align: center; padding: 0.75rem">
-                <div style="font-size: 0.8rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em">March 2024</div>
-                <div style="font-size: 1.6rem; font-weight: 700; color: #1a5f6e; margin: 0.3rem 0">~4 min</div>
-                <div style="font-size: 0.9rem; color: #374151">tasks AI could complete</div>
+              <div
+                class="info-box"
+                style="margin: 0; text-align: center; padding: 0.75rem"
+              >
+                <div style="font-size: 0.8rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em">
+                  March 2024
+                </div>
+                <div style="font-size: 1.6rem; font-weight: 700; color: #1a5f6e; margin: 0.3rem 0">
+                  ~4 min
+                </div>
+                <div style="font-size: 0.9rem; color: #374151">
+                  tasks AI could complete
+                </div>
               </div>
-              <div class="info-box" style="margin: 0; text-align: center; padding: 0.75rem">
-                <div style="font-size: 0.8rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em">March 2025</div>
-                <div style="font-size: 1.6rem; font-weight: 700; color: #1a5f6e; margin: 0.3rem 0">~90 min</div>
-                <div style="font-size: 0.9rem; color: #374151">tasks AI could complete</div>
+              <div
+                class="info-box"
+                style="margin: 0; text-align: center; padding: 0.75rem"
+              >
+                <div style="font-size: 0.8rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em">
+                  March 2025
+                </div>
+                <div style="font-size: 1.6rem; font-weight: 700; color: #1a5f6e; margin: 0.3rem 0">
+                  ~90 min
+                </div>
+                <div style="font-size: 0.9rem; color: #374151">
+                  tasks AI could complete
+                </div>
               </div>
-              <div class="info-box" style="margin: 0; text-align: center; padding: 0.75rem">
-                <div style="font-size: 0.8rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em">April 2026</div>
-                <div style="font-size: 1.6rem; font-weight: 700; color: #c4853a; margin: 0.3rem 0">~12 hrs</div>
-                <div style="font-size: 0.9rem; color: #374151">tasks AI could complete</div>
+              <div
+                class="info-box"
+                style="margin: 0; text-align: center; padding: 0.75rem"
+              >
+                <div style="font-size: 0.8rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em">
+                  April 2026
+                </div>
+                <div style="font-size: 1.6rem; font-weight: 700; color: #c4853a; margin: 0.3rem 0">
+                  ~12 hrs
+                </div>
+                <div style="font-size: 0.9rem; color: #374151">
+                  tasks AI could complete
+                </div>
               </div>
-              <div class="warning-box" style="margin: 0; text-align: center; padding: 0.75rem">
-                <div style="font-size: 0.8rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em">2027 projected</div>
-                <div style="font-size: 1.6rem; font-weight: 700; color: #dc2626; margin: 0.3rem 0">weeks</div>
-                <div style="font-size: 0.9rem; color: #374151">tasks AI could complete</div>
+              <div
+                class="warning-box"
+                style="margin: 0; text-align: center; padding: 0.75rem"
+              >
+                <div style="font-size: 0.8rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em">
+                  2027 projected
+                </div>
+                <div style="font-size: 1.6rem; font-weight: 700; color: #dc2626; margin: 0.3rem 0">
+                  weeks
+                </div>
+                <div style="font-size: 0.9rem; color: #374151">
+                  tasks AI could complete
+                </div>
               </div>
             </div>
             <div style="display: flex; gap: 1rem; margin-bottom: 1rem">
-              <div class="emphasis-box" style="flex: 1; margin: 0; text-align: center; padding: 0.75rem">
-                <div style="font-size: 1.8rem; font-weight: 700; color: #1a5f6e">&gt;80%</div>
-                <div style="font-size: 0.9rem; color: #374151; margin-top: 0.2rem">of Anthropic&rsquo;s own production code written by Claude <sup class="fn">1</sup></div>
+              <div
+                class="emphasis-box"
+                style="flex: 1; margin: 0; text-align: center; padding: 0.75rem"
+              >
+                <div style="font-size: 1.8rem; font-weight: 700; color: #1a5f6e">
+                  &gt;80%
+                </div>
+                <div style="font-size: 0.9rem; color: #374151; margin-top: 0.2rem">
+                  of Anthropic&rsquo;s own production code written by Claude
+                  {" "}
+                  <sup class="fn">1</sup>
+                </div>
               </div>
-              <div class="emphasis-box" style="flex: 1; margin: 0; text-align: center; padding: 0.75rem">
-                <div style="font-size: 1.8rem; font-weight: 700; color: #1a5f6e">8&times;</div>
-                <div style="font-size: 0.9rem; color: #374151; margin-top: 0.2rem">more code per engineer per day &mdash; directing, not typing</div>
+              <div
+                class="emphasis-box"
+                style="flex: 1; margin: 0; text-align: center; padding: 0.75rem"
+              >
+                <div style="font-size: 1.8rem; font-weight: 700; color: #1a5f6e">
+                  8&times;
+                </div>
+                <div style="font-size: 0.9rem; color: #374151; margin-top: 0.2rem">
+                  more code per engineer per day &mdash; directing, not typing
+                </div>
               </div>
             </div>
             <div style="border-left: 3px solid #1a5f6e; padding-left: 1rem; font-style: italic; font-size: 1rem; color: #374151">
-              &ldquo;Claude did all of this with pretty minimal help from me over 1&ndash;2 days. <strong>The future is now.</strong>&rdquo;
-              <div style="font-size: 0.85rem; color: #6b7280; font-style: normal; margin-top: 0.3rem">&mdash; Anthropic engineer, May 2026</div>
+              &ldquo;Claude did all of this with pretty minimal help from me
+              over 1&ndash;2 days. <strong>The future is now.</strong>&rdquo;
+              <div style="font-size: 0.85rem; color: #6b7280; font-style: normal; margin-top: 0.3rem">
+                &mdash; Anthropic engineer, May 2026
+              </div>
             </div>
           </div>
           <div style="flex: 2; display: flex; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.22); min-height: 260px">
@@ -314,20 +553,45 @@ export const slides: SlideData[] = [
           What happens when it does?
         </div>
         <div class="slide-footnotes">
-          <span><sup>1</sup> Anthropic Institute, &ldquo;When AI Builds Itself&rdquo; (Marina Favaro &amp; Jack Clark, June 2026) &mdash; anthropic.com/institute/recursive-self-improvement</span>
+          <span>
+            <sup>1</sup>{" "}
+            Anthropic Institute, &ldquo;When AI Builds Itself&rdquo; (Marina
+            Favaro &amp; Jack Clark, June 2026) &mdash;
+            anthropic.com/institute/recursive-self-improvement
+          </span>
         </div>
       </>
     ),
     notes: {
-      pace: 'Core \u00b7 ~3 min',
+      pace: "Core \u00b7 ~3 min",
       cumulative: 19,
-      anchor: 'AI is already writing the code that makes AI better. This isn\u2019t prediction \u2014 it\u2019s happening now at Anthropic.',
+      anchor:
+        "AI is already writing the code that makes AI better. This isn\u2019t prediction \u2014 it\u2019s happening now at Anthropic.",
       bullets: [
-        { type: 'say', text: 'Walk through the task horizon \u2014 how long an AI can work on a single task and stay on track: it was 4 minutes in 2024, 90 minutes in 2025, 12 hours in 2026. That\u2019s not prediction \u2014 that\u2019s measured.' },
-        { type: 'say', text: 'More than 80% of Anthropic\u2019s own production code is now written by their Claude model. Engineers are directing, not typing.' },
-        { type: 'say', text: 'Quote from an engineer. \u201cClaude did all of this with pretty minimal help from me over 1–2 days. The future is now.\u201d This is from someone inside the building.' },
-        { type: 'say', text: 'This is the evidence - the next slide is the concequence.' },
-        { type: 'cue', text: 'This slide is evidence. The next slide is consequence. Say that before advancing.' },
+        {
+          type: "say",
+          text:
+            "Walk through the task horizon \u2014 how long an AI can work on a single task and stay on track: it was 4 minutes in 2024, 90 minutes in 2025, 12 hours in 2026. That\u2019s not prediction \u2014 that\u2019s measured.",
+        },
+        {
+          type: "say",
+          text:
+            "More than 80% of Anthropic\u2019s own production code is now written by their Claude model. Engineers are directing, not typing.",
+        },
+        {
+          type: "say",
+          text:
+            "Quote from an engineer. \u201cClaude did all of this with pretty minimal help from me over 1–2 days. The future is now.\u201d This is from someone inside the building.",
+        },
+        {
+          type: "say",
+          text: "This is the evidence - the next slide is the concequence.",
+        },
+        {
+          type: "cue",
+          text:
+            "This slide is evidence. The next slide is consequence. Say that before advancing.",
+        },
       ],
     },
   },
@@ -342,8 +606,9 @@ export const slides: SlideData[] = [
         <div style="display: flex; gap: 2.5rem; align-items: flex-start; max-width: 1300px; width: 100%; margin-top: 1rem">
           <div style="flex: 1">
             <div class="large-text">
-              <strong>The Singularity:</strong> When AI becomes capable
-              of recursive self-improvement without human oversight
+              <strong>The Singularity:</strong>{" "}
+              When AI becomes capable of recursive self-improvement without
+              human oversight
             </div>
             <div class="warning-box" style="margin-top: 1.25rem">
               <div style="font-size: 1.4rem">
@@ -351,7 +616,10 @@ export const slides: SlideData[] = [
                 which builds the next faster, which is smarter still.
               </div>
             </div>
-            <div class="large-text" style="margin-top: 1.25rem; color: #dc2626; font-weight: 600">
+            <div
+              class="large-text"
+              style="margin-top: 1.25rem; color: #dc2626; font-weight: 600"
+            >
               There&rsquo;s no turning back.<br />
               No trying again if we get it wrong.
             </div>
@@ -360,98 +628,392 @@ export const slides: SlideData[] = [
                 And we can&rsquo;t simply slow down.<br />
                 If one lab stops, another won&rsquo;t.<br />
                 If one country pauses, another races ahead.<br />
-                <strong>This is a coordination problem &mdash; not a failure of will.</strong> <sup class="fn">1</sup><br />
+                <strong>
+                  This is a coordination problem &mdash; not a failure of will.
+                </strong>{" "}
+                <sup class="fn">1</sup>
+                <br />
               </div>
             </div>
           </div>
           <div style="flex: 1; padding-top: 0.25rem; margin-top: 4rem">
             {/* Exponential compressing timeline — point where we lose control */}
-            <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;border-radius:12px">
+            <svg
+              viewBox="0 0 460 320"
+              xmlns="http://www.w3.org/2000/svg"
+              style="width:100%;height:auto;display:block;border-radius:12px"
+            >
               <defs>
                 <linearGradient id="sg-curve" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#1a5f6e"/>
-                  <stop offset="55%" stop-color="#c4853a"/>
-                  <stop offset="85%" stop-color="#dc2626"/>
+                  <stop offset="0%" stop-color="#1a5f6e" />
+                  <stop offset="55%" stop-color="#c4853a" />
+                  <stop offset="85%" stop-color="#dc2626" />
                 </linearGradient>
               </defs>
-              <rect width="460" height="320" fill="#fdf8f3" rx="12"/>
+              <rect width="460" height="320" fill="#fdf8f3" rx="12" />
               {/* Grid */}
-              <line x1="62" y1="82" x2="440" y2="82" stroke="#e5e7eb" stroke-width="1"/>
-              <line x1="62" y1="132" x2="440" y2="132" stroke="#e5e7eb" stroke-width="1"/>
-              <line x1="62" y1="182" x2="440" y2="182" stroke="#e5e7eb" stroke-width="1"/>
-              <line x1="62" y1="232" x2="440" y2="232" stroke="#e5e7eb" stroke-width="1"/>
+              <line
+                x1="62"
+                y1="82"
+                x2="440"
+                y2="82"
+                stroke="#e5e7eb"
+                stroke-width="1"
+              />
+              <line
+                x1="62"
+                y1="132"
+                x2="440"
+                y2="132"
+                stroke="#e5e7eb"
+                stroke-width="1"
+              />
+              <line
+                x1="62"
+                y1="182"
+                x2="440"
+                y2="182"
+                stroke="#e5e7eb"
+                stroke-width="1"
+              />
+              <line
+                x1="62"
+                y1="232"
+                x2="440"
+                y2="232"
+                stroke="#e5e7eb"
+                stroke-width="1"
+              />
               {/* Axes */}
-              <line x1="62" y1="32" x2="62" y2="258" stroke="#9ca3af" stroke-width="1.5"/>
-              <line x1="62" y1="258" x2="448" y2="258" stroke="#9ca3af" stroke-width="1.5"/>
+              <line
+                x1="62"
+                y1="32"
+                x2="62"
+                y2="258"
+                stroke="#9ca3af"
+                stroke-width="1.5"
+              />
+              <line
+                x1="62"
+                y1="258"
+                x2="448"
+                y2="258"
+                stroke="#9ca3af"
+                stroke-width="1.5"
+              />
               {/* Y label */}
-              <text x="16" y="155" font-size="10" fill="#6b7280" text-anchor="middle" transform="rotate(-90 16 155)">AI Capability</text>
+              <text
+                x="16"
+                y="155"
+                font-size="10"
+                fill="#6b7280"
+                text-anchor="middle"
+                transform="rotate(-90 16 155)"
+              >
+                AI Capability
+              </text>
               {/* X labels */}
-              <text x="110" y="275" font-size="10" fill="#6b7280" text-anchor="middle">2024</text>
-              <text x="190" y="275" font-size="10" fill="#6b7280" text-anchor="middle">2025</text>
-              <text x="270" y="275" font-size="10" fill="#6b7280" text-anchor="middle">2026</text>
-              <text x="350" y="275" font-size="10" fill="#6b7280" text-anchor="middle">2027</text>
-              <text x="415" y="275" font-size="10" fill="#6b7280" text-anchor="middle">2028+</text>
+              <text
+                x="110"
+                y="275"
+                font-size="10"
+                fill="#6b7280"
+                text-anchor="middle"
+              >
+                2024
+              </text>
+              <text
+                x="190"
+                y="275"
+                font-size="10"
+                fill="#6b7280"
+                text-anchor="middle"
+              >
+                2025
+              </text>
+              <text
+                x="270"
+                y="275"
+                font-size="10"
+                fill="#6b7280"
+                text-anchor="middle"
+              >
+                2026
+              </text>
+              <text
+                x="350"
+                y="275"
+                font-size="10"
+                fill="#6b7280"
+                text-anchor="middle"
+              >
+                2027
+              </text>
+              <text
+                x="415"
+                y="275"
+                font-size="10"
+                fill="#6b7280"
+                text-anchor="middle"
+              >
+                2028+
+              </text>
               {/* Red zone */}
-              <rect x="350" y="32" width="98" height="226" fill="#dc2626" opacity="0.07"/>
+              <rect
+                x="350"
+                y="32"
+                width="98"
+                height="226"
+                fill="#dc2626"
+                opacity="0.07"
+              />
               {/* Exponential curve — solid */}
-              <path d="M 62 255 C 110 254 190 248 270 230 C 310 218 330 196 350 162" fill="none" stroke="url(#sg-curve)" stroke-width="3.5" stroke-linecap="round"/>
+              <path
+                d="M 62 255 C 110 254 190 248 270 230 C 310 218 330 196 350 162"
+                fill="none"
+                stroke="url(#sg-curve)"
+                stroke-width="3.5"
+                stroke-linecap="round"
+              />
               {/* Continuation beyond threshold — dotted */}
-              <path d="M 350 162 C 375 122 400 78 425 40" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6,5" stroke-linecap="round"/>
+              <path
+                d="M 350 162 C 375 122 400 78 425 40"
+                fill="none"
+                stroke="#dc2626"
+                stroke-width="2.5"
+                stroke-dasharray="6,5"
+                stroke-linecap="round"
+              />
               {/* Threshold line */}
-              <line x1="350" y1="32" x2="350" y2="258" stroke="#dc2626" stroke-width="2" stroke-dasharray="8,4"/>
+              <line
+                x1="350"
+                y1="32"
+                x2="350"
+                y2="258"
+                stroke="#dc2626"
+                stroke-width="2"
+                stroke-dasharray="8,4"
+              />
               {/* Zone label */}
-              <text x="356" y="48" font-size="9.5" fill="#dc2626" font-weight="600">We lose</text>
-              <text x="356" y="61" font-size="9.5" fill="#dc2626" font-weight="600">control</text>
-              <text x="400" y="165" font-size="40" fill="#dc2626" opacity="0.2" text-anchor="middle" font-weight="bold">?</text>
+              <text
+                x="356"
+                y="48"
+                font-size="9.5"
+                fill="#dc2626"
+                font-weight="600"
+              >
+                We lose
+              </text>
+              <text
+                x="356"
+                y="61"
+                font-size="9.5"
+                fill="#dc2626"
+                font-weight="600"
+              >
+                control
+              </text>
+              <text
+                x="400"
+                y="165"
+                font-size="40"
+                fill="#dc2626"
+                opacity="0.2"
+                text-anchor="middle"
+                font-weight="bold"
+              >
+                ?
+              </text>
               {/* Data point dots */}
-              <circle cx="110" cy="255" r="4.5" fill="#1a5f6e"/>
-              <text x="116" y="244" font-size="9" fill="#1a5f6e">4-min tasks</text>
-              <circle cx="190" cy="248" r="4.5" fill="#1a5f6e"/>
-              <text x="130" y="236" font-size="9" fill="#1a5f6e">90-min tasks</text>
-              <circle cx="270" cy="230" r="4.5" fill="#c4853a"/>
-              <text x="216" y="222" font-size="9" fill="#c4853a">12-hr tasks</text>
-              <circle cx="350" cy="162" r="4.5" fill="#c4853a"/>
-              <text x="288" y="154" font-size="9" fill="#c4853a">week tasks</text>
+              <circle cx="110" cy="255" r="4.5" fill="#1a5f6e" />
+              <text x="116" y="244" font-size="9" fill="#1a5f6e">
+                4-min tasks
+              </text>
+              <circle cx="190" cy="248" r="4.5" fill="#1a5f6e" />
+              <text x="130" y="236" font-size="9" fill="#1a5f6e">
+                90-min tasks
+              </text>
+              <circle cx="270" cy="230" r="4.5" fill="#c4853a" />
+              <text x="216" y="222" font-size="9" fill="#c4853a">
+                12-hr tasks
+              </text>
+              <circle cx="350" cy="162" r="4.5" fill="#c4853a" />
+              <text x="288" y="154" font-size="9" fill="#c4853a">
+                week tasks
+              </text>
               {/* Human oversight label */}
-              <text x="70" y="148" font-size="8.5" fill="#1a5f6e" opacity="0.65">human</text>
-              <text x="70" y="159" font-size="8.5" fill="#1a5f6e" opacity="0.65">oversight</text>
-              <text x="70" y="170" font-size="8.5" fill="#1a5f6e" opacity="0.65">intact</text>
+              <text
+                x="70"
+                y="148"
+                font-size="8.5"
+                fill="#1a5f6e"
+                opacity="0.65"
+              >
+                human
+              </text>
+              <text
+                x="70"
+                y="159"
+                font-size="8.5"
+                fill="#1a5f6e"
+                opacity="0.65"
+              >
+                oversight
+              </text>
+              <text
+                x="70"
+                y="170"
+                font-size="8.5"
+                fill="#1a5f6e"
+                opacity="0.65"
+              >
+                intact
+              </text>
               {/* Compressing gap annotations — arrows showing intervals shrinking */}
-              <line x1="110" y1="292" x2="190" y2="292" stroke="#9ca3af" stroke-width="1" marker-end="url(#arr)"/>
-              <line x1="190" y1="292" x2="110" y2="292" stroke="#9ca3af" stroke-width="1"/>
-              <text x="150" y="305" font-size="8" fill="#9ca3af" text-anchor="middle">12 months</text>
-              <line x1="190" y1="292" x2="270" y2="292" stroke="#9ca3af" stroke-width="1"/>
-              <text x="230" y="305" font-size="8" fill="#9ca3af" text-anchor="middle">8 months</text>
-              <line x1="270" y1="292" x2="350" y2="292" stroke="#9ca3af" stroke-width="1"/>
-              <text x="310" y="305" font-size="8" fill="#9ca3af" text-anchor="middle">4 months</text>
-              <text x="390" y="305" font-size="8" fill="#dc2626" text-anchor="middle">weeks?</text>
+              <line
+                x1="110"
+                y1="292"
+                x2="190"
+                y2="292"
+                stroke="#9ca3af"
+                stroke-width="1"
+                marker-end="url(#arr)"
+              />
+              <line
+                x1="190"
+                y1="292"
+                x2="110"
+                y2="292"
+                stroke="#9ca3af"
+                stroke-width="1"
+              />
+              <text
+                x="150"
+                y="305"
+                font-size="8"
+                fill="#9ca3af"
+                text-anchor="middle"
+              >
+                12 months
+              </text>
+              <line
+                x1="190"
+                y1="292"
+                x2="270"
+                y2="292"
+                stroke="#9ca3af"
+                stroke-width="1"
+              />
+              <text
+                x="230"
+                y="305"
+                font-size="8"
+                fill="#9ca3af"
+                text-anchor="middle"
+              >
+                8 months
+              </text>
+              <line
+                x1="270"
+                y1="292"
+                x2="350"
+                y2="292"
+                stroke="#9ca3af"
+                stroke-width="1"
+              />
+              <text
+                x="310"
+                y="305"
+                font-size="8"
+                fill="#9ca3af"
+                text-anchor="middle"
+              >
+                4 months
+              </text>
+              <text
+                x="390"
+                y="305"
+                font-size="8"
+                fill="#dc2626"
+                text-anchor="middle"
+              >
+                weeks?
+              </text>
             </svg>
-            <p style="font-size: 0.8rem; color: #9ca3af; text-align: center; margin-top: 0.4rem">Task horizon doubling every 4 months &mdash; and accelerating</p>
+            <p style="font-size: 0.8rem; color: #9ca3af; text-align: center; margin-top: 0.4rem">
+              Task horizon doubling every 4 months &mdash; and accelerating
+            </p>
           </div>
         </div>
-            <div class="question" style="margin-top: 1.25rem">
-              AI is already writing code at major labs. <sup class="fn">2</sup><br />
-              The process has already started.
-            </div>
+        <div class="question" style="margin-top: 1.25rem">
+          AI is already writing code at major labs. <sup class="fn">2</sup>
+          <br />
+          The process has already started.
+        </div>
         <div class="slide-footnotes">
-          <span><sup>1</sup> &ldquo;Can We Just...Pause AI?&rdquo; &mdash; Rational Animations (Jan 2026) &mdash; youtube.com/watch?v=tUB_uvSqiw8</span><br />
-          <span><sup>2</sup> Anthropic Institute (June 2026): &gt;80% of Anthropic&rsquo;s production code written by Claude &mdash; anthropic.com/institute/recursive-self-improvement &nbsp;&middot;&nbsp; Dario Amodei (Anthropic CEO, Jan 2026): recursive self-improvement possible within 6&ndash;12 months</span>
+          <span>
+            <sup>1</sup>{" "}
+            &ldquo;Can We Just...Pause AI?&rdquo; &mdash; Rational Animations
+            (Jan 2026) &mdash; youtube.com/watch?v=tUB_uvSqiw8
+          </span>
+          <br />
+          <span>
+            <sup>2</sup>{" "}
+            Anthropic Institute (June 2026): &gt;80% of Anthropic&rsquo;s
+            production code written by Claude &mdash;
+            anthropic.com/institute/recursive-self-improvement
+            &nbsp;&middot;&nbsp; Dario Amodei (Anthropic CEO, Jan 2026):
+            recursive self-improvement possible within 6&ndash;12 months
+          </span>
         </div>
       </>
     ),
     notes: {
-      pace: 'Core \u00b7 ~7 min',
+      pace: "Core \u00b7 ~7 min",
       cumulative: 26,
-      anchor: 'The singularity isn\u2019t about intelligence level \u2014 it\u2019s the moment we lose control of the process.',
+      anchor:
+        "The singularity isn\u2019t about intelligence level \u2014 it\u2019s the moment we lose control of the process.",
       bullets: [
-        { type: 'say', text: 'Three terms are relevant: AGI (capability matches humans), ASI (exceeds humans), Singularity (self-improvement escapes human oversight)' },
-        { type: 'say', text: 'Look at the chart: each gap is shrinking. 12 months between generations, then 8, then 4. The curve bends upward \u2014 fast.' },
-        { type: 'say', text: 'We just saw the evidence: creating 80% of Anthropic\u2019s code, task horizon doubling every 4 months. The loop is closing.' },
-        { type: 'say', text: 'Unlike almost every other risk to humanity: there is no second attempt. You don\u2019t get to run the experiment twice.' },
-        { type: 'say', text: 'The critical question \u2014 this is what keeps me awake \u2014 have we solved alignment before we reach the singularity? Do we have a model that acts with our best interests, or its own interests.' },
-        { type: 'say', text: '\u201cWhy can\u2019t we just slow down?\u201d \u2014 it\u2019s not a failure of will. It\u2019s a coordination problem. No single actor can unilaterally restrain the field.' },
-        { type: 'cue', text: 'Pause after \u201cCan\u2019t run the experiment twice.\u201d Silence does the work.' },
-        { type: 'cue', text: 'The \u201cwe can\u2019t slow down\u201d question will come from the audience \u2014 address it here proactively.' },
+        {
+          type: "say",
+          text:
+            "Three terms are relevant: AGI (capability matches humans), ASI (exceeds humans), Singularity (self-improvement escapes human oversight)",
+        },
+        {
+          type: "say",
+          text:
+            "Look at the chart: each gap is shrinking. 12 months between generations, then 8, then 4. The curve bends upward \u2014 fast.",
+        },
+        {
+          type: "say",
+          text:
+            "We just saw the evidence: creating 80% of Anthropic\u2019s code, task horizon doubling every 4 months. The loop is closing.",
+        },
+        {
+          type: "say",
+          text:
+            "Unlike almost every other risk to humanity: there is no second attempt. You don\u2019t get to run the experiment twice.",
+        },
+        {
+          type: "say",
+          text:
+            "The critical question \u2014 this is what keeps me awake \u2014 have we solved alignment before we reach the singularity? Do we have a model that acts with our best interests, or its own interests.",
+        },
+        {
+          type: "say",
+          text:
+            "\u201cWhy can\u2019t we just slow down?\u201d \u2014 it\u2019s not a failure of will. It\u2019s a coordination problem. No single actor can unilaterally restrain the field.",
+        },
+        {
+          type: "cue",
+          text:
+            "Pause after \u201cCan\u2019t run the experiment twice.\u201d Silence does the work.",
+        },
+        {
+          type: "cue",
+          text:
+            "The \u201cwe can\u2019t slow down\u201d question will come from the audience \u2014 address it here proactively.",
+        },
       ],
     },
   },
@@ -464,24 +1026,31 @@ export const slides: SlideData[] = [
       <>
         <h2>What I&rsquo;m Hearing</h2>
         <div class="large-text">
-          <b>Doctor:</b> &ldquo;There&rsquo;s no point going to medical school.&rdquo;<br />
-          <b>Counsellor:</b> &ldquo;Asked a patient why they were no longer seeing me &mdash; <br />
+          <b>Doctor:</b>{" "}
+          &ldquo;There&rsquo;s no point going to medical school.&rdquo;<br />
+          <b>Counsellor:</b>{" "}
+          &ldquo;Asked a patient why they were no longer seeing me &mdash;{" "}
+          <br />
           they had been using ChatGPT instead.&rdquo;
         </div>
         <div style="display: flex; gap: 2rem; max-width: 1400px; width: 100%; margin-top: 2rem">
           <div class="emphasis-box" style="flex: 1; margin: 0">
             <div class="large-text">
               And it&rsquo;s not just software anymore.<br />
-              <strong>Robotics + Large World Models = <br />
-              AI doing Physical work.</strong>
+              <strong>
+                Robotics + Large World Models = <br />
+                AI doing Physical work.
+              </strong>
             </div>
           </div>
           <div class="warning-box" style="flex: 1; margin: 0">
             <div class="large-text">
               Rural and regional communities have fewer fallback options.<br />
               Fewer industries to shift into. Fewer safety nets.<br />
-              <strong>The disruption hits just as hard &mdash; <br />
-              with less buffer.</strong>
+              <strong>
+                The disruption hits just as hard &mdash; <br />
+                with less buffer.
+              </strong>
             </div>
           </div>
         </div>
@@ -490,20 +1059,46 @@ export const slides: SlideData[] = [
           It&rsquo;s coming here too.
         </div>
         <div class="slide-footnotes">
-          <span><sup>1</sup> Anthropic research (Mar 2026): 14% drop in hiring in AI-exposed roles post-ChatGPT &mdash; fortune.com/2026/03/06/ai-job-losses-report-anthropic-research-great-recession-for-white-collar-workers</span>
+          <span>
+            <sup>1</sup>{" "}
+            Anthropic research (Mar 2026): 14% drop in hiring in AI-exposed
+            roles post-ChatGPT &mdash;
+            fortune.com/2026/03/06/ai-job-losses-report-anthropic-research-great-recession-for-white-collar-workers
+          </span>
         </div>
       </>
     ),
     notes: {
-      pace: 'Medium \u00b7 ~3 min',
+      pace: "Medium \u00b7 ~3 min",
       cumulative: 29,
-      anchor: 'Rural communities have fewer fallback options. The disruption hits just as hard \u2014 with less buffer.',
+      anchor:
+        "Rural communities have fewer fallback options. The disruption hits just as hard \u2014 with less buffer.",
       bullets: [
-        { type: 'say', text: '\u201cThere\u2019s no point going to medical school.\u201d Someone said this to me. AI already performs at specialist level on many diagnostic tasks.' },
-        { type: 'say', text: '\u201cMy patients are using ChatGPT instead. AI is available 24/7 and people don\u2019t fear being judged.' },
-        { type: 'say', text: 'White-collar, creative, legal work \u2014 it\u2019s already transforming. Not a future prediction.' },
-        { type: 'say', text: 'Tumbarumba isn\u2019t immune. Cities have more industries to shift into. We don\u2019t.' },
-        { type: 'cue', text: 'Add a local example here if you have one \u2014 business owner, farmer, teacher.' },
+        {
+          type: "say",
+          text:
+            "\u201cThere\u2019s no point going to medical school.\u201d Someone said this to me. AI already performs at specialist level on many diagnostic tasks.",
+        },
+        {
+          type: "say",
+          text:
+            "\u201cMy patients are using ChatGPT instead. AI is available 24/7 and people don\u2019t fear being judged.",
+        },
+        {
+          type: "say",
+          text:
+            "White-collar, creative, legal work \u2014 it\u2019s already transforming. Not a future prediction.",
+        },
+        {
+          type: "say",
+          text:
+            "Tumbarumba isn\u2019t immune. Cities have more industries to shift into. We don\u2019t.",
+        },
+        {
+          type: "cue",
+          text:
+            "Add a local example here if you have one \u2014 business owner, farmer, teacher.",
+        },
       ],
     },
   },
@@ -516,8 +1111,10 @@ export const slides: SlideData[] = [
       <>
         <h2>Our Children &amp; High School Students</h2>
         <div style="font-size: 1.8rem;">
-          High school students today are entering the most unstable workforce in history.<br />
-          The careers we&rsquo;re preparing them for may not exist by the time they graduate.
+          High school students today are entering the most unstable workforce in
+          history.<br />
+          The careers we&rsquo;re preparing them for may not exist by the time
+          they graduate.
         </div>
         <div style="display: flex; gap: 2rem; align-items: flex-start; max-width: 1300px; width: 100%; margin-top: 1.25rem">
           <div style="flex: 1; display: flex; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.22); min-height: 260px">
@@ -529,41 +1126,75 @@ export const slides: SlideData[] = [
           </div>
           <div style="flex: 2; display: flex; flex-direction: column; gap: 0.85rem">
             <div class="warning-box" style="margin: 0">
-              <h3 style="font-size: 1.6rem; margin-bottom: 0.4rem">&#9888;&#65039; Entering an Unstable World</h3>
+              <h3 style="font-size: 1.6rem; margin-bottom: 0.4rem">
+                &#9888;&#65039; Entering an Unstable World
+              </h3>
               <p style="font-size: 1.4rem; color: #374151">
-                The jobs most under threat are white-collar, professional roles &mdash; exactly what education has always pointed kids toward. Medicine, law, accounting, software. Not someday &mdash; now.
+                The jobs most under threat are white-collar, professional roles
+                &mdash; exactly what education has always pointed kids toward.
+                Medicine, law, accounting, software. Not someday &mdash; now.
               </p>
             </div>
             <div class="emphasis-box" style="margin: 0">
-              <h3 style="font-size: 1.6rem; margin-bottom: 0.4rem">&#127979; What Schools Aren&rsquo;t Teaching</h3>
+              <h3 style="font-size: 1.6rem; margin-bottom: 0.4rem">
+                &#127979; What Schools Aren&rsquo;t Teaching
+              </h3>
               <p style="font-size: 1.4rem; color: #374151">
-                Curricula built for the 20th century. Critical thinking, adaptability, collaboration, and empathy matter more than ever. Most schools aren&rsquo;t pivoting fast enough.
+                Curricula built for the 20th century. Critical thinking,
+                adaptability, collaboration, and empathy matter more than ever.
+                Most schools aren&rsquo;t pivoting fast enough.
               </p>
             </div>
             <div class="info-box" style="margin: 0">
-              <h3 style="font-size: 1.6rem; margin-bottom: 0.4rem">&#128172; What to Tell Your Kids</h3>
+              <h3 style="font-size: 1.6rem; margin-bottom: 0.4rem">
+                &#128172; What to Tell Your Kids
+              </h3>
               <p style="font-size: 1.4rem; color: #374151">
-                Be honest about uncertainty. Don&rsquo;t pretend the path is clear. Help them build resilience, not just credentials. The most valuable thing you can give them is the ability to adapt.
+                Be honest about uncertainty. Don&rsquo;t pretend the path is
+                clear. Help them build resilience, not just credentials. The
+                most valuable thing you can give them is the ability to adapt.
               </p>
             </div>
           </div>
         </div>
         <div class="question" style="margin-top: 1.5rem">
           Our kids are watching us.<br />
-          The question is whether we&rsquo;re prepared to have an honest conversation with them.
+          The question is whether we&rsquo;re prepared to have an honest
+          conversation with them.
         </div>
       </>
     ),
     notes: {
-      pace: 'Core \u00b7 ~3 min',
+      pace: "Core \u00b7 ~3 min",
       cumulative: 32,
-      anchor: 'Students \u2014 The careers we\u2019re preparing them for may not exist by the time they graduate.',
+      anchor:
+        "Students \u2014 The careers we\u2019re preparing them for may not exist by the time they graduate.",
       bullets: [
-        { type: 'say', text: 'High school students entering the workforce in 2\u20134 years are entering a fundamentally different world than the one we planned for them. Personally, this is one of the most concerning issues for me \u2014 and it\u2019s not being discussed where it matters.' },
-        { type: 'say', text: 'Medicine, law, accounting, software. These are exactly the paths we\u2019ve told kids that lead to security. That\u2019s no longer true.' },
-        { type: 'say', text: 'What to tell your kids: be honest about uncertainty. Help them build adaptability, not just credentials.' },
-        { type: 'cue', text: 'This lands personally \u2014 especially for parents. Pause after the anchor. Watch the room.' },
-        { type: 'cue', text: 'If a parent looks distressed, acknowledge it: \u201cThis is hard to sit with. That\u2019s appropriate.\u201d' },
+        {
+          type: "say",
+          text:
+            "High school students entering the workforce in 2\u20134 years are entering a fundamentally different world than the one we planned for them. Personally, this is one of the most concerning issues for me \u2014 and it\u2019s not being discussed where it matters.",
+        },
+        {
+          type: "say",
+          text:
+            "Medicine, law, accounting, software. These are exactly the paths we\u2019ve told kids that lead to security. That\u2019s no longer true.",
+        },
+        {
+          type: "say",
+          text:
+            "What to tell your kids: be honest about uncertainty. Help them build adaptability, not just credentials.",
+        },
+        {
+          type: "cue",
+          text:
+            "This lands personally \u2014 especially for parents. Pause after the anchor. Watch the room.",
+        },
+        {
+          type: "cue",
+          text:
+            "If a parent looks distressed, acknowledge it: \u201cThis is hard to sit with. That\u2019s appropriate.\u201d",
+        },
       ],
     },
   },
@@ -577,30 +1208,45 @@ export const slides: SlideData[] = [
         <h2>50/50: Utopia or Dystopia</h2>
         <div style="display: flex; gap: 2rem; align-items: flex-start; max-width: 1300px; width: 100%; margin-top: 1.25rem">
           <div style="flex: 3; display: flex; flex-direction: column; gap: 0.85rem">
-			<div class="split-view">
-			  <div class="split-column" style="background: rgba(39, 174, 96, 0.08); border: 1px solid rgba(39, 174, 96, 0.25)">
-				<h3>&#127775; Utopia</h3>
-				<p style="font-size: 1.3rem; margin-top: 1rem">
-				  Cancer solved. Alzheimer&rsquo;s solved.<br />
-				  A century of medical research compressed into a decade.<br />
-				  Abundance. Human flourishing.
-				</p>
-			  </div>
-			  <div class="split-column" style="background: rgba(192, 57, 43, 0.08); border: 1px solid rgba(192, 57, 43, 0.25)">
-				<h3>&#9888;&#65039; Dystopia</h3>
-				<p style="font-size: 1.3rem; margin-top: 1rem">
-				  AI systems that behave in unpredictable ways.<br />
-				  Authoritarian surveillance.<br />
-				  Existential risk.
-				</p>
-			  </div>
-			</div>
-			<div class="large-text" style="margin-top: 2rem; font-weight: 600; color: #dc2626">
-			  AI researchers call this probability <strong>&ldquo;p(doom)&rdquo;</strong> &mdash; the odds they assign to catastrophic outcomes. <sup class="fn">2</sup><br />
-			  Experts once put it at 50/50. Hinton (2024): 10&ndash;20% chance of human extinction. <sup class="fn">1</sup><br />
-			  Almost nobody credible puts it at zero.
-			</div>
-		  </div>
+            <div class="split-view">
+              <div
+                class="split-column"
+                style="background: rgba(39, 174, 96, 0.08); border: 1px solid rgba(39, 174, 96, 0.25)"
+              >
+                <h3>&#127775; Utopia</h3>
+                <p style="font-size: 1.3rem; margin-top: 1rem">
+                  Cancer solved. Alzheimer&rsquo;s solved.<br />
+                  A century of medical research compressed into a decade.<br />
+                  Abundance. Human flourishing.
+                </p>
+              </div>
+              <div
+                class="split-column"
+                style="background: rgba(192, 57, 43, 0.08); border: 1px solid rgba(192, 57, 43, 0.25)"
+              >
+                <h3>&#9888;&#65039; Dystopia</h3>
+                <p style="font-size: 1.3rem; margin-top: 1rem">
+                  AI systems that behave in unpredictable ways.<br />
+                  Authoritarian surveillance.<br />
+                  Existential risk.
+                </p>
+              </div>
+            </div>
+            <div
+              class="large-text"
+              style="margin-top: 2rem; font-weight: 600; color: #dc2626"
+            >
+              AI researchers call this probability{" "}
+              <strong>&ldquo;p(doom)&rdquo;</strong>{" "}
+              &mdash; the odds they assign to catastrophic outcomes.{" "}
+              <sup class="fn">2</sup>
+              <br />
+              Experts once put it at 50/50. Hinton (2024): 10&ndash;20% chance
+              of human extinction. <sup class="fn">1</sup>
+              <br />
+              Almost nobody credible puts it at zero.
+            </div>
+          </div>
           <div style="flex: 2; display: flex; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.22); min-height: 260px">
             <img
               src="/img/slideshows/tumbarumba-june-2026/utopia-dystopia.webp"
@@ -614,20 +1260,45 @@ export const slides: SlideData[] = [
           what we do right now.
         </div>
         <div class="slide-footnotes">
-          <span><sup>1</sup> Geoffrey Hinton (Nobel Prize 2024) &mdash; theguardian.com/technology/2024/dec/27/godfather-of-ai-raises-odds-of-the-technology-wiping-out-humanity-over-next-30-years</span><br />
-          <span><sup>2</sup> p(doom) tracker &mdash; pdoom100.com &mdash; a live record of probability-of-doom estimates from AI researchers, scientists, and public figures</span>
+          <span>
+            <sup>1</sup>{" "}
+            Geoffrey Hinton (Nobel Prize 2024) &mdash;
+            theguardian.com/technology/2024/dec/27/godfather-of-ai-raises-odds-of-the-technology-wiping-out-humanity-over-next-30-years
+          </span>
+          <br />
+          <span>
+            <sup>2</sup>{" "}
+            p(doom) tracker &mdash; pdoom100.com &mdash; a live record of
+            probability-of-doom estimates from AI researchers, scientists, and
+            public figures
+          </span>
         </div>
       </>
     ),
     notes: {
-      pace: 'Medium \u00b7 ~3 min',
+      pace: "Medium \u00b7 ~3 min",
       cumulative: 35,
-      anchor: 'We don\u2019t build bridges with a 50% collapse rate. So why are we going full speed on AI?',
+      anchor:
+        "We don\u2019t build bridges with a 50% collapse rate. So why are we going full speed on AI?",
       bullets: [
-        { type: 'say', text: 'Geoffrey Hinton \u2014 won Nobel Prize in 2024, helped invent deep learning, basis of AI \u2014 says 10\u201320% chance of human extinction within 30 years' },
-        { type: 'say', text: 'p(doom) is the shorthand AI researchers use for the probability of catastrophic AI outcomes — a genuinely bad outcome, not just disruption. Estimates from credible researchers range from under 10% to over 50%. pdoom100.com tracks these estimates publicly. Almost nobody credible says it\u2019s zero.' },
-        { type: 'say', text: 'Both outcomes are real. The utopia is worth working toward.' },
-        { type: 'cue', text: 'Hold back your own view. Present the range, not a verdict.' },
+        {
+          type: "say",
+          text:
+            "Geoffrey Hinton \u2014 won Nobel Prize in 2024, helped invent deep learning, basis of AI \u2014 says 10\u201320% chance of human extinction within 30 years",
+        },
+        {
+          type: "say",
+          text:
+            "p(doom) is the shorthand AI researchers use for the probability of catastrophic AI outcomes — a genuinely bad outcome, not just disruption. Estimates from credible researchers range from under 10% to over 50%. pdoom100.com tracks these estimates publicly. Almost nobody credible says it\u2019s zero.",
+        },
+        {
+          type: "say",
+          text: "Both outcomes are real. The utopia is worth working toward.",
+        },
+        {
+          type: "cue",
+          text: "Hold back your own view. Present the range, not a verdict.",
+        },
       ],
     },
   },
@@ -659,14 +1330,30 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      pace: 'Brief \u00b7 ~2 min',
+      pace: "Brief \u00b7 ~2 min",
       cumulative: 37,
-      anchor: 'I think we\u2019re in that \u201cseems overblown\u201d phase right now.',
+      anchor:
+        "I think we\u2019re in that \u201cseems overblown\u201d phase right now.",
       bullets: [
-        { type: 'say', text: 'Remember February 2020 \u2014 virus overseas, stock market fine, life normal. Three weeks later: everything changed.' },
-        { type: 'say', text: 'The pattern repeats: distant threat dismissed, then overnight it\u2019s everywhere.' },
-        { type: 'say', text: 'Except this time it\u2019s not a virus \u2014 it\u2019s how society fundamentally works.' },
-        { type: 'cue', text: 'Pause after the anchor line. Don\u2019t fill the silence.' },
+        {
+          type: "say",
+          text:
+            "Remember February 2020 \u2014 virus overseas, stock market fine, life normal. Three weeks later: everything changed.",
+        },
+        {
+          type: "say",
+          text:
+            "The pattern repeats: distant threat dismissed, then overnight it\u2019s everywhere.",
+        },
+        {
+          type: "say",
+          text:
+            "Except this time it\u2019s not a virus \u2014 it\u2019s how society fundamentally works.",
+        },
+        {
+          type: "cue",
+          text: "Pause after the anchor line. Don\u2019t fill the silence.",
+        },
       ],
     },
   },
@@ -684,52 +1371,93 @@ export const slides: SlideData[] = [
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2.5rem; max-width: 1000px; width: 100%; margin-top: 1.5rem">
           <div>
-            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">&#128188; Job Displacement</h3>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">
+              &#128188; Job Displacement
+            </h3>
             <p style="font-size: 1.1rem; color: #374151">
-              Which roles? How fast? What skills remain valuable? White collar, creative, and technical work is already transforming &mdash; faster than most people realise.
+              Which roles? How fast? What skills remain valuable? White collar,
+              creative, and technical work is already transforming &mdash;
+              faster than most people realise.
             </p>
           </div>
           <div>
-            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">&#127806; Food Security</h3>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">
+              &#127806; Food Security
+            </h3>
             <p style="font-size: 1.1rem; color: #374151">
-              Supply chains optimised for efficiency, not resilience. Economic shock or infrastructure disruption could expose how fragile our food systems really are.
+              Supply chains optimised for efficiency, not resilience. Economic
+              shock or infrastructure disruption could expose how fragile our
+              food systems really are.
             </p>
           </div>
           <div>
-            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">&#129517; Purpose &amp; Identity</h3>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">
+              &#129517; Purpose &amp; Identity
+            </h3>
             <p style="font-size: 1.1rem; color: #374151">
-              When work defines who you are, what happens when the work disappears? Loss of structure, daily meaning, and self-worth.
+              When work defines who you are, what happens when the work
+              disappears? Loss of structure, daily meaning, and self-worth.
             </p>
           </div>
           <div>
-            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">&#127963;&#65039; The Welfare Gap</h3>
+            <h3 style="color: #dc2626; font-size: 1.5rem; margin-bottom: 0.4rem">
+              &#127963;&#65039; The Welfare Gap
+            </h3>
             <p style="font-size: 1.1rem; color: #374151">
-              Safety nets were built for temporary job loss, not structural displacement at scale. No ready infrastructure exists for what&rsquo;s coming.
+              Safety nets were built for temporary job loss, not structural
+              displacement at scale. No ready infrastructure exists for
+              what&rsquo;s coming.
             </p>
           </div>
         </div>
         <div style="margin-top: 1.75rem; border-top: 1px solid #e5e7eb; padding-top: 0.875rem; max-width: 1000px; width: 100%">
-          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem">For deeper conversation</p>
-          <p style="font-size: 1rem; color: #6b7280">&#129504; Mental Health at Scale &nbsp;&middot;&nbsp; &#128499;&#65039; Democratic Fragility</p>
+          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem">
+            For deeper conversation
+          </p>
+          <p style="font-size: 1rem; color: #6b7280">
+            &#129504; Mental Health at Scale &nbsp;&middot;&nbsp;
+            &#128499;&#65039; Democratic Fragility
+          </p>
         </div>
         <div class="question" style="margin-top: 2rem">
           These aren&rsquo;t distant risks.<br />
           Some of them are already here.
         </div>
         <div class="slide-footnotes">
-          <span><sup>1</sup> Anthropic research (Mar 2026) &mdash; fortune.com/2026/03/06/ai-job-losses-report-anthropic-research-great-recession-for-white-collar-workers &nbsp;&middot;&nbsp; theguardian.com/technology/2026/feb/11/big-ai-job-swap-white-collar-workers-ditching-their-careers</span>
+          <span>
+            <sup>1</sup>{" "}
+            Anthropic research (Mar 2026) &mdash;
+            fortune.com/2026/03/06/ai-job-losses-report-anthropic-research-great-recession-for-white-collar-workers
+            &nbsp;&middot;&nbsp;
+            theguardian.com/technology/2026/feb/11/big-ai-job-swap-white-collar-workers-ditching-their-careers
+          </span>
         </div>
       </>
     ),
     notes: {
-      pace: 'Medium \u00b7 ~3 min',
+      pace: "Medium \u00b7 ~3 min",
       cumulative: 40,
-      anchor: 'These aren\u2019t distant risks. Some of them are already here.',
+      anchor: "These aren\u2019t distant risks. Some of them are already here.",
       bullets: [
-        { type: 'say', text: 'Job displacement: 14% drop in hiring in AI-exposed roles since ChatGPT launched \u2014 from Anthropic\u2019s own research' },
-        { type: 'say', text: 'Purpose and identity: when work defines who you are, what happens when the work disappears? This is another one of my major concerns.' },
-        { type: 'say', text: 'The welfare gap: safety nets were built for temporary job loss, not structural displacement at scale. There\u2019s a much larger discussion that needs to happen about capitalism and government support - our current system isn\u2019t designed for rising unemployment.' },
-        { type: 'cue', text: 'Purpose and identity tends to land hardest. Watch the room.' },
+        {
+          type: "say",
+          text:
+            "Job displacement: 14% drop in hiring in AI-exposed roles since ChatGPT launched \u2014 from Anthropic\u2019s own research",
+        },
+        {
+          type: "say",
+          text:
+            "Purpose and identity: when work defines who you are, what happens when the work disappears? This is another one of my major concerns.",
+        },
+        {
+          type: "say",
+          text:
+            "The welfare gap: safety nets were built for temporary job loss, not structural displacement at scale. There\u2019s a much larger discussion that needs to happen about capitalism and government support - our current system isn\u2019t designed for rising unemployment.",
+        },
+        {
+          type: "cue",
+          text: "Purpose and identity tends to land hardest. Watch the room.",
+        },
       ],
     },
   },
@@ -741,24 +1469,38 @@ export const slides: SlideData[] = [
     content: (
       <>
         <h2>What Does a Good Future Look Like?</h2>
-        <div class="large-text">Fear is a motivator. But it&rsquo;s not a destination.</div>
+        <div class="large-text">
+          Fear is a motivator. But it&rsquo;s not a destination.
+        </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem; max-width: 1000px; width: 100%; margin-top: 1.5rem">
           <div class="info-box" style="margin: 0">
-            <h3 style="margin-bottom: 0.75rem; font-size: 1.35rem">&#127807; The personal picture</h3>
+            <h3 style="margin-bottom: 0.75rem; font-size: 1.35rem">
+              &#127807; The personal picture
+            </h3>
             <p style="font-size: 1.05rem; color: #374151">
-              Outside. Building something. Helping someone. Creating. Contributing &mdash; not because you have to, but because it&rsquo;s meaningful. Physical, relational, chosen.
+              Outside. Building something. Helping someone. Creating.
+              Contributing &mdash; not because you have to, but because
+              it&rsquo;s meaningful. Physical, relational, chosen.
             </p>
           </div>
           <div class="info-box" style="margin: 0">
-            <h3 style="margin-bottom: 0.75rem; font-size: 1.35rem">&#128300; The societal picture</h3>
+            <h3 style="margin-bottom: 0.75rem; font-size: 1.35rem">
+              &#128300; The societal picture
+            </h3>
             <p style="font-size: 1.05rem; color: #374151">
-              Compressed decades of medical progress. Mental health care for everyone. Expertise available globally, not just in wealthy places. Human energy freed for what matters.
+              Compressed decades of medical progress. Mental health care for
+              everyone. Expertise available globally, not just in wealthy
+              places. Human energy freed for what matters.
             </p>
           </div>
         </div>
-        <div class="info-box" style="max-width: 1000px; width: 100%; margin-top: 1.25rem">
+        <div
+          class="info-box"
+          style="max-width: 1000px; width: 100%; margin-top: 1.25rem"
+        >
           <p style="font-size: 1.1rem; text-align: center; color: #374151">
-            &ldquo;The utopia outcome is genuinely desirable. Not as a fantasy &mdash; as a real possibility that is worth working toward.&rdquo;
+            &ldquo;The utopia outcome is genuinely desirable. Not as a fantasy
+            &mdash; as a real possibility that is worth working toward.&rdquo;
           </p>
         </div>
         <div class="question" style="margin-top: 1.5rem">
@@ -768,14 +1510,27 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      pace: 'Medium \u00b7 ~2 min',
+      pace: "Medium \u00b7 ~2 min",
       cumulative: 42,
-      anchor: 'Fear is a motivator. But it\u2019s not a destination. It\u2019s important to consider the good future.',
+      anchor:
+        "Fear is a motivator. But it\u2019s not a destination. It\u2019s important to consider the good future.",
       bullets: [
-        { type: 'say', text: 'The personal picture: being outside, building, helping, creating \u2014 not because you have to, because it\u2019s meaningful' },
-        { type: 'say', text: 'The societal picture: cancer solved, Alzheimer\u2019s solved, expertise available everywhere, not just in wealthy places' },
-        { type: 'say', text: 'The utopia outcome is genuinely desirable. Not a fantasy \u2014 a real possibility worth working toward. This relates back to having the alignment problem solved.' },
-        { type: 'cue', text: 'Tonal pivot. Slow down. Let it be hopeful.' },
+        {
+          type: "say",
+          text:
+            "The personal picture: being outside, building, helping, creating \u2014 not because you have to, because it\u2019s meaningful",
+        },
+        {
+          type: "say",
+          text:
+            "The societal picture: cancer solved, Alzheimer\u2019s solved, expertise available everywhere, not just in wealthy places",
+        },
+        {
+          type: "say",
+          text:
+            "The utopia outcome is genuinely desirable. Not a fantasy \u2014 a real possibility worth working toward. This relates back to having the alignment problem solved.",
+        },
+        { type: "cue", text: "Tonal pivot. Slow down. Let it be hopeful." },
       ],
     },
   },
@@ -789,59 +1544,113 @@ export const slides: SlideData[] = [
         <h2>Institutions Are Paying Attention</h2>
         <div class="large-text">
           This isn&rsquo;t fringe concern.<br />
-          The most senior voices in religion, science, and industry are all saying the same thing.
+          The most senior voices in religion, science, and industry are all
+          saying the same thing.
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; max-width: 1150px; width: 100%; margin-top: 1.5rem">
           <div class="info-box" style="margin: 0">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #1a5f6e">&#10013;&#65039; The Church</h3>
-            <div style="font-size: 0.85rem; font-weight: 600; color: #6b7280; margin-bottom: 0.5rem">Pope Leo XIV &mdash; Magnifica Humanitas (May 2026)</div>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #1a5f6e">
+              &#10013;&#65039; The Church
+            </h3>
+            <div style="font-size: 0.85rem; font-weight: 600; color: #6b7280; margin-bottom: 0.5rem">
+              Pope Leo XIV &mdash; Magnifica Humanitas (May 2026)
+            </div>
             <p style="font-size: 1rem; font-style: italic; color: #374151; margin-bottom: 0.75rem">
-              &ldquo;Technology is never neutral &mdash; it takes on the characteristics of those who devise, finance and control it.&rdquo;
+              &ldquo;Technology is never neutral &mdash; it takes on the
+              characteristics of those who devise, finance and control
+              it.&rdquo;
             </p>
             <p style="font-size: 0.95rem; color: #374151">
-              The Church&rsquo;s first encyclical dedicated to AI. Addressed to 1.4 billion Catholics. Calls for democratic oversight, warns against lethal AI in warfare, compares AI to the Industrial Revolution.
+              The Church&rsquo;s first encyclical dedicated to AI. Addressed to
+              1.4 billion Catholics. Calls for democratic oversight, warns
+              against lethal AI in warfare, compares AI to the Industrial
+              Revolution.
             </p>
           </div>
           <div class="warning-box" style="margin: 0">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem">&#129516; The Scientists</h3>
-            <div style="font-size: 0.85rem; font-weight: 600; color: #6b7280; margin-bottom: 0.5rem">AI CEOs Warn Congress (2026)</div>
-            <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 0.5rem">Altman &middot; Amodei &middot; Hassabis &middot; Suleyman</p>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem">
+              &#129516; The Scientists
+            </h3>
+            <div style="font-size: 0.85rem; font-weight: 600; color: #6b7280; margin-bottom: 0.5rem">
+              AI CEOs Warn Congress (2026)
+            </div>
+            <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 0.5rem">
+              Altman &middot; Amodei &middot; Hassabis &middot; Suleyman
+            </p>
             <p style="font-size: 1rem; font-style: italic; color: #374151">
-              &ldquo;AI systems now outperform PhD-level virologists&hellip; Knowledge barriers which have historically prevented bad actors from obtaining biological weapons will meaningfully erode.&rdquo;
+              &ldquo;AI systems now outperform PhD-level virologists&hellip;
+              Knowledge barriers which have historically prevented bad actors
+              from obtaining biological weapons will meaningfully erode.&rdquo;
             </p>
           </div>
           <div class="emphasis-box" style="margin: 0">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem">&#128269; The Insiders</h3>
-            <div style="font-size: 0.85rem; font-weight: 600; color: #6b7280; margin-bottom: 0.5rem">From Inside the Industry</div>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem">
+              &#128269; The Insiders
+            </h3>
+            <div style="font-size: 0.85rem; font-weight: 600; color: #6b7280; margin-bottom: 0.5rem">
+              From Inside the Industry
+            </div>
             <p style="font-size: 1rem; font-style: italic; color: #374151; margin-bottom: 0.75rem">
-              &ldquo;Every frontier AI lab operates inside incentives that can conflict with doing the right thing.&rdquo;
+              &ldquo;Every frontier AI lab operates inside incentives that can
+              conflict with doing the right thing.&rdquo;
             </p>
             <p style="font-size: 0.9rem; color: #374151">
-              &mdash; Christopher Olah, Anthropic safety researcher. The people building these systems are raising the alarm from the inside.
+              &mdash; Christopher Olah, Anthropic safety researcher. The people
+              building these systems are raising the alarm from the inside.
             </p>
           </div>
         </div>
         <div class="question" style="margin-top: 1.5rem">
-          When the Pope, the CEOs, and the engineers<br /> 
+          When the Pope, the CEOs, and the engineers<br />
           are all saying the same thing &mdash;<br />
           it&rsquo;s time to listen.
         </div>
         <div class="slide-footnotes">
-          <span><sup>1</sup> Magnifica Humanitas &mdash; Vatican, May 2026 &mdash; vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html</span><br />
-          <span><sup>2</sup> AI CEO open letter on synthetic biology regulation &mdash; prod-i.a.dj.com/public/resources/documents/dnaletter.pdf</span>
+          <span>
+            <sup>1</sup>{" "}
+            Magnifica Humanitas &mdash; Vatican, May 2026 &mdash;
+            vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html
+          </span>
+          <br />
+          <span>
+            <sup>2</sup>{" "}
+            AI CEO open letter on synthetic biology regulation &mdash;
+            prod-i.a.dj.com/public/resources/documents/dnaletter.pdf
+          </span>
         </div>
       </>
     ),
     notes: {
-      pace: 'Medium \u00b7 ~3 min',
+      pace: "Medium \u00b7 ~3 min",
       cumulative: 45,
-      anchor: 'When the Pope and the engineers are saying the same thing \u2014 it\u2019s time to listen.',
+      anchor:
+        "When the Pope and the engineers are saying the same thing \u2014 it\u2019s time to listen.",
       bullets: [
-        { type: 'say', text: 'Pope Leo XIV released Magnifica Humanitas last month \u2014 the first papal encyclical ever dedicated to AI. Addressed to 1.4 billion people.' },
-        { type: 'say', text: 'The encyclical compares AI to the Industrial Revolution and calls it the defining challenge of our era. This is not a fringe view.' },
-        { type: 'say', text: 'The CEO bioweapons letter: Altman, Amodei, Hassabis \u2014 these are competitors. They agree on this risk.' },
-        { type: 'say', text: 'Christopher Olah is an Anthropic safety researcher \u2014 someone inside the building, raising the alarm.' },
-        { type: 'cue', text: 'For the Christians in the room: \u201cThis isn\u2019t doom-saying \u2014 this is the Pope calling for responsible stewardship.\u201d' },
+        {
+          type: "say",
+          text:
+            "Pope Leo XIV released Magnifica Humanitas last month \u2014 the first papal encyclical ever dedicated to AI. Addressed to 1.4 billion people.",
+        },
+        {
+          type: "say",
+          text:
+            "The encyclical compares AI to the Industrial Revolution and calls it the defining challenge of our era. This is not a fringe view.",
+        },
+        {
+          type: "say",
+          text:
+            "The CEO bioweapons letter: Altman, Amodei, Hassabis \u2014 these are competitors. They agree on this risk.",
+        },
+        {
+          type: "say",
+          text:
+            "Christopher Olah is an Anthropic safety researcher \u2014 someone inside the building, raising the alarm.",
+        },
+        {
+          type: "cue",
+          text:
+            "For the Christians in the room: \u201cThis isn\u2019t doom-saying \u2014 this is the Pope calling for responsible stewardship.\u201d",
+        },
       ],
     },
   },
@@ -859,47 +1668,81 @@ export const slides: SlideData[] = [
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.1rem 1.75rem; max-width: 1100px; width: 100%; margin-top: 1.5rem">
           <div>
-            <h3 style="color: #dc2626; font-size: 1.3rem; margin-bottom: 0.35rem">&#9889; Critical Infrastructure at Risk</h3>
+            <h3 style="color: #dc2626; font-size: 1.3rem; margin-bottom: 0.35rem">
+              &#9889; Critical Infrastructure at Risk
+            </h3>
             <p style="font-size: 1rem; color: #374151">
-              AI can now find vulnerabilities in power grids, water systems, and supply chains in minutes. Attacks that once required state-backed actors, months of work, and millions of dollars are becoming accessible to anyone. Electricity, water, logistics &mdash; the systems we take for granted are newly exposed.
+              AI can now find vulnerabilities in power grids, water systems, and
+              supply chains in minutes. Attacks that once required state-backed
+              actors, months of work, and millions of dollars are becoming
+              accessible to anyone. Electricity, water, logistics &mdash; the
+              systems we take for granted are newly exposed.
             </p>
           </div>
           <div>
-            <h3 style="color: #dc2626; font-size: 1.3rem; margin-bottom: 0.35rem">&#127757; Geopolitical Instability</h3>
+            <h3 style="color: #dc2626; font-size: 1.3rem; margin-bottom: 0.35rem">
+              &#127757; Geopolitical Instability
+            </h3>
             <p style="font-size: 1rem; color: #374151">
-              The US-Israel war on Iran — still ongoing — has put the Strait of Hormuz at risk. When distant conflicts disrupt global supply chains, the price at the Tumbarumba bowser is one of the first places it shows up. Fuel costs hit rural communities harder than anywhere: longer distances, no public transport, farming operations that run on diesel.
+              The US-Israel war on Iran — still ongoing — has put the Strait of
+              Hormuz at risk. When distant conflicts disrupt global supply
+              chains, the price at the Tumbarumba bowser is one of the first
+              places it shows up. Fuel costs hit rural communities harder than
+              anywhere: longer distances, no public transport, farming
+              operations that run on diesel.
             </p>
           </div>
           <div>
-            <h3 style="color: #dc2626; font-size: 1.3rem; margin-bottom: 0.35rem">&#127777;&#65039; Climate Change</h3>
+            <h3 style="color: #dc2626; font-size: 1.3rem; margin-bottom: 0.35rem">
+              &#127777;&#65039; Climate Change
+            </h3>
             <p style="font-size: 1rem; color: #374151">
-              Still unfolding in parallel. AI may accelerate solutions &mdash; or accelerate energy consumption. Two major disruption timelines are converging.
+              Still unfolding in parallel. AI may accelerate solutions &mdash;
+              or accelerate energy consumption. Two major disruption timelines
+              are converging.
             </p>
           </div>
           <div>
-            <h3 style="color: #dc2626; font-size: 1.3rem; margin-bottom: 0.35rem">&#129440; Pandemic Preparedness</h3>
+            <h3 style="color: #dc2626; font-size: 1.3rem; margin-bottom: 0.35rem">
+              &#129440; Pandemic Preparedness
+            </h3>
             <p style="font-size: 1rem; color: #374151">
-              COVID exposed how fragile our systems are. AI-accelerated biology cuts both ways: faster vaccines and faster bioweapons. The next pandemic may arrive in a more disrupted world.
+              COVID exposed how fragile our systems are. AI-accelerated biology
+              cuts both ways: faster vaccines and faster bioweapons. The next
+              pandemic may arrive in a more disrupted world.
             </p>
           </div>
           <div>
-            <h3 style="color: #dc2626; font-size: 1.3rem; margin-bottom: 0.35rem">&#128275; AI Guardrail Removal <sup class="fn">1</sup></h3>
+            <h3 style="color: #dc2626; font-size: 1.3rem; margin-bottom: 0.35rem">
+              &#128275; AI Guardrail Removal <sup class="fn">1</sup>
+            </h3>
             <p style="font-size: 1rem; color: #374151">
-              Open-source AI models can have safety guardrails stripped in minutes using freely available tools. Over 3,500 &ldquo;decensored&rdquo; models downloaded 13 million times. Proprietary systems remain more secure &mdash; for now.
+              Open-source AI models can have safety guardrails stripped in
+              minutes using freely available tools. Over 3,500
+              &ldquo;decensored&rdquo; models downloaded 13 million times.
+              Proprietary systems remain more secure &mdash; for now.
             </p>
           </div>
           <div>
-            <h3 style="color: #dc2626; font-size: 1.3rem; margin-bottom: 0.35rem">&#128184; The AI Investment Bubble</h3>
+            <h3 style="color: #dc2626; font-size: 1.3rem; margin-bottom: 0.35rem">
+              &#128184; The AI Investment Bubble
+            </h3>
             <p style="font-size: 1rem; color: #374151">
-              Massive capital flowing into AI on the promise of future returns. A hard correction could slow innovation and destabilise job markets simultaneously.
+              Massive capital flowing into AI on the promise of future returns.
+              A hard correction could slow innovation and destabilise job
+              markets simultaneously.
             </p>
           </div>
         </div>
         <div style="margin-top: 1.5rem; border-top: 1px solid #e5e7eb; padding-top: 0.875rem; max-width: 1100px; width: 100%">
-          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem">For deeper conversation</p>
+          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem">
+            For deeper conversation
+          </p>
           <p style="font-size: 1rem; color: #6b7280">
-            &#9762;&#65039; Nuclear Proliferation &nbsp;&middot;&nbsp; &#128241; AI-Enabled Disinformation &nbsp;&middot;&nbsp;
-            &#9878;&#65039; Economic Inequality &nbsp;&middot;&nbsp; &#9889; Energy Security &nbsp;&middot;&nbsp; &#129516; Bioweapons Acceleration
+            &#9762;&#65039; Nuclear Proliferation &nbsp;&middot;&nbsp; &#128241;
+            AI-Enabled Disinformation &nbsp;&middot;&nbsp; &#9878;&#65039;
+            Economic Inequality &nbsp;&middot;&nbsp; &#9889; Energy Security
+            &nbsp;&middot;&nbsp; &#129516; Bioweapons Acceleration
           </p>
         </div>
         <div class="question" style="margin-top: 1.25rem">
@@ -907,19 +1750,40 @@ export const slides: SlideData[] = [
           Everything is accelerating at once.
         </div>
         <div class="slide-footnotes">
-          <span><sup>1</sup> Financial Times investigation (2026) &mdash; guardrail removal tool &ldquo;Heretic&rdquo; on GitHub; 3,500+ decensored models, 13 million downloads</span>
+          <span>
+            <sup>1</sup>{" "}
+            Financial Times investigation (2026) &mdash; guardrail removal tool
+            &ldquo;Heretic&rdquo; on GitHub; 3,500+ decensored models, 13
+            million downloads
+          </span>
         </div>
       </>
     ),
     notes: {
-      pace: 'Brief \u00b7 ~2 min',
+      pace: "Brief \u00b7 ~2 min",
       cumulative: 47,
-      anchor: 'Even if AI is slower than feared, the rest of this still applies.',
+      anchor:
+        "Even if AI is slower than feared, the rest of this still applies.",
       bullets: [
-        { type: 'say', text: 'AI doesn\u2019t exist in isolation \u2014 geopolitical instability, climate, pandemic risk \u2014 all unfolding simultaneously' },
-        { type: 'say', text: 'The guardrail removal story: this isn\u2019t a future risk \u2014 it\u2019s a current reality. Freely available, guardrails removed with just four lines of code.' },
-        { type: 'say', text: 'Two major disruption timelines are converging: AI and climate. Either one alone is significant.' },
-        { type: 'cue', text: 'Brief \u2014 note it and move. Protect the close.' },
+        {
+          type: "say",
+          text:
+            "AI doesn\u2019t exist in isolation \u2014 geopolitical instability, climate, pandemic risk \u2014 all unfolding simultaneously",
+        },
+        {
+          type: "say",
+          text:
+            "The guardrail removal story: this isn\u2019t a future risk \u2014 it\u2019s a current reality. Freely available, guardrails removed with just four lines of code.",
+        },
+        {
+          type: "say",
+          text:
+            "Two major disruption timelines are converging: AI and climate. Either one alone is significant.",
+        },
+        {
+          type: "cue",
+          text: "Brief \u2014 note it and move. Protect the close.",
+        },
       ],
     },
   },
@@ -939,33 +1803,58 @@ export const slides: SlideData[] = [
           <div class="info-box" style="flex: 1; margin: 0; text-align: center">
             <div style="font-size: 2rem; margin-bottom: 0.5rem">&#128161;</div>
             <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">Awareness</h3>
-            <p style="font-size: 1rem; color: #374151">Understand what&rsquo;s actually happening. Separate hype from reality.</p>
+            <p style="font-size: 1rem; color: #374151">
+              Understand what&rsquo;s actually happening. Separate hype from
+              reality.
+            </p>
           </div>
-          <div style="display: flex; align-items: center; color: #1a5f6e; font-size: 1.5rem; font-weight: 300">&rarr;</div>
+          <div style="display: flex; align-items: center; color: #1a5f6e; font-size: 1.5rem; font-weight: 300">
+            &rarr;
+          </div>
           <div class="info-box" style="flex: 1; margin: 0; text-align: center">
             <div style="font-size: 2rem; margin-bottom: 0.5rem">&#128172;</div>
-            <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">Conversation</h3>
-            <p style="font-size: 1rem; color: #374151">Talk to people. Challenge ideas. Share perspectives. Build collective understanding.</p>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">
+              Conversation
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              Talk to people. Challenge ideas. Share perspectives. Build
+              collective understanding.
+            </p>
           </div>
-          <div style="display: flex; align-items: center; color: #1a5f6e; font-size: 1.5rem; font-weight: 300">&rarr;</div>
+          <div style="display: flex; align-items: center; color: #1a5f6e; font-size: 1.5rem; font-weight: 300">
+            &rarr;
+          </div>
           <div class="info-box" style="flex: 1; margin: 0; text-align: center">
             <div style="font-size: 2rem; margin-bottom: 0.5rem">&#128640;</div>
             <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">Action</h3>
-            <p style="font-size: 1rem; color: #374151">Not panic. Not paralysis. Informed, grounded, community-supported action.</p>
+            <p style="font-size: 1rem; color: #374151">
+              Not panic. Not paralysis. Informed, grounded, community-supported
+              action.
+            </p>
           </div>
         </div>
         <div style="display: flex; gap: 2rem; align-items: stretch; max-width: 1050px; width: 100%; margin-top: 1.5rem">
           <div style="flex: 3">
-            <div class="large-text" style="font-size: 1.4rem; margin-bottom: 1rem">
+            <div
+              class="large-text"
+              style="font-size: 1.4rem; margin-bottom: 1rem"
+            >
               You don&rsquo;t have to figure this out alone.
             </div>
             <div class="emphasis-box" style="margin: 0">
               <p style="font-size: 1.05rem; color: #374151; text-align: center">
-                <strong>Maslow&rsquo;s hierarchy as a planning framework:</strong><br />
-                In disruption, we return to fundamentals &mdash; physiological needs, safety, belonging.
-                Community is how we secure all three: food networks, mutual support, shared knowledge.<br /><br />
-                <strong>And our young people belong here too.</strong> High school students need community
-                conversations, not just school curricula. They need to hear adults taking this seriously.
+                <strong>
+                  Maslow&rsquo;s hierarchy as a planning framework:
+                </strong>
+                <br />
+                In disruption, we return to fundamentals &mdash; physiological
+                needs, safety, belonging. Community is how we secure all three:
+                food networks, mutual support, shared knowledge.<br />
+                <br />
+                <strong>And our young people belong here too.</strong>{" "}
+                High school students need community conversations, not just
+                school curricula. They need to hear adults taking this
+                seriously.
               </p>
             </div>
           </div>
@@ -984,14 +1873,31 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      pace: 'Brief \u00b7 ~2 min',
+      pace: "Brief \u00b7 ~2 min",
       cumulative: 49,
-      anchor: 'Community is how we secure Maslow\u2019s fundamentals \u2014 food networks, mutual support, shared knowledge. And our young people belong in this conversation.',
+      anchor:
+        "Community is how we secure Maslow\u2019s fundamentals \u2014 food networks, mutual support, shared knowledge. And our young people belong in this conversation.",
       bullets: [
-        { type: 'say', text: 'Individual worry is exhausting \u2014 it just loops. Collective sense-making is how we actually move forward.' },
-        { type: 'say', text: 'Maslow\u2019s hierarchy: during disruption we return to fundamentals. Community is how we secure physiological needs, safety, and belonging simultaneously.' },
-        { type: 'say', text: 'Our young people belong in this conversation \u2014 they\u2019re the most affected, and they need to see adults engaging with it.' },
-        { type: 'cue', text: '\u201cYou\u2019re not alone\u201d moment. Be warm. Don\u2019t rush it.' },
+        {
+          type: "say",
+          text:
+            "Individual worry is exhausting \u2014 it just loops. Collective sense-making is how we actually move forward.",
+        },
+        {
+          type: "say",
+          text:
+            "Maslow\u2019s hierarchy: during disruption we return to fundamentals. Community is how we secure physiological needs, safety, and belonging simultaneously.",
+        },
+        {
+          type: "say",
+          text:
+            "Our young people belong in this conversation \u2014 they\u2019re the most affected, and they need to see adults engaging with it.",
+        },
+        {
+          type: "cue",
+          text:
+            "\u201cYou\u2019re not alone\u201d moment. Be warm. Don\u2019t rush it.",
+        },
       ],
     },
   },
@@ -1003,16 +1909,26 @@ export const slides: SlideData[] = [
     content: (
       <>
         <h2>What Can We Do?</h2>
-        <div class="large-text" style="margin-bottom: 0.5rem">Not panic. Not paralysis. Action.</div>
+        <div class="large-text" style="margin-bottom: 0.5rem">
+          Not panic. Not paralysis. Action.
+        </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem 2rem; max-width: 1100px; width: 100%; margin-top: 1rem">
           <div>
-            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">&#129504; Awareness</h3>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">
+              &#129504; Awareness
+            </h3>
             <p style="font-size: 1rem; color: #374151">
-              Stay informed. Understand what&rsquo;s actually happening versus the hype. Conversations like this one are where it starts. And be critical of your sources &mdash; AI is already being used to generate and amplify disinformation at scale. Multiple channels, trusted local voices.
+              Stay informed. Understand what&rsquo;s actually happening versus
+              the hype. Conversations like this one are where it starts. And be
+              critical of your sources &mdash; AI is already being used to
+              generate and amplify disinformation at scale. Multiple channels,
+              trusted local voices.
             </p>
           </div>
           <div>
-            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">&#128172; Find Your Community</h3>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">
+              &#128172; Find Your Community
+            </h3>
             <p style="font-size: 1rem; color: #374151">
               You don&rsquo;t have to figure this out alone. Find or{" "}
               <a
@@ -1022,37 +1938,58 @@ export const slides: SlideData[] = [
                 style="color: #c4853a; text-decoration: none; border-bottom: 1px solid rgba(196,133,58,0.5)"
               >
                 start a local group
-              </a>. Collective sense-making is more powerful than individual worry. Lions, Rotary, RFS, and local sporting clubs already exist &mdash; they just need this conversation added to them.
+              </a>. Collective sense-making is more powerful than individual
+              worry. Lions, Rotary, RFS, and local sporting clubs already exist
+              &mdash; they just need this conversation added to them.
             </p>
           </div>
           <div>
-            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">&#128295; Know Your Skills</h3>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">
+              &#128295; Know Your Skills
+            </h3>
             <p style="font-size: 1rem; color: #374151">
-              Which of your skills are AI-resistant? Which are AI-complementary? Understanding your own value helps you adapt rather than react.
+              Which of your skills are AI-resistant? Which are AI-complementary?
+              Understanding your own value helps you adapt rather than react.
             </p>
           </div>
           <div>
-            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">&#127807; Food Preparedness</h3>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">
+              &#127807; Food Preparedness
+            </h3>
             <p style="font-size: 1rem; color: #374151">
-              Community gardens, local suppliers, growing your own. Resilience through local relationships &mdash; not stockpiling.
+              Community gardens, local suppliers, growing your own. Resilience
+              through local relationships &mdash; not stockpiling.
             </p>
           </div>
           <div>
-            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">&#128176; Financial Resilience</h3>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">
+              &#128176; Financial Resilience
+            </h3>
             <p style="font-size: 1rem; color: #374151">
-              Reduce debt. Build a buffer. Economic disruption amplifies existing vulnerability &mdash; and it arrives faster than most people expect. Keep cash on hand &mdash; EFTPOS goes down when infrastructure does. Know how to transact without it.
+              Reduce debt. Build a buffer. Economic disruption amplifies
+              existing vulnerability &mdash; and it arrives faster than most
+              people expect. Keep cash on hand &mdash; EFTPOS goes down when
+              infrastructure does. Know how to transact without it.
             </p>
           </div>
           <div>
-            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">&#128226; Civic Engagement</h3>
+            <h3 style="color: #1a5f6e; font-size: 1.35rem; margin-bottom: 0.4rem">
+              &#128226; Civic Engagement
+            </h3>
             <p style="font-size: 1rem; color: #374151">
-              Talk to your representatives. Attend local meetings. Governments need to hear from people who are paying attention &mdash; not just lobbyists.
+              Talk to your representatives. Attend local meetings. Governments
+              need to hear from people who are paying attention &mdash; not just
+              lobbyists.
             </p>
           </div>
         </div>
         <div style="margin-top: 1.75rem; border-top: 1px solid #e5e7eb; padding-top: 0.75rem; max-width: 1100px; width: 100%">
-          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.2rem">Stay connected</p>
-          <p style="font-size: 0.95rem; color: #c4853a; font-weight: 600">futuretogether.community</p>
+          <p style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.2rem">
+            Stay connected
+          </p>
+          <p style="font-size: 0.95rem; color: #c4853a; font-weight: 600">
+            futuretogether.community
+          </p>
         </div>
         <div class="question" style="margin-top: 1.25rem">
           Not panic. Not paralysis. Action.<br />
@@ -1061,15 +1998,36 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      pace: 'Medium \u00b7 ~3 min',
+      pace: "Medium \u00b7 ~3 min",
       cumulative: 52,
-      anchor: 'What can we do \u2014 Not panic. Not paralysis. Action. \u2014 Starting tonight.',
+      anchor:
+        "What can we do \u2014 Not panic. Not paralysis. Action. \u2014 Starting tonight.",
       bullets: [
-        { type: 'say', text: 'Stay informed \u2014 the gap between what\u2019s happening and what most people know is enormous' },
-        { type: 'say', text: 'Know your skills \u2014 which skills are AI-resistant? Which are AI-complementary? Adapt rather than react.' },
-        { type: 'say', text: 'Local resilience: community gardens, local suppliers, knowing your neighbours. This works in Tumbarumba.' },
-        { type: 'cue', text: 'Say the anchor slowly. Three beats: Not panic. Not paralysis. Action.' },
-        { type: 'cue', text: 'Mention the addendum slide on offline preparedness if there are Q&A questions about practical steps \u2014 and direct people to the handout.' },
+        {
+          type: "say",
+          text:
+            "Stay informed \u2014 the gap between what\u2019s happening and what most people know is enormous",
+        },
+        {
+          type: "say",
+          text:
+            "Know your skills \u2014 which skills are AI-resistant? Which are AI-complementary? Adapt rather than react.",
+        },
+        {
+          type: "say",
+          text:
+            "Local resilience: community gardens, local suppliers, knowing your neighbours. This works in Tumbarumba.",
+        },
+        {
+          type: "cue",
+          text:
+            "Say the anchor slowly. Three beats: Not panic. Not paralysis. Action.",
+        },
+        {
+          type: "cue",
+          text:
+            "Mention the addendum slide on offline preparedness if there are Q&A questions about practical steps \u2014 and direct people to the handout.",
+        },
       ],
     },
   },
@@ -1085,9 +2043,13 @@ export const slides: SlideData[] = [
           &ldquo;The future is arriving. Let&rsquo;s face it together.&rdquo;
         </div>
         <div style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; max-width: 700px; width: 100%">
-          <div class="info-box" style="width: 100%; text-align: center; margin: 0">
+          <div
+            class="info-box"
+            style="width: 100%; text-align: center; margin: 0"
+          >
             <p style="font-size: 1.8rem; color: #374151; margin-bottom: 1rem">
-              Find resources, register for upcoming events,<br />and bring a friend to the next one.
+              Find resources, register for upcoming events,<br />and bring a
+              friend to the next one.
             </p>
             <QRCode
               url="https://futuretogether.community/events/tumbarumba"
@@ -1097,10 +2059,16 @@ export const slides: SlideData[] = [
               futuretogether.community/events/tumbarumba
             </p>
           </div>
-          <div style="font-size: 1.8rem; color: #1a5f6e; font-weight: 600">Questions? Let&rsquo;s talk.</div>
+          <div style="font-size: 1.8rem; color: #1a5f6e; font-weight: 600">
+            Questions? Let&rsquo;s talk.
+          </div>
         </div>
         <p style="font-size: 0.9rem; color: #d1d5db; margin-top: 2rem; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; gap: 0.4rem">
-          <img src="https://www.beyondbetter.app/logo-a.png" alt="BB Logo" class="bb-logo" />{" "}
+          <img
+            src="https://www.beyondbetter.app/logo-a.png"
+            alt="BB Logo"
+            class="bb-logo"
+          />{" "}
           Created with{" "}
           <a
             href="https://beyondbetter.app"
@@ -1114,15 +2082,35 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      pace: 'Warm \u00b7 ~3 min',
+      pace: "Warm \u00b7 ~3 min",
       cumulative: 55,
-      anchor: 'The future is arriving. Let\u2019s face it together.',
+      anchor: "The future is arriving. Let\u2019s face it together.",
       bullets: [
-        { type: 'say', text: 'Scan the QR code for resources, events, and how to stay connected. Details are also on the printed handout.' },
-        { type: 'say', text: 'Bring a friend to the next one. This conversation needs to spread. I want your feedback \u2014 when should I make myself available for chats \u2014 what about a regular event at the library?' },
-        { type: 'say', text: 'I\u2019ve been here at the Nest every Tuesday morning 8am - available to chat. I want to find something that is suited to community engagement.' },
-        { type: 'say', text: 'It\u2019s time for your questions. There are no wrong questions tonight.' },
-        { type: 'cue', text: 'If silence: \u201cI\u2019ll start \u2014 what\u2019s one thing from tonight that surprised you?\u201d' },
+        {
+          type: "say",
+          text:
+            "Scan the QR code for resources, events, and how to stay connected. Details are also on the printed handout.",
+        },
+        {
+          type: "say",
+          text:
+            "Bring a friend to the next one. This conversation needs to spread. I want your feedback \u2014 when should I make myself available for chats \u2014 what about a regular event at the library?",
+        },
+        {
+          type: "say",
+          text:
+            "I\u2019ve been here at the Nest every Tuesday morning 8am - available to chat. I want to find something that is suited to community engagement.",
+        },
+        {
+          type: "say",
+          text:
+            "It\u2019s time for your questions. There are no wrong questions tonight.",
+        },
+        {
+          type: "cue",
+          text:
+            "If silence: \u201cI\u2019ll start \u2014 what\u2019s one thing from tonight that surprised you?\u201d",
+        },
       ],
     },
   },
@@ -1142,11 +2130,21 @@ export const slides: SlideData[] = [
               <strong>fundamental needs come first</strong>
             </div>
             <ul style="margin-top: 2rem; text-align: left">
-              <li><strong>Physiological</strong>: food, water, shelter</li>
-              <li><strong>Safety:</strong> security, stability</li>
-              <li><strong>Belonging:</strong> community, connection</li>
-              <li><strong>Esteem:</strong> achievement, respect</li>
-              <li><strong>Self-actualization:</strong> purpose, growth</li>
+              <li>
+                <strong>Physiological</strong>: food, water, shelter
+              </li>
+              <li>
+                <strong>Safety:</strong> security, stability
+              </li>
+              <li>
+                <strong>Belonging:</strong> community, connection
+              </li>
+              <li>
+                <strong>Esteem:</strong> achievement, respect
+              </li>
+              <li>
+                <strong>Self-actualization:</strong> purpose, growth
+              </li>
             </ul>
           </div>
           <img
@@ -1162,13 +2160,22 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      pace: 'Addendum \u00b7 skip unless time permits',
+      pace: "Addendum \u00b7 skip unless time permits",
       cumulative: 58,
-      anchor: '[ADDENDUM \u2014 use only if time permits, or during Q&A when resilience questions arise]',
+      anchor:
+        "[ADDENDUM \u2014 use only if time permits, or during Q&A when resilience questions arise]",
       bullets: [
-        { type: 'say', text: 'Maslow isn\u2019t an answer \u2014 it\u2019s a map for asking better questions about what matters most' },
-        { type: 'say', text: 'Bad outcome: start near the bottom (food, safety, stability). Good outcome: start near the top. The hierarchy applies either way.' },
-        { type: 'cue', text: 'Visual breath slide. Don\u2019t over-explain.' },
+        {
+          type: "say",
+          text:
+            "Maslow isn\u2019t an answer \u2014 it\u2019s a map for asking better questions about what matters most",
+        },
+        {
+          type: "say",
+          text:
+            "Bad outcome: start near the bottom (food, safety, stability). Good outcome: start near the top. The hierarchy applies either way.",
+        },
+        { type: "cue", text: "Visual breath slide. Don\u2019t over-explain." },
       ],
     },
   },
@@ -1181,51 +2188,83 @@ export const slides: SlideData[] = [
       <>
         <h2>When Systems Go Down</h2>
         <div class="large-text">
-          The most practical resilience doesn&rsquo;t require a plan &mdash;<br />
+          The most practical resilience doesn&rsquo;t require a plan
+          &mdash;<br />
           it requires a few things already in place before you need them.
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.1rem 2rem; max-width: 1100px; width: 100%; margin-top: 1.5rem">
           <div class="info-box" style="margin: 0">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">&#128251; AM/FM Radio</h3>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">
+              &#128251; AM/FM Radio
+            </h3>
             <p style="font-size: 0.95rem; color: #374151">
-              Emergency broadcasts and local news still work when the internet doesn&rsquo;t. A battery-powered or hand-crank radio costs $30 and works in a blackout.
+              Emergency broadcasts and local news still work when the internet
+              doesn&rsquo;t. A battery-powered or hand-crank radio costs $30 and
+              works in a blackout.
             </p>
           </div>
           <div class="info-box" style="margin: 0">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">&#128225; UHF Radio</h3>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">
+              &#128225; UHF Radio
+            </h3>
             <p style="font-size: 0.95rem; color: #374151">
-              Local communication without any infrastructure. Farmers already use them. In a major disruption, they&rsquo;re how neighbours coordinate when mobile networks are down.
+              Local communication without any infrastructure. Farmers already
+              use them. In a major disruption, they&rsquo;re how neighbours
+              coordinate when mobile networks are down.
             </p>
           </div>
           <div class="info-box" style="margin: 0">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">&#128181; Cash &amp; Barter</h3>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">
+              &#128181; Cash &amp; Barter
+            </h3>
             <p style="font-size: 0.95rem; color: #374151">
-              EFTPOS fails when power or network goes down. Keep enough cash to cover a week of essentials. Know which local businesses will trade on account or goodwill.
+              EFTPOS fails when power or network goes down. Keep enough cash to
+              cover a week of essentials. Know which local businesses will trade
+              on account or goodwill.
             </p>
           </div>
           <div class="info-box" style="margin: 0">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">&#128196; Hard Copies</h3>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">
+              &#128196; Hard Copies
+            </h3>
             <p style="font-size: 0.95rem; color: #374151">
-              Important documents, insurance, medical records, key contacts, and a local community directory &mdash; printed. When cloud services are unavailable, paper still works.
+              Important documents, insurance, medical records, key contacts, and
+              a local community directory &mdash; printed. When cloud services
+              are unavailable, paper still works.
             </p>
           </div>
           <div class="info-box" style="margin: 0">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">&#128267; Power Banks &amp; Batteries</h3>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">
+              &#128267; Power Banks &amp; Batteries
+            </h3>
             <p style="font-size: 0.95rem; color: #374151">
-              A charged power bank and spare batteries extend how long your devices work during an outage. In extended disruptions, knowing how to charge offline (solar, car) matters.
+              A charged power bank and spare batteries extend how long your
+              devices work during an outage. In extended disruptions, knowing
+              how to charge offline (solar, car) matters.
             </p>
           </div>
           <div class="info-box" style="margin: 0">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">&#129309; Know Your Neighbours</h3>
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem">
+              &#129309; Know Your Neighbours
+            </h3>
             <p style="font-size: 0.95rem; color: #374151">
-              During any major disruption, the people closest to you physically are best placed to help. A community directory, a shared WhatsApp group, or simply knowing who lives nearby &mdash; it all counts.
+              During any major disruption, the people closest to you physically
+              are best placed to help. A community directory, a shared WhatsApp
+              group, or simply knowing who lives nearby &mdash; it all counts.
             </p>
           </div>
         </div>
-        <div class="emphasis-box" style="max-width: 1100px; width: 100%; margin-top: 1.25rem">
+        <div
+          class="emphasis-box"
+          style="max-width: 1100px; width: 100%; margin-top: 1.25rem"
+        >
           <p style="font-size: 1rem; color: #374151; text-align: center">
-            Based on the <strong>Red Cross All Hazards preparedness framework</strong> &mdash; EmergencyRedi: Get in the Know, Get Connected, Get Organised, Get Packing.
-            Contact <strong>Peter Makryllos</strong> or your local Red Cross for community preparedness workshops.
+            Based on the{" "}
+            <strong>Red Cross All Hazards preparedness framework</strong>{" "}
+            &mdash; EmergencyRedi: Get in the Know, Get Connected, Get
+            Organised, Get Packing. Contact <strong>Peter Makryllos</strong>
+            {" "}
+            or your local Red Cross for community preparedness workshops.
           </p>
         </div>
         <div class="question" style="margin-top: 1rem">
@@ -1235,15 +2274,36 @@ export const slides: SlideData[] = [
       </>
     ),
     notes: {
-      pace: 'Addendum \u00b7 use during Q&A on practical steps',
+      pace: "Addendum \u00b7 use during Q&A on practical steps",
       cumulative: 61,
-      anchor: '[ADDENDUM \u2014 bring up when someone asks \u201cwhat can I actually do this week?\u201d]',
+      anchor:
+        "[ADDENDUM \u2014 bring up when someone asks \u201cwhat can I actually do this week?\u201d]",
       bullets: [
-        { type: 'say', text: 'This is the Red Cross All Hazards framework applied to AI/tech disruption \u2014 Peter Makryllos helped shape this' },
-        { type: 'say', text: 'These aren\u2019t prepper ideas. AM/FM radio and cash on hand are things your grandparents did by default.' },
-        { type: 'say', text: 'UHF radios: most rural people already have them. Emphasise existing tools, not new purchases.' },
-        { type: 'say', text: 'Community directory: does Tumbarumba have one? If not, that\u2019s a project the Chamber could run.' },
-        { type: 'cue', text: 'This slide pairs with the handout \u2014 direct people there for the full list.' },
+        {
+          type: "say",
+          text:
+            "This is the Red Cross All Hazards framework applied to AI/tech disruption \u2014 Peter Makryllos helped shape this",
+        },
+        {
+          type: "say",
+          text:
+            "These aren\u2019t prepper ideas. AM/FM radio and cash on hand are things your grandparents did by default.",
+        },
+        {
+          type: "say",
+          text:
+            "UHF radios: most rural people already have them. Emphasise existing tools, not new purchases.",
+        },
+        {
+          type: "say",
+          text:
+            "Community directory: does Tumbarumba have one? If not, that\u2019s a project the Chamber could run.",
+        },
+        {
+          type: "cue",
+          text:
+            "This slide pairs with the handout \u2014 direct people there for the full list.",
+        },
       ],
     },
   },
@@ -1258,5 +2318,4 @@ export const meta: SlideshowMeta = {
   durationMinutes: 55,
   description:
     "A public talk about AI and its impact on our community, presented at The Caf\u00e9 Nest Cinema, Tumbarumba.",
-  loadSlides: () => Promise.resolve(slides),
 };

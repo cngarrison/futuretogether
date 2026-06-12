@@ -14,7 +14,7 @@ export default function CancelRegistrationButton({
   eventId,
   registrationId,
   attendeeEmail,
-  onCancelled,
+  //onCancelled,
 }: CancelRegistrationButtonProps): JSX.Element {
   const [showConfirm, setShowConfirm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -49,6 +49,7 @@ export default function CancelRegistrationButton({
   return (
     <>
       <button
+        type="button"
         class="text-red-600 hover:text-red-800 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
         onClick={() => setShowConfirm(true)}
         disabled={isLoading}
@@ -81,6 +82,7 @@ export default function CancelRegistrationButton({
 
             <div class="flex gap-3 justify-end">
               <button
+                type="button"
                 class="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50"
                 onClick={() => {
                   setShowConfirm(false);
@@ -91,6 +93,7 @@ export default function CancelRegistrationButton({
                 No, Keep It
               </button>
               <button
+                type="button"
                 class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
                 onClick={handleCancel}
                 disabled={isLoading}

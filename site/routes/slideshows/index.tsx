@@ -1,9 +1,9 @@
 import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
-import { getAllSlideshows } from "@/utils/slideshows/registry.ts";
+import { getAllSlideshows } from "@/utils/db/content.ts";
 
-export default define.page(function SlideshowsIndex() {
-  const shows = getAllSlideshows();
+export default define.page(async function SlideshowsIndex(ctx) {
+  const shows = await getAllSlideshows(ctx.state);
   return (
     <>
       <Head>
@@ -24,7 +24,7 @@ export default define.page(function SlideshowsIndex() {
                     {s.title}
                   </a>
                   <span style="font-size:0.75rem;opacity:0.4;margin-left:0.75rem;">
-                    {s.slideCount} slides
+                    {s.slide_count} slides
                   </span>
                 </li>
               ))}

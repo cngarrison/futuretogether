@@ -47,8 +47,8 @@ export default define.page(function StartAGroup() {
       title: "List your group with Future Together",
       body:
         "Once you've run your first session — or even before, if you want some support getting started — get in touch. We'd love to know your group exists, help you connect with others doing the same thing, and eventually list your group so people in your area can find it. Use the ",
-      link: { href: "/contact", text: "contact form" },
-      body2: " and select “Starting or finding a local group” as your topic.",
+      link: { href: "/groups/start", text: "group application form" },
+      body2: " to apply to list your group with Future Together.",
     },
     {
       number: "07",
@@ -70,8 +70,8 @@ export default define.page(function StartAGroup() {
 
       {/* Hero */}
       <section
-        class="text-white pt-16"
-        style="background-color: #1a5f6e; background-image: linear-gradient(rgba(26,95,110,0.80), rgba(26,95,110,0.80)), url('/img/local-group-hero.webp'); background-size: cover; background-position: center;"
+        class="text-white bg-primary"
+        style="background-image: linear-gradient(rgba(26,95,110,0.80), rgba(26,95,110,0.80)), url('/img/local-group-hero.webp'); background-size: cover; background-position: center;"
       >
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
           <p
@@ -96,7 +96,7 @@ export default define.page(function StartAGroup() {
       </section>
 
       {/* Intro */}
-      <section class="py-16" style="background-color: #f7f4ef;">
+      <section class="py-16 bg-warm-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
           <div
             class="prose prose-lg max-w-none"
@@ -131,7 +131,7 @@ export default define.page(function StartAGroup() {
         style="background-color: #eef5f7; border-top: 1px solid #d0e4e7;"
       >
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
-          <h2 class="text-2xl font-bold mb-10" style="color: #1c1a18;">
+          <h2 class="text-2xl font-bold text-near-black mb-10">
             How to run your first meetup
           </h2>
           <div class="space-y-10">
@@ -139,17 +139,14 @@ export default define.page(function StartAGroup() {
               <div class="flex gap-6">
                 <div class="flex-shrink-0">
                   <span
-                    class="text-3xl font-bold"
-                    style="color: #c4853a; line-height: 1;"
+                    class="text-3xl font-bold text-accent"
+                    style="line-height: 1;"
                   >
                     {step.number}
                   </span>
                 </div>
                 <div>
-                  <h3
-                    class="text-lg font-semibold mb-2"
-                    style="color: #1a5f6e;"
-                  >
+                  <h3 class="text-lg font-semibold text-primary mb-2">
                     {step.title}
                   </h3>
                   <p
@@ -160,8 +157,7 @@ export default define.page(function StartAGroup() {
                     {step.link && (
                       <a
                         href={step.link.href}
-                        class="underline"
-                        style="color: #1a5f6e;"
+                        class="text-primary underline"
                       >
                         {step.link.text}
                       </a>
@@ -176,9 +172,9 @@ export default define.page(function StartAGroup() {
       </section>
 
       {/* Resources */}
-      <section class="py-16" style="background-color: #f7f4ef;">
+      <section class="py-16 bg-warm-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
-          <h2 class="text-2xl font-bold mb-8" style="color: #1c1a18;">
+          <h2 class="text-2xl font-bold text-near-black mb-8">
             Resources to get you started
           </h2>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -209,10 +205,7 @@ export default define.page(function StartAGroup() {
                 class="bg-white rounded-xl p-6"
                 style="border: 1px solid #d0e4e7;"
               >
-                <h3
-                  class="font-semibold text-base mb-2"
-                  style="color: #1a5f6e;"
-                >
+                <h3 class="font-semibold text-primary text-base mb-2">
                   {r.title}
                 </h3>
                 <p
@@ -223,8 +216,7 @@ export default define.page(function StartAGroup() {
                 </p>
                 <a
                   href={r.href}
-                  class="text-sm font-semibold"
-                  style="color: #c4853a;"
+                  class="text-sm font-semibold text-accent"
                 >
                   {r.label} &rarr;
                 </a>
@@ -234,11 +226,30 @@ export default define.page(function StartAGroup() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Ready to apply? */}
       <section
-        class="py-20 text-center"
-        style="background-color: #1a5f6e; color: white;"
+        class="py-16 bg-warm-white"
+        style="border-top: 1px solid #d0e4e7;"
       >
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <h2 class="text-2xl font-bold text-near-black mb-4">
+            Ready to register your group?
+          </h2>
+          <p class="mb-8 text-lg" style="color: rgba(28,26,24,0.7);">
+            Once you've run your first session — or if you'd like support before
+            you start — apply to list your group with Future Together.
+          </p>
+          <a
+            href="/groups/start"
+            class="inline-block px-8 py-3.5 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
+          >
+            Apply to list your group &rarr;
+          </a>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section class="py-20 text-center text-white bg-primary">
         <div class="max-w-xl mx-auto px-4 sm:px-6">
           <h2 class="text-3xl font-bold mb-4">Let us know you exist</h2>
           <p class="mb-8 text-lg" style="color: rgba(255,255,255,0.8);">
@@ -248,8 +259,7 @@ export default define.page(function StartAGroup() {
           </p>
           <a
             href="/contact"
-            class="inline-block px-8 py-3.5 text-white font-semibold rounded-xl transition-opacity hover:opacity-90"
-            style="background-color: #c4853a;"
+            class="inline-block px-8 py-3.5 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
           >
             Get in touch &rarr;
           </a>

@@ -1,3 +1,4 @@
+import type { ComponentChildren } from "preact";
 import { define } from "@/utils.ts";
 import PageLayout from "@/components/PageLayout.tsx";
 
@@ -8,6 +9,13 @@ import PageLayout from "@/components/PageLayout.tsx";
  * Subdirectory layouts (slideshows, staff) opt out via `skipInheritedLayouts: true`
  * in their own config exports.
  */
-export default define.layout(({ Component, url }) => {
-  return <PageLayout currentPath={url.pathname} Component={Component} />;
+export default define.layout(({ Component, url, state }) => {
+  return (
+    <PageLayout
+      currentPath={url.pathname}
+      Component={Component as () => ComponentChildren}
+      user={state.user}
+      profile={state.profile}
+    />
+  );
 });

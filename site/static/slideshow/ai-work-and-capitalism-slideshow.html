@@ -2,18 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
     <title>Future Together — When the Rules Change</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    >
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
       body {
-        font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-family:
+          "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, sans-serif;
         background: linear-gradient(135deg, #1a5f6e 0%, #0f4a57 100%);
         color: #1f2937;
         overflow-x: hidden;
@@ -64,7 +83,9 @@
         transition: background-color 0.2s ease;
       }
 
-      .nav-arrow:hover { background-color: rgba(26, 95, 110, 0.1); }
+      .nav-arrow:hover {
+        background-color: rgba(26, 95, 110, 0.1);
+      }
 
       .nav-hint {
         position: absolute;
@@ -79,8 +100,25 @@
         animation: fadeOut 6s forwards;
       }
 
-      @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
-      @keyframes fadeOut { 0% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; } }
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 0.6;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
 
       h1 {
         font-size: 4rem;
@@ -174,11 +212,26 @@
         width: 100%;
       }
 
-      .split-column { padding: 2rem; border-radius: 12px; }
-      .split-teal  { background: #d4eef1; border: 2px solid #1a5f6e; }
-      .split-amber { background: #fef3c7; border: 2px solid #c4853a; }
-      .split-green { background: #d1fae5; border: 2px solid #059669; }
-      .split-red   { background: #fee2e2; border: 2px solid #dc2626; }
+      .split-column {
+        padding: 2rem;
+        border-radius: 12px;
+      }
+      .split-teal {
+        background: #d4eef1;
+        border: 2px solid #1a5f6e;
+      }
+      .split-amber {
+        background: #fef3c7;
+        border: 2px solid #c4853a;
+      }
+      .split-green {
+        background: #d1fae5;
+        border: 2px solid #059669;
+      }
+      .split-red {
+        background: #fee2e2;
+        border: 2px solid #dc2626;
+      }
 
       .resource-list {
         display: grid;
@@ -196,10 +249,26 @@
         text-align: center;
       }
 
-      .resource-item h4 { color: #1a5f6e; margin-bottom: 0.5rem; font-size: 1.1rem; }
-      .resource-item p { font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem; }
-      .resource-item a { color: #1a5f6e; text-decoration: none; border-bottom: 2px solid transparent; transition: border-color 0.2s; font-size: 0.95rem; }
-      .resource-item a:hover { border-bottom-color: #1a5f6e; }
+      .resource-item h4 {
+        color: #1a5f6e;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+      .resource-item p {
+        font-size: 0.9rem;
+        color: #6b7280;
+        margin-bottom: 1rem;
+      }
+      .resource-item a {
+        color: #1a5f6e;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.2s;
+        font-size: 0.95rem;
+      }
+      .resource-item a:hover {
+        border-bottom-color: #1a5f6e;
+      }
 
       .qr-code {
         width: 120px;
@@ -212,14 +281,26 @@
         background: white;
       }
 
-      ul { list-style-position: inside; font-size: 1.3rem; line-height: 2; color: #374151; }
+      ul {
+        list-style-position: inside;
+        font-size: 1.3rem;
+        line-height: 2;
+        color: #374151;
+      }
 
-      .slide-logo { margin-bottom: 1.5rem; }
-      .slide-logo svg { height: 92px; width: auto; }
+      .slide-logo {
+        margin-bottom: 1.5rem;
+      }
+      .slide-logo svg {
+        height: 92px;
+        width: auto;
+      }
 
       .brand-bar {
         position: fixed;
-        bottom: 0; left: 0; right: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
         height: 48px;
         background-color: #1a5f6e;
         display: flex;
@@ -230,53 +311,165 @@
         pointer-events: none;
       }
 
-      .brand-bar-name { color: white; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.01em; }
-      .brand-bar-sep  { color: rgba(255,255,255,0.35); font-size: 0.75rem; }
-      .brand-bar-url  { color: rgba(255,255,255,0.55); font-size: 0.85rem; letter-spacing: 0.04em; }
+      .brand-bar-name {
+        color: white;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+      .brand-bar-sep {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.75rem;
+      }
+      .brand-bar-url {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+      }
 
       .slide-footnotes {
         position: absolute;
-        bottom: 56px; left: 2rem;
+        bottom: 56px;
+        left: 2rem;
         font-size: 0.58rem;
         color: #b0b7c3;
         max-width: 72%;
         line-height: 1.7;
         z-index: 50;
       }
-      sup.fn { font-size: 0.65em; color: #9ca3af; font-weight: 600; }
+      sup.fn {
+        font-size: 0.65em;
+        color: #9ca3af;
+        font-weight: 600;
+      }
 
-      .bb-logo { width: 16px; height: 16px; flex-shrink: 0; }
+      .bb-logo {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
 
       @media (max-width: 768px) {
-        h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; }
-        .question { font-size: 1.8rem; }
-        .large-text { font-size: 1.3rem; }
-        .slide { padding: 2rem; padding-bottom: 4rem; }
-        .split-view { grid-template-columns: 1fr; gap: 1rem; }
-        .resource-list { grid-template-columns: 1fr; }
+        h1 {
+          font-size: 2.5rem;
+        }
+        h2 {
+          font-size: 2rem;
+        }
+        .question {
+          font-size: 1.8rem;
+        }
+        .large-text {
+          font-size: 1.3rem;
+        }
+        .slide {
+          padding: 2rem;
+          padding-bottom: 4rem;
+        }
+        .split-view {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .resource-list {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
     <div class="deck">
-
       <!-- Slide 1: Opening -->
       <div class="slide">
         <div class="slide-number"></div>
         <div class="nav-hint">← → Navigate or scroll right</div>
         <div class="slide-logo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 80" role="img" aria-label="Future Together">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 215 80"
+            role="img"
+            aria-label="Future Together"
+          >
             <title>Future Together</title>
-            <line x1="2" y1="5" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
-            <line x1="2" y1="21" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
-            <line x1="2" y1="40" x2="50" y2="40" stroke="#1a5f6e" stroke-width="3" stroke-linecap="round"/>
-            <line x1="2" y1="59" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
-            <line x1="2" y1="75" x2="50" y2="40" stroke="#1a5f6e" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
-            <circle cx="50" cy="40" r="7" fill="#c4853a"/>
-            <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="84" y="34" font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif" font-size="21" font-weight="700" fill="#1a5f6e" letter-spacing="-0.5">Future</text>
-            <text x="84" y="59" font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif" font-size="21" font-weight="400" fill="#1c1a18" letter-spacing="-0.5">Together</text>
+            <line
+              x1="2"
+              y1="5"
+              x2="50"
+              y2="40"
+              stroke="#1a5f6e"
+              stroke-width="2"
+              stroke-linecap="round"
+              opacity="0.45"
+            />
+            <line
+              x1="2"
+              y1="21"
+              x2="50"
+              y2="40"
+              stroke="#1a5f6e"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              opacity="0.7"
+            />
+            <line
+              x1="2"
+              y1="40"
+              x2="50"
+              y2="40"
+              stroke="#1a5f6e"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <line
+              x1="2"
+              y1="59"
+              x2="50"
+              y2="40"
+              stroke="#1a5f6e"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              opacity="0.7"
+            />
+            <line
+              x1="2"
+              y1="75"
+              x2="50"
+              y2="40"
+              stroke="#1a5f6e"
+              stroke-width="2"
+              stroke-linecap="round"
+              opacity="0.45"
+            />
+            <circle cx="50" cy="40" r="7" fill="#c4853a" />
+            <polyline
+              points="57,26 70,40 57,54"
+              fill="none"
+              stroke="#c4853a"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <text
+              x="84"
+              y="34"
+              font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
+              font-size="21"
+              font-weight="700"
+              fill="#1a5f6e"
+              letter-spacing="-0.5"
+            >
+              Future
+            </text>
+            <text
+              x="84"
+              y="59"
+              font-family="'Plus Jakarta Sans','DM Sans',ui-sans-serif,system-ui,sans-serif"
+              font-size="21"
+              font-weight="400"
+              fill="#1c1a18"
+              letter-spacing="-0.5"
+            >
+              Together
+            </text>
           </svg>
         </div>
         <h1>When the rules change</h1>
@@ -314,8 +507,10 @@
         <div class="slide-number"></div>
         <h2>What the data actually shows</h2>
         <div class="large-text">
-          Stanford researchers tracked <strong>25 million US workers</strong><br>
-          using ADP payroll records through September 2025.<sup class="fn">1</sup>
+          Stanford researchers tracked <strong>25 million US
+            workers</strong><br>
+          using ADP payroll records through September 2025.<sup class="fn"
+          >1</sup>
         </div>
         <div class="large-text">
           Headline unemployment: <strong>4.9%</strong> &mdash; barely changed.
@@ -328,16 +523,21 @@
           </div>
         </div>
         <div class="large-text" style="margin-top: 1rem">
-          Workers in the <em>same roles</em>, aged 35+: <strong>up 8%+</strong><br>
+          Workers in the <em>same roles</em>, aged 35+: <strong>up
+            8%+</strong><br>
           The pattern begins almost exactly when ChatGPT launched.
         </div>
-        <div class="info-box" style="margin-top: 1rem; padding: 1rem 2rem;">
+        <div class="info-box" style="margin-top: 1rem; padding: 1rem 2rem">
           <div class="large-text" style="font-size: 1.3rem; margin-bottom: 0">
-            <strong>Independently confirmed:</strong> Anthropic&rsquo;s March 2026 research &mdash; using their own usage data, not third-party payroll records &mdash; reaches the same conclusion.
+            <strong>Independently confirmed:</strong> Anthropic&rsquo;s March
+            2026 research &mdash; using their own usage data, not third-party
+            payroll records &mdash; reaches the same conclusion.
           </div>
         </div>
         <div class="slide-footnotes">
-          <span>¹ Canaries in the Coal Mine: AI’s Early Labour Market Signal (Stanford Digital Economy Lab, Nov 2025) — digitaleconomy.stanford.edu</span>
+          <span>¹ Canaries in the Coal Mine: AI’s Early Labour Market Signal
+            (Stanford Digital Economy Lab, Nov 2025) —
+            digitaleconomy.stanford.edu</span>
         </div>
       </div>
 
@@ -346,7 +546,8 @@
         <div class="slide-number"></div>
         <h2>Who&rsquo;s actually most exposed?</h2>
         <div class="large-text">
-          The answer from Anthropic&rsquo;s own research isn&rsquo;t what most people expect.
+          The answer from Anthropic&rsquo;s own research isn&rsquo;t what most
+          people expect.
         </div>
         <div class="split-view" style="margin-top: 1rem">
           <div class="split-column split-amber">
@@ -369,7 +570,8 @@
         </div>
         <div class="emphasis-box" style="margin-top: 1.5rem">
           <div class="large-text" style="margin-bottom: 0">
-            AI is currently at ~33% of its <em>theoretical</em> capability in technical roles.<br>
+            AI is currently at ~33% of its <em>theoretical</em> capability in
+            technical roles.<br>
             That gap will close.
           </div>
         </div>
@@ -377,7 +579,9 @@
           Does this change how you&rsquo;re thinking about your own situation?
         </div>
         <div class="slide-footnotes">
-          <span>Anthropic: Labor Market Impacts of AI: A New Measure and Early Evidence (Mar 2026) &mdash; anthropic.com/research/labor-market-impacts</span>
+          <span>Anthropic: Labor Market Impacts of AI: A New Measure and Early
+            Evidence (Mar 2026) &mdash;
+            anthropic.com/research/labor-market-impacts</span>
         </div>
       </div>
 
@@ -386,24 +590,58 @@
         <div class="slide-number"></div>
         <h2>Why the headline numbers mislead</h2>
         <div class="large-text">
-          &ldquo;But unemployment is stable — isn’t that evidence<br>AI isn’t having an impact?&rdquo;
+          &ldquo;But unemployment is stable — isn’t that evidence<br>AI
+          isn’t having an impact?&rdquo;
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2.5rem; max-width: 1000px; width: 100%; margin-top: 1.5rem">
+        <div
+          style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2.5rem; max-width: 1000px; width: 100%; margin-top: 1.5rem"
+        >
           <div>
-            <h3 style="color: #dc2626; font-size: 1.4rem; margin-bottom: 0.5rem">📊 Wrong metric</h3>
-            <p style="font-size: 1.1rem; color: #374151">Unemployment counts only those actively seeking work. Not those who’ve given up. Not those reduced from 38 to 15 hours. Underemployment is the more honest signal.</p>
+            <h3
+              style="color: #dc2626; font-size: 1.4rem; margin-bottom: 0.5rem"
+            >
+              📊 Wrong metric
+            </h3>
+            <p style="font-size: 1.1rem; color: #374151">
+              Unemployment counts only those actively seeking work. Not those
+              who’ve given up. Not those reduced from 38 to 15 hours.
+              Underemployment is the more honest signal.
+            </p>
           </div>
           <div>
-            <h3 style="color: #dc2626; font-size: 1.4rem; margin-bottom: 0.5rem">⏳ Wrong timing</h3>
-            <p style="font-size: 1.1rem; color: #374151">Firms absorb new capability before restructuring. A firm that can do 90% of its work with AI hires offshore staff first. The structural reckoning comes later.</p>
+            <h3
+              style="color: #dc2626; font-size: 1.4rem; margin-bottom: 0.5rem"
+            >
+              ⏳ Wrong timing
+            </h3>
+            <p style="font-size: 1.1rem; color: #374151">
+              Firms absorb new capability before restructuring. A firm that can
+              do 90% of its work with AI hires offshore staff first. The
+              structural reckoning comes later.
+            </p>
           </div>
           <div>
-            <h3 style="color: #dc2626; font-size: 1.4rem; margin-bottom: 0.5rem">🚪 Wrong door</h3>
-            <p style="font-size: 1.1rem; color: #374151">Displacement appears first in who <em>isn’t hired</em>, not who’s fired. Graduate intake freezes. Entry-level roles disappear quietly.</p>
+            <h3
+              style="color: #dc2626; font-size: 1.4rem; margin-bottom: 0.5rem"
+            >
+              🚪 Wrong door
+            </h3>
+            <p style="font-size: 1.1rem; color: #374151">
+              Displacement appears first in who <em>isn’t hired</em>, not
+              who’s fired. Graduate intake freezes. Entry-level roles
+              disappear quietly.
+            </p>
           </div>
           <div>
-            <h3 style="color: #dc2626; font-size: 1.4rem; margin-bottom: 0.5rem">📉 Lagging indicator</h3>
-            <p style="font-size: 1.1rem; color: #374151">Unemployment data follows economic reality by months or years. By the time it moves, the structural shift has already compounded.</p>
+            <h3
+              style="color: #dc2626; font-size: 1.4rem; margin-bottom: 0.5rem"
+            >
+              📉 Lagging indicator
+            </h3>
+            <p style="font-size: 1.1rem; color: #374151">
+              Unemployment data follows economic reality by months or years. By
+              the time it moves, the structural shift has already compounded.
+            </p>
           </div>
         </div>
         <div class="question" style="margin-top: 1.5rem">
@@ -429,7 +667,8 @@
           <div class="split-column split-green">
             <h3 style="color: #059669">Augmentative</h3>
             <p style="font-size: 1.2rem; margin-top: 1rem; color: #374151">
-              AI <strong>helps the human</strong> think, check, or produce better work.<br><br>
+              AI <strong>helps the human</strong> think, check, or produce
+              better work.<br><br>
               Result: employment and wages hold or grow.
             </p>
           </div>
@@ -437,11 +676,13 @@
         <div class="info-box" style="margin-top: 2rem">
           <div class="large-text" style="margin-bottom: 0">
             The data shows automation happening first<br>
-            where work is <strong>most codifiable</strong> — entry-level, routine, documented.
+            where work is <strong>most codifiable</strong> — entry-level,
+            routine, documented.
           </div>
         </div>
         <div class="question">
-          In your workplace: is AI being used to replace tasks, or to help people do more?
+          In your workplace: is AI being used to replace tasks, or to help
+          people do more?
         </div>
       </div>
 
@@ -453,7 +694,8 @@
           <div class="split-column split-red">
             <h3 style="color: #dc2626">Codified knowledge</h3>
             <p style="font-size: 1.1rem; margin-top: 1rem; color: #374151">
-              Documented processes. Established workflows. Things that can be written down and handed to a system.<br><br>
+              Documented processes. Established workflows. Things that can be
+              written down and handed to a system.<br><br>
               <strong>AI is competitive with this.</strong><br><br>
               Mostly held by <em>entry-level workers</em>.
             </p>
@@ -461,7 +703,8 @@
           <div class="split-column split-teal">
             <h3>Tacit knowledge</h3>
             <p style="font-size: 1.1rem; margin-top: 1rem; color: #374151">
-              Judgment built over years. Client relationships. Knowing what to do in the situation that doesn’t fit the pattern.<br><br>
+              Judgment built over years. Client relationships. Knowing what to
+              do in the situation that doesn’t fit the pattern.<br><br>
               <strong>AI complements this.</strong><br><br>
               Mostly held by <em>experienced workers</em>.
             </p>
@@ -470,7 +713,8 @@
         <div class="emphasis-box" style="margin-top: 2rem">
           <div class="large-text" style="margin-bottom: 0">
             Experience provides a buffer. For now.<br>
-            But tacit knowledge is developed <em>through</em> the entry-level years.
+            But tacit knowledge is developed <em>through</em> the entry-level
+            years.
           </div>
         </div>
       </div>
@@ -486,14 +730,14 @@
         <div class="warning-box">
           <div class="large-text" style="margin-bottom: 0">
             If there are no entry-level roles,<br>
-            <strong>where does the next generation of senior talent come from?</strong><br><br>
+            <strong>where does the next generation of senior talent come
+              from?</strong><br><br>
             This is already a live question in law, accounting,<br>
             consulting, and software development.
           </div>
         </div>
         <div class="question">
-          Who in your field trained you?
-          How would someone learn that now?
+          Who in your field trained you? How would someone learn that now?
         </div>
       </div>
 
@@ -538,30 +782,57 @@
         <div class="slide-number"></div>
         <h2>Skills that may provide protection</h2>
         <div class="large-text">
-          Discussed by academics and practitioners working closely with the transition:
+          Discussed by academics and practitioners working closely with the
+          transition:
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2.5rem; max-width: 1000px; width: 100%; margin-top: 1.5rem">
+        <div
+          style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2.5rem; max-width: 1000px; width: 100%; margin-top: 1.5rem"
+        >
           <div class="info-box" style="margin: 0">
-            <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem">🔍 Attention to detail</h3>
-            <p style="font-size: 1rem; color: #374151">Catching what AI misses. Knowing when output is wrong even when it looks right.</p>
+            <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem">
+              🔍 Attention to detail
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              Catching what AI misses. Knowing when output is wrong even when it
+              looks right.
+            </p>
           </div>
           <div class="info-box" style="margin: 0">
-            <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem">⚙️ Managing AI agents</h3>
-            <p style="font-size: 1rem; color: #374151">Knowing how to direct, verify, and steer AI systems effectively. A new and learnable skill.</p>
+            <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem">
+              ⚙️ Managing AI agents
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              Knowing how to direct, verify, and steer AI systems effectively. A
+              new and learnable skill.
+            </p>
           </div>
           <div class="info-box" style="margin: 0">
-            <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem">🎨 Exceptional taste</h3>
-            <p style="font-size: 1rem; color: #374151">The ability to judge quality and fit in ways that are hard to define but easy to recognise.</p>
+            <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem">
+              🎨 Exceptional taste
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              The ability to judge quality and fit in ways that are hard to
+              define but easy to recognise.
+            </p>
           </div>
           <div class="info-box" style="margin: 0">
-            <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem">🤝 A trusted network</h3>
-            <p style="font-size: 1rem; color: #374151">Relationships where people trust <em>you specifically</em> — not just any competent source.</p>
+            <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem">
+              🤝 A trusted network
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              Relationships where people trust <em>you specifically</em> — not
+              just any competent source.
+            </p>
           </div>
         </div>
-        <div class="emphasis-box" style="max-width: 1000px; width: 100%; margin-top: 1.5rem">
+        <div
+          class="emphasis-box"
+          style="max-width: 1000px; width: 100%; margin-top: 1.5rem"
+        >
           <div class="large-text" style="font-size: 1.3rem; margin-bottom: 0">
             Honest caveat: even these aren’t guaranteed.<br>
-            Predicting individual outcomes is like forecasting tomorrow’s weather.<br>
+            Predicting individual outcomes is like forecasting tomorrow’s
+            weather.<br>
             The climate is more predictable than the weather.
           </div>
         </div>
@@ -580,18 +851,20 @@
         <div class="emphasis-box">
           <div class="large-text" style="margin-bottom: 0">
             Then that player discovers they no longer need<br>
-            the other players to land on their properties to collect rent.<br><br>
+            the other players to land on their properties to collect
+            rent.<br><br>
             The income just arrives anyway.
           </div>
         </div>
         <div class="large-text" style="margin-top: 2rem">
           Our economic system is built on a foundational assumption:<br>
-          <strong>human labour is a necessary input to production.</strong><br><br>
+          <strong>human labour is a necessary input to
+            production.</strong><br><br>
           For the first time in history, that assumption may be weakening.
         </div>
         <div class="question">
-          If AI does most of the productive work,
-          who gets the benefit &mdash; and how?
+          If AI does most of the productive work, who gets the benefit &mdash;
+          and how?
         </div>
       </div>
 
@@ -603,8 +876,10 @@
           <div class="split-column split-green">
             <h3 style="color: #059669">🌟 The optimistic path</h3>
             <p style="font-size: 1.1rem; margin-top: 1rem; color: #374151">
-              AI generates so much productivity that society becomes genuinely wealthier — broadly, not just at the top.<br><br>
-              Shorter working weeks. New forms of social income. More time for family, community, care, and meaning.<br><br>
+              AI generates so much productivity that society becomes genuinely
+              wealthier — broadly, not just at the top.<br><br>
+              Shorter working weeks. New forms of social income. More time for
+              family, community, care, and meaning.<br><br>
               A real possibility. Worth working toward.
             </p>
           </div>
@@ -612,7 +887,9 @@
             <h3 style="color: #dc2626">⚠️ The drift path</h3>
             <p style="font-size: 1.1rem; margin-top: 1rem; color: #374151">
               No catastrophe. Just drift.<br><br>
-              A slow narrowing of who the economy is really for. Two tiers. Declining middle. Social unrest arrives when enough people realise what has happened.<br><br>
+              A slow narrowing of who the economy is really for. Two tiers.
+              Declining middle. Social unrest arrives when enough people realise
+              what has happened.<br><br>
               Not inevitable. But the current direction.
             </p>
           </div>
@@ -620,7 +897,8 @@
         <div class="info-box" style="margin-top: 2rem">
           <div class="large-text" style="margin-bottom: 0">
             The optimistic future doesn’t arrive automatically.<br>
-            It requires deliberate choices — by individuals, organisations, and governments.
+            It requires deliberate choices — by individuals, organisations,
+            and governments.
           </div>
         </div>
         <div class="question">
@@ -636,23 +914,43 @@
           The gap between what’s actually happening<br>
           and what most people understand is enormous.
         </div>
-        <div style="display: flex; gap: 2rem; align-items: stretch; max-width: 1000px; width: 100%; margin-top: 1.5rem">
+        <div
+          style="display: flex; gap: 2rem; align-items: stretch; max-width: 1000px; width: 100%; margin-top: 1.5rem"
+        >
           <div class="info-box" style="flex: 1; margin: 0; text-align: center">
             <div style="font-size: 2rem; margin-bottom: 0.5rem">💡</div>
             <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">Awareness</h3>
-            <p style="font-size: 1rem; color: #374151">Understand what’s actually happening. Separate hype from signal.</p>
+            <p style="font-size: 1rem; color: #374151">
+              Understand what’s actually happening. Separate hype from signal.
+            </p>
           </div>
-          <div style="display: flex; align-items: center; color: #1a5f6e; font-size: 1.5rem; font-weight: 300">→</div>
+          <div
+            style="display: flex; align-items: center; color: #1a5f6e; font-size: 1.5rem; font-weight: 300"
+          >
+            →
+          </div>
           <div class="info-box" style="flex: 1; margin: 0; text-align: center">
             <div style="font-size: 2rem; margin-bottom: 0.5rem">💬</div>
-            <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">Conversation</h3>
-            <p style="font-size: 1rem; color: #374151">Talk to people. Challenge ideas. Bring others into the picture. This is where it starts.</p>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">
+              Conversation
+            </h3>
+            <p style="font-size: 1rem; color: #374151">
+              Talk to people. Challenge ideas. Bring others into the picture.
+              This is where it starts.
+            </p>
           </div>
-          <div style="display: flex; align-items: center; color: #1a5f6e; font-size: 1.5rem; font-weight: 300">→</div>
+          <div
+            style="display: flex; align-items: center; color: #1a5f6e; font-size: 1.5rem; font-weight: 300"
+          >
+            →
+          </div>
           <div class="info-box" style="flex: 1; margin: 0; text-align: center">
             <div style="font-size: 2rem; margin-bottom: 0.5rem">🚀</div>
             <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem">Action</h3>
-            <p style="font-size: 1rem; color: #374151">Informed, grounded, community-supported steps forward. Not heroics. Just motion.</p>
+            <p style="font-size: 1rem; color: #374151">
+              Informed, grounded, community-supported steps forward. Not
+              heroics. Just motion.
+            </p>
           </div>
         </div>
         <div class="large-text" style="margin-top: 2rem; font-size: 1.5rem">
@@ -667,58 +965,186 @@
       <div class="slide">
         <div class="slide-number"></div>
         <h2>Resources &amp; Discussion</h2>
-        <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 1rem">Scan QR codes to access resources</p>
-        <div class="resource-list" style="grid-template-columns: repeat(2, 1fr);">
+        <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 1rem">
+          Scan QR codes to access resources
+        </p>
+        <div
+          class="resource-list"
+          style="grid-template-columns: repeat(2, 1fr)"
+        >
           <div class="resource-item">
             <h4>📊 Canaries in the Coal Mine</h4>
-            <div id="qr-canaries" class="qr-code" style="display:block;margin:1rem auto;"></div>
-            <p>Stanford Digital Economy Lab &mdash; the 25 million worker study</p>
-            <a href="https://digitaleconomy.stanford.edu/app/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf" target="_blank" rel="noopener noreferrer">Stanford paper (PDF)</a>
+            <div
+              id="qr-canaries"
+              class="qr-code"
+              style="display: block; margin: 1rem auto"
+            >
+            </div>
+            <p>
+              Stanford Digital Economy Lab &mdash; the 25 million worker study
+            </p>
+            <a
+              href="https://digitaleconomy.stanford.edu/app/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Stanford paper (PDF)</a>
           </div>
           <div class="resource-item">
             <h4>📝 Read the full article</h4>
-            <div id="qr-article" class="qr-code" style="display:block;margin:1rem auto;"></div>
+            <div
+              id="qr-article"
+              class="qr-code"
+              style="display: block; margin: 1rem auto"
+            >
+            </div>
             <p>When the rules change: AI, work, and who captures the benefit</p>
-            <a href="https://futuretogether.community/blog/when-the-rules-change-ai-work-and-who-captures-the-benefit" target="_blank" rel="noopener noreferrer">futuretogether.community/blog</a>
+            <a
+              href="https://futuretogether.community/blog/when-the-rules-change-ai-work-and-who-captures-the-benefit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >futuretogether.community/blog</a>
           </div>
           <div class="resource-item">
             <h4>🌐 Join Future Together</h4>
-            <div id="qr-join" class="qr-code" style="display:block;margin:1rem auto;"></div>
-            <p>Be part of the ongoing conversation. Monthly meetups. Community.</p>
-            <a href="https://futuretogether.community/join" target="_blank" rel="noopener noreferrer">futuretogether.community/join</a>
+            <div
+              id="qr-join"
+              class="qr-code"
+              style="display: block; margin: 1rem auto"
+            >
+            </div>
+            <p>
+              Be part of the ongoing conversation. Monthly meetups. Community.
+            </p>
+            <a
+              href="https://futuretogether.community/join"
+              target="_blank"
+              rel="noopener noreferrer"
+            >futuretogether.community/join</a>
           </div>
           <div class="resource-item">
             <h4>🔬 Anthropic Labor Market Research</h4>
-            <div id="qr-anthropic" class="qr-code" style="display:block;margin:1rem auto;"></div>
-            <p>A new measure of AI exposure &mdash; using actual usage data, not forecasts</p>
-            <a href="https://www.anthropic.com/research/labor-market-impacts" target="_blank" rel="noopener noreferrer">anthropic.com/research</a>
+            <div
+              id="qr-anthropic"
+              class="qr-code"
+              style="display: block; margin: 1rem auto"
+            >
+            </div>
+            <p>
+              A new measure of AI exposure &mdash; using actual usage data, not
+              forecasts
+            </p>
+            <a
+              href="https://www.anthropic.com/research/labor-market-impacts"
+              target="_blank"
+              rel="noopener noreferrer"
+            >anthropic.com/research</a>
           </div>
         </div>
-        <div style="margin-top: 1.5rem; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 1.5rem; max-width: 1200px; width: 100%">
-          <div style="font-size: 1.4rem; color: #1a5f6e; font-weight: 700; font-style: italic; margin-bottom: 0.5rem">
+        <div
+          style="margin-top: 1.5rem; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 1.5rem; max-width: 1200px; width: 100%"
+        >
+          <div
+            style="font-size: 1.4rem; color: #1a5f6e; font-weight: 700; font-style: italic; margin-bottom: 0.5rem"
+          >
             &ldquo;The future is arriving. Let&rsquo;s face it together.&rdquo;
           </div>
-          <div style="color: #6b7280; font-size: 1rem; margin-bottom: 0.75rem">Let&rsquo;s continue the conversation.</div>
-          <a href="https://futuretogether.community" target="_blank" rel="noopener noreferrer" style="color: #c4853a; font-weight: 600; font-size: 0.95rem; text-decoration: none; border-bottom: 1px solid rgba(196,133,58,0.5); padding-bottom: 2px;">futuretogether.community</a>
-          <p style="font-size: 0.7rem; color: #d1d5db; margin-top: 1.5rem; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; gap: 0.4rem;">
-            <img src="https://www.beyondbetter.app/logo-a.png" alt="BB Logo" class="bb-logo">
-            Created with <a href="https://beyondbetter.app" target="_blank" rel="noopener noreferrer" style="color: #d1d5db; text-decoration: none; border-bottom: 1px solid rgba(209,213,219,0.4)">Beyond Better</a>
+          <div style="color: #6b7280; font-size: 1rem; margin-bottom: 0.75rem">
+            Let&rsquo;s continue the conversation.
+          </div>
+          <a
+            href="https://futuretogether.community"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: #c4853a; font-weight: 600; font-size: 0.95rem; text-decoration: none; border-bottom: 1px solid rgba(196, 133, 58, 0.5); padding-bottom: 2px"
+          >futuretogether.community</a>
+          <p
+            style="font-size: 0.7rem; color: #d1d5db; margin-top: 1.5rem; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; gap: 0.4rem"
+          >
+            <img
+              src="https://www.beyondbetter.app/logo-a.png"
+              alt="BB Logo"
+              class="bb-logo"
+            >
+            Created with <a
+              href="https://beyondbetter.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color: #d1d5db; text-decoration: none; border-bottom: 1px solid rgba(209, 213, 219, 0.4)"
+            >Beyond Better</a>
           </p>
         </div>
       </div>
-
-    </div><!-- end .deck -->
+    </div>
+    <!-- end .deck -->
 
     <!-- Brand Bar -->
     <div class="brand-bar">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 80" role="presentation" aria-hidden="true" style="height:34px;width:auto">
-        <line x1="2" y1="5" x2="50" y2="40" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-        <line x1="2" y1="21" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
-        <line x1="2" y1="40" x2="50" y2="40" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
-        <line x1="2" y1="59" x2="50" y2="40" stroke="white" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
-        <line x1="2" y1="75" x2="50" y2="40" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-        <circle cx="50" cy="40" r="7" fill="#c4853a"/>
-        <polyline points="57,26 70,40 57,54" fill="none" stroke="#c4853a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 72 80"
+        role="presentation"
+        aria-hidden="true"
+        style="height: 34px; width: auto"
+      >
+        <line
+          x1="2"
+          y1="5"
+          x2="50"
+          y2="40"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          opacity="0.5"
+        />
+        <line
+          x1="2"
+          y1="21"
+          x2="50"
+          y2="40"
+          stroke="white"
+          stroke-width="2.4"
+          stroke-linecap="round"
+          opacity="0.7"
+        />
+        <line
+          x1="2"
+          y1="40"
+          x2="50"
+          y2="40"
+          stroke="white"
+          stroke-width="3"
+          stroke-linecap="round"
+          opacity="0.9"
+        />
+        <line
+          x1="2"
+          y1="59"
+          x2="50"
+          y2="40"
+          stroke="white"
+          stroke-width="2.4"
+          stroke-linecap="round"
+          opacity="0.7"
+        />
+        <line
+          x1="2"
+          y1="75"
+          x2="50"
+          y2="40"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          opacity="0.5"
+        />
+        <circle cx="50" cy="40" r="7" fill="#c4853a" />
+        <polyline
+          points="57,26 70,40 57,54"
+          fill="none"
+          stroke="#c4853a"
+          stroke-width="3.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
       </svg>
       <span class="brand-bar-name">Future Together</span>
       <span class="brand-bar-sep">·</span>
@@ -728,48 +1154,67 @@
     <script src="./qrcode.js"></script>
     <script>
       // Auto-number slides
-      (function() {
+      (function () {
         var slides = document.querySelectorAll(".slide");
         var total = slides.length;
-        slides.forEach(function(slide, i) {
+        slides.forEach(function (slide, i) {
           var numEl = slide.querySelector(".slide-number");
           if (!numEl) return;
           var isLast = i === total - 1;
           numEl.innerHTML = isLast
-            ? (i + 1) + "/" + total + " <span class=\"nav-arrow\" style=\"visibility:hidden\">\u2192</span>"
-            : (i + 1) + "/" + total + " <span class=\"nav-arrow\">\u2192</span>";
+            ? (i + 1) + "/" + total +
+              ' <span class="nav-arrow" style="visibility:hidden">\u2192</span>'
+            : (i + 1) + "/" + total + ' <span class="nav-arrow">\u2192</span>';
         });
       })();
 
       // Keyboard navigation
-      document.addEventListener("keydown", function(e) {
+      document.addEventListener("keydown", function (e) {
         const deck = document.querySelector(".deck");
         const slideWidth = window.innerWidth;
         if (e.key === "ArrowRight" || e.key === " ") {
           e.preventDefault();
-          deck.scrollTo({ left: deck.scrollLeft + slideWidth, behavior: "smooth" });
+          deck.scrollTo({
+            left: deck.scrollLeft + slideWidth,
+            behavior: "smooth",
+          });
         } else if (e.key === "ArrowLeft") {
           e.preventDefault();
-          deck.scrollTo({ left: deck.scrollLeft - slideWidth, behavior: "smooth" });
+          deck.scrollTo({
+            left: deck.scrollLeft - slideWidth,
+            behavior: "smooth",
+          });
         }
       });
 
       // Clickable navigation arrows
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded", function () {
         const deck = document.querySelector(".deck");
         const slideWidth = window.innerWidth;
-        document.querySelectorAll(".nav-arrow").forEach(function(arrow) {
-          arrow.addEventListener("click", function(e) {
+        document.querySelectorAll(".nav-arrow").forEach(function (arrow) {
+          arrow.addEventListener("click", function (e) {
             e.preventDefault();
-            deck.scrollTo({ left: deck.scrollLeft + slideWidth, behavior: "smooth" });
+            deck.scrollTo({
+              left: deck.scrollLeft + slideWidth,
+              behavior: "smooth",
+            });
           });
         });
       });
       // Generate QR codes
-      buildQR('https://digitaleconomy.stanford.edu/app/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf', 'qr-canaries');
-      buildQR('https://futuretogether.community/blog/when-the-rules-change-ai-work-and-who-captures-the-benefit', 'qr-article');
-      buildQR('https://futuretogether.community/join', 'qr-join');
-      buildQR('https://www.anthropic.com/research/labor-market-impacts', 'qr-anthropic');
+      buildQR(
+        "https://digitaleconomy.stanford.edu/app/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf",
+        "qr-canaries",
+      );
+      buildQR(
+        "https://futuretogether.community/blog/when-the-rules-change-ai-work-and-who-captures-the-benefit",
+        "qr-article",
+      );
+      buildQR("https://futuretogether.community/join", "qr-join");
+      buildQR(
+        "https://www.anthropic.com/research/labor-market-impacts",
+        "qr-anthropic",
+      );
     </script>
   </body>
 </html>

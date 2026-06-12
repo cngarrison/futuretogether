@@ -7,12 +7,9 @@ export function handleNotFound(ctx: FreshContext<State>) {
 
 export default function NotFoundPage() {
   return (
-    <div style="background-color: #f7f4ef;">
+    <div class="bg-warm-white">
       {/* Teal hero — consistent with other pages */}
-      <div
-        class="pt-32 pb-20 px-4 text-center"
-        style="background-color: #1a5f6e; color: white;"
-      >
+      <div class="pt-32 pb-20 px-4 text-center text-white bg-primary">
         <p
           class="text-7xl font-extrabold mb-4 tracking-tight"
           style="opacity: 0.25;"
@@ -30,7 +27,7 @@ export default function NotFoundPage() {
 
       {/* Body */}
       <div class="max-w-2xl mx-auto px-4 py-16 text-center">
-        <p class="text-lg mb-10" style="color: #1c1a18;">
+        <p class="text-lg text-near-black mb-10">
           The page you're looking for doesn't exist — but unlike the disruptions
           we prepare for, this one has an easy fix.
         </p>
@@ -38,8 +35,7 @@ export default function NotFoundPage() {
         {/* Primary CTA */}
         <a
           href="/"
-          class="inline-block px-8 py-3 rounded-lg font-semibold text-white mb-6 transition-opacity hover:opacity-90"
-          style="background-color: #1a5f6e;"
+          class="inline-block px-8 py-3 rounded-lg font-semibold text-white mb-6 transition-opacity hover:opacity-90 bg-primary"
         >
           ← Back to home
         </a>

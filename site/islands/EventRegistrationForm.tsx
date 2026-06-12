@@ -9,6 +9,14 @@ interface EventRegistrationFormProps {
   eventSlug: string;
   eventTitle: string;
   turnstileSiteKey?: string;
+  /** Feature-gated: render the "Email me the Slack link" checkbox. Default false.
+   * Re-enable by passing showSlack={!!Deno.env.get("SLACK_ENABLED")} from the route. */
+  showSlack?: boolean;
+  /** When true, name/email are shown as static text and the community join checkbox is hidden. */
+  isLoggedIn?: boolean;
+  userFirstName?: string;
+  userLastName?: string;
+  userEmail?: string;
 }
 
 export default function EventRegistrationForm({
@@ -17,14 +25,18 @@ export default function EventRegistrationForm({
   eventSlug,
   eventTitle,
   turnstileSiteKey,
+  showSlack = false,
+  isLoggedIn = false,
+  userFirstName = "",
+  userLastName = "",
+  userEmail = "",
 }: EventRegistrationFormProps): JSX.Element {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState(userFirstName);
+  const [lastName, setLastName] = useState(userLastName);
+  const [email, setEmail] = useState(userEmail);
   const [interests, setInterests] = useState("");
   const [heardFrom, setHeardFrom] = useState("");
   const [joinCommunity, setJoinCommunity] = useState(true);
-  const [joinSlack, setJoinSlack] = useState(true);
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error" | "full"
   >("idle");
@@ -38,7 +50,9 @@ export default function EventRegistrationForm({
       showLimitedSeats: boolean;
     } | null
   >(null);
+  //console.log('EventRegistrationForm: showSlack:', showSlack);
 
+  console.log("EventRegistrationForm: eventSlug:", eventSlug);
   // Check event availability on mount
   useEffect(() => {
     fetch(`/api/events/${eventSlug}/status`)
@@ -87,7 +101,6 @@ export default function EventRegistrationForm({
           interests,
           heardFrom,
           joinCommunity,
-          joinSlack,
           turnstile_token: turnstileToken,
         }),
         //credentials: 'same-origin',
@@ -114,7 +127,7 @@ export default function EventRegistrationForm({
       setEmail("");
       setInterests("");
       setHeardFrom("");
-    } catch (error) {
+    } catch (_error) {
       setStatus("error");
       setErrorMessage("Network error. Please try again.");
     }
@@ -182,8 +195,8 @@ export default function EventRegistrationForm({
             <p class="text-sm text-green-600 mb-3">
               We'll send you a reminder 24 hours before the event.
             </p>
-            {joinSlack && (
-              <p class="text-sm" style="color: #1a5f6e;">
+            {showSlack && (
+              <p class="text-sm text-primary">
                 Your confirmation email includes a link to join our Slack — or
                 {" "}
                 <a
@@ -230,58 +243,82 @@ export default function EventRegistrationForm({
       )}
 
       <form onSubmit={handleSubmit} class="space-y-4">
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
-              First Name <span class="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              value={firstName}
-              onInput={(e) => {
-                setFirstName(e.currentTarget.value);
-                setStatus("idle");
-              }}
-              class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:outline-none focus:ring-2"
-              disabled={status === "loading"}
-              required
-            />
-          </div>
+        {isLoggedIn
+          ? (
+            /* Logged-in: show name + email as static text */
+            <div
+              class="rounded-xl p-4"
+              style="background-color: #eef5f7; border: 1px solid #d0e4e7;"
+            >
+              <p
+                class="text-xs font-semibold uppercase tracking-wide mb-2"
+                style="color: rgba(28,26,24,0.5);"
+              >
+                Registering as
+              </p>
+              <p class="text-sm font-semibold text-near-black">
+                {firstName} {lastName}
+              </p>
+              <p class="text-sm" style="color: rgba(28,26,24,0.7);">{email}</p>
+            </div>
+          )
+          : (
+            /* Guest: editable name + email inputs */
+            <>
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">
+                    First Name <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={firstName}
+                    onInput={(e) => {
+                      setFirstName(e.currentTarget.value);
+                      setStatus("idle");
+                    }}
+                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:outline-none focus:ring-2"
+                    disabled={status === "loading"}
+                    required
+                  />
+                </div>
 
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
-              Last Name <span class="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              value={lastName}
-              onInput={(e) => {
-                setLastName(e.currentTarget.value);
-                setStatus("idle");
-              }}
-              class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:outline-none focus:ring-2"
-              disabled={status === "loading"}
-              required
-            />
-          </div>
-        </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Last Name <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={lastName}
+                    onInput={(e) => {
+                      setLastName(e.currentTarget.value);
+                      setStatus("idle");
+                    }}
+                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:outline-none focus:ring-2"
+                    disabled={status === "loading"}
+                    required
+                  />
+                </div>
+              </div>
 
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">
-            Email <span class="text-red-500">*</span>
-          </label>
-          <input
-            type="email"
-            value={email}
-            onInput={(e) => {
-              setEmail(e.currentTarget.value);
-              setStatus("idle");
-            }}
-            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:outline-none focus:ring-2"
-            disabled={status === "loading"}
-            required
-          />
-        </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Email <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onInput={(e) => {
+                    setEmail(e.currentTarget.value);
+                    setStatus("idle");
+                  }}
+                  class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:outline-none focus:ring-2"
+                  disabled={status === "loading"}
+                  required
+                />
+              </div>
+            </>
+          )}
 
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">
@@ -330,57 +367,58 @@ export default function EventRegistrationForm({
           </div>
         )}
 
-        {/* Join community opt-in */}
-        <label
-          class="flex items-start gap-3 cursor-pointer rounded-xl p-4"
-          style={joinCommunity
-            ? "background-color: #eef5f7; border: 1.5px solid #1a5f6e;"
-            : "background-color: #f7f4ef; border: 1.5px solid transparent;"}
-        >
-          <input
-            type="checkbox"
-            checked={joinCommunity}
-            onChange={(e) => setJoinCommunity(e.currentTarget.checked)}
-            disabled={status === "loading"}
-            class="mt-0.5 rounded flex-shrink-0"
-            style="accent-color: #1a5f6e;"
-          />
-          <div>
-            <span class="text-sm font-semibold" style="color: #1c1a18;">
-              Also join the Future Together community
-            </span>
-            <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
-              Stay in the loop beyond this event — meetup invites, new articles,
-              community updates.
-            </p>
-          </div>
-        </label>
+        {/* Join community opt-in — hidden when user is already logged in */}
+        {!isLoggedIn && (
+          <label
+            class="flex items-start gap-3 cursor-pointer rounded-xl p-4"
+            style={joinCommunity
+              ? "background-color: #eef5f7; border: 1.5px solid #1a5f6e;"
+              : "background-color: #f7f4ef; border: 1.5px solid transparent;"}
+          >
+            <input
+              type="checkbox"
+              checked={joinCommunity}
+              onChange={(e) => setJoinCommunity(e.currentTarget.checked)}
+              disabled={status === "loading"}
+              class="mt-0.5 rounded flex-shrink-0"
+              style="accent-color: #1a5f6e;"
+            />
+            <div>
+              <span class="text-sm font-semibold text-near-black">
+                Also join the Future Together community
+              </span>
+              <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
+                Stay in the loop beyond this event — meetup invites, new
+                articles, community updates.
+              </p>
+            </div>
+          </label>
+        )}
 
-        {/* Join Slack opt-in */}
-        <label
-          class="flex items-start gap-3 cursor-pointer rounded-xl p-4"
-          style={joinSlack
-            ? "background-color: #f0f9fa; border: 1.5px solid #1a5f6e;"
-            : "background-color: #f7f4ef; border: 1.5px solid transparent;"}
-        >
-          <input
-            type="checkbox"
-            checked={joinSlack}
-            onChange={(e) => setJoinSlack(e.currentTarget.checked)}
-            disabled={status === "loading"}
-            class="mt-0.5 rounded flex-shrink-0"
-            style="accent-color: #1a5f6e;"
-          />
-          <div>
-            <span class="text-sm font-semibold" style="color: #1c1a18;">
-              Email me the link to join our Slack
-            </span>
-            <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
-              Our Slack workspace is where the conversation continues between
-              meetups.
-            </p>
-          </div>
-        </label>
+        {/* Join Slack opt-in — hidden by default; re-enable via showSlack prop */}
+        {showSlack && (
+          <label
+            class="flex items-start gap-3 cursor-pointer bg-warm-white rounded-xl p-4"
+            style="border: 1.5px solid transparent;"
+          >
+            <input
+              type="checkbox"
+              name="joinSlack"
+              disabled={status === "loading"}
+              class="mt-0.5 rounded flex-shrink-0"
+              style="accent-color: #1a5f6e;"
+            />
+            <div>
+              <span class="text-sm font-semibold text-near-black">
+                Email me the link to join our Slack
+              </span>
+              <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
+                Our Slack workspace is where the conversation continues between
+                meetups.
+              </p>
+            </div>
+          </label>
+        )}
 
         {/* Turnstile Captcha */}
         {turnstileSiteKey && (
@@ -412,8 +450,7 @@ export default function EventRegistrationForm({
         <button
           type="submit"
           disabled={status === "loading"}
-          style="background-color: #1a5f6e;"
-          class={`w-full text-white font-bold py-3 px-6 rounded-lg transition-opacity duration-200 ${
+          class={`w-full text-white font-bold py-3 px-6 bg-primary rounded-lg transition-opacity duration-200 ${
             status === "loading" ? "opacity-75 cursor-not-allowed" : ""
           }`}
         >

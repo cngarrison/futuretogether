@@ -1,16 +1,7 @@
 import { define } from "@/utils.ts";
 import { Partial } from "fresh/runtime";
 
-export default define.page(function App({ Component, url }) {
-//   // Staff routes use their own _layout.tsx HTML shell — pass straight through
-//   // so the public PageHeader/PageFooter and Google Fonts don't load there.
-//   if (url.pathname.startsWith("/staff")) {
-//     return <Component />;
-//   }
-//   if (url.pathname.startsWith("/slideshows")) {
-//     return <Component />;
-//   }
-
+export default define.page(function App({ Component, url: _url }) {
   return (
     <html lang="en">
       <head>
@@ -21,7 +12,7 @@ export default define.page(function App({ Component, url }) {
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
-          crossOrigin=""
+          crossOrigin="anonymous"
         />
         <link
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
@@ -71,7 +62,7 @@ export default define.page(function App({ Component, url }) {
 		`}
         </script>
       </head>
-      <body f-client-nav>
+      <body f-client-nav f-view-transition>
         <Partial name="body">
           <Component />
         </Partial>

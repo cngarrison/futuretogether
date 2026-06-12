@@ -54,18 +54,18 @@ export default function ReminderTrigger() {
 
       <div class="flex gap-4 mb-6">
         <button
+          type="button"
           onClick={() => handleTrigger("day_before")}
           disabled={loading.value !== null}
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-          style="background-color: #1a5f6e;"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-primary rounded-lg text-white text-sm font-medium transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLoading("day_before") ? "Sending…" : "Send Day-Before Reminders"}
         </button>
         <button
+          type="button"
           onClick={() => handleTrigger("hour_before")}
           disabled={loading.value !== null}
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-          style="background-color: #c4853a;"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-accent rounded-lg text-white text-sm font-medium transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLoading("hour_before") ? "Sending…" : "Send Hour-Before Reminders"}
         </button>

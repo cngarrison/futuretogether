@@ -2,28 +2,49 @@ import { App, staticFiles, trailingSlashes } from "fresh";
 import { define, type State } from "@/utils.ts";
 import { handleNotFound } from "@/components/NotFoundPage.tsx";
 import { handleError } from "@/components/ErrorPage.tsx";
-import { sendReminders } from "@/utils/cron.ts";
+import { generateRecurringInstances, sendReminders } from "@/utils/cron.ts";
+import { errorMessage, isProduction } from "@/utils/app.ts";
 
-try {
-  // Event reminder cron jobs (Deno Deploy native scheduling)
-  Deno.cron(
-    "day-before reminders",
-    "0 * * * *",
-    {
-      backoffSchedule: [1000, 10000, 60000],
-    },
-    () => sendReminders("day_before"),
+// Cron jobs only run in production. Set APP_ENV=production in the Deno Deploy
+// environment variables for the production deployment only — not for staging or
+// branch previews. This prevents reminder emails firing from non-prod environments.
+if (isProduction()) {
+  try {
+    // Event reminder cron jobs (Deno Deploy native scheduling)
+    // @ts-ignore Deno.cron is unstable — enabled via deno.json "unstable": ["cron"]
+    Deno.cron(
+      "day-before reminders",
+      "0 * * * *",
+      {
+        backoffSchedule: [1000, 10000, 60000],
+      },
+      () => sendReminders("day_before"),
+    );
+    // @ts-ignore Deno.cron is unstable — enabled via deno.json "unstable": ["cron"]
+    Deno.cron(
+      "hour-before reminders",
+      "0 * * * *",
+      {
+        backoffSchedule: [1000, 5000, 10000],
+      },
+      () => sendReminders("hour_before"),
+    );
+    // @ts-ignore Deno.cron is unstable — enabled via deno.json "unstable": ["cron"]
+    Deno.cron(
+      "generate-recurring-instances",
+      "0 2 * * 0", // Every Sunday at 02:00 UTC
+      {
+        backoffSchedule: [1000, 10000, 60000],
+      },
+      () => generateRecurringInstances(),
+    );
+  } catch (error) {
+    console.error("Couldn't set cron jobs: ", errorMessage(error));
+  }
+} else {
+  console.log(
+    '[cron] Skipping cron registration — APP_ENV is not "production"',
   );
-  Deno.cron(
-    "hour-before reminders",
-    "0 * * * *",
-    {
-      backoffSchedule: [1000, 5000, 10000],
-    },
-    () => sendReminders("hour_before"),
-  );
-} catch (error) {
-  console.error("Couldn't set cron jobs: ", error.message);
 }
 
 export const app = new App<State>();
@@ -33,20 +54,6 @@ app.onError("*", handleError);
 
 app.use(staticFiles());
 app.use(trailingSlashes("never"));
-
-// // Pass a shared value from a middleware
-// app.use(async (ctx) => {
-//   ctx.state.shared = "hello";
-//   return await ctx.next();
-// });
-//
-// // this is the same as the /api/:name route defined via a file. feel free to delete this!
-// app.get("/api2/:name", (ctx) => {
-//   const name = ctx.params.name;
-//   return new Response(
-//     `Hello, ${name.charAt(0).toUpperCase() + name.slice(1)}!`,
-//   );
-// });
 
 // this can also be defined via a file. feel free to delete this!
 const exampleLoggerMiddleware = define.middleware((ctx) => {

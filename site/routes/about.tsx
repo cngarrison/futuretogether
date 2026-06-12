@@ -13,7 +13,7 @@ export default define.page(function About() {
       </Head>
 
       {/* Hero */}
-      <section class="text-white pt-16" style="background-color: #1a5f6e;">
+      <section class="text-white bg-primary">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
           <p
             class="text-sm font-semibold uppercase tracking-widest mb-4"
@@ -37,8 +37,8 @@ export default define.page(function About() {
 
       {/* Founder bio */}
       <section
-        style="background-color: #f7f4ef; border-bottom: 1px solid #d0e4e7;"
-        class="py-14"
+        style="border-bottom: 1px solid #d0e4e7;"
+        class="py-14 bg-warm-white"
       >
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
           <div class="flex flex-col sm:flex-row items-center sm:items-start gap-8">
@@ -53,13 +53,10 @@ export default define.page(function About() {
               />
             </div>
             <div>
-              <p
-                class="text-xs font-semibold uppercase tracking-widest mb-1"
-                style="color: #c4853a;"
-              >
+              <p class="text-xs text-accent font-semibold uppercase tracking-widest mb-1">
                 Founder
               </p>
-              <h2 class="text-2xl font-bold mb-1" style="color: #1c1a18;">
+              <h2 class="text-2xl font-bold text-near-black mb-1">
                 Charlie Garrison
               </h2>
               <p
@@ -81,8 +78,7 @@ export default define.page(function About() {
                 href="https://cngarrison.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity hover:opacity-70"
-                style="color: #1a5f6e;"
+                class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-opacity hover:opacity-70"
               >
                 cngarrison.com
                 <svg
@@ -106,13 +102,13 @@ export default define.page(function About() {
       </section>
 
       {/* Founder story */}
-      <section class="py-20 sm:py-28" style="background-color: #f7f4ef;">
+      <section class="py-20 sm:py-28 bg-warm-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
           <div
             class="prose prose-lg max-w-none"
             style="color: rgba(28,26,24,0.85);"
           >
-            <h2 style="color: #1c1a18;">The moment everything became real</h2>
+            <h2 class="text-near-black">The moment everything became real</h2>
             <p>
               I’ve been in and around the technology industry for most of my
               working life. I’m not an AI researcher. I don’t work at a lab. I’m
@@ -143,7 +139,7 @@ export default define.page(function About() {
               weeks.
             </p>
 
-            <h2 style="color: #1c1a18;">The gap that worried me</h2>
+            <h2 class="text-near-black">The gap that worried me</h2>
             <p>
               The gap between what’s actually happening and what most people
               understand is enormous. That gap is dangerous. Not because AI is
@@ -159,7 +155,7 @@ export default define.page(function About() {
             </p>
             <p>So I started one.</p>
 
-            <h2 style="color: #1c1a18;">What we’re trying to do</h2>
+            <h2 class="text-near-black">What we’re trying to do</h2>
             <p>
               Future Together isn’t a product. There’s nothing to sell you. It’s
               not affiliated with any AI company, and it’s not a doomsday-prep
@@ -171,7 +167,7 @@ export default define.page(function About() {
               want to face it with others rather than alone.
             </p>
             <p>We meet monthly. We talk honestly. We prepare together.</p>
-            <p class="font-semibold" style="color: #1c1a18;">
+            <p class="font-semibold text-near-black">
               The future is arriving. Let’s face it together.
             </p>
           </div>
@@ -179,7 +175,7 @@ export default define.page(function About() {
       </section>
 
       {/* Founder's desk — atmospheric accent image */}
-      <section style="background-color: #f7f4ef;">
+      <section class="bg-warm-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 pb-4">
           <img
             src="/img/sunrise-founders-desk-lg.webp"
@@ -191,7 +187,7 @@ export default define.page(function About() {
       </section>
 
       {/* Journey SVG */}
-      <section class="py-12" style="background-color: #f7f4ef;">
+      <section class="py-12 bg-warm-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
           <p
             class="text-xs font-semibold uppercase tracking-widest mb-5 text-center"
@@ -213,7 +209,7 @@ export default define.page(function About() {
         style="background-color: #eef5f7; border-top: 1px solid #d0e4e7;"
       >
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 class="text-2xl font-bold mb-10" style="color: #1c1a18;">
+          <h2 class="text-2xl font-bold text-near-black mb-10">
             What we stand for
           </h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -243,10 +239,7 @@ export default define.page(function About() {
                 class="bg-white rounded-xl p-6"
                 style="border: 1px solid #d0e4e7;"
               >
-                <h3
-                  class="font-semibold text-base mb-2"
-                  style="color: #1a5f6e;"
-                >
+                <h3 class="font-semibold text-base text-primary mb-2">
                   {item.title}
                 </h3>
                 <p
@@ -262,10 +255,7 @@ export default define.page(function About() {
       </section>
 
       {/* CTA */}
-      <section
-        class="py-20 text-center"
-        style="background-color: #1a5f6e; color: white;"
-      >
+      <section class="py-20 text-center text-white bg-primary">
         <div class="max-w-xl mx-auto px-4 sm:px-6">
           <h2 class="text-3xl font-bold mb-4">Come to a meetup</h2>
           <p class="mb-8 text-lg" style="color: rgba(255,255,255,0.8);">
@@ -274,8 +264,7 @@ export default define.page(function About() {
           </p>
           <a
             href="/events/discuss-our-future"
-            class="inline-block px-8 py-3.5 text-white font-semibold rounded-xl transition-opacity hover:opacity-90"
-            style="background-color: #c4853a;"
+            class="inline-block px-8 py-3.5 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
           >
             Register for the next meetup &rarr;
           </a>

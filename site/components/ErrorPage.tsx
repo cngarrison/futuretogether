@@ -3,19 +3,17 @@ import type { State } from "@/utils.ts";
 
 export function handleError(ctx: FreshContext<State>) {
   // ctx.error is set by Fresh before invoking this handler
-  const status = ctx.error.status || 500;
+  const err = ctx.error as { status?: number } | null;
+  const status = err?.status || 500;
   console.error(`[${status}] ${ctx.req.url}`, ctx.error);
   return ctx.render(<ErrorPage />, { status });
 }
 
 export default function ErrorPage() {
   return (
-    <div style="background-color: #f7f4ef;">
+    <div class="bg-warm-white">
       {/* Teal hero */}
-      <div
-        class="pt-32 pb-20 px-4 text-center"
-        style="background-color: #1a5f6e; color: white;"
-      >
+      <div class="pt-32 pb-20 px-4 text-center text-white bg-primary">
         <p
           class="text-7xl font-extrabold mb-4 tracking-tight"
           style="opacity: 0.25;"
@@ -33,13 +31,12 @@ export default function ErrorPage() {
 
       {/* Body */}
       <div class="max-w-2xl mx-auto px-4 py-16 text-center">
-        <p class="text-lg mb-10" style="color: #1c1a18;">
+        <p class="text-lg text-near-black mb-10">
           Try refreshing &mdash; it&rsquo;s usually a blip. <br />
           If it keeps happening, feel free to{" "}
           <a
             href="/contact"
-            class="underline hover:no-underline"
-            style="color: #1a5f6e;"
+            class="text-primary underline hover:no-underline"
           >
             let us know
           </a>.
@@ -48,9 +45,9 @@ export default function ErrorPage() {
         {/* Primary CTAs */}
         <div class="flex flex-wrap justify-center gap-4 mb-10">
           <button
+            type="button"
             id="error-retry-btn"
-            class="inline-block px-8 py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90"
-            style="background-color: #1a5f6e;"
+            class="inline-block px-8 py-3 rounded-lg font-semibold text-white transition-opacity hover:opacity-90 bg-primary"
           >
             Try again
           </button>

@@ -18,7 +18,7 @@ export default define.page(function Contact() {
       </Head>
 
       {/* Hero */}
-      <section style="background-color: #1a5f6e; color: white;" class="pt-16">
+      <section class="text-white bg-primary">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
           <h1 class="text-4xl font-bold mb-4">Get in touch</h1>
           <p class="text-lg" style="color: rgba(255,255,255,0.8);">
@@ -28,7 +28,7 @@ export default define.page(function Contact() {
         </div>
       </section>
 
-      <section style="background-color: #f7f4ef;" class="py-20">
+      <section class="py-20 bg-warm-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
           <div class="grid md:grid-cols-2 gap-10">
             {/* Left column — info */}
@@ -40,10 +40,7 @@ export default define.page(function Contact() {
                 LinkedIn.
               </p>
 
-              <h2
-                class="text-xl font-semibold mb-4"
-                style="color: #1c1a18;"
-              >
+              <h2 class="text-xl font-semibold text-near-black mb-4">
                 Connect with us
               </h2>
 
@@ -62,8 +59,7 @@ export default define.page(function Contact() {
                     href="https://www.linkedin.com/company/future-together"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="font-semibold transition-opacity hover:opacity-70"
-                    style="color: #1a5f6e;"
+                    class="font-semibold text-primary transition-opacity hover:opacity-70"
                   >
                     Future Together on LinkedIn
                   </a>
@@ -82,8 +78,7 @@ export default define.page(function Contact() {
                 </p>
                 <a
                   href="/events/discuss-our-future"
-                  class="inline-block px-6 py-3 text-white font-semibold rounded-xl transition-opacity hover:opacity-90"
-                  style="background-color: #c4853a;"
+                  class="inline-block px-6 py-3 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
                 >
                   Register for the next meetup &rarr;
                 </a>

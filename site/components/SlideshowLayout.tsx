@@ -1,6 +1,10 @@
-import type { PageProps } from "fresh";
+import type { ComponentChildren } from "preact";
 
-export default function SlideshowLayout({ Component }: PageProps) {
+interface SlideshowLayoutProps {
+  Component: () => ComponentChildren;
+}
+
+export default function SlideshowLayout({ Component }: SlideshowLayoutProps) {
   return (
     <html lang="en">
       <head>
@@ -13,8 +17,11 @@ export default function SlideshowLayout({ Component }: PageProps) {
         <title>Future Together — Slideshow</title>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
-      <body class="slide-deck" style="margin:0;padding:0;overflow:hidden;background:#000;">
-        <Component />
+      <body
+        class="slide-deck"
+        style="margin:0;padding:0;overflow:hidden;background:#000;"
+      >
+        {Component()}
       </body>
     </html>
   );

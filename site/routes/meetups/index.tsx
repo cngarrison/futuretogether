@@ -1,12 +1,17 @@
 import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
+import { naiveDatetimeToDate } from "@/utils/temporal.ts";
 import {
-  EventConfig,
+  getFeaturedGroupEvents,
   getNextAvailableEvent,
   getPastRecurringEvents,
   getPastSpecialEvents,
   getUpcomingSpecialEvents,
-} from "@/utils/events.ts";
+} from "@/utils/db/group-events.ts";
+import type {
+  EventConfig,
+  FeaturedGroupEvent,
+} from "@/utils/db/group-events.ts";
 
 // The "Discuss Our Future" meetup alternates start times each month
 // to accommodate participants in different time zones:
@@ -17,14 +22,16 @@ import {
 const RECURRING_SLUG = "discuss-our-future";
 const RECURRING_PAST_LIMIT = 3;
 
-// Format a full date + time string for upcoming events
+// Format a full date + time string for upcoming events.
+// dateStr is a naive local datetime (ft-07i.15) — use naiveDatetimeToDate for correct conversion.
 function formatEventDateTime(
   dateStr: string,
   timezone: string,
 ): string {
   try {
-    return new Date(dateStr).toLocaleString("en-AU", {
-      timeZone: timezone ?? "Australia/Sydney",
+    const tz = timezone ?? "Australia/Sydney";
+    return naiveDatetimeToDate(dateStr, tz).toLocaleString("en-AU", {
+      timeZone: tz,
       weekday: "long",
       day: "numeric",
       month: "long",
@@ -39,14 +46,15 @@ function formatEventDateTime(
   }
 }
 
-// Format a short date for past events (no time needed)
+// Format a short date for past events (no time needed).
 function formatPastEventDate(
   dateStr: string,
   timezone: string,
 ): string {
   try {
-    return new Date(dateStr).toLocaleString("en-AU", {
-      timeZone: timezone ?? "Australia/Sydney",
+    const tz = timezone ?? "Australia/Sydney";
+    return naiveDatetimeToDate(dateStr, tz).toLocaleString("en-AU", {
+      timeZone: tz,
       day: "numeric",
       month: "long",
       year: "numeric",
@@ -56,11 +64,12 @@ function formatPastEventDate(
   }
 }
 
-// Format just the month + year for the "since" note
+// Format just the month + year for the "since" note.
 function formatMonthYear(dateStr: string, timezone: string): string {
   try {
-    return new Date(dateStr).toLocaleString("en-AU", {
-      timeZone: timezone ?? "Australia/Sydney",
+    const tz = timezone ?? "Australia/Sydney";
+    return naiveDatetimeToDate(dateStr, tz).toLocaleString("en-AU", {
+      timeZone: tz,
       month: "long",
       year: "numeric",
     });
@@ -69,14 +78,21 @@ function formatMonthYear(dateStr: string, timezone: string): string {
   }
 }
 
-export default define.page(async function Meetups() {
+export default define.page(async function Meetups(ctx) {
   // Load all data sources in parallel for fast page renders
-  const [nextEvent, upcomingSpecial, pastSpecial, pastRecurring] = await Promise
+  const [
+    nextEvent,
+    upcomingSpecial,
+    pastSpecial,
+    pastRecurring,
+    featuredGroupEvents,
+  ] = await Promise
     .all([
-      getNextAvailableEvent(RECURRING_SLUG),
-      getUpcomingSpecialEvents(RECURRING_SLUG),
-      getPastSpecialEvents(RECURRING_SLUG),
-      getPastRecurringEvents(RECURRING_SLUG, RECURRING_PAST_LIMIT),
+      getNextAvailableEvent(RECURRING_SLUG, ctx.state),
+      getUpcomingSpecialEvents(RECURRING_SLUG, ctx.state),
+      getPastSpecialEvents(RECURRING_SLUG, ctx.state),
+      getPastRecurringEvents(RECURRING_SLUG, RECURRING_PAST_LIMIT, ctx.state),
+      getFeaturedGroupEvents(ctx.state),
     ]);
 
   const nextEventDisplay = nextEvent?.date
@@ -103,7 +119,7 @@ export default define.page(async function Meetups() {
       {/* ------------------------------------------------------------------ */}
       {/* Hero — Discuss Our Future recurring event                           */}
       {/* ------------------------------------------------------------------ */}
-      <section class="text-white pt-16" style="background-color: #1a5f6e;">
+      <section class="text-white bg-primary">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 py-20 text-center">
           <p
             class="text-sm font-semibold uppercase tracking-widest mb-4"
@@ -124,8 +140,7 @@ export default define.page(async function Meetups() {
           </p>
           <a
             href="/events/discuss-our-future"
-            class="inline-block px-8 py-3.5 text-white font-semibold rounded-xl transition-opacity hover:opacity-90"
-            style="background-color: #c4853a;"
+            class="inline-block px-8 py-3.5 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
           >
             Register for the Next Meetup &rarr;
           </a>
@@ -143,7 +158,7 @@ export default define.page(async function Meetups() {
       {/* ------------------------------------------------------------------ */}
       {/* Details strip                                                       */}
       {/* ------------------------------------------------------------------ */}
-      <section style="background-color: #1c1a18; color: white;">
+      <section class="text-white bg-near-black">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
             <div>
@@ -211,9 +226,9 @@ export default define.page(async function Meetups() {
       {/* Special / one-off upcoming events (hidden when none)               */}
       {/* ------------------------------------------------------------------ */}
       {upcomingSpecial.length > 0 && (
-        <section class="py-16 sm:py-20" style="background-color: #f7f4ef;">
+        <section class="py-16 sm:py-20 bg-warm-white">
           <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 class="text-3xl font-bold mb-3" style="color: #1c1a18;">
+            <h2 class="text-3xl font-bold text-near-black mb-3">
               Special Events
             </h2>
             <p class="mb-10" style="color: rgba(28,26,24,0.65);">
@@ -236,30 +251,24 @@ export default define.page(async function Meetups() {
                     <div class="px-6 pt-6 pb-5">
                       <div class="flex flex-wrap items-center gap-2 mb-3">
                         <span
-                          class="text-xs font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full"
-                          style="background-color: #eef5f7; color: #1a5f6e;"
+                          class="text-xs font-semibold text-primary uppercase tracking-widest px-2.5 py-1 rounded-full"
+                          style="background-color: #eef5f7;"
                         >
                           Special Event
                         </span>
                         {event.duration && (
                           <span
-                            class="text-xs font-medium px-2.5 py-1 rounded-full"
-                            style="background-color: #f7f4ef; color: rgba(28,26,24,0.6);"
+                            class="text-xs font-medium px-2.5 py-1 rounded-full bg-warm-white"
+                            style="color: rgba(28,26,24,0.6);"
                           >
                             {event.duration} min
                           </span>
                         )}
                       </div>
-                      <h3
-                        class="text-xl font-bold mb-2 leading-snug"
-                        style="color: #1c1a18;"
-                      >
+                      <h3 class="text-xl font-bold text-near-black mb-2 leading-snug">
                         {event.title}
                       </h3>
-                      <p
-                        class="text-sm font-medium mb-4"
-                        style="color: #1a5f6e;"
-                      >
+                      <p class="text-sm font-medium text-primary mb-4">
                         {dateDisplay}
                       </p>
                       {/* Description — first paragraph only to keep cards compact */}
@@ -312,8 +321,7 @@ export default define.page(async function Meetups() {
                       )}
                       <a
                         href={`/events/${event.slug}`}
-                        class="inline-block px-6 py-2.5 text-white text-sm font-semibold rounded-xl transition-opacity hover:opacity-90 ml-auto"
-                        style="background-color: #c4853a;"
+                        class="inline-block px-6 py-2.5 text-white text-sm font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90 ml-auto"
                       >
                         Register — it's free &rarr;
                       </a>
@@ -327,32 +335,112 @@ export default define.page(async function Meetups() {
       )}
 
       {/* ------------------------------------------------------------------ */}
+      {/* Community Events (featured group events)                          */}
+      {/* ------------------------------------------------------------------ */}
+      {(featuredGroupEvents as FeaturedGroupEvent[]).length > 0 && (
+        <section class="py-16 sm:py-20 bg-warm-white">
+          <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl font-bold text-near-black mb-3">
+              Community Events
+            </h2>
+            <p class="mb-10" style="color: rgba(28,26,24,0.65);">
+              Events hosted by local Future Together groups.
+            </p>
+            <div class="space-y-8">
+              {(featuredGroupEvents as FeaturedGroupEvent[]).map(
+                (event: FeaturedGroupEvent) => (
+                  <div
+                    key={event.id}
+                    class="rounded-2xl overflow-hidden"
+                    style="border: 1px solid #d0e4e7; background: white;"
+                  >
+                    <div class="px-6 pt-6 pb-5">
+                      <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span
+                          class="text-xs font-semibold text-[#1a5f6e] uppercase tracking-widest px-2.5 py-1 rounded-full"
+                          style="background-color: #eef5f7;"
+                        >
+                          Community Event &mdash; {event.group_name}
+                        </span>
+                        {event.location_type && (
+                          <span
+                            class="text-xs font-medium px-2.5 py-1 rounded-full bg-warm-white capitalize"
+                            style="color: rgba(28,26,24,0.6);"
+                          >
+                            {event.location_type === "physical"
+                              ? "In Person"
+                              : event.location_type.charAt(0).toUpperCase() +
+                                event.location_type.slice(1)}
+                          </span>
+                        )}
+                        {event.duration_minutes && (
+                          <span
+                            class="text-xs font-medium px-2.5 py-1 rounded-full bg-warm-white"
+                            style="color: rgba(28,26,24,0.6);"
+                          >
+                            {event.duration_minutes} min
+                          </span>
+                        )}
+                      </div>
+                      <h3 class="text-xl font-bold text-near-black mb-2">
+                        {event.title}
+                      </h3>
+                      <p class="text-sm font-medium text-[#1a5f6e] mb-4">
+                        {formatEventDateTime(event.event_date, event.timezone)}
+                      </p>
+                      <p
+                        class="leading-relaxed text-sm"
+                        style="color: rgba(28,26,24,0.75);"
+                      >
+                        {event.description.split("\n\n")[0]}
+                      </p>
+                    </div>
+                    <div
+                      class="px-6 py-4 flex justify-end"
+                      style="border-top: 1px solid #eef5f7;"
+                    >
+                      <a
+                        href={`/groups/${event.group_slug}/`}
+                        class="inline-block px-6 py-2.5 text-white text-sm font-semibold bg-[#1a5f6e] rounded-xl transition-opacity hover:opacity-90"
+                      >
+                        View Group &rarr;
+                      </a>
+                    </div>
+                  </div>
+                ),
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ------------------------------------------------------------------ */}
       {/* What happens at a meetup                                           */}
       {/* ------------------------------------------------------------------ */}
-      <section class="py-20 sm:py-24" style="background-color: #f7f4ef;">
+      <section class="py-20 sm:py-24 bg-warm-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
-          <h2 class="text-3xl font-bold mb-10" style="color: #1c1a18;">
+          <h2 class="text-3xl font-bold text-near-black mb-10">
             What happens at a meetup?
           </h2>
           <div class="space-y-8">
             {[
               {
                 n: 1,
-                color: "#1a5f6e",
+                color: "primary",
                 title: "A brief update on what's changed",
                 body:
                   "We start with what\u2019s happened in AI since the last meetup \u2014 the things that matter, explained clearly. No jargon, no assumption you\u2019re a technical person.",
               },
               {
                 n: 2,
-                color: "#1a5f6e",
+                color: "primary",
                 title: "A focused topic or question",
                 body:
                   "Each session has a theme. Past topics have included: how AI is changing knowledge work, what community resilience looks like, and how to think about AI without the hype or the doom.",
               },
               {
                 n: 3,
-                color: "#c4853a",
+                color: "accent",
                 title: "Open discussion",
                 body:
                   "This is the part people keep coming back for. Questions, challenges, personal experiences from different industries and countries. A real conversation, not a presentation.",
@@ -360,16 +448,12 @@ export default define.page(async function Meetups() {
             ].map((step) => (
               <div class="flex gap-5" key={step.n}>
                 <div
-                  class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm"
-                  style={`background-color: ${step.color};`}
+                  class={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm bg-${step.color}`}
                 >
                   {step.n}
                 </div>
                 <div>
-                  <h3
-                    class="font-semibold text-lg mb-1"
-                    style="color: #1c1a18;"
-                  >
+                  <h3 class="font-semibold text-lg text-near-black mb-1">
                     {step.title}
                   </h3>
                   <p
@@ -394,7 +478,7 @@ export default define.page(async function Meetups() {
           style="background-color: #eef5f7; border-top: 1px solid #d0e4e7; border-bottom: 1px solid #d0e4e7;"
         >
           <div class="max-w-3xl mx-auto px-4 sm:px-6">
-            <h2 class="text-2xl font-bold mb-3" style="color: #1c1a18;">
+            <h2 class="text-2xl font-bold text-near-black mb-3">
               Past Events
             </h2>
             <p class="mb-10" style="color: rgba(28,26,24,0.7);">
@@ -412,13 +496,10 @@ export default define.page(async function Meetups() {
                     style="background: white; border: 1px solid #d0e4e7;"
                   >
                     <div>
-                      <p
-                        class="text-xs font-semibold uppercase tracking-widest mb-1"
-                        style="color: #1a5f6e;"
-                      >
+                      <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-1">
                         Special Event
                       </p>
-                      <p class="font-semibold" style="color: #1c1a18;">
+                      <p class="font-semibold text-near-black">
                         {event.title}
                       </p>
                       <p
@@ -434,8 +515,7 @@ export default define.page(async function Meetups() {
                     {event.slideshowUrl && (
                       <a
                         href={`/meetups/${event.slug}?id=${event.id}`}
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 flex-shrink-0"
-                        style="background-color: #1a5f6e;"
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-sm font-semibold text-white transition-opacity hover:opacity-90 flex-shrink-0"
                       >
                         What we covered &rarr;
                       </a>
@@ -462,7 +542,7 @@ export default define.page(async function Meetups() {
                       style="background: white; border: 1px solid #d0e4e7;"
                     >
                       <div>
-                        <p class="font-semibold" style="color: #1c1a18;">
+                        <p class="font-semibold text-near-black">
                           Discuss Our Future
                         </p>
                         <p
@@ -478,8 +558,7 @@ export default define.page(async function Meetups() {
                       {event.slideshowUrl && (
                         <a
                           href={`/meetups/${event.slug}?id=${event.id}`}
-                          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 flex-shrink-0"
-                          style="background-color: #1a5f6e;"
+                          class="inline-flex items-center gap-2 px-4 py-2 bg-primary rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 flex-shrink-0"
                         >
                           What we covered &rarr;
                         </a>
@@ -514,12 +593,43 @@ export default define.page(async function Meetups() {
       )}
 
       {/* ------------------------------------------------------------------ */}
+      {/* Local Groups discovery                                             */}
+      {/* ------------------------------------------------------------------ */}
+      <section class="py-16 sm:py-20 bg-warm-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+          <div
+            class="rounded-2xl px-8 py-10 sm:px-12 sm:py-12 flex flex-col sm:flex-row sm:items-center gap-8"
+            style="background: white; border: 1px solid #d0e4e7;"
+          >
+            <div class="flex-1">
+              <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-3">
+                Local Groups
+              </p>
+              <h2 class="text-2xl sm:text-3xl font-bold text-near-black mb-4 leading-snug">
+                Find a group near you
+              </h2>
+              <p class="leading-relaxed" style="color: rgba(28,26,24,0.7);">
+                The monthly meetup is global — but sometimes you want a smaller
+                room. Local groups meet in person, in your city or region, to
+                continue the conversation face to face.
+              </p>
+            </div>
+            <div class="flex-shrink-0">
+              <a
+                href="/groups"
+                class="inline-block px-7 py-3.5 text-white font-semibold bg-primary rounded-xl transition-opacity hover:opacity-90 whitespace-nowrap"
+              >
+                Find a group &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
       {/* CTA                                                                 */}
       {/* ------------------------------------------------------------------ */}
-      <section
-        class="py-20 sm:py-24 text-center"
-        style="background-color: #1a5f6e; color: white;"
-      >
+      <section class="py-20 sm:py-24 text-center text-white bg-primary">
         <div class="max-w-xl mx-auto px-4 sm:px-6">
           <h2 class="text-3xl font-bold mb-4">Ready to join us?</h2>
           <p class="mb-8 text-lg" style="color: rgba(255,255,255,0.8);">
@@ -527,8 +637,7 @@ export default define.page(async function Meetups() {
           </p>
           <a
             href="/events/discuss-our-future"
-            class="inline-block px-8 py-3.5 text-white font-semibold rounded-xl transition-opacity hover:opacity-90"
-            style="background-color: #c4853a;"
+            class="inline-block px-8 py-3.5 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
           >
             Register — it's free &rarr;
           </a>

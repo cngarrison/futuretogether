@@ -123,17 +123,33 @@ export default function PageFooter() {
           <p>
             Future Together is a community initiative, not a commercial product.
           </p>
-          <p>
-            &copy; {year} Future Together &middot;{" "}
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
             <a
-              href="https://beyondbetter.app"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/privacy"
               class="hover:text-gray-300 transition-colors"
             >
-              Website by Beyond Better
+              Privacy Policy
             </a>
-          </p>
+            <span aria-hidden="true">&middot;</span>
+            <a
+              href="/terms"
+              class="hover:text-gray-300 transition-colors"
+            >
+              Terms of Service
+            </a>
+            <span aria-hidden="true">&middot;</span>
+            <span>
+              &copy; {year} Future Together &middot;{" "}
+              <a
+                href="https://beyondbetter.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-gray-300 transition-colors"
+              >
+                Website by Beyond Better
+              </a>
+            </span>
+          </div>
         </div>
       </div>
     </footer>

@@ -2,8 +2,13 @@
  * MemberSignupForm island — membership registration form for the /join page.
  *
  * Submits to POST /api/members/register.
- * Fields: name, email, location (optional), how-heard (select),
- *         interests (multi-select checkboxes), wants-to-organise (checkbox).
+ * Fields: first name, last name, email, location (optional), how-heard (select),
+ *         interests (multi-select checkboxes), wants-to-organise (checkbox),
+ *         age-confirmed (required), Turnstile captcha.
+ *
+ * Uses Supabase signInWithOtp under the hood — new users are created and sent
+ * a confirmation link; existing users receive a sign-in link. Both look identical
+ * here (privacy by design).
  */
 
 import { useRef } from "preact/hooks";
@@ -35,13 +40,19 @@ const HEARD_FROM_OPTIONS = [
   { value: "Other", label: "Other" },
 ];
 
-type Status = "idle" | "submitting" | "success" | "already_member" | "error";
+type Status = "idle" | "submitting" | "success" | "error";
 
 interface Props {
   turnstileSiteKey?: string;
+  /** UUID of a group to auto-join on account creation (passed from /join?group_id=). */
+  groupId?: string;
+  /** Post-confirmation redirect path (passed through emailRedirectTo). */
+  nextUrl?: string;
 }
 
-export default function MemberSignupForm({ turnstileSiteKey }: Props) {
+export default function MemberSignupForm(
+  { turnstileSiteKey, groupId, nextUrl }: Props,
+) {
   const containerRef = useRef<HTMLDivElement>(null);
   const firstName = useSignal("");
   const lastName = useSignal("");
@@ -50,7 +61,7 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
   const heardFrom = useSignal("");
   const selectedInterests = useSignal<string[]>([]);
   const wantsToOrganise = useSignal(false);
-  const joinSlack = useSignal(true);
+  const ageConfirmed = useSignal(false);
   const status = useSignal<Status>("idle");
   const errorMessage = useSignal("");
   const turnstileToken = useSignal("");
@@ -68,6 +79,14 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
   async function handleSubmit(e: Event) {
     e.preventDefault();
     if (status.value === "submitting") return;
+
+    // Client-side age check before anything else
+    if (!ageConfirmed.value) {
+      errorMessage.value =
+        "Please confirm that you are 16 years of age or older.";
+      status.value = "error";
+      return;
+    }
 
     status.value = "submitting";
     errorMessage.value = "";
@@ -91,15 +110,17 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
           heardFrom: heardFrom.value || undefined,
           interests: selectedInterests.value,
           wantsToOrganise: wantsToOrganise.value,
-          joinSlack: joinSlack.value,
+          ageConfirmed: ageConfirmed.value,
           turnstile_token: turnstileToken.value || undefined,
+          group_id: groupId || undefined,
+          next: nextUrl || undefined,
         }),
       });
 
       const data = await res.json();
 
       if (res.ok) {
-        status.value = data.created ? "success" : "already_member";
+        status.value = "success";
         setTimeout(
           () =>
             containerRef.current?.scrollIntoView({
@@ -120,70 +141,37 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
     }
   }
 
-  // -------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
   // Success state
-  // -------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
   if (status.value === "success") {
     return (
       <div ref={containerRef}>
         <div class="text-center py-6">
-          <div
-            class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl"
-            style="background-color: #1a5f6e;"
-          >
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-white bg-primary text-2xl">
             ✓
           </div>
-          <h3 class="text-xl font-bold mb-2" style="color: #1c1a18;">
-            Welcome to Future Together
+          <h3 class="text-xl font-bold mb-2 text-near-black">
+            Check your email
           </h3>
           <p class="text-sm leading-relaxed" style="color: rgba(28,26,24,0.7);">
-            You're in. Check your inbox for a welcome email — it includes a link
-            to join our Slack workspace.
+            We've sent a confirmation link to{" "}
+            <strong>{email.value}</strong>. Click it to activate your account
+            and complete joining Future Together.
             {wantsToOrganise.value &&
               " We'll also be in touch about running a local group."}
           </p>
-          {joinSlack.value && (
-            <p class="text-sm mt-3" style="color: rgba(28,26,24,0.65);">
-              Or{" "}
-              <a
-                href="https://join.slack.com/t/future-together-group/shared_invite/zt-3ssaug5th-1JI5b86jGesX8B77RojgBQ"
-                target="_blank"
-                rel="noopener noreferrer"
-                style="color: #1a5f6e; font-weight: 600; text-decoration: underline; margin-left: 4px;"
-              >
-                join Slack right now &rarr;
-              </a>
-            </p>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  if (status.value === "already_member") {
-    return (
-      <div ref={containerRef}>
-        <div class="text-center py-6">
-          <div
-            class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl"
-            style="background-color: #c4853a;"
-          >
-            ✓
-          </div>
-          <h3 class="text-xl font-bold mb-2" style="color: #1c1a18;">
-            You're already a member
-          </h3>
-          <p class="text-sm leading-relaxed" style="color: rgba(28,26,24,0.7);">
-            Your details have been updated. Good to have you here.
+          <p class="text-xs mt-3" style="color: rgba(28,26,24,0.45);">
+            Can't find it? Check your spam folder.
           </p>
         </div>
       </div>
     );
   }
 
-  // -------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
   // Form
-  // -------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
   const isSubmitting = status.value === "submitting";
 
   return (
@@ -260,7 +248,7 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
             >
               City or region
               <span style="color: rgba(28,26,24,0.4); font-weight:400;">
-                (optional)
+                {" "}(optional)
               </span>
             </label>
             <input
@@ -282,38 +270,21 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
             >
               How did you find us?
               <span style="color: rgba(28,26,24,0.4); font-weight:400;">
-                (optional)
+                {" "}(optional)
               </span>
             </label>
-            <div class="relative">
-              <select
-                value={heardFrom.value}
-                onChange={(e) =>
-                  heardFrom.value = (e.target as HTMLSelectElement).value}
-                class="w-full px-3 py-2 pr-8 rounded-lg text-sm border appearance-none bg-white"
-                style="border-color: #d0e4e7; outline: none;"
-                disabled={isSubmitting}
-              >
-                {HEARD_FROM_OPTIONS.map((opt) => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-              </select>
-              <svg
-                class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none"
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-              >
-                <path
-                  d="M2 4l4 4 4-4"
-                  stroke="#1a5f6e"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
+            <select
+              value={heardFrom.value}
+              onChange={(e) =>
+                heardFrom.value = (e.target as HTMLSelectElement).value}
+              class="w-full px-3 py-2 rounded-lg text-sm border"
+              style="border-color: #d0e4e7; outline: none;"
+              disabled={isSubmitting}
+            >
+              {HEARD_FROM_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
           </div>
         </div>
 
@@ -325,7 +296,7 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
           >
             Topics you care about
             <span style="color: rgba(28,26,24,0.4); font-weight:400;">
-              (optional)
+              {" "}(optional)
             </span>
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
@@ -354,7 +325,7 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
           </div>
         </div>
 
-        {/* Organiser checkbox */}
+        {/* Organiser opt-in */}
         <label
           class="flex items-start gap-3 cursor-pointer rounded-xl p-4"
           style={wantsToOrganise.value
@@ -371,7 +342,7 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
             style="accent-color: #c4853a;"
           />
           <div>
-            <span class="text-sm font-semibold" style="color: #1c1a18;">
+            <span class="text-sm font-semibold text-near-black">
               I want to run a local group in my area
             </span>
             <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
@@ -381,29 +352,28 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
           </div>
         </label>
 
-        {/* Join Slack */}
+        {/* Age confirmation — required */}
         <label
           class="flex items-start gap-3 cursor-pointer rounded-xl p-4"
-          style={joinSlack.value
-            ? "background-color: #f0f9fa; border: 1.5px solid #1a5f6e;"
+          style={ageConfirmed.value
+            ? "background-color: #eef5f7; border: 1.5px solid #1a5f6e;"
             : "background-color: #f7f4ef; border: 1.5px solid transparent;"}
         >
           <input
             type="checkbox"
-            checked={joinSlack.value}
+            checked={ageConfirmed.value}
             onChange={(e) =>
-              joinSlack.value = (e.target as HTMLInputElement).checked}
+              ageConfirmed.value = (e.target as HTMLInputElement).checked}
             disabled={isSubmitting}
             class="mt-0.5 rounded flex-shrink-0"
             style="accent-color: #1a5f6e;"
           />
           <div>
-            <span class="text-sm font-semibold" style="color: #1c1a18;">
-              Email me the link to join our Slack
+            <span class="text-sm font-semibold text-near-black">
+              I am 16 years of age or older *
             </span>
             <p class="text-xs mt-0.5" style="color: rgba(28,26,24,0.6);">
-              Our Slack workspace is where the conversation continues between
-              meetups.
+              Required to create an account.
             </p>
           </div>
         </label>
@@ -452,10 +422,9 @@ export default function MemberSignupForm({ turnstileSiteKey }: Props) {
         <button
           type="submit"
           disabled={isSubmitting}
-          class="w-full py-3 px-6 text-white font-semibold rounded-xl transition-opacity hover:opacity-90 disabled:opacity-60"
-          style="background-color: #1a5f6e;"
+          class="w-full py-3 px-6 text-white font-semibold bg-primary rounded-xl transition-opacity hover:opacity-90 disabled:opacity-60"
         >
-          {isSubmitting ? "Joining…" : "Join Future Together"}
+          {isSubmitting ? "Joining\u2026" : "Join Future Together"}
         </button>
 
         <p class="text-xs text-center" style="color: rgba(28,26,24,0.45);">

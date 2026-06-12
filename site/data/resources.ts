@@ -45,6 +45,14 @@ export const externalResources: ExternalResource[] = [
   },
   {
     category: "Perspectives",
+    title: "Magnifica Humanitas — Pope Leo XIV",
+    url:
+      "ttps://vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html",
+    description:
+      "Vatican encyclical (May 2026) — the Church\u2019s first document dedicated to AI; addressed to 1.4 billion Catholics.",
+  },
+  {
+    category: "Perspectives",
     title: "Horses — Andy Jones",
     url: "https://andyljones.com/posts/horses.html",
     description:
@@ -99,7 +107,7 @@ export const externalResources: ExternalResource[] = [
     title: "p(doom) Tracker — pdoom100.com",
     url: "https://pdoom100.com",
     description:
-      "A live tracker of \"p(doom)\" estimates — the probability of catastrophic AI outcomes assigned by researchers, scientists, and public figures. Figures range from near-zero to over 90%. Useful for understanding how seriously the people closest to this technology take the risks — and why there is still no consensus on where we're headed.",
+      'A live tracker of "p(doom)" estimates — the probability of catastrophic AI outcomes assigned by researchers, scientists, and public figures. Figures range from near-zero to over 90%. Useful for understanding how seriously the people closest to this technology take the risks — and why there is still no consensus on where we\'re headed.',
   },
   {
     category: "Context & Frameworks",
@@ -138,26 +146,26 @@ export const externalResources: ExternalResource[] = [
   },
 ];
 
-export const internalResources: InternalResource[] = [
-  {
-    label: "Community",
-    title: "Meetup Slideshow",
-    href: "/meetups/discuss-our-future",
-    description:
-      "The slideshow used in our monthly online meetups — a visual walkthrough of the key ideas, questions, and frameworks we discuss together. A good starting point if you're new.",
-  },
-  {
-    label: "Community",
-    title: "Articles",
-    href: "/blog",
-    description:
-      "Writing from the Future Together community. Experiences, observations, and analysis from people navigating AI-driven change in their own lives and work.",
-  },
-  {
-    label: "Community",
-    title: "AI Work and Capitalism Slideshow",
-    href: "/meetups/ai-work-and-capitalism",
-    description:
-      "The slideshow from the AI Work and Capitalism online meetups — a visual walkthrough of the key ideas, questions, and frameworks we discuss together.",
-  },
-];
+// export const internalResources: InternalResource[] = [
+//   {
+//     label: "Community",
+//     title: "Meetup Slideshow",
+//     href: "/meetups/discuss-our-future",
+//     description:
+//       "The slideshow used in our monthly online meetups — a visual walkthrough of the key ideas, questions, and frameworks we discuss together. A good starting point if you're new.",
+//   },
+//   {
+//     label: "Community",
+//     title: "Articles",
+//     href: "/blog",
+//     description:
+//       "Writing from the Future Together community. Experiences, observations, and analysis from people navigating AI-driven change in their own lives and work.",
+//   },
+//   {
+//     label: "Community",
+//     title: "AI Work and Capitalism Slideshow",
+//     href: "/meetups/ai-work-and-capitalism",
+//     description:
+//       "The slideshow from the AI Work and Capitalism online meetups — a visual walkthrough of the key ideas, questions, and frameworks we discuss together.",
+//   },
+// ];

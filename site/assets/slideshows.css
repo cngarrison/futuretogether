@@ -182,7 +182,7 @@
   margin-bottom: 1.5rem;
 }
 
-.slide-deck .slide-logo svg, 
+.slide-deck .slide-logo svg,
 .slide-deck .slide-logo img {
   height: 126px;
   width: auto;
@@ -191,7 +191,7 @@
 /* Slide number — inside brand-bar */
 .slide-deck .slide-counter {
   font-size: 0.7rem;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255, 255, 255, 0.65);
   font-variant-numeric: tabular-nums;
   min-width: 4rem;
   white-space: nowrap;
@@ -227,7 +227,7 @@
   text-align: center;
   font-size: 0.75rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -276,7 +276,6 @@
   font-size: 0.85rem;
   letter-spacing: 0.04em;
 }
-
 
 .slide-deck .nav-arrow {
   color: #1a5f6e;
@@ -339,88 +338,88 @@
  */
 
 .speaker-notes {
-  background:#0d1117;
-  min-height:100dvh;
-  padding:1rem;
-  overflow-y:auto;
-  
-  max-width:480px;
-  margin:0 auto;
-  padding-bottom:4rem
+  background: #0d1117;
+  min-height: 100dvh;
+  padding: 1rem;
+  overflow-y: auto;
+
+  max-width: 480px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
 }
 
 .speaker-notes .slideshow-heading {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:1rem;
-  padding-bottom:0.75rem;
-  border-bottom:1px solid rgba(255,255,255,0.1)
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .speaker-notes .speaker-card {
-  background:#1a2830;
-  color:white;
-  border-radius:12px;
-  padding:1.25rem 1.5rem;
-  margin-bottom:0.75rem;
-  border-left:3px solid transparent;
-  transition:opacity 0.2s,border-left 0.2s;
-  cursor:pointer;
-  user-select:none;
-  -webkit-user-select:none;
+  background: #1a2830;
+  color: white;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 0.75rem;
+  border-left: 3px solid transparent;
+  transition: opacity 0.2s, border-left 0.2s;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .speaker-notes .speaker-card-heading {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
 }
 
 .speaker-notes .speaker-card-number {
-  font-size:0.7rem;
-  opacity:0.5;
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:0.05em;
+  font-size: 0.7rem;
+  opacity: 0.5;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .speaker-notes .speaker-card-pace {
-  font-size:0.7rem;
-  opacity:0.5;
+  font-size: 0.7rem;
+  opacity: 0.5;
 }
 
 .speaker-notes .speaker-card-anchor {
-  font-size:1.1rem;
-  font-weight:600;
-  color:#7dd3fc;
-  margin-bottom:0.75rem;
-  line-height:1.6;
-  margin-top:0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #7dd3fc;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  margin-top: 0;
 }
 
 .speaker-notes .speaker-card-bullets {
-	color: #EBEBEB;
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	gap: 0.35rem;
+  color: #ebebeb;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 .speaker-notes .speaker-card-bullet-item {
-  font-size:0.85rem;
-  padding-left:1rem;
-  opacity:0.9;
-  border-left:2px solid #6b7280;
+  font-size: 0.85rem;
+  padding-left: 1rem;
+  opacity: 0.9;
+  border-left: 2px solid #6b7280;
   /* display: list-item; */ /* ensure marker box exists */
-/* 
-  list-style: none;
-  padding-left: 1.5rem;
-  position: relative;
- */
+  /* 
+    list-style: none;
+    padding-left: 1.5rem;
+    position: relative;
+   */
 }
 /* .speaker-notes li.speaker-card-bullet-item::marker { content: '→' ; }  */
 /* 
@@ -432,69 +431,69 @@
  */
 
 .speaker-notes .speaker-card-bullet-item.say {
-  border-left:2px solid #c4853a;
+  border-left: 2px solid #c4853a;
 }
 /* .speaker-notes li.speaker-card-bullet-item.say::marker { content: '→' ; }  */
 /* .speaker-notes .speaker-card-bullet-item.cue::before { content: '→'; } */
 
 .speaker-notes .speaker-card-bullet-item.cue {
-  border-left:2px solid #22c55e;
+  border-left: 2px solid #22c55e;
 }
 
 /* Text size cycle button */
 .speaker-notes .speaker-text {
-  font-size:0.75rem;
-  font-weight:600;
-  padding:0.2rem 0.55rem;
-  border-radius:6px;
-  border:1px solid rgba(255,255,255,0.2);
-  background:transparent;
-  color:rgba(255,255,255,0.4);
-  cursor:pointer;
-  letter-spacing:0.02em;
-  transition:background 0.15s, color 0.15s, border-color 0.15s;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 .speaker-notes .speaker-text--normal {
   /* default dim state — inherits base */
-  border:1px solid rgba(255,255,255,0.2);
-  background:transparent;
-  color:rgba(255,255,255,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.4);
 }
 .speaker-notes .speaker-text--large {
-  border-color:rgba(125,211,252,0.5);
-  background:rgba(125,211,252,0.15);
-  color:#7dd3fc;
+  border-color: rgba(125, 211, 252, 0.5);
+  background: rgba(125, 211, 252, 0.15);
+  color: #7dd3fc;
 }
 .speaker-notes .speaker-text--xlarge {
-  border-color:rgba(196,133,58,0.6);
-  background:rgba(196,133,58,0.18);
-  color:#c4853a;
+  border-color: rgba(196, 133, 58, 0.6);
+  background: rgba(196, 133, 58, 0.18);
+  color: #c4853a;
 }
 
 /* Large text mode overrides */
 .large-text-mode .speaker-notes .speaker-card-anchor {
-  font-size:1.7rem;
+  font-size: 1.7rem;
 }
 .large-text-mode .speaker-notes .speaker-card-bullet-item {
-  font-size:1.4rem;
-  line-height:1.95;
+  font-size: 1.4rem;
+  line-height: 1.95;
 }
 .large-text-mode .speaker-notes .speaker-card-number,
 .large-text-mode .speaker-notes .speaker-card-pace {
-  font-size:1.1rem;
+  font-size: 1.1rem;
 }
 
 /* Large text mode overrides */
 .xlarge-text-mode .speaker-notes .speaker-card-anchor {
-  font-size:1.9rem;
+  font-size: 1.9rem;
 }
 .xlarge-text-mode .speaker-notes .speaker-card-bullet-item {
-  font-size:1.55rem;
-  line-height:2;
+  font-size: 1.55rem;
+  line-height: 2;
 }
 .xlarge-text-mode .speaker-notes .speaker-card-number,
 .xlarge-text-mode .speaker-notes .speaker-card-pace {
-  font-size:1.25rem;
+  font-size: 1.25rem;
 }
 
 /* Tablet — use more of the available width */
@@ -503,72 +502,71 @@
     max-width: 1180px;
   }
   .speaker-notes .slideshow-heading {
-    margin-bottom:0.5rem;
-    padding-bottom:0.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
   }
   .speaker-notes .speaker-card {
-    padding:0.65rem 1rem;
-    margin-bottom:0.4rem;
-    border-radius:8px;
+    padding: 0.65rem 1rem;
+    margin-bottom: 0.4rem;
+    border-radius: 8px;
   }
   .speaker-notes .speaker-card-anchor {
-    font-size:0.95rem;
-    margin-bottom:0.35rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
   }
   .speaker-notes .speaker-card-bullet-item {
-    font-size:0.9rem;
+    font-size: 0.9rem;
   }
   /* Large text mode in landscape — still bigger than default but constrained */
   .large-text-mode .speaker-notes .speaker-card-anchor {
-    font-size:1.7rem;
+    font-size: 1.7rem;
   }
   .large-text-mode .speaker-notes .speaker-card-bullet-item {
-    font-size:1.5rem;
+    font-size: 1.5rem;
   }
   .xlarge-text-mode .speaker-notes .speaker-card-anchor {
-    font-size:1.9rem;
+    font-size: 1.9rem;
   }
   .xlarge-text-mode .speaker-notes .speaker-card-bullet-item {
-    font-size:1.7rem;
+    font-size: 1.7rem;
   }
 }
 
 /* Landscape phone — short viewport, use full width and compact layout */
 @media (max-height: 500px) and (orientation: landscape) {
   .speaker-notes {
-    max-width:100%;
-    padding:0.5rem 1.5rem 2rem;
+    max-width: 100%;
+    padding: 0.5rem 1.5rem 2rem;
   }
   .speaker-notes .slideshow-heading {
-    margin-bottom:0.5rem;
-    padding-bottom:0.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
   }
   .speaker-notes .speaker-card {
-    padding:0.65rem 1rem;
-    margin-bottom:0.4rem;
-    border-radius:8px;
+    padding: 0.65rem 1rem;
+    margin-bottom: 0.4rem;
+    border-radius: 8px;
   }
   .speaker-notes .speaker-card-anchor {
-    font-size:0.95rem;
-    margin-bottom:0.35rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
   }
   .speaker-notes .speaker-card-bullet-item {
-    font-size:0.78rem;
+    font-size: 0.78rem;
   }
   /* Large text mode in landscape — still bigger than default but constrained */
   .large-text-mode .speaker-notes .speaker-card-anchor {
-    font-size:1.5rem;
+    font-size: 1.5rem;
   }
   .large-text-mode .speaker-notes .speaker-card-bullet-item {
-    font-size:1.3rem;
+    font-size: 1.3rem;
   }
   .xlarge-text-mode .speaker-notes .speaker-card-anchor {
-    font-size:1.7rem;
+    font-size: 1.7rem;
   }
   .xlarge-text-mode .speaker-notes .speaker-card-bullet-item {
-    font-size:1.5rem;
+    font-size: 1.5rem;
   }
 }
 /* .speaker-notes li.speaker-card-bullet-item.cue::marker { content: '→' ; }  */
 /* .speaker-notes .speaker-card-bullet-item.cue::before { content: '⚡'; } */
-

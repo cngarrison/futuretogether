@@ -174,6 +174,7 @@ export default function EmailComposeForm(
               <>
                 <div
                   class="prose prose-sm max-w-none"
+                  // deno-lint-ignore react-no-danger
                   dangerouslySetInnerHTML={{ __html: previewHtml() }}
                 />
                 <p class="mt-4 text-xs text-gray-400 border-t border-gray-100 pt-3">
@@ -235,8 +236,8 @@ export default function EmailComposeForm(
             type="button"
             onClick={() => send(true)}
             disabled={sending.value}
-            class="px-4 py-2 rounded-md text-sm font-semibold border disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
-            style="color: #1a5f6e; border-color: #1a5f6e; background: white;"
+            class="px-4 py-2 rounded-md text-sm font-semibold text-primary border disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+            style="border-color: #1a5f6e; background: white;"
           >
             {sending.value ? "Sending…" : "Send test to me"}
           </button>
@@ -244,8 +245,7 @@ export default function EmailComposeForm(
             type="button"
             onClick={() => send(false)}
             disabled={sending.value || memberCount === 0}
-            class="px-6 py-2 rounded-md text-white text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
-            style="background-color: #c4853a;"
+            class="px-6 py-2 rounded-md text-white text-sm font-semibold bg-accent disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
           >
             {sending.value
               ? "Sending…"

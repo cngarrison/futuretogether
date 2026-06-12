@@ -22,10 +22,7 @@ export default function EventMoreInfo(
         onClick={() => (open.value = !open.value)}
         aria-expanded={open.value}
       >
-        <span
-          class="text-xl font-bold"
-          style="color: #1a5f6e;"
-        >
+        <span class="text-xl font-bold text-primary">
           {label}
         </span>
         <svg
@@ -50,9 +47,7 @@ export default function EventMoreInfo(
 
       {/* Collapsible content */}
       {open.value && (
-        <div
-          class="px-8 pb-8"
-        >
+        <div class="px-8 pb-8">
           <div
             class="prose max-w-none"
             style="--tw-prose-headings: #1a5f6e;"

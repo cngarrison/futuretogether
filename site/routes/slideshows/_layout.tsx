@@ -1,3 +1,4 @@
+import type { ComponentChildren } from "preact";
 import { define } from "@/utils.ts";
 import type { LayoutConfig } from "fresh";
 import SlideshowLayout from "@/components/SlideshowLayout.tsx";
@@ -17,5 +18,5 @@ export const config: LayoutConfig = {
  * Note: no <Partial> wrapper — slideshows use hard navigation only.
  */
 export default define.layout(({ Component }) => {
-  return <SlideshowLayout Component={Component} />;
+  return <SlideshowLayout Component={Component as () => ComponentChildren} />;
 });

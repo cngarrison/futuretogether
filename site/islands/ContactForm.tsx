@@ -139,8 +139,7 @@ export default function ContactForm({
         style="border: 1px solid #d0e4e7;"
       >
         <svg
-          class="w-14 h-14 mx-auto mb-4"
-          style="color: #c4853a;"
+          class="w-14 h-14 mx-auto mb-4 text-accent"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -152,7 +151,7 @@ export default function ContactForm({
             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
-        <h3 class="text-xl font-bold mb-2" style="color: #1a5f6e;">
+        <h3 class="text-xl font-bold text-primary mb-2">
           Message sent!
         </h3>
         <p class="text-gray-600 text-sm">
@@ -167,7 +166,7 @@ export default function ContactForm({
       class="bg-white rounded-2xl p-8"
       style="border: 1px solid #d0e4e7;"
     >
-      <h3 class="text-xl font-bold mb-5" style="color: #1a5f6e;">
+      <h3 class="text-xl font-bold text-primary mb-5">
         Send us a message
       </h3>
 
@@ -283,12 +282,11 @@ export default function ContactForm({
         <button
           type="submit"
           disabled={status === "loading"}
-          class={`w-full text-white font-semibold py-3 px-6 rounded-xl transition-opacity ${
+          class={`w-full text-white bg-primary font-semibold py-3 px-6 rounded-xl transition-opacity ${
             status === "loading"
               ? "opacity-60 cursor-not-allowed"
               : "hover:opacity-90"
           }`}
-          style="background-color: #1a5f6e;"
         >
           {status === "loading"
             ? (

@@ -1,12 +1,17 @@
 import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
-import { getNextAvailableEvent } from "@/utils/events.ts";
+import { getNextAvailableEvent } from "@/utils/db/group-events.ts";
 import MemberSignupForm from "@/islands/MemberSignupForm.tsx";
 import { getTurnstileSiteKey } from "@/utils/turnstile.ts";
 
-export default define.page(async function Join() {
+export default define.page(async function Join(props) {
+  const groupId = props.url.searchParams.get("group_id") ?? undefined;
+  const nextUrl = props.url.searchParams.get("next") ?? "/groups";
   const turnstileSiteKey = getTurnstileSiteKey();
-  const nextEvent = await getNextAvailableEvent("discuss-our-future");
+  const nextEvent = await getNextAvailableEvent(
+    "discuss-our-future",
+    props.state,
+  );
 
   let nextEventDisplay: string | null = null;
   if (nextEvent?.date) {
@@ -40,8 +45,8 @@ export default define.page(async function Join() {
 
       {/* Hero */}
       <section
-        class="text-white pt-16"
-        style="background-color: #1a5f6e; background-image: linear-gradient(rgba(26,95,110,0.80), rgba(26,95,110,0.80)), url('/img/join-portrait-hero.webp'); background-size: cover; background-position: center top;"
+        class="text-white bg-primary"
+        style="background-image: linear-gradient(rgba(26,95,110,0.80), rgba(26,95,110,0.80)), url('/img/join-portrait-hero.webp'); background-size: cover; background-position: center top;"
       >
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20 text-center">
           <h1 class="text-4xl sm:text-5xl font-bold mb-5">
@@ -58,7 +63,7 @@ export default define.page(async function Join() {
       </section>
 
       {/* Main content: asymmetric 2-col on desktop */}
-      <section class="py-16 sm:py-20" style="background-color: #f7f4ef;">
+      <section class="py-16 sm:py-20 bg-warm-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
           <div class="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 items-start">
             {/* Left: membership form card */}
@@ -66,10 +71,7 @@ export default define.page(async function Join() {
               class="bg-white rounded-2xl p-8"
               style="border: 2px solid #1a5f6e;"
             >
-              <div
-                class="w-10 h-10 rounded-lg flex items-center justify-center mb-5 text-white"
-                style="background-color: #1a5f6e;"
-              >
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5 text-white bg-primary">
                 <svg
                   width="20"
                   height="20"
@@ -86,7 +88,7 @@ export default define.page(async function Join() {
                   <line x1="22" y1="11" x2="16" y2="11" />
                 </svg>
               </div>
-              <h2 class="text-xl font-bold mb-1" style="color: #1c1a18;">
+              <h2 class="text-xl font-bold text-near-black mb-1">
                 Become a member
               </h2>
               <p
@@ -95,7 +97,34 @@ export default define.page(async function Join() {
               >
                 Free. No commitment. Cancel any time.
               </p>
-              <MemberSignupForm turnstileSiteKey={turnstileSiteKey} />
+              <MemberSignupForm
+                turnstileSiteKey={turnstileSiteKey}
+                groupId={groupId}
+                nextUrl={nextUrl}
+              />
+
+              {/* Cross-links */}
+              <p
+                class="text-center text-xs mt-5"
+                style="color: rgba(28,26,24,0.5);"
+              >
+                Already a member?{" "}
+                <a href="/login" class="font-semibold text-primary">
+                  Sign in &rarr;
+                </a>
+              </p>
+              <p
+                class="text-center text-xs mt-1.5"
+                style="color: rgba(28,26,24,0.32);"
+              >
+                Prefer to set a password?{" "}
+                <a
+                  href="/signup"
+                  style="color: rgba(28,26,24,0.4); text-decoration: underline;"
+                >
+                  Sign up here
+                </a>
+              </p>
             </div>
 
             {/* Right: stacked cards */}
@@ -113,10 +142,7 @@ export default define.page(async function Join() {
                     style="height: 160px; object-fit: cover; object-position: center;"
                   />
                 </div>
-                <div
-                  class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 text-white"
-                  style="background-color: #c4853a;"
-                >
+                <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 text-white bg-accent">
                   <svg
                     width="20"
                     height="20"
@@ -133,7 +159,7 @@ export default define.page(async function Join() {
                     <line x1="3" y1="10" x2="21" y2="10" />
                   </svg>
                 </div>
-                <h2 class="text-lg font-bold mb-1" style="color: #1c1a18;">
+                <h2 class="text-lg font-bold text-near-black mb-1">
                   Attend the next meetup
                 </h2>
                 <p
@@ -145,18 +171,12 @@ export default define.page(async function Join() {
                 </p>
                 {nextEventDisplay
                   ? (
-                    <p
-                      class="text-sm font-semibold mb-0.5"
-                      style="color: #1c1a18;"
-                    >
+                    <p class="text-sm font-semibold text-near-black mb-0.5">
                       {nextEventDisplay}
                     </p>
                   )
                   : (
-                    <p
-                      class="text-sm font-semibold mb-0.5"
-                      style="color: #1c1a18;"
-                    >
+                    <p class="text-sm font-semibold text-near-black mb-0.5">
                       Third Wednesday of each month
                     </p>
                   )}
@@ -168,8 +188,7 @@ export default define.page(async function Join() {
                 </p>
                 <a
                   href="/events/discuss-our-future"
-                  class="inline-block w-full text-center px-5 py-2.5 text-white font-semibold rounded-xl transition-opacity hover:opacity-90 text-sm"
-                  style="background-color: #c4853a;"
+                  class="inline-block w-full text-center px-5 py-2.5 text-white text-sm font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
                 >
                   Register for next meetup &rarr;
                 </a>
@@ -180,7 +199,7 @@ export default define.page(async function Join() {
                 class="bg-white rounded-2xl p-7"
                 style="border: 1px solid #d0e4e7;"
               >
-                <h2 class="text-lg font-bold mb-4" style="color: #1c1a18;">
+                <h2 class="text-lg font-bold text-near-black mb-4">
                   What members get
                 </h2>
                 <ul class="space-y-3">
@@ -207,17 +226,11 @@ export default define.page(async function Join() {
                     ],
                   ] as [string, string][]).map(([title, desc]) => (
                     <li key={title} class="flex items-start gap-3">
-                      <span
-                        class="mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs font-bold"
-                        style="background-color: #1a5f6e;"
-                      >
+                      <span class="mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs font-bold bg-primary">
                         ✓
                       </span>
                       <div>
-                        <p
-                          class="text-sm font-semibold"
-                          style="color: #1c1a18;"
-                        >
+                        <p class="text-sm font-semibold text-near-black">
                           {title}
                         </p>
                         <p
@@ -238,7 +251,7 @@ export default define.page(async function Join() {
       </section>
 
       {/* Slack invite section */}
-      <section class="py-14" style="background-color: #1a5f6e;">
+      <section class="py-14 bg-primary">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
           <div class="flex flex-col sm:flex-row items-center gap-8">
             {/* Left: copy */}
@@ -267,8 +280,7 @@ export default define.page(async function Join() {
                 href="https://join.slack.com/t/future-together-group/shared_invite/zt-3ssaug5th-1JI5b86jGesX8B77RojgBQ"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-block px-8 py-3.5 font-bold rounded-xl text-sm transition-opacity hover:opacity-90"
-                style="background-color: #c4853a; color: #ffffff;"
+                class="inline-block px-8 py-3.5 font-bold rounded-xl text-white text-sm bg-accent transition-opacity hover:opacity-90"
               >
                 Join the Slack workspace &rarr;
               </a>
@@ -283,7 +295,7 @@ export default define.page(async function Join() {
         style="background-color: #eef5f7; border-top: 1px solid #d0e4e7;"
       >
         <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <p class="text-lg font-semibold mb-2" style="color: #1c1a18;">
+          <p class="text-lg font-semibold text-near-black mb-2">
             The future is arriving. Let's face it together.
           </p>
           <p

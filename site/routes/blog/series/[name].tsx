@@ -1,11 +1,10 @@
 import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
-import { loadSeriesPosts } from "@/utils/blog.ts";
-import { getSeriesBySlug } from "@/data/series.ts";
+import { getSeriesArticles, getSeriesMeta } from "@/utils/db/blog.ts";
 
 export default define.page(async function SeriesPage(ctx) {
   const slug = ctx.params.name;
-  const seriesMeta = getSeriesBySlug(slug);
+  const seriesMeta = await getSeriesMeta(slug, ctx.state);
 
   if (!seriesMeta) {
     return (
@@ -19,8 +18,7 @@ export default define.page(async function SeriesPage(ctx) {
         </p>
         <a
           href="/blog"
-          class="font-semibold transition-opacity hover:opacity-70"
-          style="color: #1a5f6e;"
+          class="font-semibold text-primary transition-opacity hover:opacity-70"
         >
           ← Back to articles
         </a>
@@ -28,7 +26,7 @@ export default define.page(async function SeriesPage(ctx) {
     );
   }
 
-  const posts = await loadSeriesPosts(slug); // ascending by series_part
+  const posts = await getSeriesArticles(seriesMeta.id, ctx.state); // ascending by series_part
   const total = posts.length;
 
   return (
@@ -39,7 +37,7 @@ export default define.page(async function SeriesPage(ctx) {
       </Head>
 
       {/* Hero */}
-      <section style="background-color: #1a5f6e; color: white;" class="pt-16">
+      <section class="text-white bg-primary">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
           {/* Breadcrumb */}
           <div class="mb-4">
@@ -83,10 +81,10 @@ export default define.page(async function SeriesPage(ctx) {
       </section>
 
       {/* Amber rule under hero */}
-      <div style="height: 4px; background-color: #c4853a;" />
+      <div class="bg-accent h-1" />
 
       {/* Article list */}
-      <div style="background-color: #f7f4ef;" class="min-h-screen py-14">
+      <div class="min-h-screen py-14 bg-warm-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
           {posts.length === 0 && (
             <p style="color: rgba(28,26,24,0.5);">
@@ -103,10 +101,7 @@ export default define.page(async function SeriesPage(ctx) {
                   style="border: 1px solid #d0e4e7; text-decoration: none;"
                 >
                   {/* Part number bubble */}
-                  <div
-                    class="shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-sm mt-0.5"
-                    style="background-color: #1a5f6e;"
-                  >
+                  <div class="shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-white bg-primary text-sm mt-0.5">
                     {post.series_part ?? idx + 1}
                   </div>
 
@@ -118,10 +113,7 @@ export default define.page(async function SeriesPage(ctx) {
                     >
                       Part {post.series_part ?? idx + 1} of {total}
                     </div>
-                    <h2
-                      class="text-xl font-bold mb-2 transition-opacity group-hover:opacity-75"
-                      style="color: #1c1a18;"
-                    >
+                    <h2 class="text-xl font-bold text-near-black mb-2 transition-opacity group-hover:opacity-75">
                       {post.title}
                     </h2>
                     <div
@@ -147,10 +139,7 @@ export default define.page(async function SeriesPage(ctx) {
                   </div>
 
                   {/* Arrow */}
-                  <div
-                    class="shrink-0 self-center opacity-30 group-hover:opacity-60 transition-opacity"
-                    style="color: #1a5f6e;"
-                  >
+                  <div class="text-primary shrink-0 self-center opacity-30 group-hover:opacity-60 transition-opacity">
                     <svg
                       width="18"
                       height="18"
@@ -173,8 +162,7 @@ export default define.page(async function SeriesPage(ctx) {
           <div class="mt-14 pt-8 border-t border-gray-200">
             <a
               href="/blog"
-              class="font-semibold inline-flex items-center gap-2 transition-opacity hover:opacity-70"
-              style="color: #1a5f6e;"
+              class="font-semibold text-primary inline-flex items-center gap-2 transition-opacity hover:opacity-70"
             >
               <svg
                 class="w-4 h-4"

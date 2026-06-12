@@ -1,14 +1,15 @@
-import type { SlideshowMeta } from "@/types/slideshows.ts";
-import { meta as tumbarumbaJune2026 } from "@/data/slideshows/tumbarumba-june-2026.tsx";
+import type { SlideData } from "@/types/slideshows.ts";
 
-export const registry: SlideshowMeta[] = [
-  tumbarumbaJune2026,
-];
-
-export function getSlideshowMeta(slug: string): SlideshowMeta | undefined {
-  return registry.find((s) => s.slug === slug);
-}
-
-export function getAllSlideshows(): SlideshowMeta[] {
-  return [...registry];
+/**
+ * Dynamically loads slide content from a file path.
+ * filePath is relative to the site/ root, e.g. 'data/slideshows/tumbarumba-june-2026.tsx'
+ * No static .tsx imports — file_path from DB drives everything.
+ * Future: accept https:// URLs or temp file paths from bucket downloads.
+ */
+export async function loadSlides(filePath: string): Promise<SlideData[]> {
+  const url = filePath.startsWith("http")
+    ? filePath
+    : new URL(`../../${filePath}`, import.meta.url).href;
+  const mod = await import(url);
+  return mod.slides ?? [];
 }

@@ -15,7 +15,7 @@ timezone: Australia/Sydney # For display formatting
 duration: 45
 capacity: 50
 registrationDeadline: 1
-meetingLink: 
+meetingLink:
 meetingLocation: "Café Nest Cinema, Tumbarumba"
 posterImage: /img/community-in-action-card.webp
 posterImageOriginal: /img/community-in-action.png

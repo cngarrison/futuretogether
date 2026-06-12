@@ -1,21 +1,21 @@
 /**
  * POST /api/members/register
  *
- * Handles membership signup from the /join page form.
- * Creates or updates a member record in Deno KV, then sends:
- *   - Admin notification (with organiser flag in subject if applicable)
- *   - Welcome email to the new member
+ * Handles membership signup from the /join page.
+ * Uses Supabase signInWithOtp — creates a new user (if they don't exist) and sends
+ * a magic-link confirmation email. Existing users receive a sign-in link instead.
+ * Both cases look identical to the caller (privacy by design).
+ *
+ * Extra profile fields (location, interests, etc.) are stored in user_metadata
+ * on account creation. Global group membership is created in /auth/callback on
+ * first confirmation (requires ft-o1k.8 seed data to be in place).
  */
 
 import { define } from "@/utils.ts";
-import { createMember } from "@/utils/members.ts";
-import {
-  sendMemberAdminNotification,
-  sendMemberWelcomeEmail,
-} from "@/utils/memberEmail.ts";
+import { createSupabaseClient } from "@/utils/supabase.ts";
 import { verifyTurnstileToken } from "@/utils/turnstile.ts";
 
-export const handlers = define.handlers({
+export const handler = define.handlers({
   async POST(ctx) {
     try {
       const body = await ctx.req.json();
@@ -28,95 +28,129 @@ export const handlers = define.handlers({
         heardFrom,
         interests,
         wantsToOrganise,
+        ageConfirmed,
         turnstile_token,
+        group_id,
+        next: nextUrl,
       } = body;
 
-      // Turnstile verification (no-op if not configured)
-      const turnstileValid = await verifyTurnstileToken(turnstile_token);
+      // Turnstile verification (no-op if FT_TURNSTILE_SECRET_KEY is not set)
+      const turnstileValid = await verifyTurnstileToken(turnstile_token ?? "");
       if (!turnstileValid) {
-        return new Response("Captcha verification failed", { status: 400 });
+        return new Response(
+          JSON.stringify({
+            error: "Captcha verification failed. Please try again.",
+          }),
+          { status: 400, headers: { "Content-Type": "application/json" } },
+        );
       }
 
       // Validate required fields
       if (!firstName?.trim()) {
         return new Response(
-          JSON.stringify({ error: "First name is required" }),
+          JSON.stringify({ error: "First name is required." }),
           { status: 400, headers: { "Content-Type": "application/json" } },
         );
       }
       if (!lastName?.trim()) {
         return new Response(
-          JSON.stringify({ error: "Last name is required" }),
+          JSON.stringify({ error: "Last name is required." }),
           { status: 400, headers: { "Content-Type": "application/json" } },
         );
       }
       if (!email?.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
         return new Response(
-          JSON.stringify({ error: "Valid email address is required" }),
+          JSON.stringify({ error: "A valid email address is required." }),
+          { status: 400, headers: { "Content-Type": "application/json" } },
+        );
+      }
+      if (!ageConfirmed) {
+        return new Response(
+          JSON.stringify({
+            error: "You must confirm that you are 16 years of age or older.",
+          }),
           { status: 400, headers: { "Content-Type": "application/json" } },
         );
       }
 
-      const result = await createMember({
-        firstName: firstName.trim(),
-        lastName: lastName.trim(),
+      // Thread ?next= through emailRedirectTo so the magic link lands the
+      // user back on the page they came from (e.g. /groups/tumbarumba/).
+      const callbackUrl = new URL("/auth/callback", ctx.req.url);
+      if (nextUrl && typeof nextUrl === "string" && nextUrl.startsWith("/")) {
+        callbackUrl.searchParams.set("next", nextUrl);
+      }
+      const emailRedirectTo = callbackUrl.href;
+
+      const supabase = createSupabaseClient();
+      const { error } = await supabase.auth.signInWithOtp({
         email: email.trim(),
-        role: wantsToOrganise ? "organiser" : "member",
-        source: "join_form",
-        interests: Array.isArray(interests) ? interests : [],
-        heardFrom: heardFrom?.trim() || undefined,
-        location: location?.trim() || undefined,
+        options: {
+          emailRedirectTo,
+          shouldCreateUser: true,
+          data: {
+            name_first: firstName.trim(),
+            name_last: lastName.trim(),
+            age_confirmed: true,
+            location: location?.trim() || null,
+            heard_from: heardFrom || null,
+            interests: Array.isArray(interests) ? interests : [],
+            wants_to_organise: !!wantsToOrganise,
+            // group_id is read by handle_new_auth_user() to auto-join the user
+            // to a secondary group on account creation. Omit if not provided.
+            ...(group_id && typeof group_id === "string" ? { group_id } : {}),
+          },
+        },
       });
 
-      if (!result.success) {
+      if (error) {
+        console.error("Supabase signInWithOtp error:", error.message);
         return new Response(
-          JSON.stringify({ error: result.error ?? "Registration failed" }),
+          JSON.stringify({ error: "Something went wrong. Please try again." }),
           { status: 500, headers: { "Content-Type": "application/json" } },
         );
       }
 
-      // Send emails asynchronously — don't block the response.
-      // Fire each independently so a failure in one doesn't suppress the other.
-      if (result.member) {
-        const member = result.member;
-
-        if (result.created) {
-          // Brand-new member: admin notification + welcome email
-          sendMemberAdminNotification(member).catch((err) =>
-            console.error("Admin notification error:", err)
-          );
-
-          const joinSlack = body.joinSlack === true;
-          sendMemberWelcomeEmail(member, joinSlack).catch((err) =>
-            console.error("Welcome email error:", err)
-          );
-        } else {
-          // Existing member — only act if role was upgraded to organiser
-          if (member.role === "organiser") {
-            sendMemberAdminNotification(member).catch((err) =>
-              console.error("Admin notification error:", err)
-            );
-            // Also send welcome so they get the organiser-specific content
-            sendMemberWelcomeEmail(member).catch((err) =>
-              console.error("Welcome email error:", err)
-            );
-          }
-        }
+      // Admin notification for organiser requests (fire-and-forget)
+      if (wantsToOrganise) {
+        const displayName = `${firstName.trim()} ${lastName.trim()}`.trim();
+        notifyOrganiserRequest({ displayName, email: email.trim() }).catch((
+          err,
+        ) => console.error("Organiser notification error:", err));
       }
 
       return new Response(
-        JSON.stringify({
-          success: true,
-          created: result.created,
-          message: result.created
-            ? "Welcome to Future Together!"
-            : "You're already a member — your details have been updated.",
-        }),
+        JSON.stringify({ success: true }),
         { status: 200, headers: { "Content-Type": "application/json" } },
       );
     } catch (error) {
       console.error("Member registration error:", error);
-      return new Response("Internal server error", { status: 500 });
+      return new Response(
+        JSON.stringify({ error: "Internal server error." }),
+        { status: 500, headers: { "Content-Type": "application/json" } },
+      );
     }
   },
 });
+
+async function notifyOrganiserRequest(
+  { displayName, email }: { displayName: string; email: string },
+): Promise<void> {
+  const apiKey = Deno.env.get("RESEND_API_KEY");
+  if (!apiKey) return;
+
+  await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: "Future Together <notifications@futuretogether.community>",
+      to: Deno.env.get("FT_SITE_OWNER_EMAIL") ??
+        "charlie@futuretogether.community",
+      subject: `[FT] New organiser request: ${displayName}`,
+      text:
+        `${displayName} (${email}) has signed up and wants to run a local group.\n\nReview their account in the admin dashboard once they confirm their email.`,
+    }),
+  });
+}
