@@ -123,7 +123,7 @@ export const handler = define.handlers<LoginData>({
     }
 
     // -------------------------------------------------------------------------
-    // OTP code flow (6-digit code from magic link email)
+    // OTP code flow (8-digit code from magic link email)
     // -------------------------------------------------------------------------
     if (mode === "otp") {
       const code = (form.get("code") as string ?? "").trim();

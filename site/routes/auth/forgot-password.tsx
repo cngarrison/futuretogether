@@ -37,7 +37,7 @@ export const handler = define.handlers<ForgotPasswordData>(
       const email = (form.get("email") as string ?? "").trim();
 
       // -----------------------------------------------------------------------
-      // OTP verification — user entered 6-digit code from the email
+      // OTP verification — user entered 8-digit code from the email
       // -----------------------------------------------------------------------
       if (mode === "otp") {
         const code = (form.get("code") as string ?? "").trim();
@@ -47,7 +47,7 @@ export const handler = define.handlers<ForgotPasswordData>(
             email,
             submitted: true,
             error: null,
-            otpError: "Please enter the 6-digit code from your email.",
+            otpError: "Please enter the 8-digit code from your email.",
           });
         }
 
@@ -172,7 +172,7 @@ export default define.page<typeof handler>(function ForgotPasswordPage(
                 {/* Inline OTP entry */}
                 <div>
                   <p class="text-sm text-gray-600 mb-3">
-                    Have the 6-digit code from the email?
+                    Have the 8-digit code from the email?
                   </p>
 
                   {otpError && (

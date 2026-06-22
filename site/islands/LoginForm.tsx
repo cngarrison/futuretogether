@@ -187,7 +187,7 @@ export default function LoginForm(
                 />
               </div>
               <p class="text-xs text-gray-500 mb-6">
-                We’ll email you a secure link and a 6-digit code — no password
+                We’ll email you a secure link and a 8-digit code — no password
                 needed.
               </p>
               <button
