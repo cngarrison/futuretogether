@@ -1,5 +1,6 @@
 import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
+import { renderMarkdown } from "@/utils/markdown.ts";
 import { naiveDatetimeToDate } from "@/utils/temporal.ts";
 import {
   formatRecurrenceRule,
@@ -426,13 +427,16 @@ export default define.page(async function Meetups(ctx) {
                         Next: {dateDisplay}
                       </p>
 
-                      {/* Description — first paragraph only */}
-                      <p
-                        class="leading-relaxed text-sm"
+                      {/* Description — first paragraph only, rendered as markdown */}
+                      <div
+                        class="leading-relaxed text-sm prose prose-sm max-w-none"
                         style="color: rgba(28,26,24,0.75);"
-                      >
-                        {event.description.split("\n\n")[0]}
-                      </p>
+                        dangerouslySetInnerHTML={{
+                          __html: renderMarkdown(
+                            event.description.split("\n\n")[0],
+                          ),
+                        }}
+                      />
                     </div>
 
                     <div
