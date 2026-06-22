@@ -2,6 +2,7 @@ import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
 import { naiveDatetimeToDate } from "@/utils/temporal.ts";
 import {
+  formatRecurrenceRule,
   getNextAvailableEvent,
   getPastCommunityRecurringEvents,
   getPastRecurringEvents,
@@ -9,7 +10,10 @@ import {
   getUpcomingCommunityRecurringEvents,
   getUpcomingSpecialEvents,
 } from "@/utils/db/group-events.ts";
-import type { EventConfig } from "@/utils/db/group-events.ts";
+import type {
+  CommunityGroupEvent,
+  EventConfig,
+} from "@/utils/db/group-events.ts";
 
 // The "Discuss Our Future" meetup alternates start times each month
 // to accommodate participants in different time zones:
@@ -26,8 +30,9 @@ const RECURRING_SLUG = "discuss-our-future";
 // Keeps the Past Events section concise; a "...plus N more" note is shown when there are additional sessions.
 const RECURRING_PAST_LIMIT = 3;
 
-// Maximum upcoming sessions shown per community (non-ft-global) recurring program.
-const COMMUNITY_RECURRING_LIMIT = 3;
+// Maximum unique programs shown in the "Community Groups" upcoming section.
+// Each program shows only its next event — this caps the total number of cards.
+const COMMUNITY_RECURRING_LIMIT = 6;
 
 // Format a full date + time string for upcoming events.
 // dateStr is a naive local datetime (ft-07i.15) — use naiveDatetimeToDate for correct conversion.
@@ -352,10 +357,11 @@ export default define.page(async function Meetups(ctx) {
       )}
 
       {/* ------------------------------------------------------------------ */}
-      {/* Community Groups — upcoming recurring sessions from non-ft-global  */}
-      {/* groups. programType === "recurring", slug !== RECURRING_SLUG,       */}
-      {/* capped at COMMUNITY_RECURRING_LIMIT (3). Shows next upcoming        */}
-      {/* session(s) for each community group's recurring program.            */}
+      {/* Community Groups — next upcoming session for each non-ft-global    */}
+      {/* recurring program. programType === "recurring",                     */}
+      {/* slug !== RECURRING_SLUG, deduplicated by programId (one card per   */}
+      {/* program = its next event only), capped at COMMUNITY_RECURRING_LIMIT */}
+      {/* (6) unique programs ordered by upcoming event date.                */}
       {/* ------------------------------------------------------------------ */}
       {upcomingCommunityRecurring.length > 0 && (
         <section class="py-16 sm:py-20 bg-warm-white">
@@ -366,12 +372,15 @@ export default define.page(async function Meetups(ctx) {
             <p class="mb-10" style="color: rgba(28,26,24,0.65);">
               Recurring meetups run by local Future Together groups.
             </p>
-            <div class="space-y-8">
-              {upcomingCommunityRecurring.map((event: EventConfig) => {
+            <div class="space-y-6">
+              {upcomingCommunityRecurring.map((event: CommunityGroupEvent) => {
                 const dateDisplay = formatEventDateTime(
                   event.date,
                   event.timezone ?? "Australia/Sydney",
                 );
+                const recurrenceDisplay = event.recurrenceRule
+                  ? formatRecurrenceRule(event.recurrenceRule)
+                  : null;
                 return (
                   <div
                     key={event.id}
@@ -379,12 +388,13 @@ export default define.page(async function Meetups(ctx) {
                     style="border: 1px solid #d0e4e7; background: white;"
                   >
                     <div class="px-6 pt-6 pb-5">
+                      {/* Group name + optional duration badges */}
                       <div class="flex flex-wrap items-center gap-2 mb-3">
                         <span
                           class="text-xs font-semibold text-primary uppercase tracking-widest px-2.5 py-1 rounded-full"
                           style="background-color: #eef5f7;"
                         >
-                          Community Group
+                          {event.groupName || "Community Group"}
                         </span>
                         {event.duration && (
                           <span
@@ -395,12 +405,28 @@ export default define.page(async function Meetups(ctx) {
                           </span>
                         )}
                       </div>
-                      <h3 class="text-xl font-bold text-near-black mb-2 leading-snug">
+
+                      {/* Title */}
+                      <h3 class="text-xl font-bold text-near-black mb-1 leading-snug">
                         {event.title}
                       </h3>
+
+                      {/* Recurrence pattern (e.g. "Every Tuesday at 8:00am") */}
+                      {recurrenceDisplay && (
+                        <p
+                          class="text-xs font-medium mb-3"
+                          style="color: rgba(28,26,24,0.45);"
+                        >
+                          {recurrenceDisplay}
+                        </p>
+                      )}
+
+                      {/* Next session date */}
                       <p class="text-sm font-medium text-primary mb-4">
-                        {dateDisplay}
+                        Next: {dateDisplay}
                       </p>
+
+                      {/* Description — first paragraph only */}
                       <p
                         class="leading-relaxed text-sm"
                         style="color: rgba(28,26,24,0.75);"
@@ -408,41 +434,18 @@ export default define.page(async function Meetups(ctx) {
                         {event.description.split("\n\n")[0]}
                       </p>
                     </div>
-                    {event.topics && event.topics.length > 0 && (
-                      <div
-                        class="px-6 py-4"
-                        style="border-top: 1px solid #eef5f7; background-color: #f9fbfc;"
-                      >
-                        <p
-                          class="text-xs font-semibold uppercase tracking-widest mb-3"
-                          style="color: rgba(28,26,24,0.4);"
-                        >
-                          What we'll cover
-                        </p>
-                        <ul class="space-y-1.5">
-                          {event.topics.map((topic: string) => (
-                            <li
-                              key={topic}
-                              class="text-sm"
-                              style="color: rgba(28,26,24,0.75);"
-                            >
-                              {topic}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+
                     <div
                       class="px-6 py-4 flex flex-wrap items-center justify-between gap-4"
                       style="border-top: 1px solid #eef5f7;"
                     >
-                      {event.presentedBy && (
-                        <p
-                          class="text-sm"
-                          style="color: rgba(28,26,24,0.5);"
+                      {event.groupSlug && (
+                        <a
+                          href={`/groups/${event.groupSlug}/`}
+                          class="text-sm font-medium text-primary hover:underline"
                         >
-                          Presented by {event.presentedBy}
-                        </p>
+                          View group &rarr;
+                        </a>
                       )}
                       <a
                         href={`/events/${event.slug}`}

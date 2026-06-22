@@ -66,6 +66,107 @@ export const EVENT_SELECT = `
   )
 `;
 
+// Extended select used for community group event listings — includes recurrence_rule
+// from the program and the owning group's slug + name for display.
+export const COMMUNITY_EVENT_SELECT = `
+  id, slug, event_date, duration_minutes, timezone, registration_deadline_days,
+  title, location_type, location_name, location_address, meeting_link,
+  capacity, is_registration_required, organiser_id,
+  poster_image_path, presented_by, sponsored_by, slideshow_url, more_info_path, topics, resources,
+  visibility, status, created_by_id,
+  groups!group_id (slug, name),
+  program:group_programs!program_id (
+    id, slug, title, description, program_type, recurrence_rule,
+    duration_minutes, capacity, registration_deadline_days,
+    poster_image_path, presented_by, sponsored_by, slideshow_url, more_info_path, topics, resources,
+    visibility, status, organiser_id, created_by_id
+  )
+`;
+
+/**
+ * Parse a standard 5-part RRULE string into a short human-readable schedule description.
+ *
+ * Handles the patterns most likely to appear in Future Together programs:
+ *   FREQ=WEEKLY;BYDAY=TU;BYHOUR=8;BYMINUTE=0  → "Every Tuesday at 8:00am"
+ *   FREQ=MONTHLY;BYDAY=3WE                     → "Third Wednesday of every month"
+ *   FREQ=WEEKLY;BYDAY=MO,WE                    → "Every Monday, Wednesday"
+ *
+ * Falls back to the raw RRULE string for any unrecognised pattern.
+ */
+export function formatRecurrenceRule(rrule: string): string {
+  try {
+    const parts = Object.fromEntries(
+      rrule.trim().split(";").map((p) => {
+        const idx = p.indexOf("=");
+        return [p.slice(0, idx), p.slice(idx + 1)] as [string, string];
+      }),
+    );
+    const freq = parts["FREQ"] ?? "";
+    const byday = parts["BYDAY"] ?? "";
+    const byhour = parts["BYHOUR"];
+    const byminute = parts["BYMINUTE"];
+
+    const DAY: Record<string, string> = {
+      MO: "Monday",
+      TU: "Tuesday",
+      WE: "Wednesday",
+      TH: "Thursday",
+      FR: "Friday",
+      SA: "Saturday",
+      SU: "Sunday",
+    };
+    const ORDINAL = ["zeroth", "first", "second", "third", "fourth", "fifth"];
+
+    // Optional time suffix — only included when BYHOUR is present
+    let time = "";
+    if (byhour !== undefined) {
+      const h = parseInt(byhour, 10);
+      const m = byminute ? parseInt(byminute, 10) : 0;
+      const period = h >= 12 ? "pm" : "am";
+      const h12 = h === 0 ? 12 : h > 12 ? h - 12 : h;
+      const mStr = m > 0 ? `:${m.toString().padStart(2, "0")}` : "";
+      time = ` at ${h12}${mStr}${period}`;
+    }
+
+    if (freq === "WEEKLY" && byday) {
+      const days = byday.split(",").map((d) => {
+        // nth-weekday within month encoded in weekly rule (e.g. 1MO)
+        const nth = d.match(/^(-?\d+)([A-Z]{2})$/);
+        if (nth) {
+          const n = parseInt(nth[1], 10);
+          const label = n === -1 ? "last" : (ORDINAL[n] ?? `${n}th`);
+          return `${label} ${DAY[nth[2]] ?? nth[2]}`;
+        }
+        return DAY[d] ?? d;
+      });
+      return `Every ${days.join(", ")}${time}`;
+    }
+
+    if (freq === "MONTHLY") {
+      if (byday) {
+        const nth = byday.match(/^(-?\d+)([A-Z]{2})$/);
+        if (nth) {
+          const n = parseInt(nth[1], 10);
+          const label = n === -1
+            ? "Last"
+            : (ORDINAL[n]
+              ? ORDINAL[n].charAt(0).toUpperCase() + ORDINAL[n].slice(1)
+              : `${n}th`);
+          return `${label} ${DAY[nth[2]] ?? nth[2]} of every month${time}`;
+        }
+      }
+      return `Monthly${time}`;
+    }
+
+    if (freq === "WEEKLY") return `Weekly${time}`;
+    if (freq === "DAILY") return `Daily${time}`;
+
+    return rrule; // unrecognised — show raw
+  } catch {
+    return rrule;
+  }
+}
+
 export function rowToEventConfig(row: Record<string, unknown>): EventConfig {
   const p = row.program as Record<string, unknown>;
   return {
@@ -273,35 +374,63 @@ export async function getPastRecurringEvents(
 }
 
 /**
- * Upcoming recurring events from community groups (i.e. non-ft-global groups).
+ * Upcoming recurring events from community groups (i.e. non-ft-global groups)
+ * for the "Community Groups" section on /meetups.
  *
  * Filters:
  *   - event_date > now (upcoming only)
  *   - programType === "recurring" (recurring programs only)
  *   - slug !== excludeSlug (excludes the ft-global recurring meetup,
  *     identified by its program slug e.g. "discuss-our-future")
- *   - Results capped at `limit` (typically 3)
  *
- * Shown in the "Community Groups" section on /meetups — other recurring
- * meetup programs run by non-global Future Together groups.
+ * Deduplication: only the NEXT upcoming event per program is kept —
+ * recurring programs generate many instances but we show just one card.
+ *
+ * Result is capped at `limit` unique programs (e.g. 6), ordered by
+ * the date of each program's next upcoming event.
+ *
+ * Returns CommunityGroupEvent which includes groupName, groupSlug,
+ * and recurrenceRule for display (e.g. "Every Tuesday at 8:00am").
  */
 export async function getUpcomingCommunityRecurringEvents(
   excludeSlug: string,
   limit: number,
   state: State,
-): Promise<EventConfig[]> {
+): Promise<CommunityGroupEvent[]> {
   try {
     const now = nowAsNaiveLocal("Australia/Sydney");
     const { data, error } = await state.supabaseClient
-      .from("group_events").select(EVENT_SELECT).gt("event_date", now).order(
-        "event_date",
-        { ascending: true },
-      );
+      .from("group_events")
+      .select(COMMUNITY_EVENT_SELECT)
+      .gt("event_date", now)
+      .order("event_date", { ascending: true });
     if (error || !data) return [];
-    return (data as Record<string, unknown>[])
-      .map((row) => rowToEventConfig(row) as EventConfig)
-      .filter((e) => e.programType === "recurring" && e.slug !== excludeSlug)
-      .slice(0, limit);
+
+    const seen = new Set<string>();
+    const results: CommunityGroupEvent[] = [];
+
+    for (const row of data as Record<string, unknown>[]) {
+      const base = rowToEventConfig(row);
+      if (base.programType !== "recurring" || base.slug === excludeSlug) {
+        continue;
+      }
+      // One card per program — skip later instances of the same program
+      if (seen.has(base.programId)) continue;
+      seen.add(base.programId);
+
+      const grp = row.groups as { slug: string; name: string } | null;
+      const prog = row.program as Record<string, unknown>;
+      results.push({
+        ...base,
+        groupName: grp?.name ?? "",
+        groupSlug: grp?.slug ?? "",
+        recurrenceRule: (prog.recurrence_rule as string | null) ?? null,
+      });
+
+      if (results.length >= limit) break;
+    }
+
+    return results;
   } catch {
     return [];
   }
@@ -422,6 +551,17 @@ export interface GroupEventListItem {
   registration_count: number;
   program_id?: string | null;
   program_type?: string | null;
+}
+
+/**
+ * A community (non-ft-global) recurring group event enriched with
+ * the owning group's display name/slug and the program's recurrence rule.
+ * Used for the "Community Groups" upcoming section on /meetups.
+ */
+export interface CommunityGroupEvent extends EventConfig {
+  groupName: string;
+  groupSlug: string;
+  recurrenceRule: string | null;
 }
 
 export interface FeaturedGroupEvent {
