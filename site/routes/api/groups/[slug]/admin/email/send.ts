@@ -191,7 +191,8 @@ export const handler = define.handlers({
     // -------------------------------------------------------------------------
     // Real send — fetch opted-in members and send in batch
     // -------------------------------------------------------------------------
-    const { data: memberships, error: membersError } = await admin
+    const { data: memberships, error: membersError } = await ctx.state
+      .supabaseClient!
       .from("group_memberships")
       .select("profile_id, profiles(name_first, name_last, email)")
       .eq("group_id", groupId)
