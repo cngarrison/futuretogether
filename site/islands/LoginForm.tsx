@@ -87,21 +87,55 @@ export default function LoginForm(
           <div class="flex border-b-2 border-gray-200 mb-6">
             <button
               type="button"
-              onClick={() => setMode("password")}
-              class="pb-2 px-1 mr-6 text-sm font-semibold border-b-2 -mb-px bg-transparent cursor-pointer"
-              style={tabStyle(mode === "password")}
-            >
-              Password
-            </button>
-            <button
-              type="button"
               onClick={() => setMode("magic")}
               class="pb-2 px-1 text-sm font-semibold border-b-2 -mb-px bg-transparent cursor-pointer"
               style={tabStyle(mode === "magic")}
             >
               Email link
             </button>
+            <button
+              type="button"
+              onClick={() => setMode("password")}
+              class="pb-2 px-1 mr-6 text-sm font-semibold border-b-2 -mb-px bg-transparent cursor-pointer"
+              style={tabStyle(mode === "password")}
+            >
+              Password
+            </button>
           </div>
+
+          {/* Magic link form */}
+          {mode === "magic" && (
+            <form method="POST">
+              <input type="hidden" name="mode" value="magic" />
+              <input type="hidden" name="redirect" value={redirect} />
+              <div class="mb-4">
+                <label
+                  for="email-magic"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email-magic"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-base focus:outline-none"
+                />
+              </div>
+              <p class="text-xs text-gray-500 mb-6">
+                We’ll email you a secure link and a 8-digit code — no password
+                needed.
+              </p>
+              <button
+                type="submit"
+                class="w-full py-3 text-white font-semibold bg-primary rounded-lg transition-opacity hover:opacity-90"
+              >
+                Send login link
+              </button>
+            </form>
+          )}
 
           {/* Password form */}
           {mode === "password" && (
@@ -161,40 +195,6 @@ export default function LoginForm(
                 class="w-full py-3 text-white font-semibold bg-primary rounded-lg transition-opacity hover:opacity-90"
               >
                 Sign in
-              </button>
-            </form>
-          )}
-
-          {/* Magic link form */}
-          {mode === "magic" && (
-            <form method="POST">
-              <input type="hidden" name="mode" value="magic" />
-              <input type="hidden" name="redirect" value={redirect} />
-              <div class="mb-4">
-                <label
-                  for="email-magic"
-                  class="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email-magic"
-                  name="email"
-                  required
-                  autocomplete="email"
-                  class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-base focus:outline-none"
-                />
-              </div>
-              <p class="text-xs text-gray-500 mb-6">
-                We’ll email you a secure link and a 8-digit code — no password
-                needed.
-              </p>
-              <button
-                type="submit"
-                class="w-full py-3 text-white font-semibold bg-primary rounded-lg transition-opacity hover:opacity-90"
-              >
-                Send login link
               </button>
             </form>
           )}

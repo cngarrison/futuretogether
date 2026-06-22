@@ -54,13 +54,13 @@ export const handler = define.handlers<LoginData>({
       noAccount: false,
       magicLinkSent: false,
       sentToEmail: "",
-      initialMode: "password",
+      initialMode: "magic",
     });
   },
 
   async POST(ctx) {
     const form = await ctx.req.formData();
-    const mode = (form.get("mode") as string) ?? "password";
+    const mode = (form.get("mode") as string) ?? "magic";
     const email = (form.get("email") as string ?? "").trim();
     const redirect = (form.get("redirect") as string ?? "") || "/admin/";
 
