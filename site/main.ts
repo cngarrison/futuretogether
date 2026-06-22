@@ -8,6 +8,9 @@ import { errorMessage, isProduction } from "@/utils/app.ts";
 // Cron jobs only run in production. Set APP_ENV=production in the Deno Deploy
 // environment variables for the production deployment only — not for staging or
 // branch previews. This prevents reminder emails firing from non-prod environments.
+// TODO: Cron jobs temporarily disabled to unblock production deploy.
+// Re-enable once Deno Deploy cron validation issue is resolved.
+/* 
 if (isProduction()) {
   try {
     // Event reminder cron jobs (Deno Deploy native scheduling)
@@ -46,6 +49,7 @@ if (isProduction()) {
     '[cron] Skipping cron registration — APP_ENV is not "production"',
   );
 }
+ */
 
 export const app = new App<State>();
 
