@@ -63,12 +63,12 @@ export default function LoginForm(
                 type="text"
                 name="code"
                 required
-                maxLength={6}
-                pattern="[0-9]{6}"
+                maxLength={8}
+                pattern="[0-9]{8}"
                 inputMode="numeric"
                 autocomplete="one-time-code"
-                placeholder="000000"
-                class="w-36 px-3 py-2.5 border border-gray-300 rounded-lg text-center text-xl tracking-widest font-mono focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary"
+                placeholder="00000000"
+                class="w-42 px-3 py-2.5 border border-gray-300 rounded-lg text-center text-xl tracking-widest font-mono focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary"
               />
               <button
                 type="submit"

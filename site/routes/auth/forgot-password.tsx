@@ -188,12 +188,12 @@ export default define.page<typeof handler>(function ForgotPasswordPage(
                       name="code"
                       type="text"
                       inputmode="numeric"
-                      pattern="[0-9]{6}"
-                      maxlength={6}
+                      pattern="[0-9]{8}"
+                      maxlength={8}
                       required
                       autocomplete="one-time-code"
-                      placeholder="000000"
-                      class="w-36 rounded-lg border border-gray-300 px-4 py-2.5 text-xl text-center tracking-widest font-mono focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary"
+                      placeholder="00000000"
+                      class="w-42 rounded-lg border border-gray-300 px-4 py-2.5 text-xl text-center tracking-widest font-mono focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary"
                     />
                     <button
                       type="submit"
