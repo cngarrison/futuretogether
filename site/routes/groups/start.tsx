@@ -217,19 +217,35 @@ export default define.page<typeof handler>(function GroupsStart({ data }) {
                   <h2 class="text-2xl font-bold text-near-black mb-4">
                     You'll need an account to apply
                   </h2>
-                  <p class="text-lg leading-relaxed" style="color: rgba(28,26,24,0.7);">
+                  <p
+                    class="text-lg leading-relaxed"
+                    style="color: rgba(28,26,24,0.7);"
+                  >
                     Starting a group is one of the most impactful things you can
-                    do. A free Future Together account lets you manage your group
-                    listing, connect with members, and be part of something bigger.
+                    do. A free Future Together account lets you manage your
+                    group listing, connect with members, and be part of
+                    something bigger.
                   </p>
                 </div>
 
                 {/* Benefits */}
                 <ul class="space-y-4">
                   {[
-                    ["📍", "List your group", "Get your group in front of people in your area who are already looking for connection."],
-                    ["🤝", "Build your community", "Manage members, share resources, and run events — all in one place."],
-                    ["🌏", "Join a movement", "Connect with group leaders across Australia and beyond. You won't be doing this alone."],
+                    [
+                      "📍",
+                      "List your group",
+                      "Get your group in front of people in your area who are already looking for connection.",
+                    ],
+                    [
+                      "🤝",
+                      "Build your community",
+                      "Manage members, share resources, and run events — all in one place.",
+                    ],
+                    [
+                      "🌏",
+                      "Join a movement",
+                      "Connect with group leaders across Australia and beyond. You won't be doing this alone.",
+                    ],
                   ].map(([icon, title, body]) => (
                     <li
                       key={title}
@@ -239,7 +255,12 @@ export default define.page<typeof handler>(function GroupsStart({ data }) {
                       <span class="text-2xl">{icon}</span>
                       <div>
                         <p class="font-semibold text-near-black">{title}</p>
-                        <p class="text-sm mt-0.5" style="color: rgba(28,26,24,0.65);">{body}</p>
+                        <p
+                          class="text-sm mt-0.5"
+                          style="color: rgba(28,26,24,0.65);"
+                        >
+                          {body}
+                        </p>
                       </div>
                     </li>
                   ))}
@@ -262,9 +283,13 @@ export default define.page<typeof handler>(function GroupsStart({ data }) {
                   </a>
                 </div>
 
-                <p class="text-center text-sm" style="color: rgba(28,26,24,0.45);">
+                <p
+                  class="text-center text-sm"
+                  style="color: rgba(28,26,24,0.45);"
+                >
                   Already running a group?{" "}
-                  <a href="/groups" class="underline">Browse existing groups</a>{" "}
+                  <a href="/groups" class="underline">Browse existing groups</a>
+                  {" "}
                   to make sure there isn't one for your area already.
                 </p>
               </div>

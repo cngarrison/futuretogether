@@ -15,9 +15,9 @@
 import { define } from "@/utils.ts";
 import { cancelGroupEvent } from "@/utils/db/group-events.ts";
 import {
+  type AuditActorRole,
   logAdminAction,
   resolvePlatformRole,
-  type AuditActorRole,
 } from "@/utils/db/audit-log.ts";
 
 export const handler = define.handlers({

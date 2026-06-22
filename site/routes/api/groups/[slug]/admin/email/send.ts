@@ -1,8 +1,8 @@
 import { define } from "@/utils.ts";
 import {
+  type AuditActorRole,
   logAdminAction,
   resolvePlatformRole,
-  type AuditActorRole,
 } from "@/utils/db/audit-log.ts";
 import { marked } from "marked";
 import {
@@ -260,7 +260,12 @@ export const handler = define.handlers({
       resource_id: sendId ?? undefined,
       group_id: groupId,
       resource_slug: gr.slug,
-      metadata: { subject: subjectTrimmed, sent, failed, total: members.length },
+      metadata: {
+        subject: subjectTrimmed,
+        sent,
+        failed,
+        total: members.length,
+      },
     });
 
     return Response.json({ sent, failed, total: members.length, sendId });

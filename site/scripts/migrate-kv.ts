@@ -34,7 +34,13 @@ import { parseArgs } from "@std/cli";
 // ---------------------------------------------------------------------------
 
 const args = parseArgs(Deno.args, {
-  boolean: ["dry-run", "skip-members", "skip-registrations", "skip-broadcasts", "skip-staff-log"],
+  boolean: [
+    "dry-run",
+    "skip-members",
+    "skip-registrations",
+    "skip-broadcasts",
+    "skip-staff-log",
+  ],
   string: ["env"],
   default: { env: "local" },
 });
@@ -700,7 +706,10 @@ if (!skipStaffLog) {
     );
     stats.staffLog.inserted = entries.length;
   } else {
-    const outPath = new URL("../../playground/staff-log-archive.txt", import.meta.url);
+    const outPath = new URL(
+      "../../playground/staff-log-archive.txt",
+      import.meta.url,
+    );
     const lines = entries.map((e) => e.message).join("\n") + "\n";
     await Deno.writeTextFile(outPath, lines);
     console.log(`  Written to ${outPath.pathname}`);

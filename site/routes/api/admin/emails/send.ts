@@ -160,7 +160,11 @@ export const handler = define.handlers({
         actor_role: await resolvePlatformRole(ctx.state.user!.id),
         action: "email.sent",
         resource_type: "email",
-        metadata: { subject: subjectTrimmed, test_only: true, to: testConfig.to },
+        metadata: {
+          subject: subjectTrimmed,
+          test_only: true,
+          to: testConfig.to,
+        },
       });
 
       return new Response(

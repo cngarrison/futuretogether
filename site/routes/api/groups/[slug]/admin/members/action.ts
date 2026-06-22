@@ -5,9 +5,9 @@ import {
   updateMemberRole,
 } from "@/utils/db/group-members.ts";
 import {
+  type AuditActorRole,
   logAdminAction,
   resolvePlatformRole,
-  type AuditActorRole,
 } from "@/utils/db/audit-log.ts";
 
 export const handler = define.handlers({

@@ -82,7 +82,8 @@ export const handler = define.handlers<PageData>({
           return new Response(null, {
             status: 302,
             headers: {
-              Location: `/groups/${group.slug}/admin/events/${prog.id}/${url.search}`,
+              Location:
+                `/groups/${group.slug}/admin/events/${prog.id}/${url.search}`,
             },
           });
         }

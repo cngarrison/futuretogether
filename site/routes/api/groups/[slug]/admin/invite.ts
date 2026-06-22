@@ -1,9 +1,9 @@
 import { define } from "@/utils.ts";
 import { generateInviteLink, sendInviteEmail } from "@/utils/db/groups.ts";
 import {
+  type AuditActorRole,
   logAdminAction,
   resolvePlatformRole,
-  type AuditActorRole,
 } from "@/utils/db/audit-log.ts";
 
 export const handler = define.handlers({

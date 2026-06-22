@@ -2,9 +2,9 @@ import { define } from "@/utils.ts";
 import { getGroupProgramById } from "@/utils/db/group-programs.ts";
 import { generateRecurringInstancesForProgram } from "@/utils/cron.ts";
 import {
+  type AuditActorRole,
   logAdminAction,
   resolvePlatformRole,
-  type AuditActorRole,
 } from "@/utils/db/audit-log.ts";
 
 /**

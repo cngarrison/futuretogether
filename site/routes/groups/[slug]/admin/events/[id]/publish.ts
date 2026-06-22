@@ -8,9 +8,9 @@ import {
   publishGroupProgram,
 } from "@/utils/db/group-programs.ts";
 import {
+  type AuditActorRole,
   logAdminAction,
   resolvePlatformRole,
-  type AuditActorRole,
 } from "@/utils/db/audit-log.ts";
 
 export const handler = define.handlers({

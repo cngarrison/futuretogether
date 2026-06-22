@@ -64,9 +64,11 @@ export async function loadMarkdown(filePath: string): Promise<MarkdownFile> {
     }
     raw = await res.text();
   } else {
-    // Resolve relative to this module so CWD doesn't matter.
-    const url = new URL(`../${filePath}`, import.meta.url);
-    raw = await Deno.readTextFile(url);
+    // Resolve relative to CWD (always the site/ root in both dev and prod).
+    // NOTE: Do NOT use import.meta.url here — after Vite bundling, that points
+    // to _fresh/server/server-entry.mjs, so '../' would resolve inside _fresh/
+    // instead of site/, causing NotFound errors in production.
+    raw = await Deno.readTextFile(`${Deno.cwd()}/${filePath}`);
   }
 
   // Parse YAML frontmatter if present.

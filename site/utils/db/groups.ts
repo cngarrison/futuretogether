@@ -129,12 +129,45 @@ export async function resolveGroupCoverImage(
 // Member count helper
 // ---------------------------------------------------------------------------
 
+/**
+ * Returns the active member count for a group.
+ *
+ * Uses the admin client because `group_memberships` has no public_read RLS
+ * policy — exposing individual membership rows to `anon` would allow anyone
+ * to enumerate which profiles belong to which group, including private groups.
+ * A count integer is safe to expose publicly; raw membership rows are not.
+ *
+ * NOTE — private groups: if a group's `visibility` is 'private', the calling
+ * code (getPublicGroups / getGroupBySlug) already excludes it from results
+ * before this function is reached, so private group member counts are never
+ * surfaced to unauthenticated users.
+ *
+ * FUTURE — Option B (preferred at scale): replace this with a
+ * SECURITY DEFINER Postgres function that returns only the count integer,
+ * removing the need for an admin client here entirely:
+ *
+ *   CREATE OR REPLACE FUNCTION get_group_member_count(p_group_id uuid)
+ *   RETURNS integer LANGUAGE sql SECURITY DEFINER SET search_path = public AS $$
+ *     SELECT count(*)::integer FROM group_memberships
+ *     WHERE group_id = p_group_id AND status = 'active';
+ *   $$;
+ *
+ * App call would become:
+ *   const { data } = await db.rpc('get_group_member_count', { p_group_id: groupId });
+ *   return (data as number) ?? 0;
+ *
+ * This grants anon only a single integer — no row-level data — and avoids
+ * burning an admin connection per group per page load.
+ */
 export async function getGroupMemberCount(
   groupId: string,
-  db: SupabaseClient,
+  _db: SupabaseClient, // retained for API compatibility and testing
 ): Promise<number> {
   try {
-    const { count, error } = await db
+    // Admin client required: anon role has no SELECT on group_memberships.
+    // See JSDoc above for context and future migration path (Option B).
+    const admin = createAdminClient();
+    const { count, error } = await admin
       .from("group_memberships")
       .select("*", { count: "exact", head: true })
       .eq("group_id", groupId)
