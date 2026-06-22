@@ -24,6 +24,34 @@ export function getSessionFromRequest(req: Request): string | undefined {
 }
 
 /**
+ * Extract the Supabase refresh token from the 'sb-refresh-token' cookie.
+ * Returns undefined if the cookie is absent.
+ */
+export function getRefreshTokenFromRequest(req: Request): string | undefined {
+  const cookies = getCookies(req.headers);
+  return cookies["sb-refresh-token"] || undefined;
+}
+
+/**
+ * Exchange a refresh token for a new Supabase session.
+ * Returns the new Session on success, null if the refresh token is invalid or expired.
+ */
+export async function refreshSessionFromToken(
+  refreshToken: string,
+): Promise<import("@supabase/supabase-js").Session | null> {
+  try {
+    const client = createSupabaseClient();
+    const { data, error } = await client.auth.refreshSession({
+      refresh_token: refreshToken,
+    });
+    if (error || !data.session) return null;
+    return data.session;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Validate an access token by calling Supabase auth.getUser().
  * Returns the User on success, null on any error (expired, invalid, etc.).
  */

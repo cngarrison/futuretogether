@@ -1,6 +1,5 @@
 import { define } from "@/utils.ts";
-import { setCookie } from "@std/http";
-import { isLocalDev } from "@/utils/app.ts";
+import { setSessionCookies } from "@/utils/auth.ts";
 import { createSupabaseClient } from "@/utils/supabase.ts";
 
 /**
@@ -17,6 +16,7 @@ interface SessionBody {
   access_token: string;
   refresh_token: string;
   expires_in?: number;
+  remember_me?: boolean;
 }
 
 export const handler = define.handlers({
@@ -28,7 +28,7 @@ export const handler = define.handlers({
       return json({ error: "Invalid JSON" }, 400);
     }
 
-    const { access_token, refresh_token, expires_in } = body;
+    const { access_token, refresh_token, expires_in, remember_me } = body;
 
     if (!access_token || !refresh_token) {
       return json({ error: "Missing tokens" }, 400);
@@ -42,28 +42,16 @@ export const handler = define.handlers({
       return json({ error: "Invalid or expired token" }, 401);
     }
 
-    const secure = !isLocalDev();
     const headers = new Headers({ "Content-Type": "application/json" });
+    const session = {
+      access_token,
+      refresh_token,
+      expires_in: expires_in ?? 3600,
+      token_type: "bearer",
+      user: data.user,
+    } as import("@supabase/supabase-js").Session;
 
-    setCookie(headers, {
-      name: "sb-access-token",
-      value: access_token,
-      path: "/",
-      httpOnly: true,
-      secure,
-      sameSite: "Lax",
-      maxAge: expires_in ?? 3600,
-    });
-
-    setCookie(headers, {
-      name: "sb-refresh-token",
-      value: refresh_token,
-      path: "/",
-      httpOnly: true,
-      secure,
-      sameSite: "Lax",
-      maxAge: 7 * 24 * 3600,
-    });
+    setSessionCookies(headers, session, remember_me ?? false);
 
     return new Response(JSON.stringify({ ok: true }), { status: 200, headers });
   },
