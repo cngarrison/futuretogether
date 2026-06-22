@@ -194,7 +194,7 @@ export const handler = define.handlers({
     const { data: memberships, error: membersError } = await ctx.state
       .supabaseClient!
       .from("group_memberships")
-      .select("profile_id, profiles(name_first, name_last, email)")
+      .select("profile_id, profiles!profile_id(name_first, name_last, email)")
       .eq("group_id", groupId)
       .eq("status", "active")
       .eq("email_opt_in", true);
