@@ -172,6 +172,17 @@ export async function getAllEvents(state: State): Promise<EventConfig[]> {
   }
 }
 
+/**
+ * Upcoming special (one-off) events for the /meetups page.
+ *
+ * Filters:
+ *   - event_date > now (upcoming only)
+ *   - programType === "one-off" (excludes all recurring programs)
+ *   - slug !== excludeSlug (excludes the main recurring meetup, e.g. "discuss-our-future")
+ *
+ * Shown in the "Special Events" section — focused, one-time sessions
+ * that sit alongside the regular monthly meetup.
+ */
 export async function getUpcomingSpecialEvents(
   excludeSlug: string,
   state: State,
@@ -186,12 +197,22 @@ export async function getUpcomingSpecialEvents(
     if (error || !data) return [];
     return (data as Record<string, unknown>[])
       .map((row) => rowToEventConfig(row) as EventConfig)
-      .filter((e) => e.slug !== excludeSlug);
+      .filter((e) => e.slug !== excludeSlug && e.programType === "one-off");
   } catch {
     return [];
   }
 }
 
+/**
+ * Past special (one-off) events for the /meetups page.
+ *
+ * Filters:
+ *   - event_date <= now (past only)
+ *   - programType === "one-off" (excludes all recurring programs)
+ *   - slug !== excludeSlug (excludes the main recurring meetup, e.g. "discuss-our-future")
+ *
+ * Shown in the "Past Events → Special Events" sub-section.
+ */
 export async function getPastSpecialEvents(
   excludeSlug: string,
   state: State,
@@ -206,12 +227,23 @@ export async function getPastSpecialEvents(
     if (error || !data) return [];
     return (data as Record<string, unknown>[])
       .map((row) => rowToEventConfig(row) as EventConfig)
-      .filter((e) => e.slug !== excludeSlug);
+      .filter((e) => e.slug !== excludeSlug && e.programType === "one-off");
   } catch {
     return [];
   }
 }
 
+/**
+ * Past sessions of the primary recurring meetup (e.g. "Discuss Our Future").
+ *
+ * Filters:
+ *   - event_date <= now (past only)
+ *   - slug === slug (matches only the named recurring program)
+ *
+ * Returns the `limit` most-recent sessions plus total count and earliest date
+ * so the page can show a "…plus N earlier sessions since [month]" note.
+ * Used in "Past Events → Monthly Sessions" on /meetups.
+ */
 export async function getPastRecurringEvents(
   slug: string,
   limit: number,
@@ -237,6 +269,75 @@ export async function getPastRecurringEvents(
     };
   } catch {
     return { events: [], total: 0, earliestDate: null };
+  }
+}
+
+/**
+ * Upcoming recurring events from community groups (i.e. non-ft-global groups).
+ *
+ * Filters:
+ *   - event_date > now (upcoming only)
+ *   - programType === "recurring" (recurring programs only)
+ *   - slug !== excludeSlug (excludes the ft-global recurring meetup,
+ *     identified by its program slug e.g. "discuss-our-future")
+ *   - Results capped at `limit` (typically 3)
+ *
+ * Shown in the "Community Groups" section on /meetups — other recurring
+ * meetup programs run by non-global Future Together groups.
+ */
+export async function getUpcomingCommunityRecurringEvents(
+  excludeSlug: string,
+  limit: number,
+  state: State,
+): Promise<EventConfig[]> {
+  try {
+    const now = nowAsNaiveLocal("Australia/Sydney");
+    const { data, error } = await state.supabaseClient
+      .from("group_events").select(EVENT_SELECT).gt("event_date", now).order(
+        "event_date",
+        { ascending: true },
+      );
+    if (error || !data) return [];
+    return (data as Record<string, unknown>[])
+      .map((row) => rowToEventConfig(row) as EventConfig)
+      .filter((e) => e.programType === "recurring" && e.slug !== excludeSlug)
+      .slice(0, limit);
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Past recurring events from community groups (i.e. non-ft-global groups).
+ *
+ * Filters:
+ *   - event_date <= now (past only)
+ *   - programType === "recurring" (recurring programs only)
+ *   - slug !== excludeSlug (excludes the ft-global recurring meetup,
+ *     identified by its program slug e.g. "discuss-our-future")
+ *
+ * Returns the `limit` most-recent sessions plus a total count.
+ * Shown in "Past Events → Community Group Sessions" on /meetups.
+ */
+export async function getPastCommunityRecurringEvents(
+  excludeSlug: string,
+  limit: number,
+  state: State,
+): Promise<{ events: EventConfig[]; total: number }> {
+  try {
+    const now = nowAsNaiveLocal("Australia/Sydney");
+    const { data, error } = await state.supabaseClient
+      .from("group_events").select(EVENT_SELECT).lte("event_date", now).order(
+        "event_date",
+        { ascending: false },
+      );
+    if (error || !data) return { events: [], total: 0 };
+    const all = (data as Record<string, unknown>[])
+      .map((row) => rowToEventConfig(row) as EventConfig)
+      .filter((e) => e.programType === "recurring" && e.slug !== excludeSlug);
+    return { events: all.slice(0, limit), total: all.length };
+  } catch {
+    return { events: [], total: 0 };
   }
 }
 
