@@ -34,7 +34,7 @@ if (isProduction()) {
     // @ts-ignore Deno.cron is unstable — enabled via deno.json "unstable": ["cron"]
     Deno.cron(
       "generate-recurring-instances",
-      "0 2 * * SUN", // Every Sunday at 02:00 UTC
+      "0 2 * * 0", // Every Sunday at 02:00 UTC
       {
         backoffSchedule: [1000, 10000, 60000],
       },
