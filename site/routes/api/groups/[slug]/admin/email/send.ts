@@ -52,6 +52,24 @@ async function generateUnsubToken(
 }
 
 // ---------------------------------------------------------------------------
+// Variable interpolation
+// ---------------------------------------------------------------------------
+
+/** Replace {{varName}} tokens in text. Unrecognised vars are left as-is. */
+function interpolate(text: string, vars: Record<string, string>): string {
+  return text.replace(/\{\{(\w+)\}\}/g, (_, key) => vars[key] ?? `{{${key}}}`);
+}
+
+function memberVars(
+  profile: { name_first: string | null; name_last: string | null; email: string },
+): Record<string, string> {
+  const firstName = profile.name_first?.trim() || "member";
+  const lastName = profile.name_last?.trim() || "";
+  const fullName = lastName ? `${firstName} ${lastName}` : firstName;
+  return { firstName, lastName, fullName, email: profile.email };
+}
+
+// ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
@@ -121,7 +139,14 @@ export const handler = define.handlers({
     if (testOnly) {
       //const token = await generateUnsubToken(adminProfileId, groupId);
       //const unsubUrl = `${SITE_URL}/api/groups/${slug}/unsubscribe?token=${token}`;
-      const contentHtml = await marked.parse(markdownTrimmed);
+      const adminProfile = ctx.state.profile;
+      const testVars = memberVars({
+        name_first: adminProfile?.name_first ?? "Test",
+        name_last: adminProfile?.name_last ?? "Member",
+        email: adminEmail,
+      });
+      const interpolated = interpolate(markdownTrimmed, testVars);
+      const contentHtml = await marked.parse(interpolated);
       const html = buildEmailHtml(contentHtml, subjectTrimmed);
 
       const ok = await sendEmail({
@@ -198,7 +223,12 @@ export const handler = define.handlers({
         const token = await generateUnsubToken(profileId, groupId);
         const unsubUrl =
           `${SITE_URL}/api/groups/${slug}/unsubscribe?token=${token}`;
-        const contentHtml = await marked.parse(markdownTrimmed);
+        const interpolated = interpolate(markdownTrimmed, memberVars({
+          name_first: m.profiles?.name_first ?? null,
+          name_last: m.profiles?.name_last ?? null,
+          email,
+        }));
+        const contentHtml = await marked.parse(interpolated);
         return {
           from: `${gr.name} <${fromAddress}>`,
           reply_to: adminEmail,
