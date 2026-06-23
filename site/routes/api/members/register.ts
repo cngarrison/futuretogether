@@ -29,10 +29,21 @@ export const handler = define.handlers({
         interests,
         wantsToOrganise,
         ageConfirmed,
+        hp_website,
         turnstile_token,
         group_id,
         next: nextUrl,
       } = body;
+
+      // Honeypot check — real users never fill this field; bots usually do.
+      // Return a fake success so bots don’t know they’ve been caught.
+      if (hp_website) {
+        console.warn("Honeypot triggered — discarding signup from bot");
+        return new Response(
+          JSON.stringify({ success: true }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        );
+      }
 
       // Turnstile verification (no-op if FT_TURNSTILE_SECRET_KEY is not set)
       const turnstileValid = await verifyTurnstileToken(turnstile_token ?? "");

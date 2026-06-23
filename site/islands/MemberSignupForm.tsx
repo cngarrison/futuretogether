@@ -66,6 +66,7 @@ export default function MemberSignupForm(
   const errorMessage = useSignal("");
   const turnstileToken = useSignal("");
   const turnstileError = useSignal("");
+  const honeypot = useSignal("");
 
   function toggleInterest(interest: string) {
     const current = selectedInterests.value;
@@ -111,6 +112,7 @@ export default function MemberSignupForm(
           interests: selectedInterests.value,
           wantsToOrganise: wantsToOrganise.value,
           ageConfirmed: ageConfirmed.value,
+          hp_website: honeypot.value || undefined,
           turnstile_token: turnstileToken.value || undefined,
           group_id: groupId || undefined,
           next: nextUrl || undefined,
@@ -377,6 +379,25 @@ export default function MemberSignupForm(
             </p>
           </div>
         </label>
+
+        {/* Honeypot — visually hidden, only bots fill this in */}
+        <div
+          aria-hidden="true"
+          style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;pointer-events:none;"
+          tabIndex={-1}
+        >
+          <label for="hp_website">Website</label>
+          <input
+            type="text"
+            id="hp_website"
+            name="hp_website"
+            tabIndex={-1}
+            autocomplete="off"
+            value={honeypot.value}
+            onInput={(e) =>
+              honeypot.value = (e.target as HTMLInputElement).value}
+          />
+        </div>
 
         {/* Turnstile */}
         {turnstileSiteKey && (
