@@ -2,6 +2,7 @@ import { Head } from "fresh/runtime";
 import { define } from "@/utils.ts";
 import type { GroupSummary } from "@/utils/db/groups.ts";
 import { getPublicGroups } from "@/utils/db/groups.ts";
+import { formatMemberCount } from "@/utils/format.ts";
 
 export default define.page(async function GroupsIndex(ctx) {
   const groups = await getPublicGroups(ctx.state);
@@ -155,9 +156,7 @@ function GroupCard({ group }: { group: GroupSummary }) {
             class="text-xs font-medium px-2 py-0.5 rounded-full"
             style="background-color: #eef5f7; color: #1a5f6e;"
           >
-            {group.member_count === 1
-              ? "1 member"
-              : `${group.member_count} members`}
+            {formatMemberCount(group.member_count)}
           </span>
         </div>
 
