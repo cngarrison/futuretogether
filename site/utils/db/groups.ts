@@ -339,7 +339,7 @@ export async function createGroupApplication(
         location_suburb: app.location_suburb ?? null,
         location_region: app.location_region ?? null,
         website_url: app.website_url ?? null,
-        tier: app.tier_suggestion ?? null,
+        tier: app.tier_suggestion || null,
         tagline: app.tagline,
         description: app.description,
         status: "pending",
@@ -813,7 +813,7 @@ export async function generateInviteLink(
   state: State,
 ): Promise<{ url: string | null; error: string | null }> {
   try {
-    const db = state.supabaseClient;
+    const db = createAdminClient();
     const tokenBytes = new Uint8Array(32);
     crypto.getRandomValues(tokenBytes);
     const token = Array.from(tokenBytes).map((b) =>
@@ -863,7 +863,7 @@ export async function redeemInviteToken(
   state: State,
 ): Promise<{ groupId: string | null; error: string | null }> {
   try {
-    const db = state.supabaseClient;
+    const db = createAdminClient();
     const { data, error } = await db.from("group_invites").select(
       "id, group_id, expires_at, used_at",
     ).eq("token", token).maybeSingle();
