@@ -153,7 +153,7 @@ export const handler = define.handlers({
         to: adminEmail,
         subject: `[TEST] ${subjectTrimmed}`,
         html,
-        replyTo: adminEmail,
+        replyTo: fromAddress,
       });
 
       if (!ok) {
@@ -232,7 +232,7 @@ export const handler = define.handlers({
         const contentHtml = await marked.parse(interpolated);
         return {
           from: `${gr.name} <${fromAddress}>`,
-          reply_to: adminEmail,
+          reply_to: fromAddress,
           to: email,
           subject: subjectTrimmed,
           html: buildEmailHtml(contentHtml, subjectTrimmed),
