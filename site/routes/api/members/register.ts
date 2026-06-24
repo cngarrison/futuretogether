@@ -133,6 +133,7 @@ export const handler = define.handlers({
             heard_from: heardFrom || null,
             interests: Array.isArray(interests) ? interests : [],
             wants_to_organise: !!wantsToOrganise,
+            source_form: "join-form",
             // group_id is read by handle_new_auth_user() to auto-join the user
             // to a secondary group on account creation. Omit if not provided.
             ...(group_id && typeof group_id === "string" ? { group_id } : {}),
