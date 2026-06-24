@@ -36,7 +36,7 @@
               <h2 style="margin:0 0 16px;font-size:22px;font-weight:700;color:#1a5f6e;">Your sign-in link</h2>
               <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c1a18;">Follow the link below to sign in to Future Together. This link expires shortly and can only be used once.</p>
               <p style="margin:24px 0;">
-                <a href="{{ .ConfirmationURL }}" style="display:inline-block;background-color:#c4853a;color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:6px;font-weight:600;font-size:15px;">Sign in</a>
+                <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=magiclink" style="display:inline-block;background-color:#c4853a;color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:6px;font-weight:600;font-size:15px;">Sign in</a>
               </p>
               <h2 style="margin:0 0 16px;font-size:22px;font-weight:700;color:#1a5f6e;">Your verification code</h2>
               <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#1c1a18;">Alternatively, use the code below to verify your identity. It expires shortly and can only be used once.</p>

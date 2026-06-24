@@ -16,9 +16,12 @@ import CallbackHandler from "@/islands/CallbackHandler.tsx";
  *    island which reads the hash client-side, POSTs tokens to /api/auth/session,
  *    then redirects to `next`.
  *
- * 2. OTP token_hash (query param) — used if the Supabase email template is
- *    customised to send ?token_hash=...&type=... instead of the default redirect.
- *    Handled entirely server-side via verifyOtp().
+ * 2. OTP token_hash (query param) — LEGACY PATH.
+ *    Email templates previously used {{ .ConfirmationURL }} which Supabase
+ *    resolved to a ?token_hash=...&type=... redirect here.
+ *    Templates now use {{ .TokenHash }} to link directly to /auth/confirm,
+ *    which defers verification to a user button click (scanner-safe).
+ *    This branch is kept as a fallback; new flows go through /auth/confirm.
  *
  * 3. PKCE code exchange — future OAuth flows.
  *    Handled server-side via exchangeCodeForSession().
@@ -30,33 +33,23 @@ export const handler = define.handlers({
     const next = url.searchParams.get("next") ?? "/";
 
     // ------------------------------------------------------------------
-    // Flow 2: OTP token_hash (server-side)
+    // Flow 2: OTP token_hash — redirect to /auth/confirm
     // ------------------------------------------------------------------
+    // New email templates link directly to /auth/confirm, so this path only
+    // handles old-format links that still arrive here via /auth/callback.
+    // We redirect rather than auto-verifying to protect against scanners.
     const tokenHash = url.searchParams.get("token_hash");
     const type = url.searchParams.get("type");
 
     if (tokenHash && type) {
-      const supabase = createSupabaseClient();
-      const { data, error } = await supabase.auth.verifyOtp({
-        token_hash: tokenHash,
-        type: type as Parameters<typeof supabase.auth.verifyOtp>[0]["type"],
+      const confirmUrl = new URL("/auth/confirm", ctx.req.url);
+      confirmUrl.searchParams.set("token_hash", tokenHash);
+      confirmUrl.searchParams.set("type", type);
+      if (next !== "/") confirmUrl.searchParams.set("next", next);
+      return new Response(null, {
+        status: 302,
+        headers: { Location: confirmUrl.toString() },
       });
-
-      if (error || !data.session) {
-        console.error(
-          "[auth/callback] OTP verification failed:",
-          error?.message,
-        );
-        return new Response(null, {
-          status: 302,
-          headers: { Location: "/login?error=auth_failed" },
-        });
-      }
-
-      const headers = new Headers();
-      setSessionCookies(headers, data.session, false);
-      headers.set("Location", next);
-      return new Response(null, { status: 302, headers });
     }
 
     // ------------------------------------------------------------------

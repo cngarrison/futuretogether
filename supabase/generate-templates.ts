@@ -133,7 +133,7 @@ const TEMPLATES: Template[] = [
               <p ${P}>You've been invited to create a Future Together account.</p>
               <p ${P}>Follow the link below to accept your invitation and get started.</p>
               <p style="margin:24px 0;">
-                <a href="{{ .ConfirmationURL }}" ${BTN}>Accept invitation</a>
+                <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=invite" ${BTN}>Accept invitation</a>
               </p>
 `,
   },
@@ -147,7 +147,7 @@ const TEMPLATES: Template[] = [
               <h2 ${H2}>Confirm your email address</h2>
               <p ${P}>Thanks for signing up. Follow the link below to confirm your email address and finish creating your account.</p>
               <p style="margin:24px 0;">
-                <a href="{{ .ConfirmationURL }}" ${BTN}>Confirm email address</a>
+                <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=signup" ${BTN}>Confirm email address</a>
               </p>
 `,
   },
@@ -161,7 +161,7 @@ const TEMPLATES: Template[] = [
               <h2 ${H2}>Reset your password</h2>
               <p ${P}>We received a request to reset your password. Follow the link below to choose a new one.</p>
               <p style="margin:24px 0;">
-                <a href="{{ .ConfirmationURL }}" ${BTN}>Reset password</a>
+                <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=recovery" ${BTN}>Reset password</a>
               </p>
               <p ${PSMALL}>If you didn't request this, you can safely ignore this email.</p>
 `,
@@ -176,7 +176,7 @@ const TEMPLATES: Template[] = [
               <h2 ${H2}>Your sign-in link</h2>
               <p ${P}>Follow the link below to sign in to Future Together. This link expires shortly and can only be used once.</p>
               <p style="margin:24px 0;">
-                <a href="{{ .ConfirmationURL }}" ${BTN}>Sign in</a>
+                <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=magiclink" ${BTN}>Sign in</a>
               </p>
               <h2 ${H2}>Your verification code</h2>
               <p ${P}>Alternatively, use the code below to verify your identity. It expires shortly and can only be used once.</p>
