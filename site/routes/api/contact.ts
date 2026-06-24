@@ -1,4 +1,5 @@
-import { FreshContext } from "fresh";
+import { Context } from "fresh";
+import type { State } from "@/utils.ts";
 import {
   buildEmailHtml,
   FROM_EMAIL,
@@ -16,7 +17,7 @@ interface ContactFormData {
   turnstile_token?: string;
 }
 
-export const handler = async (ctx: FreshContext) => {
+export const handler = async (ctx: Context<State>) => {
   if (ctx.req.method !== "POST") {
     return new Response("Method not allowed", { status: 405 });
   }

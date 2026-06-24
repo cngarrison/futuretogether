@@ -1,7 +1,7 @@
-import type { FreshContext } from "fresh";
+import type { Context } from "fresh";
 import type { State } from "@/utils.ts";
 
-export function handleNotFound(ctx: FreshContext<State>) {
+export function handleNotFound(ctx: Context<State>) {
   return ctx.render(<NotFoundPage />, { status: 404 });
 }
 

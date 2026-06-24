@@ -1,7 +1,7 @@
-import type { FreshContext } from "fresh";
+import type { Context } from "fresh";
 import type { State } from "@/utils.ts";
 
-export function handleError(ctx: FreshContext<State>) {
+export function handleError(ctx: Context<State>) {
   // ctx.error is set by Fresh before invoking this handler
   const err = ctx.error as { status?: number } | null;
   const status = err?.status || 500;

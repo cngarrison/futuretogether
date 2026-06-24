@@ -5,6 +5,7 @@ const MIN_AGE_MS = 4_000; // 4 seconds
 /** Maximum age: token expires after 1 hour */
 const MAX_AGE_MS = 60 * 60_000;
 
+// deno-lint-ignore require-await
 async function getKey(secret: string): Promise<CryptoKey> {
   return crypto.subtle.importKey(
     "raw",

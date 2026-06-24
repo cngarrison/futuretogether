@@ -810,7 +810,7 @@ export async function generateInviteLink(
   groupSlug: string,
   createdById: string,
   email: string | undefined,
-  state: State,
+  _state: State,
 ): Promise<{ url: string | null; error: string | null }> {
   try {
     const db = createAdminClient();
@@ -860,7 +860,7 @@ export function sendInviteEmail(
 export async function redeemInviteToken(
   token: string,
   usedById: string,
-  state: State,
+  _state: State,
 ): Promise<{ groupId: string | null; error: string | null }> {
   try {
     const db = createAdminClient();

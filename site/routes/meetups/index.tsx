@@ -439,6 +439,7 @@ export default define.page(async function Meetups(ctx) {
                       <div
                         class="leading-relaxed text-sm prose prose-sm max-w-none"
                         style="color: rgba(28,26,24,0.75);"
+                        // deno-lint-ignore react-no-danger
                         dangerouslySetInnerHTML={{
                           __html: renderMarkdown(
                             event.description.split("\n\n")[0],
