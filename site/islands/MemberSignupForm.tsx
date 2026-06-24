@@ -44,6 +44,8 @@ type Status = "idle" | "submitting" | "success" | "error";
 
 interface Props {
   turnstileSiteKey?: string;
+  /** Signed timing token generated at page render time — verified server-side. */
+  formToken?: string;
   /** UUID of a group to auto-join on account creation (passed from /join?group_id=). */
   groupId?: string;
   /** Post-confirmation redirect path (passed through emailRedirectTo). */
@@ -51,7 +53,7 @@ interface Props {
 }
 
 export default function MemberSignupForm(
-  { turnstileSiteKey, groupId, nextUrl }: Props,
+  { turnstileSiteKey, formToken, groupId, nextUrl }: Props,
 ) {
   const containerRef = useRef<HTMLDivElement>(null);
   const firstName = useSignal("");
@@ -113,6 +115,7 @@ export default function MemberSignupForm(
           wantsToOrganise: wantsToOrganise.value,
           ageConfirmed: ageConfirmed.value,
           hp_website: honeypot.value || undefined,
+          form_token: formToken,
           turnstile_token: turnstileToken.value || undefined,
           group_id: groupId || undefined,
           next: nextUrl || undefined,

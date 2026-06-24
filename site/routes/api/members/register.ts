@@ -14,6 +14,8 @@
 import { define } from "@/utils.ts";
 import { createSupabaseClient } from "@/utils/supabase.ts";
 import { verifyTurnstileToken } from "@/utils/turnstile.ts";
+import { verifyFormToken } from "@/utils/form-token.ts";
+import { checkRateLimit, getClientIp } from "@/utils/rate-limit.ts";
 
 export const handler = define.handlers({
   async POST(ctx) {
@@ -30,6 +32,7 @@ export const handler = define.handlers({
         wantsToOrganise,
         ageConfirmed,
         hp_website,
+        form_token,
         turnstile_token,
         group_id,
         next: nextUrl,
@@ -42,6 +45,30 @@ export const handler = define.handlers({
         return new Response(
           JSON.stringify({ success: true }),
           { status: 200, headers: { "Content-Type": "application/json" } },
+        );
+      }
+
+      // IP rate limit — max 3 signup attempts per hour per IP
+      const clientIp = getClientIp(ctx.req);
+      const allowed = await checkRateLimit(clientIp);
+      if (!allowed) {
+        return new Response(
+          JSON.stringify({
+            error: "Too many signup attempts. Please try again later.",
+          }),
+          { status: 429, headers: { "Content-Type": "application/json" } },
+        );
+      }
+
+      // Timing token — verifies the form was rendered normally and not submitted
+      // by automation that skips the page load entirely
+      const tokenValid = await verifyFormToken(form_token);
+      if (!tokenValid) {
+        return new Response(
+          JSON.stringify({
+            error: "Form verification failed. Please refresh the page and try again.",
+          }),
+          { status: 400, headers: { "Content-Type": "application/json" } },
         );
       }
 

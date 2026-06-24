@@ -3,11 +3,13 @@ import { define } from "@/utils.ts";
 import { getNextAvailableEvent } from "@/utils/db/group-events.ts";
 import MemberSignupForm from "@/islands/MemberSignupForm.tsx";
 import { getTurnstileSiteKey } from "@/utils/turnstile.ts";
+import { generateFormToken } from "@/utils/form-token.ts";
 
 export default define.page(async function Join(props) {
   const groupId = props.url.searchParams.get("group_id") ?? undefined;
   const nextUrl = props.url.searchParams.get("next") ?? "/groups";
   const turnstileSiteKey = getTurnstileSiteKey();
+  const formToken = await generateFormToken() ?? undefined;
   const nextEvent = await getNextAvailableEvent(
     "discuss-our-future",
     props.state,
@@ -99,6 +101,7 @@ export default define.page(async function Join(props) {
               </p>
               <MemberSignupForm
                 turnstileSiteKey={turnstileSiteKey}
+                formToken={formToken}
                 groupId={groupId}
                 nextUrl={nextUrl}
               />
