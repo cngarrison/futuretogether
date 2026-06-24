@@ -2,7 +2,10 @@ import { Head } from "fresh/runtime";
 import { page } from "fresh";
 import { define } from "@/utils.ts";
 import { createSupabaseClient } from "@/utils/supabase.ts";
-import { getTurnstileSiteKey, verifyTurnstileToken } from "@/utils/turnstile.ts";
+import {
+  getTurnstileSiteKey,
+  verifyTurnstileToken,
+} from "@/utils/turnstile.ts";
 import { generateFormToken, verifyFormToken } from "@/utils/form-token.ts";
 import { checkRateLimit, getClientIp } from "@/utils/rate-limit.ts";
 
@@ -52,7 +55,8 @@ export const handler = define.handlers<SignupData>({
     const ageConfirmed = form.get("age_confirmed") === "on";
     const hpWebsite = (form.get("hp_website") as string) ?? "";
     const formTokenValue = (form.get("form_token") as string) ?? "";
-    const turnstileResponse = (form.get("cf-turnstile-response") as string) ?? "";
+    const turnstileResponse = (form.get("cf-turnstile-response") as string) ??
+      "";
 
     const turnstileSiteKey = getTurnstileSiteKey();
 

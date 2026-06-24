@@ -61,7 +61,11 @@ function interpolate(text: string, vars: Record<string, string>): string {
 }
 
 function memberVars(
-  profile: { name_first: string | null; name_last: string | null; email: string },
+  profile: {
+    name_first: string | null;
+    name_last: string | null;
+    email: string;
+  },
 ): Record<string, string> {
   const firstName = profile.name_first?.trim() || "member";
   const lastName = profile.name_last?.trim() || "";
@@ -224,11 +228,14 @@ export const handler = define.handlers({
         const token = await generateUnsubToken(profileId, groupId);
         const unsubUrl =
           `${SITE_URL}/api/groups/${slug}/unsubscribe?token=${token}`;
-        const interpolated = interpolate(markdownTrimmed, memberVars({
-          name_first: m.profiles?.name_first ?? null,
-          name_last: m.profiles?.name_last ?? null,
-          email,
-        }));
+        const interpolated = interpolate(
+          markdownTrimmed,
+          memberVars({
+            name_first: m.profiles?.name_first ?? null,
+            name_last: m.profiles?.name_last ?? null,
+            email,
+          }),
+        );
         const contentHtml = await marked.parse(interpolated);
         return {
           from: `${gr.name} <${fromAddress}>`,

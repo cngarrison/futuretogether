@@ -37,7 +37,9 @@ export async function checkRateLimit(ip: string): Promise<boolean> {
     const key = ["rate_limit", "register", ip];
     const entry = await kv.get<number[]>(key);
     const now = Date.now();
-    const recent = (entry.value ?? []).filter((t) => now - t < WINDOW_MS);
+    const recent = (entry.value ?? []).filter((t: number) =>
+      now - t < WINDOW_MS
+    );
 
     if (recent.length >= MAX_ATTEMPTS) {
       console.warn(

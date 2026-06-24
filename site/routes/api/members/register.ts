@@ -66,7 +66,8 @@ export const handler = define.handlers({
       if (!tokenValid) {
         return new Response(
           JSON.stringify({
-            error: "Form verification failed. Please refresh the page and try again.",
+            error:
+              "Form verification failed. Please refresh the page and try again.",
           }),
           { status: 400, headers: { "Content-Type": "application/json" } },
         );

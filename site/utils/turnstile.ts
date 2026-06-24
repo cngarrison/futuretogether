@@ -18,10 +18,14 @@ export async function verifyTurnstileToken(token: string): Promise<boolean> {
   if (!secretKey) {
     const isDeployed = !!Deno.env.get("DENO_DEPLOYMENT_ID");
     if (isDeployed) {
-      console.error("Turnstile: FT_TURNSTILE_SECRET_KEY not set in deployed environment — rejecting request");
+      console.error(
+        "Turnstile: FT_TURNSTILE_SECRET_KEY not set in deployed environment — rejecting request",
+      );
       return false;
     }
-    console.warn("Turnstile: No secret key configured — skipping verification in local dev");
+    console.warn(
+      "Turnstile: No secret key configured — skipping verification in local dev",
+    );
     return true;
   }
 

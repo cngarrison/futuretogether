@@ -30,7 +30,7 @@
     "**/*.svg",
     "**/qrcode.js"
   ],
-  "include": ["data/events", "data/blog","data/slideshows"],
+  "include": ["data/events", "data/blog", "data/slideshows"],
   "imports": {
     "@/": "./",
     "fresh": "jsr:@fresh/core@^2.3.3",

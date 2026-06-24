@@ -112,9 +112,17 @@ export default define.page(async function Meetups(ctx) {
       // ft-global recurring: most-recent past sessions, capped at RECURRING_PAST_LIMIT
       getPastRecurringEvents(RECURRING_SLUG, RECURRING_PAST_LIMIT, ctx.state),
       // community (non-ft-global) recurring: next upcoming sessions, capped at COMMUNITY_RECURRING_LIMIT
-      getUpcomingCommunityRecurringEvents(RECURRING_SLUG, COMMUNITY_RECURRING_LIMIT, ctx.state),
+      getUpcomingCommunityRecurringEvents(
+        RECURRING_SLUG,
+        COMMUNITY_RECURRING_LIMIT,
+        ctx.state,
+      ),
       // community (non-ft-global) recurring: most-recent past sessions, capped at RECURRING_PAST_LIMIT
-      getPastCommunityRecurringEvents(RECURRING_SLUG, RECURRING_PAST_LIMIT, ctx.state),
+      getPastCommunityRecurringEvents(
+        RECURRING_SLUG,
+        RECURRING_PAST_LIMIT,
+        ctx.state,
+      ),
     ]);
 
   const nextEventDisplay = nextEvent?.date
@@ -696,8 +704,9 @@ export default define.page(async function Meetups(ctx) {
                     style="color: rgba(28,26,24,0.45);"
                   >
                     &hellip;plus{" "}
-                    {pastCommunityRecurring.total - RECURRING_PAST_LIMIT} earlier
-                    session{pastCommunityRecurring.total - RECURRING_PAST_LIMIT ===
+                    {pastCommunityRecurring.total - RECURRING_PAST_LIMIT}{" "}
+                    earlier session{pastCommunityRecurring.total -
+                          RECURRING_PAST_LIMIT ===
                         1
                       ? ""
                       : "s"}
