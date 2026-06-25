@@ -580,10 +580,14 @@ export async function adminCancelGroupRegistration(
       return { success: false, error: "Failed to cancel registration" };
     }
 
-    // Fetch event + group details for the cancellation email
+    // Fetch event + group details for the cancellation email.
+    // Also join group_programs so recurring instances (where group_events.title
+    // is null) can fall back to the program title.
     const { data: evRow } = await admin
       .from("group_events")
-      .select("title, event_date, timezone, group:groups!group_id(slug, name)")
+      .select(
+        "title, event_date, timezone, group:groups!group_id(slug, name), program:group_programs!program_id(title)",
+      )
       .eq("id", eventId)
       .maybeSingle();
 
@@ -591,12 +595,17 @@ export async function adminCancelGroupRegistration(
 
     const ev = evRow as Record<string, unknown>;
     const group = (ev.group ?? {}) as Record<string, unknown>;
+    const program = (ev.program ?? {}) as Record<string, unknown>;
+    const eventTitle =
+      (ev.title as string | null) ??
+      (program.title as string | null) ??
+      "Event";
     return {
       success: true,
       emailData: {
         email: reg.email as string,
         nameFirst: (reg.name_first as string) ?? "",
-        eventTitle: (ev.title as string) ?? "Event",
+        eventTitle,
         eventDate: (ev.event_date as string) ?? "",
         eventTimezone: (ev.timezone as string) ?? "Australia/Sydney",
         groupSlug: (group.slug as string) ?? "",

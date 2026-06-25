@@ -88,7 +88,7 @@ export const handler = define.handlers({
       const { data: evRow } = await adminClient
         .from("group_events")
         .select(
-          "title, event_date, timezone, group:groups!group_id(slug, name)",
+          "title, event_date, timezone, group:groups!group_id(slug, name), program:group_programs!program_id(title)",
         )
         .eq("id", eventId)
         .maybeSingle();
@@ -110,7 +110,9 @@ export const handler = define.handlers({
         void sendGroupEventCancellationEmail({
           groupSlug: (group.slug as string) ?? slug,
           groupName: (group.name as string) ?? "",
-          eventTitle: ev.title as string,
+          eventTitle: (ev.title as string | null) ??
+            ((ev.program as Record<string, unknown> | null)?.title as string | null) ??
+            "Event",
           eventDate: ev.event_date as string,
           eventTimezone: (ev.timezone as string) ?? "Australia/Sydney",
           nameFirst: (reg.name_first as string) ?? "",
