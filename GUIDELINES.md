@@ -136,14 +136,41 @@ deno task check    # Format check + lint + type check
 
 ### Colour Palette
 
-| Token | Hex | Usage |
+| Token (in `styles.css`) | Hex | Usage |
 |---|---|---|
-| `--color-teal` | `#1a5f6e` | Primary brand colour, nav, headings, key UI |
-| `--color-amber` | `#c4853a` | Accent, CTA buttons, highlights |
+| `--color-primary` | `#1a5f6e` | Primary brand colour, nav, headings, key UI |
+| `--color-accent` | `#c4853a` | Accent, CTA buttons, highlights |
 | `--color-warm-white` | `#f7f4ef` | Page backgrounds |
 | `--color-near-black` | `#1c1a18` | Body text, dark backgrounds |
 
 **Do not use:** pure CSS blue, green, red, purple, or the default Fresh gradient (`fresh-gradient`).
+
+### Tailwind Color Classes
+
+Always use Tailwind utility classes for colour — **never inline hex values** in JSX, TSX, or CSS outside of `site/assets/styles.css`. The canonical class list lives in `site/assets/styles.css` — load that file when you need to check available classes or add new ones.
+
+**Common classes (from `site/assets/styles.css`):**
+
+| Purpose | Classes |
+|---|---|
+| Primary (teal) | `bg-primary` · `text-primary` · `border-primary` |
+| Accent (amber) | `bg-accent` · `text-accent` · `border-accent` |
+| Warm white | `bg-warm-white` · `text-warm-white` |
+| Near black | `bg-near-black` · `text-near-black` |
+| Primary + opacity | `bg-primary/10` · `bg-primary/20` · `border-primary/10` · `border-primary/20` |
+| Accent + opacity | `bg-accent/10` · `bg-accent/20` · `border-accent/10` · `border-accent/20` |
+| Near black + opacity | `text-near-black/65` · `text-near-black/70` · `text-near-black/75` · `text-near-black/80` |
+| Hover variants | `hover:bg-accent` · `hover:text-accent` · `hover:bg-accent/85` · `hover:bg-primary/15` |
+
+**Adding new colour utilities:** If a colour variant isn't listed above, add a new `@layer utilities` class to `site/assets/styles.css` — do not use an inline hex value or a one-off arbitrary Tailwind value (e.g. `ring-[#1a5f6e]`). This keeps all colour definitions in one canonical place.
+
+**When editing code — fix hex violations on sight:** If you encounter inline hex colour values anywhere in JSX/TSX, replace them with the appropriate Tailwind class. Treat this as a required correction, not optional cleanup. Common forms to watch for:
+
+- JSX style object: `style={{ color: '#1a5f6e' }}` → `class="text-primary"`
+- JSX style string: `style="border:1px solid #e5e7eb"` → `class="border border-gray-200"`
+- Arbitrary Tailwind values: `ring-[#c4853a]`, `text-[#1c1a18]` → use a named class
+
+This applies to **all** hex values — not just brand colours. Standard Tailwind grays (`#e5e7eb` → `border-gray-200`, `#f3f4f6` → `border-gray-100`, etc.) already have built-in Tailwind utilities; use those directly without adding anything to `styles.css`. Only brand colours (`#1a5f6e`, `#c4853a`, `#f7f4ef`, `#1c1a18`) need a `styles.css` entry if a suitable class doesn't already exist.
 
 ### Typography
 
@@ -214,6 +241,7 @@ Serious but not grim · Urgent but not alarmist · Honest but not cynical · Hop
 6. **Load `deno.json`** before adding any new imports
 7. **RLS on every Supabase table** — see `supabase/SUPABASE.md`
 8. **Never use `SUPABASE_SECRET_KEY` in client code** — server-side only
+9. **No inline hex colours** — use Tailwind color classes (see [Tailwind Color Classes](#tailwind-color-classes) above); add new `@layer utilities` entries to `site/assets/styles.css` rather than arbitrary values like `text-[#1a5f6e]` or `ring-[#c4853a]`
 
 ### Quality
 
