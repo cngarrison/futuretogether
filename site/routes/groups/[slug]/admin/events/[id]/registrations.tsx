@@ -9,8 +9,12 @@ import {
   getLinkedEventForProgram,
 } from "@/utils/db/group-programs.ts";
 import type { GroupProgramDetail } from "@/utils/db/group-programs.ts";
-import { getGroupEventRegistrants } from "@/utils/db/group-registrations.ts";
+import {
+  adminCancelGroupRegistration,
+  getGroupEventRegistrants,
+} from "@/utils/db/group-registrations.ts";
 import type { GroupEventRegistrant } from "@/utils/db/group-registrations.ts";
+import { sendGroupEventCancellationEmail } from "@/utils/email/groupEventEmail.ts";
 import { naiveDatetimeToDate } from "@/utils/temporal.ts";
 
 // ── Types ──────────────────────────────────────────────────────────────────
@@ -19,6 +23,7 @@ type RegistrationsMode =
   | {
     mode: "event";
     title: string;
+    eventId: string; // actual group_events.id — needed for cancel form
     registrants: GroupEventRegistrant[];
   }
   | {
@@ -35,19 +40,75 @@ interface PageData {
   idParam: string;
   backId: string; // ID to use for the ← Back link (may differ from idParam for one-off events)
   inner: RegistrationsMode;
+  flash?: { type: "cancelled" } | { type: "error"; message: string };
 }
 
 // ── Handler ────────────────────────────────────────────────────────────────
 
 export const handler = define.handlers<PageData>({
+  async POST(ctx) {
+    const group = ctx.state.group!;
+    const id = ctx.params.id;
+    const base = `/groups/${group.slug}/admin/events/${id}/registrations`;
+    const formData = await ctx.req.formData();
+    const action = (formData.get("action") as string) ?? "";
+
+    if (action === "cancel_registration") {
+      const registrationId = (formData.get("registration_id") as string) ?? "";
+      const eventId = (formData.get("event_id") as string) ?? "";
+      if (!registrationId || !eventId) {
+        return new Response(null, {
+          status: 302,
+          headers: {
+            Location: `${base}?error=${
+              encodeURIComponent("Missing parameters")
+            }`,
+          },
+        });
+      }
+      const result = await adminCancelGroupRegistration(
+        registrationId,
+        eventId,
+      );
+      if (!result.success) {
+        return new Response(null, {
+          status: 302,
+          headers: {
+            Location: `${base}?error=${
+              encodeURIComponent(result.error ?? "Unknown error")
+            }`,
+          },
+        });
+      }
+      if (result.emailData) {
+        void sendGroupEventCancellationEmail(result.emailData).catch((err) =>
+          console.error("[registrations POST] cancellation email error:", err)
+        );
+      }
+      return new Response(null, {
+        status: 302,
+        headers: { Location: `${base}?cancelled=1` },
+      });
+    }
+
+    return new Response(null, { status: 302, headers: { Location: base } });
+  },
+
   async GET(ctx) {
     const group = ctx.state.group!;
     const id = ctx.params.id;
+    const url = new URL(ctx.req.url);
+    const flash: PageData["flash"] = url.searchParams.get("cancelled")
+      ? { type: "cancelled" }
+      : url.searchParams.get("error")
+      ? { type: "error", message: url.searchParams.get("error")! }
+      : undefined;
     const base = {
       groupSlug: group.slug,
       groupName: group.name,
       idParam: id,
       backId: id,
+      flash,
     };
 
     // Try as a group_event first (handles recurring instances + one-off event IDs directly)
@@ -67,7 +128,7 @@ export const handler = define.handlers<PageData>({
         ...base,
         backId,
         pageTitle: title,
-        inner: { mode: "event", title, registrants },
+        inner: { mode: "event", title, eventId: event.id, registrants },
       });
     }
 
@@ -94,7 +155,12 @@ export const handler = define.handlers<PageData>({
         return page({
           ...base,
           pageTitle: title,
-          inner: { mode: "event", title, registrants },
+          inner: {
+            mode: "event",
+            title,
+            eventId: linkedEvent?.id ?? "",
+            registrants,
+          },
         });
       }
 
@@ -162,8 +228,10 @@ function ReminderTick({ sent }: { sent: string | null }) {
 
 function EventRegistrantsView({
   registrants,
+  eventId,
 }: {
   registrants: GroupEventRegistrant[];
+  eventId: string;
 }) {
   const active = registrants.filter((r) => r.status === "registered").length;
   const cancelled = registrants.filter((r) => r.status === "cancelled").length;
@@ -211,6 +279,7 @@ function EventRegistrantsView({
                   <th class="px-4 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wide">
                     1-hour
                   </th>
+                  <th class="px-4 py-3"></th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-50">
@@ -252,6 +321,34 @@ function EventRegistrantsView({
                     </td>
                     <td class="px-4 py-3 text-center">
                       <ReminderTick sent={r.reminders.hourBefore} />
+                    </td>
+                    <td class="px-4 py-3 text-right">
+                      {r.status === "registered" && (
+                        <form method="POST" f-client-nav="false">
+                          <input
+                            type="hidden"
+                            name="action"
+                            value="cancel_registration"
+                          />
+                          <input
+                            type="hidden"
+                            name="registration_id"
+                            value={r.id}
+                          />
+                          <input
+                            type="hidden"
+                            name="event_id"
+                            value={eventId}
+                          />
+                          <button
+                            type="submit"
+                            class="text-xs text-red-500 hover:text-red-700 hover:underline transition-colors"
+                            onClick="return confirm('Cancel this registration? The attendee will receive a cancellation email.')"
+                          >
+                            Cancel
+                          </button>
+                        </form>
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -355,7 +452,7 @@ function ProgramInstancesView({
 
 export default define.page<typeof handler>(
   function RegistrationsPage({ data }) {
-    const { groupSlug, groupName, pageTitle, backId, inner } = data;
+    const { groupSlug, groupName, pageTitle, backId, inner, flash } = data;
 
     return (
       <>
@@ -374,13 +471,31 @@ export default define.page<typeof handler>(
             </a>
           </div>
 
+          {/* Flash messages */}
+          {flash?.type === "cancelled" && (
+            <div class="mb-6 px-4 py-3 rounded-xl bg-green-50 border border-green-200 text-sm text-green-800">
+              Registration cancelled. A confirmation email has been sent to the
+              attendee.
+            </div>
+          )}
+          {flash?.type === "error" && (
+            <div class="mb-6 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-sm text-red-700">
+              {flash.message}
+            </div>
+          )}
+
           {/* Page heading */}
           <h1 class="text-2xl sm:text-3xl font-bold text-near-black mb-8">
             {inner.title}
           </h1>
 
           {inner.mode === "event"
-            ? <EventRegistrantsView registrants={inner.registrants} />
+            ? (
+              <EventRegistrantsView
+                registrants={inner.registrants}
+                eventId={inner.eventId}
+              />
+            )
             : (
               <ProgramInstancesView
                 instances={inner.instances}

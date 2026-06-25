@@ -525,6 +525,90 @@ export async function verifyCancelRegistrationToken(
   return { registrationId, eventId };
 }
 
+// ---------------------------------------------------------------------------
+// Admin cancel (group admin action — bypasses RLS via service role)
+// ---------------------------------------------------------------------------
+
+export interface AdminCancelResult {
+  success: boolean;
+  error?: string;
+  emailData?: {
+    email: string;
+    nameFirst: string;
+    eventTitle: string;
+    eventDate: string;
+    eventTimezone: string;
+    groupSlug: string;
+    groupName: string;
+  };
+}
+
+/**
+ * Cancel a single event registration on behalf of a group admin.
+ * Uses the service-role client to bypass RLS (the admin is acting on another
+ * person's row, so the session client would be rejected by RLS).
+ * Returns email data so the caller can fire the cancellation email.
+ */
+export async function adminCancelGroupRegistration(
+  registrationId: string,
+  eventId: string,
+): Promise<AdminCancelResult> {
+  try {
+    const admin = createAdminClient();
+
+    // Fetch registration — also verifies it belongs to this event
+    const { data: regRow } = await admin
+      .from("event_registrations")
+      .select("id, status, email, name_first")
+      .eq("id", registrationId)
+      .eq("event_id", eventId)
+      .maybeSingle();
+
+    if (!regRow) return { success: false, error: "Registration not found" };
+    const reg = regRow as Record<string, unknown>;
+    if (reg.status === "cancelled") {
+      return { success: false, error: "Registration is already cancelled" };
+    }
+
+    const { error: updateErr } = await admin
+      .from("event_registrations")
+      .update({ status: "cancelled", cancelled_at: new Date().toISOString() })
+      .eq("id", registrationId);
+
+    if (updateErr) {
+      console.error("[adminCancelGroupRegistration] update error:", updateErr);
+      return { success: false, error: "Failed to cancel registration" };
+    }
+
+    // Fetch event + group details for the cancellation email
+    const { data: evRow } = await admin
+      .from("group_events")
+      .select("title, event_date, timezone, group:groups!group_id(slug, name)")
+      .eq("id", eventId)
+      .maybeSingle();
+
+    if (!evRow) return { success: true };
+
+    const ev = evRow as Record<string, unknown>;
+    const group = (ev.group ?? {}) as Record<string, unknown>;
+    return {
+      success: true,
+      emailData: {
+        email: reg.email as string,
+        nameFirst: (reg.name_first as string) ?? "",
+        eventTitle: (ev.title as string) ?? "Event",
+        eventDate: (ev.event_date as string) ?? "",
+        eventTimezone: (ev.timezone as string) ?? "Australia/Sydney",
+        groupSlug: (group.slug as string) ?? "",
+        groupName: (group.name as string) ?? "",
+      },
+    };
+  } catch (err) {
+    console.error("[adminCancelGroupRegistration] unexpected error:", err);
+    return { success: false, error: "Unexpected error" };
+  }
+}
+
 /**
  * Returns the subset of `eventIds` that the given profile is actively registered for.
  * Used by the public group page to suppress re-registration forms.
