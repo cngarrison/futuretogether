@@ -128,7 +128,7 @@ function StatusBadge({ status }: { status: string }) {
     published: "bg-green-100 text-green-700",
     active: "bg-green-100 text-green-700",
     cancelled: "bg-red-100 text-red-700",
-    completed: "bg-[#eef5f7] text-[#1a5f6e]",
+    completed: "bg-[#eef5f7] text-primary",
     archived: "bg-gray-100 text-gray-500",
   };
   return (
@@ -174,7 +174,7 @@ function SeriesCard({
               <StatusBadge status={prog.status} />
               <span class="text-xs font-mono text-gray-400">{prog.slug}</span>
               {prog.slug_suffix && (
-                <span class="text-xs px-2 py-0.5 rounded-full bg-[#eef5f7] text-[#1a5f6e] font-medium">
+                <span class="text-xs px-2 py-0.5 rounded-full bg-[#eef5f7] text-primary font-medium">
                   {prog.slug_suffix}
                 </span>
               )}
@@ -202,13 +202,20 @@ function SeriesCard({
               {pastCount} past instance{pastCount !== 1 ? "s" : ""}
             </p>
           </div>
-          <a
-            href={`/groups/${groupSlug}/admin/events/${prog.id}/`}
-            class="text-sm px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors flex-shrink-0"
-            style="color:#1a5f6e;"
-          >
-            Edit
-          </a>
+          <div class="flex gap-2 flex-shrink-0">
+            <a
+              href={`/groups/${groupSlug}/admin/events/${prog.id}/registrations`}
+              class="text-sm text-primary px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+            >
+              Registrations
+            </a>
+            <a
+              href={`/groups/${groupSlug}/admin/events/${prog.id}/`}
+              class="text-sm text-primary px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+            >
+              Edit
+            </a>
+          </div>
         </div>
       </div>
     );
@@ -247,7 +254,7 @@ function SeriesCard({
                 Seq {prog.sequence}
               </span>
               {prog.slug_suffix && (
-                <span class="text-xs px-2 py-0.5 rounded-full bg-[#eef5f7] text-[#1a5f6e] font-medium flex-shrink-0">
+                <span class="text-xs px-2 py-0.5 rounded-full bg-[#eef5f7] text-primary font-medium flex-shrink-0">
                   {prog.slug_suffix}
                 </span>
               )}
@@ -264,13 +271,20 @@ function SeriesCard({
                   )
                   : <em class="text-gray-400">No upcoming</em>}
               </span>
-              <a
-                href={`/groups/${groupSlug}/admin/events/${prog.id}/`}
-                class="text-xs px-2.5 py-1 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors flex-shrink-0"
-                style="color:#1a5f6e;"
-              >
-                Edit
-              </a>
+              <div class="flex gap-1.5 flex-shrink-0">
+                <a
+                  href={`/groups/${groupSlug}/admin/events/${prog.id}/registrations`}
+                  class="text-xs text-primary px-2.5 py-1 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+                >
+                  Registrations
+                </a>
+                <a
+                  href={`/groups/${groupSlug}/admin/events/${prog.id}/`}
+                  class="text-xs text-primary px-2.5 py-1 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+                >
+                  Edit
+                </a>
+              </div>
             </div>
           );
         })}
@@ -493,11 +507,16 @@ export default define.page<typeof handler>(function EventsAdminPage({ data }) {
                         </div>
                         <div class="flex gap-2 flex-shrink-0">
                           <a
+                            href={`/groups/${groupSlug}/admin/events/${event.id}/registrations`}
+                            class="text-sm text-primary px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+                          >
+                            Registrations
+                          </a>
+                          <a
                             href={`/groups/${groupSlug}/admin/events/${
                               event.program_id ?? event.id
                             }/`}
-                            class="text-sm px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
-                            style="color:#1a5f6e;"
+                            class="text-sm text-primary px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
                           >
                             Edit
                           </a>
@@ -543,6 +562,9 @@ export default define.page<typeof handler>(function EventsAdminPage({ data }) {
                     <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">
                       Status
                     </th>
+                    <th class="px-4 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wide hidden sm:table-cell">
+                      Regs
+                    </th>
                     <th class="px-4 py-3"></th>
                   </tr>
                 </thead>
@@ -558,18 +580,28 @@ export default define.page<typeof handler>(function EventsAdminPage({ data }) {
                       <td class="px-4 py-3">
                         <StatusBadge status={event.status} />
                       </td>
+                      <td class="px-4 py-3 text-right text-sm text-gray-500 hidden sm:table-cell">
+                        {event.registration_count}
+                      </td>
                       <td class="px-4 py-3 text-right">
-                        <a
-                          href={`/groups/${groupSlug}/admin/events/${
-                            event.program_type === "one-off" && event.program_id
-                              ? event.program_id
-                              : event.id
-                          }/`}
-                          class="text-sm hover:underline"
-                          style="color:#1a5f6e;"
-                        >
-                          Edit
-                        </a>
+                        <div class="flex gap-2 justify-end">
+                          <a
+                            href={`/groups/${groupSlug}/admin/events/${event.id}/registrations`}
+                            class="text-sm text-primary px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+                          >
+                            Registrations
+                          </a>
+                          <a
+                            href={`/groups/${groupSlug}/admin/events/${
+                              event.program_type === "one-off" && event.program_id
+                                ? event.program_id
+                                : event.id
+                            }/`}
+                            class="text-sm text-primary px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+                          >
+                            Edit
+                          </a>
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -616,8 +648,7 @@ export default define.page<typeof handler>(function EventsAdminPage({ data }) {
                     </div>
                     <a
                       href={`/groups/${groupSlug}/admin/events/${prog.id}/`}
-                      class="text-sm px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors flex-shrink-0"
-                      style="color:#1a5f6e;"
+                      class="text-sm text-primary px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors flex-shrink-0"
                     >
                       Edit
                     </a>

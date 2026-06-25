@@ -101,8 +101,7 @@ export default function ProgramDetailPage(
               >
                 <button
                   type="submit"
-                  class="px-5 py-2.5 text-white text-sm font-semibold rounded-xl transition-opacity hover:opacity-90"
-                  style="background:#1a5f6e;"
+                  class="px-5 py-2.5 text-white text-sm font-semibold bg-primary rounded-xl transition-opacity hover:opacity-90"
                 >
                   Publish Program
                 </button>
@@ -128,8 +127,7 @@ export default function ProgramDetailPage(
             >
               <button
                 type="submit"
-                class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-xl border-2 transition-colors hover:bg-[#1a5f6e]/5"
-                style="color:#1a5f6e;border-color:#1a5f6e;"
+                class="inline-flex items-center gap-2 px-5 py-2.5 text-sm text-primary font-semibold rounded-xl border-2 border-primary transition-colors hover:bg-primary/5"
               >
                 <span>↻</span> Generate instances now
               </button>
@@ -138,6 +136,14 @@ export default function ProgramDetailPage(
               Generates any missing instances within the 3-month lookahead
               window.
             </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-100">
+            <a
+              href={`/groups/${groupSlug}/admin/events/${program.id}/registrations`}
+              class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-primary rounded-xl border-2 border-primary transition-colors hover:bg-primary/5"
+            >
+              View Registrations
+            </a>
           </div>
         </div>
 
@@ -191,8 +197,7 @@ export default function ProgramDetailPage(
                         <td class="px-2 py-2.5 text-right">
                           <a
                             href={`/groups/${groupSlug}/admin/events/${inst.id}/`}
-                            class="text-xs font-medium hover:underline"
-                            style="color:#1a5f6e;"
+                            class="text-xs text-primary font-medium hover:underline"
                           >
                             Edit →
                           </a>

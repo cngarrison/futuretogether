@@ -616,7 +616,20 @@ export async function getRecentPastInstances(
       .order("event_date", { ascending: false })
       .limit(limit);
     if (error || !data) return [];
-    return (data as Record<string, unknown>[]).map((r) => {
+    const rows = data as Record<string, unknown>[];
+    const eventIds = rows.map((r) => r.id as string);
+    const { data: regData } = eventIds.length > 0
+      ? await db
+        .from("event_registrations")
+        .select("event_id")
+        .in("event_id", eventIds)
+        .eq("status", "registered")
+      : { data: [] };
+    const countMap: Record<string, number> = {};
+    for (const r of (regData ?? []) as Array<{ event_id: string }>) {
+      countMap[r.event_id] = (countMap[r.event_id] ?? 0) + 1;
+    }
+    return rows.map((r) => {
       const prog = r.group_programs as {
         title: string | null;
         program_type: string | null;
@@ -630,7 +643,7 @@ export async function getRecentPastInstances(
         status: r.status as string,
         visibility: r.visibility as string,
         location_type: (r.location_type as string | null) ?? null,
-        registration_count: 0,
+        registration_count: countMap[r.id as string] ?? 0,
         program_id: r.program_id as string,
         program_type: prog?.program_type ?? null,
       };

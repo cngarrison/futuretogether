@@ -32,7 +32,7 @@ export default function EventInstancePage(
   const editAction = `/groups/${groupSlug}/admin/events/${event.id}`;
   const labelClass = "block text-sm font-semibold text-near-black mb-1.5";
   const inputClass =
-    "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a5f6e]/20 focus:border-[#1a5f6e] transition-colors bg-white";
+    "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a5f6e]/20 focus:border-primary transition-colors bg-white";
 
   return (
     <>
@@ -65,8 +65,8 @@ export default function EventInstancePage(
 
         {/* Banner: link to program */}
         <div
-          class="mb-6 px-4 py-3 rounded-xl text-sm"
-          style="background:#eef5f7;color:#1a5f6e;border:1px solid #c8dde2;"
+          class="mb-6 px-4 py-3 rounded-xl text-sm text-primary"
+          style="background:#eef5f7;border:1px solid #c8dde2;"
         >
           ↳ This event is an instance of the{" "}
           <a
@@ -309,8 +309,7 @@ export default function EventInstancePage(
           <div class="flex justify-end">
             <button
               type="submit"
-              class="px-6 py-2.5 text-white text-sm font-semibold rounded-xl transition-opacity hover:opacity-90"
-              style="background:#1a5f6e;"
+              class="px-6 py-2.5 text-white text-sm font-semibold bg-primary rounded-xl transition-opacity hover:opacity-90"
             >
               Save Overrides
             </button>
@@ -324,6 +323,15 @@ export default function EventInstancePage(
           label="Instance"
           showNotes={false}
         />
+
+        <div class="mt-4">
+          <a
+            href={`/groups/${groupSlug}/admin/events/${event.id}/registrations`}
+            class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-primary rounded-xl border-2 border-primary transition-colors hover:bg-primary/5"
+          >
+            View Registrations
+          </a>
+        </div>
       </div>
     </>
   );

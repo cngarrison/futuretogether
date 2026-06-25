@@ -99,6 +99,15 @@ export default function OneOffEventPage(
           status={event.status}
         />
 
+        <div class="mt-4">
+          <a
+            href={`/groups/${groupSlug}/admin/events/${event.id}/registrations`}
+            class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-primary rounded-xl border-2 border-primary transition-colors hover:bg-primary/5"
+          >
+            View Registrations
+          </a>
+        </div>
+
         <RegistrantsPanel
           eventStatus={event.status}
           registrants={registrants}
