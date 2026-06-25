@@ -593,7 +593,8 @@ export default define.page<typeof handler>(function EventsAdminPage({ data }) {
                           </a>
                           <a
                             href={`/groups/${groupSlug}/admin/events/${
-                              event.program_type === "one-off" && event.program_id
+                              event.program_type === "one-off" &&
+                                event.program_id
                                 ? event.program_id
                                 : event.id
                             }/`}

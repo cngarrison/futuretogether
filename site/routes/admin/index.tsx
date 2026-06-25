@@ -29,9 +29,7 @@ export default define.page<typeof handler>(function AdminIndex({ data }) {
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
           {/* Total active groups */}
-          <div
-            class="bg-white rounded-lg p-5 border-2 border-primary"
-          >
+          <div class="bg-white rounded-lg p-5 border-2 border-primary">
             <p class="text-3xl font-bold text-gray-900">
               {groupStats.activeCount}
             </p>
@@ -55,9 +53,7 @@ export default define.page<typeof handler>(function AdminIndex({ data }) {
           </div>
 
           {/* Total members across all groups */}
-          <div
-            class="bg-white rounded-lg p-5 border-2 border-primary"
-          >
+          <div class="bg-white rounded-lg p-5 border-2 border-primary">
             <p class="text-3xl font-bold text-gray-900">
               {groupStats.totalMembers}
             </p>

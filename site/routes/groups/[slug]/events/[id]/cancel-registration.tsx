@@ -115,9 +115,7 @@ export default define.page<typeof handler>(function CancelRegistrationPage(
           style="box-shadow:0 2px 16px rgba(0,0,0,.08);"
         >
           {/* Logo */}
-          <p
-            class="text-lg text-primary font-bold mb-8"
-          >
+          <p class="text-lg text-primary font-bold mb-8">
             Future Together
           </p>
 

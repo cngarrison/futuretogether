@@ -170,9 +170,7 @@ export default define.layout((ctx) => {
               >
                 Future Together
               </span>
-              <span
-                class="text-[10px] font-bold text-white bg-primary px-1.5 py-0.5 rounded-full"
-              >
+              <span class="text-[10px] font-bold text-white bg-primary px-1.5 py-0.5 rounded-full">
                 ADMIN
               </span>
             </a>
@@ -244,9 +242,7 @@ export default define.layout((ctx) => {
               >
                 FT
               </span>
-              <span
-                class="text-[10px] font-bold text-white bg-primary px-1 py-0.5 rounded"
-              >
+              <span class="text-[10px] font-bold text-white bg-primary px-1 py-0.5 rounded">
                 ADMIN
               </span>
             </div>

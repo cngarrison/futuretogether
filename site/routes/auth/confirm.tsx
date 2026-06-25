@@ -49,23 +49,21 @@ export const handler = define.handlers<PageData>({
 export default define.page<typeof handler>(function ConfirmPage({ data }) {
   const { tokenHash, type } = data as PageData;
 
-  const heading =
-    type === "signup"
-      ? "Confirm your email"
-      : type === "recovery"
-        ? "Reset your password"
-        : type === "invite"
-          ? "Accept your invitation"
-          : "Sign in to Future Together";
+  const heading = type === "signup"
+    ? "Confirm your email"
+    : type === "recovery"
+    ? "Reset your password"
+    : type === "invite"
+    ? "Accept your invitation"
+    : "Sign in to Future Together";
 
-  const subtext =
-    type === "signup"
-      ? "Click below to confirm your email address and finish creating your account."
-      : type === "recovery"
-        ? "Click below to verify your identity and continue to password reset."
-        : type === "invite"
-          ? "Click below to accept your invitation and set up your account."
-          : "Click below to complete your sign-in.";
+  const subtext = type === "signup"
+    ? "Click below to confirm your email address and finish creating your account."
+    : type === "recovery"
+    ? "Click below to verify your identity and continue to password reset."
+    : type === "invite"
+    ? "Click below to accept your invitation and set up your account."
+    : "Click below to complete your sign-in.";
 
   return (
     <div class="flex items-center justify-center py-16 px-4 mt-8">

@@ -43,7 +43,12 @@ export const handler = define.handlers<PageData>({
   async GET(ctx) {
     const group = ctx.state.group!;
     const id = ctx.params.id;
-    const base = { groupSlug: group.slug, groupName: group.name, idParam: id, backId: id };
+    const base = {
+      groupSlug: group.slug,
+      groupName: group.name,
+      idParam: id,
+      backId: id,
+    };
 
     // Try as a group_event first (handles recurring instances + one-off event IDs directly)
     const event = await getGroupEventById(id, ctx.state);
@@ -82,7 +87,9 @@ export const handler = define.handlers<PageData>({
         const registrants = linkedEvent
           ? await getGroupEventRegistrants(linkedEvent.id, ctx.state)
           : [];
-        registrants.sort((a, b) => a.registeredAt.localeCompare(b.registeredAt));
+        registrants.sort((a, b) =>
+          a.registeredAt.localeCompare(b.registeredAt)
+        );
         const title = `${program.title} — Registrations`;
         return page({
           ...base,
@@ -162,13 +169,9 @@ function EventRegistrantsView({
   const cancelled = registrants.filter((r) => r.status === "cancelled").length;
 
   return (
-    <div
-      class="rounded-2xl overflow-hidden bg-white border border-gray-200"
-    >
+    <div class="rounded-2xl overflow-hidden bg-white border border-gray-200">
       {/* Summary header */}
-      <div
-        class="px-5 py-4 flex flex-wrap items-center gap-3 border-b border-gray-100"
-      >
+      <div class="px-5 py-4 flex flex-wrap items-center gap-3 border-b border-gray-100">
         <span class="text-sm font-semibold text-near-black">
           {active} registration{active !== 1 ? "s" : ""}
         </span>
@@ -273,12 +276,8 @@ function ProgramInstancesView({
   );
 
   return (
-    <div
-      class="rounded-2xl overflow-hidden bg-white border border-gray-200"
-    >
-      <div
-        class="px-5 py-4 flex flex-wrap items-center justify-between gap-3 border-b border-gray-100"
-      >
+    <div class="rounded-2xl overflow-hidden bg-white border border-gray-200">
+      <div class="px-5 py-4 flex flex-wrap items-center justify-between gap-3 border-b border-gray-100">
         <span class="text-sm font-semibold text-near-black">
           {instances.length} instance{instances.length !== 1 ? "s" : ""}
         </span>
@@ -354,40 +353,42 @@ function ProgramInstancesView({
 
 // ── Page component ─────────────────────────────────────────────────────────
 
-export default define.page<typeof handler>(function RegistrationsPage({ data }) {
-  const { groupSlug, groupName, pageTitle, backId, inner } = data;
+export default define.page<typeof handler>(
+  function RegistrationsPage({ data }) {
+    const { groupSlug, groupName, pageTitle, backId, inner } = data;
 
-  return (
-    <>
-      <Head>
-        <title>{pageTitle} — {groupName} — Future Together</title>
-        <meta name="robots" content="noindex" />
-      </Head>
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
-        {/* Back link */}
-        <div class="mb-2">
-          <a
-            href={`/groups/${groupSlug}/admin/events/${backId}`}
-            class="text-sm text-gray-500 hover:text-gray-700 transition-colors"
-          >
-            ← Back
-          </a>
+    return (
+      <>
+        <Head>
+          <title>{pageTitle} — {groupName} — Future Together</title>
+          <meta name="robots" content="noindex" />
+        </Head>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+          {/* Back link */}
+          <div class="mb-2">
+            <a
+              href={`/groups/${groupSlug}/admin/events/${backId}`}
+              class="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+            >
+              ← Back
+            </a>
+          </div>
+
+          {/* Page heading */}
+          <h1 class="text-2xl sm:text-3xl font-bold text-near-black mb-8">
+            {inner.title}
+          </h1>
+
+          {inner.mode === "event"
+            ? <EventRegistrantsView registrants={inner.registrants} />
+            : (
+              <ProgramInstancesView
+                instances={inner.instances}
+                groupSlug={groupSlug}
+              />
+            )}
         </div>
-
-        {/* Page heading */}
-        <h1 class="text-2xl sm:text-3xl font-bold text-near-black mb-8">
-          {inner.title}
-        </h1>
-
-        {inner.mode === "event"
-          ? <EventRegistrantsView registrants={inner.registrants} />
-          : (
-            <ProgramInstancesView
-              instances={inner.instances}
-              groupSlug={groupSlug}
-            />
-          )}
-      </div>
-    </>
-  );
-});
+      </>
+    );
+  },
+);

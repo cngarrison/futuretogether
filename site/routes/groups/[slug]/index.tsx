@@ -198,9 +198,7 @@ export default define.page<typeof handler>(function GroupDetail({ data }) {
                           style="background:white;border:1px solid #e5e7eb;"
                         >
                           {/* Date + title */}
-                          <p
-                            class="text-xs text-primary font-semibold uppercase tracking-wide mb-1"
-                          >
+                          <p class="text-xs text-primary font-semibold uppercase tracking-wide mb-1">
                             {fmtEventDate(
                               ev.event_date,
                               ev.timezone ?? "Australia/Sydney",

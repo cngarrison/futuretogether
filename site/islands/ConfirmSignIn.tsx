@@ -21,12 +21,11 @@ export default function ConfirmSignIn({ tokenHash, type }: Props) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const buttonLabel =
-    type === "signup"
-      ? "Confirm email address"
-      : type === "recovery"
-        ? "Continue to password reset"
-        : "Complete sign-in";
+  const buttonLabel = type === "signup"
+    ? "Confirm email address"
+    : type === "recovery"
+    ? "Continue to password reset"
+    : "Complete sign-in";
 
   async function handleClick() {
     setStatus("loading");
@@ -39,7 +38,11 @@ export default function ConfirmSignIn({ tokenHash, type }: Props) {
         body: JSON.stringify({ token_hash: tokenHash, type }),
       });
 
-      const data = await res.json() as { ok: boolean; redirect?: string; error?: string };
+      const data = await res.json() as {
+        ok: boolean;
+        redirect?: string;
+        error?: string;
+      };
 
       if (!res.ok || !data.ok) {
         setStatus("error");
@@ -79,6 +82,7 @@ export default function ConfirmSignIn({ tokenHash, type }: Props) {
         Your link is ready. Click the button below to continue.
       </p>
       <button
+        type="button"
         onClick={handleClick}
         disabled={status === "loading"}
         class="w-full py-3 px-6 rounded-lg font-semibold text-sm text-white disabled:opacity-60 transition-opacity"

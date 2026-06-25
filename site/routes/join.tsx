@@ -69,9 +69,7 @@ export default define.page(async function Join(props) {
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
           <div class="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 items-start">
             {/* Left: membership form card */}
-            <div
-              class="bg-white border border-2 border-primary rounded-2xl p-8"
-            >
+            <div class="bg-white border border-2 border-primary rounded-2xl p-8">
               <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5 text-white bg-primary">
                 <svg
                   width="20"
