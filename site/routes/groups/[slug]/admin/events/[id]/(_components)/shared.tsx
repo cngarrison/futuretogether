@@ -67,7 +67,7 @@ export function StatusBadge({ status }: { status: string }) {
     draft: "bg-gray-100 text-gray-600",
     published: "bg-green-100 text-green-700",
     cancelled: "bg-red-100 text-red-700",
-    completed: "bg-[#eef5f7] text-[#1a5f6e]",
+    completed: "bg-[#eef5f7] text-primary",
   };
   return (
     <span
@@ -157,8 +157,7 @@ export function EventActionsPanel({
           >
             <button
               type="submit"
-              class="px-5 py-2.5 text-white text-sm font-semibold rounded-xl transition-opacity hover:opacity-90"
-              style="background:#1a5f6e;"
+              class="px-5 py-2.5 text-white text-sm font-semibold bg-primary rounded-xl transition-opacity hover:opacity-90"
             >
               Publish {label}
             </button>
@@ -358,8 +357,7 @@ export function PosterPanel({
           />
           <button
             type="submit"
-            class="px-4 py-2 text-sm font-semibold text-white rounded-lg transition-opacity hover:opacity-90"
-            style="background:#1a5f6e;"
+            class="px-4 py-2 text-sm font-semibold text-white bg-primary rounded-lg transition-opacity hover:opacity-90"
           >
             Upload poster
           </button>

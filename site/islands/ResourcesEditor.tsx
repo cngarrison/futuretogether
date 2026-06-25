@@ -151,8 +151,7 @@ export default function ResourcesEditor(
       <button
         type="button"
         onClick={addResource}
-        class="mt-4 text-sm font-medium hover:underline"
-        style="color:#1a5f6e;"
+        class="mt-4 text-sm text-primary font-medium hover:underline"
       >
         + Add resource
       </button>

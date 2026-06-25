@@ -58,8 +58,7 @@ export default function GroupCancelRegistrationButton({
         </div>
         <a
           href={groupsUrl}
-          class="block text-sm font-semibold text-center"
-          style="color:#1a5f6e;"
+          class="block text-sm text-primary font-semibold text-center"
         >
           Return to group &rarr;
         </a>
@@ -83,8 +82,7 @@ export default function GroupCancelRegistrationButton({
       </button>
       <a
         href={groupsUrl}
-        class="block text-sm text-center"
-        style="color:#1a5f6e;"
+        class="block text-sm text-primary text-center"
       >
         No, keep my registration &rarr;
       </a>

@@ -48,8 +48,7 @@ export default define.layout((ctx) => {
           </p>
           <a
             href={`/groups/${slug}/`}
-            class="text-xs font-medium transition-opacity hover:opacity-70"
-            style="color: #1a5f6e;"
+            class="text-xs text-primary font-medium transition-opacity hover:opacity-70"
           >
             &#8592; Back to group page
           </a>
@@ -72,7 +71,7 @@ export default define.layout((ctx) => {
                 class={[
                   "flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-[#eef5f7] text-[#1a5f6e] font-semibold"
+                    ? "bg-[#eef5f7] text-primary font-semibold"
                     : "text-near-black/70 hover:bg-[#f3f0eb] hover:text-near-black",
                 ].join(" ")}
                 aria-current={isActive ? "page" : undefined}
@@ -87,8 +86,8 @@ export default define.layout((ctx) => {
         {state.membership && (
           <div class="px-4 pb-6">
             <span
-              class="inline-block text-xs font-medium px-2.5 py-1 rounded-full"
-              style="background-color: #eef5f7; color: #1a5f6e;"
+              class="inline-block text-xs text-primary font-medium px-2.5 py-1 rounded-full"
+              style="background-color: #eef5f7;"
             >
               {state.membership.role === "group_owner"
                 ? "Group owner"
@@ -127,7 +126,7 @@ export default define.layout((ctx) => {
                 class={[
                   "shrink-0 px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition-colors",
                   isActive
-                    ? "bg-[#eef5f7] text-[#1a5f6e] font-semibold"
+                    ? "bg-[#eef5f7] text-primary font-semibold"
                     : "text-near-black/70 hover:bg-[#f3f0eb]",
                 ].join(" ")}
                 aria-current={isActive ? "page" : undefined}

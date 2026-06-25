@@ -163,13 +163,11 @@ function EventRegistrantsView({
 
   return (
     <div
-      class="rounded-2xl overflow-hidden"
-      style="background:white;border:1px solid #e5e7eb;"
+      class="rounded-2xl overflow-hidden bg-white border border-gray-200"
     >
       {/* Summary header */}
       <div
-        class="px-5 py-4 flex flex-wrap items-center gap-3"
-        style="border-bottom:1px solid #f3f4f6;"
+        class="px-5 py-4 flex flex-wrap items-center gap-3 border-b border-gray-100"
       >
         <span class="text-sm font-semibold text-near-black">
           {active} registration{active !== 1 ? "s" : ""}
@@ -191,7 +189,7 @@ function EventRegistrantsView({
           <div class="overflow-x-auto">
             <table class="w-full text-sm min-w-[640px]">
               <thead>
-                <tr style="border-bottom:1px solid #f3f4f6;">
+                <tr class="border-b border-gray-100">
                   <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">
                     Name
                   </th>
@@ -276,12 +274,10 @@ function ProgramInstancesView({
 
   return (
     <div
-      class="rounded-2xl overflow-hidden"
-      style="background:white;border:1px solid #e5e7eb;"
+      class="rounded-2xl overflow-hidden bg-white border border-gray-200"
     >
       <div
-        class="px-5 py-4 flex flex-wrap items-center justify-between gap-3"
-        style="border-bottom:1px solid #f3f4f6;"
+        class="px-5 py-4 flex flex-wrap items-center justify-between gap-3 border-b border-gray-100"
       >
         <span class="text-sm font-semibold text-near-black">
           {instances.length} instance{instances.length !== 1 ? "s" : ""}
@@ -301,7 +297,7 @@ function ProgramInstancesView({
         : (
           <table class="w-full text-sm">
             <thead>
-              <tr style="border-bottom:1px solid #f3f4f6;">
+              <tr class="border-b border-gray-100">
                 <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">
                   Date
                 </th>

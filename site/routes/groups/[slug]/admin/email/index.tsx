@@ -139,8 +139,7 @@ export default define.page<typeof handler>(function EmailComposePage(
           </h1>
           <a
             href={`/groups/${groupSlug}/admin/email/history/`}
-            class="text-sm font-medium transition-opacity hover:opacity-70"
-            style="color: #1a5f6e;"
+            class="text-sm text-primary font-medium transition-opacity hover:opacity-70"
           >
             ← Email history
           </a>

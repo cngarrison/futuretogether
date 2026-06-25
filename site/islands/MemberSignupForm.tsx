@@ -310,9 +310,9 @@ export default function MemberSignupForm(
               return (
                 <label
                   key={interest}
-                  class="flex items-center gap-2 cursor-pointer rounded-lg px-3 py-2 text-sm transition-colors"
+                  class="flex items-center gap-2 cursor-pointer rounded-lg px-3 py-2 text-sm text-primary transition-colors"
                   style={checked
-                    ? "background-color: #eef5f7; color: #1a5f6e;"
+                    ? "background-color: #eef5f7;"
                     : "background-color: transparent; color: rgba(28,26,24,0.75);"}
                 >
                   <input

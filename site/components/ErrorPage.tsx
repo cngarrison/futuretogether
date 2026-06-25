@@ -53,7 +53,7 @@ export default function ErrorPage() {
           </button>
           <a
             href="/"
-            class="inline-block px-8 py-3 rounded-lg font-semibold border transition-colors hover:border-[#1a5f6e] hover:text-[#1a5f6e]"
+            class="inline-block px-8 py-3 rounded-lg font-semibold border transition-colors hover:border-primary hover:text-primary"
             style="border-color: #ccc; color: #555;"
           >
             Back to home
@@ -75,7 +75,7 @@ export default function ErrorPage() {
             <a
               key={link.href}
               href={link.href}
-              class="px-4 py-2 rounded-lg text-sm font-medium border transition-colors hover:border-[#1a5f6e] hover:text-[#1a5f6e]"
+              class="px-4 py-2 rounded-lg text-sm font-medium border transition-colors hover:border-primary hover:text-primary"
               style="border-color: #ccc; color: #555;"
             >
               {link.label}

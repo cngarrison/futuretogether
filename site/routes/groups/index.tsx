@@ -153,8 +153,8 @@ function GroupCard({ group }: { group: GroupSummary }) {
         {/* Member count badge */}
         <div class="flex items-center gap-2 mb-3">
           <span
-            class="text-xs font-medium px-2 py-0.5 rounded-full"
-            style="background-color: #eef5f7; color: #1a5f6e;"
+            class="text-xs text-primary font-medium px-2 py-0.5 rounded-full"
+            style="background-color: #eef5f7;"
           >
             {formatMemberCount(group.member_count)}
           </span>

@@ -72,8 +72,7 @@ export default define.page<typeof handler>(function JoinInvitePage({ data }) {
         <p class="text-lg font-semibold text-near-black mb-4">{error}</p>
         <a
           href={`/groups/${groupSlug}/`}
-          class="text-sm"
-          style="color:#1a5f6e;"
+          class="text-sm text-primary"
         >
           ← Back to group
         </a>

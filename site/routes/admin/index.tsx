@@ -30,8 +30,7 @@ export default define.page<typeof handler>(function AdminIndex({ data }) {
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
           {/* Total active groups */}
           <div
-            class="bg-white rounded-lg p-5 border-2"
-            style="border-color: #1a5f6e;"
+            class="bg-white rounded-lg p-5 border-2 border-primary"
           >
             <p class="text-3xl font-bold text-gray-900">
               {groupStats.activeCount}
@@ -57,8 +56,7 @@ export default define.page<typeof handler>(function AdminIndex({ data }) {
 
           {/* Total members across all groups */}
           <div
-            class="bg-white rounded-lg p-5 border-2"
-            style="border-color: #1a5f6e;"
+            class="bg-white rounded-lg p-5 border-2 border-primary"
           >
             <p class="text-3xl font-bold text-gray-900">
               {groupStats.totalMembers}
@@ -144,8 +142,7 @@ export default define.page<typeof handler>(function AdminIndex({ data }) {
       <div class="grid md:grid-cols-2 gap-6">
         <a
           href="/admin/events"
-          class="block bg-white p-6 rounded-lg border-2 hover:shadow-md transition-all"
-          style="border-color: #1a5f6e;"
+          class="block bg-white p-6 rounded-lg border-2 border-primary hover:shadow-md transition-all"
         >
           <h2 class="text-xl font-bold text-gray-900 mb-2">Events</h2>
           <p class="text-gray-600">
@@ -166,8 +163,7 @@ export default define.page<typeof handler>(function AdminIndex({ data }) {
         </a>
         <a
           href="/admin/emails"
-          class="block bg-white p-6 rounded-lg border-2 hover:shadow-md transition-all"
-          style="border-color: #1a5f6e;"
+          class="block bg-white p-6 rounded-lg border-2 border-primary hover:shadow-md transition-all"
         >
           <h2 class="text-xl font-bold text-gray-900 mb-2">
             Email Members

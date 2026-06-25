@@ -127,7 +127,7 @@ export default function GroupEmailComposeForm({
           type="text"
           value={subject.value}
           onInput={(e) => subject.value = (e.target as HTMLInputElement).value}
-          class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:border-[#1a5f6e]"
+          class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:border-primary"
           placeholder="e.g. This week’s meetup agenda"
           disabled={sending.value}
         />
@@ -142,7 +142,7 @@ export default function GroupEmailComposeForm({
             onClick={() => tab.value = t}
             class={`px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ${
               tab.value === t
-                ? "border-[#1a5f6e] text-[#1a5f6e]"
+                ? "border-primary text-primary"
                 : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -158,7 +158,7 @@ export default function GroupEmailComposeForm({
             value={body.value}
             onInput={(e) =>
               body.value = (e.target as HTMLTextAreaElement).value}
-            class="w-full border border-t-0 border-gray-300 rounded-b-md px-3 py-3 text-sm font-mono focus:outline-none focus:ring-2 focus:border-[#1a5f6e] resize-y"
+            class="w-full border border-t-0 border-gray-300 rounded-b-md px-3 py-3 text-sm font-mono focus:outline-none focus:ring-2 focus:border-primary resize-y"
             rows={18}
             placeholder={`Write your email in Markdown.\n\nHi everyone,\n\nWe\'re meeting this week...\n\n\u2014 Your name`}
             disabled={sending.value}
@@ -230,8 +230,7 @@ export default function GroupEmailComposeForm({
           type="button"
           onClick={() => send(true)}
           disabled={sending.value}
-          class="px-4 py-2 rounded-md text-sm font-semibold border disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
-          style="border-color: #1a5f6e; color: #1a5f6e; background: white;"
+          class="px-4 py-2 rounded-md text-sm text-primary font-semibold bg-white border border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
         >
           {sending.value ? "Sending…" : "Send test to me"}
         </button>
@@ -239,8 +238,7 @@ export default function GroupEmailComposeForm({
           type="button"
           onClick={() => send(false)}
           disabled={sending.value || recipientCount === 0}
-          class="px-6 py-2 rounded-md text-white text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
-          style="background-color: #1a5f6e;"
+          class="px-6 py-2 rounded-md text-white text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-opacity bg-primary"
         >
           {sending.value
             ? "Sending…"

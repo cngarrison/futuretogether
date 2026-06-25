@@ -82,7 +82,7 @@ const ORDINALS = [
 ] as const;
 
 const inputClass =
-  "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a5f6e]/30 focus:border-[#1a5f6e]";
+  "w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1a5f6e]/30 focus:border-primary";
 const labelClass = "block text-sm font-medium text-near-black mb-1.5";
 const sectionHeadingClass =
   "text-base font-semibold text-near-black mb-4 pb-2 border-b border-gray-100";
@@ -260,7 +260,7 @@ export default function GroupEventForm(props: GroupEventFormProps) {
       method="POST"
       action={props.action}
       class="space-y-6"
-      f-client-nav="false"
+      f-client-nav={false}
     >
       {/* Hidden: event type — always submitted */}
       <input type="hidden" name="event_type" value={eventType.value} />
@@ -313,7 +313,7 @@ export default function GroupEventForm(props: GroupEventFormProps) {
               key={et.value}
               class={`flex-1 flex items-start gap-3 cursor-pointer p-4 rounded-xl border-2 transition-colors ${
                 eventType.value === et.value
-                  ? "border-[#1a5f6e] bg-[#1a5f6e]/5"
+                  ? "border-primary bg-primary/5"
                   : "border-gray-200 hover:border-gray-300"
               }`}
             >
@@ -325,7 +325,7 @@ export default function GroupEventForm(props: GroupEventFormProps) {
                 onChange={() => {
                   eventType.value = et.value;
                 }}
-                class="mt-0.5 text-[#1a5f6e]"
+                class="mt-0.5 text-primary"
               />
               <div>
                 <p class="text-sm font-semibold text-near-black">
@@ -565,8 +565,8 @@ export default function GroupEventForm(props: GroupEventFormProps) {
                     }}
                     class={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
                       rrulePreset.value === p.value
-                        ? "border-[#1a5f6e] bg-[#1a5f6e] text-white"
-                        : "border-gray-300 text-gray-700 hover:border-[#1a5f6e]"
+                        ? "border-primary bg-primary text-white"
+                        : "border-gray-300 text-gray-700 hover:border-primary"
                     }`}
                   >
                     {p.label}
@@ -588,8 +588,8 @@ export default function GroupEventForm(props: GroupEventFormProps) {
                       onClick={() => toggleWeekday(wd.code)}
                       class={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
                         rruleWeekdays.value.includes(wd.code)
-                          ? "border-[#1a5f6e] bg-[#1a5f6e] text-white"
-                          : "border-gray-300 text-gray-700 hover:border-[#1a5f6e]"
+                          ? "border-primary bg-primary text-white"
+                          : "border-gray-300 text-gray-700 hover:border-primary"
                       }`}
                     >
                       {wd.label}
@@ -708,7 +708,7 @@ export default function GroupEventForm(props: GroupEventFormProps) {
                         onChange={() => {
                           rruleEndType.value = et.value;
                         }}
-                        class="text-[#1a5f6e]"
+                        class="text-primary"
                       />
                       <span class="text-sm">{et.label}</span>
                     </label>
@@ -743,7 +743,7 @@ export default function GroupEventForm(props: GroupEventFormProps) {
             {currentRRule && (
               <div class="bg-gray-50 rounded-lg px-4 py-3">
                 <p class="text-xs font-medium text-gray-500 mb-1">RRULE</p>
-                <code class="text-xs text-[#1a5f6e] break-all">
+                <code class="text-xs text-primary break-all">
                   {currentRRule}
                 </code>
               </div>
@@ -779,7 +779,7 @@ export default function GroupEventForm(props: GroupEventFormProps) {
                     onChange={() => {
                       locationType.value = lt.value;
                     }}
-                    class="text-[#1a5f6e]"
+                    class="text-primary"
                   />
                   <span class="text-sm">{lt.label}</span>
                 </label>
@@ -940,7 +940,7 @@ export default function GroupEventForm(props: GroupEventFormProps) {
                 onChange={() => {
                   visibility.value = v.value;
                 }}
-                class="mt-0.5 text-[#1a5f6e]"
+                class="mt-0.5 text-primary"
               />
               <div>
                 <p class="text-sm font-medium text-near-black">{v.label}</p>

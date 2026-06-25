@@ -112,7 +112,7 @@ export default function EmailComposeForm(
           type="text"
           value={subject.value}
           onInput={(e) => subject.value = (e.target as HTMLInputElement).value}
-          class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:border-[#1a5f6e]"
+          class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:border-primary"
           placeholder="e.g. New resource: Suggested reading this week"
           disabled={sending.value}
         />
@@ -125,7 +125,7 @@ export default function EmailComposeForm(
           onClick={() => tab.value = "write"}
           class={`px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ${
             tab.value === "write"
-              ? "border-[#1a5f6e] text-[#1a5f6e]"
+              ? "border-primary text-primary"
               : "border-transparent text-gray-500 hover:text-gray-700"
           }`}
         >
@@ -136,7 +136,7 @@ export default function EmailComposeForm(
           onClick={() => tab.value = "preview"}
           class={`px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ${
             tab.value === "preview"
-              ? "border-[#1a5f6e] text-[#1a5f6e]"
+              ? "border-primary text-primary"
               : "border-transparent text-gray-500 hover:text-gray-700"
           }`}
         >
@@ -151,7 +151,7 @@ export default function EmailComposeForm(
             value={body.value}
             onInput={(e) =>
               body.value = (e.target as HTMLTextAreaElement).value}
-            class="w-full border border-t-0 border-gray-300 rounded-b-md px-3 py-3 text-sm font-mono focus:outline-none focus:ring-2 focus:border-[#1a5f6e] resize-y"
+            class="w-full border border-t-0 border-gray-300 rounded-b-md px-3 py-3 text-sm font-mono focus:outline-none focus:ring-2 focus:border-primary resize-y"
             rows={18}
             placeholder={`Write your email in Markdown.\n\nHi {{firstName}},\n\nWe've added a new resource this week...\n\n[Resource title](https://example.com)\n\nBring any questions to the next meetup.\n\n— Charlie`}
             disabled={sending.value}

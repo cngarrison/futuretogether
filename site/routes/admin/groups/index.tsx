@@ -112,10 +112,9 @@ export default define.page<typeof handler>(function AdminGroupsIndex(
             href={`/admin/groups/?status=${tab}`}
             class={`px-4 py-2 text-sm font-medium capitalize transition-colors ${
               statusFilter === tab
-                ? "border-b-2 -mb-0.5 text-gray-900"
+                ? "border-b-2 border-primary -mb-0.5 text-gray-900"
                 : "text-gray-500 hover:text-gray-700"
             }`}
-            style={statusFilter === tab ? "border-color: #1a5f6e;" : ""}
           >
             {tab}{" "}
             {counts[tab] !== undefined && (

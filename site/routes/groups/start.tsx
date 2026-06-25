@@ -276,8 +276,7 @@ export default define.page<typeof handler>(function GroupsStart({ data }) {
                   </a>
                   <a
                     href="/login?next=/groups/start"
-                    class="flex-1 text-center px-7 py-3.5 font-semibold rounded-xl text-primary transition-colors hover:bg-teal-50"
-                    style="border: 2px solid #1a5f6e;"
+                    class="flex-1 text-center px-7 py-3.5 font-semibold border border-2 border-primary rounded-xl text-primary transition-colors hover:bg-teal-50"
                   >
                     Log in
                   </a>

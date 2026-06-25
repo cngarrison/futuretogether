@@ -173,7 +173,7 @@ export default define.page<typeof handler>(function GroupAdminDashboard(
               <a
                 key={href}
                 href={href}
-                class="block px-5 py-4 rounded-xl border transition-colors hover:border-[#1a5f6e]/30 hover:bg-white"
+                class="block px-5 py-4 rounded-xl border transition-colors hover:border-primary/30 hover:bg-white"
                 style="border-color: #e0dbd3; background-color: #fff;"
               >
                 <p class="text-sm font-semibold text-near-black mb-0.5">
@@ -201,7 +201,7 @@ function StatCard({ label, value }: { label: string; value: number }) {
       class="rounded-xl px-5 py-5"
       style="background-color: #fff; border: 1px solid #e0dbd3;"
     >
-      <p class="text-3xl font-bold mb-1" style="color: #1a5f6e;">
+      <p class="text-3xl text-primary font-bold mb-1">
         {value}
       </p>
       <p class="text-sm" style="color: rgba(28,26,24,0.6);">

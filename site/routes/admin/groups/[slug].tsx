@@ -360,8 +360,7 @@ function MembersCard({ members }: { members: GroupMember[] }) {
                     <td class="py-2 pr-3 text-gray-600">
                       <a
                         href={`mailto:${m.email}`}
-                        class="hover:underline"
-                        style="color:#1a5f6e;"
+                        class="hover:underline text-primary"
                       >
                         {m.email}
                       </a>
@@ -580,8 +579,7 @@ function ActionsPanel({ group }: { group: GroupDetail }) {
           href={`/groups/${group.slug}/admin/`}
           target="_blank"
           rel="noopener noreferrer"
-          class="block text-center px-4 py-2 text-sm font-medium rounded-lg border transition-colors hover:bg-gray-50"
-          style="border-color: #1a5f6e; color: #1a5f6e;"
+          class="block text-center px-4 py-2 text-sm text-primary font-medium rounded-lg border border-primary transition-colors hover:bg-gray-50"
         >
           Open group admin panel ↗
         </a>
@@ -593,8 +591,7 @@ function ActionsPanel({ group }: { group: GroupDetail }) {
           href={`/groups/${group.slug}/`}
           target="_blank"
           rel="noopener noreferrer"
-          class="block text-center text-sm font-medium hover:underline"
-          style="color: #1a5f6e;"
+          class="block text-center text-sm text-primary font-medium hover:underline"
         >
           View public page &rarr;
         </a>

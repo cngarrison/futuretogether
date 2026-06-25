@@ -53,8 +53,7 @@ export default define.page<typeof handler>(function EmailHistoryPage(
           </h1>
           <a
             href={`/groups/${groupSlug}/admin/email/`}
-            class="text-sm font-medium transition-opacity hover:opacity-70"
-            style="color: #1a5f6e;"
+            class="text-sm text-primary font-medium transition-opacity hover:opacity-70"
           >
             Compose new →
           </a>
@@ -72,8 +71,7 @@ export default define.page<typeof handler>(function EmailHistoryPage(
               </p>
               <a
                 href={`/groups/${groupSlug}/admin/email/`}
-                class="text-sm font-medium"
-                style="color: #1a5f6e;"
+                class="text-sm text-primary font-medium"
               >
                 Compose your first email →
               </a>
@@ -139,7 +137,7 @@ export default define.page<typeof handler>(function EmailHistoryPage(
                         <td class="px-4 py-3 font-medium text-near-black">
                           <a
                             href={`/groups/${groupSlug}/admin/email/${send.id}/`}
-                            style="color: #1a5f6e;"
+                            class="text-primary"
                           >
                             {send.subject}
                           </a>
@@ -153,8 +151,7 @@ export default define.page<typeof handler>(function EmailHistoryPage(
                         <td class="px-4 py-3 text-right">
                           <a
                             href={`/groups/${groupSlug}/admin/email/${send.id}/`}
-                            class="text-xs font-medium transition-opacity hover:opacity-70"
-                            style="color: #1a5f6e;"
+                            class="text-xs text-primary font-medium transition-opacity hover:opacity-70"
                           >
                             View
                           </a>

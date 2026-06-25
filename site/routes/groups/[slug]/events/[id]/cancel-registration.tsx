@@ -116,8 +116,7 @@ export default define.page<typeof handler>(function CancelRegistrationPage(
         >
           {/* Logo */}
           <p
-            class="text-lg font-bold mb-8"
-            style="color:#1a5f6e;"
+            class="text-lg text-primary font-bold mb-8"
           >
             Future Together
           </p>
@@ -133,8 +132,7 @@ export default define.page<typeof handler>(function CancelRegistrationPage(
               </p>
               <a
                 href="/groups"
-                class="text-sm font-semibold"
-                style="color:#1a5f6e;"
+                class="text-sm text-primary font-semibold"
               >
                 Return to Future Together &rarr;
               </a>
@@ -152,8 +150,7 @@ export default define.page<typeof handler>(function CancelRegistrationPage(
               </p>
               <a
                 href={groupsUrl}
-                class="text-sm font-semibold"
-                style="color:#1a5f6e;"
+                class="text-sm text-primary font-semibold"
               >
                 View group &rarr;
               </a>

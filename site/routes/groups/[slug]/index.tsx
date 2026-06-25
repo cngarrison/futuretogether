@@ -199,8 +199,7 @@ export default define.page<typeof handler>(function GroupDetail({ data }) {
                         >
                           {/* Date + title */}
                           <p
-                            class="text-xs font-semibold uppercase tracking-wide mb-1"
-                            style="color:#1a5f6e;"
+                            class="text-xs text-primary font-semibold uppercase tracking-wide mb-1"
                           >
                             {fmtEventDate(
                               ev.event_date,
@@ -246,8 +245,7 @@ export default define.page<typeof handler>(function GroupDetail({ data }) {
                                 href={ev.meeting_link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="inline-block px-4 py-2 text-sm font-semibold text-white rounded-xl"
-                                style="background:#1a5f6e;"
+                                class="inline-block px-4 py-2 text-sm font-semibold text-white bg-primary rounded-xl"
                               >
                                 Join event &rarr;
                               </a>
@@ -283,8 +281,7 @@ export default define.page<typeof handler>(function GroupDetail({ data }) {
                       /* Site admin or group admin/owner */
                       <a
                         href={`/groups/${group.slug}/admin/`}
-                        class="block text-center w-full px-6 py-3 font-semibold rounded-xl text-white transition-opacity hover:opacity-90"
-                        style="background-color: #1a5f6e;"
+                        class="block text-center w-full px-6 py-3 font-semibold bg-primary rounded-xl text-white transition-opacity hover:opacity-90"
                       >
                         Manage group &rarr;
                       </a>

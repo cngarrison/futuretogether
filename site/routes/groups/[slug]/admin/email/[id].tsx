@@ -96,8 +96,7 @@ export default define.page<typeof handler>(function EmailSendDetailPage(
         {/* Back link */}
         <a
           href={`/groups/${groupSlug}/admin/email/history/`}
-          class="inline-block text-sm font-medium mb-6 transition-opacity hover:opacity-70"
-          style="color: #1a5f6e;"
+          class="inline-block text-sm text-primary font-medium mb-6 transition-opacity hover:opacity-70"
         >
           ← Email history
         </a>
@@ -144,8 +143,7 @@ export default define.page<typeof handler>(function EmailSendDetailPage(
         {/* Compose similar */}
         <a
           href={`/groups/${groupSlug}/admin/email/?from=${send.id}`}
-          class="inline-block text-sm font-medium transition-opacity hover:opacity-70"
-          style="color: #1a5f6e;"
+          class="inline-block text-sm text-primary font-medium transition-opacity hover:opacity-70"
         >
           Compose similar →
         </a>

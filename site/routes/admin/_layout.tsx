@@ -171,8 +171,7 @@ export default define.layout((ctx) => {
                 Future Together
               </span>
               <span
-                class="text-[10px] font-bold px-1.5 py-0.5 rounded-full"
-                style="background: #1a5f6e; color: white; letter-spacing: 0.05em;"
+                class="text-[10px] font-bold text-white bg-primary px-1.5 py-0.5 rounded-full"
               >
                 ADMIN
               </span>
@@ -191,7 +190,7 @@ export default define.layout((ctx) => {
                   class={[
                     "flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                     isActive
-                      ? "bg-[#1a5f6e] text-white"
+                      ? "bg-primary text-white"
                       : "text-white/55 hover:bg-white/[0.08] hover:text-white/85",
                   ].join(" ")}
                 >
@@ -246,8 +245,7 @@ export default define.layout((ctx) => {
                 FT
               </span>
               <span
-                class="text-[10px] font-bold px-1 py-0.5 rounded"
-                style="background: #1a5f6e; color: white;"
+                class="text-[10px] font-bold text-white bg-primary px-1 py-0.5 rounded"
               >
                 ADMIN
               </span>
@@ -262,7 +260,7 @@ export default define.layout((ctx) => {
                   class={[
                     "flex items-center gap-1.5 px-3 py-3 text-xs font-medium whitespace-nowrap shrink-0 transition-colors border-b-2",
                     isActive
-                      ? "text-white border-[#1a5f6e]"
+                      ? "text-white border-primary"
                       : "text-white/55 hover:text-white/85 border-transparent",
                   ].join(" ")}
                 >

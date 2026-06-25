@@ -179,8 +179,7 @@ export default define.page<typeof handler>(function GroupActionPage({ data }) {
           </p>
           <a
             href="/admin/groups/"
-            class="inline-block px-5 py-2.5 rounded-lg text-sm font-semibold text-white"
-            style="background: #1a5f6e;"
+            class="inline-block px-5 py-2.5 bg-primary rounded-lg text-sm font-semibold text-white"
           >
             Go to groups admin
           </a>
@@ -201,8 +200,7 @@ export default define.page<typeof handler>(function GroupActionPage({ data }) {
           </p>
           <a
             href="/admin/groups/"
-            class="inline-block px-5 py-2.5 rounded-lg text-sm font-semibold text-white"
-            style="background: #1a5f6e;"
+            class="inline-block px-5 py-2.5 bg-primary rounded-lg text-sm font-semibold text-white"
           >
             Go to groups admin
           </a>
@@ -227,7 +225,7 @@ export default define.page<typeof handler>(function GroupActionPage({ data }) {
             {" "}
             the application for:
           </p>
-          <p class="text-lg font-bold mb-4" style="color: #1a5f6e;">
+          <p class="text-lg text-primary font-bold mb-4">
             {groupName}
           </p>
           <p class="text-sm text-gray-500">

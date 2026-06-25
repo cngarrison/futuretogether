@@ -51,8 +51,7 @@ export default define.page<typeof handler>(function BroadcastDetail({ data }) {
         </div>
         <a
           href={`/admin/emails/compose?from=${broadcast.id}`}
-          class="shrink-0 px-4 py-2 rounded-md text-sm font-semibold text-primary border hover:shadow-sm transition-shadow"
-          style="border-color: #1a5f6e;"
+          class="shrink-0 px-4 py-2 rounded-md text-sm font-semibold text-primary border border-primary hover:shadow-sm transition-shadow"
         >
           Duplicate
         </a>

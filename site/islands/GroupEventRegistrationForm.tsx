@@ -230,8 +230,7 @@ export default function GroupEventRegistrationForm({
       <button
         type="submit"
         disabled={status === "loading"}
-        class="w-full px-4 py-2.5 text-sm font-semibold text-white rounded-xl transition-opacity hover:opacity-90 disabled:opacity-50"
-        style="background:#1a5f6e;"
+        class="w-full px-4 py-2.5 text-sm font-semibold text-white rounded-xl bg-primary transition-opacity hover:opacity-90 disabled:opacity-50"
       >
         {status === "loading" ? "Registering…" : `Register for ${eventTitle}`}
       </button>

@@ -93,7 +93,7 @@ export default define.page<typeof handler>(function MembersPage({ data }) {
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
           {/* Active */}
           <div class="rounded-xl p-4" style="background-color:#eef5f7;">
-            <div class="text-3xl font-bold mb-1" style="color:#1a5f6e;">
+            <div class="text-3xl text-primary font-bold mb-1">
               {activeCount}
             </div>
             <div class="text-sm text-gray-600">Active</div>

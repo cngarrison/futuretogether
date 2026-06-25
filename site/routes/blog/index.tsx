@@ -92,10 +92,9 @@ export default define.page(async function Blog(ctx) {
                 {tags.map((tag) => (
                   <span
                     key={tag}
-                    class="text-sm px-3 py-1.5 rounded-full"
+                    class="text-sm text-primary px-3 py-1.5 rounded-full"
                     style={{
                       backgroundColor: "#eef5f7",
-                      color: "#1a5f6e",
                       border: "1px solid #d0e4e7",
                     }}
                   >
@@ -165,8 +164,8 @@ export default define.page(async function Blog(ctx) {
                   <a
                     key={item.card.meta.slug}
                     href={`/blog/series/${item.card.meta.slug}`}
-                    class="block rounded-2xl overflow-hidden transition-shadow hover:shadow-lg"
-                    style="border: 2px solid #1a5f6e; text-decoration: none;"
+                    class="block rounded-2xl border border-2 border-primary overflow-hidden transition-shadow hover:shadow-lg"
+                    style="text-decoration: none;"
                   >
                     {/* Teal header band */}
                     <div class="px-8 py-5 flex items-center justify-between gap-4 bg-primary">

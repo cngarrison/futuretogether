@@ -45,8 +45,8 @@ function RoleBadge({ role }: { role: string }) {
   if (role === "group_owner") {
     return (
       <span
-        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold"
-        style="background:#eef5f7;color:#1a5f6e;"
+        class="inline-flex items-center text-primary px-2 py-0.5 rounded text-xs font-semibold"
+        style="background:#eef5f7;"
       >
         Owner
       </span>
@@ -459,7 +459,7 @@ export default function MemberManagement(
             )}
 
             {inviteEmailSent.value !== null && (
-              <p class="text-sm mb-3" style="color:#1a5f6e;">
+              <p class="text-sm text-primary mb-3">
                 ✓ Invite email sent to {inviteEmailSent.value}
               </p>
             )}

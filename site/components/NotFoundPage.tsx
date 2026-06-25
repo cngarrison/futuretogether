@@ -57,7 +57,7 @@ export default function NotFoundPage() {
             <a
               key={link.href}
               href={link.href}
-              class="px-4 py-2 rounded-lg text-sm font-medium border transition-colors hover:border-[#1a5f6e] hover:text-[#1a5f6e]"
+              class="px-4 py-2 rounded-lg text-sm font-medium border transition-colors hover:border-primary hover:text-primary"
               style="border-color: #ccc; color: #555;"
             >
               {link.label}
