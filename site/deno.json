@@ -16,6 +16,8 @@
     "update": "deno run -A -r jsr:@fresh/update .",
     "onboard-site-owner": "scripts/onboard-site-owner.ts",
     "seed": "deno run --allow-read --allow-env --allow-net scripts/migrate-content.ts",
+    "sync-blog": "deno run --allow-read --allow-env --allow-net scripts/sync-blog.ts",
+    "sync-blog:prod": "deno run --allow-read --allow-env --allow-net scripts/sync-blog.ts --env production",
     "migrate-kv": "deno run --allow-read --allow-env --allow-write --allow-net --unstable-kv scripts/migrate-kv.ts",
     "import-tumba-members": "deno run --allow-read --allow-env --allow-net scripts/import-tumba-members.ts",
     "fixtures": "deno task onboard-site-owner && deno task seed && deno task migrate-kv && deno task import-tumba-members --csv /Users/cng/working/website-futuretogether/playground/future-together-signups.csv",
