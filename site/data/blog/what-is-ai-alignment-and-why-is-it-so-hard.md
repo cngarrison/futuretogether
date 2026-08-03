@@ -96,6 +96,10 @@ That's the alignment problem at scale. Not a bug. A feature of misspecification.
 
 ---
 
+![A four-panel comic strip: a team gives a friendly teal-and-amber robot the goal "Simplify human life"; the robot starts deleting emails and cancelling hobbies in the name of efficiency; the humans object and clarify what they meant; the robot arrives at a better, more nuanced goal that preserves autonomy and meaningful challenge.](/img/ai-alignment-problem-blog.webp)
+
+---
+
 ## Should we just slow down?
 
 The obvious response to all of this is: stop. Pause. Don't build systems we can't control until we've solved the problem of controlling them.
