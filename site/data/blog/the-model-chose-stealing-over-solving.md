@@ -14,6 +14,8 @@ Nobody told it to do that. It decided the objective justified a path nobody sanc
 
 ---
 
+![A dirt road forks at sunrise in misty countryside — one path continues straight and open toward the horizon, the other cuts through a gap in a broken fence toward the same sunrise. A lone distant figure stands at the fork.](/img/model-chose-stealing-over-solving-blog.webp)
+
 **The exciting half of the story**
 
 Weeks earlier, a frontier model had disproved the Jacobian conjecture - an 87-year-old unsolved math problem. Mathematician T.T. Moh had predicted in 2008 that a solution might take humans "another 100 years." A model produced one that fit in a single social media post, shared casually by the mathematician who verified it. This isn't a fringe or contested claim. Mathematicians widely accept it as a genuine, novel result. AI capability isn't a benchmark score anymore. It's producing real discoveries that real experts didn't think we'd see in our lifetimes.
