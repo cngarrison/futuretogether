@@ -11,8 +11,18 @@
  */
 
 import ical from "ical-generator";
-import { getVtimezoneComponent } from "@touch4it/ical-timezones";
+import { tzlib_get_ical_block } from "timezones-ical-library";
 import { naiveDatetimeToICalDateTime } from "../utils/temporal.ts";
+
+// See site/utils/ical.ts for why we use timezones-ical-library instead of
+// @touch4it/ical-timezones (the latter breaks on Deno Deploy: ft-4uy).
+function getVtimezoneBlock(tz: string): string {
+  const [vtimezoneBlock] = tzlib_get_ical_block(tz);
+  if (!vtimezoneBlock) {
+    throw new RangeError(`No VTIMEZONE data available for zone: ${tz}`);
+  }
+  return vtimezoneBlock;
+}
 
 const OUT_DIR = new URL("./test-ical/", import.meta.url).pathname;
 const TIMEZONE = "Australia/Sydney";
@@ -67,7 +77,7 @@ for (const fixture of CASES) {
     .add({ minutes: fixture.duration })
     .toString();
   const cal = ical({ name: "Future Together" });
-  cal.timezone({ name: TIMEZONE, generator: getVtimezoneComponent });
+  cal.timezone({ name: TIMEZONE, generator: getVtimezoneBlock });
   cal.createEvent({
     id: fixture.id,
     start: naiveDatetimeToICalDateTime(fixture.date, TIMEZONE),

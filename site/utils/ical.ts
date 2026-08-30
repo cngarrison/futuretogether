@@ -16,7 +16,7 @@
  */
 
 import ical, { ICalAttendeeStatus } from "ical-generator";
-import { getVtimezoneComponent } from "@touch4it/ical-timezones";
+import { tzlib_get_ical_block } from "timezones-ical-library";
 import type { EventConfig } from "@/utils/db/group-events.ts";
 import { naiveDatetimeToICalDateTime } from "@/utils/temporal.ts";
 
@@ -45,6 +45,36 @@ export interface GroupEventICalOptions {
 /** Canonical group contact address — mirrors the FROM address used in group emails. */
 function groupContactEmail(groupSlug: string): string {
   return `group-${groupSlug}@futuretogether.community`;
+}
+
+/**
+ * VTIMEZONE generator for ical-generator's `cal.timezone({ generator })` hook.
+ *
+ * We previously used `getVtimezoneComponent` from `@touch4it/ical-timezones`,
+ * but that package locates its bundled per-zone .ics fragments via
+ * `path.join(__dirname, ...)`. Deno Deploy's ESM/bundled runtime does not
+ * define `__dirname`, so it threw `ReferenceError: __dirname is not defined`
+ * in production (ft-4uy) even though it worked under local `deno serve`.
+ *
+ * `timezones-ical-library` ships its IANA VTIMEZONE data as plain TS/JSON
+ * modules (no filesystem/`__dirname` lookups, zero runtime dependencies), so
+ * it works identically under Deno Deploy. `tzlib_get_ical_block(tz)` returns
+ * `[vtimezoneBlock, tzidLine]`; we only need the VTIMEZONE block itself here.
+ */
+// ⚠️ DO NOT reintroduce `@touch4it/ical-timezones` (or any similar package
+// that loads bundled per-zone .ics data via `path.join(__dirname, ...)` /
+// CJS `require`) here. It throws `ReferenceError: __dirname is not defined`
+// under Deno Deploy's ESM/bundled runtime (ft-4uy) — it can appear to work
+// fine under local `deno serve`, which masks the incompatibility until
+// production. Always use `timezones-ical-library` (or another dependency
+// verified to ship data as plain ESM/TS/JSON modules with zero filesystem
+// lookups) for VTIMEZONE generation in this project.
+function getVtimezoneBlock(tz: string): string {
+  const [vtimezoneBlock] = tzlib_get_ical_block(tz);
+  if (!vtimezoneBlock) {
+    throw new RangeError(`No VTIMEZONE data available for zone: ${tz}`);
+  }
+  return vtimezoneBlock;
 }
 
 // ---------------------------------------------------------------------------
@@ -99,7 +129,7 @@ export function buildGroupEventICal(opts: GroupEventICalOptions): string {
   );
 
   const cal = ical({ name: "Future Together" });
-  cal.timezone({ name: timezone, generator: getVtimezoneComponent });
+  cal.timezone({ name: timezone, generator: getVtimezoneBlock });
 
   const calEvent = cal.createEvent({
     id: event.id,
