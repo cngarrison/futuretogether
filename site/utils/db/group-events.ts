@@ -632,6 +632,18 @@ export interface GroupEventSummary {
   is_registration_required: boolean;
 }
 
+/**
+ * Resolve an event's registration setting. Recurring event instances may
+ * deliberately leave this unset to inherit the setting from their program.
+ * Registration remains required when neither record supplies a value.
+ */
+export function resolveRegistrationRequired(
+  eventSetting: boolean | null | undefined,
+  programSetting: boolean | null | undefined,
+): boolean {
+  return eventSetting ?? programSetting ?? true;
+}
+
 export interface CreateGroupEventInput {
   group_id: string;
   created_by_id: string;
@@ -1189,13 +1201,16 @@ export async function getUpcomingGroupEvents(
     const { data, error } = await db
       .from("group_events")
       .select(
-        "id, slug, title, event_date, timezone, duration_minutes, location_type, location_name, meeting_link, capacity, is_registration_required, group_programs!program_id(title)",
+        "id, slug, title, event_date, timezone, duration_minutes, location_type, location_name, meeting_link, capacity, is_registration_required, group_programs!program_id(title, is_registration_required)",
       )
       .eq("group_id", groupId).eq("status", "published").gt("event_date", now)
       .order("event_date", { ascending: true }).limit(limit);
     if (error || !data) return [];
     return (data as Array<Record<string, unknown>>).map((row) => {
-      const prog = row.group_programs as { title: string | null } | null;
+      const prog = row.group_programs as {
+        title: string | null;
+        is_registration_required: boolean | null;
+      } | null;
       return {
         id: row.id,
         slug: row.slug,
@@ -1207,7 +1222,10 @@ export async function getUpcomingGroupEvents(
         location_name: row.location_name,
         meeting_link: row.meeting_link,
         capacity: row.capacity,
-        is_registration_required: row.is_registration_required,
+        is_registration_required: resolveRegistrationRequired(
+          row.is_registration_required as boolean | null | undefined,
+          prog?.is_registration_required,
+        ),
       } as GroupEventSummary;
     });
   } catch {

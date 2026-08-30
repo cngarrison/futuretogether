@@ -222,33 +222,23 @@ export default define.page<typeof handler>(function GroupDetail({ data }) {
                           )}
 
                           {/* Registration */}
-                          {ev.is_registration_required
-                            ? (
-                              <GroupEventRegistrationForm
-                                groupSlug={group.slug}
-                                eventId={ev.id}
-                                eventTitle={ev.title || "Event"}
-                                isLoggedIn={isLoggedIn}
-                                userIsRegistered={registeredEventIds.includes(
-                                  ev.id,
-                                )}
-                                userFirstName={userFirstName}
-                                userLastName={userLastName}
-                                userEmail={userEmail}
-                              />
-                            )
-                            : ev.meeting_link
-                            ? (
-                              <a
-                                href={ev.meeting_link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="inline-block px-4 py-2 text-sm font-semibold text-white bg-primary rounded-xl"
-                              >
-                                Join event &rarr;
-                              </a>
-                            )
-                            : null}
+                          {!ev.is_registration_required && (
+                            <p class="mb-3 text-sm text-near-black/65">
+                              Registration is not required.
+                            </p>
+                          )}
+                          <GroupEventRegistrationForm
+                            groupSlug={group.slug}
+                            eventId={ev.id}
+                            eventTitle={ev.title || "Event"}
+                            isLoggedIn={isLoggedIn}
+                            userIsRegistered={registeredEventIds.includes(
+                              ev.id,
+                            )}
+                            userFirstName={userFirstName}
+                            userLastName={userLastName}
+                            userEmail={userEmail}
+                          />
                         </div>
                       ))}
                     </div>

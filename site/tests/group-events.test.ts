@@ -6,6 +6,7 @@
 import { assertEquals } from "@std/assert";
 import {
   isGroupEventPosterPath,
+  resolveRegistrationRequired,
   resolveEventPosterImage,
 } from "../utils/db/group-events.ts";
 
@@ -54,4 +55,20 @@ Deno.test("rejects malformed relative storage paths", async () => {
     await resolveEventPosterImage("events/poster.webp"),
     undefined,
   );
+});
+
+Deno.test("uses an event registration setting when it is explicitly supplied", () => {
+  assertEquals(resolveRegistrationRequired(true, false), true);
+  assertEquals(resolveRegistrationRequired(false, true), false);
+});
+
+Deno.test("inherits the program registration setting for unset event instances", () => {
+  assertEquals(resolveRegistrationRequired(null, true), true);
+  assertEquals(resolveRegistrationRequired(null, false), false);
+  assertEquals(resolveRegistrationRequired(undefined, false), false);
+});
+
+Deno.test("requires registration when neither an event nor program sets it", () => {
+  assertEquals(resolveRegistrationRequired(null, null), true);
+  assertEquals(resolveRegistrationRequired(undefined, undefined), true);
 });
