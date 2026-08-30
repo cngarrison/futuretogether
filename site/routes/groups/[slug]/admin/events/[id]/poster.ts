@@ -30,6 +30,9 @@ export const handler = define.handlers({
     if (file.size > 5 * 1024 * 1024) {
       return errorRedirect("File too large (max 5MB).");
     }
+    if (file.type !== "image/webp") {
+      return errorRedirect("Poster must be a WebP image.");
+    }
 
     const buffer = new Uint8Array(await file.arrayBuffer());
     const storagePath = `${groupId}/events/${eventId}/poster.webp`;

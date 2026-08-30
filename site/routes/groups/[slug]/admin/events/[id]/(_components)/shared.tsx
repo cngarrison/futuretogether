@@ -352,7 +352,7 @@ export function PosterPanel({
           <input
             type="file"
             name="poster"
-            accept="image/*"
+            accept="image/webp"
             class="text-sm text-gray-600 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200"
           />
           <button
@@ -363,7 +363,7 @@ export function PosterPanel({
           </button>
         </div>
         <p class="text-xs text-gray-400 mt-2">
-          Recommended: 1200×630px, max 5MB
+          WebP only. Recommended: 1200×630px, max 5MB
         </p>
       </form>
     </div>

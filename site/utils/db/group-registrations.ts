@@ -113,9 +113,9 @@ export async function createRegistration(
     if (eventError || !eventRow) {
       return { registration: null, error: "Event not found" };
     }
-    const event = rowToEventConfig(
+    const event = await rowToEventConfig(
       eventRow as Record<string, unknown>,
-    ) as EventConfig;
+    );
     if (!event.isActive) {
       return {
         registration: null,
@@ -227,9 +227,9 @@ export async function getEventRegistrations(
       .from("group_events").select(EVENT_SELECT).eq("id", eventId)
       .maybeSingle();
     if (!eventRow) return [];
-    const event = rowToEventConfig(
+    const event = await rowToEventConfig(
       eventRow as Record<string, unknown>,
-    ) as EventConfig;
+    );
     const { data, error } = await state.supabaseClient
       .from("event_registrations").select("*").eq("event_id", eventId).order(
         "registered_at",
@@ -260,9 +260,9 @@ export async function getRegistrationById(
       .from("group_events").select(EVENT_SELECT).eq("id", eventId)
       .maybeSingle();
     if (!eventRow) return null;
-    const event = rowToEventConfig(
+    const event = await rowToEventConfig(
       eventRow as Record<string, unknown>,
-    ) as EventConfig;
+    );
     return rowToRegistration(row, event);
   } catch {
     return null;
@@ -377,8 +377,8 @@ export async function getRegistrationsNeedingReminder(
       .gte("event_date", lowCutoff)
       .lte("event_date", highCutoff);
     if (!eventRows || eventRows.length === 0) return empty;
-    const events: EventConfig[] = (eventRows as Record<string, unknown>[]).map(
-      (row) => rowToEventConfig(row) as EventConfig,
+    const events = await Promise.all(
+      (eventRows as Record<string, unknown>[]).map((row) => rowToEventConfig(row)),
     );
     const registrations: Array<
       { event: EventConfig; registration: Registration }

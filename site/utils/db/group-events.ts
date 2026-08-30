@@ -167,8 +167,48 @@ export function formatRecurrenceRule(rrule: string): string {
   }
 }
 
-export function rowToEventConfig(row: Record<string, unknown>): EventConfig {
+/** Canonical private Storage location for an event poster in the groups bucket. */
+const GROUP_EVENT_POSTER_PATH =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/events\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/poster\.webp$/i;
+
+/** Whether a value is a canonical, bucket-relative event-poster path. */
+export function isGroupEventPosterPath(path: string): boolean {
+  return GROUP_EVENT_POSTER_PATH.test(path);
+}
+
+/**
+ * Resolve a poster for public rendering. Legacy rooted site paths and HTTP(S)
+ * URLs are preserved. Only canonical groups-bucket paths are signed; all
+ * other relative values fail closed so private paths cannot reach an img tag.
+ */
+export async function resolveEventPosterImage(
+  path: string | null | undefined,
+): Promise<string | undefined> {
+  if (!path) return undefined;
+  if (path.startsWith("/") || /^https?:\/\//i.test(path)) return path;
+  if (!isGroupEventPosterPath(path)) return undefined;
+
+  try {
+    const admin = createAdminClient();
+    const { data, error } = await admin.storage.from("groups").createSignedUrl(
+      path,
+      3600,
+    );
+    if (error || !data?.signedUrl) return undefined;
+    return data.signedUrl;
+  } catch {
+    return undefined;
+  }
+}
+
+export async function rowToEventConfig(
+  row: Record<string, unknown>,
+): Promise<EventConfig> {
   const p = row.program as Record<string, unknown>;
+  const posterPath = (row.poster_image_path ?? p.poster_image_path) as
+    | string
+    | null
+    | undefined;
   return {
     id: row.id as string,
     programId: p.id as string,
@@ -185,10 +225,7 @@ export function rowToEventConfig(row: Record<string, unknown>): EventConfig {
         1) as number,
     meetingLink: (row.meeting_link ?? undefined) as string | undefined,
     meetingLocation: (row.location_name ?? undefined) as string | undefined,
-    posterImage:
-      ((row.poster_image_path ?? p.poster_image_path) ?? undefined) as
-        | string
-        | undefined,
+    posterImage: await resolveEventPosterImage(posterPath),
     isActive: row.status === "published",
     presentedBy: ((row.presented_by ?? p.presented_by) ?? undefined) as
       | string
@@ -220,7 +257,7 @@ export async function getEventById(
       .from("group_events").select(EVENT_SELECT).eq("id", id).maybeSingle();
     //console.log(`DbGroupEvents: getEventById for: ${id}`, { data, error });
     if (error || !data) return null;
-    return rowToEventConfig(data as Record<string, unknown>) as EventConfig;
+    return await rowToEventConfig(data as Record<string, unknown>);
   } catch {
     return null;
   }
@@ -234,7 +271,7 @@ export async function getEventBySlug(
     const { data, error } = await state.supabaseClient
       .from("group_events").select(EVENT_SELECT).eq("slug", slug).maybeSingle();
     if (error || !data) return null;
-    return rowToEventConfig(data as Record<string, unknown>) as EventConfig;
+    return await rowToEventConfig(data as Record<string, unknown>);
   } catch {
     return null;
   }
@@ -250,8 +287,8 @@ export async function getEventsBySlug(
         ascending: true,
       });
     if (error || !data) return [];
-    return (data as Record<string, unknown>[])
-      .map((row) => rowToEventConfig(row) as EventConfig)
+    return (await Promise.all((data as Record<string, unknown>[])
+      .map((row) => rowToEventConfig(row))))
       .filter((e) => e.slug === slug);
   } catch {
     return [];
@@ -265,9 +302,9 @@ export async function getAllEvents(state: State): Promise<EventConfig[]> {
         ascending: false,
       });
     if (error || !data) return [];
-    return (data as Record<string, unknown>[]).map((row) =>
-      rowToEventConfig(row) as EventConfig
-    );
+    return await Promise.all((data as Record<string, unknown>[]).map((row) =>
+      rowToEventConfig(row)
+    ));
   } catch {
     return [];
   }
@@ -296,8 +333,8 @@ export async function getUpcomingSpecialEvents(
         { ascending: true },
       );
     if (error || !data) return [];
-    return (data as Record<string, unknown>[])
-      .map((row) => rowToEventConfig(row) as EventConfig)
+    return (await Promise.all((data as Record<string, unknown>[])
+      .map((row) => rowToEventConfig(row))))
       .filter((e) => e.slug !== excludeSlug && e.programType === "one-off");
   } catch {
     return [];
@@ -326,8 +363,8 @@ export async function getPastSpecialEvents(
         { ascending: false },
       );
     if (error || !data) return [];
-    return (data as Record<string, unknown>[])
-      .map((row) => rowToEventConfig(row) as EventConfig)
+    return (await Promise.all((data as Record<string, unknown>[])
+      .map((row) => rowToEventConfig(row))))
       .filter((e) => e.slug !== excludeSlug && e.programType === "one-off");
   } catch {
     return [];
@@ -360,8 +397,8 @@ export async function getPastRecurringEvents(
         { ascending: false },
       );
     if (error || !data) return { events: [], total: 0, earliestDate: null };
-    const all = (data as Record<string, unknown>[])
-      .map((row) => rowToEventConfig(row) as EventConfig)
+    const all = (await Promise.all((data as Record<string, unknown>[])
+      .map((row) => rowToEventConfig(row))))
       .filter((e) => e.slug === slug);
     return {
       events: all.slice(0, limit),
@@ -410,7 +447,7 @@ export async function getUpcomingCommunityRecurringEvents(
     const results: CommunityGroupEvent[] = [];
 
     for (const row of data as Record<string, unknown>[]) {
-      const base = rowToEventConfig(row);
+      const base = await rowToEventConfig(row);
       if (base.programType !== "recurring" || base.slug === excludeSlug) {
         continue;
       }
@@ -461,8 +498,8 @@ export async function getPastCommunityRecurringEvents(
         { ascending: false },
       );
     if (error || !data) return { events: [], total: 0 };
-    const all = (data as Record<string, unknown>[])
-      .map((row) => rowToEventConfig(row) as EventConfig)
+    const all = (await Promise.all((data as Record<string, unknown>[])
+      .map((row) => rowToEventConfig(row))))
       .filter((e) => e.programType === "recurring" && e.slug !== excludeSlug);
     return { events: all.slice(0, limit), total: all.length };
   } catch {
@@ -743,19 +780,8 @@ export async function getGroupEventById(
       .eq("id", eventId).maybeSingle();
     if (error || !data) return null;
     const row = data as Record<string, unknown>;
-    let posterUrl: string | null = null;
     const posterPath = (row.poster_image_path as string | null) ?? null;
-    if (posterPath) {
-      try {
-        // Admin client required: storage signed URLs need service role
-        const admin = createAdminClient();
-        const { data: sd } = await admin.storage.from("groups").createSignedUrl(
-          posterPath,
-          3600,
-        );
-        if (sd?.signedUrl) posterUrl = sd.signedUrl;
-      } catch { /* non-fatal */ }
-    }
+    const posterUrl = await resolveEventPosterImage(posterPath) ?? null;
     const prog = row.group_programs as {
       title: string | null;
       description: string | null;
@@ -1128,17 +1154,8 @@ export async function getFeaturedGroupEvents(
     return await Promise.all(rows.map(async (row) => {
       const prog = row.group_programs as { description: string | null } | null;
       const grp = row.groups as { slug: string; name: string } | null;
-      let posterUrl: string | null = null;
       const posterPath = (row.poster_image_path as string | null) ?? null;
-      if (posterPath) {
-        try {
-          // Admin client required: storage signed URLs need service role
-          const admin = createAdminClient();
-          const { data: sd } = await admin.storage.from("groups")
-            .createSignedUrl(posterPath, 3600);
-          if (sd?.signedUrl) posterUrl = sd.signedUrl;
-        } catch { /* non-fatal */ }
-      }
+      const posterUrl = await resolveEventPosterImage(posterPath) ?? null;
       return {
         id: row.id as string,
         slug: row.slug as string,
