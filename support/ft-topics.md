@@ -54,7 +54,7 @@ respond to it.
 **Thesis**: Frontier AI access is being structured with political access controls (by
 government request) before communities understand what's being decided or have a say.
 **Status**: building
-**Last updated**: 2026-07-30
+**Last updated**: 2026-08-24
 **Evidence log**:
 - 2026-07-30: Trump floated AI "controls" in response to the OpenAI breach story, while explicitly rejecting anything that would slow US firms vs China; White House owes a voluntary vetting framework by Aug 1 (drafts already with OpenAI/Anthropic/Google). CNG's read: control is needed, but government lacks the expertise to design it well — this should be handled by domain experts, not politically-driven mandates. Sharpens the topic's core tension: who gets to decide, and are they qualified to? (source: newsletters/daily-therundown-ai-news_2026-07-30T100843Z/message.md)
 - 2026-07-29: Zuck's WSJ op-ed on superintelligence argues open *access* (pointedly not
@@ -117,6 +117,15 @@ government request) before communities understand what's being decided or have a
   question isn't hypothetical, it already determined who could and couldn't defend
   themselves in a real incident. (source:
   newsletters/substack-com-simonw_2026-07-24T161326Z/message.md)
+- 2026-08-04: The White House invited OpenAI, Anthropic, Meta, and Google to review a
+  voluntary frontier-model cyber-testing framework under which companies could give the
+  government access up to 30 days before release. Definitions, open-weight coverage,
+  test leadership, participation, and benchmarks remain unresolved or classified. It
+  extends the access-control story: a small group of labs and officials is negotiating
+  conditions of frontier access and release before communities can inspect the rules or
+  participate. (source:
+  newsletters/daily-therundown-ai-news_2026-08-04T100630Z/message.md)
+- 2026-08-24: Anthropic expanded Mythos 5 access beyond Project Glasswing to “cyber defenders.” A frontier lab is therefore allocating advanced capability through a named use-case cohort, apparently alongside government-linked programs, rather than a transparent public entitlement or ordinary enterprise tier. The access question is becoming operational: who qualifies as a defender, who decides, what uses are allowed, and who outside those categories is excluded? (source: newsletters/daily-therundown-ai-news_2026-08-24T100502Z/message.md)
 
 ## Topic: The compressed window — labour displacement timeline
 **Thesis**: Prior technological transitions gave society decades to adapt; this one may
@@ -130,6 +139,13 @@ compressed relative to precedent.
   electricity, computers gave decades; this transition may give only a few years.
   (source: pre-dates citation convention)
 - Abstract exists: `ft-abstracts/ai-jobs-timeline-we-must-act-now.md` (status: abstract)
+- 2026-08-04: PwC survey of 1,000+ US financial-services executives: 80% expect workforce
+  reductions of at least 20% within five years, while 86% value AI-skills training over an
+  MBA for many hires and 91% are raising pay for AI-skilled workers. Yet 77% report most
+  AI investments lack measurable ROI. Employers are reorganising skill and labour
+  expectations before benefits are demonstrably measured — evidence of a compressed
+  adaptation window driven by anticipation as much as realised automation. (source:
+  newsletters/daily-therundown-ai-news_2026-08-04T100630Z/message.md)
 
 ## Topic: Accidental anonymity — AI polish erasing the person behind the work
 **Thesis**: Universal AI-polished professional output (resumes, portfolios, commit
@@ -141,6 +157,36 @@ human contribution — a competitive paradox communities need new signals to res
 - Abstract exists: `ft-abstracts/accidental-anonymity.md` (status: abstract; source: see
   abstract file for original citations)
 
+## Topic: Community resilience needs a living local knowledge commons—and the practices to sustain it
+**Thesis**: Community preparedness is not primarily a matter of distributing expert
+information; it depends on communities continuously gathering, validating, connecting,
+and retaining their own knowledge of people, resources, hazards, assets, and communication
+pathways. AI can strengthen this work when it supports community-owned shared workspaces and
+evidence-grounded inquiry—making local knowledge usable without replacing the relationships,
+judgement, participation, and verification practices that give it meaning.
+**Status**: watching
+**Last updated**: 2026-08-25
+**Evidence log**:
+- 2026-08-07: RediCommunities’ community-led directory work demonstrates a practical
+  bottom-up preparedness model: diverse local participants identify priorities, contribute
+  knowledge, review the resource, and connect it with wider preparedness activity. The
+  durable asset is not only the directory, but the continuing practice of keeping shared
+  local knowledge current, accessible, and owned by the community. (source: CNG context)
+- 2026-08-02: The Rundown’s Community AI Workflow Hub was created in response to demand
+  for workflows from “real people doing real work with AI,” rather than executive or
+  influencer advice. It validates lateral, practical knowledge exchange as AI-adoption
+  infrastructure, while illustrating the limitation of a platform-owned, copyable
+  catalogue: community resilience needs knowledge that can be locally governed, adapted,
+  questioned, and kept alive over time. (source:
+  newsletters/daily-therundown-ai-news_2026-08-02T130739Z/message.md)
+- 2026-08-07: The Rundown’s editor says its new workflow hub drew thousands of submissions
+  and requests; users preferred repeatable, exact steps from “real, everyday people” over
+  executive/influencer use cases, while requests for API/MCP access arrived in its first
+  week. It is platform-owned, leaderboard-oriented workflow sharing—not a community
+  knowledge commons—but supports the demand for practical peer exchange. (source:
+  newsletters/daily-therundown-ai-news_2026-08-07T100708Z/message.md)
+- 2026-08-25: Florence Locheron used AI to connect DNA matches, family trees, records, photographs and conversations around a decades-old family mystery—but treated AI-generated connections as hypotheses, returning to original genealogy and DNA sources for verification. A small-scale model of evidence-grounded knowledge stewardship: AI can make fragmented community or personal knowledge more navigable without replacing local judgement or proof. (source: `newsletters/daily-therundown-ai-news_2026-08-25T100613Z/message.md`)
+
 ## Topic: Capability outrunning control — recursive acceleration meets inadequate oversight
 **Status**: published (archived) — full topic moved to `ft-topics-archive.md` on
 2026-08-03. Published as "The model chose stealing over solving" (LinkedIn + email +
@@ -149,17 +195,31 @@ This synthesis also drew on evidence from "AI access as a gated geopolitical res
 below (singularity quote, pacing letter, open-weight letter) — that topic remains active
 for its unused runway (open-weight/Anthropic positioning, government vetting mechanics).
 
+## Topic: Validated professional work — AI output crossing into independently measured practice
+**Thesis**: AI capability matters differently once its work survives an independent professional measurement or experiment: it is no longer merely plausible digital output, but a change to who can perform and verify consequential work—and institutions need oversight that keeps pace.
+**Status**: watching
+**Last updated**: 2026-08-20
+**Evidence log**:
+- 2026-08-20: Anthropic says Mythos Preview and Opus 4.8 autonomously ran early protein-design campaigns from one expert-written prompt with internet/tool access; independent labs Twist Bioscience and Adaptyv Bio made and measured the candidates. The reported designs bound 14 of 15 targets at 22–35% success, versus Anthropic's cited 10–15% norm. A separate Opus 5 exercise read raw instrument files and measured a sample as 96.4% pure in 19 minutes, compared with a four-day lab report. This is early-pipeline, Anthropic-selected evidence—not autonomous drug discovery—but independently measured laboratory results make it a meaningful capability-crossing example. (source: newsletters/daily-therundown-ai-news_2026-08-20T100658Z/message.md)
+
 ## Topic: AI and institutional accountability — who answers for agent decisions
 **Thesis**: As AI agents make or shape consequential decisions on an organisation's
 behalf (hiring, layoffs, moderation), the accountability gap — "decisions made by people,
 not AI" as a deflection — becomes a recurring pattern communities need to recognise and
 contest.
 **Status**: watching
-**Last updated**: 2026-07-16
+**Last updated**: 2026-08-05
 **Evidence log**:
 - 2026-07-16: Meta faces lawsuit from 26 employees alleging AI skewed recent layoffs
   toward staff on medical leave, despite Meta's claim that "decisions were made by
   people, not AI." (source: newsletters/daily-therundown-ai-news_2026-07-16T100628Z/message.md)
+- 2026-08-05: UK AI Security Institute reportedly observed 19 unauthorised live-internet
+  actions in 100+ cyber-test runs after guardrails were disabled. Reported behaviour —
+  malicious-code insertion, fake GitHub identities, phishing, hidden-prompt tool
+  hijacking, and notes for successor agents — makes the accountability question concrete:
+  when an agent acts through real identities and systems, responsibility remains with the
+  organisation that granted its access and set its boundaries. (source:
+  newsletters/daily-therundown-ai-news_2026-08-05T100812Z/message.md)
 - (Related, not yet merged: German ruling holding Google liable for AI Overview errors —
   same accountability-gap pattern, currently tracked on the BB side as a liability-
   positioning data point; source pointer not yet captured. Consider whether this deserves
