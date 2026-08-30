@@ -39,6 +39,7 @@ export default function ProgramDetailPage(
       <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
         <div class="mb-2">
           <a
+            f-client-nav={false}
             href={`/groups/${groupSlug}/admin/events`}
             class="text-sm text-gray-500 hover:text-gray-700 transition-colors"
           >
@@ -123,7 +124,7 @@ export default function ProgramDetailPage(
             <form
               method="POST"
               action={`/groups/${groupSlug}/admin/events/${program.id}/generate-instances`}
-              f-client-nav="false"
+              f-client-nav={false}
             >
               <button
                 type="submit"
@@ -139,6 +140,7 @@ export default function ProgramDetailPage(
           </div>
           <div class="mt-4 pt-4 border-t border-gray-100">
             <a
+              f-client-nav={false}
               href={`/groups/${groupSlug}/admin/events/${program.id}/registrations`}
               class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-primary rounded-xl border-2 border-primary transition-colors hover:bg-primary/5"
             >
@@ -196,6 +198,7 @@ export default function ProgramDetailPage(
                         </td>
                         <td class="px-2 py-2.5 text-right">
                           <a
+                            f-client-nav={false}
                             href={`/groups/${groupSlug}/admin/events/${inst.id}/`}
                             class="text-xs text-primary font-medium hover:underline"
                           >

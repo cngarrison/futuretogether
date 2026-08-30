@@ -151,6 +151,7 @@ function MembershipCard(
       <div class="flex items-start justify-between gap-3 mb-3">
         <div>
           <a
+            f-client-nav={false}
             href={`/groups/${membership.groupSlug}/`}
             class="text-lg font-semibold text-primary hover:underline"
           >
@@ -165,6 +166,7 @@ function MembershipCard(
         </div>
         {isAdmin && (
           <a
+            f-client-nav={false}
             href={`/groups/${membership.groupSlug}/admin/`}
             class="text-sm font-medium text-teal-700 hover:underline whitespace-nowrap"
           >
@@ -305,6 +307,7 @@ function RegistrationCard(
           </a>
           <p class="text-xs text-gray-400 mt-0.5">
             <a
+              f-client-nav={false}
               href={`/groups/${registration.groupSlug}/`}
               class="hover:underline"
             >

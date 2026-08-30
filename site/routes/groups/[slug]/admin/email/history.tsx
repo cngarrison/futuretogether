@@ -52,6 +52,7 @@ export default define.page<typeof handler>(function EmailHistoryPage(
             Email history
           </h1>
           <a
+            f-client-nav={false}
             href={`/groups/${groupSlug}/admin/email/`}
             class="text-sm text-primary font-medium transition-opacity hover:opacity-70"
           >
@@ -70,6 +71,7 @@ export default define.page<typeof handler>(function EmailHistoryPage(
                 No emails sent yet.
               </p>
               <a
+                f-client-nav={false}
                 href={`/groups/${groupSlug}/admin/email/`}
                 class="text-sm text-primary font-medium"
               >
@@ -136,6 +138,7 @@ export default define.page<typeof handler>(function EmailHistoryPage(
                         </td>
                         <td class="px-4 py-3 font-medium text-near-black">
                           <a
+                            f-client-nav={false}
                             href={`/groups/${groupSlug}/admin/email/${send.id}/`}
                             class="text-primary"
                           >
@@ -150,6 +153,7 @@ export default define.page<typeof handler>(function EmailHistoryPage(
                         </td>
                         <td class="px-4 py-3 text-right">
                           <a
+                            f-client-nav={false}
                             href={`/groups/${groupSlug}/admin/email/${send.id}/`}
                             class="text-xs text-primary font-medium transition-opacity hover:opacity-70"
                           >

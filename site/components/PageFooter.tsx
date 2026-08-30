@@ -27,6 +27,7 @@ export default function PageFooter() {
               You don't have to figure this out alone.
             </p>
             <a
+              f-client-nav={false}
               href="/join"
               class="inline-block text-sm font-semibold text-accent border border-accent rounded px-4 py-2 hover:bg-accent hover:text-near-black transition-colors"
             >
@@ -42,6 +43,7 @@ export default function PageFooter() {
             <ul class="grid grid-cols-2 gap-x-10 gap-y-2 text-sm mb-5">
               <li>
                 <a
+                  f-client-nav={false}
                   href="/meetups"
                   class="text-gray-300 hover:text-white transition-colors"
                 >
@@ -50,6 +52,7 @@ export default function PageFooter() {
               </li>
               <li>
                 <a
+                  f-client-nav={false}
                   href="/about"
                   class="text-gray-300 hover:text-white transition-colors"
                 >
@@ -58,6 +61,7 @@ export default function PageFooter() {
               </li>
               <li>
                 <a
+                  f-client-nav={false}
                   href="/blog"
                   class="text-gray-300 hover:text-white transition-colors"
                 >
@@ -66,6 +70,7 @@ export default function PageFooter() {
               </li>
               <li>
                 <a
+                  f-client-nav={false}
                   href="/join"
                   class="text-gray-300 hover:text-white transition-colors"
                 >
@@ -74,6 +79,7 @@ export default function PageFooter() {
               </li>
               <li>
                 <a
+                  f-client-nav={false}
                   href="/resources"
                   class="text-gray-300 hover:text-white transition-colors"
                 >
@@ -82,6 +88,7 @@ export default function PageFooter() {
               </li>
               <li>
                 <a
+                  f-client-nav={false}
                   href="/contact"
                   class="text-gray-300 hover:text-white transition-colors"
                 >
@@ -90,6 +97,7 @@ export default function PageFooter() {
               </li>
               <li>
                 <a
+                  f-client-nav={false}
                   href="/start-a-group"
                   class="text-gray-300 hover:text-white transition-colors"
                 >
@@ -99,6 +107,7 @@ export default function PageFooter() {
             </ul>
             <div class="border-t border-gray-800 pt-4">
               <a
+                f-client-nav={false}
                 href="https://www.linkedin.com/company/future-together"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -125,6 +134,7 @@ export default function PageFooter() {
           </p>
           <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
             <a
+              f-client-nav={false}
               href="/privacy"
               class="hover:text-gray-300 transition-colors"
             >
@@ -132,6 +142,7 @@ export default function PageFooter() {
             </a>
             <span aria-hidden="true">&middot;</span>
             <a
+              f-client-nav={false}
               href="/terms"
               class="hover:text-gray-300 transition-colors"
             >
@@ -141,6 +152,7 @@ export default function PageFooter() {
             <span>
               &copy; {year} Future Together &middot;{" "}
               <a
+                f-client-nav={false}
                 href="https://beyondbetter.app"
                 target="_blank"
                 rel="noopener noreferrer"

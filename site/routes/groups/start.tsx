@@ -198,7 +198,11 @@ export default define.page<typeof handler>(function GroupsStart({ data }) {
           >
             Fill in the form below and we'll review your application. We aim to
             respond within a few days. Not sure if you're ready?{" "}
-            <a href="/start-a-group" class="underline">
+            <a
+              f-client-nav={false}
+              href="/start-a-group"
+              class="underline"
+            >
               Read our guide first
             </a>.
           </p>
@@ -269,12 +273,14 @@ export default define.page<typeof handler>(function GroupsStart({ data }) {
                 {/* CTAs */}
                 <div class="flex flex-col sm:flex-row gap-4">
                   <a
+                    f-client-nav={false}
                     href="/join"
                     class="flex-1 text-center px-7 py-3.5 font-semibold rounded-xl bg-accent text-white transition-opacity hover:opacity-90"
                   >
                     Create a free account &rarr;
                   </a>
                   <a
+                    f-client-nav={false}
                     href="/login?next=/groups/start"
                     class="flex-1 text-center px-7 py-3.5 font-semibold border border-2 border-primary rounded-xl text-primary transition-colors hover:bg-teal-50"
                   >
@@ -287,8 +293,13 @@ export default define.page<typeof handler>(function GroupsStart({ data }) {
                   style="color: rgba(28,26,24,0.45);"
                 >
                   Already running a group?{" "}
-                  <a href="/groups" class="underline">Browse existing groups</a>
-                  {" "}
+                  <a
+                    f-client-nav={false}
+                    href="/groups"
+                    class="underline"
+                  >
+                    Browse existing groups
+                  </a>{" "}
                   to make sure there isn't one for your area already.
                 </p>
               </div>
@@ -312,6 +323,7 @@ export default define.page<typeof handler>(function GroupsStart({ data }) {
                   within a few days.
                 </p>
                 <a
+                  f-client-nav={false}
                   href="/groups/"
                   class="inline-block px-7 py-3 font-semibold rounded-xl bg-primary text-white transition-opacity hover:opacity-90"
                 >
@@ -681,6 +693,7 @@ export default define.page<typeof handler>(function GroupsStart({ data }) {
                       <span class="text-sm" style="color: rgba(28,26,24,0.8);">
                         I agree to the{" "}
                         <a
+                          f-client-nav={false}
                           href="/groups/code-of-conduct"
                           class="underline text-primary"
                         >

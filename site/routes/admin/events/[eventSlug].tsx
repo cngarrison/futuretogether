@@ -87,6 +87,7 @@ export default define.page<typeof handler>(function EventRegistrationsPage(
         </div>
         <div class="flex flex-col items-end gap-2">
           <a
+            f-client-nav={false}
             href={`/api/admin/events/${event.slug}/download?eventId=${event.id}`}
             class="inline-flex items-center text-white px-4 py-2 bg-primary rounded-lg text-sm transition-opacity hover:opacity-90"
           >

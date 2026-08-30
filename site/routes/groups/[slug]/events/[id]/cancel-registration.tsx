@@ -129,6 +129,7 @@ export default define.page<typeof handler>(function CancelRegistrationPage(
                 need to cancel, please contact us.
               </p>
               <a
+                f-client-nav={false}
                 href="/groups"
                 class="text-sm text-primary font-semibold"
               >
@@ -147,6 +148,7 @@ export default define.page<typeof handler>(function CancelRegistrationPage(
                 has already been cancelled.
               </p>
               <a
+                f-client-nav={false}
                 href={groupsUrl}
                 class="text-sm text-primary font-semibold"
               >

@@ -108,6 +108,7 @@ export default define.page<typeof handler>(function AdminGroupsIndex(
       <div class="flex gap-1 mb-6" style="border-bottom: 2px solid #e5e7eb;">
         {tabs.map((tab) => (
           <a
+            f-client-nav={false}
             key={tab}
             href={`/admin/groups/?status=${tab}`}
             class={`px-4 py-2 text-sm font-medium capitalize transition-colors ${
@@ -231,6 +232,7 @@ function GroupActions({ group }: { group: AdminGroup }) {
       <div class="flex items-center gap-2">
         {/* View detail */}
         <a
+          f-client-nav={false}
           href={`/admin/groups/${group.slug}`}
           class="px-3 py-1 text-xs font-medium rounded-lg text-gray-600 bg-gray-100 hover:bg-gray-200 transition-colors"
         >
@@ -296,6 +298,7 @@ function GroupActions({ group }: { group: AdminGroup }) {
   // Active, archived, suspended — view link only
   return (
     <a
+      f-client-nav={false}
       href={`/admin/groups/${group.slug}`}
       class="text-xs font-medium text-primary hover:underline"
     >

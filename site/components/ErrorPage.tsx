@@ -35,6 +35,7 @@ export default function ErrorPage() {
           Try refreshing &mdash; it&rsquo;s usually a blip. <br />
           If it keeps happening, feel free to{" "}
           <a
+            f-client-nav={false}
             href="/contact"
             class="text-primary underline hover:no-underline"
           >
@@ -52,6 +53,7 @@ export default function ErrorPage() {
             Try again
           </button>
           <a
+            f-client-nav={false}
             href="/"
             class="inline-block px-8 py-3 rounded-lg font-semibold border transition-colors hover:border-primary hover:text-primary"
             style="border-color: #ccc; color: #555;"
@@ -73,6 +75,7 @@ export default function ErrorPage() {
             { href: "/join", label: "Join the community" },
           ].map((link) => (
             <a
+              f-client-nav={false}
               key={link.href}
               href={link.href}
               class="px-4 py-2 rounded-lg text-sm font-medium border transition-colors hover:border-primary hover:text-primary"

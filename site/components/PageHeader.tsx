@@ -40,6 +40,7 @@ export default function PageHeader(
         <div class="flex justify-between items-center h-16">
           {/* Logo */}
           <a
+            f-client-nav={false}
             href="/"
             class="flex items-center hover:opacity-80 transition-opacity"
             aria-label="Future Together home"
@@ -55,6 +56,7 @@ export default function PageHeader(
           <div class="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <a
+                f-client-nav={false}
                 key={item.href}
                 href={item.href}
                 class={`px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-white/15 ${
@@ -69,6 +71,7 @@ export default function PageHeader(
               ? (
                 /* Account initials circle */
                 <a
+                  f-client-nav={false}
                   href="/account"
                   class="ml-3 w-9 h-9 rounded-full bg-accent flex items-center justify-center hover:opacity-90 transition-opacity flex-shrink-0"
                   aria-label="Your account"
@@ -97,12 +100,14 @@ export default function PageHeader(
                 /* Logged-out: Login link + Join button */
                 <>
                   <a
+                    f-client-nav={false}
                     href="/login"
                     class="ml-2 px-4 py-2 rounded-lg text-sm font-medium text-white/80 hover:text-white hover:bg-white/15 transition-colors"
                   >
                     Login
                   </a>
                   <a
+                    f-client-nav={false}
                     href="/join"
                     class="ml-1 px-5 py-2 text-white text-sm font-semibold bg-accent rounded-lg transition-opacity hover:opacity-90"
                   >
@@ -129,6 +134,7 @@ export default function PageHeader(
         <div class="hidden pb-4" id="mobile-menu">
           {navItems.map((item) => (
             <a
+              f-client-nav={false}
               key={item.href}
               href={item.href}
               class={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-white/15 mb-1 ${
@@ -142,6 +148,7 @@ export default function PageHeader(
           {isLoggedIn
             ? (
               <a
+                f-client-nav={false}
                 href="/account"
                 class="block mt-2 px-4 py-2.5 text-white text-sm font-semibold bg-accent/80 rounded-lg transition-opacity hover:opacity-90 text-center"
               >
@@ -151,12 +158,14 @@ export default function PageHeader(
             : (
               <>
                 <a
+                  f-client-nav={false}
                   href="/login"
                   class="block mt-2 px-4 py-2.5 text-white/80 text-sm font-medium hover:bg-white/15 rounded-lg transition-colors text-center"
                 >
                   Login
                 </a>
                 <a
+                  f-client-nav={false}
                   href="/join"
                   class="block mt-1 px-4 py-2.5 text-white text-sm font-semibold bg-accent rounded-lg transition-opacity hover:opacity-90 text-center"
                 >

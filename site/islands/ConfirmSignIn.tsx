@@ -66,6 +66,7 @@ export default function ConfirmSignIn({ tokenHash, type }: Props) {
       <div class="text-center">
         <p class="text-red-700 mb-6 text-sm leading-relaxed">{errorMsg}</p>
         <a
+          f-client-nav={false}
           href="/login"
           class="inline-block px-6 py-3 rounded-lg font-semibold text-sm text-white"
           style="background-color:#c4853a;"

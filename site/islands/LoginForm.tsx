@@ -30,7 +30,11 @@ export default function LoginForm(
       {noAccount && (
         <div class="mb-6 p-4 bg-amber-50 border border-amber-200 text-amber-900 rounded-lg text-sm">
           No account found for that email.{" "}
-          <a href="/join" class="font-semibold underline hover:opacity-80">
+          <a
+            f-client-nav={false}
+            href="/join"
+            class="font-semibold underline hover:opacity-80"
+          >
             Join Future Together →
           </a>
         </div>
@@ -203,7 +207,13 @@ export default function LoginForm(
 
       <p class="text-center mt-6 text-sm text-gray-500">
         Don’t have an account?{" "}
-        <a href="/signup" class="font-medium text-primary">Create one</a>
+        <a
+          f-client-nav={false}
+          href="/signup"
+          class="font-medium text-primary"
+        >
+          Create one
+        </a>
       </p>
     </>
   );

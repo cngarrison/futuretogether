@@ -153,7 +153,7 @@ export function EventActionsPanel({
           <form
             method="POST"
             action={`/groups/${groupSlug}/admin/events/${eventId}/publish`}
-            f-client-nav="false"
+            f-client-nav={false}
           >
             <button
               type="submit"
@@ -179,7 +179,7 @@ export function EventActionsPanel({
           <form
             method="POST"
             action={`/groups/${groupSlug}/admin/events/${eventId}/cancel`}
-            f-client-nav="false"
+            f-client-nav={false}
           >
             <button
               type="submit"

@@ -57,6 +57,7 @@ export default define.page<typeof handler>(
             {/* Back link */}
             <div class="mb-8">
               <a
+                f-client-nav={false}
                 href="/account/"
                 class="text-sm font-medium text-primary inline-flex items-center gap-1 hover:underline"
               >
@@ -71,6 +72,7 @@ export default define.page<typeof handler>(
                 <div class="text-center py-16 text-gray-500">
                   <p class="mb-4">You're not a member of any groups yet.</p>
                   <a
+                    f-client-nav={false}
                     href="/groups"
                     class="inline-block text-sm font-medium text-amber-600 hover:underline"
                   >

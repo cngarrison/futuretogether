@@ -315,14 +315,24 @@ export default define.page<typeof handler>(function SignupPage({ data }) {
 
                 <p class="text-center mt-6 text-sm text-gray-500">
                   Already have an account?{" "}
-                  <a href="/login" class="font-medium text-primary">Sign in</a>
+                  <a
+                    f-client-nav={false}
+                    href="/login"
+                    class="font-medium text-primary"
+                  >
+                    Sign in
+                  </a>
                 </p>
                 <p
                   class="text-center mt-3 text-xs"
                   style="color: rgba(28,26,24,0.45);"
                 >
                   Just joining the community?{" "}
-                  <a href="/join" class="font-medium text-primary">
+                  <a
+                    f-client-nav={false}
+                    href="/join"
+                    class="font-medium text-primary"
+                  >
                     Join without a password &rarr;
                   </a>
                 </p>

@@ -116,7 +116,10 @@ export default define.page(function StartAGroup() {
             </p>
             <p>
               If you've read{" "}
-              <a href="/blog/what-can-you-actually-do-right-now">
+              <a
+                f-client-nav={false}
+                href="/blog/what-can-you-actually-do-right-now"
+              >
                 what you can actually do right now
               </a>{" "}
               and felt the pull to start something — this guide is for you.
@@ -156,6 +159,7 @@ export default define.page(function StartAGroup() {
                     {step.body}
                     {step.link && (
                       <a
+                        f-client-nav={false}
                         href={step.link.href}
                         class="text-primary underline"
                       >
@@ -215,6 +219,7 @@ export default define.page(function StartAGroup() {
                   {r.desc}
                 </p>
                 <a
+                  f-client-nav={false}
                   href={r.href}
                   class="text-sm font-semibold text-accent"
                 >
@@ -240,6 +245,7 @@ export default define.page(function StartAGroup() {
             you start — apply to list your group with Future Together.
           </p>
           <a
+            f-client-nav={false}
             href="/groups/start"
             class="inline-block px-8 py-3.5 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
           >
@@ -258,6 +264,7 @@ export default define.page(function StartAGroup() {
             list your group so people in your area can find it.
           </p>
           <a
+            f-client-nav={false}
             href="/contact"
             class="inline-block px-8 py-3.5 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
           >

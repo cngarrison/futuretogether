@@ -41,12 +41,14 @@ export default define.page(function Home() {
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a
+              f-client-nav={false}
               href="/join"
               class="inline-block px-8 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent/85 transition-colors text-base"
             >
               Join the Next Meetup &rarr;
             </a>
             <a
+              f-client-nav={false}
               href="#the-gap"
               class="inline-block px-8 py-3.5 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-base"
             >
@@ -258,12 +260,14 @@ export default define.page(function Home() {
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a
+              f-client-nav={false}
               href="/join"
               class="inline-block px-8 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent/85 transition-colors"
             >
               Register — it's free &rarr;
             </a>
             <a
+              f-client-nav={false}
               href="/meetups"
               class="inline-block px-8 py-3.5 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors"
             >

@@ -109,7 +109,11 @@ export default define.page(async function Join(props) {
                 style="color: rgba(28,26,24,0.5);"
               >
                 Already a member?{" "}
-                <a href="/login" class="font-semibold text-primary">
+                <a
+                  f-client-nav={false}
+                  href="/login"
+                  class="font-semibold text-primary"
+                >
                   Sign in &rarr;
                 </a>
               </p>
@@ -119,6 +123,7 @@ export default define.page(async function Join(props) {
               >
                 Prefer to set a password?{" "}
                 <a
+                  f-client-nav={false}
                   href="/signup"
                   style="color: rgba(28,26,24,0.4); text-decoration: underline;"
                 >
@@ -187,6 +192,7 @@ export default define.page(async function Join(props) {
                   Time alternates monthly for different time zones
                 </p>
                 <a
+                  f-client-nav={false}
                   href="/events/discuss-our-future"
                   class="inline-block w-full text-center px-5 py-2.5 text-white text-sm font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
                 >
@@ -277,6 +283,7 @@ export default define.page(async function Join(props) {
             {/* Right: CTA button */}
             <div class="flex-shrink-0">
               <a
+                f-client-nav={false}
                 href="https://join.slack.com/t/future-together-group/shared_invite/zt-3ssaug5th-1JI5b86jGesX8B77RojgBQ"
                 target="_blank"
                 rel="noopener noreferrer"

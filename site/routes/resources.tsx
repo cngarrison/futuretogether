@@ -110,6 +110,7 @@ export default define.page(async function Resources(ctx) {
                 <div class="flex flex-col gap-5">
                   {items.map((resource) => (
                     <a
+                      f-client-nav={false}
                       key={resource.url}
                       href={resource.url}
                       target="_blank"
@@ -155,6 +156,7 @@ export default define.page(async function Resources(ctx) {
           <div class="flex flex-col gap-5">
             {internalResources.map((resource) => (
               <a
+                f-client-nav={false}
                 key={resource.href}
                 href={resource.href}
                 class="block bg-white rounded-xl p-6 transition-shadow hover:shadow-md group"
@@ -204,6 +206,7 @@ export default define.page(async function Resources(ctx) {
           <p class="text-sm" style="color: rgba(28,26,24,0.55);">
             Know something that should be on this list?{" "}
             <a
+              f-client-nav={false}
               href="/resources/suggest"
               class="ml-2 font-semibold text-primary underline underline-offset-2 transition-opacity hover:opacity-70"
             >
@@ -222,6 +225,7 @@ export default define.page(async function Resources(ctx) {
             conversation — with other people who are paying attention.
           </p>
           <a
+            f-client-nav={false}
             href="/events/discuss-our-future"
             class="inline-block px-8 py-3.5 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
           >

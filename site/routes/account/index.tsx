@@ -67,6 +67,7 @@ export default define.page<typeof handler>(function AccountIndexPage({ data }) {
           {/* Back link */}
           <div class="mb-8">
             <a
+              f-client-nav={false}
               href="/"
               class="text-sm font-medium text-primary inline-flex items-center gap-1 hover:underline"
             >
@@ -99,6 +100,7 @@ export default define.page<typeof handler>(function AccountIndexPage({ data }) {
                   Upcoming events
                 </h2>
                 <a
+                  f-client-nav={false}
                   href="/account/groups/"
                   class="text-sm font-medium text-primary hover:underline"
                 >
@@ -133,6 +135,7 @@ export default define.page<typeof handler>(function AccountIndexPage({ data }) {
                         <p class="text-xs text-gray-500 mt-0.5">{dateStr}</p>
                       </div>
                       <a
+                        f-client-nav={false}
                         href="/account/groups/"
                         class="shrink-0 text-xs font-medium text-primary hover:underline"
                       >
@@ -151,6 +154,7 @@ export default define.page<typeof handler>(function AccountIndexPage({ data }) {
               <h2 class="text-lg font-semibold text-near-black">Your groups</h2>
               {data.groups.length > 0 && (
                 <a
+                  f-client-nav={false}
                   href="/account/groups/"
                   class="text-sm font-medium text-primary hover:underline"
                 >
@@ -164,6 +168,7 @@ export default define.page<typeof handler>(function AccountIndexPage({ data }) {
                 <div class="rounded-xl border border-gray-200 bg-white px-5 py-4 text-sm text-gray-500">
                   You're not a member of any groups yet.{" "}
                   <a
+                    f-client-nav={false}
                     href="/groups"
                     class="font-medium text-primary hover:underline"
                   >
@@ -179,6 +184,7 @@ export default define.page<typeof handler>(function AccountIndexPage({ data }) {
                       class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-5 py-3"
                     >
                       <a
+                        f-client-nav={false}
                         href={`/groups/${g.slug}/`}
                         class="font-medium text-primary hover:underline"
                       >
@@ -206,7 +212,11 @@ export default define.page<typeof handler>(function AccountIndexPage({ data }) {
 
             {data.groups.length > 0 && (
               <p class="mt-3 text-xs text-gray-400">
-                <a href="/account/groups/" class="hover:underline">
+                <a
+                  f-client-nav={false}
+                  href="/account/groups/"
+                  class="hover:underline"
+                >
                   Manage email preferences, event registrations and group
                   settings →
                 </a>
@@ -217,6 +227,7 @@ export default define.page<typeof handler>(function AccountIndexPage({ data }) {
           {/* Sign out link */}
           <div class="mt-8 text-center">
             <a
+              f-client-nav={false}
               href="/logout"
               class="text-sm text-gray-400 hover:text-gray-600 hover:underline transition-colors"
             >

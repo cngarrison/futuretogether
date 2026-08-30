@@ -71,6 +71,7 @@ export default define.page<typeof handler>(function JoinInvitePage({ data }) {
       <div class="max-w-md mx-auto px-4 py-16 text-center">
         <p class="text-lg font-semibold text-near-black mb-4">{error}</p>
         <a
+          f-client-nav={false}
           href={`/groups/${groupSlug}/`}
           class="text-sm text-primary"
         >

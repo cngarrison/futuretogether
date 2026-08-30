@@ -18,6 +18,7 @@ export default define.page(async function SlideshowsIndex(ctx) {
               {shows.map((s) => (
                 <li key={s.slug}>
                   <a
+                    f-client-nav={false}
                     href={`/slideshows/${s.slug}`}
                     style="color:#7dd3fc;text-decoration:none;font-size:1rem;"
                   >

@@ -95,6 +95,7 @@ export default define.page<typeof handler>(function EmailSendDetailPage(
       <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
         {/* Back link */}
         <a
+          f-client-nav={false}
           href={`/groups/${groupSlug}/admin/email/history/`}
           class="inline-block text-sm text-primary font-medium mb-6 transition-opacity hover:opacity-70"
         >
@@ -142,6 +143,7 @@ export default define.page<typeof handler>(function EmailSendDetailPage(
 
         {/* Compose similar */}
         <a
+          f-client-nav={false}
           href={`/groups/${groupSlug}/admin/email/?from=${send.id}`}
           class="inline-block text-sm text-primary font-medium transition-opacity hover:opacity-70"
         >

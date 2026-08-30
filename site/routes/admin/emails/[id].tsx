@@ -50,6 +50,7 @@ export default define.page<typeof handler>(function BroadcastDetail({ data }) {
           </p>
         </div>
         <a
+          f-client-nav={false}
           href={`/admin/emails/compose?from=${broadcast.id}`}
           class="shrink-0 px-4 py-2 rounded-md text-sm font-semibold text-primary border border-primary hover:shadow-sm transition-shadow"
         >

@@ -46,7 +46,10 @@ export default define.page(function Privacy() {
               Future Together is operated by Charles N. Garrison, based in NSW,
               Australia. If you have any questions about how your data is
               handled, you can reach us at{" "}
-              <a href="mailto:privacy@futuretogether.community">
+              <a
+                f-client-nav={false}
+                href="mailto:privacy@futuretogether.community"
+              >
                 privacy@futuretogether.community
               </a>.
             </p>
@@ -82,6 +85,7 @@ export default define.page(function Privacy() {
               <li>
                 <strong>Usage data</strong> — we use{" "}
                 <a
+                  f-client-nav={false}
                   href="https://plausible.io/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -120,6 +124,7 @@ export default define.page(function Privacy() {
               <li>
                 <strong>
                   <a
+                    f-client-nav={false}
                     href="https://supabase.com/privacy"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -134,6 +139,7 @@ export default define.page(function Privacy() {
               <li>
                 <strong>
                   <a
+                    f-client-nav={false}
                     href="https://resend.com/privacy"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -147,6 +153,7 @@ export default define.page(function Privacy() {
               <li>
                 <strong>
                   <a
+                    f-client-nav={false}
                     href="https://plausible.io/privacy"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -168,7 +175,12 @@ export default define.page(function Privacy() {
               We only send emails you've opted into. Every email we send
               includes a one-click unsubscribe link. You can also manage your
               email preferences at any time from your{" "}
-              <a href="/account/groups/">group settings</a>.
+              <a
+                f-client-nav={false}
+                href="/account/groups/"
+              >
+                group settings
+              </a>.
             </p>
 
             <h2 class="text-near-black">Your rights</h2>
@@ -178,20 +190,40 @@ export default define.page(function Privacy() {
             <ul>
               <li>
                 <strong>Access your data</strong> — visit{" "}
-                <a href="/account/data/">/account/data/</a>
+                <a
+                  f-client-nav={false}
+                  href="/account/data/"
+                >
+                  /account/data/
+                </a>
               </li>
               <li>
                 <strong>Correct your data</strong>{" "}
                 — update your account details at{" "}
-                <a href="/account/">/account/</a>
+                <a
+                  f-client-nav={false}
+                  href="/account/"
+                >
+                  /account/
+                </a>
               </li>
               <li>
                 <strong>Delete your account</strong> — visit{" "}
-                <a href="/account/delete/">/account/delete/</a>
+                <a
+                  f-client-nav={false}
+                  href="/account/delete/"
+                >
+                  /account/delete/
+                </a>
               </li>
               <li>
                 <strong>Withdraw consent / unsubscribe</strong> — use your{" "}
-                <a href="/account/groups/">group settings</a>{" "}
+                <a
+                  f-client-nav={false}
+                  href="/account/groups/"
+                >
+                  group settings
+                </a>{" "}
                 or the unsubscribe link in any email we send
               </li>
               <li>
@@ -203,7 +235,10 @@ export default define.page(function Privacy() {
             </ul>
             <p>
               For any privacy-related questions or requests, contact us at{" "}
-              <a href="mailto:privacy@futuretogether.community">
+              <a
+                f-client-nav={false}
+                href="mailto:privacy@futuretogether.community"
+              >
                 privacy@futuretogether.community
               </a>.
             </p>
@@ -241,7 +276,10 @@ export default define.page(function Privacy() {
             <h2 class="text-near-black">Contact</h2>
             <p>
               Questions? Reach us at{" "}
-              <a href="mailto:privacy@futuretogether.community">
+              <a
+                f-client-nav={false}
+                href="mailto:privacy@futuretogether.community"
+              >
                 privacy@futuretogether.community
               </a>.
             </p>

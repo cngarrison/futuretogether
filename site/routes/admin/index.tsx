@@ -76,6 +76,7 @@ export default define.page<typeof handler>(function AdminIndex({ data }) {
         {hasPending && (
           <div class="mb-5">
             <a
+              f-client-nav={false}
               href="/admin/groups/?status=pending"
               class="inline-block px-5 py-2.5 text-sm font-semibold rounded-lg text-white transition-opacity hover:opacity-90"
               style="background: #c4853a;"
@@ -108,6 +109,7 @@ export default define.page<typeof handler>(function AdminIndex({ data }) {
                 };
                 return (
                   <a
+                    f-client-nav={false}
                     key={app.id}
                     href={`/admin/groups/${app.slug}`}
                     class="flex items-center justify-between px-4 py-3 bg-white hover:bg-gray-50 transition-colors"
@@ -137,6 +139,7 @@ export default define.page<typeof handler>(function AdminIndex({ data }) {
       <h2 class="text-lg font-semibold text-gray-800 mb-4">Manage</h2>
       <div class="grid md:grid-cols-2 gap-6">
         <a
+          f-client-nav={false}
           href="/admin/events"
           class="block bg-white p-6 rounded-lg border-2 border-primary hover:shadow-md transition-all"
         >
@@ -147,6 +150,7 @@ export default define.page<typeof handler>(function AdminIndex({ data }) {
           </p>
         </a>
         <a
+          f-client-nav={false}
           href="/admin/members"
           class="block bg-white p-6 rounded-lg border-2 hover:shadow-md transition-all"
           style="border-color: #c4853a;"
@@ -158,6 +162,7 @@ export default define.page<typeof handler>(function AdminIndex({ data }) {
           </p>
         </a>
         <a
+          f-client-nav={false}
           href="/admin/emails"
           class="block bg-white p-6 rounded-lg border-2 border-primary hover:shadow-md transition-all"
         >
@@ -170,6 +175,7 @@ export default define.page<typeof handler>(function AdminIndex({ data }) {
           </p>
         </a>
         <a
+          f-client-nav={false}
           href="/admin/groups/"
           class="block bg-white p-6 rounded-lg border-2 hover:shadow-md transition-all"
           style="border-color: #c4853a;"

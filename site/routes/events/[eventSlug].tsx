@@ -43,6 +43,7 @@ export default define.page(async function EventPage({ params, state }) {
               scheduled. Check back soon.
             </p>
             <a
+              f-client-nav={false}
               href="/meetups"
               class="inline-block px-6 py-3 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
             >
@@ -243,6 +244,7 @@ export default define.page(async function EventPage({ params, state }) {
       <div class="bg-warm-white" style="border-top: 1px solid #d0e4e7;">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 py-5">
           <a
+            f-client-nav={false}
             href="/meetups"
             class="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-opacity hover:opacity-70"
           >

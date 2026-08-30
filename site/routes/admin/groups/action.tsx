@@ -178,6 +178,7 @@ export default define.page<typeof handler>(function GroupActionPage({ data }) {
             visit the admin panel to take action manually.
           </p>
           <a
+            f-client-nav={false}
             href="/admin/groups/"
             class="inline-block px-5 py-2.5 bg-primary rounded-lg text-sm font-semibold text-white"
           >
@@ -199,6 +200,7 @@ export default define.page<typeof handler>(function GroupActionPage({ data }) {
             the group directly in the admin panel.
           </p>
           <a
+            f-client-nav={false}
             href="/admin/groups/"
             class="inline-block px-5 py-2.5 bg-primary rounded-lg text-sm font-semibold text-white"
           >
@@ -252,6 +254,7 @@ export default define.page<typeof handler>(function GroupActionPage({ data }) {
 
         <div class="mt-4 text-center">
           <a
+            f-client-nav={false}
             href={slug ? `/admin/groups/${slug}` : "/admin/groups/"}
             class="text-sm text-gray-500 hover:underline"
           >

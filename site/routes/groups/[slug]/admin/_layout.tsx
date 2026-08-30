@@ -47,6 +47,7 @@ export default define.layout((ctx) => {
             {groupName}
           </p>
           <a
+            f-client-nav={false}
             href={`/groups/${slug}/`}
             class="text-xs text-primary font-medium transition-opacity hover:opacity-70"
           >
@@ -66,6 +67,7 @@ export default define.layout((ctx) => {
             const href = segment ? `${basePath}/${segment}/` : `${basePath}/`;
             return (
               <a
+                f-client-nav={false}
                 key={segment}
                 href={href}
                 class={[
@@ -121,6 +123,7 @@ export default define.layout((ctx) => {
             const href = segment ? `${basePath}/${segment}/` : `${basePath}/`;
             return (
               <a
+                f-client-nav={false}
                 key={segment}
                 href={href}
                 class={[

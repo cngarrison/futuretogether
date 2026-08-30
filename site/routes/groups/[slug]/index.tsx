@@ -268,6 +268,7 @@ export default define.page<typeof handler>(function GroupDetail({ data }) {
                     ? (
                       /* Site admin or group admin/owner */
                       <a
+                        f-client-nav={false}
                         href={`/groups/${group.slug}/admin/`}
                         class="block text-center w-full px-6 py-3 font-semibold bg-primary rounded-xl text-white transition-opacity hover:opacity-90"
                       >
@@ -285,6 +286,7 @@ export default define.page<typeof handler>(function GroupDetail({ data }) {
                           <span>You're a member ✓</span>
                         </div>
                         <a
+                          f-client-nav={false}
                           href="/account/groups/"
                           class="block text-center text-sm font-medium text-primary hover:underline"
                         >
@@ -310,6 +312,7 @@ export default define.page<typeof handler>(function GroupDetail({ data }) {
                     : (
                       /* Not logged in — redirect to /join */
                       <a
+                        f-client-nav={false}
                         href={`/join?next=/groups/${group.slug}/&group_id=${group.id}`}
                         class="block text-center w-full px-6 py-3 font-semibold rounded-xl bg-accent text-white transition-opacity hover:opacity-90"
                       >
@@ -364,6 +367,7 @@ export default define.page<typeof handler>(function GroupDetail({ data }) {
                       Website
                     </h3>
                     <a
+                      f-client-nav={false}
                       href={group.website_url}
                       target="_blank"
                       rel="noopener noreferrer"

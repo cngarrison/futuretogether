@@ -154,12 +154,14 @@ export default define.page<typeof handler>(function AdminEventsPage({ data }) {
                   </div>
                   <div class="flex gap-4">
                     <a
+                      f-client-nav={false}
                       href={`/admin/events/${event.slug}`}
                       class="inline-block text-white px-4 py-2 bg-primary rounded-lg transition-opacity hover:opacity-90"
                     >
                       View Registrations
                     </a>
                     <a
+                      f-client-nav={false}
                       href={`/events/${event.slug}`}
                       class="inline-block border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors"
                     >
@@ -209,6 +211,7 @@ export default define.page<typeof handler>(function AdminEventsPage({ data }) {
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm">
                       <a
+                        f-client-nav={false}
                         href={`/admin/events/${event.slug}?eventId=${event.id}`}
                         class="text-primary hover:underline"
                       >

@@ -86,7 +86,11 @@ export default function CallbackHandler({ next }: Props) {
     return (
       <div class="text-center py-4">
         <p class="text-red-700 mb-4">{errorMsg}</p>
-        <a href="/login" class="text-sm font-medium text-primary">
+        <a
+          f-client-nav={false}
+          href="/login"
+          class="text-sm font-medium text-primary"
+        >
           Return to sign in
         </a>
       </div>

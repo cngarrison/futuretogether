@@ -100,7 +100,10 @@ export default define.page(function Terms() {
               <li>
                 <strong>Media enquiries</strong>{" "}
                 should be referred to Future Together admin at{" "}
-                <a href="mailto:media@futuretogether.community">
+                <a
+                  f-client-nav={false}
+                  href="mailto:media@futuretogether.community"
+                >
                   media@futuretogether.community
                 </a>.
               </li>
@@ -175,7 +178,10 @@ export default define.page(function Terms() {
             <h2 class="text-near-black">Contact</h2>
             <p>
               Questions about these terms? Reach us at{" "}
-              <a href="mailto:legal@futuretogether.community">
+              <a
+                f-client-nav={false}
+                href="mailto:legal@futuretogether.community"
+              >
                 legal@futuretogether.community
               </a>.
             </p>

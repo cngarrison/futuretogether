@@ -154,6 +154,7 @@ export default define.page<typeof handler>(function ForgotPasswordPage(
                   <p class="text-gray-500 text-xs">
                     Didn&rsquo;t get it? Check your spam folder, or{" "}
                     <a
+                      f-client-nav={false}
                       href="/auth/forgot-password"
                       class="text-primary underline"
                     >
@@ -255,6 +256,7 @@ export default define.page<typeof handler>(function ForgotPasswordPage(
 
           <div class="mt-6 text-center">
             <a
+              f-client-nav={false}
               href="/login"
               class="text-xs"
               style="color: rgba(28,26,24,0.45);"

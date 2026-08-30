@@ -38,6 +38,7 @@ export default define.page(async function GroupsIndex(ctx) {
             rooms, cafés, and community halls around the world.
           </p>
           <a
+            f-client-nav={false}
             href="/groups/start"
             class="inline-block px-7 py-3 font-semibold rounded-xl bg-accent text-white transition-opacity hover:opacity-90"
           >
@@ -94,6 +95,7 @@ export default define.page(async function GroupsIndex(ctx) {
                 expert — you just need a room and a question.
               </p>
               <a
+                f-client-nav={false}
                 href="/groups/start"
                 class="inline-block px-7 py-3 font-semibold rounded-xl bg-accent text-white transition-opacity hover:opacity-90"
               >
@@ -178,6 +180,7 @@ function GroupCard({ group }: { group: GroupSummary }) {
         {/* Footer link */}
         <div class="mt-auto pt-3" style="border-top: 1px solid #f0f0ef;">
           <a
+            f-client-nav={false}
             href={`/groups/${group.slug}/`}
             class="text-sm font-semibold text-accent hover:underline"
           >
@@ -206,6 +209,7 @@ function EmptyState() {
         Be the first to start a Future Together group.
       </p>
       <a
+        f-client-nav={false}
         href="/groups/start"
         class="inline-block px-7 py-3 font-semibold rounded-xl bg-accent text-white transition-opacity hover:opacity-90"
       >

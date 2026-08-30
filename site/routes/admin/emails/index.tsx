@@ -49,6 +49,7 @@ export default define.page<typeof handler>(function EmailList({ data }) {
           </p>
         </div>
         <a
+          f-client-nav={false}
           href="/admin/emails/compose"
           class="px-4 py-2 rounded-md text-white text-sm font-semibold bg-accent"
         >
@@ -65,6 +66,7 @@ export default define.page<typeof handler>(function EmailList({ data }) {
             </p>
             <p class="text-sm mt-2">
               <a
+                f-client-nav={false}
                 href="/admin/emails/compose"
                 class="text-primary hover:underline"
               >
@@ -99,6 +101,7 @@ export default define.page<typeof handler>(function EmailList({ data }) {
                 >
                   <td class="py-3 pr-4">
                     <a
+                      f-client-nav={false}
                       href={`/admin/emails/${b.id}`}
                       class="font-medium text-primary hover:underline"
                     >
@@ -124,6 +127,7 @@ export default define.page<typeof handler>(function EmailList({ data }) {
                   </td>
                   <td class="py-3 text-right">
                     <a
+                      f-client-nav={false}
                       href={`/admin/emails/compose?from=${b.id}`}
                       class="text-sm font-medium text-accent hover:underline"
                     >

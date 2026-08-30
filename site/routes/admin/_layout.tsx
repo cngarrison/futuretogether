@@ -107,6 +107,7 @@ function BreadcrumbBar(
       style="background: white; border-bottom: 1px solid #e0dbd3;"
     >
       <a
+        f-client-nav={false}
         href="/admin"
         class="text-gray-500 hover:text-gray-700 transition-colors"
       >
@@ -118,6 +119,7 @@ function BreadcrumbBar(
           {crumb.href
             ? (
               <a
+                f-client-nav={false}
                 href={crumb.href}
                 class="text-gray-500 hover:text-gray-700 transition-colors"
               >
@@ -163,7 +165,11 @@ export default define.layout((ctx) => {
         >
           {/* Branding */}
           <div class="px-4 pt-5 pb-4">
-            <a href="/admin" class="flex items-center gap-2">
+            <a
+              f-client-nav={false}
+              href="/admin"
+              class="flex items-center gap-2"
+            >
               <span
                 class="text-sm font-bold tracking-wide"
                 style="color: white; font-variant: small-caps;"
@@ -182,6 +188,7 @@ export default define.layout((ctx) => {
               const isActive = item.segment === activeSegment;
               return (
                 <a
+                  f-client-nav={false}
                   key={item.segment}
                   href={item.segment ? `/admin/${item.segment}` : "/admin"}
                   aria-current={isActive ? "page" : undefined}
@@ -213,6 +220,7 @@ export default define.layout((ctx) => {
               </p>
             )}
             <a
+              f-client-nav={false}
               href="/"
               class="flex items-center gap-1 text-xs font-medium transition-opacity hover:opacity-80"
               style="color: #c4853a;"
@@ -250,6 +258,7 @@ export default define.layout((ctx) => {
               const isActive = item.segment === activeSegment;
               return (
                 <a
+                  f-client-nav={false}
                   key={item.segment}
                   href={item.segment ? `/admin/${item.segment}` : "/admin"}
                   aria-current={isActive ? "page" : undefined}

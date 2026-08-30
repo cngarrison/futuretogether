@@ -16,7 +16,13 @@ export default define.page(
       return (
         <div style="padding:2rem;color:white;background:#0f1923;min-height:100vh;font-family:system-ui,sans-serif;">
           <p>Slideshow not found.</p>
-          <a href="/slideshows" style="color:#7dd3fc;">Back to slideshows</a>
+          <a
+            f-client-nav={false}
+            href="/slideshows"
+            style="color:#7dd3fc;"
+          >
+            Back to slideshows
+          </a>
         </div>
       );
     }

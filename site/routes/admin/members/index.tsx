@@ -46,6 +46,7 @@ export default define.page<typeof handler>(function AdminMembersPage(
         <h1 class="text-2xl font-bold text-gray-900">Members</h1>
         <div class="flex flex-col items-end gap-2">
           <a
+            f-client-nav={false}
             href="/api/admin/members/download"
             class="inline-flex items-center text-white px-4 py-2 bg-primary rounded-lg text-sm transition-opacity hover:opacity-90"
           >
@@ -133,6 +134,7 @@ export default define.page<typeof handler>(function AdminMembersPage(
                     </td>
                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-700">
                       <a
+                        f-client-nav={false}
                         href={`mailto:${member.email}`}
                         class="text-primary hover:underline"
                       >

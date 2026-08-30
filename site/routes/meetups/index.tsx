@@ -170,6 +170,7 @@ export default define.page(async function Meetups(ctx) {
             product pitch. No agenda. Just people figuring this out together.
           </p>
           <a
+            f-client-nav={false}
             href="/events/discuss-our-future"
             class="inline-block px-8 py-3.5 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
           >
@@ -351,6 +352,7 @@ export default define.page(async function Meetups(ctx) {
                         </p>
                       )}
                       <a
+                        f-client-nav={false}
                         href={`/events/${event.slug}`}
                         class="inline-block px-6 py-2.5 text-white text-sm font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90 ml-auto"
                       >
@@ -454,6 +456,7 @@ export default define.page(async function Meetups(ctx) {
                     >
                       {event.groupSlug && (
                         <a
+                          f-client-nav={false}
                           href={`/groups/${event.groupSlug}/`}
                           class="text-sm font-medium text-primary hover:underline"
                         >
@@ -461,6 +464,7 @@ export default define.page(async function Meetups(ctx) {
                         </a>
                       )}
                       <a
+                        f-client-nav={false}
                         href={`/events/${event.slug}`}
                         class="inline-block px-6 py-2.5 text-white text-sm font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90 ml-auto"
                       >
@@ -575,6 +579,7 @@ export default define.page(async function Meetups(ctx) {
                     </div>
                     {event.slideshowUrl && (
                       <a
+                        f-client-nav={false}
                         href={`/meetups/${event.slug}?id=${event.id}`}
                         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-sm font-semibold text-white transition-opacity hover:opacity-90 flex-shrink-0"
                       >
@@ -622,6 +627,7 @@ export default define.page(async function Meetups(ctx) {
                       </div>
                       {event.slideshowUrl && (
                         <a
+                          f-client-nav={false}
                           href={`/meetups/${event.slug}?id=${event.id}`}
                           class="inline-flex items-center gap-2 px-4 py-2 bg-primary rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 flex-shrink-0"
                         >
@@ -690,6 +696,7 @@ export default define.page(async function Meetups(ctx) {
                       </div>
                       {event.slideshowUrl && (
                         <a
+                          f-client-nav={false}
                           href={`/meetups/${event.slug}?id=${event.id}`}
                           class="inline-flex items-center gap-2 px-4 py-2 bg-primary rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 flex-shrink-0"
                         >
@@ -743,6 +750,7 @@ export default define.page(async function Meetups(ctx) {
             </div>
             <div class="flex-shrink-0">
               <a
+                f-client-nav={false}
                 href="/groups"
                 class="inline-block px-7 py-3.5 text-white font-semibold bg-primary rounded-xl transition-opacity hover:opacity-90 whitespace-nowrap"
               >
@@ -763,6 +771,7 @@ export default define.page(async function Meetups(ctx) {
             Registration takes 30 seconds. The conversation is worth it.
           </p>
           <a
+            f-client-nav={false}
             href="/events/discuss-our-future"
             class="inline-block px-8 py-3.5 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
           >

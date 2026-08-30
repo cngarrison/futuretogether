@@ -36,6 +36,7 @@ export default define.page(function GroupCodeOfConduct() {
             <p class="text-base" style="color: rgba(28,26,24,0.7);">
               In the meantime, please review our{" "}
               <a
+                f-client-nav={false}
                 href="/terms#community-standards"
                 class="text-primary underline"
               >

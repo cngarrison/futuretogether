@@ -138,6 +138,7 @@ export default define.page<typeof handler>(function EmailComposePage(
             Email members
           </h1>
           <a
+            f-client-nav={false}
             href={`/groups/${groupSlug}/admin/email/history/`}
             class="text-sm text-primary font-medium transition-opacity hover:opacity-70"
           >

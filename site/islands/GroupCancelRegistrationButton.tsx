@@ -57,6 +57,7 @@ export default function GroupCancelRegistrationButton({
           You’ll receive a confirmation email shortly.
         </div>
         <a
+          f-client-nav={false}
           href={groupsUrl}
           class="block text-sm text-primary font-semibold text-center"
         >
@@ -81,6 +82,7 @@ export default function GroupCancelRegistrationButton({
         {status === "loading" ? "Cancelling…" : "Yes, cancel my registration"}
       </button>
       <a
+        f-client-nav={false}
         href={groupsUrl}
         class="block text-sm text-primary text-center"
       >

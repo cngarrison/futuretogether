@@ -70,6 +70,7 @@ export default define.page(async function EventResources(ctx) {
             will appear here after the session.
           </p>
           <a
+            f-client-nav={false}
             href="/meetups"
             class="inline-block px-6 py-3 text-white font-semibold bg-primary rounded-xl transition-opacity hover:opacity-90"
           >
@@ -109,6 +110,7 @@ export default define.page(async function EventResources(ctx) {
       <div class="bg-warm-white" style="border-bottom: 1px solid #d0e4e7;">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
           <a
+            f-client-nav={false}
             href="/meetups"
             class="text-sm font-medium text-primary inline-flex items-center gap-1 mb-5"
           >
@@ -249,6 +251,7 @@ export default define.page(async function EventResources(ctx) {
             {event.resources.map((resource) => (
               <li key={resource.url}>
                 <a
+                  f-client-nav={false}
                   href={resource.url}
                   {...(resource.type === "download"
                     ? { download: true }
@@ -332,6 +335,7 @@ export default define.page(async function EventResources(ctx) {
             >
               {/* Overlaid presentation-mode button */}
               <a
+                f-client-nav={false}
                 href={event.slideshowUrl}
                 target="_blank"
                 rel="noopener noreferrer"

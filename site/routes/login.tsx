@@ -219,12 +219,17 @@ export default define.page<typeof handler>(function LoginPage({ data }) {
         <div class="mt-6 space-y-2 text-center">
           <p class="text-sm text-gray-500">
             New here?{" "}
-            <a href="/join" class="font-medium text-primary">
+            <a
+              f-client-nav={false}
+              href="/join"
+              class="font-medium text-primary"
+            >
               Join Future Together &rarr;
             </a>
           </p>
           <p>
             <a
+              f-client-nav={false}
               href="/auth/forgot-password"
               class="text-xs"
               style="color: rgba(28,26,24,0.45);"

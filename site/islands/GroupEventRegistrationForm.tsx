@@ -53,6 +53,7 @@ export default function GroupEventRegistrationForm({
           <strong>You're registered ✓</strong>
         </span>
         <a
+          f-client-nav={false}
           href="/account/groups/"
           class="shrink-0 text-xs font-semibold underline"
           style="color:#065f46;"
@@ -155,6 +156,7 @@ export default function GroupEventRegistrationForm({
       >
         <span>👍 Looks like you're already signed up!</span>
         <a
+          f-client-nav={false}
           href="/account/groups/"
           class="shrink-0 text-xs font-semibold underline"
           style="color:#065f46;"

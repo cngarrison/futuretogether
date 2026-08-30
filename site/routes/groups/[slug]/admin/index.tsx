@@ -171,6 +171,7 @@ export default define.page<typeof handler>(function GroupAdminDashboard(
               ],
             ] as [string, string, string][]).map(([href, label, desc]) => (
               <a
+                f-client-nav={false}
                 key={href}
                 href={href}
                 class="block px-5 py-4 rounded-xl border transition-colors hover:border-primary/30 hover:bg-white"
@@ -220,6 +221,7 @@ function QuickAction(
 ) {
   return (
     <a
+      f-client-nav={false}
       href={href}
       class="flex flex-col px-5 py-4 rounded-xl border font-medium transition-colors hover:border-[#c4853a]/40 hover:bg-[#fdf6ee]"
       style="border-color: #e0dbd3; background-color: #fff;"

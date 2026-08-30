@@ -17,6 +17,7 @@ export default define.page(function SuggestResource() {
       <section class="text-white bg-primary">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20">
           <a
+            f-client-nav={false}
             href="/resources"
             class="inline-flex items-center gap-1.5 text-sm font-semibold mb-6"
             style="color: rgba(255,255,255,0.65);"

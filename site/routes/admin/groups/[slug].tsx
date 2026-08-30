@@ -236,6 +236,7 @@ function InfoPanel(
                 {r.label === "Website"
                   ? (
                     <a
+                      f-client-nav={false}
                       href={r.value!}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -284,6 +285,7 @@ function InfoPanel(
                     <>
                       {" • "}
                       <a
+                        f-client-nav={false}
                         href={`mailto:${group.applicant_email}`}
                         class="text-primary underline"
                       >
@@ -359,6 +361,7 @@ function MembersCard({ members }: { members: GroupMember[] }) {
                     </td>
                     <td class="py-2 pr-3 text-gray-600">
                       <a
+                        f-client-nav={false}
                         href={`mailto:${m.email}`}
                         class="hover:underline text-primary"
                       >
@@ -576,6 +579,7 @@ function ActionsPanel({ group }: { group: GroupDetail }) {
       {/* Open group admin panel — all non-pending statuses */}
       {group.status !== "pending" && (
         <a
+          f-client-nav={false}
           href={`/groups/${group.slug}/admin/`}
           target="_blank"
           rel="noopener noreferrer"
@@ -588,6 +592,7 @@ function ActionsPanel({ group }: { group: GroupDetail }) {
       {/* Public view link — active only */}
       {group.status === "active" && (
         <a
+          f-client-nav={false}
           href={`/groups/${group.slug}/`}
           target="_blank"
           rel="noopener noreferrer"

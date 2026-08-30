@@ -204,12 +204,14 @@ function SeriesCard({
           </div>
           <div class="flex gap-2 flex-shrink-0">
             <a
+              f-client-nav={false}
               href={`/groups/${groupSlug}/admin/events/${prog.id}/registrations`}
               class="text-sm text-primary px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
             >
               Registrations
             </a>
             <a
+              f-client-nav={false}
               href={`/groups/${groupSlug}/admin/events/${prog.id}/`}
               class="text-sm text-primary px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
             >
@@ -273,12 +275,14 @@ function SeriesCard({
               </span>
               <div class="flex gap-1.5 flex-shrink-0">
                 <a
+                  f-client-nav={false}
                   href={`/groups/${groupSlug}/admin/events/${prog.id}/registrations`}
                   class="text-xs text-primary px-2.5 py-1 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
                 >
                   Registrations
                 </a>
                 <a
+                  f-client-nav={false}
                   href={`/groups/${groupSlug}/admin/events/${prog.id}/`}
                   class="text-xs text-primary px-2.5 py-1 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
                 >
@@ -398,6 +402,7 @@ export default define.page<typeof handler>(function EventsAdminPage({ data }) {
         <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
           <h1 class="text-2xl sm:text-3xl font-bold text-near-black">Events</h1>
           <a
+            f-client-nav={false}
             href={`/groups/${groupSlug}/admin/events/new`}
             class="inline-block px-5 py-2.5 text-white text-sm font-semibold rounded-xl transition-opacity hover:opacity-90"
             style="background:#c4853a;"
@@ -432,6 +437,7 @@ export default define.page<typeof handler>(function EventsAdminPage({ data }) {
           >
             <p class="text-gray-500 mb-4">No events yet.</p>
             <a
+              f-client-nav={false}
               href={`/groups/${groupSlug}/admin/events/new`}
               class="inline-block px-5 py-2.5 text-white text-sm font-semibold rounded-xl"
               style="background:#c4853a;"
@@ -507,12 +513,14 @@ export default define.page<typeof handler>(function EventsAdminPage({ data }) {
                         </div>
                         <div class="flex gap-2 flex-shrink-0">
                           <a
+                            f-client-nav={false}
                             href={`/groups/${groupSlug}/admin/events/${event.id}/registrations`}
                             class="text-sm text-primary px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
                           >
                             Registrations
                           </a>
                           <a
+                            f-client-nav={false}
                             href={`/groups/${groupSlug}/admin/events/${
                               event.program_id ?? event.id
                             }/`}
@@ -522,6 +530,7 @@ export default define.page<typeof handler>(function EventsAdminPage({ data }) {
                           </a>
                           {event.status === "published" && (
                             <a
+                              f-client-nav={false}
                               href={`/groups/${groupSlug}/`}
                               target="_blank"
                               rel="noopener noreferrer"
@@ -586,12 +595,14 @@ export default define.page<typeof handler>(function EventsAdminPage({ data }) {
                       <td class="px-4 py-3 text-right">
                         <div class="flex gap-2 justify-end">
                           <a
+                            f-client-nav={false}
                             href={`/groups/${groupSlug}/admin/events/${event.id}/registrations`}
                             class="text-sm text-primary px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
                           >
                             Registrations
                           </a>
                           <a
+                            f-client-nav={false}
                             href={`/groups/${groupSlug}/admin/events/${
                               event.program_type === "one-off" &&
                                 event.program_id
@@ -648,6 +659,7 @@ export default define.page<typeof handler>(function EventsAdminPage({ data }) {
                       </span>
                     </div>
                     <a
+                      f-client-nav={false}
                       href={`/groups/${groupSlug}/admin/events/${prog.id}/`}
                       class="text-sm text-primary px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors flex-shrink-0"
                     >

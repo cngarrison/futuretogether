@@ -75,6 +75,7 @@ export default define.page(function About() {
                 people understand and prepare for what’s coming.
               </p>
               <a
+                f-client-nav={false}
                 href="https://cngarrison.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -263,6 +264,7 @@ export default define.page(function About() {
             experience a conversation. Join us.
           </p>
           <a
+            f-client-nav={false}
             href="/events/discuss-our-future"
             class="inline-block px-8 py-3.5 text-white font-semibold bg-accent rounded-xl transition-opacity hover:opacity-90"
           >

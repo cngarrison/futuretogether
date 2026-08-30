@@ -34,6 +34,7 @@ export default function NotFoundPage() {
 
         {/* Primary CTA */}
         <a
+          f-client-nav={false}
           href="/"
           class="inline-block px-8 py-3 rounded-lg font-semibold text-white mb-6 transition-opacity hover:opacity-90 bg-primary"
         >
@@ -55,6 +56,7 @@ export default function NotFoundPage() {
             { href: "/join", label: "Join the community" },
           ].map((link) => (
             <a
+              f-client-nav={false}
               key={link.href}
               href={link.href}
               class="px-4 py-2 rounded-lg text-sm font-medium border transition-colors hover:border-primary hover:text-primary"

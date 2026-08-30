@@ -324,7 +324,7 @@ function EventRegistrantsView({
                     </td>
                     <td class="px-4 py-3 text-right">
                       {r.status === "registered" && (
-                        <form method="POST" f-client-nav="false">
+                        <form method="POST" f-client-nav={false}>
                           <input
                             type="hidden"
                             name="action"
@@ -433,6 +433,7 @@ function ProgramInstancesView({
                   </td>
                   <td class="px-4 py-3 text-right">
                     <a
+                      f-client-nav={false}
                       href={`/groups/${groupSlug}/admin/events/${inst.id}/registrations`}
                       class="text-xs text-primary font-medium hover:underline whitespace-nowrap"
                     >
@@ -464,6 +465,7 @@ export default define.page<typeof handler>(
           {/* Back link */}
           <div class="mb-2">
             <a
+              f-client-nav={false}
               href={`/groups/${groupSlug}/admin/events/${backId}`}
               class="text-sm text-gray-500 hover:text-gray-700 transition-colors"
             >
