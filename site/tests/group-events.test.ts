@@ -6,8 +6,8 @@
 import { assertEquals } from "@std/assert";
 import {
   isGroupEventPosterPath,
-  resolveRegistrationRequired,
   resolveEventPosterImage,
+  resolveRegistrationRequired,
 } from "../utils/db/group-events.ts";
 
 const GROUP_ID = "499229dc-7c73-409c-8629-94898913cd5c";
@@ -23,7 +23,10 @@ Deno.test("recognizes a canonical groups-bucket event poster path", () => {
 Deno.test("does not classify static or external poster URLs as private paths", () => {
   assertEquals(isGroupEventPosterPath("/img/event-poster.webp"), false);
   assertEquals(isGroupEventPosterPath("/charts/event-poster.svg"), false);
-  assertEquals(isGroupEventPosterPath("https://example.com/poster.webp"), false);
+  assertEquals(
+    isGroupEventPosterPath("https://example.com/poster.webp"),
+    false,
+  );
 });
 
 Deno.test("preserves static and external poster URLs without signing", async () => {

@@ -79,7 +79,9 @@ for (const fixture of CASES) {
   const content = cal.toString();
   const actualStart = getEventLine(content, "DTSTART");
   const actualEnd = getEventLine(content, "DTEND");
-  if (actualStart !== fixture.expectedStart || actualEnd !== fixture.expectedEnd) {
+  if (
+    actualStart !== fixture.expectedStart || actualEnd !== fixture.expectedEnd
+  ) {
     throw new Error(
       `${fixture.filename}: expected ${fixture.expectedStart} / ${fixture.expectedEnd}; ` +
         `received ${actualStart} / ${actualEnd}`,

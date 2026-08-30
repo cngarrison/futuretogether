@@ -197,7 +197,7 @@
   white-space: nowrap;
 }
 
-/* 
+/*
 .slide-deck .slide-number {
   position: absolute;
   top: 2rem;
@@ -313,7 +313,7 @@
   flex-shrink: 0;
 }
 
-/* 
+/*
 @media (max-width: 768px) {
   .slide-deck h1 {
 	font-size: 2.5rem;
@@ -415,14 +415,14 @@
   opacity: 0.9;
   border-left: 2px solid #6b7280;
   /* display: list-item; */ /* ensure marker box exists */
-  /* 
+  /*
     list-style: none;
     padding-left: 1.5rem;
     position: relative;
    */
 }
 /* .speaker-notes li.speaker-card-bullet-item::marker { content: '→' ; }  */
-/* 
+/*
 .speaker-notes .speaker-card-bullet-item::before {
   content: '→';
   position: absolute;

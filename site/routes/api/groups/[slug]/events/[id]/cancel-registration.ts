@@ -111,7 +111,9 @@ export const handler = define.handlers({
           groupSlug: (group.slug as string) ?? slug,
           groupName: (group.name as string) ?? "",
           eventTitle: (ev.title as string | null) ??
-            ((ev.program as Record<string, unknown> | null)?.title as string | null) ??
+            ((ev.program as Record<string, unknown> | null)?.title as
+              | string
+              | null) ??
             "Event",
           eventDate: ev.event_date as string,
           eventTimezone: (ev.timezone as string) ?? "Australia/Sydney",

@@ -378,7 +378,9 @@ export async function getRegistrationsNeedingReminder(
       .lte("event_date", highCutoff);
     if (!eventRows || eventRows.length === 0) return empty;
     const events = await Promise.all(
-      (eventRows as Record<string, unknown>[]).map((row) => rowToEventConfig(row)),
+      (eventRows as Record<string, unknown>[]).map((row) =>
+        rowToEventConfig(row)
+      ),
     );
     const registrations: Array<
       { event: EventConfig; registration: Registration }
@@ -596,8 +598,7 @@ export async function adminCancelGroupRegistration(
     const ev = evRow as Record<string, unknown>;
     const group = (ev.group ?? {}) as Record<string, unknown>;
     const program = (ev.program ?? {}) as Record<string, unknown>;
-    const eventTitle =
-      (ev.title as string | null) ??
+    const eventTitle = (ev.title as string | null) ??
       (program.title as string | null) ??
       "Event";
     return {

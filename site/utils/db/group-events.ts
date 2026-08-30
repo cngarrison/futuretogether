@@ -302,9 +302,9 @@ export async function getAllEvents(state: State): Promise<EventConfig[]> {
         ascending: false,
       });
     if (error || !data) return [];
-    return await Promise.all((data as Record<string, unknown>[]).map((row) =>
-      rowToEventConfig(row)
-    ));
+    return await Promise.all(
+      (data as Record<string, unknown>[]).map((row) => rowToEventConfig(row)),
+    );
   } catch {
     return [];
   }
