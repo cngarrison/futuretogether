@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Working together to prepare for emergencies — Future Together</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --teal:#1a5f6e; --teal-dark:#124854; --amber:#c4853a; --warm-white:#f7f4ef; --ink:#1c1a18; --line:#d8d2c9; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    body { background:#667074; color:var(--ink); font-family:"Plus Jakarta Sans", Arial, sans-serif; padding:24px; }
+    .preview { display:flex; justify-content:center; }
+
+    /* A4 plus 3 mm bleed on every edge. Print at 100%, with no scaling. */
+    @page { size:210mm 297mm; margin:0; }
+    .poster { position:relative; width:210mm; height:297mm; overflow:hidden; background:var(--warm-white); box-shadow:0 10px 46px rgba(0,0,0,.38); }
+
+    /* Crop marks occupy the 3 mm bleed area. */
+    .mark { position:absolute; z-index:20; background:#161616; }
+    .tl-h { top:3mm; left:0; width:6mm; height:1px; }
+    .tl-v { top:0; left:3mm; width:1px; height:6mm; }
+    .tr-h { top:3mm; right:0; width:6mm; height:1px; }
+    .tr-v { top:0; right:3mm; width:1px; height:6mm; }
+    .bl-h { bottom:3mm; left:0; width:6mm; height:1px; background:white; }
+    .bl-v { bottom:0; left:3mm; width:1px; height:6mm; background:white; }
+    .br-h { bottom:3mm; right:0; width:6mm; height:1px; background:white; }
+    .br-v { bottom:0; right:3mm; width:1px; height:6mm; background:white; }
+
+    /* Header retained from FT Team's revised version. */
+    .top { height:76mm; position:relative; overflow:hidden; background:var(--teal); color:white; padding:12mm 10mm 10mm; display:flex; flex-direction:column; justify-content:flex-end; }
+    .rays { position:absolute; inset:0; width:100%; height:100%; opacity:.8; }
+    .top-content { position:relative; z-index:1; }
+    .eyebrow { color:rgba(255,255,255,.72); font-size:8pt; font-weight:700; letter-spacing:.15em; margin-bottom:5.5mm; text-transform:uppercase; }
+    h1 { font-size:34pt; font-weight:800; letter-spacing:-.025em; word-spacing:.25em; line-height:.98; max-width:140mm; text-transform:uppercase; }
+    .accent { width:20mm; height:3px; margin-top:7mm; background:var(--amber); }
+
+    .body { height:185mm; padding:8mm 10mm 7mm; display:flex; flex-direction:column; gap:4mm; }
+    .intro { color:#354046; font-size:12.2pt; line-height:1.38; }
+    .intro strong { color:var(--teal-dark); }
+    .co-branding { color:#778187; font-size:7.8pt; font-weight:700; letter-spacing:.04em; line-height:1.3; margin-top:-0.5mm; margin-bottom:1.5mm; text-transform:uppercase; }
+    .event-card { background:white; border-left:4px solid var(--amber); border-radius:5px; box-shadow:0 1px 5px rgba(28,26,24,.08); margin-top:1.5mm; padding:2.7mm 6mm; }
+    .detail { display:flex; align-items:baseline; gap:4mm; padding:2.1mm 0; }
+    .detail + .detail { border-top:1px solid #e6e1da; }
+    .label { color:#778187; flex:0 0 18mm; font-size:8pt; font-weight:800; letter-spacing:.09em; text-transform:uppercase; }
+    .value { color:var(--ink); font-size:12.2pt; font-weight:700; line-height:1.25; }
+
+    .takeaways { margin-top:3mm; }
+    .takeaways-heading { color:var(--teal); font-size:8pt; font-weight:800; letter-spacing:.12em; margin-bottom:2.5mm; text-transform:uppercase; }
+    .takeaways-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:3mm; }
+    .takeaway { border:1px solid var(--line); border-top:3px solid var(--amber); border-radius:4px; padding:3mm 3.3mm; min-height:30mm; }
+    .takeaway-number { align-items:center; background:var(--teal); border-radius:50%; color:white; display:flex; font-size:7pt; font-weight:800; height:14px; justify-content:center; margin-bottom:1.8mm; width:14px; }
+    .takeaway h2 { color:var(--teal-dark); font-size:8.4pt; font-weight:800; line-height:1.24; margin-bottom:1.5mm; }
+    .takeaway p { color:#495256; font-size:7.1pt; line-height:1.4; }
+    .takeaways-note { color:#576267; font-size:8pt; font-style:italic; line-height:1.3; margin-top:3.2mm; text-align:center; }
+
+    .extras { margin-top:1.5mm; display:grid; grid-template-columns:1fr 1fr; gap:3.5mm; }
+    .extra { border:1px solid var(--line); border-top:3px solid var(--teal); border-radius:4px; padding:3.2mm 4mm; color:#3e464a; font-size:8.5pt; font-weight:600; line-height:1.35; }
+    .extra b { color:var(--teal); display:block; font-size:9.2pt; margin-bottom:1mm; }
+    .ft-feature { background:#e7f3f4; border-left:4px solid var(--teal); border-radius:4px; margin-top:1.5mm; padding:3.5mm 5mm; color:#26363b; font-size:9.5pt; line-height:1.42; }
+    .ft-feature strong { color:var(--teal-dark); }
+    .tagline { color:var(--teal); font-size:10.5pt; font-style:italic; font-weight:700; line-height:1.3; text-align:center; margin-top:2mm; }
+
+    /* Footer retained from FT Team's revised version. */
+    .action { height:36mm; background:var(--ink); color:white; padding:7mm 10mm 8mm; display:flex; align-items:center; gap:8mm; }
+    .action-copy { flex:1; }
+    .action-heading { font-size:12pt; font-weight:800; margin-bottom:1.5mm; }
+    .url { color:#f2ba75; font-size:12.5pt; font-weight:700; letter-spacing:-.02em; }
+    .action-note { color:rgba(255,255,255,.64); font-size:8pt; line-height:1.45; margin-top:1.5mm; }
+    #register-qr { width:27mm; height:27mm; padding:2.5px; flex:0 0 27mm; background:white; border:2px solid var(--amber); border-radius:4px; }
+    .contact { color:rgba(255,255,255,.45); font-size:7.8pt; line-height:1.6; }
+    .contact .brand { font-size:10.5pt; font-weight:700; color:white; margin-bottom:1mm; }
+    .ft-mark { width:20mm; height:20mm; opacity:.94; }
+    @media print { body { background:none; padding:0; } .poster { box-shadow:none; } .event-card { box-shadow:none; } .preview { display:block; } }
+  </style>
+</head>
+<body>
+  <!-- FT supporter flyer only. Do not add Australian Red Cross logos, red-cross iconography,
+       or other Red Cross visual identity without written approval from Australian Red Cross. -->
+  <main class="preview">
+    <article class="poster" aria-label="Future Together supporter flyer for EmergencyRedi workshop">
+
+      <section class="top">
+        <!-- FT Team's updated converging-lines header decoration retained. -->
+        <svg class="rays" viewBox="0 0 580 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <radialGradient id="glow" cx="440" cy="210" r="130" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c4853a" stop-opacity="0.12"/><stop offset="100%" stop-color="#c4853a" stop-opacity="0"/></radialGradient>
+          <linearGradient id="textGuard" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1a5f6e" stop-opacity="0.72"/><stop offset="55%" stop-color="#1a5f6e" stop-opacity="0"/></linearGradient>
+          <rect width="580" height="420" fill="url(#glow)"/>
+          <line x1="-10" y1="0" x2="440" y2="210" stroke="white" stroke-width="1" opacity=".10"/><line x1="-10" y1="48" x2="440" y2="210" stroke="white" stroke-width="1.3" opacity=".16"/><line x1="-10" y1="95" x2="440" y2="210" stroke="white" stroke-width="1.8" opacity=".22"/><line x1="-10" y1="143" x2="440" y2="210" stroke="white" stroke-width="2.3" opacity=".30"/><line x1="-10" y1="210" x2="440" y2="210" stroke="white" stroke-width="3" opacity=".42"/><line x1="-10" y1="277" x2="440" y2="210" stroke="white" stroke-width="2.3" opacity=".30"/><line x1="-10" y1="325" x2="440" y2="210" stroke="white" stroke-width="1.8" opacity=".22"/><line x1="-10" y1="372" x2="440" y2="210" stroke="white" stroke-width="1.3" opacity=".16"/><line x1="-10" y1="420" x2="440" y2="210" stroke="white" stroke-width="1" opacity=".10"/>
+          <rect width="580" height="420" fill="url(#textGuard)"/><circle cx="440" cy="210" r="20" fill="#c4853a"/><polyline points="460,192 500,210 460,228" fill="none" stroke="#c4853a" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="top-content"><p class="eyebrow">Free community workshop · Tumbarumba</p><h1>Working together to prepare for emergencies</h1><div class="accent"></div></div>
+      </section>
+
+      <section class="body">
+        <p class="intro"><strong>An EmergencyRedi preparedness workshop</strong> exploring practical, all-hazards preparation for major disruptions—from heatwaves and supply-chain shocks to rapid technological change and AI risks.</p>
+        <p class="co-branding">Hosted by Australian Red Cross <span aria-hidden="true">·</span> Supported locally by Future Together</p>
+        <div class="event-card" aria-label="Event details">
+          <div class="detail"><span class="label">When</span><span class="value">Tuesday 15 September · 5–7 pm</span></div>
+          <div class="detail"><span class="label">Where</span><span class="value">Tumbarumba Bowling Club · Tumbarumba</span></div>
+          <div class="detail"><span class="label">Entry</span><span class="value">Free · All welcome</span></div>
+        </div>
+
+        <div class="takeaways" aria-label="What you will take away from this workshop">
+          <div class="takeaways-heading">What you’ll take away</div>
+          <div class="takeaways-grid">
+            <div class="takeaway"><div class="takeaway-number">1</div><h2>Start your Emergency RediPlan</h2><p>Simple steps to prepare yourself, your household and the people you care about.</p></div>
+            <div class="takeaway"><div class="takeaway-number">2</div><h2>Prepare for changing conditions</h2><p>An all-hazards approach for heat, supply issues and changing services.</p></div>
+            <div class="takeaway"><div class="takeaway-number">3</div><h2>Make sense of AI risks—together</h2><p>Practical ways to recognise trusted information and strengthen local connections.</p></div>
+          </div>
+          <p class="takeaways-note">No jargon and no panic—just practical preparation, useful conversations and local connection.</p>
+        </div>
+
+        <div class="extras"><div class="extra"><b>Free Emergency Dry Bag</b>Provided by Australian Red Cross</div><div class="extra"><b>Come prepared to connect</b>Catering provided</div></div>
+        <div class="ft-feature"><strong>Hear from Future Together founder Charlie Garrison—a local—</strong> on AI, trusted information and community preparedness.</div>
+        <p class="tagline">“Emergencies are changing. The way communities can prepare is changing too.”</p>
+      </section>
+
+      <section class="action">
+        <img class="ft-mark" src="../logo-mark-white.svg" alt="Future Together">
+        <div class="contact"><div class="brand">Future Together</div>Event contact: Charlie Garrison<br>charlie@futuretogether.community<br>0411 174 174</div>
+        <div class="action-copy"><div class="action-heading">Find updates and registration</div><div class="url">futuretogether.community/meetups</div><div class="action-note">Scan for updates and registration</div></div>
+        <div id="register-qr" aria-label="QR code for Future Together meetups"></div>
+      </section>
+    </article>
+  </main>
+  <script src="../qrcode.js"></script>
+  <script>
+    if (typeof buildQR === 'function') { buildQR('https://futuretogether.community/events/working-together-to-prepare-for-emergencies-2026-09-15', 'register-qr', 200); }
+    else { document.getElementById('register-qr').innerHTML = '<div style="font:700 9px Arial;color:#1a5f6e;padding:8px;text-align:center">futuretogether.community/meetups</div>'; }
+  </script>
+</body>
+</html>
