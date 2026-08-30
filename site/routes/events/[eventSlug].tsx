@@ -9,6 +9,7 @@ import EventMoreInfo from "@/islands/EventMoreInfo.tsx";
 import EventRegistrationForm from "@/islands/EventRegistrationForm.tsx";
 import EventDateTime from "@/islands/EventDateTime.tsx";
 import { getTurnstileSiteKey } from "@/utils/turnstile.ts";
+import { renderMarkdown } from "@/utils/markdown.ts";
 
 /**
  * Event registration page.
@@ -158,14 +159,15 @@ export default define.page(async function EventPage({ params, state }) {
                   About this meetup
                 </h2>
                 <div
-                  class="prose max-w-none space-y-3"
-                  style="color: rgba(28,26,24,0.8);"
-                >
-                  {event.description.split("\n").map((
-                    paragraph: string,
-                    i: number,
-                  ) => paragraph.trim() && <p key={i}>{paragraph}</p>)}
-                </div>
+                  class="leading-relaxed text-sm prose prose-sm max-w-none"
+                  style="color: rgba(28,26,24,0.75);"
+                  // deno-lint-ignore react-no-danger
+                  dangerouslySetInnerHTML={{
+                    __html: renderMarkdown(
+                      event.description.split("\n\n")[0],
+                    ),
+                  }}
+                />
               </div>
 
               {event.topics && event.topics.length > 0 && (

@@ -1,6 +1,7 @@
 import { define } from "@/utils.ts";
 import { Head } from "fresh/runtime";
 import { getEventById, getEventsBySlug } from "@/utils/db/group-events.ts";
+import { renderMarkdown } from "@/utils/markdown.ts";
 
 // Dynamic route: /meetups/[eventName]
 //
@@ -86,12 +87,6 @@ export default define.page(async function EventResources(ctx) {
     event.timezone ?? "Australia/Sydney",
   );
 
-  // Split description into paragraphs for rendering
-  const descriptionParagraphs = event.description
-    .split("\n\n")
-    .map((p: string) => p.trim())
-    .filter(Boolean);
-
   const isSpecial = event.slug !== "discuss-our-future";
 
   return (
@@ -168,15 +163,16 @@ export default define.page(async function EventResources(ctx) {
       <div class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
         {/* Description */}
         <div class="max-w-2xl mb-10 space-y-4">
-          {descriptionParagraphs.map((para: string) => (
-            <p
-              key={para}
-              class="leading-relaxed"
-              style="color: rgba(28,26,24,0.8);"
-            >
-              {para}
-            </p>
-          ))}
+          <div
+            class="leading-relaxed text-sm prose prose-sm max-w-none"
+            style="color: rgba(28,26,24,0.75);"
+            // deno-lint-ignore react-no-danger
+            dangerouslySetInnerHTML={{
+              __html: renderMarkdown(
+                event.description.split("\n\n")[0],
+              ),
+            }}
+          />
         </div>
 
         {/* Poster image / infographic */}

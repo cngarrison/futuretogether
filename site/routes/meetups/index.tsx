@@ -304,12 +304,16 @@ export default define.page(async function Meetups(ctx) {
                         {dateDisplay}
                       </p>
                       {/* Description — first paragraph only to keep cards compact */}
-                      <p
-                        class="leading-relaxed text-sm"
+                      <div
+                        class="leading-relaxed text-sm prose prose-sm max-w-none"
                         style="color: rgba(28,26,24,0.75);"
-                      >
-                        {event.description.split("\n\n")[0]}
-                      </p>
+                        // deno-lint-ignore react-no-danger
+                        dangerouslySetInnerHTML={{
+                          __html: renderMarkdown(
+                            event.description.split("\n\n")[0],
+                          ),
+                        }}
+                      />
                     </div>
 
                     {/* Topics list */}
