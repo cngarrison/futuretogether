@@ -113,11 +113,26 @@ function seedNow(timeStr: string): string {
   return `${now.toPlainDate()}T${timeStr}`;
 }
 
+/** Returns this month's third Tuesday at the given time for a BYDAY=3TU seed. */
+function seedThirdTuesday(timeStr: string): string {
+  const now = Temporal.Now.plainDateTimeISO(TZ);
+  const seed = getNthWeekdayOfMonth(
+    now.year,
+    now.month,
+    2,
+    3,
+    Temporal.PlainTime.from(timeStr),
+  );
+  assert(seed !== null, "Every month has a third Tuesday");
+  return seed.toString();
+}
+
 Deno.test("expandRRule FREQ=MONTHLY;BYDAY=3TU: all results are Tuesdays at 10:00", () => {
-  const seed = seedNow("10:00:00");
+  const seed = seedThirdTuesday("10:00:00");
   const results = expandRRule("FREQ=MONTHLY;BYDAY=3TU", seed, TZ, 3);
-  // We expect at most 3 results (3 months ahead)
-  assert(results.length <= 3, `Expected ≤3 results, got ${results.length}`);
+  // The lookahead endpoint is inclusive, so this window can contain four
+  // third Tuesdays: the seed occurrence plus one in each of the next 3 months.
+  assert(results.length <= 4, `Expected ≤4 results, got ${results.length}`);
   for (const dt of results) {
     // dayOfWeek: 2 = Tuesday in Temporal convention
     assertEquals(

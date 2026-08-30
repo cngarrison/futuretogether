@@ -4,7 +4,8 @@
  * Helpers for working with naive local datetime strings (no timezone offset)
  * paired with an IANA timezone. These are the canonical helpers for all event
  * date handling now that group_events.event_date stores wall-clock local time
- * (timestamp, no tz) rather than UTC timestamptz.
+ * (timestamp, no tz) rather than UTC timestamptz. Luxon is confined here as
+ * the adapter required for iCalendar serialization.
  *
  * Background (ft-07i.15):
  *   Previously event_date was stored as UTC, requiring manual correction after
@@ -12,6 +13,59 @@
  *   directly, paired with the timezone column. UTC conversion happens at point
  *   of use via these helpers (app-side) or AT TIME ZONE (DB-side).
  */
+
+import { DateTime } from "luxon";
+import type { ICalLuxonDateTimeStub } from "ical-generator";
+
+/**
+ * Make a documented ical-generator Luxon-shaped value from a Luxon DateTime.
+ *
+ * ical-generator's public input API accepts native Date, strings, Moment,
+ * Day.js and Luxon DateTime values; it does not support Temporal types. In
+ * this Deno/npm setup, passing a Luxon DateTime directly has nevertheless
+ * serialized as an epoch date. This adapter uses Luxon only to parse and
+ * retain the supplied wall-clock time, then supplies the library's documented
+ * Luxon-shaped input (`isValid`, `setZone`, `toFormat`, and `toJSDate`).
+ */
+function asICalDateTime(value: DateTime): ICalLuxonDateTimeStub {
+  return {
+    get isValid(): boolean {
+      return value.isValid;
+    },
+    setZone: (zone?: string) =>
+      asICalDateTime(zone ? value.setZone(zone) : value),
+    toFormat: (format: string) => value.toFormat(format),
+    toJSDate: () => value.toJSDate(),
+    toJSON: () => value.toISO(),
+    zone: { type: value.zone.type },
+  };
+}
+
+/**
+ * Convert a naive local database datetime to an ical-generator-compatible
+ * value without changing its wall-clock fields.
+ *
+ * Use this only for an event whose `timezone` property is the same `tz` passed
+ * here. For example, 2026-09-15 17:00:00 + Australia/Sydney serializes as
+ * DTSTART;TZID=Australia/Sydney:20260915T170000.
+ */
+export function naiveDatetimeToICalDateTime(
+  localDt: string,
+  tz: string,
+): ICalLuxonDateTimeStub {
+  const value = DateTime.fromISO(localDt.replace(" ", "T"), {
+    zone: tz,
+    setZone: true,
+  });
+
+  if (!value.isValid) {
+    throw new RangeError(
+      `Invalid local datetime or IANA timezone: ${localDt} (${tz})`,
+    );
+  }
+
+  return asICalDateTime(value);
+}
 
 /**
  * Convert a naive local datetime string + IANA timezone → a proper Date (UTC epoch).

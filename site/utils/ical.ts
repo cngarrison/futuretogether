@@ -10,13 +10,15 @@
  *   - Hybrid events: online link surfaced in the description alongside the venue
  *   - Attendee: optional ATTENDEE line (for logged-in registrants)
  *
- * ical-generator v10 emits DTSTART;TZID=<tz>:<localtime> when a timezone is
- * supplied — DST-safe, compatible with Apple Calendar, Google Calendar, Outlook.
+ * With the local-time adapter from temporal.ts, ical-generator v10 emits
+ * DTSTART;TZID=<tz>:<localtime> plus VTIMEZONE — DST-safe and compatible with
+ * Apple Calendar, Google Calendar, and Outlook.
  */
 
 import ical, { ICalAttendeeStatus } from "ical-generator";
-import { naiveDatetimeToDate } from "./temporal.ts";
+import { getVtimezoneComponent } from "@touch4it/ical-timezones";
 import type { EventConfig } from "@/utils/db/group-events.ts";
+import { naiveDatetimeToICalDateTime } from "@/utils/temporal.ts";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -61,8 +63,15 @@ export function buildGroupEventICal(opts: GroupEventICalOptions): string {
   const { event, groupSlug, groupName, attendee } = opts;
   const timezone = event.timezone ?? "Australia/Sydney";
 
-  const startDate = naiveDatetimeToDate(event.date, timezone);
-  const endDate = new Date(startDate.getTime() + event.duration * 60 * 1000);
+  // event.date is deliberately a local wall-clock value. The Temporal/Luxon
+  // adapter retains those fields for ical-generator's TZID serialization.
+  const startDate = naiveDatetimeToICalDateTime(event.date, timezone);
+  const endDate = naiveDatetimeToICalDateTime(
+    Temporal.PlainDateTime.from(event.date)
+      .add({ minutes: event.duration })
+      .toString(),
+    timezone,
+  );
 
   // Determine location value and whether to surface the online link in description.
   const isHybrid = !!(event.meetingLocation && event.meetingLink);
@@ -90,6 +99,7 @@ export function buildGroupEventICal(opts: GroupEventICalOptions): string {
   );
 
   const cal = ical({ name: "Future Together" });
+  cal.timezone({ name: timezone, generator: getVtimezoneComponent });
 
   const calEvent = cal.createEvent({
     id: event.id,

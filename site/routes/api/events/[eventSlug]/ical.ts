@@ -13,8 +13,8 @@
  *   3. Returning the .ics response
  *
  * event_date is stored as naive local wall-clock time (ft-07i.15).
- * naiveDatetimeToDate() in the helper converts it to a proper UTC Date,
- * which ical-generator re-emits in DTSTART;TZID=<tz> local form.
+ * The shared helper passes an ical-generator-compatible local-time adapter,
+ * retaining the local DTSTART;TZID=<tz> clock fields.
  */
 
 import { define } from "@/utils.ts";

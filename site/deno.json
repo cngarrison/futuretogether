@@ -5,7 +5,7 @@
     "check:lint": "deno lint .",
     "check:types": "deno check main.ts",
     "format": "deno fmt",
-    "test": "deno test --allow-read --allow-write --allow-run --allow-net --allow-env --allow-import --unstable-kv tests/",
+    "test": "deno test --env-file=.env.local --allow-read --allow-write --allow-run --allow-net --allow-env --allow-import --unstable-kv tests/",
     "test:ical": "deno run --allow-read --allow-write scripts/test-ical.ts",
     "dev": "./scripts/dev.sh",
     "local-prod": "./scripts/local-prod.sh",
