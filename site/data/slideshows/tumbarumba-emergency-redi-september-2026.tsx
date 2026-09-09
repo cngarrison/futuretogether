@@ -1,5 +1,4 @@
 import type { SlideData, SlideshowMeta } from '@/types/slideshows.ts';
-import QRCode from '@/islands/slideshows/QRCode.tsx';
 
 const eventUrl = 'https://futuretogether.community/events/working-together-to-prepare-for-emergencies-2026-09-15';
 
@@ -641,7 +640,7 @@ export const slides: SlideData[] = [
 				</div>
 				<div class='emphasis-box' style='margin-top:0.9rem;'>
 					<p style='font-size:1.2rem;color:#374151;text-align:center;'>
-						Technology can make shared knowledge easier to use.{' '}<br/>
+						Technology can make shared knowledge easier to use.{' '}<br />
 						<strong>It cannot do the caring, checking and showing up for us.</strong>
 					</p>
 				</div>
@@ -656,7 +655,6 @@ export const slides: SlideData[] = [
 						<br />
 						Supported locally by Future Together
 					</p>
-					<QRCode url={eventUrl} style='width:120px;height:120px;margin:0.45rem auto;' />
 					<p style='font-size:0.72rem;font-weight:700;color:#c4853a;overflow-wrap:anywhere;'>
 						futuretogether.community/events/working-together-to-prepare-for-emergencies-2026-09-15
 					</p>
