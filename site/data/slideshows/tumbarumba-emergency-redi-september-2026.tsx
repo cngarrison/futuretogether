@@ -48,7 +48,7 @@ export const slides: SlideData[] = [
 				},
 				{
 					type: 'say',
-					text: 'We will consider one practical idea and then use your tables to test it against a local-style scenario.',
+					text: 'We will consider a couple of practical ideas and then use a small-group discussion to test one against a local-style scenario.',
 				},
 				{
 					type: 'cue',
@@ -179,6 +179,67 @@ export const slides: SlideData[] = [
 	},
 	{
 		id: 4,
+		title: 'A simple way to try it',
+		content: (
+			<>
+				<h2>A simple way to try it</h2>
+				<div class='large-text'>
+					One everyday way to see what AI can do is to ask it to help you understand a document you already have.
+				</div>
+				<div class='info-box' style='max-width:1050px;width:100%;margin-top:1.1rem;'>
+					<h3 style='font-size:1.3rem;text-align:center;'>Try this with your home or contents insurance</h3>
+					<p style='font-size:1.1rem;color:#374151;text-align:center;'>
+						Upload or paste in your policy document, then describe a scenario and ask whether you are covered:
+					</p>
+					<div style='display:grid;grid-template-columns:repeat(3,1fr);gap:0.85rem;margin-top:0.75rem;text-align:center;font-size:1rem;color:#374151;'>
+						<div>Flooding from a rising creek</div>
+						<div>Rain pooling and entering under a door</div>
+						<div>A burst pipe inside the house</div>
+					</div>
+				</div>
+				<div class='warning-box' style='margin-top:1.1rem;'>
+					<p style='font-size:1.1rem;color:#374151;text-align:center;'>
+						This is a starting point for your own reading, not legal or financial advice.
+						<br />
+						Always confirm anything important directly with your insurer.
+					</p>
+				</div>
+				<div class='question' style='margin-top:1.25rem;'>
+					A small, safe way to get comfortable —<br />
+					before you need it in a real emergency.
+				</div>
+			</>
+		),
+		notes: {
+			pace: 'Practical demo · ~2 min',
+			cumulative: 8,
+			anchor: 'Give people one concrete, low-risk thing they could try themselves.',
+			bullets: [
+				{
+					type: 'say',
+					text: 'One simple way to see what AI can actually do is to ask it to help you understand a document you already have, such as your home or contents insurance policy.',
+				},
+				{
+					type: 'say',
+					text: 'You can describe a scenario in plain language and ask whether you are covered, for example flooding from a rising creek, rain pooling and entering under a door, or a burst pipe inside the house.',
+				},
+				{
+					type: 'say',
+					text: 'This can help you notice gaps or questions you did not know you had, in your own time, before an emergency.',
+				},
+				{
+					type: 'say',
+					text: 'It is a starting point for your own reading, not legal or financial advice, and you should always confirm anything important directly with your insurer.',
+				},
+				{
+					type: 'cue',
+					text: 'Keep this illustrative and low-stakes. Do not position it as insurance advice, and do not ask anyone to share their own policy details aloud.',
+				},
+			],
+		},
+	},
+	{
+		id: 5,
 		title: 'Change will not affect everyone evenly',
 		content: (
 			<>
@@ -215,7 +276,7 @@ export const slides: SlideData[] = [
 		),
 		notes: {
 			pace: 'Agency · ~2.5 min',
-			cumulative: 8.5,
+			cumulative: 10.5,
 			anchor: 'Emphasise inclusion, agency and offline options.',
 			bullets: [
 				{
@@ -236,7 +297,7 @@ export const slides: SlideData[] = [
 		},
 	},
 	{
-		id: 5,
+		id: 6,
 		title: 'Practical pressures to plan for',
 		content: (
 			<>
@@ -275,7 +336,7 @@ export const slides: SlideData[] = [
 		),
 		notes: {
 			pace: 'Practical pressures · ~3 min',
-			cumulative: 11.5,
+			cumulative: 13.5,
 			anchor: 'Translate AI change into practical preparedness pressures.',
 			bullets: [
 				{
@@ -306,7 +367,76 @@ export const slides: SlideData[] = [
 		},
 	},
 	{
-		id: 6,
+		id: 7,
+		title: 'A larger risk some researchers are watching',
+		content: (
+			<>
+				<h2>A larger risk some researchers are watching</h2>
+				<div class='large-text'>
+					Some AI risks are like fire or flood: nobody in this room controls them directly, but it still helps to know they exist.
+				</div>
+				<div style='display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;max-width:1100px;width:100%;margin-top:1.1rem;'>
+					<div class='info-box' style='margin:0;'>
+						<h3 style='font-size:1.3rem;'>The alignment problem</h3>
+						<p style='font-size:1.05rem;color:#374151;text-align:center;'>
+							Making sure increasingly capable AI systems reliably do what people actually intend, especially as they act with
+							more independence.
+						</p>
+					</div>
+					<div class='info-box' style='margin:0;'>
+						<h3 style='font-size:1.3rem;'>The singularity</h3>
+						<p style='font-size:1.05rem;color:#374151;text-align:center;'>
+							Some researchers describe a possible future point where AI could improve itself faster than people can oversee
+							or correct it.
+						</p>
+					</div>
+				</div>
+				<div class='emphasis-box' style='margin-top:1.1rem;'>
+					<p style='font-size:1.15rem;color:#374151;text-align:center;'>
+						Like fire or flood risk, this is bigger than any one household or town — awareness still matters, even without a
+						local fix.
+					</p>
+				</div>
+				<div class='question' style='margin-top:1.1rem;'>
+					This is for awareness tonight.<br />
+					There will be time for questions afterwards.
+				</div>
+			</>
+		),
+		notes: {
+			pace: 'Awareness · ~2.5 min',
+			cumulative: 16,
+			anchor: 'Name the bigger-picture risk calmly, for awareness only, and defer debate to afterwards.',
+			bullets: [
+				{
+					type: 'say',
+					text: 'Beyond the everyday pressures we just covered, some AI researchers point to two bigger-picture risks worth knowing about, even in a room focused on practical preparedness.',
+				},
+				{
+					type: 'say',
+					text: 'The first is called the alignment problem: making sure increasingly capable AI systems reliably do what people actually intend, which becomes harder as those systems act with more independence.',
+				},
+				{
+					type: 'say',
+					text: 'The second is an idea called the singularity, where some researchers describe a possible future point at which AI could improve itself faster than people can oversee or correct it.',
+				},
+				{
+					type: 'say',
+					text: 'I want to frame these the same way we would think about fire or flood risk: they are bigger than any one household or town, nobody here controls them directly, and that does not mean they are not worth knowing about.',
+				},
+				{
+					type: 'say',
+					text: 'I am raising this for awareness tonight, not to argue the case in detail; if you would like to talk about it further, I am very happy to do that after this session.',
+				},
+				{
+					type: 'cue',
+					text: 'Do not get drawn into a deep debate now. If questions come up, note them and offer to continue the conversation after the session.',
+				},
+			],
+		},
+	},
+	{
+		id: 8,
 		title: 'Useful tools need human checking',
 		content: (
 			<>
@@ -345,7 +475,7 @@ export const slides: SlideData[] = [
 		),
 		notes: {
 			pace: 'Practice · ~2.5 min',
-			cumulative: 14,
+			cumulative: 18.5,
 			anchor: 'Establish a simple verification practice before the activity.',
 			bullets: [
 				{
@@ -369,7 +499,7 @@ export const slides: SlideData[] = [
 		},
 	},
 	{
-		id: 7,
+		id: 9,
 		title: 'Household basics are the bridge',
 		content: (
 			<>
@@ -413,7 +543,7 @@ export const slides: SlideData[] = [
 		),
 		notes: {
 			pace: 'Bridge · ~2 min',
-			cumulative: 16,
+			cumulative: 20.5,
 			anchor: 'Return the emphasis clearly to EmergencyRedi household preparation.',
 			bullets: [
 				{
@@ -434,7 +564,7 @@ export const slides: SlideData[] = [
 		},
 	},
 	{
-		id: 8,
+		id: 10,
 		title: 'A living local knowledge commons',
 		content: (
 			<>
@@ -471,7 +601,7 @@ export const slides: SlideData[] = [
 		),
 		notes: {
 			pace: 'Core idea · ~2.5 min',
-			cumulative: 18.5,
+			cumulative: 23,
 			anchor: 'Introduce shared knowledge as maintained local practice, not a static list.',
 			bullets: [
 				{
@@ -492,21 +622,21 @@ export const slides: SlideData[] = [
 		},
 	},
 	{
-		id: 9,
-		title: 'Table activity: one missing local answer',
+		id: 11,
+		title: 'Small-group activity: one missing local answer',
 		content: (
 			<>
-				<h2>Table activity: one missing local answer</h2>
+				<h2>Small-group activity: one missing local answer</h2>
 				<div class='warning-box' style='max-width:1100px;width:100%;margin:0.75rem 0;'>
 					<p style='font-size:1.15rem;color:#374151;'>
-						<strong>Scenario:</strong> It is a very hot day. Mobile service is patchy and EFTPOS is unreliable. An online rumour
-						says a local cooling space has closed. A neighbour asks where an older person needing a cool, accessible place can
-						go <strong>today</strong> — and how to know it is open.
+						<strong>Scenario:</strong> It is a week of extreme heat. Mobile phone service and EFTPOS are unreliable. There is an
+						unconfirmed rumour that a fire <strong>may</strong> have started somewhere north of town. Someone caring for a
+						vulnerable person asks: <strong>should we evacuate?</strong>
 					</p>
 				</div>
 				<div style='display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;max-width:1100px;width:100%;'>
 					<div class='info-box' style='margin:0;'>
-						<strong>In five minutes, identify:</strong>
+						<strong>In small groups of 2–3, identify:</strong>
 						<ol style='margin:0.5rem 0 0 1.25rem;color:#374151;line-height:1.6;font-size:1rem;'>
 							<li>One missing local answer</li>
 							<li>Best authoritative source</li>
@@ -515,13 +645,24 @@ export const slides: SlideData[] = [
 						</ol>
 					</div>
 					<div class='emphasis-box' style='margin:0;'>
-						<strong>Guardrails</strong>
-						<ul style='font-size:0.98rem;line-height:1.55;'>
-							<li>Do not write personal contacts, health details or vulnerable-person lists.</li>
-							<li>Use a safer scenario if needed.</li>
-							<li>Unofficial noticeboards and radio are discussion prompts, not confirmed official channels.</li>
+						<strong>Things your group might raise</strong>
+						<ul style='font-size:0.95rem;line-height:1.55;'>
+							<li>Apps on the phone not working</li>
+							<li>Listening to ABC local radio</li>
+							<li>Fuel already in the car</li>
+							<li>Supplies at home</li>
+							<li>Having an AM/FM radio</li>
+							<li>Knowing how to contact the RFS</li>
 						</ul>
 					</div>
+				</div>
+				<div class='warning-box' style='max-width:1100px;width:100%;margin-top:0.8rem;'>
+					<ul style='font-size:0.95rem;line-height:1.55;color:#374151;'>
+						<li>This is a hypothetical scenario, not a claim about a real or current fire.</li>
+						<li>Do not write personal contacts, health details or vulnerable-person lists.</li>
+						<li>Unofficial noticeboards and radio are discussion prompts, not confirmed official channels.</li>
+						<li>Knowing how to contact the RFS is not the same as official evacuation advice.</li>
+					</ul>
 				</div>
 				<div class='question' style='margin-top:1rem;font-size:2rem;'>
 					Choose a useful question —<br />
@@ -531,10 +672,18 @@ export const slides: SlideData[] = [
 		),
 		notes: {
 			pace: 'Small groups · ~6.5 min',
-			cumulative: 25,
-			anchor: 'Have tables identify a reliable-answer pattern, not solve or publish a local directory.',
+			cumulative: 29.5,
+			anchor: 'Have small groups identify a reliable-answer pattern, not solve or publish a local directory.',
 			bullets: [
-				{ type: 'say', text: 'You have five minutes to discuss this with your table.' },
+				{ type: 'say', text: 'Please form small groups of two or three people around the table and take five minutes to discuss this scenario.' },
+				{
+					type: 'say',
+					text: 'It is a week of extreme heat, mobile phone service and EFTPOS are unreliable, and there is an unconfirmed rumour that a fire may have started somewhere north of town.',
+				},
+				{
+					type: 'say',
+					text: 'Someone caring for a vulnerable person is asking whether they should evacuate, and your group is thinking through what would help them answer that safely.',
+				},
 				{
 					type: 'say',
 					text: 'Your task is not to solve the scenario perfectly or to create an official local directory; it is to identify one missing local answer and the safest way to make that answer reliable.',
@@ -545,21 +694,25 @@ export const slides: SlideData[] = [
 				},
 				{
 					type: 'say',
-					text: 'The scenario is not a claim about a current local cooling space, and you may choose another low-risk preparedness question if it is not useful for your table.',
+					text: 'You might also think about apps on the phone not working, listening to ABC local radio, fuel already in the car, supplies at home, having an AM/FM radio, and knowing how to contact the RFS.',
 				},
 				{
 					type: 'say',
-					text: 'Please do not write personal contact details, health information or lists of people who may be vulnerable.',
+					text: 'This is a hypothetical scenario, not a claim about a real or current fire, and you may choose another low-risk preparedness question if it is not useful for your group.',
+				},
+				{
+					type: 'say',
+					text: 'Please do not write personal contact details, health information or lists of people who may be vulnerable, and remember that knowing how to contact the RFS is not the same as official evacuation advice.',
 				},
 				{
 					type: 'cue',
-					text: 'Circulate. Redirect any attempt to create personal lists. Do not collect the cards as a public directory.',
+					text: 'Circulate around the shared table. Redirect any attempt to create personal lists. Do not collect the cards as a public directory.',
 				},
 			],
 		},
 	},
 	{
-		id: 10,
+		id: 12,
 		title: 'Share back: test the pattern',
 		content: (
 			<>
@@ -596,10 +749,10 @@ export const slides: SlideData[] = [
 		),
 		notes: {
 			pace: 'Share back · ~2.5 min',
-			cumulative: 27.5,
+			cumulative: 32,
 			anchor: 'Draw out the reliability pattern without validating unverified claims.',
 			bullets: [
-				{ type: 'say', text: 'Let us hear two or three insights from the tables.' },
+				{ type: 'say', text: 'Let us hear two or three insights from your small groups.' },
 				{
 					type: 'say',
 					text: 'Please share the question you identified and the pattern you used, rather than presenting an unverified local service as a recommendation.',
@@ -614,13 +767,13 @@ export const slides: SlideData[] = [
 				},
 				{
 					type: 'cue',
-					text: 'If a contribution names an unverified service, thank the table and restate it as a lead to verify, not a recommendation.',
+					text: 'If a contribution names an unverified service, thank the group and restate it as a lead to verify, not a recommendation.',
 				},
 			],
 		},
 	},
 	{
-		id: 11,
+		id: 13,
 		title: 'AI can help; people remain responsible',
 		content: (
 			<>
@@ -664,8 +817,8 @@ export const slides: SlideData[] = [
 			</>
 		),
 		notes: {
-			pace: 'Close and transition · ~2.5 min',
-			cumulative: 30,
+			pace: 'Close and transition · ~3 min',
+			cumulative: 35,
 			anchor: 'Close the bounded-AI message and hand clearly back to EmergencyRedi.',
 			bullets: [
 				{
@@ -691,8 +844,8 @@ export const meta: SlideshowMeta = {
 	slug: 'tumbarumba-emergency-redi-september-2026',
 	title: 'Working Together to Prepare for Emergencies',
 	eventSlug: 'working-together-to-prepare-for-emergencies-2026-09-15',
-	slideCount: 11,
-	durationMinutes: 30,
+	slideCount: 13,
+	durationMinutes: 35,
 	description:
 		'A Future Together segment on AI, trusted information and community preparedness, hosted within an Australian Red Cross EmergencyRedi workshop in Tumbarumba.',
 };
