@@ -1,4 +1,5 @@
 import type { SlideData, SlideshowMeta } from '@/types/slideshows.ts';
+import QRCode from '@/components/QRCode.tsx';
 
 const eventUrl = 'https://futuretogether.community/events/working-together-to-prepare-for-emergencies-2026-09-15';
 
@@ -655,6 +656,7 @@ export const slides: SlideData[] = [
 						<br />
 						Supported locally by Future Together
 					</p>
+					<QRCode url={eventUrl} style='width:120px;height:120px;margin:0.45rem auto;' />
 					<p style='font-size:0.72rem;font-weight:700;color:#c4853a;overflow-wrap:anywhere;'>
 						futuretogether.community/events/working-together-to-prepare-for-emergencies-2026-09-15
 					</p>

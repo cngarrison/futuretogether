@@ -1,5 +1,5 @@
 import type { SlideData, SlideshowMeta } from "@/types/slideshows.ts";
-import QRCode from "@/islands/slideshows/QRCode.tsx";
+import QRCode from "@/components/QRCode.tsx";
 
 // slides must be declared before meta so loadSlides can reference it
 export const slides: SlideData[] = [
