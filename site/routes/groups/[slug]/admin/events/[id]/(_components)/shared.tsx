@@ -347,6 +347,7 @@ export function PosterPanel({
         method="POST"
         action={`/groups/${groupSlug}/admin/events/${eventId}/poster`}
         enctype="multipart/form-data"
+        f-client-nav={false}
       >
         <div class="flex flex-wrap items-center gap-3">
           <input
