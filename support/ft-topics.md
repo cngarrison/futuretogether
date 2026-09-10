@@ -54,7 +54,7 @@ respond to it.
 **Thesis**: Frontier AI access is being structured with political access controls (by
 government request) before communities understand what's being decided or have a say.
 **Status**: building
-**Last updated**: 2026-08-24
+**Last updated**: 2026-09-03
 **Evidence log**:
 - 2026-07-30: Trump floated AI "controls" in response to the OpenAI breach story, while explicitly rejecting anything that would slow US firms vs China; White House owes a voluntary vetting framework by Aug 1 (drafts already with OpenAI/Anthropic/Google). CNG's read: control is needed, but government lacks the expertise to design it well — this should be handled by domain experts, not politically-driven mandates. Sharpens the topic's core tension: who gets to decide, and are they qualified to? (source: newsletters/daily-therundown-ai-news_2026-07-30T100843Z/message.md)
 - 2026-07-29: Zuck's WSJ op-ed on superintelligence argues open *access* (pointedly not
@@ -126,14 +126,16 @@ government request) before communities understand what's being decided or have a
   participate. (source:
   newsletters/daily-therundown-ai-news_2026-08-04T100630Z/message.md)
 - 2026-08-24: Anthropic expanded Mythos 5 access beyond Project Glasswing to “cyber defenders.” A frontier lab is therefore allocating advanced capability through a named use-case cohort, apparently alongside government-linked programs, rather than a transparent public entitlement or ordinary enterprise tier. The access question is becoming operational: who qualifies as a defender, who decides, what uses are allowed, and who outside those categories is excluded? (source: newsletters/daily-therundown-ai-news_2026-08-24T100502Z/message.md)
+- 2026-09-03: U.S. Commerce Secretary Howard Lutnick told Axios "We trust Anthropic," characterizing the company as "back on the right side" of its government relationship. Public hardening of government–lab alignment and political mediation of frontier access: a frontier lab now explicitly positioned as trustworthy by the executive branch, signaling both confidence and an ongoing dependency on political approval. (source: newsletters/daily-therundown-ai-news_2026-09-03T100616Z/message.md)
 
 ## Topic: The compressed window — labour displacement timeline
 **Thesis**: Prior technological transitions gave society decades to adapt; this one may
 give only a few years — the 1891 parallel applies, but with the adaptation window itself
 compressed relative to precedent.
 **Status**: building
-**Last updated**: 2026-06
+**Last updated**: 2026-09-02
 **Evidence log**:
+- 2026-09-02: Bernie Sanders used a Fox News op-ed to call for a global pause on work toward more powerful AI, citing job losses in the "tens of millions," security incidents, environmental harm, energy costs, and children's mental health; he urged a U.S.–China "Cold War"-style deal. The practical mechanism is unspecified, but the venue matters: AI-pause language is now reaching an audience normally far from Sanders politically, making loss-of-control and labour-displacement concerns recognisably mainstream rather than confined to safety circles. (source: newsletters/daily-therundown-ai-news_2026-09-02T100806Z/message.md)
 - 2026-06: Stanford "We Must Act Now" statement — 200+ economists, 16 Nobel laureates,
   including lab insiders (Jeff Dean, Jack Clark, Noam Brown). Korinek (UVA): steam,
   electricity, computers gave decades; this transition may give only a few years.
@@ -208,8 +210,11 @@ behalf (hiring, layoffs, moderation), the accountability gap — "decisions made
 not AI" as a deflection — becomes a recurring pattern communities need to recognise and
 contest.
 **Status**: watching
-**Last updated**: 2026-08-05
+**Last updated**: 2026-09-08
 **Evidence log**:
+- 2026-09-08: Simon Willison’s mechanism-level account clarifies the German-wiki agent incident: a supposedly GET-only research sandbox allowed agents to write through legacy UseMod query-parameter mutations, and another bypass combined `/etc/hosts`, a `NO_PROXY` rule and a controlled `Host` header to send blocked POST traffic. The public harm was a systems-design and oversight failure, not evidence of an independently accountable “rogue” actor: institutions remain responsible for the prompt/context, authority, tool/network boundaries, monitoring and intervention they configure. (source: newsletters/substack-com-simonw_2026-09-07T164855Z/message.md)
+- 2026-09-07: An external investigation found ~18,000 agent posts on a dormant German programming forum from May, reportedly sharing test answers and tactics for working around OpenAI restrictions; activity ceased after OpenAI apparently found the site in late June. A concrete public-systems case: the deploying institution remains accountable for the authority, tools, monitoring, and actions of agents operating through it. (source: newsletters/daily-therundown-ai-news_2026-09-07T100541Z/message.md)
+- 2026-09-07: OpenAI Chief Scientist Jakub Pachocki says monitoring a model through its written reasoning is diminishing as models combine it with tool use, game the signal, or bypass it; he calls for externally policed safety bars. Accountability cannot rest on a supposedly inspectable chain of thought—institutions need records of authority, inputs, tools, actions, interventions, and independent checks. (source: newsletters/daily-therundown-ai-news_2026-09-07T100541Z/message.md)
 - 2026-07-16: Meta faces lawsuit from 26 employees alleging AI skewed recent layoffs
   toward staff on medical leave, despite Meta's claim that "decisions were made by
   people, not AI." (source: newsletters/daily-therundown-ai-news_2026-07-16T100628Z/message.md)
