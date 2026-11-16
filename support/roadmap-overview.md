@@ -27,7 +27,7 @@ Update this file by appending a summary line after creating a Beads issue or con
 
 ## Economic Agency & Market Access
 
-- **AI agents as market gatekeepers: small business access displacement** (`ft-1vl`) — Cloudflare CEO (Jun 2026): AI could "destroy small businesses" by making it harder to persuade agents that intermediate purchasing. Market access displacement as a distinct form of power asymmetry — beyond labour displacement. Who controls agent preferences? Community economic agency in an agent-mediated market. The 1891 parallel: new intermediaries reshaping market participation before frameworks to respond have solidified.
+- **AI agents as market gatekeepers: small business access displacement** (`ft-1vl`) — Cloudflare CEO (Jun 2026): AI could "destroy small businesses" by making it harder to persuade agents that intermediate purchasing. Market access displacement as a distinct form of power asymmetry — beyond labour displacement. Who controls agent preferences? Community economic agency in an agent-mediated market. The 1891 parallel: new intermediaries reshaping market participation before frameworks to respond have solidified. Broadened 2026-11-07 to "Gatekeeper power" (AI as intermediary, or bundled into the access layer with no opt-out, e.g. Google K-12 Search/AI); see `ft-topics.md`.
 
 ## AI Access & Geopolitics
 
