@@ -13,7 +13,7 @@ import {
 
 /**
  * Fetches registrations needing a reminder of the given type, sends each
- * reminder email, and marks it as sent in KV.
+ * reminder email, and records it in event_reminder_logs.
  *
  * Called by Deno.cron() in main.ts — not via HTTP.
  */
@@ -40,6 +40,16 @@ export async function sendReminders(
     ).length;
     const failed = attendeeResults.length - sent;
     console.log(`[cron] ${type}: attendee sent=${sent} failed=${failed}`);
+    logFailures(`${type} attendee`, attendeeResults);
+  }
+
+  const missingOrganiser = events.filter((e) => !e.organizer?.email);
+  if (missingOrganiser.length > 0) {
+    console.warn(
+      `[cron] ${type}: no organiser email for event(s): ${
+        missingOrganiser.map((e) => e.id).join(", ")
+      }`,
+    );
   }
 
   // --- Organiser reminder emails ---
@@ -87,6 +97,30 @@ export async function sendReminders(
   console.log(
     `[cron] ${type}: organiser sent=${orgSent} skipped=${orgSkipped} failed=${orgFailed}`,
   );
+  logFailures(`${type} organiser`, organiserResults);
+}
+
+/** Log the reason for each rejected or unsent result from Promise.allSettled. */
+function logFailures(
+  label: string,
+  results: PromiseSettledResult<
+    { sent: boolean; skipped?: boolean; email?: string; organizer?: string }
+  >[],
+): void {
+  for (const r of results) {
+    if (r.status === "rejected") {
+      console.error(
+        `[cron] ${label}: error:`,
+        r.reason instanceof Error ? r.reason.message : r.reason,
+      );
+    } else if (!r.value.sent && !r.value.skipped) {
+      console.error(
+        `[cron] ${label}: email not sent to ${
+          r.value.email ?? r.value.organizer
+        }`,
+      );
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------

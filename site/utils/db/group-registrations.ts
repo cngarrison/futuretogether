@@ -295,6 +295,24 @@ export async function cancelRegistration(
   }
 }
 
+/** Values stored in event_reminder_logs.reminder_type (see tables_events migration). */
+export const REMINDER_LOG_TYPE = {
+  day_before: "1-day",
+  hour_before: "1-hour",
+} as const;
+
+/** group_events columns recording when the organiser reminder was sent. */
+const ORGANISER_REMINDER_COL = {
+  day_before: "organiser_reminded_day_before",
+  hour_before: "organiser_reminded_hour_before",
+} as const;
+
+/** Send window, measured from now until the event starts. */
+const REMINDER_WINDOW_MS = {
+  day_before: { low: 22 * 60 * 60 * 1000, high: 26 * 60 * 60 * 1000 },
+  hour_before: { low: 45 * 60 * 1000, high: 75 * 60 * 1000 },
+} as const;
+
 export async function updateReminderSent(
   _eventId: string,
   registrationId: string,
@@ -302,11 +320,12 @@ export async function updateReminderSent(
 ): Promise<void> {
   try {
     const admin = createAdminClient();
-    await admin.from("event_reminder_logs").insert({
+    const { error } = await admin.from("event_reminder_logs").insert({
       registration_id: registrationId,
-      reminder_type: reminderType,
+      reminder_type: REMINDER_LOG_TYPE[reminderType],
       sent_at: new Date().toISOString(),
     });
+    if (error) console.error("updateReminderSent error:", error.message);
   } catch (err) {
     console.error("updateReminderSent error:", err);
   }
@@ -316,19 +335,16 @@ export async function hasOrganizerReminderBeenSent(
   eventId: string,
   reminderType: "day_before" | "hour_before",
 ): Promise<boolean> {
-  try {
-    const admin = createAdminClient();
-    const col = reminderType === "day_before"
-      ? "organiser_day_before_sent_at"
-      : "organiser_hour_before_sent_at";
-    const { data } = await admin.from("group_events").select(col).eq(
-      "id",
-      eventId,
-    ).maybeSingle();
-    return !!(data as Record<string, unknown> | null)?.[col];
-  } catch {
-    return false;
-  }
+  const col = ORGANISER_REMINDER_COL[reminderType];
+  const admin = createAdminClient();
+  const { data, error } = await admin.from("group_events").select(col).eq(
+    "id",
+    eventId,
+  ).maybeSingle();
+  // Throw rather than returning false: a failed lookup must not cause the
+  // organiser to be emailed again on every cron run.
+  if (error) throw new Error(`hasOrganizerReminderBeenSent: ${error.message}`);
+  return !!(data as Record<string, unknown> | null)?.[col];
 }
 
 export async function updateOrganizerReminderSent(
@@ -337,16 +353,28 @@ export async function updateOrganizerReminderSent(
 ): Promise<void> {
   try {
     const admin = createAdminClient();
-    const col = reminderType === "day_before"
-      ? "organiser_day_before_sent_at"
-      : "organiser_hour_before_sent_at";
-    await admin.from("group_events").update({ [col]: new Date().toISOString() })
-      .eq("id", eventId);
+    const { error } = await admin.from("group_events").update({
+      [ORGANISER_REMINDER_COL[reminderType]]: new Date().toISOString(),
+    }).eq("id", eventId);
+    if (error) {
+      console.error("updateOrganizerReminderSent error:", error.message);
+    }
   } catch (err) {
     console.error("updateOrganizerReminderSent error:", err);
   }
 }
 
+/**
+ * Find published events starting within the reminder window, plus their
+ * registered attendees who have not yet received this reminder type.
+ *
+ * event_date is a naive local timestamp interpreted in each event's own
+ * `timezone`, so the window is applied in JS after converting to a real
+ * instant. The DB query only uses a generous pre-filter.
+ *
+ * Errors are logged and rethrown so the cron run shows as failed instead of
+ * silently reporting zero registrations.
+ */
 export async function getRegistrationsNeedingReminder(
   reminderType: "day_before" | "hour_before",
 ): Promise<
@@ -355,57 +383,126 @@ export async function getRegistrationsNeedingReminder(
     registrations: Array<{ event: EventConfig; registration: Registration }>;
   }
 > {
-  const empty = { events: [], registrations: [] };
-  try {
-    const admin = createAdminClient();
-    const now = nowAsNaiveLocal("Australia/Sydney");
-    // For day_before: window = [22h, 26h] from now; hour_before: [45min, 75min]
-    const windowMs = reminderType === "day_before"
-      ? { low: 22 * 60 * 60 * 1000, high: 26 * 60 * 60 * 1000 }
-      : { low: 45 * 60 * 1000, high: 75 * 60 * 1000 };
-    const lowCutoff = new Date(Date.now() + windowMs.low).toISOString().replace(
-      "T",
-      " ",
-    ).slice(0, 19);
-    const highCutoff = new Date(Date.now() + windowMs.high).toISOString()
-      .replace("T", " ").slice(0, 19);
-    const { data: eventRows } = await admin
-      .from("group_events")
-      .select(EVENT_SELECT)
-      .eq("status", "published")
-      .gt("event_date", now)
-      .gte("event_date", lowCutoff)
-      .lte("event_date", highCutoff);
-    if (!eventRows || eventRows.length === 0) return empty;
-    const events = await Promise.all(
-      (eventRows as Record<string, unknown>[]).map((row) =>
-        rowToEventConfig(row)
+  const admin = createAdminClient();
+  const nowMs = Date.now();
+  const window = REMINDER_WINDOW_MS[reminderType];
+
+  // Pre-filter on naive Sydney time, widened by a day either side to cover
+  // events stored in other timezones.
+  const nowSydney = Temporal.Now.plainDateTimeISO("Australia/Sydney");
+  const fmt = (d: Temporal.PlainDateTime) =>
+    d.toString({ smallestUnit: "second" });
+  const { data: eventRows, error: eventsError } = await admin
+    .from("group_events")
+    .select(EVENT_SELECT)
+    .eq("status", "published")
+    .gte("event_date", fmt(nowSydney.subtract({ days: 1 })))
+    .lte("event_date", fmt(nowSydney.add({ days: 2 })));
+  if (eventsError) {
+    throw new Error(`getRegistrationsNeedingReminder: ${eventsError.message}`);
+  }
+
+  const inWindow = ((eventRows ?? []) as Record<string, unknown>[]).filter(
+    (row) => {
+      if (!row.event_date) return false;
+      const tz = (row.timezone as string | null) ?? "Australia/Sydney";
+      const startMs = naiveDatetimeToDate(row.event_date as string, tz)
+        .getTime();
+      const untilStart = startMs - nowMs;
+      return untilStart >= window.low && untilStart <= window.high;
+    },
+  );
+  if (inWindow.length === 0) return { events: [], registrations: [] };
+
+  const events = await Promise.all(
+    inWindow.map((row) => rowToEventConfig(row)),
+  );
+  await attachOrganisers(events, inWindow);
+
+  const registrations: Array<
+    { event: EventConfig; registration: Registration }
+  > = [];
+  for (const event of events) {
+    const { data: regs, error: regsError } = await admin
+      .from("event_registrations")
+      .select("*")
+      .eq("event_id", event.id)
+      .eq("status", "registered");
+    if (regsError) {
+      throw new Error(
+        `getRegistrationsNeedingReminder: registrations for ${event.id}: ${regsError.message}`,
+      );
+    }
+    const regRows = (regs ?? []) as Record<string, unknown>[];
+    if (regRows.length === 0) continue;
+
+    const { data: logs, error: logsError } = await admin
+      .from("event_reminder_logs")
+      .select("registration_id")
+      .eq("reminder_type", REMINDER_LOG_TYPE[reminderType])
+      .in("registration_id", regRows.map((r) => r.id as string));
+    if (logsError) {
+      throw new Error(
+        `getRegistrationsNeedingReminder: reminder logs for ${event.id}: ${logsError.message}`,
+      );
+    }
+    const alreadySent = new Set(
+      ((logs ?? []) as Array<{ registration_id: string }>).map((l) =>
+        l.registration_id
       ),
     );
-    const registrations: Array<
-      { event: EventConfig; registration: Registration }
-    > = [];
-    const reminderCol = reminderType === "day_before"
-      ? "day_before_reminder_sent"
-      : "hour_before_reminder_sent";
-    for (const event of events) {
-      const { data: regs } = await admin
-        .from("event_registrations")
-        .select("*")
-        .eq("event_id", event.id)
-        .eq("status", "registered")
-        .eq(reminderCol, false);
-      if (!regs) continue;
-      for (const reg of regs as Record<string, unknown>[]) {
-        registrations.push({
-          event,
-          registration: rowToRegistration(reg, event),
-        });
-      }
+
+    for (const reg of regRows) {
+      if (alreadySent.has(reg.id as string)) continue;
+      registrations.push({
+        event,
+        registration: rowToRegistration(reg, event),
+      });
     }
-    return { events, registrations };
-  } catch {
-    return empty;
+  }
+  return { events, registrations };
+}
+
+/**
+ * Populate `event.organizer` from the event's organiser_id, falling back to
+ * the program's organiser_id. Uses the admin client (profiles are RLS-protected).
+ */
+async function attachOrganisers(
+  events: EventConfig[],
+  rows: Record<string, unknown>[],
+): Promise<void> {
+  const organiserIdByEvent = new Map<string, string>();
+  rows.forEach((row, i) => {
+    const program = row.program as Record<string, unknown> | null;
+    const id = (row.organiser_id as string | null) ??
+      (program?.organiser_id as string | null) ?? null;
+    if (id) organiserIdByEvent.set(events[i].id, id);
+  });
+  const ids = [...new Set(organiserIdByEvent.values())];
+  if (ids.length === 0) return;
+
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from("profiles")
+    .select("id, email, name_first, name_last")
+    .in("id", ids);
+  if (error) {
+    console.error("attachOrganisers: profile lookup failed:", error.message);
+    return;
+  }
+  const byId = new Map(
+    ((data ?? []) as Array<Record<string, string | null>>).map((
+      p,
+    ) => [p.id, p]),
+  );
+  for (const event of events) {
+    const profile = byId.get(organiserIdByEvent.get(event.id) ?? "");
+    if (!profile?.email) continue;
+    event.organizer = {
+      name: [profile.name_first, profile.name_last].filter(Boolean).join(" ") ||
+        profile.email,
+      email: profile.email,
+    };
   }
 }
 
