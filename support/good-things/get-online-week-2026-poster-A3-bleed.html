@@ -157,7 +157,7 @@
     .body {
       flex: 1;
       background: var(--warm-white);
-      padding: 12mm 16mm 10mm;
+      padding: 10mm 16mm 8mm;
       display: flex;
       flex-direction: column;
       gap: 8mm;
@@ -200,22 +200,25 @@
     .topic-card.full-width {
       grid-column: span 2;
     }
-    .topic-icon {
+    div.topic-icon {
       font-size: 16pt;
       margin-bottom: 1.5mm;
     }
+    span.topic-icon {
+      margin-right: 2mm;
+    }
     .topic-title {
-      font-size: 14pt;
+      font-size: 12pt;
       font-weight: 700;
       color: var(--teal);
-      margin-bottom: 1.5mm;
+      margin-bottom: 2.5mm;
       line-height: 1.2;
     }
     .topic-card.highlight .topic-title {
       color: var(--amber);
     }
     .topic-desc {
-      font-size: 13pt;
+      font-size: 10pt;
       color: #4b5563;
       line-height: 1.4;
     }
@@ -277,11 +280,12 @@
     }
 
     .tagline {
-      font-size: 18pt;
+      font-size: 13pt;
       font-weight: 700;
       font-style: italic;
+      text-align: center;
       color: var(--teal);
-      margin-top: 8mm;
+      /* margin-top: 2mm; */
     }
 
  	.photo {
@@ -405,18 +409,18 @@
     }
 
     .footer-text .footer-brand {
-      font-size: 12pt;
+      font-size: 14pt;
       font-weight: 700;
       color: white;
       margin-bottom: 2mm;
     }
     .footer-text .footer-presenter {
-      font-size: 9pt;
+      font-size: 12pt;
       color: rgba(255,255,255,0.45);
       margin-bottom: 1.5mm;
     }
     .footer-text .footer-support {
-      font-size: 8.5pt;
+      font-size: 11pt;
       color: rgba(255,255,255,0.40);
     }
 	.footer-cta {
@@ -505,7 +509,8 @@
   <div class="body">
 
     <!-- Body Part A: Hook paragraph -->
-    <p class="hook">Get more out of the technology you already have. Join a welcoming, hands-on session for local people aged 50+—with practical guidance, time to try things yourself, and friendly support when you need it. Bring your phone, tablet or laptop; no experience is needed.</p>
+    <p class="hook">Get more out of the technology you already have. Join a welcoming, hands-on session for local people aged 50+ <br/ >with practical guidance, 
+    time to try things yourself, and friendly support when you need it. <br />Bring your phone, tablet or laptop; no experience is needed.</p>
 
     <!-- Body Part B: Topics -->
     <div class="topics-section">
@@ -513,32 +518,32 @@
       <div class="topics-grid">
 
         <div class="topic-card">
-          <div class="topic-icon">&#129517;</div>
-          <div class="topic-title">Be Connected</div>
+          <!-- <div class="topic-icon">&#129517;</div> -->
+          <div class="topic-title"><span class="topic-icon">&#129517;</span> Be Connected</div>
           <div class="topic-desc">Find free, trusted learning resources and practical support that fit your interests and goals.</div>
         </div>
 
         <div class="topic-card">
-          <div class="topic-icon">&#128274;</div>
-          <div class="topic-title">Stay safe online</div>
+          <!-- <div class="topic-icon">&#128274;</div> -->
+          <div class="topic-title"><span class="topic-icon">&#128274;</span> Stay safe online</div>
           <div class="topic-desc">Learn simple ways to spot scams, create stronger passwords and add an extra layer of protection to important accounts.</div>
         </div>
 
         <div class="topic-card">
-          <div class="topic-icon">&#128227;</div>
-          <div class="topic-title">Emergency alerts</div>
+          <!-- <div class="topic-icon">&#128227;</div> -->
+          <div class="topic-title"><span class="topic-icon">&#128227;</span> Emergency alerts</div>
           <div class="topic-desc">Know where to find reliable local warnings, updates and emergency information when it matters.</div>
         </div>
 
         <div class="topic-card">
-          <div class="topic-icon">&#128172;</div>
-          <div class="topic-title">Friendly help</div>
+          <!-- <div class="topic-icon">&#128172;</div> -->
+          <div class="topic-title"><span class="topic-icon">&#128172;</span> Friendly help</div>
           <div class="topic-desc">Ask the questions that matter to you and practise at your own pace, with patient one-to-one support.</div>
         </div>
 
         <div class="topic-card highlight full-width">
-          <div class="topic-icon">&#128640;</div>
-          <div class="topic-title">Put your skills into action</div>
+          <!-- <div class="topic-icon">&#128640;</div> -->
+          <div class="topic-title"><span class="topic-icon">&#128640;</span> Put your skills into action</div>
           <div class="topic-desc">Leave with six practical things you can do straight away—from connecting safely and finding information to helping yourself, family and community stay in touch.</div>
         </div>
 
@@ -566,13 +571,11 @@
           </div>
         </div>
 
-        <div class="tagline">Try something new this Get Online Week—build confidence, stay connected and take the next step online.</div>
-
 		<div class="register">
 		  <div class="register-text">
 			<div class="register-heading">Register for Free to reserve your seat <span class="urgency">seats are limited</span></div>
 			<span class="url"><strong>futuretogether.community</strong>/meetups</span>
-			<span class="contact">0411 174 174 &nbsp;&middot;&nbsp; info@futuretogether.community</span>
+			<span class="contact">02 6948 3707 &nbsp;&middot;&nbsp; info@futuretogether.community</span>
 		  </div>
 		</div>
 
@@ -592,7 +595,7 @@
  -->
 
     </div>
-	<!-- <div class="tagline">&ldquo;The future is arriving. Let&rsquo;s face it together.&rdquo;</div> -->
+	<div class="tagline">Try something new this Get Online Week—build confidence, stay connected and take the next step online</div>
   </div><!-- .body -->
 
   <!-- ===== DARK FOOTER ===== -->
@@ -602,7 +605,7 @@
       <div class="footer-text">
         <div class="footer-brand">Future Together</div>
         <div class="footer-presenter">Presented by Charlie Garrison</div>
-        <div class="footer-support"><small>Supported by Good Things Australia</small></div>
+        <div class="footer-support">Supported by Good Things Australia</div>
       </div>
     </div>
 <!-- 
@@ -623,7 +626,7 @@
 </div><!-- .poster -->
 </div><!-- .preview-wrap -->
 <script>
-  buildQR('https://futuretogether.community/events/tumba-community', 'qr', 200);
+  buildQR('https://futuretogether.community/events/get-online-together-digital-skills-for-tumbarumba-2026-10-23', 'qr', 200);
 </script>
 </body>
 </html>

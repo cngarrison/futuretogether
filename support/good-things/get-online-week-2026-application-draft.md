@@ -63,7 +63,7 @@ We'll draw on our existing Tumbarumba event promotion network: posters and flyer
    - Postcode: 2653
 9. **Event date:** Friday 23 October 2026
 10. **Event times:** 10:30am – 12:00pm, AEDT
-11. **Event contact phone number:** 0411 174 174 (Charlie Garrison — better for content questions than the library's general line)
+11. **Event contact phone number:** 02 6948 3707 (Charlie Garrison — better for content questions than the library's general line)
 12. **Event contact email address:** *(confirm — Future Together contact email)*
 13. **Event/organisation website:** futuretogether.community
 14. **Event type:** In-person
