@@ -38,3 +38,4 @@ Short-form content abstracts for FT LinkedIn. Stored in `linkedin-posts/`. Each 
 | [who-controls-the-inference.md](./who-controls-the-inference.md) | Who Controls the Inference? | HyperDev (Matsuoka) | abstract |
 | [linkedin-posts/gpt56-governance-gate.md](./linkedin-posts/gpt56-governance-gate.md) | Who decides who gets the most powerful AI? | The Rundown AI, 26 Jun 2026 | abstract |
 | [linkedin-posts/raise-us-disruption-prep.md](./linkedin-posts/raise-us-disruption-prep.md) | The companies disrupting your job are funding your retraining. Should that worry us? | The Rundown AI, 26 Jun 2026 | abstract |
+| [linkedin-posts/living-local-knowledge-commons.md](./linkedin-posts/living-local-knowledge-commons.md) | Your community's knowledge is the asset. Who is keeping it alive? | ft-topics.md synthesis + Simon Willison, 14 Sep 2026 | abstract |
