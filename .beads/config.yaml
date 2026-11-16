@@ -54,5 +54,8 @@
 # - github.repo
 
 sync.remote: "git+ssh://git@github.com/cngarrison/futuretogether.git"
-
-dolt.shared-server: true
+events-journal: true
+dolt:
+    port: 3308
+    shared-server: false
+    auto-start: false
